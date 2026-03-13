@@ -637,7 +637,10 @@ function renderTrackers() {
   const grid = document.getElementById("trackersGrid");
   grid.innerHTML = "";
   
-  state.trackers.forEach((t, i) => {
+  // Sort by probability descending (highest first)
+  var sorted = state.trackers.slice().sort(function(a, b) { return b.prob - a.prob; });
+  
+  sorted.forEach((t, i) => {
     const card = document.createElement("div");
     card.className = `tracker ${t.zone}`;
     card.style.animationDelay = `${i * 0.1}s`;
