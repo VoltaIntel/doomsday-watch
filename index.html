@@ -256,6 +256,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  align-items: start;
 }
 
 /* Tracker Card */
@@ -271,6 +272,10 @@ body {
 .tracker:hover {
   border-color: #30363d;
   background: var(--surface-2);
+}
+.tracker {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .tracker::before {
@@ -418,6 +423,8 @@ body {
   font-size: 11px;
   color: #8b949e;
   line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .news-impact {
@@ -605,23 +612,23 @@ const state = {
   last_updated: "2026-03-13T06:04:00Z",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 50, zone: "imminent", trend: "stable", signals: ["hormuz_closed", "iran_sunk_ship"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 52, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 43, zone: "critical", trend: "stable", signals: ["hormuz_closed", "iran_sunk_ship"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 30, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "elevated", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "elevated", trend: "stable", signals: ["russia_iran_arms"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 10, zone: "deterrent", trend: "falling", signals: [] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "elevated", trend: "falling", signals: [] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "israel_lebanon", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "israel_lebanon", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "china", time: "2026-03-12", text: "", impact: "neutral" },
-    { zone: "russia", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "iran", time: "2026-03-12", text: "IRGC directly fires on and stops two commercial vessels in Strait of Hormuz", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "Three cargo ships hit by unknown projectiles in/near Strait of Hormuz", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "Iranian drone damages fuel tanks at port of Salalah, Oman", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "Iran drone strikes UK military base in Cyprus", impact: "up" },
+    { zone: "israel_lebanon", time: "2026-03-12", text: "70 killed in Israeli strikes in Lebanon on Thursday — Lebanese University hit", impact: "up" },
+    { zone: "israel_lebanon", time: "2026-03-12", text: "Israel signals 'long campaign' in Lebanon — 800,000 displaced, 680+ killed", impact: "up" },
+    { zone: "china", time: "2026-03-12", text: "China halts military flights around Taiwan for nearly 2 weeks — reason unknown", impact: "neutral" },
+    { zone: "russia", time: "2026-03-12", text: "Russia calls on US/Israel to stop Iran attacks; Kremlin signals expanded NATO demands", impact: "neutral" },
   ]
 };
 
@@ -656,27 +663,25 @@ function renderTrackers() {
 }
 
 function renderNews() {
-  const feed = document.getElementById("newsFeed");
+  var feed = document.getElementById("newsFeed");
+  if (!feed) return;
   feed.innerHTML = "";
-
-  state.news.forEach((n, i) => {
-    const item = document.createElement("div");
+  var items = state.news || [];
+  for (var i = 0; i < items.length; i++) {
+    var n = items[i];
+    var item = document.createElement("div");
     item.className = "news-item";
-    item.style.animationDelay = `${i * 0.08}s`;
-
-    const impactIcon = n.impact === "up" ? "▲" : n.impact === "down" ? "▼" : "—";
-    const impactClass = n.impact;
-
-    item.innerHTML = `
-      <div class="news-header">
-        <span class="news-zone ${n.zone}">${n.zone.toUpperCase()}</span>
-        <span class="news-time">${n.time}</span>
-      </div>
-      <div class="news-text">${n.text}</div>
-      <div class="news-impact ${impactClass}">${impactIcon} ESCALATION ${n.impact === "up" ? "RISK +" : n.impact === "down" ? "RISK -" : "STABLE"}</div>
-    `;
+    var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
+    var txt = n.impact === "up" ? "ESCALATION +" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
+    var h = '<div class="news-header">';
+    h += '<span class="news-zone ' + (n.zone||'') + '">' + (n.zone||'unknown').toUpperCase() + '</span>';
+    h += '<span class="news-time">' + (n.time||'') + '</span>';
+    h += '</div>';
+    h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
+    h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + txt + '</div>';
+    item.innerHTML = h;
     feed.appendChild(item);
-  });
+  }
 }
 
 function updateClock() {

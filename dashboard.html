@@ -256,6 +256,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+  align-items: start;
 }
 
 /* Tracker Card */
@@ -271,6 +272,10 @@ body {
 .tracker:hover {
   border-color: #30363d;
   background: var(--surface-2);
+}
+.tracker {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .tracker::before {
@@ -418,6 +423,8 @@ body {
   font-size: 11px;
   color: #8b949e;
   line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .news-impact {
@@ -665,27 +672,25 @@ function renderTrackers() {
 }
 
 function renderNews() {
-  const feed = document.getElementById("newsFeed");
+  var feed = document.getElementById("newsFeed");
+  if (!feed) return;
   feed.innerHTML = "";
-
-  state.news.forEach((n, i) => {
-    const item = document.createElement("div");
+  var items = state.news || [];
+  for (var i = 0; i < items.length; i++) {
+    var n = items[i];
+    var item = document.createElement("div");
     item.className = "news-item";
-    item.style.animationDelay = `${i * 0.08}s`;
-
-    const impactIcon = n.impact === "up" ? "▲" : n.impact === "down" ? "▼" : "—";
-    const impactClass = n.impact;
-
-    item.innerHTML = `
-      <div class="news-header">
-        <span class="news-zone ${n.zone}">${n.zone.toUpperCase()}</span>
-        <span class="news-time">${n.time}</span>
-      </div>
-      <div class="news-text">${n.text}</div>
-      <div class="news-impact ${impactClass}">${impactIcon} ESCALATION ${n.impact === "up" ? "RISK +" : n.impact === "down" ? "RISK -" : "STABLE"}</div>
-    `;
+    var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
+    var txt = n.impact === "up" ? "ESCALATION +" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
+    var h = '<div class="news-header">';
+    h += '<span class="news-zone ' + (n.zone||'') + '">' + (n.zone||'unknown').toUpperCase() + '</span>';
+    h += '<span class="news-time">' + (n.time||'') + '</span>';
+    h += '</div>';
+    h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
+    h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + txt + '</div>';
+    item.innerHTML = h;
     feed.appendChild(item);
-  });
+  }
 }
 
 function updateClock() {
