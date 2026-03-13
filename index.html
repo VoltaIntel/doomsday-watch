@@ -612,29 +612,29 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T15:04:00Z",
-  global_war_probability: 33,
+  last_updated: "2026-03-13T16:04:00Z",
+  global_war_probability: 34,
   global_zone: "critical",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 9, zone: "deterrent", trend: "falling", signals: ["nuclear_rhetoric_official", "iran_president_peacetalks"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 61, zone: "critical", trend: "falling", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "us_tops_killed", "oil_terminal_attack", "iran_energy_threat", "iran_president_peacetalks"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 65, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "idf_soldiers_killed"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 9, zone: "deterrent", trend: "stable", signals: ["nuclear_rhetoric_official", "diplomacy_refused"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 65, zone: "critical", trend: "stable", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 67, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "falling", signals: ["russia_iran_arms", "russia_diplomacy"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "rising", signals: ["dprk_missile_test", "dprk_rhetoric"] },
-    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 26, zone: "elevated", trend: "falling", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine", "russia_oil_leverage"] },
+    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "stable", signals: ["dprk_missile_test", "dprk_rhetoric"] },
+    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 26, zone: "elevated", trend: "stable", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-13", text: "Iranian President Pezeshkian posted on X that he spoke to Russian and Pakistani counterparts confirming Iran's 'commitment to peace.' Laid out conditions: recognition of Iran's rights, payment of reparations, and firm international guarantees against future aggression. Al Jazeera: 'possible sign of de-escalation from Tehran.'", impact: "down" },
-    { zone: "iran", time: "2026-03-13", text: "Secretary of Defense Pete Hegseth said at Friday press briefing that Iran's new Supreme Leader Mojtaba Khamenei has been injured and is 'likely disfigured.' Leadership decapitation ongoing after Khamenei's father killed in early strikes.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "US KC-135 tanker crashed in western Iraq. CENTCOM says not result of hostile or friendly fire. Another KC-135 damaged but landed in Israel. 4th US aircraft lost since war began. Raises questions about operational tempo and strain on forces.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Warrant Officer Arnaud Frion killed in drone attack on Kurdish military base in Irbil region, Iraq. Six other French soldiers wounded. Macron called attack 'unacceptable' and said 'the war in Iran cannot justify' attacks on coalition forces.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-13", text: "Two Israeli soldiers killed and at least 14 wounded in southern Lebanon, per IDF. CNN: 'The war that never ended — Israel seizes moment to finish Hezbollah.' Ground operations intensifying.", impact: "up" },
-    { zone: "south_asia", time: "2026-03-13", text: "Pakistan escalated strikes on Afghanistan, bombing fuel depot of private airline Kam Air near Kandahar airport. Afghanistan accuses Pakistan of targeting civilian homes — at least 6 civilians killed. China's special envoy mediating between the two. Separate from India-Pakistan.", impact: "up" },
-    { zone: "russia", time: "2026-03-13", text: "Russia received €6bn from selling fossil fuels in the fortnight since the US-Israel war on Iran started. Putin envoy says 'US better understands importance of Russian oil amid energy crisis.' Russia benefiting from ME war disruption.", impact: "up" },
-    { zone: "global", time: "2026-03-13", text: "Countries across energy-hungry Asia rationing supplies and exports of fossil fuels due to Strait of Hormuz near-total shutdown. Southeast Asian nations implementing emergency measures including office closures and travel restrictions.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "American officials say Iran is mining the Strait of Hormuz. 1,000+ cargo ships blocked from transit. IEA calls it 'biggest oil supply disruption in history.' SE Asia rationing energy.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Trump said US will hit Iran 'very hard over the next week' — shortly after easing Russian oil sanctions for 30-day waiver. Contradicts earlier 'war could be over soon' comment.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Multiple Israeli security sources say Israel did not have a realistic plan for regime change when it attacked Iran. Expectations of popular uprising driven by 'wishful thinking' not hard intelligence.", impact: "down" },
+    { zone: "iran", time: "2026-03-13", text: "Fresh wave of missiles launched at Israel early Friday. Iran said it was firing missiles; Hezbollah launched simultaneous attack from southern Lebanon per Iranian state media. 2 injured, buildings damaged in north.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "US KC-135 tanker crash in Iraq now confirmed 6 dead. Another KC-135 damaged but landed in Israel. 5th US aircraft lost since war began. CENTCOM: not hostile or friendly fire.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Warrant Officer Arnaud Frion killed in drone attack on Kurdish base in Irbil. Macron: attack 'unacceptable.' First European military fatality of the war.", impact: "up" },
+    { zone: "south_asia", time: "2026-03-13", text: "Pakistan military struck targets in Kabul and other areas overnight. Taliban government says at least 6 civilians killed, dozen injured. China's envoy mediating between the two. Third week of fighting.", impact: "up" },
+    { zone: "global", time: "2026-03-13", text: "International Energy Agency said the war was creating the biggest oil supply disruption in history. 1,000+ ships blocked from Hormuz. SE Asia implementing emergency measures. Oil prices whipsawing on Trump comments.", impact: "up" },
   ]
 };
 
