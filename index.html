@@ -602,29 +602,93 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T05:00:00Z",
+  last_updated: "2026-03-13T04:00:00Z",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 43, zone: "elevated", trend: "rising", signals: ["HORMUZ CONTESTED", "HEZBOLLAH ACTIVE"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 30, zone: "critical", trend: "rising", signals: ["HEZBOLLAH ROCKETS"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 22, zone: "elevated", trend: "rising", signals: ["MISSILE ATTACK"] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "elevated", trend: "stable", signals: ["IRAN ARMS"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] }
+    {
+      "id": "iran_nuke",
+      "name": "IRAN NUCLEAR",
+      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "prob": 5,
+      "zone": "DETERRENT",
+      "trend": "stable",
+      "signals": []
+    },
+    {
+      "id": "iran_conventional",
+      "name": "IRAN WAR",
+      "emoji": "\u2694\ufe0f",
+      "prob": 43,
+      "zone": "ELEVATED",
+      "trend": "rising",
+      "signals": [
+        "hormuz_contested",
+        "hezbollah_active",
+        "trump_rhetoric"
+      ]
+    },
+    {
+      "id": "israel_lebanon",
+      "name": "ISRAEL-LEBANON",
+      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "prob": 30,
+      "zone": "CRITICAL",
+      "trend": "rising",
+      "signals": [
+        "hezbollah_rockets_active"
+      ]
+    },
+    {
+      "id": "turkey",
+      "name": "TURKEY",
+      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "prob": 8,
+      "zone": "DETERRENT",
+      "trend": "stable",
+      "signals": []
+    },
+    {
+      "id": "india",
+      "name": "INDIA-PAKISTAN",
+      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "prob": 22,
+      "zone": "ELEVATED",
+      "trend": "rising",
+      "signals": [
+        "missile_attack_reported"
+      ]
+    },
+    {
+      "id": "russia",
+      "name": "RUSSIA-NATO",
+      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "prob": 12,
+      "zone": "ELEVATED",
+      "trend": "stable",
+      "signals": [
+        "russia_iran_arms"
+      ]
+    },
+    {
+      "id": "china",
+      "name": "CHINA-TAIWAN",
+      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "prob": 12,
+      "zone": "DETERRENT",
+      "trend": "stable",
+      "signals": []
+    }
   ],
   news: [
-    { zone: "iran", time: "NOW", text: "Strait of Hormuz remains contested — multiple tanker diversions reported, insurance rates spiking", impact: "up" },
-    { zone: "iran", time: "2H AGO", text: "Trump reiterates 'Iran will not exist as a nation' if attacks continue — rhetoric level HIGH", impact: "up" },
-    { zone: "lebanon", time: "3H AGO", text: "Hezbollah fires 40+ rockets at northern Israel — IDF responds with large-scale strikes", impact: "up" },
-    { zone: "india", time: "5H AGO", text: "Reports of missile attack on Indian territory — border tensions escalating sharply", impact: "up" },
-    { zone: "global", time: "6H AGO", text: "Brent crude at $128/bbl — Strait of Hormuz disruption now priced in by markets", impact: "up" },
-    { zone: "iran", time: "8H AGO", text: "6 US troops killed in Kuwait drone attack — Iranian proxy operations intensifying", impact: "up" },
-    { zone: "russia", time: "10H AGO", text: "Russia denies sharing intelligence with Iran — diplomatic language notably cold", impact: "neutral" },
-    { zone: "lebanon", time: "11H AGO", text: "Israel declares additional reserves — northern border reinforcement visible", impact: "up" },
+    {
+      "zone": "iran",
+      "time": "LIVE",
+      "text": "Monitoring active \u2014 first update at 06:00 UTC",
+      "impact": "neutral"
+    }
   ]
 };
 
-// ===== RENDER =====
+// ===== RENDER// ===== RENDER =====
 function renderTrackers() {
   const grid = document.getElementById("trackersGrid");
   grid.innerHTML = "";
