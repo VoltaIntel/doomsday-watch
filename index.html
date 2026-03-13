@@ -612,30 +612,30 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T17:04:00Z",
-  global_war_probability: 34,
+  last_updated: "2026-03-13T18:00:00Z",
+  global_war_probability: 37,
   global_zone: "critical",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 9, zone: "deterrent", trend: "stable", signals: ["nuclear_rhetoric_official", "diplomacy_refused"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 60, zone: "critical", trend: "falling", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 19, zone: "elevated", trend: "rising", signals: ["enrichment_60", "diplomacy_refused"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 60, zone: "critical", trend: "stable", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric"] },
     { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 67, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
+    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 23, zone: "elevated", trend: "rising", signals: ["turkey_israel_tensions", "eastern_med_naval", "turkish_mobilization"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 7, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "falling", signals: [] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "stable", signals: ["dprk_missile_test", "dprk_rhetoric"] },
     { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 26, zone: "elevated", trend: "stable", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 22, zone: "elevated", trend: "rising", signals: ["initial_conflict", "escalating", "international_involvement"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 22, zone: "elevated", trend: "stable", signals: ["initial_conflict", "escalating", "international_involvement"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-13", text: "Day 14 of war. Israel launched new strikes on Tehran; Iran retaliated across the Gulf. Fresh exchange of missile barrages. Hormuz disruption continues to push oil higher.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Defense Secretary Pete Hegseth said the U.S. military would stop Iran from blocking the Strait of Hormuz but did not specify how. Trump administration working to ease energy crisis.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "More than 90 Iranian vessels damaged or destroyed, including over 30 mine-laying ships. Significant degradation of Iran's mining and naval blockade capability.", impact: "down" },
-    { zone: "iran", time: "2026-03-13", text: "Brent crude at $101.13. IEA: 'biggest oil supply disruption in history.' Asian stock markets sharply lower. Dozens of countries releasing emergency reserves.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-13", text: "Most powerful Israeli bombardment of Dahiyeh yet. 800K displaced, 680+ killed. Katz: operation has 'no time limit.' War expands deeper into Lebanon per WaPo.", impact: "up" },
-    { zone: "south_asia", time: "2026-03-13", text: "Pakistan military struck Kabul, Kandahar, Paktia, Paktika overnight. Taliban: 6+ civilians killed, homes targeted. Fuel depots at Kandahar airport hit. Third week of fighting. China's envoy mediating.", impact: "up" },
-    { zone: "russia_ukraine", time: "2026-03-13", text: "Russian losses approach 1.28M total. Scorched-earth attacks putting Ukraine power grid near collapse. Russia helping Iran with drone tactics (FDD). Russia earned ~€6bn from energy crisis in 2 weeks.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Warrant Officer Arnaud Frion killed in drone attack on Kurdish base in Irbil. Macron: attack 'unacceptable.' First European military fatality of the war.", impact: "up" },
+    { zone: "turkey", time: "2026-03-13", text: "NATO confirmed interception of ballistic missile 'heading to Turkey.' Third such interception in 9 days. Turkey asserts right to self-defense. South Korea issues special travel advisory for SE Turkey. Ankara stresses Incirlik is Turkish sovereign territory.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "IAEA found Iran hid HEU in underground facility undamaged by previous strikes. Iran is only non-nuclear state enriching to 60%. Fordow facility bombed again by US. IAEA access denied.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Mojtaba Khamenei's first public statement: vows to keep blocking Strait of Hormuz, threatens to 'open additional fronts where the enemy is extremely vulnerable,' attacks countries hosting US forces.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "President Trump said US was going to be hitting Iran 'very hard over the next week,' shortly after issuing 30-day waiver for Russian oil sanctions to ease energy crisis.", impact: "up" },
+    { zone: "lebanon", time: "2026-03-13", text: "Israel preparing to expand incursion into southern Lebanon to fight Hezbollah. 2 IDF soldiers killed, 14 wounded. 687 killed in Lebanon, ~2,000 wounded, 800K displaced.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Several drones struck Duqm and Salalah in Oman, fuel storage tank damaged. Iran's asymmetric strikes now hitting neutral Gulf states beyond primary combatants.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Pentagon deploying 2,200 Marines to Middle East as US escalates military presence. Part of broader reinforcement accompanying Trump's 'very hard' rhetoric.", impact: "up" },
+    { zone: "china", time: "2026-03-13", text: "PLA warplane flights around Taiwan sharply reduced over recent days. Analysts cite possible economic concerns, Trump-Xi summit preparation (Mar 31-Apr 2), or strategic repositioning amid ME crisis.", impact: "down" },
   ]
 };
 
