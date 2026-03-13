@@ -578,8 +578,8 @@ body {
     <div class="threat-zones">
       <span class="z-active">DETERRENT</span>
       <span class="z-active">ELEVATED</span>
-      <span>CRITICAL</span>
-      <span>IMMINENT</span>
+      <span>30-60%</span>
+      <span>60-100%</span>
     </div>
   </div>
 
@@ -614,10 +614,10 @@ const state = {
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
     { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 43, zone: "critical", trend: "stable", signals: ["hormuz_closed", "iran_sunk_ship"] },
     { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 30, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "elevated", trend: "stable", signals: [] },
+    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "elevated", trend: "stable", signals: ["russia_iran_arms"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "elevated", trend: "falling", signals: [] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "falling", signals: [] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
   ],
   news: [
@@ -723,6 +723,25 @@ updateGlobalClock();
 
 // Update time every second
 setInterval(updateClock, 1000);
+</script>
+
+
+<script>
+// Visitor counter using countapi.xyz (free, anonymous, no account)
+(function() {
+  var ns = "voltaintel.github.io";
+  var key = "doomsday-watch";
+  
+  // Record visit
+  fetch("https://api.countapi.xyz/hit/" + ns + "/" + key)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      document.getElementById("visitNum").textContent = d.value || "—";
+    })
+    .catch(function() {
+      document.getElementById("visitNum").textContent = "—";
+    });
+})();
 </script>
 
 </body>

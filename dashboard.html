@@ -578,8 +578,8 @@ body {
     <div class="threat-zones">
       <span class="z-active">DETERRENT</span>
       <span class="z-active">ELEVATED</span>
-      <span>CRITICAL</span>
-      <span>IMMINENT</span>
+      <span>30-60%</span>
+      <span>60-100%</span>
     </div>
   </div>
 
@@ -633,9 +633,9 @@ const state = {
 
 // Auto-calculate zone from probability (override state file)
 function calcZone(prob) {
-  if (prob >= 50) return "imminent";
-  if (prob >= 25) return "critical";
-  if (prob >= 10) return "elevated";
+  if (prob >= 60) return "imminent";
+  if (prob >= 30) return "critical";
+  if (prob >= 15) return "elevated";
   return "deterrent";
 }
 // Auto-fix zones from probabilities
@@ -732,6 +732,25 @@ updateGlobalClock();
 
 // Update time every second
 setInterval(updateClock, 1000);
+</script>
+
+
+<script>
+// Visitor counter using countapi.xyz (free, anonymous, no account)
+(function() {
+  var ns = "voltaintel.github.io";
+  var key = "doomsday-watch";
+  
+  // Record visit
+  fetch("https://api.countapi.xyz/hit/" + ns + "/" + key)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      document.getElementById("visitNum").textContent = d.value || "—";
+    })
+    .catch(function() {
+      document.getElementById("visitNum").textContent = "—";
+    });
+})();
 </script>
 
 </body>
