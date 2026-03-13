@@ -692,8 +692,22 @@ function updateClock() {
   document.getElementById("updateTime").textContent = "UPDATED: " + timeStr;
 }
 
+function updateThreatZones() {
+  var zones = document.querySelectorAll("#threatZones span");
+  var prob = state.global_war_probability || 0;
+  var labels = ["DETERRENT", "ELEVATED", "CRITICAL", "IMMINENT"];
+  var thresholds = [0, 15, 30, 60];
+  var activeIdx = 0;
+  for (var i = thresholds.length - 1; i >= 0; i--) {
+    if (prob >= thresholds[i]) { activeIdx = i; break; }
+  }
+  for (var i = 0; i < zones.length; i++) {
+    zones[i].className = i <= activeIdx ? "z-active" : "";
+  }
+}
+
 function updateGlobalClock() {
-  const globalProb = 18;
+  const globalProb = state.global_war_probability || 0;
   const angle = (globalProb / 100) * 360;
   document.getElementById("globalProb").innerHTML = globalProb + '<span style="font-size:0.4em;opacity:0.6">%</span>';
 
@@ -740,6 +754,9 @@ state.trackers.forEach(t => { t.zone = calcZone(t.prob); });
 
 // Auto-fix zones on load
 state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
+  // Also update global zone
+  var gp = state.global_war_probability || 0;
+  state.global_zone = calcZone(gp);
 </script>
 
 
