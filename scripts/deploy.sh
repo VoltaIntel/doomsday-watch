@@ -76,8 +76,21 @@ else:
     with open("index.html", "w") as f:
         f.write(new_html)
 
-    gp = state.get("global_war_probability", "?")
-    tz = state.get("global_zone", "?")
+    # Recalculate global from actual tracker probabilities
+    all_probs = {}
+    for t in trackers_js:
+        all_probs[t["id"]] = t["prob"]
+    weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.15, "turkey": 0.08, "india": 0.08, "russia": 0.08, "china": 0.08, "north_korea": 0.07, "russia_ukraine": 0.12}
+    gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
+    if gp >= 60: tz = "imminent"
+    elif gp >= 30: tz = "critical"
+    elif gp >= 15: tz = "elevated"
+    else: tz = "deterrent"
+    # Update state.json with correct global
+    state["global_war_probability"] = gp
+    state["global_zone"] = tz
+    with open("data/current_state.json", "w") as sf:
+        json.dump(state, sf, indent=2)
     print(f"Updated index.html — global: {gp}% ({tz}) — {len(trackers_js)} trackers")
 
 # Commit and push
