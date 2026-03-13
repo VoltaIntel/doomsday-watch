@@ -612,13 +612,13 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T07:04:00Z",
-  global_war_probability: 29,
-  global_zone: "elevated",
+  last_updated: "2026-03-13T08:04:00Z",
+  global_war_probability: 31,
+  global_zone: "critical",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 52, zone: "critical", trend: "rising", signals: ["hormuz_closed", "iran_sunk_ship", "oil_above_120"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 55, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 58, zone: "critical", trend: "rising", signals: ["hormuz_closed", "iran_sunk_ship", "oil_above_120", "us_troops_killed"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 58, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms"] },
@@ -627,14 +627,14 @@ const state = {
     { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 31, zone: "critical", trend: "stable", signals: ["russian_offensive"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-13", text: "US officials say Iran is using smaller boats (not naval vessels) to lay mines and enforce Hormuz closure. Shipping virtually halted.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Mojtaba Khamenei (new Supreme Leader) says Strait of Hormuz will remain closed. Warns US bases will be attacked unless shut down.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Oil prices surged above $100/barrel again, testing $120 threshold. Coalition of 30+ countries releasing 400M barrels from emergency reserves but no relief.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Israeli airstrikes pound both Tehran and Beirut. Top Iranian nuclear scientists killed according to Israel. 13th-14th day of war.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "President Pezeshkian outlines conditions to end war: recognition of Tehran's rights, reparations, international guarantees. No active negotiation yet.", impact: "down" },
-    { zone: "iran", time: "2026-03-13", text: "CNN: Senior Trump officials told lawmakers in classified briefings they did not plan for Hormuz closure. Former officials call it 'inexcusable' given decades of planning tradition.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "US military plane crashed in Iraq. 8 US service members killed in war so far. Pentagon says first 6 days cost $11.3 billion.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "UN reports up to 3.2 million people displaced inside Iran. Iran's UN rep says 1,348 civilians killed, 17,000+ injured since Feb 28.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "IRGC navy fired on and stopped 2 vessels after they ignored warnings — first direct engagement by Revolutionary Guard forces. Marks escalation from mine-laying to active interdiction.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Thailand's Foreign Ministry conveyed 'strongest protest' to Iranian ambassador in Bangkok after Thai cargo ship was struck and set ablaze in the strait. International dimension widening.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Treasury Sec Bessent: US Navy will escort oil tankers 'as soon as militarily possible.' Military officials say they are not yet ready. Gap between policy announcement and operational capability.", impact: "up" },
+    { zone: "iran", time: "2026-03-11", text: "Three cargo ships report being hit by unknown projectiles in and near the Strait of Hormuz. Shipping virtually halted despite escort promises.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Oil settled near $120/bbl — highest in 4 years. Analysts warn conflict dragging 6 months could send oil 'north of $130.' 400M barrel reserve release failing to calm markets.", impact: "up" },
+    { zone: "lebanon", time: "2026-03-12", text: "Israel struck center of Beirut in sharp escalation. Sweeping displacement order for southern Lebanon — residents up to 25 miles from border told to head north. Hezbollah rocket barrage preceded strikes.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "Netanyahu made veiled threat directed at new Supreme Leader Mojtaba Khamenei amid continuing strikes on Tehran. Rhetoric escalating on both sides.", impact: "up" },
+    { zone: "ukraine", time: "2026-03-12", text: "Russia attacked critical substation supplying Kyiv. Scorched-earth attacks on energy infrastructure pushing Ukraine's power grid to near collapse while US attention diverted to ME.", impact: "up" },
   ]
 };
 
