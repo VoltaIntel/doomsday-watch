@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-13T04:00:00Z",
+  "last_updated": "2026-03-13T06:00:00Z",
   "scoring_window": "6h",
   "trackers": {
     "iran_nuke": {
@@ -7,43 +7,47 @@
       "active_signals": [],
       "current_probability": 5,
       "trend": "stable",
-      "zone": "deterrent"
+      "zone": "deterrent",
+      "notes": "Oman breakthrough (Feb 27): Iran agreed to never stockpile enriched uranium and full IAEA verification. No weapons-grade enrichment signals. Nuclear track de-escalated."
     },
     "iran_conventional": {
       "base_rate": 35,
       "active_signals": [
-        "hormuz_contested",
-        "hezbollah_active",
-        "trump_rhetoric"
+        "hormuz_closed",
+        "iran_sunk_ship"
       ],
-      "current_probability": 43,
+      "current_probability": 50,
       "trend": "rising",
-      "zone": "critical"
+      "zone": "imminent",
+      "notes": "Strait of Hormuz effectively closed — Iran laying mines, IRGC threatens 'not one litre of oil' exported. Oil past $100/bbl and spiraling. Iranian frigate IRIS Dena sunk by USS Charlotte in Indian Ocean. Day 13 of war, cost $11.3B to US. Merchant ships struck in Hormuz. No diplomatic engagement visible. Hezbollah attacks on Gulf states reported."
     },
     "israel_lebanon": {
       "base_rate": 25,
       "active_signals": [
-        "hezbollah_rockets_active"
+        "israel_ground_invasion_lebanon",
+        "israeli_casualties_high",
+        "beirut_bombing"
       ],
-      "current_probability": 30,
+      "current_probability": 47,
       "trend": "rising",
-      "zone": "critical"
+      "zone": "critical",
+      "notes": "IDF ground operations in Lebanon. 800,000+ displaced, 680+ killed. Israel strikes center of Beirut — killed Hamas official in Beirut strike. 210+ Hezbollah rockets fired since March 2. Sweeping displacement order for southern Lebanon (25 miles from border)."
     },
     "turkey": {
       "base_rate": 8,
       "active_signals": [],
-      "current_probability": 8,
+      "current_probability": 12,
       "trend": "stable",
-      "zone": "deterrent"
+      "zone": "elevated",
+      "notes": "Iranian missiles intercepted over Turkish airspace (2 incidents). NATO Article 4 discussions with allies. Erdogan warns Iran against 'wrong and provocative steps' but insists Turkey is 'on side of peace.' Avoiding direct US confrontation. No Article 5 or mobilization signals."
     },
     "india": {
       "base_rate": 10,
-      "active_signals": [
-        "missile_attack_reported"
-      ],
-      "current_probability": 22,
-      "trend": "rising",
-      "zone": "elevated"
+      "active_signals": [],
+      "current_probability": 10,
+      "trend": "falling",
+      "zone": "deterrent",
+      "notes": "Previous 'missile_reported' signal downgraded — involved Pakistan-Afghanistan conflict, not India-Pakistan. No India-Pakistan border buildup, no nuclear rhetoric. Conflict is Pakistan vs Afghanistan/Taliban with Indian diplomatic support for Afghan sovereignty."
     },
     "russia": {
       "base_rate": 7,
@@ -52,24 +56,107 @@
       ],
       "current_probability": 12,
       "trend": "stable",
-      "zone": "elevated"
+      "zone": "elevated",
+      "notes": "Russia continues arms supply relationship with Iran. UN Security Council rejected Russian draft resolution on Iran conflict. Russia blames UK/NATO intelligence for Ukraine strikes. No direct Russia involvement in ME conflict. Russia occupies ~20% of Ukraine."
     },
     "china": {
       "base_rate": 12,
       "active_signals": [],
-      "current_probability": 12,
+      "current_probability": 13,
       "trend": "stable",
-      "zone": "elevated"
+      "zone": "elevated",
+      "notes": "PLA flights resume in Taiwan ADIZ after brief pause. US Navy conducted Taiwan Strait patrol ahead of Trump-Xi summit (Mar 31-Apr 2). Naval activity around Taiwan continues. No major military exercises or confrontation. Diplomatic track active via planned summit."
     },
     "north_korea": {
       "base_rate": 8,
       "active_signals": [],
       "current_probability": 8,
       "trend": "stable",
-      "zone": "deterrent"
+      "zone": "deterrent",
+      "notes": "Cruise missile test from Choe Hyon destroyer (Mar 10) — Kim Jong Un emphasized 'powerful nuclear war deterrent.' Kim visiting munitions factories, testing pistols with daughter. Conventional modernization focus. No ICBM or nuclear test."
     }
   },
-  "global_war_probability": 18,
+  "global_war_probability": 17,
   "global_zone": "ELEVATED",
-  "notes": "Baseline established from initial analysis. Iran conventional war is the main driver. Hezbollah front adding to critical zone. Turkey and China are watches only."
+  "top_signals": [
+    "Iran laying mines in Strait of Hormuz — effective closure to shipping",
+    "IRGC threatens zero oil exports from Middle East if attacks continue",
+    "Iranian frigate IRIS Dena sunk by USS Charlotte in Indian Ocean",
+    "Israel ground invasion of Lebanon — 800,000 displaced, 680+ killed",
+    "Israel strikes central Beirut, kills Hamas official",
+    "Oil past $100/bbl with continued upward pressure",
+    "Iranian missiles intercepted over Turkish airspace (2x)",
+    "US military plane crashes in Iraq (conflict-related)"
+  ],
+  "changed_signals": {
+    "new": [
+      "hormuz_closed — Iran actively mining strait, IRGC enforces closure",
+      "iran_sunk_ship — IRIS Dena sunk by US submarine",
+      "israel_ground_invasion_lebanon — confirmed IDF ground operations in Lebanon",
+      "israeli_casualties_high — significant casualties on both sides",
+      "beirut_bombing — center of Beirut struck, Hamas official killed"
+    ],
+    "removed": [
+      "missile_reported — reclassified: Pakistan-Afghanistan conflict, not India-Pakistan"
+    ]
+  },
+  "latest_news": [
+    {
+      "headline": "Iran laying mines in Strait of Hormuz — US officials confirm",
+      "source": "NYT",
+      "time": "2026-03-12",
+      "zone": "iran",
+      "signal": "hormuz_closed"
+    },
+    {
+      "headline": "IRGC declares 'not one litre of oil' will be exported from Middle East",
+      "source": "The Guardian",
+      "time": "2026-03-11",
+      "zone": "iran",
+      "signal": "hormuz_closed"
+    },
+    {
+      "headline": "Iranian frigate IRIS Dena sunk by USS Charlotte in Indian Ocean",
+      "source": "Wikipedia/ISW",
+      "time": "2026-03-12",
+      "zone": "iran",
+      "signal": "iran_sunk_ship"
+    },
+    {
+      "headline": "Israel strikes central Beirut — kills Hamas official, orders south Lebanon evacuation",
+      "source": "The Guardian",
+      "time": "2026-03-12",
+      "zone": "israel_lebanon",
+      "signal": "beirut_bombing"
+    },
+    {
+      "headline": "800,000 displaced in Lebanon as IDF ground operations continue — 680+ killed",
+      "source": "Washington Post",
+      "time": "2026-03-12",
+      "zone": "israel_lebanon",
+      "signal": "israel_ground_invasion_lebanon"
+    },
+    {
+      "headline": "Iranian missiles intercepted over Turkish airspace — Erdogan warns Iran",
+      "source": "Wikipedia/Forbes",
+      "time": "2026-03-10",
+      "zone": "turkey",
+      "signal": null
+    },
+    {
+      "headline": "Oil past $100/bbl — US orders strategic petroleum reserve release",
+      "source": "NYT/The Guardian",
+      "time": "2026-03-11",
+      "zone": "iran",
+      "signal": null
+    },
+    {
+      "headline": "North Korea tests cruise missiles from destroyer — Kim emphasizes nuclear deterrent",
+      "source": "NDTV/KCNA",
+      "time": "2026-03-10",
+      "zone": "north_korea",
+      "signal": null
+    }
+  ],
+  "outlook": "Iran conventional war is the dominant escalation vector — now at IMMINENT (50%) with Hormuz closure and active naval combat. Israel-Lebanon front expanding rapidly with ground invasion confirmed. Turkey is a wild card with Iranian missiles overflying its airspace. No nuclear escalation signals on any track. Watch for: oil prices crossing $120/bbl, Hezbollah 100+ rocket barrage, Turkey Article 4 invocation, US ground troop casualties."
 }
