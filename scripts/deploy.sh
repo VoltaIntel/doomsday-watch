@@ -54,9 +54,29 @@ if start == -1 or end == -1:
     print(f"ERROR: markers not found start={start} end={end}")
 else:
     # Build new state block using string concatenation (safe from unicode issues)
+    # Recalculate global from actual tracker probabilities
+    all_probs = {}
+    for t in trackers_js:
+        all_probs[t["id"]] = t["prob"]
+    weights = {"iran_nuke": 0.14, "iran_conventional": 0.20, "israel_lebanon": 0.16, "russia_ukraine": 0.18, "turkey": 0.07, "india": 0.08, "russia": 0.07, "china": 0.06, "north_korea": 0.07}
+    gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
+    if gp >= 60: tz = "imminent"
+    elif gp >= 30: tz = "critical"
+    elif gp >= 15: tz = "elevated"
+    else: tz = "deterrent"
+    # Update state.json with correct global
+    state["global_war_probability"] = gp
+    state["global_zone"] = tz
+    with open("data/current_state.json", "w") as sf:
+        json.dump(state, sf, indent=2)
+
+
     lines = []
     lines.append("const state = {")
     lines.append('  last_updated: "' + state.get("last_updated", "") + '",')
+    lines.append("  global_war_probability: " + str(gp) + ",")
+    lines.append("  global_zone: \"" + tz + "\",")
+
     lines.append("  trackers: [")
     for t in trackers_js:
         signals_str = json.dumps(t["signals"])
@@ -76,21 +96,6 @@ else:
     with open("index.html", "w") as f:
         f.write(new_html)
 
-    # Recalculate global from actual tracker probabilities
-    all_probs = {}
-    for t in trackers_js:
-        all_probs[t["id"]] = t["prob"]
-    weights = {"iran_nuke": 0.14, "iran_conventional": 0.20, "israel_lebanon": 0.16, "russia_ukraine": 0.18, "turkey": 0.07, "india": 0.08, "russia": 0.07, "china": 0.06, "north_korea": 0.07}
-    gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
-    if gp >= 60: tz = "imminent"
-    elif gp >= 30: tz = "critical"
-    elif gp >= 15: tz = "elevated"
-    else: tz = "deterrent"
-    # Update state.json with correct global
-    state["global_war_probability"] = gp
-    state["global_zone"] = tz
-    with open("data/current_state.json", "w") as sf:
-        json.dump(state, sf, indent=2)
     print(f"Updated index.html — global: {gp}% ({tz}) — {len(trackers_js)} trackers")
 
 # Commit and push
