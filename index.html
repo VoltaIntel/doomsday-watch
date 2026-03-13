@@ -612,30 +612,30 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T20:04:00Z",
-  global_war_probability: 40,
+  last_updated: "2026-03-13T22:04:00Z",
+  global_war_probability: 41,
   global_zone: "critical",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 13, zone: "elevated", trend: "falling", signals: ["enrichment_60", "iaea_access_denied", "buried_isfahan", "nuclear_scientists_killed"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 68, zone: "critical", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "us_crew_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric", "tehran_rally_strike", "regime_targets_struck"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 78, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "gaza_scale_threat"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 73, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "us_crew_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric", "tehran_rally_strike", "regime_targets_struck", "hormuz_mining", "navy_escort_committed", "ship_attacks"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 78, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "gaza_scale_threat"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 32, zone: "critical", trend: "rising", signals: ["turkey_israel_tensions", "eastern_med_naval", "turkish_mobilization", "nato_third_intercept"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 7, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 13, zone: "deterrent", trend: "stable", signals: ["us_taiwan_arms_package"] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "stable", signals: ["dprk_missile_test", "dprk_rhetoric"] },
     { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 26, zone: "elevated", trend: "stable", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 22, zone: "elevated", trend: "stable", signals: ["initial_conflict", "escalating", "international_involvement"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 24, zone: "elevated", trend: "rising", signals: ["initial_conflict", "escalating", "international_involvement"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-13", text: "Explosion during annual al-Quds Day rally in Tehran. Israel had warned it would target the area. Thousands present. At least 1 killed. Senior Iranian officials attended. Strikes shaking government-organized event = major propaganda/escalation catalyst.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Trump says war 'going well,' vows continued escalation. Meanwhile Reuters reports complex internal White House tug-of-war: aides vie to affect outcome, no clear exit strategy. CNN: officials told lawmakers they hadn't planned for Hormuz closure.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Netanyahu announced several top Iranian nuclear scientists killed in Israeli strikes. Combined with Isfahan stockpile buried, Iran's nuclear program faces both material and human capital destruction.", impact: "down" },
-    { zone: "lebanon", time: "2026-03-13", text: "773 killed in Lebanon (including 100+ children), 1,933 wounded. Israel destroying bridges in south Lebanon, dropped leaflets over Beirut threatening Gaza-scale devastation. Bloomberg: expanded incursion preparing. 800K+ displaced.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "US Defense Secretary Hegseth says Iran's Supreme Leader Khamenei is 'wounded and likely hiding.' Total US military casualties now 13 killed. 2,500 Marines deploying (upgraded from 2,200) plus at least one additional ship.", impact: "up" },
-    { zone: "turkey", time: "2026-03-13", text: "Third ballistic missile from Iran shot down by NATO air defenses over Turkey in 10 days. Sirens blared in Adana province near Incirlik Air Base. Turkey formally demanding Tehran clarification, warning against further attacks. NATO confirmed intercept.", impact: "up" },
-    { zone: "china", time: "2026-03-13", text: "Largest-ever US arms package for Taiwan proposed, suggesting administration intends to sustain/expand military support for Taipei. Meanwhile Iran war draining US weapons stockpiles at 'blistering rate.' Trump-Xi summit planned Mar 31-Apr 2.", impact: "up" },
-    { zone: "russia_ukraine", time: "2026-03-13", text: "Zelensky visits France, criticizes US decision to ease Russian oil sanctions. US postponed three-way settlement talks. Russia continuing offensive — 860 casualties in past 24h. Ukraine energy grid near collapse. Russia earned ~€6bn from energy crisis.", impact: "stable" },
+    { zone: "iran", time: "2026-03-13", text: "US officials confirm Iran is actively mining the Strait of Hormuz. This represents a major escalation in asymmetric warfare — mining the world's most critical oil chokepoint. 90+ Iranian vessels including 30+ mine-laying ships damaged/destroyed but mining continues.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Trump and Treasury Sec. Bessent say US Navy will escort vessels through Hormuz 'as soon as militarily possible.' But Al Jazeera reports military officials say US is 'not ready.' Gap between political promise and operational capability = dangerous. CBS: this explains why warships haven't entered Hormuz despite Trump's claims Iran's navy is decimated.", impact: "mixed" },
+    { zone: "iran", time: "2026-03-13", text: "Two KC-135 refueling aircraft collided over western Iraq. All 6 crew on one plane killed, other landed safely. CENTCOM: not hostile or friendly fire. Brings total US military deaths in Iran conflict to 19. Operational tempo + strain showing.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Israeli Air Force announced 'extensive' new airstrikes in Tehran. Rescue workers pulling severely injured from rubble in southern Tehran (AP photo). Second major Tehran strike wave today (after Quds Day rally strike earlier).", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Iran's Health Ministry reports 1,444 killed and 18,551 injured since Feb 28 US-Israel attacks began. Victims range from 8 months to 88 years old. International outcry growing. UN warns Hormuz closure has 'immense impact' on humanitarian operations.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Three additional ships struck in Persian Gulf waters. Iran warns oil prices could reach $200/barrel. Iran continues sending millions of oil barrels to China through Hormuz even amid war. California gas prices already exceeded $5/gallon.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "US offers $10 million reward for information on Mojtaba Khamenei, Iran's new Supreme Leader reportedly wounded and hiding. Trump urges Iranians to 'rise up against regime' while admitting overthrow is 'a very big hurdle.'", impact: "up" },
+    { zone: "pakistan_afghanistan", time: "2026-03-13", text: "Pakistan bombed fuel depot of private airline Kam Air near Kandahar airport, Taliban reports. Despite China's mediation efforts, strikes continue. Worst Pakistan-Afghan conflict in years. Border fighting ongoing at Spin Boldak/Mohmand.", impact: "up" },
   ]
 };
 
