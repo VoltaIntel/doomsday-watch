@@ -735,23 +735,5 @@ setInterval(updateClock, 1000);
 </script>
 
 
-<script>
-// Visitor counter using countapi.xyz (free, anonymous, no account)
-(function() {
-  var ns = "voltaintel.github.io";
-  var key = "doomsday-watch";
-  
-  // Record visit
-  fetch("https://api.countapi.xyz/hit/" + ns + "/" + key)
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      document.getElementById("visitNum").textContent = d.value || "—";
-    })
-    .catch(function() {
-      document.getElementById("visitNum").textContent = "—";
-    });
-})();
-</script>
-
 </body>
 </html>
