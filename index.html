@@ -602,142 +602,30 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  "last_updated": "2026-03-13T06:04:00Z",
-  "trackers": [
-    {
-      "id": "iran_nuke",
-      "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
-      "prob": 5,
-      "zone": "deterrent",
-      "trend": "stable",
-      "signals": []
-    },
-    {
-      "id": "iran_conventional",
-      "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
-      "prob": 50,
-      "zone": "imminent",
-      "trend": "stable",
-      "signals": [
-        "hormuz_closed",
-        "iran_sunk_ship"
-      ]
-    },
-    {
-      "id": "israel_lebanon",
-      "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
-      "prob": 52,
-      "zone": "imminent",
-      "trend": "rising",
-      "signals": [
-        "israel_ground_invasion_lebanon",
-        "israeli_casualties_high",
-        "beirut_bombing"
-      ]
-    },
-    {
-      "id": "turkey",
-      "name": "TURKEY",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
-      "prob": 12,
-      "zone": "elevated",
-      "trend": "stable",
-      "signals": []
-    },
-    {
-      "id": "india",
-      "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
-      "prob": 10,
-      "zone": "deterrent",
-      "trend": "stable",
-      "signals": []
-    },
-    {
-      "id": "russia",
-      "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
-      "prob": 12,
-      "zone": "elevated",
-      "trend": "stable",
-      "signals": [
-        "russia_iran_arms"
-      ]
-    },
-    {
-      "id": "china",
-      "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
-      "prob": 10,
-      "zone": "deterrent",
-      "trend": "falling",
-      "signals": []
-    }
+  last_updated: "2026-03-13T06:04:00Z",
+  trackers: [
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 50, zone: "imminent", trend: "stable", signals: ["hormuz_closed", "iran_sunk_ship"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 52, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing"] },
+    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "elevated", trend: "stable", signals: [] },
+    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "elevated", trend: "stable", signals: ["russia_iran_arms"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 10, zone: "deterrent", trend: "falling", signals: [] },
+    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
   ],
-  "news": [
-    {
-      "headline": "IRGC directly fires on and stops two commercial vessels in Strait of Hormuz",
-      "source": "Al Jazeera / Tasnim",
-      "time": "2026-03-12",
-      "zone": "iran",
-      "signal": "hormuz_closed"
-    },
-    {
-      "headline": "Three cargo ships hit by unknown projectiles in/near Strait of Hormuz",
-      "source": "NYT",
-      "time": "2026-03-12",
-      "zone": "iran",
-      "signal": "hormuz_closed"
-    },
-    {
-      "headline": "Iranian drone damages fuel tanks at port of Salalah, Oman",
-      "source": "Al Jazeera",
-      "time": "2026-03-12",
-      "zone": "iran",
-      "signal": null
-    },
-    {
-      "headline": "Iran drone strikes UK military base in Cyprus",
-      "source": "Al Jazeera",
-      "time": "2026-03-12",
-      "zone": "iran",
-      "signal": null
-    },
-    {
-      "headline": "70 killed in Israeli strikes in Lebanon on Thursday \u2014 Lebanese University hit",
-      "source": "NYT",
-      "time": "2026-03-12",
-      "zone": "israel_lebanon",
-      "signal": "beirut_bombing"
-    },
-    {
-      "headline": "Israel signals 'long campaign' in Lebanon \u2014 800,000 displaced, 680+ killed",
-      "source": "Reuters / Washington Post",
-      "time": "2026-03-12",
-      "zone": "israel_lebanon",
-      "signal": "israel_ground_invasion_lebanon"
-    },
-    {
-      "headline": "China halts military flights around Taiwan for nearly 2 weeks \u2014 reason unknown",
-      "source": "CNN / Reuters",
-      "time": "2026-03-12",
-      "zone": "china",
-      "signal": null
-    },
-    {
-      "headline": "Russia calls on US/Israel to stop Iran attacks; Kremlin signals expanded NATO demands",
-      "source": "The Hindu / ISW",
-      "time": "2026-03-12",
-      "zone": "russia",
-      "signal": null
-    }
+  news: [
+    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "iran", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "israel_lebanon", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "israel_lebanon", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "china", time: "2026-03-12", text: "", impact: "neutral" },
+    { zone: "russia", time: "2026-03-12", text: "", impact: "neutral" },
   ]
 };
 
-// ===== RENDER =====
+// ===== RENDER// ===== RENDER =====
 function renderTrackers() {
   const grid = document.getElementById("trackersGrid");
   grid.innerHTML = "";
