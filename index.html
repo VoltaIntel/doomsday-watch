@@ -612,29 +612,29 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T10:04:00Z",
-  global_war_probability: 35,
+  last_updated: "2026-03-13T12:04:00Z",
+  global_war_probability: 37,
   global_zone: "critical",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 74, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "oil_above_120", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat", "navy_escort_committed"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 63, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 21, zone: "deterrent", trend: "rising", signals: ["nuclear_rhetoric_official"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 74, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat", "diplomacy_active"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 63, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "diplomacy_active"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "falling", signals: ["russia_iran_arms", "russia_diplomacy"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 33, zone: "critical", trend: "rising", signals: ["russian_offensive", "russia_weapons_escalation"] },
+    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 29, zone: "critical", trend: "stable", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-12", text: "Treasury Secretary Scott Bessent told Sky News that US Navy will escort vessels through Strait of Hormuz 'as soon as it is militarily possible.' First concrete commitment to escort operations, partially reversing prior refusal.", impact: "down" },
-    { zone: "iran", time: "2026-03-12", text: "Iran issued new threat to set the region's oil and gas infrastructure on fire if its own energy facilities are struck. Major escalation rhetoric targeting broader Gulf energy infrastructure beyond Hormuz.", impact: "up" },
-    { zone: "iran", time: "2026-03-12", text: "Three cargo ships reported being hit by unknown projectiles in and near the Strait of Hormuz. Shipping attacks continuing to widen beyond earlier incidents.", impact: "up" },
-    { zone: "iran", time: "2026-03-12", text: "Global oil prices settled up 9%, highest in nearly 4 years. Iran warned world to prepare for $200/barrel. Analysts: unlikely to hit $200 but sustained $130-150 range possible if conflict drags.", impact: "up" },
-    { zone: "iran", time: "2026-03-12", text: "US refueling plane crashed in Iraq with 5 personnel onboard. Rescue effort underway. Cause not yet determined — combat damage or mechanical failure. First significant US operational loss.", impact: "up" },
-    { zone: "iran", time: "2026-03-11", text: "Pentagon told Congress first 6 days cost $11.3B, excluding buildup costs. US has struck about 6,000 targets in Iran. Enormous expenditure with no sign of quick resolution.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-12", text: "Hezbollah fired approximately 200 rockets into northern Israel. IDF struck 10 Hezbollah facilities in Dahieh (Beirut suburbs) in 30 minutes including intelligence HQ and command centers. Lebanon death toll: 687.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-12", text: "IDF Chief of Staff says Lebanon campaign will not be short and more troops being deployed north. Signals major ground operation expansion. Netanyahu says Israel is 'crushing' both Iran and Hezbollah simultaneously.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Israeli military announced strikes on ballistic missile launchers, air defense systems, and weapons production sites across western and central Iran. Most intensive single-day strike campaign since war began Feb 28.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Large explosions heard across Iranian capital. Israeli military announced start of new 'extensive wave' of strikes on Tehran. Forced evacuation orders issued.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "President Trump publicly stated the US plans to intensify strikes on Iran significantly over the coming week as war approaches two-week mark.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "US-led coalition has damaged or destroyed over 90 Iranian naval vessels including more than 30 mine-laying ships as part of Hormuz mine clearance operations.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "French President Macron announced one French soldier killed in the Iran conflict — first military casualty from a non-US/non-Israel Western nation.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Multiple reports suggest Trump is weighing whether to end the Iran war, which has killed 2000+ people and disrupted global energy supplies. Israeli security sources admit no realistic regime change plan existed.", impact: "down" },
+    { zone: "lebanon", time: "2026-03-13", text: "Israel preparing to expand military activity in Lebanon. IDF struck center of Beirut — most powerful bombardment of southern suburbs in current round. 680+ killed, 800,000+ displaced.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "The US-Israel war on Iran approaches its 14th day. Over 2000 people killed regionally. Strait of Hormuz near-total shutdown continues. Oil at ~$100/barrel. IEA recommends massive strategic reserve releases.", impact: "mixed" },
   ]
 };
 
