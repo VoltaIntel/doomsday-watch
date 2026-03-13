@@ -612,14 +612,14 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T18:00:00Z",
-  global_war_probability: 37,
+  last_updated: "2026-03-13T19:04:00Z",
+  global_war_probability: 39,
   global_zone: "critical",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 19, zone: "elevated", trend: "rising", signals: ["enrichment_60", "diplomacy_refused"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 60, zone: "critical", trend: "stable", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 67, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 23, zone: "elevated", trend: "rising", signals: ["turkey_israel_tensions", "eastern_med_naval", "turkish_mobilization"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 15, zone: "elevated", trend: "falling", signals: ["enrichment_60", "iaea_access_denied", "buried_isfahan"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 65, zone: "critical", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "us_crew_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 74, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
+    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 30, zone: "critical", trend: "rising", signals: ["turkey_israel_tensions", "eastern_med_naval", "turkish_mobilization"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 7, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "falling", signals: [] },
@@ -628,14 +628,14 @@ const state = {
     { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 22, zone: "elevated", trend: "stable", signals: ["initial_conflict", "escalating", "international_involvement"] },
   ],
   news: [
-    { zone: "turkey", time: "2026-03-13", text: "NATO confirmed interception of ballistic missile 'heading to Turkey.' Third such interception in 9 days. Turkey asserts right to self-defense. South Korea issues special travel advisory for SE Turkey. Ankara stresses Incirlik is Turkish sovereign territory.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "IAEA found Iran hid HEU in underground facility undamaged by previous strikes. Iran is only non-nuclear state enriching to 60%. Fordow facility bombed again by US. IAEA access denied.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Mojtaba Khamenei's first public statement: vows to keep blocking Strait of Hormuz, threatens to 'open additional fronts where the enemy is extremely vulnerable,' attacks countries hosting US forces.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "President Trump said US was going to be hitting Iran 'very hard over the next week,' shortly after issuing 30-day waiver for Russian oil sanctions to ease energy crisis.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-13", text: "Israel preparing to expand incursion into southern Lebanon to fight Hezbollah. 2 IDF soldiers killed, 14 wounded. 687 killed in Lebanon, ~2,000 wounded, 800K displaced.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Several drones struck Duqm and Salalah in Oman, fuel storage tank damaged. Iran's asymmetric strikes now hitting neutral Gulf states beyond primary combatants.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Pentagon deploying 2,200 Marines to Middle East as US escalates military presence. Part of broader reinforcement accompanying Trump's 'very hard' rhetoric.", impact: "up" },
-    { zone: "china", time: "2026-03-13", text: "PLA warplane flights around Taiwan sharply reduced over recent days. Analysts cite possible economic concerns, Trump-Xi summit preparation (Mar 31-Apr 2), or strategic repositioning amid ME crisis.", impact: "down" },
+    { zone: "iran", time: "2026-03-13", text: "Military officials and international weapons inspectors confirmed nuclear facilities were badly damaged, though not destroyed. Strikes 'effectively buried Iran's stockpile of enriched uranium at Isfahan.' Without stockpile, 'nearly impossible for Iranian military to produce nuclear weapon.' US reportedly considering high-risk mission to secure uranium.", impact: "down" },
+    { zone: "turkey", time: "2026-03-13", text: "Third ballistic missile from Iran shot down by NATO air defenses over Turkey in 9 days. Turkey formally asking Tehran to clarify. Ankara warns against further attacks. NATO intercepts confirmed by Turkish Defense Ministry.", impact: "up" },
+    { zone: "lebanon", time: "2026-03-13", text: "Israel strikes heart of Beirut, signals 'long campaign.' Orders evacuation of south Lebanon. Targeting senior Hezbollah operatives, command infrastructure, weapons depots. 800K displaced, 680+ killed. Bloomberg: expanded incursion into south Lebanon preparing.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Six US crew members killed in refueling plane crash. Hegseth vows to reopen Strait of Hormuz 'when militarily possible.' Oil prices remain high.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Netanyahu's first press conference since war: Israel 'crushing' Iranian regime and Hezbollah. Combined force struck regime repression targets: Basij, IRGC, LEC stations. Military bases hit: Artesh 92nd Armored (Ahvaz), 56th Younes Artillery (Sarvestan).", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "IAF struck Iranian nuclear facility at Parchin-Taleghan 2 and various regime targets, including for the first time regime checkpoints in Tehran.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Iran's new Supreme Leader threatens to 'set region's oil and gas on fire' if Iran's energy infrastructure is attacked. Continued defiance despite naval degradation.", impact: "up" },
+    { zone: "russia_ukraine", time: "2026-03-12", text: "Russia attacked critical substation supplying Kyiv. Ukraine's energy grid near collapse after sustained Russian strikes. Meanwhile, Russia earned ~€6bn in 2 weeks from energy crisis. Trump's 30-day sanctions waiver benefits Russia.", impact: "stable" },
   ]
 };
 
