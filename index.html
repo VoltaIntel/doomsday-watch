@@ -723,6 +723,21 @@ updateGlobalClock();
 
 // Update time every second
 setInterval(updateClock, 1000);
+
+// Auto-calculate zone from probability (override state file)
+function calcZone(prob) {
+  if (prob >= 60) return "imminent";
+  if (prob >= 30) return "critical";
+  if (prob >= 15) return "elevated";
+  return "deterrent";
+}
+// Auto-fix zones from probabilities
+state.trackers.forEach(t => { t.zone = calcZone(t.prob); });
+
+
+
+// Auto-fix zones on load
+state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
 </script>
 
 
