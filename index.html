@@ -602,7 +602,7 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  "last_updated": "2026-03-13T06:00:00Z",
+  "last_updated": "2026-03-13T06:04:00Z",
   "trackers": [
     {
       "id": "iran_nuke",
@@ -619,7 +619,7 @@ const state = {
       "emoji": "\u2694\ufe0f",
       "prob": 50,
       "zone": "imminent",
-      "trend": "rising",
+      "trend": "stable",
       "signals": [
         "hormuz_closed",
         "iran_sunk_ship"
@@ -629,8 +629,8 @@ const state = {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
       "emoji": "\ud83c\uddf1\ud83c\udde7",
-      "prob": 47,
-      "zone": "critical",
+      "prob": 52,
+      "zone": "imminent",
       "trend": "rising",
       "signals": [
         "israel_ground_invasion_lebanon",
@@ -653,7 +653,7 @@ const state = {
       "emoji": "\ud83c\uddee\ud83c\uddf3",
       "prob": 10,
       "zone": "deterrent",
-      "trend": "falling",
+      "trend": "stable",
       "signals": []
     },
     {
@@ -671,67 +671,67 @@ const state = {
       "id": "china",
       "name": "CHINA-TAIWAN",
       "emoji": "\ud83c\udde8\ud83c\uddf3",
-      "prob": 13,
-      "zone": "elevated",
-      "trend": "stable",
+      "prob": 10,
+      "zone": "deterrent",
+      "trend": "falling",
       "signals": []
     }
   ],
   "news": [
     {
-      "headline": "Iran laying mines in Strait of Hormuz \u2014 US officials confirm",
+      "headline": "IRGC directly fires on and stops two commercial vessels in Strait of Hormuz",
+      "source": "Al Jazeera / Tasnim",
+      "time": "2026-03-12",
+      "zone": "iran",
+      "signal": "hormuz_closed"
+    },
+    {
+      "headline": "Three cargo ships hit by unknown projectiles in/near Strait of Hormuz",
       "source": "NYT",
       "time": "2026-03-12",
       "zone": "iran",
       "signal": "hormuz_closed"
     },
     {
-      "headline": "IRGC declares 'not one litre of oil' will be exported from Middle East",
-      "source": "The Guardian",
-      "time": "2026-03-11",
-      "zone": "iran",
-      "signal": "hormuz_closed"
-    },
-    {
-      "headline": "Iranian frigate IRIS Dena sunk by USS Charlotte in Indian Ocean",
-      "source": "Wikipedia/ISW",
+      "headline": "Iranian drone damages fuel tanks at port of Salalah, Oman",
+      "source": "Al Jazeera",
       "time": "2026-03-12",
       "zone": "iran",
-      "signal": "iran_sunk_ship"
+      "signal": null
     },
     {
-      "headline": "Israel strikes central Beirut \u2014 kills Hamas official, orders south Lebanon evacuation",
-      "source": "The Guardian",
+      "headline": "Iran drone strikes UK military base in Cyprus",
+      "source": "Al Jazeera",
+      "time": "2026-03-12",
+      "zone": "iran",
+      "signal": null
+    },
+    {
+      "headline": "70 killed in Israeli strikes in Lebanon on Thursday \u2014 Lebanese University hit",
+      "source": "NYT",
       "time": "2026-03-12",
       "zone": "israel_lebanon",
       "signal": "beirut_bombing"
     },
     {
-      "headline": "800,000 displaced in Lebanon as IDF ground operations continue \u2014 680+ killed",
-      "source": "Washington Post",
+      "headline": "Israel signals 'long campaign' in Lebanon \u2014 800,000 displaced, 680+ killed",
+      "source": "Reuters / Washington Post",
       "time": "2026-03-12",
       "zone": "israel_lebanon",
       "signal": "israel_ground_invasion_lebanon"
     },
     {
-      "headline": "Iranian missiles intercepted over Turkish airspace \u2014 Erdogan warns Iran",
-      "source": "Wikipedia/Forbes",
-      "time": "2026-03-10",
-      "zone": "turkey",
+      "headline": "China halts military flights around Taiwan for nearly 2 weeks \u2014 reason unknown",
+      "source": "CNN / Reuters",
+      "time": "2026-03-12",
+      "zone": "china",
       "signal": null
     },
     {
-      "headline": "Oil past $100/bbl \u2014 US orders strategic petroleum reserve release",
-      "source": "NYT/The Guardian",
-      "time": "2026-03-11",
-      "zone": "iran",
-      "signal": null
-    },
-    {
-      "headline": "North Korea tests cruise missiles from destroyer \u2014 Kim emphasizes nuclear deterrent",
-      "source": "NDTV/KCNA",
-      "time": "2026-03-10",
-      "zone": "north_korea",
+      "headline": "Russia calls on US/Israel to stop Iran attacks; Kremlin signals expanded NATO demands",
+      "source": "The Hindu / ISW",
+      "time": "2026-03-12",
+      "zone": "russia",
       "signal": null
     }
   ]
@@ -801,7 +801,7 @@ function updateGlobalClock() {
   const globalProb = 18;
   const angle = (globalProb / 100) * 360;
   document.getElementById("globalProb").innerHTML = globalProb + '<span style="font-size:0.4em;opacity:0.6">%</span>';
-  
+
   const probEl = document.getElementById("globalProb");
   probEl.className = "global-prob " + (globalProb < 10 ? "deterrent" : globalProb < 25 ? "elevated" : globalProb < 50 ? "critical" : "imminent");
 
@@ -812,10 +812,10 @@ function updateGlobalClock() {
 
   // Threat bar
   const fill = document.getElementById("threatFill");
-  fill.style.width = prob + "%";
-  if (prob < 10) fill.style.background = "var(--green)";
-  else if (prob < 25) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
-  else if (prob < 50) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
+  fill.style.width = globalProb + "%";
+  if (globalProb < 10) fill.style.background = "var(--green)";
+  else if (globalProb < 25) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
+  else if (globalProb < 50) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
   else fill.style.background = "var(--red)";
 
   // Mini doomsday clock

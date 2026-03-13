@@ -602,25 +602,25 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T05:00:00Z",
+  last_updated: "2026-03-13T06:04:00Z",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 43, zone: "elevated", trend: "rising", signals: ["HORMUZ CONTESTED", "HEZBOLLAH ACTIVE"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 30, zone: "critical", trend: "rising", signals: ["HEZBOLLAH ROCKETS"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 22, zone: "elevated", trend: "rising", signals: ["MISSILE ATTACK"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 50, zone: "imminent", trend: "stable", signals: ["IRGC ENGAGES SHIPPING", "HORMUZ MINED", "GULF STATES STRUCK", "CYPRUS DRONE HIT"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 52, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "BEIRUT STRUCK", "70 KILLED THU", "UNIVERSITY HIT"] },
+    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "elevated", trend: "stable", signals: [] },
+    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "elevated", trend: "stable", signals: ["IRAN ARMS"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] }
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 10, zone: "deterrent", trend: "falling", signals: [] }
   ],
   news: [
-    { zone: "iran", time: "NOW", text: "Strait of Hormuz remains contested — multiple tanker diversions reported, insurance rates spiking", impact: "up" },
-    { zone: "iran", time: "2H AGO", text: "Trump reiterates 'Iran will not exist as a nation' if attacks continue — rhetoric level HIGH", impact: "up" },
-    { zone: "lebanon", time: "3H AGO", text: "Hezbollah fires 40+ rockets at northern Israel — IDF responds with large-scale strikes", impact: "up" },
-    { zone: "india", time: "5H AGO", text: "Reports of missile attack on Indian territory — border tensions escalating sharply", impact: "up" },
-    { zone: "global", time: "6H AGO", text: "Brent crude at $128/bbl — Strait of Hormuz disruption now priced in by markets", impact: "up" },
-    { zone: "iran", time: "8H AGO", text: "6 US troops killed in Kuwait drone attack — Iranian proxy operations intensifying", impact: "up" },
-    { zone: "russia", time: "10H AGO", text: "Russia denies sharing intelligence with Iran — diplomatic language notably cold", impact: "neutral" },
-    { zone: "lebanon", time: "11H AGO", text: "Israel declares additional reserves — northern border reinforcement visible", impact: "up" },
+    { zone: "iran", time: "NOW", text: "IRGC directly fires on and stops two commercial vessels in Strait of Hormuz — first direct IRGC naval engagement", impact: "up" },
+    { zone: "iran", time: "1H AGO", text: "Three cargo ships hit by unknown projectiles in/near Strait of Hormuz", impact: "up" },
+    { zone: "iran", time: "2H AGO", text: "Iranian drone damages fuel tanks at port of Salalah, Oman — Qatar condemns as 'dangerous escalation'", impact: "up" },
+    { zone: "iran", time: "3H AGO", text: "Iran drone strikes UK military base in Cyprus — NATO member territory hit for first time", impact: "up" },
+    { zone: "lebanon", time: "3H AGO", text: "70 killed in Israeli strikes in Lebanon on Thursday — two faculty killed at Lebanese University", impact: "up" },
+    { zone: "lebanon", time: "4H AGO", text: "Israel signals 'long campaign' — 800,000+ displaced, 680+ killed in Lebanon. Reuters: IDF expands evacuation order", impact: "up" },
+    { zone: "china", time: "6H AGO", text: "Chinese air force halts flights around Taiwan for nearly 2 weeks — reason unknown. Flights resume today", impact: "down" },
+    { zone: "russia", time: "8H AGO", text: "Russia calls on US/Israel to stop attacks on Iran; Kremlin signals expanded demands on Ukraine/NATO", impact: "neutral" },
   ]
 };
 
@@ -698,7 +698,7 @@ function updateGlobalClock() {
   const globalProb = 18;
   const angle = (globalProb / 100) * 360;
   document.getElementById("globalProb").innerHTML = globalProb + '<span style="font-size:0.4em;opacity:0.6">%</span>';
-  
+
   const probEl = document.getElementById("globalProb");
   probEl.className = "global-prob " + (globalProb < 10 ? "deterrent" : globalProb < 25 ? "elevated" : globalProb < 50 ? "critical" : "imminent");
 
@@ -709,10 +709,10 @@ function updateGlobalClock() {
 
   // Threat bar
   const fill = document.getElementById("threatFill");
-  fill.style.width = prob + "%";
-  if (prob < 10) fill.style.background = "var(--green)";
-  else if (prob < 25) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
-  else if (prob < 50) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
+  fill.style.width = globalProb + "%";
+  if (globalProb < 10) fill.style.background = "var(--green)";
+  else if (globalProb < 25) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
+  else if (globalProb < 50) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
   else fill.style.background = "var(--red)";
 
   // Mini doomsday clock

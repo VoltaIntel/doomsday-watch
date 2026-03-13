@@ -366,5 +366,65 @@
     "created": "2026-03-13",
     "version": "1.0",
     "description": "Global Conflict Escalation Monitor \u2014 Nuclear & Conventional Warfare Tracking"
+  },
+  "auto_detection": {
+    "enabled": true,
+    "min_news_mentions": 3,
+    "min_news_sources": 2,
+    "auto_base_rate": 10,
+    "auto_max_rate": 20,
+    "conflict_keywords": [
+      "military strike",
+      "missile attack",
+      "troops deployed",
+      "martial law",
+      "nuclear threat",
+      "border clashes",
+      "airstrike",
+      "invasion",
+      "state of war",
+      "military escalation",
+      "naval confrontation",
+      "sanctions crisis",
+      "embargo",
+      "blockade",
+      "regime change",
+      "civil war",
+      "coup",
+      "armed conflict",
+      "casualties",
+      "weapons of mass destruction",
+      "chemical attack",
+      "biological weapon"
+    ],
+    "auto_signals": {
+      "initial_conflict": {
+        "weight": 8,
+        "description": "Initial reports of armed conflict"
+      },
+      "escalating": {
+        "weight": 6,
+        "description": "Situation escalating over multiple reports"
+      },
+      "international_involvement": {
+        "weight": 10,
+        "description": "External states getting involved"
+      },
+      "nuclear_dimension": {
+        "weight": 15,
+        "description": "Nuclear threats or capabilities mentioned"
+      },
+      "resolution": {
+        "weight": -8,
+        "description": "De-escalation or diplomatic resolution"
+      }
+    },
+    "creation_rules": [
+      "Create tracker if 3+ mentions across 2+ independent sources within 6 hours",
+      "Set base_rate at 10%, adjust based on signals",
+      "Use generic zone/country name as tracker ID",
+      "Add to dashboard immediately after creation",
+      "Report new tracker creation in next briefing"
+    ]
   }
 }

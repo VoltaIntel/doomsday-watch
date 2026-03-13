@@ -3,7 +3,7 @@ cd /home/openclaw/.openclaw/workspace/nuke-watch
 
 # Update index.html with latest state
 python3 << 'PYEOF'
-import json, re
+import json
 
 with open("data/current_state.json") as f:
     state = json.load(f)
@@ -35,18 +35,22 @@ for tid, tinfo in tn.items():
     })
 
 news_js = state.get("latest_news", [
-    {"zone": "iran", "time": "LIVE", "text": "Monitoring active — first update at 06:00 UTC", "impact": "neutral"}
+    {"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}
 ])
 
-new_state = f"""const state = {{
-  last_updated: "{state.get('last_updated', '2026-03-13')}",
-  trackers: {json.dumps(trackers_js, indent=2)},
-  news: {json.dumps(news_js, indent=2)}
-}};
+new_state = json.dumps({
+    "last_updated": state.get("last_updated", "2026-03-13"),
+    "trackers": trackers_js,
+    "news": news_js
+}, indent=2)
 
-// ===== RENDER"""
-
-html = re.sub(r'const state = \{.*?news: \[.*?\]\s*\};\s*\n\n// ===== RENDER', new_state, html, flags=re.DOTALL)
+# String replacement instead of regex (avoids unicode escape issues)
+start_marker = "const state = {"
+end_marker = "// ===== RENDER"
+start_idx = html.find(start_marker)
+end_idx = html.find(end_marker)
+if start_idx != -1 and end_idx != -1:
+    html = html[:start_idx] + "const state = " + new_state + ";\n\n" + html[end_idx:]
 
 with open("index.html", "w") as f:
     f.write(html)
