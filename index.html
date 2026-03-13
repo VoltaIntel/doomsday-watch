@@ -612,29 +612,29 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T14:04:00Z",
-  global_war_probability: 35,
+  last_updated: "2026-03-13T15:04:00Z",
+  global_war_probability: 33,
   global_zone: "critical",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 17, zone: "elevated", trend: "falling", signals: ["nuclear_rhetoric_official"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 69, zone: "critical", trend: "falling", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "us_troops_killed", "oil_terminal_attack", "iran_energy_threat"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 57, zone: "critical", trend: "stable", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 9, zone: "deterrent", trend: "falling", signals: ["nuclear_rhetoric_official", "iran_president_peacetalks"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 61, zone: "critical", trend: "falling", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "us_tops_killed", "oil_terminal_attack", "iran_energy_threat", "iran_president_peacetalks"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 65, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "idf_soldiers_killed"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "falling", signals: ["russia_iran_arms", "russia_diplomacy"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "rising", signals: ["dprk_missile_test", "dprk_rhetoric"] },
-    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 29, zone: "critical", trend: "stable", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine"] },
+    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 26, zone: "elevated", trend: "falling", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine", "russia_oil_leverage"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-13", text: "President Trump stated the Iran war could end 'soon' and that the US had already achieved many of its military objectives. First clear de-escalation statement from White House.", impact: "down" },
-    { zone: "iran", time: "2026-03-13", text: "Complex internal debate as Trump aides vie to affect outcome. Shifting public statements reflect behind-the-scenes power struggle between hawks and those pushing for exit.", impact: "down" },
-    { zone: "iran", time: "2026-03-13", text: "Iran rejected Trump's ceasefire proposals twice, demanding US pledge to never attack again before agreeing to ceasefire. Signals willingness to negotiate but on Iranian terms.", impact: "mixed" },
-    { zone: "iran", time: "2026-03-13", text: "Israeli military announced start of new extensive wave of strikes on Tehran. Forced evacuation orders issued. Strikes target infrastructure across western/central Iran.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-13", text: "Israel issued sweeping displacement order for southern Lebanon, instructing residents up to 25 miles from border to head north. Struck center of Beirut in sharp escalation.", impact: "up" },
-    { zone: "dprk", time: "2026-03-13", text: "Kim Jong Un watched cruise missile tests from destroyer Choe Hyon with daughter Kim Ju Ae. Missiles flew ~10,000 seconds toward Yellow Sea. Kim emphasized need for 'powerful and reliable nuclear war deterrent.'", impact: "up" },
-    { zone: "global", time: "2026-03-12", text: "Analysts say Tehran likely to turn to North Korea once fighting stops, reviving partnership built on shared hostility toward Washington. Long-term proliferation concern.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "US-Israel war on Iran approaches 14th day. Over 2000 killed regionally. Strait of Hormuz near-total shutdown. Oil at ~$100/barrel. IMF warns every 10% energy price increase adds 0.5% global inflation.", impact: "mixed" },
+    { zone: "iran", time: "2026-03-13", text: "Iranian President Pezeshkian posted on X that he spoke to Russian and Pakistani counterparts confirming Iran's 'commitment to peace.' Laid out conditions: recognition of Iran's rights, payment of reparations, and firm international guarantees against future aggression. Al Jazeera: 'possible sign of de-escalation from Tehran.'", impact: "down" },
+    { zone: "iran", time: "2026-03-13", text: "Secretary of Defense Pete Hegseth said at Friday press briefing that Iran's new Supreme Leader Mojtaba Khamenei has been injured and is 'likely disfigured.' Leadership decapitation ongoing after Khamenei's father killed in early strikes.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "US KC-135 tanker crashed in western Iraq. CENTCOM says not result of hostile or friendly fire. Another KC-135 damaged but landed in Israel. 4th US aircraft lost since war began. Raises questions about operational tempo and strain on forces.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "Warrant Officer Arnaud Frion killed in drone attack on Kurdish military base in Irbil region, Iraq. Six other French soldiers wounded. Macron called attack 'unacceptable' and said 'the war in Iran cannot justify' attacks on coalition forces.", impact: "up" },
+    { zone: "lebanon", time: "2026-03-13", text: "Two Israeli soldiers killed and at least 14 wounded in southern Lebanon, per IDF. CNN: 'The war that never ended — Israel seizes moment to finish Hezbollah.' Ground operations intensifying.", impact: "up" },
+    { zone: "south_asia", time: "2026-03-13", text: "Pakistan escalated strikes on Afghanistan, bombing fuel depot of private airline Kam Air near Kandahar airport. Afghanistan accuses Pakistan of targeting civilian homes — at least 6 civilians killed. China's special envoy mediating between the two. Separate from India-Pakistan.", impact: "up" },
+    { zone: "russia", time: "2026-03-13", text: "Russia received €6bn from selling fossil fuels in the fortnight since the US-Israel war on Iran started. Putin envoy says 'US better understands importance of Russian oil amid energy crisis.' Russia benefiting from ME war disruption.", impact: "up" },
+    { zone: "global", time: "2026-03-13", text: "Countries across energy-hungry Asia rationing supplies and exports of fossil fuels due to Strait of Hormuz near-total shutdown. Southeast Asian nations implementing emergency measures including office closures and travel restrictions.", impact: "up" },
   ]
 };
 
