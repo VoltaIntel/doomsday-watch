@@ -729,9 +729,9 @@ function updateGlobalClock() {
   // Threat bar
   const fill = document.getElementById("threatFill");
   fill.style.width = globalProb + "%";
-  if (globalProb < 10) fill.style.background = "var(--green)";
-  else if (globalProb < 25) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
-  else if (globalProb < 50) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
+  if (globalProb < 15) fill.style.background = "var(--green)";
+  else if (globalProb < 30) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
+  else if (globalProb < 60) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
   else fill.style.background = "var(--red)";
 
   // Mini doomsday clock
