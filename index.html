@@ -602,14 +602,14 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T04:00:00Z",
-  trackers: [
+  "last_updated": "2026-03-13T06:00:00Z",
+  "trackers": [
     {
       "id": "iran_nuke",
       "name": "IRAN NUCLEAR",
       "emoji": "\ud83c\uddee\ud83c\uddf7",
       "prob": 5,
-      "zone": "DETERRENT",
+      "zone": "deterrent",
       "trend": "stable",
       "signals": []
     },
@@ -617,32 +617,33 @@ const state = {
       "id": "iran_conventional",
       "name": "IRAN WAR",
       "emoji": "\u2694\ufe0f",
-      "prob": 43,
-      "zone": "ELEVATED",
+      "prob": 50,
+      "zone": "imminent",
       "trend": "rising",
       "signals": [
-        "hormuz_contested",
-        "hezbollah_active",
-        "trump_rhetoric"
+        "hormuz_closed",
+        "iran_sunk_ship"
       ]
     },
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
       "emoji": "\ud83c\uddf1\ud83c\udde7",
-      "prob": 30,
-      "zone": "CRITICAL",
+      "prob": 47,
+      "zone": "critical",
       "trend": "rising",
       "signals": [
-        "hezbollah_rockets_active"
+        "israel_ground_invasion_lebanon",
+        "israeli_casualties_high",
+        "beirut_bombing"
       ]
     },
     {
       "id": "turkey",
       "name": "TURKEY",
       "emoji": "\ud83c\uddf9\ud83c\uddf7",
-      "prob": 8,
-      "zone": "DETERRENT",
+      "prob": 12,
+      "zone": "elevated",
       "trend": "stable",
       "signals": []
     },
@@ -650,19 +651,17 @@ const state = {
       "id": "india",
       "name": "INDIA-PAKISTAN",
       "emoji": "\ud83c\uddee\ud83c\uddf3",
-      "prob": 22,
-      "zone": "ELEVATED",
-      "trend": "rising",
-      "signals": [
-        "missile_attack_reported"
-      ]
+      "prob": 10,
+      "zone": "deterrent",
+      "trend": "falling",
+      "signals": []
     },
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
       "emoji": "\ud83c\uddf7\ud83c\uddfa",
       "prob": 12,
-      "zone": "ELEVATED",
+      "zone": "elevated",
       "trend": "stable",
       "signals": [
         "russia_iran_arms"
@@ -672,23 +671,73 @@ const state = {
       "id": "china",
       "name": "CHINA-TAIWAN",
       "emoji": "\ud83c\udde8\ud83c\uddf3",
-      "prob": 12,
-      "zone": "DETERRENT",
+      "prob": 13,
+      "zone": "elevated",
       "trend": "stable",
       "signals": []
     }
   ],
-  news: [
+  "news": [
     {
+      "headline": "Iran laying mines in Strait of Hormuz \u2014 US officials confirm",
+      "source": "NYT",
+      "time": "2026-03-12",
       "zone": "iran",
-      "time": "LIVE",
-      "text": "Monitoring active \u2014 first update at 06:00 UTC",
-      "impact": "neutral"
+      "signal": "hormuz_closed"
+    },
+    {
+      "headline": "IRGC declares 'not one litre of oil' will be exported from Middle East",
+      "source": "The Guardian",
+      "time": "2026-03-11",
+      "zone": "iran",
+      "signal": "hormuz_closed"
+    },
+    {
+      "headline": "Iranian frigate IRIS Dena sunk by USS Charlotte in Indian Ocean",
+      "source": "Wikipedia/ISW",
+      "time": "2026-03-12",
+      "zone": "iran",
+      "signal": "iran_sunk_ship"
+    },
+    {
+      "headline": "Israel strikes central Beirut \u2014 kills Hamas official, orders south Lebanon evacuation",
+      "source": "The Guardian",
+      "time": "2026-03-12",
+      "zone": "israel_lebanon",
+      "signal": "beirut_bombing"
+    },
+    {
+      "headline": "800,000 displaced in Lebanon as IDF ground operations continue \u2014 680+ killed",
+      "source": "Washington Post",
+      "time": "2026-03-12",
+      "zone": "israel_lebanon",
+      "signal": "israel_ground_invasion_lebanon"
+    },
+    {
+      "headline": "Iranian missiles intercepted over Turkish airspace \u2014 Erdogan warns Iran",
+      "source": "Wikipedia/Forbes",
+      "time": "2026-03-10",
+      "zone": "turkey",
+      "signal": null
+    },
+    {
+      "headline": "Oil past $100/bbl \u2014 US orders strategic petroleum reserve release",
+      "source": "NYT/The Guardian",
+      "time": "2026-03-11",
+      "zone": "iran",
+      "signal": null
+    },
+    {
+      "headline": "North Korea tests cruise missiles from destroyer \u2014 Kim emphasizes nuclear deterrent",
+      "source": "NDTV/KCNA",
+      "time": "2026-03-10",
+      "zone": "north_korea",
+      "signal": null
     }
   ]
 };
 
-// ===== RENDER// ===== RENDER =====
+// ===== RENDER =====
 function renderTrackers() {
   const grid = document.getElementById("trackersGrid");
   grid.innerHTML = "";
