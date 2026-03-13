@@ -612,29 +612,29 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T08:04:00Z",
-  global_war_probability: 31,
+  last_updated: "2026-03-13T09:04:00Z",
+  global_war_probability: 34,
   global_zone: "critical",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 58, zone: "critical", trend: "rising", signals: ["hormuz_closed", "iran_sunk_ship", "oil_above_120", "us_troops_killed"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 58, zone: "critical", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 68, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "iran_sunk_ship", "oil_above_120", "us_troops_killed", "oil_terminal_attack"] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 63, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 8, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 31, zone: "critical", trend: "stable", signals: ["russian_offensive"] },
+    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 33, zone: "critical", trend: "rising", signals: ["russian_offensive", "russia_weapons_escalation"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-12", text: "IRGC navy fired on and stopped 2 vessels after they ignored warnings — first direct engagement by Revolutionary Guard forces. Marks escalation from mine-laying to active interdiction.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Thailand's Foreign Ministry conveyed 'strongest protest' to Iranian ambassador in Bangkok after Thai cargo ship was struck and set ablaze in the strait. International dimension widening.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Treasury Sec Bessent: US Navy will escort oil tankers 'as soon as militarily possible.' Military officials say they are not yet ready. Gap between policy announcement and operational capability.", impact: "up" },
-    { zone: "iran", time: "2026-03-11", text: "Three cargo ships report being hit by unknown projectiles in and near the Strait of Hormuz. Shipping virtually halted despite escort promises.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Oil settled near $120/bbl — highest in 4 years. Analysts warn conflict dragging 6 months could send oil 'north of $130.' 400M barrel reserve release failing to calm markets.", impact: "up" },
-    { zone: "lebanon", time: "2026-03-12", text: "Israel struck center of Beirut in sharp escalation. Sweeping displacement order for southern Lebanon — residents up to 25 miles from border told to head north. Hezbollah rocket barrage preceded strikes.", impact: "up" },
-    { zone: "iran", time: "2026-03-12", text: "Netanyahu made veiled threat directed at new Supreme Leader Mojtaba Khamenei amid continuing strikes on Tehran. Rhetoric escalating on both sides.", impact: "up" },
-    { zone: "ukraine", time: "2026-03-12", text: "Russia attacked critical substation supplying Kyiv. Scorched-earth attacks on energy infrastructure pushing Ukraine's power grid to near collapse while US attention diverted to ME.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "US officials told NYT that Iran began planting naval mines in the Strait of Hormuz on Thursday. First confirmed mining operation — major escalation from blockading to actively mining the waterway.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "Iraqi security officials confirmed two fuel tankers were struck by explosive-laden Iranian boats in Iraqi waters. Attacks now extending beyond Hormuz into wider Persian Gulf. Iraq's oil ports completely stopped operations.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "US-owned crude oil tanker Safesea Vishnu struck near Iraqi coast in far northern Persian Gulf, near Iranian/Kuwaiti waters. Direct attack on US commercial shipping — significant escalation.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "Global oil prices settled up 9%, highest in nearly 4 years. Iran warned world to prepare for $200/barrel. Analysts: unlikely to hit $200 but sustained $130-150 range possible if conflict drags.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "US refueling plane crashed in Iraq with 5 personnel onboard. Rescue effort underway. Cause not yet determined — combat damage or mechanical failure. First significant US operational loss.", impact: "up" },
+    { zone: "iran", time: "2026-03-11", text: "Pentagon told Congress first 6 days cost $11.3B, excluding buildup costs. US has struck about 6,000 targets in Iran. Enormous expenditure with no sign of quick resolution.", impact: "up" },
+    { zone: "lebanon", time: "2026-03-12", text: "Hezbollah fired approximately 200 rockets into northern Israel. IDF struck 10 Hezbollah facilities in Dahieh (Beirut suburbs) in 30 minutes including intelligence HQ and command centers. Lebanon death toll: 687.", impact: "up" },
+    { zone: "lebanon", time: "2026-03-12", text: "IDF Chief of Staff says Lebanon campaign will not be short and more troops being deployed north. Signals major ground operation expansion. Netanyahu says Israel is 'crushing' both Iran and Hezbollah simultaneously.", impact: "up" },
   ]
 };
 
