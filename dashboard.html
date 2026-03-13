@@ -612,25 +612,28 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T06:04:00Z",
+  last_updated: "2026-03-13T14:04:00Z",
+  global_war_probability: 35,
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 5, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 50, zone: "imminent", trend: "stable", signals: ["IRGC ENGAGES SHIPPING", "HORMUZ MINED", "GULF STATES STRUCK", "CYPRUS DRONE HIT"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 52, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "BEIRUT STRUCK", "70 KILLED THU", "UNIVERSITY HIT"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 17, zone: "elevated", trend: "falling", signals: ["NUCLEAR RHETORIC"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 69, zone: "critical", trend: "falling", signals: ["HORMUZ BLOCKED", "90+ VESSELS HIT", "US CASUALTIES", "OIL TERMINALS HIT", "ENERGY THREATS"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 57, zone: "critical", trend: "stable", signals: ["GROUND INVASION", "BEIRUT STRUCK", "800K DISPLACED", "EXPANDING OPS"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 12, zone: "elevated", trend: "stable", signals: [] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 12, zone: "elevated", trend: "stable", signals: ["IRAN ARMS"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 10, zone: "deterrent", trend: "falling", signals: [] }
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "falling", signals: ["IRAN ARMS", "DIPLOMACY"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "stable", signals: [] },
+    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "rising", signals: ["CRUISE MISSILE TEST", "NUCLEAR RHETORIC"] },
+    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 29, zone: "critical", trend: "stable", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "DEAL PRESSURE"] }
   ],
   news: [
-    { zone: "iran", time: "NOW", text: "IRGC directly fires on and stops two commercial vessels in Strait of Hormuz — first direct IRGC naval engagement", impact: "up" },
-    { zone: "iran", time: "1H AGO", text: "Three cargo ships hit by unknown projectiles in/near Strait of Hormuz", impact: "up" },
-    { zone: "iran", time: "2H AGO", text: "Iranian drone damages fuel tanks at port of Salalah, Oman — Qatar condemns as 'dangerous escalation'", impact: "up" },
-    { zone: "iran", time: "3H AGO", text: "Iran drone strikes UK military base in Cyprus — NATO member territory hit for first time", impact: "up" },
-    { zone: "lebanon", time: "3H AGO", text: "70 killed in Israeli strikes in Lebanon on Thursday — two faculty killed at Lebanese University", impact: "up" },
-    { zone: "lebanon", time: "4H AGO", text: "Israel signals 'long campaign' — 800,000+ displaced, 680+ killed in Lebanon. Reuters: IDF expands evacuation order", impact: "up" },
-    { zone: "china", time: "6H AGO", text: "Chinese air force halts flights around Taiwan for nearly 2 weeks — reason unknown. Flights resume today", impact: "down" },
-    { zone: "russia", time: "8H AGO", text: "Russia calls on US/Israel to stop attacks on Iran; Kremlin signals expanded demands on Ukraine/NATO", impact: "neutral" },
+    { zone: "iran", time: "NOW", text: "Trump says war could be over 'soon' — US 'already achieved many military objectives' (White House)", impact: "down" },
+    { zone: "iran", time: "2H", text: "Reuters: White House aides in tug-of-war over declaring victory vs continuing operations", impact: "down" },
+    { zone: "iran", time: "3H", text: "Iran rejected ceasefire proposals twice, demands US non-attack pledge — willing to negotiate on own terms", impact: "mixed" },
+    { zone: "iran", time: "6H", text: "Israel launches 'extensive wave' of strikes on Tehran — forced evacuation orders, large explosions across capital", impact: "up" },
+    { zone: "lebanon", time: "4H", text: "Israel orders sweeping evacuation of southern Lebanon (25mi from border) — struck center of Beirut", impact: "up" },
+    { zone: "dprk", time: "8H", text: "Kim Jong Un conducts cruise missile tests from destroyer Choe Hyon — 10,000 sec flights, daughter in attendance", impact: "up" },
+    { zone: "dprk", time: "12H", text: "SCMP: Iran-DPRK missile cooperation 'highly likely' to revive post-war — proliferation concern", impact: "up" },
+    { zone: "russia", time: "8H", text: "Ukraine strikes Russian electronics plant building missile components; Russia scorched-earth on Ukrainian energy grid", impact: "up" }
   ]
 };
 
