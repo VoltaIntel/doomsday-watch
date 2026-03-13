@@ -715,7 +715,7 @@ function updateGlobalClock() {
   document.getElementById("globalProb").innerHTML = globalProb + '<span style="font-size:0.4em;opacity:0.6">%</span>';
 
   const probEl = document.getElementById("globalProb");
-  probEl.className = "global-prob " + (globalProb < 10 ? "deterrent" : globalProb < 25 ? "elevated" : globalProb < 50 ? "critical" : "imminent");
+  probEl.className = "global-prob " + (globalProb < 15 ? "deterrent" : globalProb < 30 ? "elevated" : globalProb < 60 ? "critical" : "imminent");
 
   const zoneEl = document.getElementById("globalZone");
   const zone = probEl.className.replace("global-prob ", "");
