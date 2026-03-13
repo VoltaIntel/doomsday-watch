@@ -80,7 +80,7 @@ else:
     all_probs = {}
     for t in trackers_js:
         all_probs[t["id"]] = t["prob"]
-    weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.15, "turkey": 0.08, "india": 0.08, "russia": 0.08, "china": 0.08, "north_korea": 0.07, "russia_ukraine": 0.12}
+    weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.15, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.08, "russia": 0.07, "china": 0.07, "north_korea": 0.06}
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
     if gp >= 60: tz = "imminent"
     elif gp >= 30: tz = "critical"
