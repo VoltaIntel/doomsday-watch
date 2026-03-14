@@ -268,6 +268,40 @@ body {
 .threat-zones span { color: #2d333b; }
 .threat-zones .z-active { color: var(--white); }
 
+/* ===== THREAT MAP ===== */
+.map-section {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.map-container {
+  position: relative;
+  width: 100%;
+}
+.map-container svg {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+}
+.map-tooltip {
+  position: absolute;
+  background: #0d1117;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  font-size: 9px;
+  color: var(--white);
+  pointer-events: none;
+  z-index: 100;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  font-family: var(--mono);
+}
+.map-dot {
+  cursor: pointer;
+  transition: r 0.3s ease;
+}
+.map-dot:hover { r: 8; }
+.map-line { stroke-dasharray: 4,4; opacity: 0.3; }
+
 /* ===== PROBABILITY CHART ===== */
 .chart-section {
   padding: 12px 24px 16px;
@@ -773,6 +807,35 @@ body {
     </div>
   </div>
 
+  <!-- WORLD MAP -->
+  <div class="map-section">
+    <div class="section-label">THREAT MAP</div>
+    <div class="map-container">
+      <svg id="threatMap" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+        <rect width="800" height="400" fill="#06080c"/>
+        <!-- Simplified world outline -->
+        <g stroke="#1a1e24" fill="#0d1117" stroke-width="0.5">
+          <!-- North America --><path d="M80,80 L180,60 L220,90 L230,140 L200,180 L160,200 L140,180 L100,160 L80,120Z"/>
+          <!-- South America --><path d="M180,220 L220,210 L240,250 L230,320 L200,350 L180,320 L170,280Z"/>
+          <!-- Europe --><path d="M350,80 L420,60 L440,80 L430,120 L400,140 L370,130 L360,100Z"/>
+          <!-- Africa --><path d="M360,160 L420,150 L440,200 L430,280 L400,310 L370,290 L360,240 L350,200Z"/>
+          <!-- Middle East --><path d="M440,140 L480,130 L500,160 L490,190 L460,180 L440,160Z"/>
+          <!-- Russia/Asia --><path d="M420,40 L600,30 L680,50 L700,100 L660,130 L580,120 L500,100 L440,80Z"/>
+          <!-- India --><path d="M540,170 L580,160 L590,200 L570,240 L540,220 L530,190Z"/>
+          <!-- China --><path d="M580,100 L680,90 L700,140 L680,180 L620,170 L590,140Z"/>
+          <!-- SE Asia --><path d="M620,200 L660,190 L680,230 L660,260 L630,250 L620,220Z"/>
+          <!-- Australia --><path d="M640,300 L720,290 L740,320 L720,350 L660,340 L640,320Z"/>
+        </g>
+        <!-- Zone dots added by JS -->
+        <g id="mapDots"></g>
+        <!-- Coupling lines added by JS -->
+        <g id="mapLines"></g>
+      </svg>
+      <!-- Tooltip -->
+      <div id="mapTooltip" class="map-tooltip" style="display:none"></div>
+    </div>
+  </div>
+
   <!-- PROBABILITY CHART -->
   <div class="chart-section">
     <div class="section-label">PROBABILITY HISTORY (48H)</div>
@@ -1102,6 +1165,125 @@ function toggleSignals(el) {
   }
 }
 
+// ===== THREAT MAP =====
+function drawThreatMap() {
+  var dotsG = document.getElementById("mapDots");
+  var linesG = document.getElementById("mapLines");
+  var tooltip = document.getElementById("mapTooltip");
+  if (!dotsG) return;
+  dotsG.innerHTML = "";
+  if (linesG) linesG.innerHTML = "";
+
+  // Conflict zone coordinates on SVG (x, y)
+  var coords = {
+    iran_conventional: { x: 475, y: 160, name: "IRAN", emoji: "⚔️" },
+    iran_nuke: { x: 465, y: 148, name: "IRAN NUCLEAR", emoji: "☢️" },
+    israel_lebanon: { x: 440, y: 155, name: "ISRAEL-LEBANON", emoji: "🇱🇧" },
+    turkey: { x: 430, y: 125, name: "TURKEY", emoji: "🇹🇷" },
+    russia: { x: 460, y: 80, name: "RUSSIA-NATO", emoji: "🇷🇺" },
+    russia_ukraine: { x: 415, y: 95, name: "RUSSIA-UKRAINE", emoji: "🇺🇦" },
+    china: { x: 640, y: 140, name: "CHINA-TAIWAN", emoji: "🇨🇳" },
+    north_korea: { x: 670, y: 115, name: "DPRK", emoji: "🇰🇵" },
+    india: { x: 560, y: 190, name: "INDIA-PAKISTAN", emoji: "🇮🇳" },
+    pakistan_afghanistan: { x: 540, y: 175, name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰" }
+  };
+
+  // Coupling lines
+  var couplings = [
+    { from: "iran_conventional", to: "turkey" },
+    { from: "iran_conventional", to: "israel_lebanon" },
+    { from: "turkey", to: "russia" },
+    { from: "russia", to: "russia_ukraine" },
+    { from: "china", to: "north_korea" },
+    { from: "india", to: "pakistan_afghanistan" }
+  ];
+
+  // Draw coupling lines
+  if (linesG) {
+    couplings.forEach(function(c) {
+      var from = coords[c.from];
+      var to = coords[c.to];
+      if (!from || !to) return;
+      var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", from.x);
+      line.setAttribute("y1", from.y);
+      line.setAttribute("x2", to.x);
+      line.setAttribute("y2", to.y);
+      line.setAttribute("stroke", "#ff2d2d");
+      line.setAttribute("stroke-width", "0.8");
+      line.setAttribute("class", "map-line");
+      linesG.appendChild(line);
+    });
+  }
+
+  // Zone colors
+  var zoneColors = {
+    deterrent: "#00e676",
+    elevated: "#ffaa00",
+    critical: "#ff8800",
+    imminent: "#ff2d2d"
+  };
+
+  // Draw zone dots
+  state.trackers.forEach(function(t) {
+    var c = coords[t.id];
+    if (!c) return;
+    var color = zoneColors[t.zone] || zoneColors.deterrent;
+    var radius = t.zone === "imminent" ? 6 : t.zone === "critical" ? 5 : t.zone === "elevated" ? 4 : 3;
+
+    // Pulse ring for imminent
+    if (t.zone === "imminent") {
+      var pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      pulse.setAttribute("cx", c.x);
+      pulse.setAttribute("cy", c.y);
+      pulse.setAttribute("r", radius + 4);
+      pulse.setAttribute("fill", "none");
+      pulse.setAttribute("stroke", color);
+      pulse.setAttribute("stroke-width", "0.5");
+      pulse.setAttribute("opacity", "0.4");
+      pulse.innerHTML = '<animate attributeName="r" from="' + (radius + 2) + '" to="' + (radius + 10) + '" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" from="0.4" to="0" dur="2s" repeatCount="indefinite"/>';
+      dotsG.appendChild(pulse);
+    }
+
+    var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    dot.setAttribute("cx", c.x);
+    dot.setAttribute("cy", c.y);
+    dot.setAttribute("r", radius);
+    dot.setAttribute("fill", color);
+    dot.setAttribute("class", "map-dot");
+    dot.setAttribute("id", "dot-" + t.id);
+
+    // Tooltip on hover
+    dot.addEventListener("mouseenter", function(e) {
+      tooltip.innerHTML = c.emoji + " " + c.name + " — <b>" + t.prob + "%</b> " + t.zone.toUpperCase();
+      tooltip.style.display = "block";
+      tooltip.style.left = (c.x / 8 * 100) + "%";
+      tooltip.style.top = ((c.y - 20) / 4 * 100) + "%";
+    });
+    dot.addEventListener("mouseleave", function() {
+      tooltip.style.display = "none";
+    });
+    // Click to filter news
+    dot.addEventListener("click", function() {
+      filterByZone(t.id);
+      document.getElementById("newsFeed").scrollIntoView({ behavior: "smooth" });
+    });
+
+    dotsG.appendChild(dot);
+
+    // Label
+    var label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("x", c.x);
+    label.setAttribute("y", c.y + radius + 10);
+    label.setAttribute("text-anchor", "middle");
+    label.setAttribute("fill", "#484f58");
+    label.setAttribute("font-size", "7");
+    label.setAttribute("font-family", "'Share Tech Mono', monospace");
+    label.textContent = t.prob + "%";
+    dotsG.appendChild(label);
+  });
+}
+
 // ===== ZONE ALERTS =====
 function showZoneAlerts() {
   var alerts = state.zone_alerts || [];
@@ -1260,6 +1442,7 @@ updateThreatZones();
 drawProbChart();
 window.addEventListener("resize", drawProbChart);
 showZoneAlerts();
+drawThreatMap();
 
 // Update time every second
 setInterval(updateClock, 1000);
