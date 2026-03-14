@@ -771,10 +771,16 @@ body {
         </div>
       </div>
       <div class="header-status">
-        <button onclick="openBriefing()" style="background:rgba(255,45,45,0.15);border:1px solid rgba(255,45,45,0.4);color:#ff4444;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:1.5px;margin-right:10px;">📋 BRIEF</button>
         <div class="status-live"><div class="status-dot"></div>LIVE</div>
         <div class="status-time" id="updateTime">LOADING...</div>
       </div>
+    </div>
+  </div>
+
+  <!-- BRIEF BUTTON -->
+  <div style="text-align:center;margin:8px 0 4px;">
+    <button onclick="openBriefing()" style="background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 20px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">📋 INTELLIGENCE BRIEF</button>
+  </div>
     </div>
   </div>
 
@@ -1332,47 +1338,42 @@ state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
 function openBriefing() {
   var el = document.getElementById('briefBody');
   var hdr = document.getElementById('briefHeader');
-  var state = window.state || {};
-  var ts = state.last_updated || '';
+  var s = (typeof state !== 'undefined') ? state : {};
+  var ts = s.last_updated || '';
   var dateStr = ts.substring(0,10);
   var timeStr = ts.substring(11,16) + ' UTC';
   hdr.textContent = 'THREAT ASSESSMENT — ' + dateStr + ' ' + timeStr;
-  // Build briefing from current state
-  var gp = state.global_war_probability || 0;
-  var trackers = state.trackers || [];
+  var gp = s.global_war_probability || 0;
+  var trackers = s.trackers || [];
+  var newsItems = s.news || [];
   var sorted = trackers.slice().sort(function(a,b){return b.prob - a.prob;});
   var rising = sorted.filter(function(t){return t.trend === 'rising';});
   var imminent = sorted.filter(function(t){return t.zone === 'imminent';});
   var critical = sorted.filter(function(t){return t.zone === 'critical';});
   
   var html = '';
-  // Overall
   html += '<div class="brief-section"><div class="brief-line">The global security environment ' + (gp >= 60 ? 'remains ELEVATED' : gp >= 30 ? 'is CONCERNING' : 'is STABLE') + ' with a composite threat score of <b style="color:#ff6666">' + gp + '%</b>.</div></div>';
   
-  // Immediate threats
   if (imminent.length > 0 || critical.length > 0) {
     html += '<div class="brief-section"><div class="brief-section-title">IMMEDIATE THREATS:</div><div class="brief-line">';
     imminent.concat(critical).forEach(function(t){
       var trend = t.trend === 'rising' ? 'escalating' : t.trend === 'falling' ? 'de-escalating' : 'holding';
-      var sigs = (t.signals || []).slice(0,3).map(function(s){return s.name.replace(/_/g,' ');}).join('; ');
+      var sigs = (t.signals || []).slice(0,3).map(function(x){return x.name.replace(/_/g,' ');}).join('; ');
       html += t.emoji + ' ' + t.name + ' — ' + t.prob + '% (' + trend + '). ' + sigs + '.\n';
     });
     html += '</div></div>';
   }
   
-  // Notable developments
-  var news = state.news || [];
-  if (news.length > 0) {
+  if (newsItems.length > 0) {
     html += '<div class="brief-section"><div class="brief-section-title">NOTABLE DEVELOPMENTS:</div><div class="brief-line">';
-    news.slice(0,5).forEach(function(n){
+    newsItems.slice(0,5).forEach(function(n){
       var impact = n.impact === 'up' ? '▲' : n.impact === 'down' ? '▼' : '●';
       var conf = n.confidence ? ' [' + n.confidence.toUpperCase() + ']' : '';
-      html += impact + ' ' + (n.headline || n.text).substring(0,80) + conf + '\n';
+      html += impact + ' ' + (n.headline || n.text || '').substring(0,80) + conf + '\n';
     });
     html += '</div></div>';
   }
   
-  // Trend
   html += '<div class="brief-section"><div class="brief-section-title">TREND:</div><div class="brief-line">';
   if (rising.length > 0) {
     html += 'Escalating: ' + rising.map(function(t){return t.name;}).join(', ');
@@ -1381,7 +1382,6 @@ function openBriefing() {
   }
   html += '</div></div>';
   
-  // Outlook
   html += '<div class="brief-section"><div class="brief-section-title">OUTLOOK:</div><div class="brief-line">';
   if (rising.length > 0) {
     html += 'Monitor ' + rising[0].name + ' for continued escalation — currently ' + rising[0].prob + '% and trending upward.';
@@ -1390,8 +1390,7 @@ function openBriefing() {
   }
   html += '</div></div>';
   
-  // Confidence
-  html += '<div class="brief-section" style="border-top:1px solid rgba(255,45,45,0.15);padding-top:10px;margin-top:16px;"><div class="brief-line" style="color:#484f58;font-size:11px;">' + (state.news || []).length + ' sources processed | ' + trackers.length + ' active trackers</div></div>';
+  html += '<div class="brief-section" style="border-top:1px solid rgba(255,45,45,0.15);padding-top:10px;margin-top:16px;"><div class="brief-line" style="color:#484f58;font-size:11px;">' + newsItems.length + ' sources processed | ' + trackers.length + ' active trackers</div></div>';
   
   el.innerHTML = html;
   document.getElementById('briefingModal').classList.add('active');
