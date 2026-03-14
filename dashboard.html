@@ -281,7 +281,6 @@ body {
   border-radius: 4px;
   border: 1px solid var(--border);
 }
-.leaflet-tile-pane { filter: saturate(0.3) brightness(0.5); }
 .leaflet-control-attribution { display: none !important; }
 .leaflet-control-zoom { border: 1px solid var(--border) !important; }
 .leaflet-control-zoom a { background: #0d1117 !important; color: var(--dim) !important; border-color: var(--border) !important; }
@@ -1206,9 +1205,11 @@ function initThreatMap() {
     if (!pos) return;
     var color = zoneColors[t.zone] || zoneColors.deterrent;
 
+    var markerDiv = document.createElement("div");
+    markerDiv.style.cssText = "width:14px;height:14px;border-radius:50%;background:" + color + ";border:2px solid " + color + ";box-shadow:0 0 10px " + color;
     var icon = L.divIcon({
       className: "",
-      html: '<div class="threat-marker" style="background:' + color + '50;border-color:' + color + ';color:' + color + '"></div>',
+      html: markerDiv.outerHTML,
       iconSize: [14, 14],
       iconAnchor: [7, 7]
     });
