@@ -1239,14 +1239,11 @@ updateClock();
 updateGlobalClock();
 updateThreatZones();
 showZoneAlerts();
-function tryInitMap(attempts) {
-  if (typeof L !== "undefined" && document.getElementById("threatMap")) {
-    initThreatMap();
-  } else if (attempts > 0) {
-    setTimeout(function() { tryInitMap(attempts - 1); }, 500);
-  }
-}
-tryInitMap(10);
+window.addEventListener("load", function() {
+  setTimeout(function() {
+    try { initThreatMap(); } catch(e) { console.error("Map init failed:", e); }
+  }, 500);
+});
 
 // Update time every second
 setInterval(updateClock, 1000);
