@@ -228,6 +228,58 @@ else:
     with open("data/signal_timeline.json", "w") as tf:
         json.dump(timeline, tf, indent=2)
 
+    # Detect zone changes for alerts
+    try:
+        with open("data/zone_alerts.json") as af:
+            zone_alerts = json.load(af)
+    except:
+        zone_alerts = {"pending": [], "history": []}
+
+    old_zones = {}
+    try:
+        with open("data/previous_zones.json") as pf:
+            old_zones = json.load(pf)
+    except:
+        pass
+
+    new_zones = {}
+    for rule in coupling_rules:
+        pass  # skip
+    for t in trackers_js:
+        new_zones[t["id"]] = t["zone"]
+
+    zone_labels = {"deterrent": "DETERRENT", "elevated": "ELEVATED", "critical": "CRITICAL", "imminent": "IMMINENT"}
+    zone_emojis = {"deterrent": "🟢", "elevated": "🟡", "critical": "🟠", "imminent": "🔴"}
+
+    for tid in new_zones:
+        if tid in old_zones and old_zones[tid] != new_zones[tid]:
+            old_z = old_zones[tid]
+            new_z = new_zones[tid]
+            zone_rank_new = {"deterrent": 0, "elevated": 1, "critical": 2, "imminent": 3}
+            direction = "⬆️" if zone_rank_new.get(new_z, 0) > zone_rank_new.get(old_z, 0) else "⬇️"
+            tracker_name = next((t["name"] for t in trackers_js if t["id"] == tid), tid)
+            alert = {
+                "timestamp": now_iso,
+                "tracker": tracker_name,
+                "tracker_id": tid,
+                "from": old_z,
+                "to": new_z,
+                "direction": direction,
+                "prob": new_zones[tid]
+            }
+            zone_alerts["pending"].append(alert)
+            zone_alerts["history"].append(alert)
+            print(f"ALERT: {tracker_name} {old_z.upper()} → {new_z.upper()} {direction}")
+
+    # Keep last 50 alerts in history
+    zone_alerts["history"] = zone_alerts["history"][-50:]
+    with open("data/zone_alerts.json", "w") as af:
+        json.dump(zone_alerts, af, indent=2)
+
+    # Save current zones for next comparison
+    with open("data/previous_zones.json", "w") as pf:
+        json.dump(new_zones, pf, indent=2)
+
     # Append to probability history
     try:
         with open("data/probability_history.json") as hf:
@@ -273,6 +325,9 @@ else:
     hist_entries = history["entries"][-48:]
     hist_js = json.dumps(hist_entries)
     lines.append("  history: " + hist_js + ",")
+    # Add pending zone alerts
+    alerts_js = json.dumps(zone_alerts.get("pending", []))
+    lines.append("  zone_alerts: " + alerts_js)
     lines.append("};")
     lines.append("")
     lines.append("// ===== RENDER")

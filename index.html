@@ -46,6 +46,34 @@ body {
 @keyframes countUp { from { opacity: 0; } to { opacity: 1; } }
 @keyframes sweep { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+/* Zone Alert Banner */
+.zone-alert-banner {
+  background: rgba(255,45,45,0.12);
+  border-bottom: 1px solid var(--red);
+  padding: 8px 24px;
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.zone-alert-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.zone-alert-icon { font-size: 14px; }
+.zone-alert-text {
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 1px;
+  flex: 1;
+}
+.zone-alert-dismiss {
+  font-size: 12px;
+  color: var(--dim);
+  cursor: pointer;
+  padding: 2px 6px;
+}
+.zone-alert-dismiss:hover { color: var(--white); }
+
 /* Scanline overlay */
 .scanline-bar {
   position: fixed;
@@ -695,6 +723,15 @@ body {
 </head>
 <body>
 
+<!-- Zone Alert Banner -->
+<div id="zoneAlertBanner" class="zone-alert-banner" style="display:none">
+  <div class="zone-alert-inner">
+    <span class="zone-alert-icon">⚠️</span>
+    <span class="zone-alert-text" id="zoneAlertText"></span>
+    <span class="zone-alert-dismiss" onclick="dismissAlerts()">✕</span>
+  </div>
+</div>
+
 <div class="scanline-bar"></div>
 
 <div class="container">
@@ -803,10 +840,11 @@ const state = {
     { zone: "pakistan_afghanistan", time: "2026-03-14", text: "Pakistan President Asif Ali Zardari declared Afghan Taliban 'crossed a red line' by launching drone attacks on civilian targets in Pakistan. Military says 'rudimentary drones' targeted Abbottabad, Swabi, Nowshera \u2014 all foiled. Reinforces open war status.", headline: "Pakistan President Zardari: Taliban 'crossed a red line' with drone strikes on Pakistani cities", impact: "up", sources: ["The Hindu", "Reuters"], source_types: ["western"], confidence: "reported", severity: 3, signals: [] },
     { zone: "north_korea", time: "2026-03-14", text: "North Korea fired approximately 10 ballistic missiles from its western coast Saturday morning. Japan confirms projectiles traveled ~340km into Sea of Japan outside Japan EEZ. Coordinated salvo during US-South Korea joint drills. Third provocation this week. South Korea JCS calls it unprecedented pace.", headline: "North Korea fires ~10 ballistic missiles in salvo during US-South Korea drills", impact: "up", sources: ["Reuters", "Bloomberg", "Japan Times"], source_types: ["western"], confidence: "confirmed", severity: 2, signals: [{"name": "dprk_missile_test", "weight": 8}, {"name": "dprk_missile_barrage", "weight": 10}] },
     { zone: "iran", time: "2026-03-14", text: "Council on Foreign Relations updates Iran war death toll to 1,800+ killed, including 8 US service members and at least 175 students killed by a reported US strike on an Iranian elementary school. 18,551+ injured. Humanitarian catastrophe deepening.", headline: "Global death toll from Iran war exceeds 1,800 including 8 US troops and 175 students at elementary school", impact: "up", sources: ["CFR", "NYT"], source_types: ["other"], confidence: "reported", severity: 3, signals: [] },
-    { zone: "turkey", time: "2026-03-13", text: "NATO air defenses intercepted third Iranian ballistic missile over Turkey in 10 days. Sirens in Adana near Incirlik Air Base. Turkey asked Tehran to clarify. Iran denies targeting. Politico EU: one more intercept likely triggers Article 4 consultations.", headline: "NATO intercepts third Iranian ballistic missile over Turkey \u2014 one from Article 4", impact: "up", sources: ["Reuters", "NYT", "Politico EU"], source_types: ["other", "western"], confidence: "confirmed", severity: 2, signals: [{"name": "incirlik_targeted", "weight": 8}, {"name": "nato_third_intercept", "weight": 7}] },
-    { zone: "china", time: "2026-03-13", text: "China's regular warplane flights near Taiwan dropped sharply from 92 to just 7 over the past two weeks. Analysts unsure if deliberate de-escalation or strategic patience while US overextends in ME. ISW notes PRC increased 2026 military budget simultaneously.", headline: "China warplane flights near Taiwan plunge from 92 to 7 in two weeks \u2014 analysts puzzled", impact: "down", sources: ["CNBC", "AP"], source_types: ["other", "western"], confidence: "reported", severity: 1, signals: [{"name": "china_reduced_flights", "weight": -3}] },
+    { zone: "turkey", time: "2026-03-13", text: "NATO air defenses intercepted third Iranian ballistic missile over Turkey in 10 days. Sirens in Adana near Incirlik Air Base. Turkey asked Tehran to clarify. Iran denies targeting. Politico EU: one more intercept likely triggers Article 4 consultations.", headline: "NATO intercepts third Iranian ballistic missile over Turkey \u2014 one from Article 4", impact: "up", sources: ["Reuters", "NYT", "Politico EU"], source_types: ["western", "other"], confidence: "confirmed", severity: 2, signals: [{"name": "incirlik_targeted", "weight": 8}, {"name": "nato_third_intercept", "weight": 7}] },
+    { zone: "china", time: "2026-03-13", text: "China's regular warplane flights near Taiwan dropped sharply from 92 to just 7 over the past two weeks. Analysts unsure if deliberate de-escalation or strategic patience while US overextends in ME. ISW notes PRC increased 2026 military budget simultaneously.", headline: "China warplane flights near Taiwan plunge from 92 to 7 in two weeks \u2014 analysts puzzled", impact: "down", sources: ["CNBC", "AP"], source_types: ["western", "other"], confidence: "reported", severity: 1, signals: [{"name": "china_reduced_flights", "weight": -3}] },
   ],
-  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}],
+  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:12Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}],
+  zone_alerts: []
 };
 
 // ===== RENDER// ===== RENDER =====
@@ -1066,6 +1104,26 @@ function toggleSignals(el) {
   }
 }
 
+// ===== ZONE ALERTS =====
+function showZoneAlerts() {
+  var alerts = state.zone_alerts || [];
+  if (alerts.length === 0) return;
+  var banner = document.getElementById("zoneAlertBanner");
+  var text = document.getElementById("zoneAlertText");
+  if (!banner || !text) return;
+  var msgs = alerts.map(function(a) {
+    return a.tracker + " " + a.direction + " " + a.from.toUpperCase() + " → " + a.to.toUpperCase();
+  });
+  text.textContent = msgs.join("  |  ");
+  banner.style.display = "block";
+}
+function dismissAlerts() {
+  var banner = document.getElementById("zoneAlertBanner");
+  if (banner) banner.style.display = "none";
+  // Clear pending alerts from state (session-only)
+  state.zone_alerts = [];
+}
+
 // ===== PROBABILITY CHART =====
 function drawProbChart() {
   var canvas = document.getElementById("probChart");
@@ -1203,6 +1261,7 @@ updateGlobalClock();
 updateThreatZones();
 drawProbChart();
 window.addEventListener("resize", drawProbChart);
+showZoneAlerts();
 
 // Update time every second
 setInterval(updateClock, 1000);
