@@ -30,6 +30,117 @@ except:
 from datetime import datetime, timezone
 now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+# --- Load credibility config and define functions BEFORE processing ---
+with open("data/source_credibility.json") as f:
+    credibility_cfg = json.load(f)
+
+SOURCE_CREDIBILITY = credibility_cfg.get("sources", {})
+TIER_WEIGHTS = {k: v["weight"] for k, v in credibility_cfg.get("tiers", {}).items()}
+TIER_LABELS = {k: v["label"] for k, v in credibility_cfg.get("tiers", {}).items()}
+
+def classify_source_credibility(source_str):
+    sl = source_str.lower().strip()
+    best_tier = "5_unverified"
+    best_match_len = 0
+    for keyword, tier in SOURCE_CREDIBILITY.items():
+        if keyword in sl and len(keyword) > best_match_len:
+            best_tier = tier
+            best_match_len = len(keyword)
+    weight = TIER_WEIGHTS.get(best_tier, 0.3)
+    label = TIER_LABELS.get(best_tier, "Unknown")
+    return best_tier, weight, label
+
+def classify_source(source_str):
+    tier, _, _ = classify_source_credibility(source_str)
+    if tier == "1_official": return "official"
+    if tier in ("2_wire", "3_established"): return "western"
+    return "other"
+
+def calc_severity(impact, text):
+    text_lower = text.lower()
+    severity = 2 if impact == "up" else 1 if impact == "down" else 1
+    if any(w in text_lower for w in ["nuclear", "obliterated", "destroyed", "massive", "record"]):
+        severity = min(5, severity + 2)
+    elif any(w in text_lower for w in ["killed", "strikes", "attack", "crash", "invasion"]):
+        severity = min(5, severity + 1)
+    return min(5, max(1, severity))
+
+def calc_confidence(sources_count, max_credibility_weight=0):
+    if max_credibility_weight >= 5 or sources_count >= 3:
+        return "confirmed"
+    if max_credibility_weight >= 2 or sources_count >= 2:
+        return "reported"
+    return "rumored"
+
+def apply_credibility_weight(signal_weight, source_tier):
+    tier_order = {"1_official": 3, "2_wire": 2, "3_established": 1.5, "4_regional": 1, "5_unverified": 0}
+    tier_val = tier_order.get(source_tier, 0)
+    if tier_val >= 2:
+        return signal_weight * 1.0
+    elif tier_val >= 1.5:
+        return signal_weight * 0.75
+    elif tier_val >= 1:
+        return signal_weight * 0.5
+    else:
+        return signal_weight * 0.2
+
+def apply_temporal_decay(signal_weight, activated_at_iso):
+    try:
+        activated = datetime.fromisoformat(activated_at_iso.replace("Z", "+00:00"))
+        now = datetime.now(timezone.utc)
+        hours_old = (now - activated).total_seconds() / 3600
+        if hours_old < 6:
+            return signal_weight
+        elif hours_old < 24:
+            return signal_weight * 0.75
+        elif hours_old < 48:
+            return signal_weight * 0.5
+        elif hours_old < 72:
+            return signal_weight * 0.25
+        else:
+            return 0
+    except:
+        return signal_weight
+
+def is_deescalation_signal(text):
+    text_lower = text.lower()
+    deesc = credibility_cfg.get("deescalation_keywords", [])
+    esc = credibility_cfg.get("escalation_keywords", [])
+    deesc_count = sum(1 for k in deesc if k in text_lower)
+    esc_count = sum(1 for k in esc if k in text_lower)
+    return deesc_count > esc_count
+
+def find_matching_signals(text, tid, source_tier="5_unverified"):
+    text_lower = text.lower()
+    matched = []
+    is_deesc = is_deescalation_signal(text_lower)
+    for sname, scfg in cfg.get("trackers", {}).get(tid, {}).get("signals", {}).items():
+        desc = scfg.get("description", "").lower()
+        name_readable = sname.lower().replace("_", " ")
+        triggered = False
+        if name_readable in text_lower:
+            triggered = True
+        else:
+            terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").replace(".", "").split() if len(t) > 4]
+            matches = sum(1 for t in set(terms) if t in text_lower)
+            if matches >= 3:
+                triggered = True
+        if triggered:
+            weight = signal_weights.get((tid, sname), 0)
+            cred_weighted = apply_credibility_weight(abs(weight), source_tier)
+            if is_deesc and weight > 0:
+                continue
+            final_weight = cred_weighted if weight >= 0 else -cred_weighted
+            matched.append({
+                "name": sname,
+                "weight": round(final_weight, 1),
+                "raw_weight": weight,
+                "source_tier": source_tier,
+                "confidence": "confirmed" if source_tier in ["1_official", "2_wire"] else "reported" if source_tier == "3_established" else "rumored"
+            })
+    return matched
+# --- End functions ---
+
 # Build tracker data
 trackers_js = []
 tn = [
@@ -51,18 +162,29 @@ for k in state.get("trackers", {}).keys():
 
 for tid, name, emoji in tn:
     t = state.get("trackers", {}).get(tid, {})
-    # Record signal activation times and tag with weight sign
+    # Record signal activation times, tag with weight sign, and apply temporal decay
     signal_data = []
     for s in t.get("active_signals", []):
         timeline_key = f"{tid}:{s}"
         if timeline_key not in timeline["signals"]:
             timeline["signals"][timeline_key] = now_iso
         w = signal_weights.get((tid, s), 0)
+        activated_at = timeline["signals"][timeline_key]
+        
+        # Apply temporal decay to displayed weight
+        decayed_weight = apply_temporal_decay(abs(w), activated_at)
+        is_expired = decayed_weight == 0
+        
         signal_data.append({
             "name": s,
             "positive": w < 0,
-            "activated_at": timeline["signals"][timeline_key]
+            "activated_at": activated_at,
+            "original_weight": abs(w),
+            "decayed_weight": round(decayed_weight, 1),
+            "expired": is_expired
         })
+    # Filter out expired signals from display
+    signal_data = [s for s in signal_data if not s["expired"]]
     # Sort signals reverse chronologically (newest first)
     signal_data.sort(key=lambda x: x["activated_at"], reverse=True)
     trackers_js.append({
@@ -79,71 +201,14 @@ news_js = state.get("latest_news", [
     {"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}
 ])
 
-# Source type classification
-SOURCE_TYPES = {
-    "western": ["reuters", "apnews", "ap news", "bbc", "nytimes", "new york times",
-                "washington post", "theguardian", "guardian", "cbs", "politico", "cnn", "fox",
-                "bloomberg", "cnbc", "axios", "wapo", "afp", "getty", "wp ", "jpost",
-                "israeli news", "times of israel", "japan times", "the hindu", "isw", "aei"],
-    "arabic": ["aljazeera", "al jazeera", "middleeasteye", "middle east eye",
-               "farsnews", "fars", "al arabiya", "alarabiya", "sabreen", "al araby",
-               "iraq news", "iran international", "isna", "irna", "tasnim"],
-    "russian": ["tass", "rt.com", "ria novosti", "interfax", "sputnik", "izvestia", "kommersant"],
-    "chinese": ["scmp", "south china", "xinhua", "global times", "cgtn", "china daily", "sixth tone"],
-    "israeli": ["timesofisrael", "times of israel", "haaretz", "jerusalem post",
-                "jpost", "ynet", "israel hayom", "maariv"],
-    "official": ["nato", "pentagon", "white house", "kremlin", "un ", "iaea", "doe",
-                 "state dept", "downing street", "eyelyse palace", "bundestag", "kremlin.ru",
-                 "iran health ministry", "jcs", "idf"],
-}
+# (credibility config and functions loaded at top of script)
 
-def classify_source(source_str):
-    sl = source_str.lower()
-    for stype, keywords in SOURCE_TYPES.items():
-        for kw in keywords:
-            if kw in sl:
-                return stype
-    return "other"
+# (all functions defined at top of script)
 
-def find_matching_signals(text, tid):
-    """Find which signals this news article likely triggered based on keywords."""
-    text_lower = text.lower()
-    matched = []
-    for sname, scfg in cfg.get("trackers", {}).get(tid, {}).get("signals", {}).items():
-        desc = scfg.get("description", "").lower()
-        # Use signal name (converted to readable form) as primary match
-        name_readable = sname.lower().replace("_", " ")
-        if name_readable in text_lower:
-            weight = signal_weights.get((tid, sname), 0)
-            matched.append({"name": sname, "weight": weight})
-            continue
-        # Extract 2+ key phrases from description (4+ chars)
-        terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").replace(".", "").split() if len(t) > 4]
-        matches = sum(1 for t in set(terms) if t in text_lower)
-        if matches >= 3:
-            weight = signal_weights.get((tid, sname), 0)
-            matched.append({"name": sname, "weight": weight})
-    return matched
-
-def calc_severity(impact, text):
-    """Calculate 1-5 severity based on impact and keywords."""
-    text_lower = text.lower()
-    severity = 2 if impact == "up" else 1 if impact == "down" else 1
-    # Boost for major keywords
-    if any(w in text_lower for w in ["nuclear", "obliterated", "destroyed", "massive", "record"]):
-        severity = min(5, severity + 2)
-    elif any(w in text_lower for w in ["killed", "strikes", "attack", "crash", "invasion"]):
-        severity = min(5, severity + 1)
-    return min(5, max(1, severity))
-
-def calc_confidence(sources_count):
-    """Confidence tier based on number of independent sources."""
-    if sources_count >= 3: return "confirmed"
-    if sources_count >= 2: return "reported"
-    return "developing"
-
-# Enrich news items
+# Enrich news items with credibility scoring
 enriched_news = []
+seen_signals = {}  # Dedup: track first source for each signal to avoid double-counting
+
 for n in news_js[:10]:
     sources = []
     if isinstance(n.get("source"), str):
@@ -153,10 +218,33 @@ for n in news_js[:10]:
     elif isinstance(n.get("source"), list):
         sources = n["source"]
 
-    source_types = list(set(classify_source(s) for s in sources))
+    # Classify each source by credibility tier
+    source_types = []
+    max_cred_weight = 0
+    primary_tier = "5_unverified"
+    for s in sources:
+        tier, weight, label = classify_source_credibility(s)
+        source_types.append(tier)
+        if weight > max_cred_weight:
+            max_cred_weight = weight
+            primary_tier = tier
+
     full_text = (n.get("headline", "") + " " + n.get("text", ""))
     zone = n.get("zone", "")
-    zone_signals = find_matching_signals(full_text, zone) if zone else []
+    zone_signals = find_matching_signals(full_text, zone, primary_tier) if zone else []
+
+    # Dedup: only count the first (highest-credibility) source for each signal
+    deduped_signals = []
+    for sig in zone_signals:
+        sig_key = f"{zone}:{sig['name']}"
+        if sig_key not in seen_signals:
+            seen_signals[sig_key] = primary_tier
+            deduped_signals.append(sig)
+        else:
+            # Same signal already seen from another source — mark as duplicate
+            sig["weight"] = 0  # Don't double-count
+            sig["duplicate"] = True
+            deduped_signals.append(sig)
 
     enriched_news.append({
         "zone": zone,
@@ -166,9 +254,11 @@ for n in news_js[:10]:
         "impact": n.get("impact", "neutral"),
         "sources": sources,
         "source_types": source_types,
-        "confidence": calc_confidence(len(sources)),
+        "source_tier": primary_tier,
+        "credibility_weight": max_cred_weight,
+        "confidence": calc_confidence(len(sources), max_cred_weight),
         "severity": calc_severity(n.get("impact", "neutral"), full_text),
-        "signals": zone_signals
+        "signals": deduped_signals
     })
 
 news_js = enriched_news
