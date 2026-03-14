@@ -359,6 +359,15 @@ body {
   color: var(--green);
   background: rgba(0,230,118,0.08);
 }
+.signal.more-btn {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.signal.more-btn:hover {
+  background: rgba(0,212,255,0.15);
+}
 
 .tracker-trend {
   font-size: 10px;
@@ -655,9 +664,17 @@ function renderTrackers() {
     card.className = `tracker ${t.zone}`;
     card.style.animationDelay = `${i * 0.1}s`;
 
-    const signalHTML = t.signals.length > 0
-      ? t.signals.map(s => `<span class="signal active">${s}</span>`).join("")
-      : '<span class="signal">NO ACTIVE SIGNALS</span>';
+    let signalHTML;
+    if (t.signals.length === 0) {
+      signalHTML = '<span class="signal">NO ACTIVE SIGNALS</span>';
+    } else if (t.signals.length <= 5) {
+      signalHTML = t.signals.map(s => `<span class="signal active">${s}</span>`).join("");
+    } else {
+      const shown = t.signals.slice(0, 5).map(s => `<span class="signal active">${s}</span>`).join("");
+      const hidden = t.signals.slice(5).map(s => `<span class="signal active hidden-signal" style="display:none">${s}</span>`).join("");
+      const moreBtn = `<span class="signal more-btn" onclick="toggleSignals(this)" data-count="${t.signals.length - 5}">+${t.signals.length - 5} MORE</span>`;
+      signalHTML = shown + moreBtn + hidden;
+    }
 
     const trendIcon = t.trend === "rising" ? "▲" : t.trend === "falling" ? "▼" : "—";
     const trendClass = t.trend === "rising" ? "trend-up" : t.trend === "falling" ? "trend-down" : "trend-stable";
@@ -755,6 +772,26 @@ function updateGlobalClock() {
 
   // Mini doomsday clock
   document.querySelector(".doomsday-hand").style.transform = "translateX(-50%) rotate(" + angle + "deg)";
+}
+
+// Toggle signal expansion
+function toggleSignals(el) {
+  const card = el.closest(".tracker");
+  const hidden = card.querySelectorAll(".hidden-signal");
+  const isExpanded = el.textContent.includes("LESS");
+  if (isExpanded) {
+    hidden.forEach(s => s.style.display = "none");
+    el.textContent = "+" + el.dataset.count + " MORE";
+    el.style.borderColor = "";
+    el.style.color = "";
+    el.style.background = "";
+  } else {
+    hidden.forEach(s => s.style.display = "");
+    el.textContent = "SHOW LESS";
+    el.style.borderColor = "var(--cyan)";
+    el.style.color = "var(--cyan)";
+    el.style.background = "rgba(0,212,255,0.08)";
+  }
 }
 
 // ===== INIT =====
