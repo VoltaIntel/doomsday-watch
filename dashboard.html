@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GLOBAL CONFLICT ESCALATION MONITOR</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oswald:wght@300;400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root {
   --bg: #06080c;
@@ -1239,7 +1239,14 @@ updateClock();
 updateGlobalClock();
 updateThreatZones();
 showZoneAlerts();
-setTimeout(initThreatMap, 100);
+function tryInitMap(attempts) {
+  if (typeof L !== "undefined" && document.getElementById("threatMap")) {
+    initThreatMap();
+  } else if (attempts > 0) {
+    setTimeout(function() { tryInitMap(attempts - 1); }, 500);
+  }
+}
+tryInitMap(10);
 
 // Update time every second
 setInterval(updateClock, 1000);
