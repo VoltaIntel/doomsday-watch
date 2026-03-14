@@ -1160,9 +1160,7 @@ function dismissAlerts() {
 
 // ===== LEAFLET MAP =====
 function initThreatMap() {
-  console.log("initThreatMap called");
   var mapEl = document.getElementById("threatMap");
-  console.log("mapEl:", mapEl ? "found" : "null", "L:", typeof L);
   if (!mapEl || typeof L === "undefined") return;
 
   var map = L.map("threatMap", {
@@ -1242,17 +1240,9 @@ updateClock();
 updateGlobalClock();
 updateThreatZones();
 showZoneAlerts();
-window.addEventListener("load", function() {
-  setTimeout(function() {
-    try {
-      var el = document.getElementById("threatMap");
-      if (!el) { console.error("No #threatMap element"); return; }
-      if (typeof L === "undefined") { console.error("Leaflet not loaded"); return; }
-      initThreatMap();
-      console.log("Map initialized OK");
-    } catch(e) { console.error("Map init error:", e.message, e.stack); }
-  }, 1000);
-});
+setTimeout(function() {
+  try { initThreatMap(); } catch(e) { console.error("Map error:", e.message); }
+}, 1000);
 
 // Update time every second
 setInterval(updateClock, 1000);
