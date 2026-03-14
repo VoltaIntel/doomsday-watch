@@ -240,6 +240,21 @@ body {
 .threat-zones span { color: #2d333b; }
 .threat-zones .z-active { color: var(--white); }
 
+/* ===== PROBABILITY CHART ===== */
+.chart-section {
+  padding: 12px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.chart-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.chart-container canvas {
+  width: 100%;
+  height: 120px;
+}
+
 /* ===== TRACKER GRID ===== */
 .trackers-section {
   padding: 0 24px;
@@ -721,6 +736,14 @@ body {
     </div>
   </div>
 
+  <!-- PROBABILITY CHART -->
+  <div class="chart-section">
+    <div class="section-label">PROBABILITY HISTORY (48H)</div>
+    <div class="chart-container">
+      <canvas id="probChart" height="120"></canvas>
+    </div>
+  </div>
+
   <!-- TRACKERS -->
   <div class="trackers-section">
     <div class="section-label">CONFLICT TRACKERS</div>
@@ -1042,12 +1065,143 @@ function toggleSignals(el) {
   }
 }
 
+// ===== PROBABILITY CHART =====
+function drawProbChart() {
+  var canvas = document.getElementById("probChart");
+  if (!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var entries = state.history || [];
+  if (entries.length < 2) return;
+
+  var dpr = window.devicePixelRatio || 1;
+  var rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 120 * dpr;
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = "120px";
+  ctx.scale(dpr, dpr);
+
+  var W = rect.width;
+  var H = 120;
+  var padL = 30, padR = 10, padT = 10, padB = 20;
+  var chartW = W - padL - padR;
+  var chartH = H - padT - padB;
+
+  // Zone backgrounds
+  var zones = [
+    { max: 15, color: "rgba(0,230,118,0.06)" },
+    { max: 30, color: "rgba(255,170,0,0.06)" },
+    { max: 60, color: "rgba(255,170,0,0.08)" },
+    { max: 100, color: "rgba(255,45,45,0.06)" }
+  ];
+  var prevMax = 0;
+  zones.forEach(function(z) {
+    var y1 = padT + chartH * (1 - z.max / 100);
+    var y2 = padT + chartH * (1 - prevMax / 100);
+    ctx.fillStyle = z.color;
+    ctx.fillRect(padL, y1, chartW, y2 - y1);
+    prevMax = z.max;
+  });
+
+  // Zone threshold lines
+  [15, 30, 60].forEach(function(thresh) {
+    var y = padT + chartH * (1 - thresh / 100);
+    ctx.strokeStyle = "rgba(255,255,255,0.08)";
+    ctx.lineWidth = 0.5;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(padL + chartW, y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#484f58";
+    ctx.font = "8px 'Share Tech Mono', monospace";
+    ctx.fillText(thresh + "%", 2, y + 3);
+  });
+
+  // Draw lines for each tracker
+  var trackerColors = {
+    iran_conventional: "#ff2d2d",
+    israel_lebanon: "#ffaa00",
+    turkey: "#00d4ff",
+    russia_ukraine: "#448aff",
+    russia: "#448aff",
+    pakistan_afghanistan: "#ff6ec7",
+    north_korea: "#b388ff",
+    china: "#ff9100",
+    india: "#ff6ec7",
+    iran_nuke: "#00e676"
+  };
+
+  var trackerNames = {};
+  state.trackers.forEach(function(t) { trackerNames[t.id] = t.name; });
+
+  // Draw tracker lines (thin)
+  Object.keys(trackerColors).forEach(function(tid) {
+    ctx.beginPath();
+    var started = false;
+    entries.forEach(function(e, i) {
+      var val = (e.trackers || {})[tid];
+      if (val === undefined) return;
+      var x = padL + (i / (entries.length - 1)) * chartW;
+      var y = padT + chartH * (1 - val / 100);
+      if (!started) { ctx.moveTo(x, y); started = true; }
+      else ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = trackerColors[tid] + "40";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // Draw global line (thick, with glow)
+  ctx.shadowBlur = 6;
+  ctx.shadowColor = "rgba(255,45,45,0.4)";
+  ctx.beginPath();
+  var started = false;
+  entries.forEach(function(e, i) {
+    var x = padL + (i / (entries.length - 1)) * chartW;
+    var y = padT + chartH * (1 - (e.global || 0) / 100);
+    if (!started) { ctx.moveTo(x, y); started = true; }
+    else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = "#ff2d2d";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Current value dot
+  var last = entries[entries.length - 1];
+  var lastX = padL + chartW;
+  var lastY = padT + chartH * (1 - (last.global || 0) / 100);
+  ctx.beginPath();
+  ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+  ctx.fillStyle = "#ff2d2d";
+  ctx.fill();
+  ctx.fillStyle = "#e6edf3";
+  ctx.font = "bold 10px 'Share Tech Mono', monospace";
+  ctx.fillText((last.global || 0) + "%", lastX - 30, lastY - 8);
+
+  // Time labels
+  ctx.fillStyle = "#484f58";
+  ctx.font = "8px 'Share Tech Mono', monospace";
+  if (entries.length > 0) {
+    var firstTime = entries[0].timestamp || "";
+    var lastTime = entries[entries.length - 1].timestamp || "";
+    ctx.fillText(firstTime.substring(5, 16).replace("T", " "), padL, H - 4);
+    ctx.textAlign = "right";
+    ctx.fillText(lastTime.substring(5, 16).replace("T", " "), W - padR, H - 4);
+    ctx.textAlign = "left";
+  }
+}
+
 // ===== INIT =====
 renderTrackers();
 renderNews();
 updateClock();
 updateGlobalClock();
 updateThreatZones();
+drawProbChart();
+window.addEventListener("resize", drawProbChart);
 
 // Update time every second
 setInterval(updateClock, 1000);

@@ -240,6 +240,21 @@ body {
 .threat-zones span { color: #2d333b; }
 .threat-zones .z-active { color: var(--white); }
 
+/* ===== PROBABILITY CHART ===== */
+.chart-section {
+  padding: 12px 24px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.chart-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.chart-container canvas {
+  width: 100%;
+  height: 120px;
+}
+
 /* ===== TRACKER GRID ===== */
 .trackers-section {
   padding: 0 24px;
@@ -721,6 +736,14 @@ body {
     </div>
   </div>
 
+  <!-- PROBABILITY CHART -->
+  <div class="chart-section">
+    <div class="section-label">PROBABILITY HISTORY (48H)</div>
+    <div class="chart-container">
+      <canvas id="probChart" height="120"></canvas>
+    </div>
+  </div>
+
   <!-- TRACKERS -->
   <div class="trackers-section">
     <div class="section-label">CONFLICT TRACKERS</div>
@@ -782,7 +805,8 @@ const state = {
     { zone: "iran", time: "2026-03-14", text: "Council on Foreign Relations updates Iran war death toll to 1,800+ killed, including 8 US service members and at least 175 students killed by a reported US strike on an Iranian elementary school. 18,551+ injured. Humanitarian catastrophe deepening.", headline: "Global death toll from Iran war exceeds 1,800 including 8 US troops and 175 students at elementary school", impact: "up", sources: ["CFR", "NYT"], source_types: ["other"], confidence: "reported", severity: 3, signals: [] },
     { zone: "turkey", time: "2026-03-13", text: "NATO air defenses intercepted third Iranian ballistic missile over Turkey in 10 days. Sirens in Adana near Incirlik Air Base. Turkey asked Tehran to clarify. Iran denies targeting. Politico EU: one more intercept likely triggers Article 4 consultations.", headline: "NATO intercepts third Iranian ballistic missile over Turkey \u2014 one from Article 4", impact: "up", sources: ["Reuters", "NYT", "Politico EU"], source_types: ["other", "western"], confidence: "confirmed", severity: 2, signals: [{"name": "incirlik_targeted", "weight": 8}, {"name": "nato_third_intercept", "weight": 7}] },
     { zone: "china", time: "2026-03-13", text: "China's regular warplane flights near Taiwan dropped sharply from 92 to just 7 over the past two weeks. Analysts unsure if deliberate de-escalation or strategic patience while US overextends in ME. ISW notes PRC increased 2026 military budget simultaneously.", headline: "China warplane flights near Taiwan plunge from 92 to 7 in two weeks \u2014 analysts puzzled", impact: "down", sources: ["CNBC", "AP"], source_types: ["other", "western"], confidence: "reported", severity: 1, signals: [{"name": "china_reduced_flights", "weight": -3}] },
-  ]
+  ],
+  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}],
 };
 
 // ===== RENDER// ===== RENDER =====
@@ -1042,12 +1066,143 @@ function toggleSignals(el) {
   }
 }
 
+// ===== PROBABILITY CHART =====
+function drawProbChart() {
+  var canvas = document.getElementById("probChart");
+  if (!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var entries = state.history || [];
+  if (entries.length < 2) return;
+
+  var dpr = window.devicePixelRatio || 1;
+  var rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 120 * dpr;
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = "120px";
+  ctx.scale(dpr, dpr);
+
+  var W = rect.width;
+  var H = 120;
+  var padL = 30, padR = 10, padT = 10, padB = 20;
+  var chartW = W - padL - padR;
+  var chartH = H - padT - padB;
+
+  // Zone backgrounds
+  var zones = [
+    { max: 15, color: "rgba(0,230,118,0.06)" },
+    { max: 30, color: "rgba(255,170,0,0.06)" },
+    { max: 60, color: "rgba(255,170,0,0.08)" },
+    { max: 100, color: "rgba(255,45,45,0.06)" }
+  ];
+  var prevMax = 0;
+  zones.forEach(function(z) {
+    var y1 = padT + chartH * (1 - z.max / 100);
+    var y2 = padT + chartH * (1 - prevMax / 100);
+    ctx.fillStyle = z.color;
+    ctx.fillRect(padL, y1, chartW, y2 - y1);
+    prevMax = z.max;
+  });
+
+  // Zone threshold lines
+  [15, 30, 60].forEach(function(thresh) {
+    var y = padT + chartH * (1 - thresh / 100);
+    ctx.strokeStyle = "rgba(255,255,255,0.08)";
+    ctx.lineWidth = 0.5;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(padL + chartW, y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#484f58";
+    ctx.font = "8px 'Share Tech Mono', monospace";
+    ctx.fillText(thresh + "%", 2, y + 3);
+  });
+
+  // Draw lines for each tracker
+  var trackerColors = {
+    iran_conventional: "#ff2d2d",
+    israel_lebanon: "#ffaa00",
+    turkey: "#00d4ff",
+    russia_ukraine: "#448aff",
+    russia: "#448aff",
+    pakistan_afghanistan: "#ff6ec7",
+    north_korea: "#b388ff",
+    china: "#ff9100",
+    india: "#ff6ec7",
+    iran_nuke: "#00e676"
+  };
+
+  var trackerNames = {};
+  state.trackers.forEach(function(t) { trackerNames[t.id] = t.name; });
+
+  // Draw tracker lines (thin)
+  Object.keys(trackerColors).forEach(function(tid) {
+    ctx.beginPath();
+    var started = false;
+    entries.forEach(function(e, i) {
+      var val = (e.trackers || {})[tid];
+      if (val === undefined) return;
+      var x = padL + (i / (entries.length - 1)) * chartW;
+      var y = padT + chartH * (1 - val / 100);
+      if (!started) { ctx.moveTo(x, y); started = true; }
+      else ctx.lineTo(x, y);
+    });
+    ctx.strokeStyle = trackerColors[tid] + "40";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+
+  // Draw global line (thick, with glow)
+  ctx.shadowBlur = 6;
+  ctx.shadowColor = "rgba(255,45,45,0.4)";
+  ctx.beginPath();
+  var started = false;
+  entries.forEach(function(e, i) {
+    var x = padL + (i / (entries.length - 1)) * chartW;
+    var y = padT + chartH * (1 - (e.global || 0) / 100);
+    if (!started) { ctx.moveTo(x, y); started = true; }
+    else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = "#ff2d2d";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Current value dot
+  var last = entries[entries.length - 1];
+  var lastX = padL + chartW;
+  var lastY = padT + chartH * (1 - (last.global || 0) / 100);
+  ctx.beginPath();
+  ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+  ctx.fillStyle = "#ff2d2d";
+  ctx.fill();
+  ctx.fillStyle = "#e6edf3";
+  ctx.font = "bold 10px 'Share Tech Mono', monospace";
+  ctx.fillText((last.global || 0) + "%", lastX - 30, lastY - 8);
+
+  // Time labels
+  ctx.fillStyle = "#484f58";
+  ctx.font = "8px 'Share Tech Mono', monospace";
+  if (entries.length > 0) {
+    var firstTime = entries[0].timestamp || "";
+    var lastTime = entries[entries.length - 1].timestamp || "";
+    ctx.fillText(firstTime.substring(5, 16).replace("T", " "), padL, H - 4);
+    ctx.textAlign = "right";
+    ctx.fillText(lastTime.substring(5, 16).replace("T", " "), W - padR, H - 4);
+    ctx.textAlign = "left";
+  }
+}
+
 // ===== INIT =====
 renderTrackers();
 renderNews();
 updateClock();
 updateGlobalClock();
 updateThreatZones();
+drawProbChart();
+window.addEventListener("resize", drawProbChart);
 
 // Update time every second
 setInterval(updateClock, 1000);

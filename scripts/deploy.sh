@@ -228,6 +228,23 @@ else:
     with open("data/signal_timeline.json", "w") as tf:
         json.dump(timeline, tf, indent=2)
 
+    # Append to probability history
+    try:
+        with open("data/probability_history.json") as hf:
+            history = json.load(hf)
+    except:
+        history = {"entries": []}
+    history["entries"].append({
+        "timestamp": now_iso,
+        "global": gp,
+        "zone": tz,
+        "trackers": {t["id"]: t["prob"] for t in trackers_js}
+    })
+    # Keep last 336 entries (2 weeks at hourly)
+    history["entries"] = history["entries"][-336:]
+    with open("data/probability_history.json", "w") as hf:
+        json.dump(history, hf, indent=2)
+
     with open("data/current_state.json", "w") as sf:
         json.dump(state, sf, indent=2)
 
@@ -251,7 +268,11 @@ else:
         src_types = json.dumps(n.get("source_types",[]))
         sigs = json.dumps(n.get("signals",[]))
         lines.append('    { zone: "' + n.get("zone","") + '", time: "' + n.get("time","") + '", text: ' + txt + ', headline: ' + hl + ', impact: "' + n.get("impact","neutral") + '", sources: ' + src + ', source_types: ' + src_types + ', confidence: "' + n.get("confidence","developing") + '", severity: ' + str(n.get("severity",1)) + ', signals: ' + sigs + ' },')
-    lines.append("  ]")
+    lines.append("  ],")
+    # Add probability history (last 48 entries for chart)
+    hist_entries = history["entries"][-48:]
+    hist_js = json.dumps(hist_entries)
+    lines.append("  history: " + hist_js + ",")
     lines.append("};")
     lines.append("")
     lines.append("// ===== RENDER")
