@@ -612,30 +612,30 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-14T00:00:00Z",
-  global_war_probability: 43,
+  last_updated: "2026-03-14T00:04:00Z",
+  global_war_probability: 44,
   global_zone: "critical",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 10, zone: "deterrent", trend: "falling", signals: ["enrichment_60", "iaea_access_denied", "buried_isfahan", "nuclear_scientists_killed"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 78, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "us_crew_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric", "tehran_rally_strike", "regime_targets_struck", "hormuz_mining", "navy_escort_committed", "ship_attacks", "dubai_struck", "marine_expeditionary_deploy"] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 82, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "us_troops_killed", "us_crew_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric", "tehran_rally_strike", "regime_targets_struck", "hormuz_mining", "navy_escort_committed", "ship_attacks", "dubai_struck", "marine_expeditionary_deploy"] },
     { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 82, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "gaza_scale_threat", "infrastructure_destruction"] },
     { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 36, zone: "critical", trend: "rising", signals: ["turkey_israel_tensions", "eastern_med_naval", "turkish_mobilization", "nato_third_intercept", "incirlik_targeted"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 7, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 8, zone: "deterrent", trend: "stable", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 13, zone: "deterrent", trend: "stable", signals: ["us_taiwan_arms_package", "china_reduced_flights"] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "stable", signals: ["dprk_missile_test", "dprk_rhetoric"] },
-    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 27, zone: "elevated", trend: "rising", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine"] },
+    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 28, zone: "elevated", trend: "rising", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine", "trump_deal_stalling"] },
     { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 24, zone: "elevated", trend: "stable", signals: ["initial_conflict", "escalating", "international_involvement"] },
   ],
   news: [
-    { zone: "iran", time: "2026-03-13", text: "Iranian drones struck Dubai — Dubai Creek Harbour tower damaged, Dubai International Airport hit. UAE directly struck for the first time. Major escalation beyond Hormuz/Gulf shipping.", impact: "up" },
-    { zone: "israel_lebanon", time: "2026-03-13", text: "Israel destroyed Zrarieh Bridge over Litani River — first承认 civilian infrastructure strike. Katz threatened 'increasing costs through damage to infrastructure and loss of territory.' Leaflets over Beirut warn of Gaza-scale destruction. 773 now killed in Lebanon.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Gulf states absorbing massive Iranian retaliation. Bahrain: 114 missiles + 190 drones intercepted. Saudi Arabia: 38 drones intercepted over eastern region. Two killed in Oman by drones. Iran war now Gulf-wide.", impact: "up" },
-    { zone: "turkey", time: "2026-03-13", text: "NATO air defences shot down third Iranian ballistic missile over Turkey. New detail: missile targeted vicinity of Incirlik Air Base which houses US B61 nuclear weapons. Adana sirens 3:25am. Turkey demands Tehran clarify. Spain's Patriot crews detected first missile.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "US deploying Marine expeditionary unit (~2,200 personnel) from Okinawa, Japan to Middle East for operations and potential evacuations. Force posture escalation — drawing down Pacific assets.", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Senior Trump officials told lawmakers in classified briefings they did not plan for Hormuz closure. Former officials 'dumbfounded' — preventing this was 'bedrock principle of US national security policy for decades.'", impact: "up" },
-    { zone: "iran", time: "2026-03-13", text: "Iran Health Ministry: 1,444 killed, 18,551 injured in US-Israel attacks since Feb 28. Ages 8 months to 88. Hegseth says Mojtaba Khamenei 'wounded and likely disfigured.' Trump calls killed leaders 'deranged scumbags.'", impact: "up" },
-    { zone: "iran", time: "2026-03-12", text: "US Air Force KC-135 Stratotanker crashed in western Iraq. All 6 crew killed. CENTCOM says not due to hostile or friendly fire — mid-air collision with another aircraft reported. Operational strain from sustained ME operations.", impact: "up" },
+    { zone: "iran", time: "2026-03-14", text: "Trump: 'Obliterated every military target on Iran's crown jewel, Kharg Island.' Oil infrastructure deliberately spared. Threat: 'Should Iran or anyone interfere with free passage through Strait of Hormuz, I will [destroy oil].' Kharg handles ~90% of Iran's oil exports. Biggest single strike on Iranian territory.", impact: "up" },
+    { zone: "iran", time: "2026-03-14", text: "Iran fired fresh round of missiles toward Israel just after midnight Saturday (Tehran time). Israeli rescue workers report no casualties. Iran state media confirmed launch.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "UAE air defenses intercepted 10 ballistic missiles and 26 drones on Thursday. Shahed drone struck near Fairmont The Palm Hotel on Palm Jumeirah causing fire and blast damage. Dubai Creek Harbour hotel residence also struck. DIFC area hit. Life in Dubai described as 'functioning but tense' (CNBC).", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "New Supreme Leader Mojtaba Khamenei reaffirmed Iran will continue blocking Strait of Hormuz and may open 'additional fronts where the enemy is extremely vulnerable.' Did not specify what fronts.", impact: "up" },
+    { zone: "iran", time: "2026-03-13", text: "More than 1,000 cargo ships, mainly oil and gas tankers, blocked from transiting Strait of Hormuz. Tehran effectively controls the world's most important oil transit point.", impact: "up" },
+    { zone: "turkey", time: "2026-03-13", text: "Western officials now confirm first missile (March 4) targeted Incirlik base which houses US B61 nuclear weapons. Second missile (March 9) entered Turkish airspace. Third (March 13) neutralized by NATO. Turkey demands Tehran clarify.", impact: "up" },
+    { zone: "iran", time: "2026-03-12", text: "20 people charged in UAE under cybercrime laws for filming and posting material related to Iranian attacks. British man among them. UAE using strict cybercrime legislation to control war narrative.", impact: "neutral" },
+    { zone: "china", time: "2026-03-13", text: "US military commanders flag concern that sustained Iran operations are depleting weapons stockpiles and pulling forces from Pacific. 2,200 Marines redeployed from Okinawa to ME. Potential force posture gaps affecting Taiwan/China deterrent.", impact: "up" },
   ]
 };
 
