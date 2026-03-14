@@ -82,13 +82,19 @@ news_js = state.get("latest_news", [
 # Source type classification
 SOURCE_TYPES = {
     "western": ["reuters", "apnews", "ap news", "bbc", "nytimes", "new york times",
-                "washington post", "theguardian", "guardian", "cbs", "politico", "cnn", "fox"],
+                "washington post", "theguardian", "guardian", "cbs", "politico", "cnn", "fox",
+                "bloomberg", "cnbc", "axios", "wapo", "afp", "getty", "wp ", "jpost",
+                "israeli news", "times of israel", "japan times", "the hindu", "isw", "aei"],
     "arabic": ["aljazeera", "al jazeera", "middleeasteye", "middle east eye",
-               "farsnews", "fars", "al arabiya", "alarabiya", "sabreen"],
-    "russian": ["tass", "rt.com", "ria novosti", "interfax", "sputnik"],
-    "chinese": ["scmp", "south china", "xinhua", "global times", "cgtn", "china daily"],
-    "israeli": ["timesofisrael", "times of israel", "haaretz", "jerusalem post", "ynet"],
-    "official": ["nato", "pentagon", "white house", "kremlin", "un ", "iaea", "doe", "state dept"],
+               "farsnews", "fars", "al arabiya", "alarabiya", "sabreen", "al araby",
+               "iraq news", "iran international", "isna", "irna", "tasnim"],
+    "russian": ["tass", "rt.com", "ria novosti", "interfax", "sputnik", "izvestia", "kommersant"],
+    "chinese": ["scmp", "south china", "xinhua", "global times", "cgtn", "china daily", "sixth tone"],
+    "israeli": ["timesofisrael", "times of israel", "haaretz", "jerusalem post",
+                "jpost", "ynet", "israel hayom", "maariv"],
+    "official": ["nato", "pentagon", "white house", "kremlin", "un ", "iaea", "doe",
+                 "state dept", "downing street", "eyelyse palace", "bundestag", "kremlin.ru",
+                 "iran health ministry", "jcs", "idf"],
 }
 
 def classify_source(source_str):
@@ -105,13 +111,16 @@ def find_matching_signals(text, tid):
     matched = []
     for sname, scfg in cfg.get("trackers", {}).get(tid, {}).get("signals", {}).items():
         desc = scfg.get("description", "").lower()
-        # Extract key terms from signal description
-        terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").split() if len(t) > 4]
-        # Also use the signal name itself
-        name_terms = [t for t in sname.lower().replace("_", " ").split() if len(t) > 3]
-        all_terms = terms + name_terms
-        matches = sum(1 for t in all_terms if t in text_lower)
-        if matches >= 2 or sname.lower().replace("_", " ") in text_lower:
+        # Use signal name (converted to readable form) as primary match
+        name_readable = sname.lower().replace("_", " ")
+        if name_readable in text_lower:
+            weight = signal_weights.get((tid, sname), 0)
+            matched.append({"name": sname, "weight": weight})
+            continue
+        # Extract 2+ key phrases from description (4+ chars)
+        terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").replace(".", "").split() if len(t) > 4]
+        matches = sum(1 for t in set(terms) if t in text_lower)
+        if matches >= 3:
             weight = signal_weights.get((tid, sname), 0)
             matched.append({"name": sname, "weight": weight})
     return matched

@@ -821,7 +821,7 @@ function renderTrackers() {
 
     card.innerHTML = `
       <div class="tracker-header">
-        <div class="tracker-name"><span class="tracker-emoji">${t.emoji}</span>${t.name}</div>
+        <div class="tracker-name" onclick="filterByZone('${t.id}')" style="cursor:pointer" title="Click to filter intelligence feed"><span class="tracker-emoji">${t.emoji}</span>${t.name}</div>
       </div>
       <div class="tracker-prob ${t.zone}">${t.prob}%</div>
       <div class="tracker-zone ${t.zone}">${t.zone.toUpperCase()}</div>
