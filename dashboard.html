@@ -612,29 +612,31 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-14T02:04:00Z",
-  global_war_probability: 46,
+  last_updated: "2026-03-14T05:00:00Z",
+  global_war_probability: 83,
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 10, zone: "deterrent", trend: "falling", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "IAEA DENIED"] },
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 86, zone: "imminent", trend: "rising", signals: ["KHARG DESTROYED", "OIL THREAT", "HORMUZ BLOCKED", "DUBAI STRUCK", "1444 DEAD", "GULF-WIDE WAR", "KC-135 CRASH"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 82, zone: "imminent", trend: "rising", signals: ["GAZA-SCALE THREAT", "773 KILLED", "BRIDGE DESTROYED", "BEIRUT BOMBED", "INFRASTRUCTURE HIT"] },
-    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 36, zone: "critical", trend: "rising", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE"] },
-    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 13, zone: "deterrent", trend: "rising", signals: ["IRAN ARMS", "SANCTIONS LIFTED", "EU FURIOUS"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 14, zone: "deterrent", trend: "rising", signals: ["$14B ARMS DEAL", "BUDGET HIKE", "TAIWAN RHETORIC"] },
-    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "stable", signals: ["CRUISE MISSILE TEST", "NUCLEAR RHETORIC"] },
-    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 30, zone: "elevated", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "SANCTIONS LIFTED", "TALKS STALLED"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 24, zone: "elevated", trend: "stable", signals: ["OPEN WAR", "AIRSTRIKES", "BORDER FIGHTING"] }
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "DUBAI STRUCK", "1444 DEAD", "GULF-WIDE WAR", "KC-135×6 LOST", "SAUDI BASE HIT", "500+ MISSILES"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "1M DISPLACED", "773+ KILLED", "BEIRUT BOMBED", "BRIDGE HIT", "GAZA-SCALE"] },
+    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 59, zone: "critical", trend: "rising", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
+    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 45, zone: "critical", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "TALKS STALLED", "OIL BOOSTS RU"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 36, zone: "critical", trend: "rising", signals: ["CIVILIAN STRIKES", "BORDER CLASHES", "ESCALATING", "6 KILLED", "INDIA CONDEMNS"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 38, zone: "critical", trend: "rising", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "UN CLASH", "CEASEFARE COLLAPSE"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 14, zone: "elevated", trend: "falling", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "IAEA DENIED"] },
+    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 22, zone: "elevated", trend: "rising", signals: ["BALLISTIC MISSILE", "JAPAN CONDEMNED", "GUN PRACTICE"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 18, zone: "deterrent", trend: "rising", signals: ["$14B ARMS DEAL", "THAAD REDepLOYED", "5 WARPLANES", "ME GAP"] },
+    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 20, zone: "elevated", trend: "stable", signals: ["MODI CONCERN", "KASHMIR WATCH", "OIL IMPACT"] }
   ],
   news: [
-    { zone: "iran", time: "1H", text: "KHARG ISLAND DESTROYED — US 'totally obliterated' every military target. 2hrs nonstop explosions. Trump threatens oil infrastructure next.", impact: "up" },
-    { zone: "russia", time: "2H", text: "US issues formal sanctions license for Russian crude through Apr 11. European allies furious — Macron, Merz demand accountability.", impact: "up" },
-    { zone: "iran", time: "3H", text: "IEA releases record 400M barrel strategic reserve. Canada contributes 23.6M barrels. Largest coordinated oil release in history.", impact: "up" },
-    { zone: "iran", time: "3H", text: "Netanyahu press conference: threatens Khamenei + Hezbollah, says regime toppled 'from within.' First since war began.", impact: "up" },
-    { zone: "iran", time: "4H", text: "US KC-135 refueling plane crashes in Iraq. Additional US military losses. Crew status pending.", impact: "up" },
-    { zone: "turkey", time: "5H", text: "Third Iranian missile intercept confirmed — NATO spokeswoman Hart. March 4 missile targeted Incirlik (houses US B61 nuclear weapons).", impact: "up" },
-    { zone: "iran", time: "6H", text: "Dubai: 21 charged under cybercrime laws for posting missile strike videos. UAE cracking down on war information.", impact: "up" },
-    { zone: "china", time: "8H", text: "China increases military budget, escalates Taiwan rhetoric per ISW/AEI. Pacific force gaps widening as US assets shift to ME.", impact: "up" }
+    { zone: "iran", time: "1H", text: "KHARG ISLAND BOMBED — US 'obliterated' military targets at Iran's main oil export hub. 15+ explosions. Oil infrastructure spared BUT threatened. Iran warns 'new level of retaliation.'", impact: "up" },
+    { zone: "iran", time: "2H", text: "6 US SERVICE MEMBERS KILLED — KC-135 crashes in Iraq. Combined with 5 KC-135s damaged at Prince Sultan Air Base = devastating US air refueling fleet losses.", impact: "up" },
+    { zone: "lebanon", time: "3H", text: "ISRAEL ORDERS 25-MILE EVACUATION — all residents near border told north. ~1 MILLION DISPLACED. Strikes hit heart of Beirut. Ground invasion confirmed imminent.", impact: "up" },
+    { zone: "north_korea", time: "4H", text: "DPRK LAUNCHES BALLISTIC MISSILE — Japan confirms, projectile already fallen. Second test this cycle. KCNA condemns Japan missile deployment.", impact: "up" },
+    { zone: "turkey", time: "5H", text: "THIRD IRANIAN MISSILE INTERCEPT over Turkey — NATO confirms. 3 in 10 days. Iran denies targeting, calls 'false flag.' One more triggers Article 4.", impact: "up" },
+    { zone: "iran", time: "6H", text: "IRAN ARMED FORCES threaten to destroy US-linked oil infrastructure — first explicit threat targeting US commercial energy interests.", impact: "up" },
+    { zone: "china", time: "7H", text: "US THAAD REDEPLOYED FROM SOUTH KOREA to Middle East — Asia defense gap widens. China warplanes resume Taiwan flights after 7-day lull (5 detected).", impact: "up" },
+    { zone: "russia_ukraine", time: "8H", text: "RUSSIA-UKRAINE CEASEFAIRE at 2% on Polymarket — effectively dead. Iran oil shock benefits Russian war economy. Talks frozen by war.", impact: "up" },
+    { zone: "pakistan_afghanistan", time: "9H", text: "PAKISTAN AIRSTRIKES kill 6 Afghan civilians. Afghanistan accuses Pakistan of 'targeting civilians.' Border clashes escalating. India condemns.", impact: "up" },
+    { zone: "iran", time: "10H", text: "NEW SUPREME LEADER Mojtaba Khamenei vows to keep blocking Strait of Hormuz. Oil stays above $100/bbl. Goldman: $100+ avg for March.", impact: "up" }
   ]
 };
 
