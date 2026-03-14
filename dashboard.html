@@ -1319,7 +1319,7 @@ function drawProbChart() {
   canvas.style.height = "120px";
   ctx.scale(dpr, dpr);
 
-  var W = rect.width;
+  var W = rect.width || canvas.clientWidth || 350;
   var H = 120;
   var padL = 30, padR = 10, padT = 10, padB = 20;
   var chartW = W - padL - padR;
@@ -1438,10 +1438,17 @@ renderNews();
 updateClock();
 updateGlobalClock();
 updateThreatZones();
-drawProbChart();
-window.addEventListener("resize", drawProbChart);
+updateThreatZones();
 showZoneAlerts();
-drawThreatMap();
+// Delay chart/map render to let mobile layout settle
+setTimeout(function() {
+  drawProbChart();
+  drawThreatMap();
+}, 100);
+window.addEventListener("resize", function() {
+  drawProbChart();
+  drawThreatMap();
+});
 
 // Update time every second
 setInterval(updateClock, 1000);
