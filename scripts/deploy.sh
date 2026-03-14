@@ -79,6 +79,91 @@ news_js = state.get("latest_news", [
     {"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}
 ])
 
+# Source type classification
+SOURCE_TYPES = {
+    "western": ["reuters", "apnews", "ap news", "bbc", "nytimes", "new york times",
+                "washington post", "theguardian", "guardian", "cbs", "politico", "cnn", "fox"],
+    "arabic": ["aljazeera", "al jazeera", "middleeasteye", "middle east eye",
+               "farsnews", "fars", "al arabiya", "alarabiya", "sabreen"],
+    "russian": ["tass", "rt.com", "ria novosti", "interfax", "sputnik"],
+    "chinese": ["scmp", "south china", "xinhua", "global times", "cgtn", "china daily"],
+    "israeli": ["timesofisrael", "times of israel", "haaretz", "jerusalem post", "ynet"],
+    "official": ["nato", "pentagon", "white house", "kremlin", "un ", "iaea", "doe", "state dept"],
+}
+
+def classify_source(source_str):
+    sl = source_str.lower()
+    for stype, keywords in SOURCE_TYPES.items():
+        for kw in keywords:
+            if kw in sl:
+                return stype
+    return "other"
+
+def find_matching_signals(text, tid):
+    """Find which signals this news article likely triggered based on keywords."""
+    text_lower = text.lower()
+    matched = []
+    for sname, scfg in cfg.get("trackers", {}).get(tid, {}).get("signals", {}).items():
+        desc = scfg.get("description", "").lower()
+        # Extract key terms from signal description
+        terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").split() if len(t) > 4]
+        # Also use the signal name itself
+        name_terms = [t for t in sname.lower().replace("_", " ").split() if len(t) > 3]
+        all_terms = terms + name_terms
+        matches = sum(1 for t in all_terms if t in text_lower)
+        if matches >= 2 or sname.lower().replace("_", " ") in text_lower:
+            weight = signal_weights.get((tid, sname), 0)
+            matched.append({"name": sname, "weight": weight})
+    return matched
+
+def calc_severity(impact, text):
+    """Calculate 1-5 severity based on impact and keywords."""
+    text_lower = text.lower()
+    severity = 2 if impact == "up" else 1 if impact == "down" else 1
+    # Boost for major keywords
+    if any(w in text_lower for w in ["nuclear", "obliterated", "destroyed", "massive", "record"]):
+        severity = min(5, severity + 2)
+    elif any(w in text_lower for w in ["killed", "strikes", "attack", "crash", "invasion"]):
+        severity = min(5, severity + 1)
+    return min(5, max(1, severity))
+
+def calc_confidence(sources_count):
+    """Confidence tier based on number of independent sources."""
+    if sources_count >= 3: return "confirmed"
+    if sources_count >= 2: return "reported"
+    return "developing"
+
+# Enrich news items
+enriched_news = []
+for n in news_js[:10]:
+    sources = []
+    if isinstance(n.get("source"), str):
+        sources = [s.strip() for s in n["source"].split("/")]
+    elif isinstance(n.get("sources"), list):
+        sources = n["sources"]
+    elif isinstance(n.get("source"), list):
+        sources = n["source"]
+
+    source_types = list(set(classify_source(s) for s in sources))
+    full_text = (n.get("headline", "") + " " + n.get("text", ""))
+    zone = n.get("zone", "")
+    zone_signals = find_matching_signals(full_text, zone) if zone else []
+
+    enriched_news.append({
+        "zone": zone,
+        "time": n.get("time", ""),
+        "text": n.get("text", n.get("headline", "")),
+        "headline": n.get("headline", ""),
+        "impact": n.get("impact", "neutral"),
+        "sources": sources,
+        "source_types": source_types,
+        "confidence": calc_confidence(len(sources)),
+        "severity": calc_severity(n.get("impact", "neutral"), full_text),
+        "signals": zone_signals
+    })
+
+news_js = enriched_news
+
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
 end = html.find("// ===== RENDER", start)
@@ -151,7 +236,12 @@ else:
     lines.append("  ],")
     lines.append("  news: [")
     for n in news_js[:10]:
-        lines.append('    { zone: "' + n.get("zone","") + '", time: "' + n.get("time","") + '", text: "' + n.get("text","").replace('"',"'") + '", impact: "' + n.get("impact","neutral") + '" },')
+        txt = json.dumps(n.get("text",""))  # safe JSON encoding
+        hl = json.dumps(n.get("headline",""))
+        src = json.dumps(n.get("sources",[]))
+        src_types = json.dumps(n.get("source_types",[]))
+        sigs = json.dumps(n.get("signals",[]))
+        lines.append('    { zone: "' + n.get("zone","") + '", time: "' + n.get("time","") + '", text: ' + txt + ', headline: ' + hl + ', impact: "' + n.get("impact","neutral") + '", sources: ' + src + ', source_types: ' + src_types + ', confidence: "' + n.get("confidence","developing") + '", severity: ' + str(n.get("severity",1)) + ', signals: ' + sigs + ' },')
     lines.append("  ]")
     lines.append("};")
     lines.append("")

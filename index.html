@@ -394,39 +394,133 @@ body {
   scrollbar-color: var(--border) transparent;
 }
 
-.news-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #161b22;
-  animation: slideUp 0.4s ease both;
+/* ===== INTELLIGENCE FEED ===== */
+.news-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-btn {
+  font-size: 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  background: transparent;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-family: var(--mono);
+  transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0,212,255,0.08);
+}
+.filter-btn.active-zone {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(255,45,45,0.08);
 }
 
+.time-block {
+  margin-bottom: 8px;
+}
+.time-block-label {
+  font-size: 8px;
+  color: var(--dim);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-bottom: 1px dashed #1a1e24;
+}
+
+.news-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #161b22;
+  animation: slideUp 0.4s ease both;
+  cursor: default;
+}
+.news-item:hover {
+  background: rgba(255,255,255,0.015);
+}
 .news-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
+  align-items: center;
+  margin-bottom: 3px;
+  gap: 6px;
 }
+.news-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.news-severity {
+  font-size: 8px;
+  letter-spacing: 0;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.news-severity.sev1 { background: rgba(0,230,118,0.15); color: var(--green); }
+.news-severity.sev2 { background: rgba(255,170,0,0.15); color: var(--amber); }
+.news-severity.sev3 { background: rgba(255,170,0,0.25); color: var(--amber); }
+.news-severity.sev4 { background: rgba(255,45,45,0.2); color: var(--red); }
+.news-severity.sev5 { background: rgba(255,45,45,0.35); color: var(--red); }
 
 .news-zone {
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 2px;
-  padding: 2px 6px;
+  padding: 1px 5px;
   border: 1px solid var(--border);
   color: var(--dim);
   white-space: nowrap;
 }
-
-.news-zone.iran { border-color: var(--red); color: var(--red); }
-.news-zone.lebanon { border-color: var(--amber); color: var(--amber); }
+.news-zone.iran, .news-zone.iran_conventional, .news-zone.iran_nuke { border-color: var(--red); color: var(--red); }
+.news-zone.israel_lebanon, .news-zone.lebanon { border-color: var(--amber); color: var(--amber); }
 .news-zone.turkey { border-color: var(--cyan); color: var(--cyan); }
-.news-zone.india { border-color: #ff6ec7; color: #ff6ec7; }
-.news-zone.russia { border-color: var(--blue); color: var(--blue); }
+.news-zone.india, .news-zone.pakistan_afghanistan { border-color: #ff6ec7; color: #ff6ec7; }
+.news-zone.russia, .news-zone.russia_ukraine { border-color: var(--blue); color: var(--blue); }
 .news-zone.china { border-color: #ff9100; color: #ff9100; }
+.news-zone.north_korea { border-color: #b388ff; color: #b388ff; }
 .news-zone.global { border-color: var(--white); color: var(--white); }
 
+.news-confidence {
+  font-size: 7px;
+  padding: 1px 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.news-confidence.confirmed { color: var(--green); border: 1px solid var(--green); background: rgba(0,230,118,0.08); }
+.news-confidence.reported { color: var(--amber); border: 1px solid var(--amber); background: rgba(255,170,0,0.08); }
+.news-confidence.developing { color: var(--dim); border: 1px solid var(--border); }
+
 .news-time {
-  font-size: 9px;
+  font-size: 8px;
   color: var(--dim);
+  white-space: nowrap;
+}
+
+.news-sources {
+  font-size: 8px;
+  color: #484f58;
+  margin: 2px 0;
+}
+.news-sources a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+.news-sources a:hover {
+  text-decoration: underline;
 }
 
 .news-text {
@@ -437,15 +531,46 @@ body {
   word-break: break-word;
 }
 
+.news-signals-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 4px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.news-item.expanded .news-signals-row {
+  max-height: 100px;
+}
+.news-signal-tag {
+  font-size: 7px;
+  padding: 1px 4px;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+.news-signal-tag.neg { border-color: rgba(0,230,118,0.4); color: var(--green); background: rgba(0,230,118,0.06); }
+.news-signal-tag.pos { border-color: rgba(255,45,45,0.4); color: var(--red); background: rgba(255,45,45,0.06); }
+
 .news-impact {
   font-size: 9px;
-  margin-top: 4px;
   font-weight: bold;
 }
-
 .news-impact.up { color: var(--red); }
 .news-impact.down { color: var(--green); }
 .news-impact.neutral { color: var(--dim); }
+
+.news-expand-btn {
+  font-size: 8px;
+  color: var(--dim);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--mono);
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+.news-expand-btn:hover { color: var(--cyan); }
 
 /* ===== CLOCK SECTION (mini) ===== */
 .clock-mini {
@@ -607,6 +732,15 @@ body {
   <!-- NEWS FEED -->
   <div class="news-section">
     <div class="section-label">INTELLIGENCE FEED</div>
+    <div class="news-filter-bar" id="newsFilterBar">
+      <button class="filter-btn active" data-filter="all" onclick="filterNews('all', this)">ALL</button>
+      <button class="filter-btn" data-filter="confirmed" onclick="filterNews('confidence:confirmed', this)">✓ CONFIRMED</button>
+      <button class="filter-btn" data-filter="developing" onclick="filterNews('confidence:developing', this)">● DEVELOPING</button>
+      <button class="filter-btn" data-filter="western" onclick="filterNews('source:western', this)">WESTERN</button>
+      <button class="filter-btn" data-filter="arabic" onclick="filterNews('source:arabic', this)">ARABIC</button>
+      <button class="filter-btn" data-filter="russian" onclick="filterNews('source:russian', this)">RUSSIAN</button>
+      <button class="filter-btn" data-filter="chinese" onclick="filterNews('source:chinese', this)">CHINESE</button>
+    </div>
     <div class="news-feed" id="newsFeed">
       <!-- Populated by JS -->
     </div>
@@ -638,15 +772,15 @@ const state = {
     { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 71, zone: "imminent", trend: "rising", signals: [{"name": "nuclear_escalation", "positive": false, "activated_at": "2026-03-14T08:15:00Z"}, {"name": "international_involvement", "positive": false, "activated_at": "2026-03-14T08:12:00Z"}, {"name": "taliban_retaliation", "positive": false, "activated_at": "2026-03-14T08:09:00Z"}, {"name": "border_clashes", "positive": false, "activated_at": "2026-03-14T08:06:00Z"}, {"name": "pakistan_airstrikes_civilians", "positive": false, "activated_at": "2026-03-14T08:03:00Z"}, {"name": "open_war_declared", "positive": false, "activated_at": "2026-03-14T08:00:00Z"}] },
   ],
   news: [
-    { zone: "china", time: "2026-03-13", text: "China's regular warplane flights near Taiwan dropped sharply from 92 to just 7 over the past two weeks — the sharpest decline in years. Analysts unsure if this is deliberate de-escalation, strategic patience while US overextends in Iran, or operational reorganization. ISW notes PRC increased 2026 military budget simultaneously.", impact: "down" },
-    { zone: "iran", time: "2026-03-14", text: "Kataib Hezbollah claimed missile strike on US Embassy Baghdad, hitting helipad and C-RAM interception system. Smoke rising from compound. Iraqi security sources confirm damage. Iran-backed militia released video of strike. Major escalation — direct attack on US diplomatic facility in theater.", impact: "up" },
-    { zone: "iran", time: "2026-03-14", text: "Iran announced it would retaliate by immediately attacking 'all oil, energy and economic infrastructure of oil companies across the region that have American stock shares or cooperate with America.' Broadest threat yet — targets Gulf state assets (UAE, Qatar, Saudi, Bahrain, Kuwait) beyond Iranian territory.", impact: "up" },
-    { zone: "pakistan_afghanistan", time: "2026-03-14", text: "Pakistan President Asif Ali Zardari declared Afghan Taliban 'crossed a red line' by launching drone attacks on civilian targets in Pakistan. Military says 'rudimentary drones' targeted Abbottabad, Swabi, Nowshera — all foiled. Reinforces open war status.", impact: "up" },
-    { zone: "north_korea", time: "2026-03-14", text: "North Korea fired approximately 10 ballistic missiles from its western coast Saturday morning. Japan confirms projectiles traveled ~340km into Sea of Japan outside Japan EEZ. Coordinated salvo during US-South Korea joint drills. Third provocation this week. South Korea JCS calls it unprecedented pace.", impact: "up" },
-    { zone: "israel_lebanon", time: "2026-03-14", text: "Israel planning large-scale ground operation in Lebanon to dismantle Hezbollah infrastructure south of Litani. US and Israeli officials confirm. 'We are going to do what we did in Gaza.' Agreed to spare Beirut airport but not other infrastructure. 773+ killed in Lebanon, 800K-1M displaced.", impact: "up" },
-    { zone: "turkey", time: "2026-03-13", text: "NATO air defenses intercepted third Iranian ballistic missile over Turkey in 10 days. Sirens in Adana near Incirlik Air Base. Turkey asked Tehran to clarify. Iran denies targeting. Politico EU: one more intercept likely triggers Article 4 consultations. Spain's Patriot crews at Incirlik confirmed detection.", impact: "up" },
-    { zone: "russia", time: "2026-03-13", text: "ISW assessment: $100+ oil from Iran war has 'likely invalidated' forecasts that Russian economic downturn would force Kremlin concessions. War economy now benefits from price shock. Sweden boards suspected Russian shadow fleet tanker. Macron: Russia wrong to think Iran war gives them a 'break.'", impact: "up" },
-    { zone: "iran", time: "2026-03-12", text: "US and Western allies clashed with Russia and China at UN Security Council over Iran nuclear program. Russia accused West of using IAEA as pretext for military action. UK House of Commons briefing details how 2024-2026 strikes undermined Iran's defences. Global diplomatic split widens.", impact: "neutral" },
+    { zone: "china", time: "2026-03-13", text: "China's regular warplane flights near Taiwan dropped sharply from 92 to just 7 over the past two weeks \u2014 the sharpest decline in years. Analysts unsure if this is deliberate de-escalation, strategic patience while US overextends in Iran, or operational reorganization. ISW notes PRC increased 2026 military budget simultaneously.", headline: "China warplane flights near Taiwan plunge from 92 to 7 in two weeks \u2014 analysts puzzled", impact: "down", sources: ["CNBC", "AP"], source_types: ["other"], confidence: "reported", severity: 1, signals: [{"name": "china_military_buildup", "weight": 8}, {"name": "taiwan_defense_escalation", "weight": 5}, {"name": "china_arms_iran", "weight": 6}, {"name": "china_diplomacy", "weight": -4}, {"name": "taiwan_military_drills", "weight": 6}, {"name": "taiwan_blockade", "weight": 12}, {"name": "china_rhetoric_taiwan", "weight": 5}, {"name": "china_reduced_flights", "weight": -3}] },
+    { zone: "iran", time: "2026-03-14", text: "Kataib Hezbollah claimed missile strike on US Embassy Baghdad, hitting helipad and C-RAM interception system. Smoke rising from compound. Iraqi security sources confirm damage. Iran-backed militia released video of strike. Major escalation \u2014 direct attack on US diplomatic facility in theater.", headline: "US Embassy in Baghdad hit by Kataib Hezbollah missile \u2014 smoke rising from compound", impact: "up", sources: ["Reuters", "Al Jazeera", "AP"], source_types: ["arabic", "other", "western"], confidence: "confirmed", severity: 3, signals: [] },
+    { zone: "iran", time: "2026-03-14", text: "Iran announced it would retaliate by immediately attacking 'all oil, energy and economic infrastructure of oil companies across the region that have American stock shares or cooperate with America.' Broadest threat yet \u2014 targets Gulf state assets (UAE, Qatar, Saudi, Bahrain, Kuwait) beyond Iranian territory.", headline: "Iran threatens retaliation against 'ALL oil, energy infrastructure' of American-linked companies region-wide", impact: "up", sources: ["Iran International", "ISNA"], source_types: ["other"], confidence: "reported", severity: 3, signals: [] },
+    { zone: "pakistan_afghanistan", time: "2026-03-14", text: "Pakistan President Asif Ali Zardari declared Afghan Taliban 'crossed a red line' by launching drone attacks on civilian targets in Pakistan. Military says 'rudimentary drones' targeted Abbottabad, Swabi, Nowshera \u2014 all foiled. Reinforces open war status.", headline: "Pakistan President Zardari: Taliban 'crossed a red line' with drone strikes on Pakistani cities", impact: "up", sources: ["The Hindu", "Reuters"], source_types: ["other", "western"], confidence: "reported", severity: 3, signals: [{"name": "pakistan_airstrikes_civilians", "weight": 8}, {"name": "taliban_retaliation", "weight": 7}, {"name": "open_war_declared", "weight": 10}] },
+    { zone: "north_korea", time: "2026-03-14", text: "North Korea fired approximately 10 ballistic missiles from its western coast Saturday morning. Japan confirms projectiles traveled ~340km into Sea of Japan outside Japan EEZ. Coordinated salvo during US-South Korea joint drills. Third provocation this week. South Korea JCS calls it unprecedented pace.", headline: "North Korea fires ~10 ballistic missiles in salvo during US-South Korea drills", impact: "up", sources: ["Reuters", "Bloomberg", "Japan Times"], source_types: ["other", "western"], confidence: "confirmed", severity: 2, signals: [{"name": "dprk_missile_test", "weight": 8}, {"name": "icbm_launch", "weight": 12}, {"name": "dprk_nuclear_test", "weight": 18}, {"name": "dprk_south_korea_tensions", "weight": 7}, {"name": "dprk_diplomacy", "weight": -4}, {"name": "dprk_provocation", "weight": 6}, {"name": "dprk_missile_barrage", "weight": 10}] },
+    { zone: "israel_lebanon", time: "2026-03-14", text: "Israel planning large-scale ground operation in Lebanon to dismantle Hezbollah infrastructure south of Litani. US and Israeli officials confirm. 'We are going to do what we did in Gaza.' Agreed to spare Beirut airport but not other infrastructure. 773+ killed in Lebanon, 800K-1M displaced.", headline: "Israel planning massive ground invasion to seize area south of Litani River \u2014 'largest since 2006'", impact: "up", sources: ["Axios", "CNN", "JPost"], source_types: ["other", "western"], confidence: "confirmed", severity: 4, signals: [{"name": "hezbollah_full_barrage", "weight": 10}, {"name": "israel_ground_invasion_lebanon", "weight": 15}, {"name": "israeli_casualties_high", "weight": 8}, {"name": "beirut_bombing", "weight": 5}, {"name": "hezbollah_anti_ship", "weight": 6}, {"name": "lebanon_ceasefire", "weight": -8}, {"name": "us_military_support_israel", "weight": 4}, {"name": "idf_ground_lebanon", "weight": 8}, {"name": "hezbollah_rockets_heavy", "weight": 6}, {"name": "hezbollah_missiles_strong", "weight": 6}, {"name": "infrastructure_destruction", "weight": 6}, {"name": "gaza_scale_threat", "weight": 8}] },
+    { zone: "turkey", time: "2026-03-13", text: "NATO air defenses intercepted third Iranian ballistic missile over Turkey in 10 days. Sirens in Adana near Incirlik Air Base. Turkey asked Tehran to clarify. Iran denies targeting. Politico EU: one more intercept likely triggers Article 4 consultations. Spain's Patriot crews at Incirlik confirmed detection.", headline: "NATO intercepts third Iranian ballistic missile over Turkey \u2014 one from Article 4", impact: "up", sources: ["Reuters", "NYT", "Politico EU"], source_types: ["other", "western"], confidence: "confirmed", severity: 2, signals: [{"name": "nato_article_5", "weight": 20}, {"name": "turkey_blocks_straits", "weight": 12}, {"name": "incirlik_targeted", "weight": 8}, {"name": "nato_third_intercept", "weight": 7}] },
+    { zone: "russia", time: "2026-03-13", text: "ISW assessment: $100+ oil from Iran war has 'likely invalidated' forecasts that Russian economic downturn would force Kremlin concessions. War economy now benefits from price shock. Sweden boards suspected Russian shadow fleet tanker. Macron: Russia wrong to think Iran war gives them a 'break.'", headline: "ISW: Global oil price shock from Iran war 'invalidates' Russian economic pressure assumptions", impact: "up", sources: ["ISW", "Reuters"], source_types: ["other", "western"], confidence: "reported", severity: 2, signals: [{"name": "russia_iran_arms", "weight": 5}, {"name": "russia_intervention_direct", "weight": 12}, {"name": "kremlin_nuclear_rhetoric", "weight": 10}, {"name": "russia_arms_shipment", "weight": 5}, {"name": "kremlin_nuclear_threat", "weight": 10}, {"name": "russia_intervention_mideast", "weight": 7}, {"name": "russia_diplomacy", "weight": -4}] },
+    { zone: "iran", time: "2026-03-12", text: "US and Western allies clashed with Russia and China at UN Security Council over Iran nuclear program. Russia accused West of using IAEA as pretext for military action. UK House of Commons briefing details how 2024-2026 strikes undermined Iran's defences. Global diplomatic split widens.", headline: "UN clash: US-allies vs Russia-China over Iran nuclear program \u2014 diplomatic split deepens", impact: "neutral", sources: ["Reuters", "UK Parliament"], source_types: ["other", "western"], confidence: "reported", severity: 3, signals: [] },
   ]
 };
 
@@ -697,26 +831,132 @@ function renderTrackers() {
   });
 }
 
+var activeNewsFilter = "all";
+
+function filterNews(filter, btn) {
+  activeNewsFilter = filter;
+  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active", "active-zone"); });
+  if (btn) btn.classList.add("active");
+  renderNews();
+}
+
+function filterByZone(zone) {
+  if (activeNewsFilter === "zone:" + zone) {
+    activeNewsFilter = "all";
+  } else {
+    activeNewsFilter = "zone:" + zone;
+  }
+  document.querySelectorAll(".filter-btn").forEach(function(b) {
+    b.classList.remove("active", "active-zone");
+    if (b.dataset.filter === activeNewsFilter.replace("zone:", "")) b.classList.add("active-zone");
+  });
+  renderNews();
+}
+
+function toggleNewsItem(el) {
+  el.classList.toggle("expanded");
+  var btn = el.querySelector(".news-expand-btn");
+  if (btn) btn.textContent = el.classList.contains("expanded") ? "▲ LESS" : "▼ SIGNALS";
+}
+
 function renderNews() {
   var feed = document.getElementById("newsFeed");
   if (!feed) return;
   feed.innerHTML = "";
   var items = state.news || [];
-  for (var i = 0; i < items.length; i++) {
-    var n = items[i];
-    var item = document.createElement("div");
-    item.className = "news-item";
-    var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
-    var txt = n.impact === "up" ? "ESCALATION +" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
-    var h = '<div class="news-header">';
-    h += '<span class="news-zone ' + (n.zone||'') + '">' + (n.zone||'unknown').toUpperCase() + '</span>';
-    h += '<span class="news-time">' + (n.time||'') + '</span>';
-    h += '</div>';
-    h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
-    h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + txt + '</div>';
-    item.innerHTML = h;
-    feed.appendChild(item);
+
+  // Apply filter
+  var filtered = items.filter(function(n) {
+    if (activeNewsFilter === "all") return true;
+    if (activeNewsFilter.startsWith("zone:")) return n.zone === activeNewsFilter.replace("zone:", "");
+    if (activeNewsFilter === "confidence:confirmed") return n.confidence === "confirmed";
+    if (activeNewsFilter === "confidence:developing") return n.confidence === "developing";
+    if (activeNewsFilter.startsWith("source:")) return (n.source_types || []).indexOf(activeNewsFilter.replace("source:", "")) >= 0;
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    feed.innerHTML = '<div style="color:var(--dim);font-size:10px;padding:12px 0;">NO ITEMS MATCH FILTER</div>';
+    return;
   }
+
+  // Group by time blocks
+  var blocks = {};
+  var blockOrder = [];
+  filtered.forEach(function(n) {
+    var timeStr = n.time || "";
+    var block = "RECENT";
+    if (timeStr.indexOf("2026-03-14") >= 0) {
+      var h = parseInt(timeStr.split("T")[1] || "00:00", 10);
+      if (h >= 12) block = "LAST 12H";
+      else if (h >= 6) block = "6-12H AGO";
+      else block = "OLDER";
+    } else if (timeStr.indexOf("2026-03-13") >= 0) {
+      block = "12-24H AGO";
+    }
+    if (!blocks[block]) { blocks[block] = []; blockOrder.push(block); }
+    blocks[block].push(n);
+  });
+
+  blockOrder.forEach(function(blockName) {
+    var blockDiv = document.createElement("div");
+    blockDiv.className = "time-block";
+
+    var label = document.createElement("div");
+    label.className = "time-block-label";
+    label.textContent = blockName + " (" + blocks[blockName].length + ")";
+    blockDiv.appendChild(label);
+
+    blocks[blockName].forEach(function(n) {
+      var item = document.createElement("div");
+      item.className = "news-item";
+
+      var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
+      var impTxt = n.impact === "up" ? "ESCALATION" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
+
+      // Severity dots
+      var sevDots = "";
+      for (var s = 1; s <= 5; s++) {
+        sevDots += s <= n.severity ? "\u25CF" : "\u25CB";
+      }
+
+      // Source links
+      var srcHtml = "";
+      if (n.sources && n.sources.length > 0) {
+        srcHtml = '<div class="news-sources">' + n.sources.map(function(src) {
+          return '<a href="#" onclick="return false">' + src + '</a>';
+        }).join(" · ") + '</div>';
+      }
+
+      // Signal tags
+      var sigHtml = "";
+      if (n.signals && n.signals.length > 0) {
+        sigHtml = '<div class="news-signals-row">' + n.signals.map(function(sig) {
+          var cls = sig.weight < 0 ? "neg" : "pos";
+          var prefix = sig.weight < 0 ? "↓" : "↑";
+          return '<span class="news-signal-tag ' + cls + '">' + prefix + sig.name + '</span>';
+        }).join("") + '</div>';
+      }
+
+      var h = '<div class="news-header">';
+      h += '<div class="news-header-left">';
+      h += '<span class="news-severity sev' + (n.severity||1) + '" title="Severity ' + (n.severity||1) + '/5">' + sevDots + '</span>';
+      h += '<span class="news-zone ' + (n.zone||'') + '" onclick="filterByZone(\'' + (n.zone||'') + '\')" style="cursor:pointer">' + (n.zone||'unknown').toUpperCase() + '</span>';
+      h += '<span class="news-confidence ' + (n.confidence||'developing') + '">' + (n.confidence||'dev') + '</span>';
+      h += '</div>';
+      h += '<span class="news-time">' + (n.time||'').replace("2026-03-14T","").replace("Z","").substring(0,5) + '</span>';
+      h += '</div>';
+      h += srcHtml;
+      h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
+      h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + impTxt + '</div>';
+      if (sigHtml) h += '<button class="news-expand-btn" onclick="toggleNewsItem(this.parentElement)">▼ SIGNALS</button>' + sigHtml;
+
+      item.innerHTML = h;
+      blockDiv.appendChild(item);
+    });
+
+    feed.appendChild(blockDiv);
+  });
 }
 
 function updateClock() {

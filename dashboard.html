@@ -394,39 +394,133 @@ body {
   scrollbar-color: var(--border) transparent;
 }
 
-.news-item {
-  padding: 10px 0;
-  border-bottom: 1px solid #161b22;
-  animation: slideUp 0.4s ease both;
+/* ===== INTELLIGENCE FEED ===== */
+.news-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-btn {
+  font-size: 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  background: transparent;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-family: var(--mono);
+  transition: all 0.2s;
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0,212,255,0.08);
+}
+.filter-btn.active-zone {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(255,45,45,0.08);
 }
 
+.time-block {
+  margin-bottom: 8px;
+}
+.time-block-label {
+  font-size: 8px;
+  color: var(--dim);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-bottom: 1px dashed #1a1e24;
+}
+
+.news-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #161b22;
+  animation: slideUp 0.4s ease both;
+  cursor: default;
+}
+.news-item:hover {
+  background: rgba(255,255,255,0.015);
+}
 .news-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 4px;
+  align-items: center;
+  margin-bottom: 3px;
+  gap: 6px;
 }
+.news-header-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.news-severity {
+  font-size: 8px;
+  letter-spacing: 0;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.news-severity.sev1 { background: rgba(0,230,118,0.15); color: var(--green); }
+.news-severity.sev2 { background: rgba(255,170,0,0.15); color: var(--amber); }
+.news-severity.sev3 { background: rgba(255,170,0,0.25); color: var(--amber); }
+.news-severity.sev4 { background: rgba(255,45,45,0.2); color: var(--red); }
+.news-severity.sev5 { background: rgba(255,45,45,0.35); color: var(--red); }
 
 .news-zone {
-  font-size: 9px;
+  font-size: 8px;
   letter-spacing: 2px;
-  padding: 2px 6px;
+  padding: 1px 5px;
   border: 1px solid var(--border);
   color: var(--dim);
   white-space: nowrap;
 }
-
-.news-zone.iran { border-color: var(--red); color: var(--red); }
-.news-zone.lebanon { border-color: var(--amber); color: var(--amber); }
+.news-zone.iran, .news-zone.iran_conventional, .news-zone.iran_nuke { border-color: var(--red); color: var(--red); }
+.news-zone.israel_lebanon, .news-zone.lebanon { border-color: var(--amber); color: var(--amber); }
 .news-zone.turkey { border-color: var(--cyan); color: var(--cyan); }
-.news-zone.india { border-color: #ff6ec7; color: #ff6ec7; }
-.news-zone.russia { border-color: var(--blue); color: var(--blue); }
+.news-zone.india, .news-zone.pakistan_afghanistan { border-color: #ff6ec7; color: #ff6ec7; }
+.news-zone.russia, .news-zone.russia_ukraine { border-color: var(--blue); color: var(--blue); }
 .news-zone.china { border-color: #ff9100; color: #ff9100; }
+.news-zone.north_korea { border-color: #b388ff; color: #b388ff; }
 .news-zone.global { border-color: var(--white); color: var(--white); }
 
+.news-confidence {
+  font-size: 7px;
+  padding: 1px 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.news-confidence.confirmed { color: var(--green); border: 1px solid var(--green); background: rgba(0,230,118,0.08); }
+.news-confidence.reported { color: var(--amber); border: 1px solid var(--amber); background: rgba(255,170,0,0.08); }
+.news-confidence.developing { color: var(--dim); border: 1px solid var(--border); }
+
 .news-time {
-  font-size: 9px;
+  font-size: 8px;
   color: var(--dim);
+  white-space: nowrap;
+}
+
+.news-sources {
+  font-size: 8px;
+  color: #484f58;
+  margin: 2px 0;
+}
+.news-sources a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+.news-sources a:hover {
+  text-decoration: underline;
 }
 
 .news-text {
@@ -437,15 +531,46 @@ body {
   word-break: break-word;
 }
 
+.news-signals-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 4px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.news-item.expanded .news-signals-row {
+  max-height: 100px;
+}
+.news-signal-tag {
+  font-size: 7px;
+  padding: 1px 4px;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+.news-signal-tag.neg { border-color: rgba(0,230,118,0.4); color: var(--green); background: rgba(0,230,118,0.06); }
+.news-signal-tag.pos { border-color: rgba(255,45,45,0.4); color: var(--red); background: rgba(255,45,45,0.06); }
+
 .news-impact {
   font-size: 9px;
-  margin-top: 4px;
   font-weight: bold;
 }
-
 .news-impact.up { color: var(--red); }
 .news-impact.down { color: var(--green); }
 .news-impact.neutral { color: var(--dim); }
+
+.news-expand-btn {
+  font-size: 8px;
+  color: var(--dim);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--mono);
+  padding: 2px 0;
+  transition: color 0.2s;
+}
+.news-expand-btn:hover { color: var(--cyan); }
 
 /* ===== CLOCK SECTION (mini) ===== */
 .clock-mini {
@@ -607,6 +732,15 @@ body {
   <!-- NEWS FEED -->
   <div class="news-section">
     <div class="section-label">INTELLIGENCE FEED</div>
+    <div class="news-filter-bar" id="newsFilterBar">
+      <button class="filter-btn active" data-filter="all" onclick="filterNews('all', this)">ALL</button>
+      <button class="filter-btn" data-filter="confirmed" onclick="filterNews('confidence:confirmed', this)">✓ CONFIRMED</button>
+      <button class="filter-btn" data-filter="developing" onclick="filterNews('confidence:developing', this)">● DEVELOPING</button>
+      <button class="filter-btn" data-filter="western" onclick="filterNews('source:western', this)">WESTERN</button>
+      <button class="filter-btn" data-filter="arabic" onclick="filterNews('source:arabic', this)">ARABIC</button>
+      <button class="filter-btn" data-filter="russian" onclick="filterNews('source:russian', this)">RUSSIAN</button>
+      <button class="filter-btn" data-filter="chinese" onclick="filterNews('source:chinese', this)">CHINESE</button>
+    </div>
     <div class="news-feed" id="newsFeed">
       <!-- Populated by JS -->
     </div>
@@ -698,26 +832,132 @@ function renderTrackers() {
   });
 }
 
+var activeNewsFilter = "all";
+
+function filterNews(filter, btn) {
+  activeNewsFilter = filter;
+  document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active", "active-zone"); });
+  if (btn) btn.classList.add("active");
+  renderNews();
+}
+
+function filterByZone(zone) {
+  if (activeNewsFilter === "zone:" + zone) {
+    activeNewsFilter = "all";
+  } else {
+    activeNewsFilter = "zone:" + zone;
+  }
+  document.querySelectorAll(".filter-btn").forEach(function(b) {
+    b.classList.remove("active", "active-zone");
+    if (b.dataset.filter === activeNewsFilter.replace("zone:", "")) b.classList.add("active-zone");
+  });
+  renderNews();
+}
+
+function toggleNewsItem(el) {
+  el.classList.toggle("expanded");
+  var btn = el.querySelector(".news-expand-btn");
+  if (btn) btn.textContent = el.classList.contains("expanded") ? "▲ LESS" : "▼ SIGNALS";
+}
+
 function renderNews() {
   var feed = document.getElementById("newsFeed");
   if (!feed) return;
   feed.innerHTML = "";
   var items = state.news || [];
-  for (var i = 0; i < items.length; i++) {
-    var n = items[i];
-    var item = document.createElement("div");
-    item.className = "news-item";
-    var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
-    var txt = n.impact === "up" ? "ESCALATION +" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
-    var h = '<div class="news-header">';
-    h += '<span class="news-zone ' + (n.zone||'') + '">' + (n.zone||'unknown').toUpperCase() + '</span>';
-    h += '<span class="news-time">' + (n.time||'') + '</span>';
-    h += '</div>';
-    h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
-    h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + txt + '</div>';
-    item.innerHTML = h;
-    feed.appendChild(item);
+
+  // Apply filter
+  var filtered = items.filter(function(n) {
+    if (activeNewsFilter === "all") return true;
+    if (activeNewsFilter.startsWith("zone:")) return n.zone === activeNewsFilter.replace("zone:", "");
+    if (activeNewsFilter === "confidence:confirmed") return n.confidence === "confirmed";
+    if (activeNewsFilter === "confidence:developing") return n.confidence === "developing";
+    if (activeNewsFilter.startsWith("source:")) return (n.source_types || []).indexOf(activeNewsFilter.replace("source:", "")) >= 0;
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    feed.innerHTML = '<div style="color:var(--dim);font-size:10px;padding:12px 0;">NO ITEMS MATCH FILTER</div>';
+    return;
   }
+
+  // Group by time blocks
+  var blocks = {};
+  var blockOrder = [];
+  filtered.forEach(function(n) {
+    var timeStr = n.time || "";
+    var block = "RECENT";
+    if (timeStr.indexOf("2026-03-14") >= 0) {
+      var h = parseInt(timeStr.split("T")[1] || "00:00", 10);
+      if (h >= 12) block = "LAST 12H";
+      else if (h >= 6) block = "6-12H AGO";
+      else block = "OLDER";
+    } else if (timeStr.indexOf("2026-03-13") >= 0) {
+      block = "12-24H AGO";
+    }
+    if (!blocks[block]) { blocks[block] = []; blockOrder.push(block); }
+    blocks[block].push(n);
+  });
+
+  blockOrder.forEach(function(blockName) {
+    var blockDiv = document.createElement("div");
+    blockDiv.className = "time-block";
+
+    var label = document.createElement("div");
+    label.className = "time-block-label";
+    label.textContent = blockName + " (" + blocks[blockName].length + ")";
+    blockDiv.appendChild(label);
+
+    blocks[blockName].forEach(function(n) {
+      var item = document.createElement("div");
+      item.className = "news-item";
+
+      var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
+      var impTxt = n.impact === "up" ? "ESCALATION" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
+
+      // Severity dots
+      var sevDots = "";
+      for (var s = 1; s <= 5; s++) {
+        sevDots += s <= n.severity ? "\u25CF" : "\u25CB";
+      }
+
+      // Source links
+      var srcHtml = "";
+      if (n.sources && n.sources.length > 0) {
+        srcHtml = '<div class="news-sources">' + n.sources.map(function(src) {
+          return '<a href="#" onclick="return false">' + src + '</a>';
+        }).join(" · ") + '</div>';
+      }
+
+      // Signal tags
+      var sigHtml = "";
+      if (n.signals && n.signals.length > 0) {
+        sigHtml = '<div class="news-signals-row">' + n.signals.map(function(sig) {
+          var cls = sig.weight < 0 ? "neg" : "pos";
+          var prefix = sig.weight < 0 ? "↓" : "↑";
+          return '<span class="news-signal-tag ' + cls + '">' + prefix + sig.name + '</span>';
+        }).join("") + '</div>';
+      }
+
+      var h = '<div class="news-header">';
+      h += '<div class="news-header-left">';
+      h += '<span class="news-severity sev' + (n.severity||1) + '" title="Severity ' + (n.severity||1) + '/5">' + sevDots + '</span>';
+      h += '<span class="news-zone ' + (n.zone||'') + '" onclick="filterByZone(\'' + (n.zone||'') + '\')" style="cursor:pointer">' + (n.zone||'unknown').toUpperCase() + '</span>';
+      h += '<span class="news-confidence ' + (n.confidence||'developing') + '">' + (n.confidence||'dev') + '</span>';
+      h += '</div>';
+      h += '<span class="news-time">' + (n.time||'').replace("2026-03-14T","").replace("Z","").substring(0,5) + '</span>';
+      h += '</div>';
+      h += srcHtml;
+      h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
+      h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + impTxt + '</div>';
+      if (sigHtml) h += '<button class="news-expand-btn" onclick="toggleNewsItem(this.parentElement)">▼ SIGNALS</button>' + sigHtml;
+
+      item.innerHTML = h;
+      blockDiv.appendChild(item);
+    });
+
+    feed.appendChild(blockDiv);
+  });
 }
 
 function updateClock() {
