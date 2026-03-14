@@ -945,7 +945,9 @@ function renderNews() {
       h += '<span class="news-zone ' + (n.zone||'') + '" onclick="filterByZone(\'' + (n.zone||'') + '\')" style="cursor:pointer">' + (n.zone||'unknown').toUpperCase() + '</span>';
       h += '<span class="news-confidence ' + (n.confidence||'developing') + '">' + (n.confidence||'dev') + '</span>';
       h += '</div>';
-      h += '<span class="news-time">' + (n.time||'').replace("2026-03-14T","").replace("Z","").substring(0,5) + '</span>';
+      var timeStr = n.time || "";
+var shortTime = timeStr.indexOf("T") >= 0 ? timeStr.split("T")[1].replace("Z","").substring(0,5) : timeStr.substring(5);
+h += '<span class="news-time">' + shortTime + '</span>';
       h += '</div>';
       h += srcHtml;
       h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
