@@ -737,6 +737,9 @@ function updateGlobalClock() {
   else if (globalProb < 60) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
   else fill.style.background = "var(--red)";
 
+  // Update zone labels
+  updateThreatZones();
+
   // Mini doomsday clock
   document.querySelector(".doomsday-hand").style.transform = "translateX(-50%) rotate(" + angle + "deg)";
 }
@@ -746,6 +749,7 @@ renderTrackers();
 renderNews();
 updateClock();
 updateGlobalClock();
+updateThreatZones();
 
 // Update time every second
 setInterval(updateClock, 1000);
