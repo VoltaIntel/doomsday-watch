@@ -717,6 +717,13 @@ function updateThreatZones() {
   }
 }
 
+function calcZone(prob) {
+  if (prob >= 60) return "imminent";
+  if (prob >= 30) return "critical";
+  if (prob >= 15) return "elevated";
+  return "deterrent";
+}
+
 function updateGlobalClock() {
   const globalProb = state.global_war_probability || 0;
   const angle = (globalProb / 100) * 360;
@@ -730,13 +737,18 @@ function updateGlobalClock() {
   zoneEl.textContent = zone.toUpperCase();
   zoneEl.className = "global-zone " + zone;
 
-  // Threat bar
+  // Threat bar — snap to zone position, not raw percentage
   const fill = document.getElementById("threatFill");
-  fill.style.width = globalProb + "%";
-  if (globalProb < 15) fill.style.background = "var(--green)";
-  else if (globalProb < 30) fill.style.background = "linear-gradient(90deg, var(--green), var(--amber))";
-  else if (globalProb < 60) fill.style.background = "linear-gradient(90deg, var(--amber), var(--red))";
-  else fill.style.background = "var(--red)";
+  const zonePositions = { deterrent: 12.5, elevated: 37.5, critical: 62.5, imminent: 100 };
+  const zoneColors = {
+    deterrent: "var(--green)",
+    elevated: "linear-gradient(90deg, var(--green), var(--amber))",
+    critical: "linear-gradient(90deg, var(--amber), var(--red))",
+    imminent: "var(--red)"
+  };
+  const currentZone = calcZone(globalProb);
+  fill.style.width = zonePositions[currentZone] + "%";
+  fill.style.background = zoneColors[currentZone];
 
   // Update zone labels
   updateThreatZones();
@@ -756,16 +768,6 @@ updateThreatZones();
 setInterval(updateClock, 1000);
 
 // Auto-calculate zone from probability (override state file)
-function calcZone(prob) {
-  if (prob >= 60) return "imminent";
-  if (prob >= 30) return "critical";
-  if (prob >= 15) return "elevated";
-  return "deterrent";
-}
-// Auto-fix zones from probabilities
-state.trackers.forEach(t => { t.zone = calcZone(t.prob); });
-
-
 
 // Auto-fix zones on load
 state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
