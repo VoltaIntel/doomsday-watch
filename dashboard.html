@@ -778,9 +778,9 @@ body {
   </div>
 
   <!-- BRIEF / PREDICTION BUTTONS -->
-  <div style="text-align:center;margin:8px 0 4px;">
-    <button onclick="openBriefing()" style="background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;margin-right:8px;">📋 BRIEF</button>
-    <button onclick="openPredictions()" style="background:rgba(100,150,255,0.12);border:1px solid rgba(100,150,255,0.35);color:#6688ff;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">🔮 PREDICTIONS</button>
+  <div style="text-align:center;margin:8px 0 4px;display:flex;flex-direction:column;align-items:center;gap:6px;">
+    <button onclick="openBriefing()" style="background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 24px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">INTELLIGENCE BRIEF</button>
+    <button onclick="openPredictions()" style="background:rgba(100,150,255,0.12);border:1px solid rgba(100,150,255,0.35);color:#6688ff;padding:8px 24px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">24-HOUR FORECAST</button>
   </div>
     </div>
   </div>
@@ -1427,33 +1427,36 @@ function openPredictions() {
     '<div style="height:3px;background:rgba(255,255,255,0.05);border-radius:2px;"><div style="height:100%;width:' + stats.accuracy + '%;background:' + accColor + ';border-radius:2px;transition:width 0.5s;"></div></div>';
   
   if (preds.length === 0) {
-    el.innerHTML = '<div style="color:#484f58;text-align:center;padding:20px;">No predictions available yet. Check back on next hourly update.</div>';
+    el.innerHTML = '<div style="color:#484f58;text-align:center;padding:20px;">FORECAST UNAVAILABLE — Insufficient data for this cycle.</div>';
   } else {
     var html = '';
-    // Group by confidence tier
+    
+    // Executive summary
     var high = preds.filter(function(p){return p.confidence >= 60;});
     var med = preds.filter(function(p){return p.confidence >= 40 && p.confidence < 60;});
     var low = preds.filter(function(p){return p.confidence < 40;});
     
+    html += '<div style="margin-bottom:16px;color:#c9d1d9;font-size:12px;">' +
+      'Based on current probability levels, active signals, and trend velocity across ' + (s.trackers||[]).length + ' tracked conflicts. ' +
+      'Forecasts below represent most likely outcomes within a 24-hour window. Confidence reflects signal density and trend consistency.</div>';
+    
     function renderGroup(items, title, color) {
       if (items.length === 0) return '';
-      var h = '<div style="margin-bottom:14px;"><div style="color:' + color + ';font-size:10px;letter-spacing:1.5px;margin-bottom:6px;">' + title + '</div>';
+      var h = '<div style="margin-bottom:14px;"><div style="color:' + color + ';font-size:10px;letter-spacing:1.5px;margin-bottom:6px;border-bottom:1px solid ' + color + '33;padding-bottom:4px;">' + title + '</div>';
       items.forEach(function(p){
-        var confBar = '<div style="display:inline-block;width:40px;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;vertical-align:middle;margin-left:8px;"><div style="height:100%;width:' + p.confidence + '%;background:' + color + ';border-radius:2px;"></div></div>';
-        var sigIcon = p.type === 'zone_change' ? '🎯' : p.type === 'trend_rising' ? '📈' : p.type === 'signal_triggered' ? '⚡' : '📊';
-        h += '<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:12px;color:#8b949e;">' +
-          sigIcon + ' ' + p.description + confBar + ' <span style="color:#484f58;font-size:10px;">' + p.confidence + '%</span></div>';
+        h += '<div style="padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.02);font-size:12px;color:#8b949e;">' +
+          '<span style="color:' + color + ';font-size:10px;font-weight:bold;">[' + p.confidence + '%]</span> ' + p.description + '</div>';
       });
       h += '</div>';
       return h;
     }
     
-    html += renderGroup(high, 'HIGH CONFIDENCE (>60%)', '#00e676');
-    html += renderGroup(med, 'MEDIUM CONFIDENCE (40-60%)', '#ffaa00');
-    html += renderGroup(low, 'LOW CONFIDENCE (<40%)', '#ff4444');
+    html += renderGroup(high, 'HIGH CONFIDENCE', '#00e676');
+    html += renderGroup(med, 'MEDIUM CONFIDENCE', '#ffaa00');
+    html += renderGroup(low, 'LOW CONFIDENCE', '#ff4444');
     
-    html += '<div style="border-top:1px solid rgba(100,150,255,0.15);padding-top:10px;margin-top:16px;">' +
-      '<div style="color:#484f58;font-size:10px;">FORECAST HORIZON: 24 HOURS | ' + preds.length + ' PREDICTIONS</div></div>';
+    html += '<div style="border-top:1px solid rgba(100,150,255,0.15);padding-top:10px;margin-top:16px;color:#484f58;font-size:10px;letter-spacing:1px;">' +
+      'FORECAST WINDOW: 24 HOURS | ' + preds.length + ' PREDICTIONS | EVALUATED ON NEXT CYCLE</div>';
     
     el.innerHTML = html;
   }
