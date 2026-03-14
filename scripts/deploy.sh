@@ -329,11 +329,57 @@ else:
     alerts_js = json.dumps(zone_alerts.get("pending", []))
     lines.append("  zone_alerts: " + alerts_js)
     lines.append("};")
+
+    # Generate static chart SVG
+    chart_svg = ""
+    if len(hist_entries) >= 2:
+        W, H = 600, 120
+        padL, padR, padT, padB = 30, 10, 10, 20
+        cW, cH = W - padL - padR, H - padT - padB
+
+        chart_svg = '<div id="probChart" style="width:100%;overflow:hidden"><svg width="100%" height="120" viewBox="0 0 ' + str(W) + ' ' + str(H) + '">'
+        # Zone backgrounds
+        for mx, col in [(15, "rgba(0,230,118,0.06)"), (30, "rgba(255,170,0,0.06)"), (60, "rgba(255,170,0,0.08)"), (100, "rgba(255,45,45,0.06)")]:
+            y1 = padT + cH * (1 - mx / 100)
+            prev_mx = {15:0, 30:15, 60:30, 100:60}[mx]
+            y2 = padT + cH * (1 - prev_mx / 100)
+            chart_svg += '<rect x="' + str(padL) + '" y="' + str(y1) + '" width="' + str(cW) + '" height="' + str(y2-y1) + '" fill="' + col + '"/>'
+        # Threshold lines
+        for th in [15, 30, 60]:
+            y = padT + cH * (1 - th / 100)
+            chart_svg += '<line x1="' + str(padL) + '" y1="' + str(y) + '" x2="' + str(padL+cW) + '" y2="' + str(y) + '" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/>'
+            chart_svg += '<text x="2" y="' + str(y+3) + '" fill="#484f58" font-size="8" font-family="monospace">' + str(th) + '%</text>'
+        # Global line
+        pts = []
+        for i, e in enumerate(hist_entries):
+            x = padL + (i / max(len(hist_entries)-1, 1)) * cW
+            y = padT + cH * (1 - (e.get("global", 0) / 100))
+            pts.append(str(round(x,1)) + "," + str(round(y,1)))
+        chart_svg += '<defs><filter id="cglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'
+        chart_svg += '<polyline points="' + " ".join(pts) + '" fill="none" stroke="#ff2d2d" stroke-width="2" filter="url(#cglow)"/>'
+        # Current dot
+        last = hist_entries[-1]
+        lx = padL + cW
+        ly = padT + cH * (1 - last.get("global", 0) / 100)
+        chart_svg += '<circle cx="' + str(lx) + '" cy="' + str(ly) + '" r="4" fill="#ff2d2d"/>'
+        chart_svg += '<text x="' + str(lx-35) + '" y="' + str(ly-8) + '" fill="#e6edf3" font-size="10" font-weight="bold" font-family="monospace">' + str(last.get("global",0)) + '%</text>'
+        # Time labels
+        ft = (hist_entries[0].get("timestamp",""))[5:16].replace("T"," ")
+        lt = (hist_entries[-1].get("timestamp",""))[5:16].replace("T"," ")
+        chart_svg += '<text x="' + str(padL) + '" y="' + str(H-4) + '" fill="#484f58" font-size="8" font-family="monospace">' + ft + '</text>'
+        chart_svg += '<text x="' + str(W-padR) + '" y="' + str(H-4) + '" fill="#484f58" font-size="8" font-family="monospace" text-anchor="end">' + lt + '</text>'
+        chart_svg += '</svg></div>'
+
     lines.append("")
     lines.append("// ===== RENDER")
 
     new_state = "\n".join(lines)
     new_html = html[:start] + new_state + html[end:]
+
+    # Insert chart SVG into HTML (after new_html is created)
+    chart_placeholder = '<div id="probChart" style="width:100%;height:120px"></div>'
+    if chart_svg:
+        new_html = new_html.replace(chart_placeholder, chart_svg)
 
     with open("index.html", "w") as f:
         f.write(new_html)
