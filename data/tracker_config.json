@@ -710,17 +710,17 @@
     ]
   },
   "coupling": {
-    "description": "Correlation multipliers — when a tracker reaches CRITICAL/IMMINENT, it boosts connected trackers. Applied BEFORE global score calculation.",
+    "description": "Correlation multipliers — when a tracker reaches CRITICAL/IMMINENT, it boosts connected trackers. Applied BEFORE global score calculation. Weights calibrated so coupling nudges scores toward realistic systemic risk without double-counting already-hot conflicts.",
     "rules": [
-      {"source": "iran_conventional", "min_zone": "imminent", "targets": {"turkey": 12, "russia": 8, "israel_lebanon": 10, "iran_nuke": 5}},
-      {"source": "iran_conventional", "min_zone": "critical",  "targets": {"turkey": 5, "russia": 3, "israel_lebanon": 4}},
-      {"source": "israel_lebanon",   "min_zone": "imminent", "targets": {"iran_conventional": 8}},
-      {"source": "turkey",            "min_zone": "imminent", "targets": {"russia": 15, "russia_ukraine": 10, "india": 3}},
-      {"source": "turkey",            "min_zone": "critical",  "targets": {"russia": 10, "russia_ukraine": 5}},
-      {"source": "russia",            "min_zone": "imminent", "targets": {"turkey": 10, "china": 5, "russia_ukraine": 8}},
-      {"source": "china",             "min_zone": "imminent", "targets": {"north_korea": 15, "india": 8}},
-      {"source": "north_korea",       "min_zone": "imminent", "targets": {"china": 8, "india": 5}},
-      {"source": "india",             "min_zone": "critical",  "targets": {"pakistan_afghanistan": 10, "china": 3}}
+      {"source": "iran_conventional", "min_zone": "imminent", "targets": {"turkey": 6, "russia": 4, "israel_lebanon": 3, "iran_nuke": 4}},
+      {"source": "iran_conventional", "min_zone": "critical",  "targets": {"turkey": 3, "russia": 2, "israel_lebanon": 2}},
+      {"source": "israel_lebanon",   "min_zone": "imminent", "targets": {"iran_conventional": 3}},
+      {"source": "turkey",            "min_zone": "imminent", "targets": {"russia": 12, "russia_ukraine": 8}},
+      {"source": "turkey",            "min_zone": "critical",  "targets": {"russia": 8, "russia_ukraine": 5}},
+      {"source": "russia",            "min_zone": "imminent", "targets": {"turkey": 8, "china": 4, "russia_ukraine": 6}},
+      {"source": "china",             "min_zone": "imminent", "targets": {"north_korea": 12, "india": 6}},
+      {"source": "north_korea",       "min_zone": "imminent", "targets": {"china": 6, "india": 4}},
+      {"source": "india",             "min_zone": "critical",  "targets": {"pakistan_afghanistan": 10, "china": 2}}
     ]
   }
 }

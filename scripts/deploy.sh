@@ -83,17 +83,10 @@ else:
         boost_log = ", ".join(f"{k}+{v}" for k, v in boosts_applied.items())
         print(f"Coupling boosts applied: {boost_log}")
 
-    # Push boosted probabilities back to tracker cards and state
+    # Push boosted probabilities to tracker cards ONLY (not state — coupling is display-only)
     for t in trackers_js:
         boosted = all_probs.get(t["id"], t["prob"])
         t["prob"] = boosted
-        if t["id"] in state.get("trackers", {}):
-            state["trackers"][t["id"]]["current_probability"] = boosted
-            # Recalculate zone from boosted probability
-            if boosted >= 60: state["trackers"][t["id"]]["zone"] = "imminent"
-            elif boosted >= 30: state["trackers"][t["id"]]["zone"] = "critical"
-            elif boosted >= 15: state["trackers"][t["id"]]["zone"] = "elevated"
-            else: state["trackers"][t["id"]]["zone"] = "deterrent"
 
     weights = {"iran_nuke": 0.14, "iran_conventional": 0.20, "israel_lebanon": 0.16, "russia_ukraine": 0.18, "turkey": 0.07, "india": 0.08, "russia": 0.07, "china": 0.06, "north_korea": 0.07}
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
