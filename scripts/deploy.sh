@@ -63,8 +63,8 @@ for tid, name, emoji in tn:
             "positive": w < 0,
             "activated_at": timeline["signals"][timeline_key]
         })
-    # Sort signals chronologically (oldest first)
-    signal_data.sort(key=lambda x: x["activated_at"])
+    # Sort signals reverse chronologically (newest first)
+    signal_data.sort(key=lambda x: x["activated_at"], reverse=True)
     trackers_js.append({
         "id": tid,
         "name": name,
