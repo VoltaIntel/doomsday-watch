@@ -665,13 +665,18 @@ function renderTrackers() {
     card.style.animationDelay = `${i * 0.1}s`;
 
     let signalHTML;
+    function sigClass(s) {
+      const cls = s.positive ? "signal active positive" : "signal active";
+      const name = s.name || s;
+      return `<span class="${cls}">${name}</span>`;
+    }
     if (t.signals.length === 0) {
       signalHTML = '<span class="signal">NO ACTIVE SIGNALS</span>';
     } else if (t.signals.length <= 5) {
-      signalHTML = t.signals.map(s => `<span class="signal active">${s}</span>`).join("");
+      signalHTML = t.signals.map(sigClass).join("");
     } else {
-      const shown = t.signals.slice(0, 5).map(s => `<span class="signal active">${s}</span>`).join("");
-      const hidden = t.signals.slice(5).map(s => `<span class="signal active hidden-signal" style="display:none">${s}</span>`).join("");
+      const shown = t.signals.slice(0, 5).map(sigClass).join("");
+      const hidden = t.signals.slice(5).map(s => sigClass(s).replace('class="', 'class="hidden-signal ').replace('">', '" style="display:none">')).join("");
       const moreBtn = `<span class="signal more-btn" onclick="toggleSignals(this)" data-count="${t.signals.length - 5}">+${t.signals.length - 5} MORE</span>`;
       signalHTML = shown + moreBtn + hidden;
     }

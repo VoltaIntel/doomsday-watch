@@ -8,8 +8,17 @@ import json
 with open("data/current_state.json") as f:
     state = json.load(f)
 
+with open("data/tracker_config.json") as f:
+    cfg = json.load(f)
+
 with open("dashboard.html") as f:
     html = f.read()
+
+# Build signal weight lookup: {(tracker_id, signal_name): weight}
+signal_weights = {}
+for tid, tcfg in cfg.get("trackers", {}).items():
+    for sname, scfg in tcfg.get("signals", {}).items():
+        signal_weights[(tid, sname)] = scfg.get("weight", 0)
 
 # Build tracker data
 trackers_js = []
@@ -32,6 +41,14 @@ for k in state.get("trackers", {}).keys():
 
 for tid, name, emoji in tn:
     t = state.get("trackers", {}).get(tid, {})
+    # Tag each signal with positive flag if it's a de-escalation signal (negative weight)
+    tagged_signals = []
+    for s in t.get("active_signals", []):
+        w = signal_weights.get((tid, s), 0)
+        if w < 0:
+            tagged_signals.append({"name": s, "positive": True})
+        else:
+            tagged_signals.append({"name": s})
     trackers_js.append({
         "id": tid,
         "name": name,
@@ -39,7 +56,7 @@ for tid, name, emoji in tn:
         "prob": t.get("current_probability", t.get("base_rate", 0)),
         "zone": t.get("zone", "deterrent"),
         "trend": t.get("trend", "stable"),
-        "signals": t.get("active_signals", [])
+        "signals": tagged_signals
     })
 
 news_js = state.get("latest_news", [

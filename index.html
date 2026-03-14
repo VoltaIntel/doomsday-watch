@@ -626,16 +626,16 @@ const state = {
   global_war_probability: 67,
   global_zone: "imminent",
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 18, zone: "elevated", trend: "falling", signals: ["enrichment_60", "iaea_access_denied", "buried_isfahan", "nuclear_scientists_killed"] },
-    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["hormuz_closed", "hormuz_blockade_full", "hormuz_mining", "us_troops_killed", "us_crew_killed", "oil_terminal_attack", "iran_energy_threat", "iran_missile_israel", "no_choice_rhetoric", "tehran_rally_strike", "regime_targets_struck", "navy_escort_committed", "ship_attacks", "dubai_struck", "marine_expeditionary_deploy", "gulf_state_missile_attack", "us_base_iran_strike", "oil_infrastructure_threat"] },
-    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["israel_ground_invasion_lebanon", "israeli_casualties_high", "beirut_bombing", "hezbollah_rockets_heavy", "us_military_support_israel", "gaza_scale_threat", "infrastructure_destruction", "displacement_order_25mi"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 68, zone: "critical", trend: "rising", signals: ["turkey_israel_tensions", "eastern_med_naval", "turkish_mobilization", "nato_third_intercept", "incirlik_targeted"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 18, zone: "elevated", trend: "falling", signals: [{"name": "enrichment_60"}, {"name": "iaea_access_denied"}, {"name": "buried_isfahan"}, {"name": "nuclear_scientists_killed"}] },
+    { id: "iran_conventional", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: [{"name": "hormuz_closed"}, {"name": "hormuz_blockade_full"}, {"name": "hormuz_mining"}, {"name": "us_troops_killed"}, {"name": "us_crew_killed"}, {"name": "oil_terminal_attack"}, {"name": "iran_energy_threat"}, {"name": "iran_missile_israel"}, {"name": "no_choice_rhetoric"}, {"name": "tehran_rally_strike"}, {"name": "regime_targets_struck"}, {"name": "navy_escort_committed"}, {"name": "ship_attacks"}, {"name": "dubai_struck"}, {"name": "marine_expeditionary_deploy"}, {"name": "gulf_state_missile_attack"}, {"name": "us_base_iran_strike"}, {"name": "oil_infrastructure_threat"}] },
+    { id: "israel_lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: [{"name": "israel_ground_invasion_lebanon"}, {"name": "israeli_casualties_high"}, {"name": "beirut_bombing"}, {"name": "hezbollah_rockets_heavy"}, {"name": "us_military_support_israel"}, {"name": "gaza_scale_threat"}, {"name": "infrastructure_destruction"}, {"name": "displacement_order_25mi"}] },
+    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 68, zone: "critical", trend: "rising", signals: [{"name": "turkey_israel_tensions"}, {"name": "eastern_med_naval"}, {"name": "turkish_mobilization"}, {"name": "nato_third_intercept"}, {"name": "incirlik_targeted"}] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 20, zone: "elevated", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 52, zone: "critical", trend: "rising", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy", "ceasefire_collapse"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 18, zone: "deterrent", trend: "rising", signals: ["us_taiwan_arms_package", "thaad_redeployment"] },
-    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 37, zone: "critical", trend: "rising", signals: ["dprk_missile_test", "dprk_rhetoric", "dprk_missile_barrage"] },
-    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 50, zone: "critical", trend: "rising", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine", "trump_deal_stalling", "ceasefire_collapse"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 71, zone: "imminent", trend: "rising", signals: ["open_war_declared", "pakistan_airstrikes_civilians", "border_clashes", "taliban_retaliation", "international_involvement", "nuclear_escalation"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 52, zone: "critical", trend: "rising", signals: [{"name": "russia_iran_arms"}, {"name": "russia_diplomacy", "positive": true}, {"name": "putin_diplomacy", "positive": true}, {"name": "ceasefire_collapse"}] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 18, zone: "deterrent", trend: "rising", signals: [{"name": "us_taiwan_arms_package"}, {"name": "thaad_redeployment"}] },
+    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 37, zone: "critical", trend: "rising", signals: [{"name": "dprk_missile_test"}, {"name": "dprk_rhetoric"}, {"name": "dprk_missile_barrage"}] },
+    { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 50, zone: "critical", trend: "rising", signals: [{"name": "russian_offensive"}, {"name": "russia_weapons_escalation"}, {"name": "trump_deal_ukraine", "positive": true}, {"name": "trump_deal_stalling"}, {"name": "ceasefire_collapse"}] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 71, zone: "imminent", trend: "rising", signals: [{"name": "open_war_declared"}, {"name": "pakistan_airstrikes_civilians"}, {"name": "border_clashes"}, {"name": "taliban_retaliation"}, {"name": "international_involvement"}, {"name": "nuclear_escalation"}] },
   ],
   news: [
     { zone: "north_korea", time: "2026-03-14", text: "North Korea fired approximately 10 ballistic missiles from its western coast Saturday morning. Japan confirms projectiles traveled ~340km into Sea of Japan outside Japan EEZ. Coordinated salvo during US-South Korea joint drills. Third provocation this week. South Korea JCS calls it unprecedented pace.", impact: "up" },
@@ -663,13 +663,18 @@ function renderTrackers() {
     card.style.animationDelay = `${i * 0.1}s`;
 
     let signalHTML;
+    function sigClass(s) {
+      const cls = s.positive ? "signal active positive" : "signal active";
+      const name = s.name || s;
+      return `<span class="${cls}">${name}</span>`;
+    }
     if (t.signals.length === 0) {
       signalHTML = '<span class="signal">NO ACTIVE SIGNALS</span>';
     } else if (t.signals.length <= 5) {
-      signalHTML = t.signals.map(s => `<span class="signal active">${s}</span>`).join("");
+      signalHTML = t.signals.map(sigClass).join("");
     } else {
-      const shown = t.signals.slice(0, 5).map(s => `<span class="signal active">${s}</span>`).join("");
-      const hidden = t.signals.slice(5).map(s => `<span class="signal active hidden-signal" style="display:none">${s}</span>`).join("");
+      const shown = t.signals.slice(0, 5).map(sigClass).join("");
+      const hidden = t.signals.slice(5).map(s => sigClass(s).replace('class="', 'class="hidden-signal ').replace('">', '" style="display:none">')).join("");
       const moreBtn = `<span class="signal more-btn" onclick="toggleSignals(this)" data-count="${t.signals.length - 5}">+${t.signals.length - 5} MORE</span>`;
       signalHTML = shown + moreBtn + hidden;
     }
