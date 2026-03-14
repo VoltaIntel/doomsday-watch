@@ -855,30 +855,28 @@ body {
 // ===== DATA =====
 const state = {
   last_updated: "2026-03-14T14:04:00Z",
-  global_war_probability: 66,
+  global_war_probability: 75,
   trackers: [
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "1M DISPLACED", "773+ KILLED", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 73, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR"] },
-    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 65, zone: "imminent", trend: "rising", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
-    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 50, zone: "critical", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "SANCTIONS LIFTED", "OIL BOOSTS RU", "19K DRONES/DAY"] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 42, zone: "critical", trend: "rising", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "BRYANSK BLAME UK", "CEASEFARE COLLAPSE"] },
-    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 41, zone: "critical", trend: "rising", signals: ["10-MISSILE SALVO", "BARRAGE DURING DRILLS", "3RD PROVOCATION WEEK", "DIPLOMACY REJECTED"] },
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 14, zone: "elevated", trend: "falling", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "IAEA DENIED"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED", "UAE EVAC ORDER", "9×MSL+33×DRN BARRAGE"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "1M DISPLACED", "773+ KILLED", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE", "'DO WHAT WE DID IN GAZA'"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 80, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR", "AFGHAN KILLS 14 PAK"] },
+    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 65, zone: "imminent", trend: "stable", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
+    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 56, zone: "critical", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "SANCTIONS LIFTED", "OIL BOOSTS RU", "19K DRONES/DAY", "430 DRN + 68 MSL"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 42, zone: "critical", trend: "stable", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "BRYANSK BLAME UK", "CEASEFARE COLLAPSE"] },
+    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 41, zone: "critical", trend: "stable", signals: ["10-MISSILE SALVO", "BARRAGE DURING DRILLS", "3RD PROVOCATION WEEK", "DIPLOMACY REJECTED"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 26, zone: "elevated", trend: "stable", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "460KG HIDDEN HEU", "11 BOMBS WORTH"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 20, zone: "elevated", trend: "stable", signals: ["MODI CONCERN", "KASHMIR WATCH", "OIL IMPACT"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 15, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "THAAD DEPARTED", "7 WARPLANES", "ME GAP"] }
   ],
   news: [
-    { zone: "iran", time: "0H", text: "FUJAIRAH OIL TERMINAL STRUCK — Iranian drones hit UAE's Fujairah port, one of world's largest oil storage hubs OUTSIDE Hormuz. All oil loading suspended. Iran systematically closing bypass routes.", impact: "up" },
-    { zone: "iran", time: "0H", text: "US EMBASSY BAGHDAD HIT FOR 2ND TIME — missile strikes helipad inside compound. Smoke rising. Proxy escalation against US diplomatic facilities.", impact: "up" },
-    { zone: "iran", time: "1H", text: "NEW SUPREME LEADER MOJTABA KHAMENEI first message: vows to keep Hormuz closed, continue US base attacks. Succession confirmed March 9.", impact: "up" },
-    { zone: "iran", time: "1H", text: "US STRIKES KHARG ISLAND — Iran's oil export hub (90% of exports). 'Large-scale precision strike.' Trump: 'obliterated every military target' — threatened oil infrastructure next.", impact: "up" },
-    { zone: "dprk", time: "2H", text: "NORTH KOREA FIRES 10+ BALLISTIC MISSILES in salvo during US-South Korea 'Freedom Shield' drills. THIRD provocation this week. 'Unprecedented pace.' Rejects Trump outreach.", impact: "up" },
-    { zone: "russia", time: "3H", text: "TRUMP LIFTS RUSSIA OIL SANCTIONS temporarily amid Hormuz crisis. Europe furious — German Chancellor: 'wrong decision.' Major lifeline for Kremlin war economy.", impact: "up" },
-    { zone: "lebanon", time: "3H", text: "ISRAEL PLANNING MASSIVE GROUND INVASION — seize entire area south of Litani. 'Largest since 2006.' Hezbollah command centers struck. 634+ dead, 1M displaced.", impact: "up" },
-    { zone: "pakistan_afghanistan", time: "4H", text: "PAF STRIKES 51 LOCATIONS in eastern Afghanistan. Kam Air fuel depot in Kandahar hit. 6 civilian deaths in Kabul. Zardari: Taliban 'crossed red line.'", impact: "up" },
-    { zone: "iran", time: "5H", text: "5 KC-135 REFUELING PLANES DAMAGED by Iranian missile strike on Prince Sultan Air Base, Saudi Arabia. First destruction of US aircraft by Iran on Gulf state soil.", impact: "up" },
-    { zone: "turkey", time: "8H", text: "THIRD IRANIAN MISSILE INTERCEPT over Turkey confirmed — NATO: 'stands firm in defence of all allies.' Sirens in Adana. One more = Article 4 consultations.", impact: "up" }
+    { zone: "iran", time: "0H", text: "IRGC ORDERS EVACUATION OF DUBAI, ABU DHABI, FUJAIRAH PORTS — calls UAE 'origin of American enemy missiles' and 'legitimate targets.' DIRECT threat to Gulf state territory. Unprecedented escalation.", impact: "up" },
+    { zone: "iran", time: "0H", text: "UAE INTERCEPTED 9 BALLISTIC MISSILES + 33 DRONES from Iran — massive 42-projectile barrage. Largest Iranian attack on Gulf state since war began.", impact: "up" },
+    { zone: "iran", time: "0H", text: "FUJAIRAH OIL TERMINAL HIT — Iranian drones strike oil storage, massive fire, loading operations SUSPENDED. One of world's largest bunkering hubs offline. Oil supply disrupted.", impact: "up" },
+    { zone: "iran", time: "1H", text: "TRUMP CALLS ON UK, CHINA, FRANCE TO SEND WARSHIPS TO HORMUZ — 'many countries will help.' International naval coalition forming to break Iran blockade.", impact: "up" },
+    { zone: "iran", time: "1H", text: "HEGSETH DECLARES 'NO QUARTER, NO MERCY' — legal analysts and rights groups call it war crime under Geneva Conventions. NYT/Guardian/HuffPost/Al Jazeera condemn.", impact: "up" },
+    { zone: "lebanon", time: "2H", text: "'WE ARE GOING TO DO WHAT WE DID IN GAZA' — Senior Israeli official confirms massive Lebanon ground invasion to seize entire area south of Litani. Largest since 2006.", impact: "up" },
+    { zone: "pakistan_afghanistan", time: "3H", text: "AFGHANISTAN CLAIMS KILLED 14 PAKISTANI SOLDIERS AND CAPTURED BORDER POST — forces in Kunar/Nangarhar provinces. If confirmed, major escalation. Zardari: Taliban 'crossed red line.'", impact: "up" },
+    { zone: "dprk", time: "4H", text: "NORTH KOREA CONFIRMS 10 BALLISTIC MISSILES from Sunan — third provocation this week during US-SK 'Freedom Shield.' Japan confirms 340km range. 'Unprecedented pace.'", impact: "up" }
   ]
 };
 
