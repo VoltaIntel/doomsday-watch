@@ -312,9 +312,9 @@ body {
   width: 100%;
   overflow: hidden;
 }
-.chart-container canvas {
+.chart-container svg, .chart-container div {
   width: 100%;
-  height: 120px;
+  display: block;
 }
 
 /* ===== TRACKER GRID ===== */
@@ -840,7 +840,7 @@ body {
   <div class="chart-section">
     <div class="section-label">PROBABILITY HISTORY (48H)</div>
     <div class="chart-container">
-      <canvas id="probChart" height="120"></canvas>
+      <div id="probChart" style="width:100%;height:120px"></div>
     </div>
   </div>
 
@@ -892,7 +892,7 @@ const state = {
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 15, zone: "deterrent", trend: "stable", signals: [{"name": "china_reduced_flights", "positive": true, "activated_at": "2026-03-14T10:06:12Z"}, {"name": "thaad_redeployment", "positive": false, "activated_at": "2026-03-14T08:03:00Z"}, {"name": "us_taiwan_arms_package", "positive": false, "activated_at": "2026-03-14T08:00:00Z"}] },
     { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 41, zone: "critical", trend: "rising", signals: [{"name": "dprk_missile_barrage", "positive": false, "activated_at": "2026-03-14T08:06:00Z"}, {"name": "dprk_rhetoric", "positive": false, "activated_at": "2026-03-14T08:03:00Z"}, {"name": "dprk_missile_test", "positive": false, "activated_at": "2026-03-14T08:00:00Z"}] },
     { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 55, zone: "critical", trend: "rising", signals: [{"name": "sanctions_waiver_benefit", "positive": false, "activated_at": "2026-03-14T12:01:53Z"}, {"name": "ceasefire_collapse", "positive": false, "activated_at": "2026-03-14T08:12:00Z"}, {"name": "trump_deal_stalling", "positive": false, "activated_at": "2026-03-14T08:09:00Z"}, {"name": "trump_deal_ukraine", "positive": true, "activated_at": "2026-03-14T08:06:00Z"}, {"name": "russia_weapons_escalation", "positive": false, "activated_at": "2026-03-14T08:03:00Z"}, {"name": "russian_offensive", "positive": false, "activated_at": "2026-03-14T08:00:00Z"}] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 73, zone: "imminent", trend: "rising", signals: [{"name": "nuclear_escalation", "positive": false, "activated_at": "2026-03-14T08:15:00Z"}, {"name": "international_involvement", "positive": false, "activated_at": "2026-03-14T08:12:00Z"}, {"name": "taliban_retaliation", "positive": false, "activated_at": "2026-03-14T08:09:00Z"}, {"name": "border_clashes", "positive": false, "activated_at": "2026-03-14T08:06:00Z"}, {"name": "pakistan_airstrikes_civilians", "positive": false, "activated_at": "2026-03-14T08:03:00Z"}, {"name": "open_war_declared", "positive": false, "activated_at": "2026-03-14T08:00:00Z"}] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 81, zone: "imminent", trend: "rising", signals: [{"name": "pakistani_capital_struck", "positive": false, "activated_at": "2026-03-14T12:16:05Z"}, {"name": "nuclear_escalation", "positive": false, "activated_at": "2026-03-14T08:15:00Z"}, {"name": "international_involvement", "positive": false, "activated_at": "2026-03-14T08:12:00Z"}, {"name": "taliban_retaliation", "positive": false, "activated_at": "2026-03-14T08:09:00Z"}, {"name": "border_clashes", "positive": false, "activated_at": "2026-03-14T08:06:00Z"}, {"name": "pakistan_airstrikes_civilians", "positive": false, "activated_at": "2026-03-14T08:03:00Z"}, {"name": "open_war_declared", "positive": false, "activated_at": "2026-03-14T08:00:00Z"}] },
   ],
   news: [
     { zone: "iran", time: "2026-03-14", text: "US forces conducted 'large-scale precision strike' on Kharg Island, Iran's primary oil export hub handling 90% of oil exports. CENTCOM released strike video. Trump: 'obliterated every military target' and warned oil infrastructure could be next. If oil facilities hit, Iran could take months to a year to rebuild. China \u2014 main buyer of Iranian oil \u2014 would see biggest impact.", headline: "US strikes Kharg Island \u2014 Iran's oil export hub 'obliterated'", impact: "up", sources: ["NYT", "CNN", "AP"], source_types: ["other", "western"], confidence: "confirmed", severity: 4, signals: [] },
@@ -900,13 +900,13 @@ const state = {
     { zone: "iran", time: "2026-03-14", text: "Iran war death toll exceeds 2,000 killed. Six US service members died when their KC-135 refueling aircraft crashed in western Iraq. Total includes Iranian civilians, military, Hezbollah fighters, and US/Israeli forces. 18,551+ injured.", headline: "Iran war death toll exceeds 2,000 \u2014 6 US service members killed in Iraq plane crash", impact: "up", sources: ["NBC", "CNN"], source_types: ["other", "western"], confidence: "reported", severity: 3, signals: [] },
     { zone: "russia", time: "2026-03-14", text: "President Trump temporarily eased US sanctions on Russian oil exports to address global supply crisis from Hormuz blockade. European leaders condemned the move \u2014 German Chancellor: 'decision is wrong, pressure on Putin should be increased.' Major economic lifeline for Russia's war economy at a time when $100+ oil already benefits Kremlin.", headline: "Trump temporarily lifts Russia oil sanctions \u2014 Europe furious", impact: "up", sources: ["Guardian", "Reuters"], source_types: ["western"], confidence: "reported", severity: 2, signals: [] },
     { zone: "lebanon", time: "2026-03-14", text: "Israel planning to significantly expand ground operation in Lebanon, aiming to seize entire area south of Litani River and dismantle Hezbollah military infrastructure. Described as 'largest since 2006.' Separately, Israeli strike on primary healthcare center in southern Lebanon killed 12 medical personnel.", headline: "Israel planning massive ground invasion of southern Lebanon \u2014 seize area south of Litani", impact: "up", sources: ["Axios", "Times of Israel"], source_types: ["western"], confidence: "reported", severity: 4, signals: [] },
-    { zone: "north_korea", time: "2026-03-14", text: "North Korea fired more than 10 ballistic missiles from its western coast Saturday morning during US-South Korea 'Freedom Shield' drills. Japan confirms ~340km range into Sea of Japan outside EEZ. Third provocation this week. South Korea JCS: 'unprecedented pace of provocations.' Rejects Trump's dialogue outreach.", headline: "North Korea fires 10+ ballistic missiles in salvo during US-South Korea drills", impact: "up", sources: ["Reuters", "Bloomberg", "NK News"], source_types: ["other", "western"], confidence: "confirmed", severity: 2, signals: [{"name": "dprk_missile_test", "weight": 8}, {"name": "dprk_south_korea_tensions", "weight": 7}, {"name": "dprk_provocation", "weight": 6}, {"name": "dprk_missile_barrage", "weight": 10}] },
-    { zone: "pakistan_afghanistan", time: "2026-03-14", text: "Pakistan Air Force struck 51 locations in eastern Afghanistan. President Zardari declared Taliban 'crossed a red line' with drone attacks on Pakistani civilian targets. Afghan drones injured 4 Pakistani civilians including 2 children from debris. Both sides claim strikes on other's territory. Pakistan claims 32 sq km held in Zhob sector.", headline: "Pakistan-Afghanistan: PAF strikes 51 locations, Zardari says Taliban 'crossed red line'", impact: "up", sources: ["Reuters", "Hindustan Times"], source_types: ["other", "western"], confidence: "reported", severity: 3, signals: [{"name": "pakistan_airstrikes_civilians", "weight": 8}] },
+    { zone: "north_korea", time: "2026-03-14", text: "North Korea fired more than 10 ballistic missiles from its western coast Saturday morning during US-South Korea 'Freedom Shield' drills. Japan confirms ~340km range into Sea of Japan outside EEZ. Third provocation this week. South Korea JCS: 'unprecedented pace of provocations.' Rejects Trump's dialogue outreach.", headline: "North Korea fires 10+ ballistic missiles in salvo during US-South Korea drills", impact: "up", sources: ["Reuters", "Bloomberg", "NK News"], source_types: ["western", "other"], confidence: "confirmed", severity: 2, signals: [{"name": "dprk_missile_test", "weight": 8}, {"name": "dprk_south_korea_tensions", "weight": 7}, {"name": "dprk_provocation", "weight": 6}, {"name": "dprk_missile_barrage", "weight": 10}] },
+    { zone: "pakistan_afghanistan", time: "2026-03-14", text: "Pakistan Air Force struck 51 locations in eastern Afghanistan. President Zardari declared Taliban 'crossed a red line' with drone attacks on Pakistani civilian targets. Afghan drones injured 4 Pakistani civilians including 2 children from debris. Both sides claim strikes on other's territory. Pakistan claims 32 sq km held in Zhob sector.", headline: "Pakistan-Afghanistan: PAF strikes 51 locations, Zardari says Taliban 'crossed red line'", impact: "up", sources: ["Reuters", "Hindustan Times"], source_types: ["western", "other"], confidence: "reported", severity: 3, signals: [{"name": "pakistan_airstrikes_civilians", "weight": 8}, {"name": "pakistani_capital_struck", "weight": 8}] },
     { zone: "russia_ukraine", time: "2026-03-14", text: "ISW reports Russia expanding unmanned systems forces to 101,000 end strength by April 1. Daily FPV drone production exceeds 19,000. Accelerating formation of drone units especially in southern Ukraine. Ukrainian counterattacks making operational and strategic gains in south.", headline: "Russia expands drone production to 19,000/day, USF to 101,000 by April 1", impact: "up", sources: ["ISW"], source_types: ["western"], confidence: "developing", severity: 3, signals: [] },
     { zone: "russia_ukraine", time: "2026-03-14", text: "Zelenskyy warned the Middle East conflict is diverting international attention and critical anti-aircraft missiles from Ukraine. Met Iran Shah's son in Paris, urged no Iran-Russia cooperation. Kyiv increasingly concerned about strategic isolation as US overextends.", headline: "Zelenskyy: Middle East war 'bad news for Ukraine' \u2014 drawing attention and missiles away", impact: "up", sources: ["Guardian"], source_types: ["western"], confidence: "developing", severity: 2, signals: [] },
     { zone: "iran", time: "2026-03-14", text: "Around 500 oil tankers remain trapped in Persian Gulf due to Iran's de facto Strait of Hormuz blockade. New Supreme Leader Mojtaba Khamenei vowed to maintain closure. Brent crude above $100/barrel. IRU warns prices could reach $120 in coming weeks if no resolution.", headline: "500 tankers trapped in Persian Gulf \u2014 Hormuz blockade paralyzes oil trade", impact: "up", sources: ["CBS", "Al Jazeera"], source_types: ["western", "arabic"], confidence: "reported", severity: 2, signals: [] },
   ],
-  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:12Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:53Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:02:24Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:04:55Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}],
+  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:12Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:53Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:02:24Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:04:55Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:16:05Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}],
   zone_alerts: []
 };
 
@@ -1306,27 +1306,20 @@ function dismissAlerts() {
   state.zone_alerts = [];
 }
 
-// ===== PROBABILITY CHART =====
+// ===== PROBABILITY CHART (SVG) =====
 function drawProbChart() {
-  var canvas = document.getElementById("probChart");
-  if (!canvas) return;
-  var ctx = canvas.getContext("2d");
+  var container = document.getElementById("probChart");
+  if (!container) return;
   var entries = state.history || [];
   if (entries.length < 2) return;
 
-  var dpr = window.devicePixelRatio || 1;
-  var rect = canvas.parentElement.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = 120 * dpr;
-  canvas.style.width = rect.width + "px";
-  canvas.style.height = "120px";
-  ctx.scale(dpr, dpr);
-
-  var W = rect.width || canvas.clientWidth || 350;
+  var W = container.clientWidth || 350;
   var H = 120;
   var padL = 30, padR = 10, padT = 10, padB = 20;
   var chartW = W - padL - padR;
   var chartH = H - padT - padB;
+
+  var svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">';
 
   // Zone backgrounds
   var zones = [
@@ -1339,100 +1332,70 @@ function drawProbChart() {
   zones.forEach(function(z) {
     var y1 = padT + chartH * (1 - z.max / 100);
     var y2 = padT + chartH * (1 - prevMax / 100);
-    ctx.fillStyle = z.color;
-    ctx.fillRect(padL, y1, chartW, y2 - y1);
+    svg += '<rect x="' + padL + '" y="' + y1 + '" width="' + chartW + '" height="' + (y2-y1) + '" fill="' + z.color + '"/>';
     prevMax = z.max;
   });
 
-  // Zone threshold lines
+  // Threshold lines
   [15, 30, 60].forEach(function(thresh) {
     var y = padT + chartH * (1 - thresh / 100);
-    ctx.strokeStyle = "rgba(255,255,255,0.08)";
-    ctx.lineWidth = 0.5;
-    ctx.setLineDash([3, 3]);
-    ctx.beginPath();
-    ctx.moveTo(padL, y);
-    ctx.lineTo(padL + chartW, y);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = "#484f58";
-    ctx.font = "8px 'Share Tech Mono', monospace";
-    ctx.fillText(thresh + "%", 2, y + 3);
+    svg += '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL+chartW) + '" y2="' + y + '" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/>';
+    svg += '<text x="2" y="' + (y+3) + '" fill="#484f58" font-size="8" font-family="monospace">' + thresh + '%</text>';
   });
 
-  // Draw lines for each tracker
+  // Tracker lines (thin, dim)
   var trackerColors = {
-    iran_conventional: "#ff2d2d",
-    israel_lebanon: "#ffaa00",
-    turkey: "#00d4ff",
-    russia_ukraine: "#448aff",
-    russia: "#448aff",
-    pakistan_afghanistan: "#ff6ec7",
-    north_korea: "#b388ff",
-    china: "#ff9100",
-    india: "#ff6ec7",
-    iran_nuke: "#00e676"
+    iran_conventional: "#ff2d2d", israel_lebanon: "#ffaa00",
+    turkey: "#00d4ff", russia_ukraine: "#448aff", russia: "#448aff",
+    pakistan_afghanistan: "#ff6ec7", north_korea: "#b388ff",
+    china: "#ff9100", india: "#ff6ec7", iran_nuke: "#00e676"
   };
 
-  var trackerNames = {};
-  state.trackers.forEach(function(t) { trackerNames[t.id] = t.name; });
-
-  // Draw tracker lines (thin)
   Object.keys(trackerColors).forEach(function(tid) {
-    ctx.beginPath();
-    var started = false;
+    var pts = [];
     entries.forEach(function(e, i) {
       var val = (e.trackers || {})[tid];
       if (val === undefined) return;
       var x = padL + (i / (entries.length - 1)) * chartW;
       var y = padT + chartH * (1 - val / 100);
-      if (!started) { ctx.moveTo(x, y); started = true; }
-      else ctx.lineTo(x, y);
+      pts.push(x.toFixed(1) + "," + y.toFixed(1));
     });
-    ctx.strokeStyle = trackerColors[tid] + "40";
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    if (pts.length >= 2) {
+      svg += '<polyline points="' + pts.join(" ") + '" fill="none" stroke="' + trackerColors[tid] + '40" stroke-width="1"/>';
+    }
   });
 
-  // Draw global line (thick, with glow)
-  ctx.shadowBlur = 6;
-  ctx.shadowColor = "rgba(255,45,45,0.4)";
-  ctx.beginPath();
-  var started = false;
+  // Global line (thick red)
+  var globalPts = [];
   entries.forEach(function(e, i) {
     var x = padL + (i / (entries.length - 1)) * chartW;
     var y = padT + chartH * (1 - (e.global || 0) / 100);
-    if (!started) { ctx.moveTo(x, y); started = true; }
-    else ctx.lineTo(x, y);
+    globalPts.push(x.toFixed(1) + "," + y.toFixed(1));
   });
-  ctx.strokeStyle = "#ff2d2d";
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  ctx.shadowBlur = 0;
+  svg += '<polyline points="' + globalPts.join(" ") + '" fill="none" stroke="#ff2d2d" stroke-width="2" filter="url(#glow)"/>';
 
-  // Current value dot
+  // Glow filter
+  svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg">' +
+    '<defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>' +
+    svg.substring(svg.indexOf('<rect'));
+
+  // Current dot
   var last = entries[entries.length - 1];
   var lastX = padL + chartW;
   var lastY = padT + chartH * (1 - (last.global || 0) / 100);
-  ctx.beginPath();
-  ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
-  ctx.fillStyle = "#ff2d2d";
-  ctx.fill();
-  ctx.fillStyle = "#e6edf3";
-  ctx.font = "bold 10px 'Share Tech Mono', monospace";
-  ctx.fillText((last.global || 0) + "%", lastX - 30, lastY - 8);
+  svg += '<circle cx="' + lastX + '" cy="' + lastY + '" r="4" fill="#ff2d2d"/>';
+  svg += '<text x="' + (lastX - 35) + '" y="' + (lastY - 8) + '" fill="#e6edf3" font-size="10" font-weight="bold" font-family="monospace">' + (last.global || 0) + '%</text>';
 
   // Time labels
-  ctx.fillStyle = "#484f58";
-  ctx.font = "8px 'Share Tech Mono', monospace";
   if (entries.length > 0) {
-    var firstTime = entries[0].timestamp || "";
-    var lastTime = entries[entries.length - 1].timestamp || "";
-    ctx.fillText(firstTime.substring(5, 16).replace("T", " "), padL, H - 4);
-    ctx.textAlign = "right";
-    ctx.fillText(lastTime.substring(5, 16).replace("T", " "), W - padR, H - 4);
-    ctx.textAlign = "left";
+    var firstTime = (entries[0].timestamp || "").substring(5, 16).replace("T", " ");
+    var lastTime = (entries[entries.length - 1].timestamp || "").substring(5, 16).replace("T", " ");
+    svg += '<text x="' + padL + '" y="' + (H-4) + '" fill="#484f58" font-size="8" font-family="monospace">' + firstTime + '</text>';
+    svg += '<text x="' + (W - padR) + '" y="' + (H-4) + '" fill="#484f58" font-size="8" font-family="monospace" text-anchor="end">' + lastTime + '</text>';
   }
+
+  svg += '</svg>';
+  container.innerHTML = svg;
 }
 
 // ===== INIT =====
@@ -1443,15 +1406,18 @@ updateGlobalClock();
 updateThreatZones();
 updateThreatZones();
 showZoneAlerts();
-// Delay chart/map render to let mobile layout settle
-setTimeout(function() {
-  drawProbChart();
-  drawThreatMap();
-}, 100);
-window.addEventListener("resize", function() {
-  drawProbChart();
-  drawThreatMap();
-});
+// Render chart and map after layout settles
+function renderDelayed() {
+  try {
+    drawProbChart();
+    drawThreatMap();
+  } catch(e) {
+    console.error("Chart/map render error:", e);
+  }
+}
+setTimeout(renderDelayed, 300);
+window.addEventListener("load", renderDelayed);
+window.addEventListener("resize", renderDelayed);
 
 // Update time every second
 setInterval(updateClock, 1000);
