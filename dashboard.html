@@ -668,7 +668,8 @@ function renderTrackers() {
     function sigClass(s) {
       const cls = s.positive ? "signal active positive" : "signal active";
       const name = s.name || s;
-      return `<span class="${cls}">${name}</span>`;
+      const title = s.activated_at ? ` title="Activated: ${s.activated_at}"` : "";
+      return `<span class="${cls}"${title}>${name}</span>`;
     }
     if (t.signals.length === 0) {
       signalHTML = '<span class="signal">NO ACTIVE SIGNALS</span>';

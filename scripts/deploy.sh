@@ -20,6 +20,16 @@ for tid, tcfg in cfg.get("trackers", {}).items():
     for sname, scfg in tcfg.get("signals", {}).items():
         signal_weights[(tid, sname)] = scfg.get("weight", 0)
 
+# Load signal timeline for chronological sorting
+try:
+    with open("data/signal_timeline.json") as f:
+        timeline = json.load(f)
+except:
+    timeline = {"signals": {}}
+
+from datetime import datetime, timezone
+now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 # Build tracker data
 trackers_js = []
 tn = [
@@ -41,14 +51,20 @@ for k in state.get("trackers", {}).keys():
 
 for tid, name, emoji in tn:
     t = state.get("trackers", {}).get(tid, {})
-    # Tag each signal with positive flag if it's a de-escalation signal (negative weight)
-    tagged_signals = []
+    # Record signal activation times and tag with weight sign
+    signal_data = []
     for s in t.get("active_signals", []):
+        timeline_key = f"{tid}:{s}"
+        if timeline_key not in timeline["signals"]:
+            timeline["signals"][timeline_key] = now_iso
         w = signal_weights.get((tid, s), 0)
-        if w < 0:
-            tagged_signals.append({"name": s, "positive": True})
-        else:
-            tagged_signals.append({"name": s})
+        signal_data.append({
+            "name": s,
+            "positive": w < 0,
+            "activated_at": timeline["signals"][timeline_key]
+        })
+    # Sort signals chronologically (oldest first)
+    signal_data.sort(key=lambda x: x["activated_at"])
     trackers_js.append({
         "id": tid,
         "name": name,
@@ -56,7 +72,7 @@ for tid, name, emoji in tn:
         "prob": t.get("current_probability", t.get("base_rate", 0)),
         "zone": t.get("zone", "deterrent"),
         "trend": t.get("trend", "stable"),
-        "signals": tagged_signals
+        "signals": signal_data
     })
 
 news_js = state.get("latest_news", [
@@ -114,6 +130,10 @@ else:
     # Update state.json with correct global
     state["global_war_probability"] = gp
     state["global_zone"] = tz
+    # Write updated signal timeline
+    with open("data/signal_timeline.json", "w") as tf:
+        json.dump(timeline, tf, indent=2)
+
     with open("data/current_state.json", "w") as sf:
         json.dump(state, sf, indent=2)
 
