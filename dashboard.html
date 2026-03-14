@@ -612,29 +612,29 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-13T18:00:00Z",
-  global_war_probability: 34,
+  last_updated: "2026-03-14T00:00:00Z",
+  global_war_probability: 44,
   trackers: [
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 15, zone: "elevated", trend: "falling", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "IAEA DENIED"] },
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 65, zone: "critical", trend: "rising", signals: ["HORMUZ BLOCKED", "US CASUALTIES", "6 CREW KILLED", "ENERGY THREATS"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 74, zone: "critical", trend: "rising", signals: ["BEIRUT STRUCK", "EVACUATION ORDER", "800K DISPLACED", "EXPANDING OPS"] },
-    { id: "turkey", name: "TURKEY", emoji: "🇹🇷", prob: 30, zone: "critical", trend: "rising", signals: ["3 MISSILE INTERCEPTS", "CLARIFY DEMANDED", "NATO AIR DEFENSE"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 10, zone: "deterrent", trend: "falling", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "IAEA DENIED"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 78, zone: "imminent", trend: "rising", signals: ["HORMUZ BLOCKED", "DUBAI STRUCK", "1444 DEAD", "GULF-WIDE WAR", "16+ SHIPS HIT"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 82, zone: "imminent", trend: "rising", signals: ["GAZA-SCALE THREAT", "773 KILLED", "BRIDGE DESTROYED", "BEIRUT BOMBED", "INFRASTRUCTURE HIT"] },
+    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 36, zone: "critical", trend: "rising", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 10, zone: "deterrent", trend: "stable", signals: [] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 7, zone: "deterrent", trend: "stable", signals: ["IRAN ARMS", "SANCTIONS WAIVER"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 12, zone: "deterrent", trend: "falling", signals: [] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 7, zone: "deterrent", trend: "stable", signals: ["IRAN ARMS", "HEALEY LINKS"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 13, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "FLIGHTS PAUSED"] },
     { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 16, zone: "elevated", trend: "stable", signals: ["CRUISE MISSILE TEST", "NUCLEAR RHETORIC"] },
-    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 26, zone: "elevated", trend: "stable", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "DEAL PRESSURE"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 22, zone: "elevated", trend: "rising", signals: ["OPEN WAR", "AIRSTRIKES", "CIVILIAN CASUALTIES"] }
+    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 27, zone: "elevated", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "TALKS STALLED"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 24, zone: "elevated", trend: "stable", signals: ["OPEN WAR", "AIRSTRIKES", "BORDER FIGHTING"] }
   ],
   news: [
-    { zone: "iran", time: "NOW", text: "Israel strikes Tehran; Iran retaliates across Gulf — Day 14 of war continues", impact: "up" },
-    { zone: "iran", time: "1H", text: "CENTCOM destroys 90+ Iranian vessels including 30+ mine-layers — major naval degradation", impact: "down" },
-    { zone: "iran", time: "2H", text: "Hegseth vows US will stop Iran from choking Strait of Hormuz — no specifics on how", impact: "up" },
-    { zone: "iran", time: "3H", text: "Oil at $101/barrel — IEA: 'biggest oil supply disruption in history.' 1,000+ ships blocked from Hormuz", impact: "up" },
-    { zone: "lebanon", time: "3H", text: "Israel strikes heart of Beirut — most powerful Dahiyeh bombardment yet. 800K displaced", impact: "up" },
-    { zone: "pak_afg", time: "4H", text: "Pakistan-Afghanistan 'open war' — overnight strikes kill 6+ civilians in Kabul, Kandahar", impact: "up" },
-    { zone: "russia_ukr", time: "6H", text: "Russia loses 860 troops in 24h. Scorched-earth on Ukraine energy grid near collapse", impact: "up" },
-    { zone: "iran", time: "5H", text: "French soldier killed by drone in Irbil — first European military fatality of war", impact: "up" }
+    { zone: "iran", time: "1H", text: "Iranian drones STRIKE DUBAI — Creek Harbour tower damaged, Dubai Airport hit. UAE directly targeted.", impact: "up" },
+    { zone: "lebanon", time: "2H", text: "Israel destroys Litani River bridge, threatens 'Gaza-scale devastation' with leaflets over Beirut. 773 killed.", impact: "up" },
+    { zone: "iran", time: "3H", text: "Bahrain intercepted 114 missiles + 190 drones. Saudi intercepted 38 drones. 2 killed in Oman. Gulf-wide war.", impact: "up" },
+    { zone: "turkey", time: "4H", text: "Third Iranian ballistic missile intercepted near Incirlik nuclear base in 10 days. 3:25am sirens in Adana.", impact: "up" },
+    { zone: "iran", time: "5H", text: "US deploys 2,200 Marines from Okinawa. Iran death toll: 1,444 dead, 18,551 injured. New SL 'wounded, disfigured'.", impact: "up" },
+    { zone: "iran", time: "6H", text: "CNN: Trump admin had NO plan for Hormuz closure. 'Dumbfounded' former officials. $11.3bn spent, 250+ orgs demand halt.", impact: "up" },
+    { zone: "russia_ukr", time: "8H", text: "Zelensky: US postponed trilateral Ukraine talks. Russia occupies 20% of Ukraine. 860 Russian casualties in 24h.", impact: "up" },
+    { zone: "china", time: "8H", text: "13 days near-zero PLA flights near Taiwan broken — 5 aircraft detected near median line. $14B arms deal awaiting Trump.", impact: "down" }
   ]
 };
 
