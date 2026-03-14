@@ -771,6 +771,7 @@ body {
         </div>
       </div>
       <div class="header-status">
+        <button onclick="openBriefing()" style="background:rgba(255,45,45,0.15);border:1px solid rgba(255,45,45,0.4);color:#ff4444;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:1.5px;margin-right:10px;">📋 BRIEF</button>
         <div class="status-live"><div class="status-dot"></div>LIVE</div>
         <div class="status-time" id="updateTime">LOADING...</div>
       </div>
@@ -815,15 +816,11 @@ body {
   <div class="chart-section">
     <div class="section-label">PROBABILITY HISTORY (48H)</div>
     <div class="chart-container">
-      <div id="probChart" style="width:100%;overflow:hidden"><svg width="100%" height="120" viewBox="0 0 600 120"><rect x="30" y="86.5" width="560" height="13.5" fill="rgba(0,230,118,0.06)"/><rect x="30" y="73.0" width="560" height="13.5" fill="rgba(255,170,0,0.06)"/><rect x="30" y="46.0" width="560" height="27.0" fill="rgba(255,170,0,0.08)"/><rect x="30" y="10.0" width="560" height="36.0" fill="rgba(255,45,45,0.06)"/><line x1="30" y1="86.5" x2="590" y2="86.5" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/><text x="2" y="89.5" fill="#484f58" font-size="8" font-family="monospace">15%</text><line x1="30" y1="73.0" x2="590" y2="73.0" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/><text x="2" y="76.0" fill="#484f58" font-size="8" font-family="monospace">30%</text><line x1="30" y1="46.0" x2="590" y2="46.0" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/><text x="2" y="49.0" fill="#484f58" font-size="8" font-family="monospace">60%</text><defs><filter id="cglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polyline points="30.0,59.5 43.7,58.6 57.3,56.8 71.0,55.0 84.6,53.2 98.3,51.4 112.0,49.6 125.6,48.7 139.3,46.9 152.9,45.1 166.6,43.3 180.2,41.5 193.9,39.7 207.6,39.7 221.2,39.7 234.9,37.9 248.5,37.9 262.2,37.9 275.9,37.9 289.5,37.9 303.2,37.9 316.8,37.9 330.5,37.9 344.1,37.9 357.8,37.9 371.5,37.9 385.1,37.9 398.8,37.9 412.4,37.9 426.1,37.9 439.8,37.9 453.4,37.9 467.1,35.2 480.7,36.1 494.4,33.4 508.0,33.4 521.7,33.4 535.4,33.4 549.0,33.4 562.7,33.4 576.3,33.4 590.0,33.4" fill="none" stroke="#ff2d2d" stroke-width="2" filter="url(#cglow)"/><circle cx="590" cy="33.400000000000006" r="4" fill="#ff2d2d"/><text x="555" y="25.400000000000006" fill="#e6edf3" font-size="10" font-weight="bold" font-family="monospace">74%</text><text x="30" y="116" fill="#484f58" font-size="8" font-family="monospace">03-13 23:59</text><text x="590" y="116" fill="#484f58" font-size="8" font-family="monospace" text-anchor="end">03-14 20:11</text></svg></div>
+      <div id="probChart" style="width:100%;overflow:hidden"><svg width="100%" height="120" viewBox="0 0 600 120"><rect x="30" y="86.5" width="560" height="13.5" fill="rgba(0,230,118,0.06)"/><rect x="30" y="73.0" width="560" height="13.5" fill="rgba(255,170,0,0.06)"/><rect x="30" y="46.0" width="560" height="27.0" fill="rgba(255,170,0,0.08)"/><rect x="30" y="10.0" width="560" height="36.0" fill="rgba(255,45,45,0.06)"/><line x1="30" y1="86.5" x2="590" y2="86.5" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/><text x="2" y="89.5" fill="#484f58" font-size="8" font-family="monospace">15%</text><line x1="30" y1="73.0" x2="590" y2="73.0" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/><text x="2" y="76.0" fill="#484f58" font-size="8" font-family="monospace">30%</text><line x1="30" y1="46.0" x2="590" y2="46.0" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3"/><text x="2" y="49.0" fill="#484f58" font-size="8" font-family="monospace">60%</text><defs><filter id="cglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><polyline points="30.0,59.5 43.3,58.6 56.7,56.8 70.0,55.0 83.3,53.2 96.7,51.4 110.0,49.6 123.3,48.7 136.7,46.9 150.0,45.1 163.3,43.3 176.7,41.5 190.0,39.7 203.3,39.7 216.7,39.7 230.0,37.9 243.3,37.9 256.7,37.9 270.0,37.9 283.3,37.9 296.7,37.9 310.0,37.9 323.3,37.9 336.7,37.9 350.0,37.9 363.3,37.9 376.7,37.9 390.0,37.9 403.3,37.9 416.7,37.9 430.0,37.9 443.3,37.9 456.7,35.2 470.0,36.1 483.3,33.4 496.7,33.4 510.0,33.4 523.3,33.4 536.7,33.4 550.0,33.4 563.3,33.4 576.7,33.4 590.0,33.4" fill="none" stroke="#ff2d2d" stroke-width="2" filter="url(#cglow)"/><circle cx="590" cy="33.400000000000006" r="4" fill="#ff2d2d"/><text x="555" y="25.400000000000006" fill="#e6edf3" font-size="10" font-weight="bold" font-family="monospace">74%</text><text x="30" y="116" fill="#484f58" font-size="8" font-family="monospace">03-13 23:59</text><text x="590" y="116" fill="#484f58" font-size="8" font-family="monospace" text-anchor="end">03-14 20:15</text></svg></div>
     </div>
   </div>
 
-  <!-- INTELLIGENCE NARRATIVE -->
-  <div class="narrative-section" style="margin:16px 0;padding:16px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:6px;">
-    <div class="section-label" style="margin-bottom:12px;font-size:11px;letter-spacing:1.5px;color:#ff4444;">📋 INTELLIGENCE BRIEF</div>
-    <div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">THREAT ASSESSMENT — March 14, 2026 20:11 UTC<br><br>The global security environment remains elevated with a composite threat score of 74%.<br><br>IMMEDIATE THREATS:<br>  ⚔️ IRAN WAR — 100% (escalating). kuwait drone strike; uae evacuation order; uae missile drone barrage.<br>  🇱🇧 ISRAEL-LEBANON — 100% (escalating). gaza comparison rhetoric; displacement order 25mi; infrastructure destruction.<br>  🌍 PAKISTAN AFGHANISTAN — 80% (escalating). afghan claim kills pakistani soldiers; china mediation; pakistani capital struck.<br>  🇹🇷 TURKEY — 74% (holding). incirlik targeted; nato third intercept; turkish mobilization.<br>  🌍 RUSSIA UKRAINE — 69% (holding). ceasefire collapse; trump deal stalling; trump deal ukraine.<br>  🇷🇺 RUSSIA-NATO — 68% (holding). ceasefire collapse; putin diplomacy; russia diplomacy.<br>  🇰🇵 DPRK — 41% (holding). dprk missile barrage; dprk rhetoric; dprk missile test.<br><br>NOTABLE DEVELOPMENTS:<br>  ⚔️ IRAN WAR — kuwait drone strike (1.1h ago)<br>  ⚔️ IRAN WAR — uae evacuation order (2.1h ago)<br>  ⚔️ IRAN WAR — uae missile drone barrage (2.1h ago)<br>  🇱🇧 ISRAEL-LEBANON — gaza comparison rhetoric (2.1h ago)<br>  🌍 PAKISTAN AFGHANISTAN — afghan claim kills pakistani soldiers (2.1h ago)<br><br>TREND: Escalating: IRAN WAR, ISRAEL-LEBANON, PAKISTAN AFGHANISTAN<br><br>OUTLOOK: Monitor IRAN WAR for continued escalation — currently 100% and trending upward.<br><br>CONFIDENCE: HIGH | 53 active signals | 6 new this cycle</div>
-  </div>
+  <!-- NARRATIVE BUTTON (click to open briefing modal) -->
 
   <!-- TRACKERS -->
   <div class="trackers-section">
@@ -885,7 +882,7 @@ const state = {
     { zone: "pakistan", time: "2026-03-14", text: "Afghanistan's MoD claims border forces in Kunar and Nangarhar killed 14 Pakistani soldiers and captured a military post. Pakistan has not confirmed or denied. If true, major escalation.", headline: "Afghanistan claims killed 14 Pakistani soldiers, captured border post", impact: "up", sources: ["Newsday", "LA Times", "Tribune India"], source_types: ["4_regional", "3_established", "4_regional"], confidence: "confirmed", severity: 3, signals: [] },
     { zone: "lebanon", time: "2026-03-14", text: "Senior Israeli official: 'We are going to do what we did in Gaza.' Israel seizing entire area south of Litani River. 634+ killed, 800K-1M displaced. No ceasefire in sight.", headline: "Israel 'massive' Lebanon ground invasion confirmed \u2014 'do what we did in Gaza'", impact: "up", sources: ["Axios", "Times of Israel", "Al Bawaba"], source_types: ["3_established", "4_regional", "4_regional"], confidence: "confirmed", severity: 4, signals: [] },
   ],
-  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:12Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:53Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:02:24Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:04:55Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:16:05Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:22:52Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:23:17Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:36:30Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:37:57Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:40:12Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:06:48Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:35:08Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:54:54Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:56:27Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:57:22Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:58:07Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:59:42Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T14:01:44Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T14:08:17Z", "global": 72, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 63, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T15:07:23Z", "global": 71, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 63, "pakistan_afghanistan": 77}}, {"timestamp": "2026-03-14T17:05:40Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 77}}, {"timestamp": "2026-03-14T18:03:06Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T19:06:23Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:00:07Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:08:06Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:08:29Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:10:50Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:11:38Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}],
+  history: [{"timestamp": "2026-03-13T23:59:56Z", "global": 45, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T00:59:56Z", "global": 46, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T01:59:56Z", "global": 48, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T02:59:56Z", "global": 50, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T03:59:56Z", "global": 52, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T04:59:56Z", "global": 54, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T05:59:56Z", "global": 56, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T06:59:56Z", "global": 57, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T07:59:56Z", "global": 59, "zone": "critical", "trackers": {}}, {"timestamp": "2026-03-14T08:59:56Z", "global": 61, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T09:59:56Z", "global": 63, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T10:59:56Z", "global": 65, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T11:59:56Z", "global": 67, "zone": "imminent", "trackers": {}}, {"timestamp": "2026-03-14T12:00:00Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:12Z", "global": 67, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 68, "india": 20, "russia": 52, "china": 15, "north_korea": 37, "russia_ukraine": 50, "pakistan_afghanistan": 71}}, {"timestamp": "2026-03-14T12:01:53Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:02:24Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:04:55Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 73}}, {"timestamp": "2026-03-14T12:16:05Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:22:52Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:23:17Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:36:30Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:37:57Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T12:40:12Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:06:48Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:35:08Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:54:54Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:56:27Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:57:22Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:58:07Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T13:59:42Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T14:01:44Z", "global": 69, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 56, "china": 15, "north_korea": 41, "russia_ukraine": 55, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T14:08:17Z", "global": 72, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 63, "pakistan_afghanistan": 81}}, {"timestamp": "2026-03-14T15:07:23Z", "global": 71, "zone": "imminent", "trackers": {"iran_nuke": 18, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 63, "pakistan_afghanistan": 77}}, {"timestamp": "2026-03-14T17:05:40Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 77}}, {"timestamp": "2026-03-14T18:03:06Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T19:06:23Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:00:07Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:08:06Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:08:29Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:10:50Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:11:38Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}, {"timestamp": "2026-03-14T20:15:14Z", "global": 74, "zone": "imminent", "trackers": {"iran_nuke": 30, "iran_conventional": 100, "israel_lebanon": 100, "turkey": 74, "india": 20, "russia": 68, "china": 15, "north_korea": 41, "russia_ukraine": 69, "pakistan_afghanistan": 80}}],
   zone_alerts: [{"timestamp": "2026-03-14T14:08:17Z", "tracker": "TURKEY", "tracker_id": "turkey", "from": "critical", "to": "imminent", "direction": "\u2b06\ufe0f", "prob": "imminent"}]
 };
 
@@ -1262,6 +1259,146 @@ state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
   // Also update global zone
   var gp = state.global_war_probability || 0;
   state.global_zone = calcZone(gp);
+</script>
+
+<!-- BRIEFING MODAL -->
+<style>
+  .briefing-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    overflow-y: auto;
+    backdrop-filter: blur(4px);
+  }
+  .briefing-overlay.active { display: flex; }
+  .briefing-modal {
+    background: #0d1117;
+    border: 1px solid rgba(255,45,45,0.3);
+    border-radius: 8px;
+    max-width: 700px;
+    width: 100%;
+    padding: 24px 28px;
+    color: #8b949e;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    position: relative;
+    box-shadow: 0 0 60px rgba(255,45,45,0.1);
+  }
+  .briefing-modal .close-btn {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: none;
+    border: none;
+    color: #484f58;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .briefing-modal .close-btn:hover { color: #ff4444; }
+  .briefing-modal .brief-header {
+    color: #ff4444;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(255,45,45,0.2);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .briefing-modal .brief-section {
+    margin-bottom: 14px;
+  }
+  .briefing-modal .brief-section-title {
+    color: #ff6666;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .briefing-modal .brief-line {
+    white-space: pre-wrap;
+  }
+</style>
+
+<div class="briefing-overlay" id="briefingModal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="briefing-modal">
+    <button class="close-btn" onclick="document.getElementById('briefingModal').classList.remove('active')">&times;</button>
+    <div class="brief-header" id="briefHeader">THREAT ASSESSMENT</div>
+    <div id="briefBody"></div>
+  </div>
+</div>
+
+<script>
+function openBriefing() {
+  var el = document.getElementById('briefBody');
+  var hdr = document.getElementById('briefHeader');
+  var state = window.state || {};
+  var ts = state.last_updated || '';
+  var dateStr = ts.substring(0,10);
+  var timeStr = ts.substring(11,16) + ' UTC';
+  hdr.textContent = 'THREAT ASSESSMENT — ' + dateStr + ' ' + timeStr;
+  // Build briefing from current state
+  var gp = state.global_war_probability || 0;
+  var trackers = state.trackers || [];
+  var sorted = trackers.slice().sort(function(a,b){return b.prob - a.prob;});
+  var rising = sorted.filter(function(t){return t.trend === 'rising';});
+  var imminent = sorted.filter(function(t){return t.zone === 'imminent';});
+  var critical = sorted.filter(function(t){return t.zone === 'critical';});
+  
+  var html = '';
+  // Overall
+  html += '<div class="brief-section"><div class="brief-line">The global security environment ' + (gp >= 60 ? 'remains ELEVATED' : gp >= 30 ? 'is CONCERNING' : 'is STABLE') + ' with a composite threat score of <b style="color:#ff6666">' + gp + '%</b>.</div></div>';
+  
+  // Immediate threats
+  if (imminent.length > 0 || critical.length > 0) {
+    html += '<div class="brief-section"><div class="brief-section-title">IMMEDIATE THREATS:</div><div class="brief-line">';
+    imminent.concat(critical).forEach(function(t){
+      var trend = t.trend === 'rising' ? 'escalating' : t.trend === 'falling' ? 'de-escalating' : 'holding';
+      var sigs = (t.signals || []).slice(0,3).map(function(s){return s.name.replace(/_/g,' ');}).join('; ');
+      html += t.emoji + ' ' + t.name + ' — ' + t.prob + '% (' + trend + '). ' + sigs + '.\n';
+    });
+    html += '</div></div>';
+  }
+  
+  // Notable developments
+  var news = state.news || [];
+  if (news.length > 0) {
+    html += '<div class="brief-section"><div class="brief-section-title">NOTABLE DEVELOPMENTS:</div><div class="brief-line">';
+    news.slice(0,5).forEach(function(n){
+      var impact = n.impact === 'up' ? '▲' : n.impact === 'down' ? '▼' : '●';
+      var conf = n.confidence ? ' [' + n.confidence.toUpperCase() + ']' : '';
+      html += impact + ' ' + (n.headline || n.text).substring(0,80) + conf + '\n';
+    });
+    html += '</div></div>';
+  }
+  
+  // Trend
+  html += '<div class="brief-section"><div class="brief-section-title">TREND:</div><div class="brief-line">';
+  if (rising.length > 0) {
+    html += 'Escalating: ' + rising.map(function(t){return t.name;}).join(', ');
+  } else {
+    html += 'No significant directional shifts this cycle';
+  }
+  html += '</div></div>';
+  
+  // Outlook
+  html += '<div class="brief-section"><div class="brief-section-title">OUTLOOK:</div><div class="brief-line">';
+  if (rising.length > 0) {
+    html += 'Monitor ' + rising[0].name + ' for continued escalation — currently ' + rising[0].prob + '% and trending upward.';
+  } else {
+    html += 'No immediate escalation catalysts identified.';
+  }
+  html += '</div></div>';
+  
+  // Confidence
+  html += '<div class="brief-section" style="border-top:1px solid rgba(255,45,45,0.15);padding-top:10px;margin-top:16px;"><div class="brief-line" style="color:#484f58;font-size:11px;">' + (state.news || []).length + ' sources processed | ' + trackers.length + ' active trackers</div></div>';
+  
+  el.innerHTML = html;
+  document.getElementById('briefingModal').classList.add('active');
+}
 </script>
 
 
