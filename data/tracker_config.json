@@ -525,6 +525,10 @@
         "dprk_provocation": {
           "weight": 6,
           "description": "Military provocations toward South Korea"
+        },
+        "dprk_missile_barrage": {
+          "weight": 10,
+          "description": "DPRK fires multiple ballistic missiles simultaneously (salvo/barrage, not single test)"
         }
       }
     },
@@ -734,17 +738,83 @@
     ]
   },
   "coupling": {
-    "description": "Correlation multipliers — when a tracker reaches CRITICAL/IMMINENT, it boosts connected trackers. Applied BEFORE global score calculation. Weights calibrated so coupling nudges scores toward realistic systemic risk without double-counting already-hot conflicts.",
+    "description": "Correlation multipliers \u2014 when a tracker reaches CRITICAL/IMMINENT, it boosts connected trackers. Applied BEFORE global score calculation. Weights calibrated so coupling nudges scores toward realistic systemic risk without double-counting already-hot conflicts.",
     "rules": [
-      {"source": "iran_conventional", "min_zone": "imminent", "targets": {"turkey": 6, "russia": 4, "israel_lebanon": 3, "iran_nuke": 4}},
-      {"source": "iran_conventional", "min_zone": "critical",  "targets": {"turkey": 3, "russia": 2, "israel_lebanon": 2}},
-      {"source": "israel_lebanon",   "min_zone": "imminent", "targets": {"iran_conventional": 3}},
-      {"source": "turkey",            "min_zone": "imminent", "targets": {"russia": 12, "russia_ukraine": 8}},
-      {"source": "turkey",            "min_zone": "critical",  "targets": {"russia": 8, "russia_ukraine": 5}},
-      {"source": "russia",            "min_zone": "imminent", "targets": {"turkey": 8, "china": 4, "russia_ukraine": 6}},
-      {"source": "china",             "min_zone": "imminent", "targets": {"north_korea": 12, "india": 6}},
-      {"source": "north_korea",       "min_zone": "imminent", "targets": {"china": 6, "india": 4}},
-      {"source": "india",             "min_zone": "critical",  "targets": {"pakistan_afghanistan": 10, "china": 2}}
+      {
+        "source": "iran_conventional",
+        "min_zone": "imminent",
+        "targets": {
+          "turkey": 6,
+          "russia": 4,
+          "israel_lebanon": 3,
+          "iran_nuke": 4
+        }
+      },
+      {
+        "source": "iran_conventional",
+        "min_zone": "critical",
+        "targets": {
+          "turkey": 3,
+          "russia": 2,
+          "israel_lebanon": 2
+        }
+      },
+      {
+        "source": "israel_lebanon",
+        "min_zone": "imminent",
+        "targets": {
+          "iran_conventional": 3
+        }
+      },
+      {
+        "source": "turkey",
+        "min_zone": "imminent",
+        "targets": {
+          "russia": 12,
+          "russia_ukraine": 8
+        }
+      },
+      {
+        "source": "turkey",
+        "min_zone": "critical",
+        "targets": {
+          "russia": 8,
+          "russia_ukraine": 5
+        }
+      },
+      {
+        "source": "russia",
+        "min_zone": "imminent",
+        "targets": {
+          "turkey": 8,
+          "china": 4,
+          "russia_ukraine": 6
+        }
+      },
+      {
+        "source": "china",
+        "min_zone": "imminent",
+        "targets": {
+          "north_korea": 12,
+          "india": 6
+        }
+      },
+      {
+        "source": "north_korea",
+        "min_zone": "imminent",
+        "targets": {
+          "china": 6,
+          "india": 4
+        }
+      },
+      {
+        "source": "india",
+        "min_zone": "critical",
+        "targets": {
+          "pakistan_afghanistan": 10,
+          "china": 2
+        }
+      }
     ]
   }
 }

@@ -612,8 +612,8 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-14T06:04:00Z",
-  global_war_probability: 66,
+  last_updated: "2026-03-14T08:04:00Z",
+  global_war_probability: 67,
   global_zone: "imminent",
   trackers: [
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 18, zone: "elevated", trend: "falling", signals: ["enrichment_60", "iaea_access_denied", "buried_isfahan", "nuclear_scientists_killed"] },
@@ -623,11 +623,12 @@ const state = {
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 20, zone: "elevated", trend: "stable", signals: [] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 52, zone: "critical", trend: "rising", signals: ["russia_iran_arms", "russia_diplomacy", "putin_diplomacy", "ceasefire_collapse"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 18, zone: "deterrent", trend: "rising", signals: ["us_taiwan_arms_package", "thaad_redeployment"] },
-    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 22, zone: "elevated", trend: "rising", signals: ["dprk_missile_test", "dprk_rhetoric"] },
+    { id: "north_korea", name: "DPRK", emoji: "🇰🇵", prob: 37, zone: "critical", trend: "rising", signals: ["dprk_missile_test", "dprk_rhetoric", "dprk_missile_barrage"] },
     { id: "russia_ukraine", name: "RUSSIA UKRAINE", emoji: "🌍", prob: 50, zone: "critical", trend: "rising", signals: ["russian_offensive", "russia_weapons_escalation", "trump_deal_ukraine", "trump_deal_stalling", "ceasefire_collapse"] },
     { id: "pakistan_afghanistan", name: "PAKISTAN AFGHANISTAN", emoji: "🌍", prob: 71, zone: "imminent", trend: "rising", signals: ["open_war_declared", "pakistan_airstrikes_civilians", "border_clashes", "taliban_retaliation", "international_involvement", "nuclear_escalation"] },
   ],
   news: [
+    { zone: "north_korea", time: "2026-03-14", text: "North Korea fired approximately 10 ballistic missiles from its western coast Saturday morning. Japan confirms projectiles traveled ~340km into Sea of Japan outside Japan EEZ. Coordinated salvo during US-South Korea joint drills. Third provocation this week. South Korea JCS calls it unprecedented pace.", impact: "up" },
     { zone: "israel_lebanon", time: "2026-03-14", text: "U.S. officials said Israel agreed to spare Beirut airport but stopped short of committing to protect other state infrastructure. IDF bombed a bridge in southern Lebanon it claimed Hezbollah was using to move forces and weapons. Ground invasion planning for south Lebanon continues.", impact: "up" },
     { zone: "iran", time: "2026-03-14", text: "CNBC analysis: Trump administration's attempts to control oil price spikes from Iran war are failing. Hormuz near-closure disrupts 20M barrels/day. Price routing attempts and production increases elsewhere insufficient. Oil remains above $100, spiked to $120.", impact: "up" },
     { zone: "pakistan_afghanistan", time: "2026-03-14", text: "Afghanistan's defense ministry said its air force carried out a drone strike on Pakistan's 'Hamza' military facility in Islamabad's Faizabad area — first strike on Pakistan's capital. Pakistan claims two drones intercepted. Taliban also claims destruction of Kohat military fortress and Durand Line command center.", impact: "up" },
@@ -635,8 +636,6 @@ const state = {
     { zone: "iran", time: "2026-03-14", text: "Intense US-Israeli strikes targeting central Tehran. Israeli military launched new wave at approx 10pm local time. Residents reported heavy explosions. Escalation from periphery to capital heart. Combined with Kharg Island bombing and threats to oil infrastructure.", impact: "up" },
     { zone: "turkey", time: "2026-03-13", text: "NATO air defenses intercepted third Iranian ballistic missile over Turkey in 10 days. Sirens blared in Adana province near Incirlik Air Base. NATO spokesperson: 'NATO remains vigilant.' Iran denies targeting, calls incidents 'possible false flag.' One more likely triggers Article 4.", impact: "up" },
     { zone: "israel_lebanon", time: "2026-03-13", text: "Lebanese Health Ministry: 773+ killed since March 2 including 100+ children. 1,933 injured. 800K-1M displaced by 25-mile evacuation order. Heart of Beirut struck. Bridge destroyed signaling long campaign.", impact: "up" },
-    { zone: "russia", time: "2026-03-13", text: "Institute for the Study of War assesses: Global oil price shock from Iran war has 'likely invalidated' previous forecasts that compounding economic costs would force Kremlin concessions. Russia's war economy benefits from $100+ oil, undermining sanctions pressure.", impact: "up" },
-    { zone: "north_korea", time: "2026-03-14", text: "North Korea fired a suspected ballistic projectile Saturday morning — Japan confirms projectile fell into Sea of Japan. Second test this week. Days after Kim Jong Un oversaw cruise missile test from new Choe Hyon destroyer.", impact: "up" },
   ]
 };
 
