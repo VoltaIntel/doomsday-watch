@@ -708,5 +708,19 @@
       "Add to dashboard immediately after creation",
       "Report new tracker creation in next briefing"
     ]
+  },
+  "coupling": {
+    "description": "Correlation multipliers — when a tracker reaches CRITICAL/IMMINENT, it boosts connected trackers. Applied BEFORE global score calculation.",
+    "rules": [
+      {"source": "iran_conventional", "min_zone": "imminent", "targets": {"turkey": 12, "russia": 8, "israel_lebanon": 10, "iran_nuke": 5}},
+      {"source": "iran_conventional", "min_zone": "critical",  "targets": {"turkey": 5, "russia": 3, "israel_lebanon": 4}},
+      {"source": "israel_lebanon",   "min_zone": "imminent", "targets": {"iran_conventional": 8}},
+      {"source": "turkey",            "min_zone": "imminent", "targets": {"russia": 15, "russia_ukraine": 10, "india": 3}},
+      {"source": "turkey",            "min_zone": "critical",  "targets": {"russia": 10, "russia_ukraine": 5}},
+      {"source": "russia",            "min_zone": "imminent", "targets": {"turkey": 10, "china": 5, "russia_ukraine": 8}},
+      {"source": "china",             "min_zone": "imminent", "targets": {"north_korea": 15, "india": 8}},
+      {"source": "north_korea",       "min_zone": "imminent", "targets": {"china": 8, "india": 5}},
+      {"source": "india",             "min_zone": "critical",  "targets": {"pakistan_afghanistan": 10, "china": 3}}
+    ]
   }
 }

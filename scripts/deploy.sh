@@ -58,6 +58,43 @@ else:
     all_probs = {}
     for t in trackers_js:
         all_probs[t["id"]] = t["prob"]
+
+    # Apply coupling boosts — when a tracker is CRITICAL/IMMINENT, boost connected trackers
+    with open("data/tracker_config.json") as cf:
+        cfg = json.load(cf)
+    coupling_rules = cfg.get("coupling", {}).get("rules", [])
+    zone_rank = {"deterrent": 0, "elevated": 1, "critical": 2, "imminent": 3}
+
+    boosts_applied = {}
+    for rule in coupling_rules:
+        src = rule["source"]
+        src_zone = state.get("trackers", {}).get(src, {}).get("zone", "deterrent")
+        min_zone = rule["min_zone"]
+        if zone_rank.get(src_zone, 0) >= zone_rank.get(min_zone, 0):
+            for tgt, boost in rule["targets"].items():
+                if tgt in all_probs:
+                    old_val = all_probs[tgt]
+                    all_probs[tgt] = min(100, old_val + boost)
+                    if tgt not in boosts_applied:
+                        boosts_applied[tgt] = 0
+                    boosts_applied[tgt] += boost
+
+    if boosts_applied:
+        boost_log = ", ".join(f"{k}+{v}" for k, v in boosts_applied.items())
+        print(f"Coupling boosts applied: {boost_log}")
+
+    # Push boosted probabilities back to tracker cards and state
+    for t in trackers_js:
+        boosted = all_probs.get(t["id"], t["prob"])
+        t["prob"] = boosted
+        if t["id"] in state.get("trackers", {}):
+            state["trackers"][t["id"]]["current_probability"] = boosted
+            # Recalculate zone from boosted probability
+            if boosted >= 60: state["trackers"][t["id"]]["zone"] = "imminent"
+            elif boosted >= 30: state["trackers"][t["id"]]["zone"] = "critical"
+            elif boosted >= 15: state["trackers"][t["id"]]["zone"] = "elevated"
+            else: state["trackers"][t["id"]]["zone"] = "deterrent"
+
     weights = {"iran_nuke": 0.14, "iran_conventional": 0.20, "israel_lebanon": 0.16, "russia_ukraine": 0.18, "turkey": 0.07, "india": 0.08, "russia": 0.07, "china": 0.06, "north_korea": 0.07}
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
     if gp >= 60: tz = "imminent"
