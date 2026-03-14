@@ -471,6 +471,182 @@ else:
     if chart_svg:
         new_html = new_html.replace(chart_placeholder, chart_svg)
 
+    # ===== GENERATE 24-HOUR PREDICTIONS =====
+    import os
+    from datetime import timedelta
+    utc_now = datetime.now(timezone.utc)
+    sorted_trackers = sorted(trackers_js, key=lambda t: t["prob"], reverse=True)
+    expires_at = (utc_now + timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    predictions_dir = "data/predictions"
+    os.makedirs(predictions_dir, exist_ok=True)
+    
+    today = utc_now.strftime("%Y-%m-%d")
+    hour = utc_now.strftime("%H")
+    pred_file = f"{predictions_dir}/{today}-{hour}.json"
+    eval_file = f"{predictions_dir}/evaluations.json"
+    
+    # Load or create evaluations tracker
+    try:
+        with open(eval_file) as f:
+            evaluations = json.load(f)
+    except:
+        evaluations = {"predictions": []}
+    
+    # Evaluate yesterday's predictions (check if they expired)
+    for pred in evaluations.get("predictions", []):
+        if not pred.get("evaluated") and pred.get("expires_at", "") < now_iso:
+            # This prediction has expired — evaluate it
+            pred_tid = pred["tracker_id"]
+            pred_type = pred["type"]
+            pred_value = pred["value"]
+            actual_state = state.get("trackers", {}).get(pred_tid, {})
+            
+            if pred_type == "probability_above":
+                actual_prob = actual_state.get("current_probability", 0)
+                pred["actual_value"] = actual_prob
+                pred["correct"] = actual_prob > pred_value
+                pred["evaluated"] = True
+                pred["evaluated_at"] = now_iso
+            elif pred_type == "probability_below":
+                actual_prob = actual_state.get("current_probability", 0)
+                pred["actual_value"] = actual_prob
+                pred["correct"] = actual_prob < pred_value
+                pred["evaluated"] = True
+                pred["evaluated_at"] = now_iso
+            elif pred_type == "trend_rising":
+                actual_trend = actual_state.get("trend", "stable")
+                pred["actual_value"] = actual_trend
+                pred["correct"] = actual_trend == "rising"
+                pred["evaluated"] = True
+                pred["evaluated_at"] = now_iso
+            elif pred_type == "signal_triggered":
+                actual_signals = actual_state.get("active_signals", [])
+                pred["actual_value"] = pred["signal_name"] in actual_signals
+                pred["correct"] = pred["signal_name"] in actual_signals
+                pred["evaluated"] = True
+                pred["evaluated_at"] = now_iso
+            elif pred_type == "zone_change":
+                actual_zone = actual_state.get("zone", "deterrent")
+                pred["actual_value"] = actual_zone
+                pred["correct"] = actual_zone == pred_value
+                pred["evaluated"] = True
+                pred["evaluated_at"] = now_iso
+    
+    # Calculate accuracy stats
+    evaluated_preds = [p for p in evaluations.get("predictions", []) if p.get("evaluated")]
+    total_eval = len(evaluated_preds)
+    correct_count = sum(1 for p in evaluated_preds if p.get("correct"))
+    accuracy_pct = round(correct_count / total_eval * 100) if total_eval > 0 else 0
+    
+    # Generate new predictions for next 24h
+    new_predictions = []
+    for t in sorted_trackers:
+        prob = t["prob"]
+        trend = t["trend"]
+        tid = t["id"]
+        tname = t["name"]
+        
+        # Prediction 1: Probability range in 24h
+        if trend == "rising":
+            upper = min(100, prob + 15)
+            lower = prob
+            conf = 65 if prob > 50 else 55
+            new_predictions.append({
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "type": "probability_above",
+                "value": prob,
+                "description": f"{tname} probability rises above {prob}% (currently {prob}%)",
+                "confidence": conf,
+                "expires_at": expires_at
+            })
+        elif trend == "falling":
+            upper = prob
+            lower = max(0, prob - 10)
+            conf = 60
+            new_predictions.append({
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "type": "probability_below",
+                "value": prob,
+                "description": f"{tname} probability drops below {prob}% (currently {prob}%)",
+                "confidence": conf,
+                "expires_at": expires_at
+            })
+        else:
+            new_predictions.append({
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "type": "probability_above",
+                "value": prob,
+                "description": f"{tname} holds near current level ({prob}% ±10%)",
+                "confidence": 50,
+                "expires_at": expires_at
+            })
+        
+        # Prediction 2: Zone change prediction
+        if prob >= 45 and t["zone"] != "imminent":
+            new_predictions.append({
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "type": "zone_change",
+                "value": "imminent",
+                "description": f"{tname} transitions to IMMINENT zone (currently {t['zone']})",
+                "confidence": 55 if trend == "rising" else 30,
+                "expires_at": expires_at
+            })
+        elif prob >= 20 and t["zone"] in ("elevated", "deterrent"):
+            new_predictions.append({
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "type": "zone_change",
+                "value": "critical",
+                "description": f"{tname} enters CRITICAL zone",
+                "confidence": 40 if trend == "rising" else 20,
+                "expires_at": expires_at
+            })
+        
+        # Prediction 3: Specific signal predictions for active trackers
+        if t["signals"] and prob >= 50:
+            # Predict the most likely next signal based on current context
+            active_sig_names = [s["name"] for s in t["signals"]]
+            new_predictions.append({
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "type": "trend_rising",
+                "value": "rising",
+                "description": f"{tname} continues upward trend",
+                "confidence": 60 if trend == "rising" else 35,
+                "expires_at": expires_at
+            })
+    
+    # Sort by confidence (highest first), take top 15
+    new_predictions.sort(key=lambda x: x["confidence"], reverse=True)
+    final_predictions = new_predictions[:15]
+    
+    # Save predictions
+    pred_data = {
+        "generated_at": now_iso,
+        "date": today,
+        "hour": hour,
+        "predictions": final_predictions,
+        "accuracy": {
+            "total_evaluated": total_eval,
+            "correct": correct_count,
+            "accuracy_pct": accuracy_pct
+        }
+    }
+    with open(pred_file, "w") as f:
+        json.dump(pred_data, f, indent=2)
+    
+    # Save updated evaluations
+    with open(eval_file, "w") as f:
+        json.dump(evaluations, f, indent=2)
+    
+    # Format predictions for JS modal
+    predictions_js = json.dumps(final_predictions)
+    eval_stats_js = json.dumps({"total": total_eval, "correct": correct_count, "accuracy": accuracy_pct})
+    
     # ===== GENERATE INTELLIGENCE NARRATIVE =====
     from datetime import datetime, timezone
     utc_now = datetime.now(timezone.utc)
@@ -610,6 +786,10 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     # Inject narrative into HTML
     narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
     new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
+    
+    # Inject predictions into HTML (append to state block)
+    pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
+    new_html = new_html.replace("  zone_alerts: " + alerts_js + "\n};", "  zone_alerts: " + alerts_js + pred_inject + "\n};")
 
     with open("index.html", "w") as f:
         f.write(new_html)

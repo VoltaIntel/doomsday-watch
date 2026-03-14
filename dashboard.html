@@ -777,9 +777,10 @@ body {
     </div>
   </div>
 
-  <!-- BRIEF BUTTON -->
+  <!-- BRIEF / PREDICTION BUTTONS -->
   <div style="text-align:center;margin:8px 0 4px;">
-    <button onclick="openBriefing()" style="background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 20px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">📋 INTELLIGENCE BRIEF</button>
+    <button onclick="openBriefing()" style="background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;margin-right:8px;">📋 BRIEF</button>
+    <button onclick="openPredictions()" style="background:rgba(100,150,255,0.12);border:1px solid rgba(100,150,255,0.35);color:#6688ff;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">🔮 PREDICTIONS</button>
   </div>
     </div>
   </div>
@@ -1264,7 +1265,15 @@ state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
   state.global_zone = calcZone(gp);
 </script>
 
-<!-- BRIEFING MODAL -->
+<!-- PREDICTION MODAL -->
+<div class="briefing-overlay" id="predModal" onclick="if(event.target===this)this.classList.remove('active')" style="z-index:10000;">
+  <div class="briefing-modal" style="border-color:rgba(100,150,255,0.3);box-shadow:0 0 60px rgba(100,150,255,0.1);">
+    <button class="close-btn" onclick="document.getElementById('predModal').classList.remove('active')" style="color:#484f58;">&times;</button>
+    <div id="predHeader" style="color:#6688ff;font-size:12px;letter-spacing:2px;border-bottom:1px solid rgba(100,150,255,0.2);padding-bottom:12px;margin-bottom:12px;">24-HOUR FORECAST</div>
+    <div id="predStats" style="margin-bottom:16px;"></div>
+    <div id="predBody" style="font-family:'Courier New',monospace;font-size:12px;line-height:1.7;color:#8b949e;"></div>
+  </div>
+</div>
 <style>
   .briefing-overlay {
     display: none;
@@ -1394,6 +1403,62 @@ function openBriefing() {
   
   el.innerHTML = html;
   document.getElementById('briefingModal').classList.add('active');
+}
+
+// ===== PREDICTIONS MODAL =====
+function openPredictions() {
+  var el = document.getElementById('predBody');
+  var hdr = document.getElementById('predHeader');
+  var statsEl = document.getElementById('predStats');
+  var s = (typeof state !== 'undefined') ? state : {};
+  var preds = s.predictions || [];
+  var stats = s.eval_stats || {total: 0, correct: 0, accuracy: 0};
+  
+  var ts = s.last_updated || '';
+  hdr.textContent = '24-HOUR FORECAST — ' + ts.substring(0,10) + ' ' + ts.substring(11,16) + ' UTC';
+  
+  // Accuracy bar
+  var accColor = stats.accuracy >= 60 ? '#00e676' : stats.accuracy >= 40 ? '#ffaa00' : '#ff4444';
+  statsEl.innerHTML = '<div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">' +
+    '<span style="color:#484f58;font-size:11px;">TRACK RECORD</span>' +
+    '<span style="color:' + accColor + ';font-size:14px;font-weight:bold;">' + stats.accuracy + '%</span>' +
+    '<span style="color:#484f58;font-size:10px;">' + stats.correct + '/' + stats.total + ' correct</span>' +
+    '</div>' +
+    '<div style="height:3px;background:rgba(255,255,255,0.05);border-radius:2px;"><div style="height:100%;width:' + stats.accuracy + '%;background:' + accColor + ';border-radius:2px;transition:width 0.5s;"></div></div>';
+  
+  if (preds.length === 0) {
+    el.innerHTML = '<div style="color:#484f58;text-align:center;padding:20px;">No predictions available yet. Check back on next hourly update.</div>';
+  } else {
+    var html = '';
+    // Group by confidence tier
+    var high = preds.filter(function(p){return p.confidence >= 60;});
+    var med = preds.filter(function(p){return p.confidence >= 40 && p.confidence < 60;});
+    var low = preds.filter(function(p){return p.confidence < 40;});
+    
+    function renderGroup(items, title, color) {
+      if (items.length === 0) return '';
+      var h = '<div style="margin-bottom:14px;"><div style="color:' + color + ';font-size:10px;letter-spacing:1.5px;margin-bottom:6px;">' + title + '</div>';
+      items.forEach(function(p){
+        var confBar = '<div style="display:inline-block;width:40px;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;vertical-align:middle;margin-left:8px;"><div style="height:100%;width:' + p.confidence + '%;background:' + color + ';border-radius:2px;"></div></div>';
+        var sigIcon = p.type === 'zone_change' ? '🎯' : p.type === 'trend_rising' ? '📈' : p.type === 'signal_triggered' ? '⚡' : '📊';
+        h += '<div style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:12px;color:#8b949e;">' +
+          sigIcon + ' ' + p.description + confBar + ' <span style="color:#484f58;font-size:10px;">' + p.confidence + '%</span></div>';
+      });
+      h += '</div>';
+      return h;
+    }
+    
+    html += renderGroup(high, 'HIGH CONFIDENCE (>60%)', '#00e676');
+    html += renderGroup(med, 'MEDIUM CONFIDENCE (40-60%)', '#ffaa00');
+    html += renderGroup(low, 'LOW CONFIDENCE (<40%)', '#ff4444');
+    
+    html += '<div style="border-top:1px solid rgba(100,150,255,0.15);padding-top:10px;margin-top:16px;">' +
+      '<div style="color:#484f58;font-size:10px;">FORECAST HORIZON: 24 HOURS | ' + preds.length + ' PREDICTIONS</div></div>';
+    
+    el.innerHTML = html;
+  }
+  
+  document.getElementById('predModal').classList.add('active');
 }
 </script>
 
