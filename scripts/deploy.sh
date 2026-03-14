@@ -471,10 +471,128 @@ else:
     if chart_svg:
         new_html = new_html.replace(chart_placeholder, chart_svg)
 
+    # ===== GENERATE INTELLIGENCE NARRATIVE =====
+    from datetime import datetime, timezone
+    utc_now = datetime.now(timezone.utc)
+    date_str = utc_now.strftime("%B %d, %Y")
+    time_str = utc_now.strftime("%H:%M UTC")
+    
+    # Sort trackers by probability (highest first)
+    sorted_trackers = sorted(trackers_js, key=lambda t: t["prob"], reverse=True)
+    
+    # Key developments (signals activated in last 6 hours)
+    key_devs = []
+    for t in sorted_trackers:
+        for s in t.get("signals", []):
+            try:
+                activated = datetime.fromisoformat(s["activated_at"].replace("Z", "+00:00"))
+                hours_ago = (utc_now - activated).total_seconds() / 3600
+                if hours_ago < 6:
+                    key_devs.append((t["name"], s["name"].replace("_", " "), hours_ago))
+            except:
+                pass
+    
+    # Zone summary
+    zone_counts = {}
+    for t in sorted_trackers:
+        z = t["zone"]
+        if z not in zone_counts:
+            zone_counts[z] = []
+        zone_counts[z].append(t["name"])
+    
+    zone_order = ["imminent", "critical", "elevated", "deterrent"]
+    zone_emoji_map = {"imminent": "🔴", "critical": "🟠", "elevated": "🟡", "deterrent": "🟢"}
+    zone_verbal_map = {"imminent": "IMMINENT", "critical": "CRITICAL", "elevated": "ELEVATED", "deterrent": "DETERRENT"}
+    
+    # Probability changes (compare to history)
+    prob_changes = {}
+    if len(hist_entries) >= 2:
+        prev = hist_entries[-2] if len(hist_entries) >= 2 else None
+        curr = hist_entries[-1]
+        if prev:
+            for tid in curr.get("trackers", {}):
+                p_old = prev.get("trackers", {}).get(tid, 0)
+                p_new = curr.get("trackers", {}).get(tid, 0)
+                diff = p_new - p_old
+                if diff != 0:
+                    prob_changes[tid] = diff
+    
+    # Build narrative sections
+    # Section 1: Global overview
+    global_section = f"Global threat probability stands at {gp}%. "
+    for z in zone_order:
+        if z in zone_counts:
+            global_section += f"{zone_emoji_map[z]} {zone_verbal_map[z]}: {', '.join(zone_counts[z])}. "
+    
+    # Section 2: Key developments
+    dev_lines = []
+    for tname, sig_name, hrs in key_devs[:5]:
+        time_ref = f"{int(hrs*60)}m ago" if hrs < 1 else f"{hrs:.1f}h ago"
+        dev_lines.append(f"• {tname}: {sig_name} ({time_ref})")
+    
+    # Section 3: Tracker details (top threats)
+    detail_lines = []
+    for t in sorted_trackers[:5]:
+        trend_arrow = "↑" if t["trend"] == "rising" else "↓" if t["trend"] == "falling" else "→"
+        change = prob_changes.get(t["id"], 0)
+        change_str = f" ({'+' if change > 0 else ''}{change}h)" if change != 0 else ""
+        sig_names = [s["name"].replace("_", " ") for s in t.get("signals", [])[:3]]
+        sig_str = "; ".join(sig_names) if sig_names else "no active signals"
+        detail_lines.append(f"{t['emoji']} {t['name']}: {t['prob']}% {trend_arrow} {change_str} — {sig_str}")
+    
+    # Section 4: Probability changes
+    changes_lines = []
+    for tid, diff in sorted(prob_changes.items(), key=lambda x: abs(x[1]), reverse=True)[:5]:
+        name = next((t["name"] for t in sorted_trackers if t["id"] == tid), tid)
+        arrow = "↑" if diff > 0 else "↓"
+        changes_lines.append(f"• {name}: {arrow}{abs(diff)}%")
+    
+    # Section 5: Watch list (trackers with highest velocity)
+    rising = [t for t in sorted_trackers if t["trend"] == "rising"]
+    watch_lines = [f"{t['emoji']} {t['name']} ({t['prob']}%, rising)" for t in rising[:3]]
+    
+    # Determine overall confidence
+    confirmed_count = sum(1 for t in sorted_trackers for s in t.get("signals", []) if s.get("confidence") == "confirmed")
+    total_signals = sum(len(t.get("signals", [])) for t in sorted_trackers)
+    if confirmed_count >= 3:
+        conf_level = "HIGH"
+    elif total_signals >= 5:
+        conf_level = "MEDIUM"
+    else:
+        conf_level = "LOW"
+    
+    # Assemble narrative
+    narrative = f"""INTELLIGENCE BRIEF — {date_str} {time_str}
+
+SITUATION OVERVIEW
+{global_section}
+
+KEY DEVELOPMENTS (Last 6 Hours)
+{chr(10).join(dev_lines) if dev_lines else "• No new significant developments this cycle."}
+
+THREAT ASSESSMENT
+{chr(10).join(detail_lines)}
+
+PROBABILITY CHANGES
+{chr(10).join(changes_lines) if changes_lines else "• No significant probability changes this cycle."}
+
+WATCH LIST
+{chr(10).join(watch_lines) if watch_lines else "• No trackers currently in rising trend."}
+
+CONFIDENCE: {conf_level} ({total_signals} active signals, {confirmed_count} confirmed)"""
+
+    # Save narrative to state for JS injection
+    narrative_js = json.dumps(narrative)
+    
+    # Inject narrative into HTML
+    narrative_placeholder = '<div id="narrative-content"></div>'
+    new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content">' + narrative.replace('\n', '<br>') + '</div>')
+
     with open("index.html", "w") as f:
         f.write(new_html)
 
-    print(f"Updated index.html — global: {gp}% ({tz}) — {len(trackers_js)} trackers")
+    print(f"Updated index.html — global: {gp}% ({tz}) — {len(trackers_js)} trackers — narrative generated")
+    print(f"Narrative: {len(key_devs)} key developments, {len(changes_lines)} probability changes")
 
 # Commit and push
 import subprocess
