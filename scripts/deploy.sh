@@ -488,7 +488,7 @@ else:
                 activated = datetime.fromisoformat(s["activated_at"].replace("Z", "+00:00"))
                 hours_ago = (utc_now - activated).total_seconds() / 3600
                 if hours_ago < 6:
-                    key_devs.append((t["name"], s["name"].replace("_", " "), hours_ago))
+                    key_devs.append((t["name"], t["emoji"], s["name"].replace("_", " "), hours_ago))
             except:
                 pass
     
@@ -498,13 +498,13 @@ else:
         z = t["zone"]
         if z not in zone_counts:
             zone_counts[z] = []
-        zone_counts[z].append(t["name"])
+        zone_counts[z].append(t)
     
     zone_order = ["imminent", "critical", "elevated", "deterrent"]
-    zone_emoji_map = {"imminent": "🔴", "critical": "🟠", "elevated": "🟡", "deterrent": "🟢"}
-    zone_verbal_map = {"imminent": "IMMINENT", "critical": "CRITICAL", "elevated": "ELEVATED", "deterrent": "DETERRENT"}
+    zone_emoji = {"imminent": "\u2588\u2588\u2588\u2588", "critical": "\u2593\u2593\u2593", "elevated": "\u2592\u2592", "deterrent": "\u2591"}
+    zone_verbal = {"imminent": "IMMINENT", "critical": "CRITICAL", "elevated": "ELEVATED", "deterrent": "DETERRENT"}
     
-    # Probability changes (compare to history)
+    # Probability changes
     prob_changes = {}
     if len(hist_entries) >= 2:
         prev = hist_entries[-2] if len(hist_entries) >= 2 else None
@@ -517,69 +517,92 @@ else:
                 if diff != 0:
                     prob_changes[tid] = diff
     
-    # Build narrative sections
-    # Section 1: Global overview
-    global_section = f"Global threat probability stands at {gp}%. "
-    for z in zone_order:
-        if z in zone_counts:
-            global_section += f"{zone_emoji_map[z]} {zone_verbal_map[z]}: {', '.join(zone_counts[z])}. "
-    
-    # Section 2: Key developments
-    dev_lines = []
-    for tname, sig_name, hrs in key_devs[:5]:
-        time_ref = f"{int(hrs*60)}m ago" if hrs < 1 else f"{hrs:.1f}h ago"
-        dev_lines.append(f"• {tname}: {sig_name} ({time_ref})")
-    
-    # Section 3: Tracker details (top threats)
-    detail_lines = []
-    for t in sorted_trackers[:5]:
-        trend_arrow = "↑" if t["trend"] == "rising" else "↓" if t["trend"] == "falling" else "→"
-        change = prob_changes.get(t["id"], 0)
-        change_str = f" ({'+' if change > 0 else ''}{change}h)" if change != 0 else ""
-        sig_names = [s["name"].replace("_", " ") for s in t.get("signals", [])[:3]]
-        sig_str = "; ".join(sig_names) if sig_names else "no active signals"
-        detail_lines.append(f"{t['emoji']} {t['name']}: {t['prob']}% {trend_arrow} {change_str} — {sig_str}")
-    
-    # Section 4: Probability changes
-    changes_lines = []
-    for tid, diff in sorted(prob_changes.items(), key=lambda x: abs(x[1]), reverse=True)[:5]:
-        name = next((t["name"] for t in sorted_trackers if t["id"] == tid), tid)
-        arrow = "↑" if diff > 0 else "↓"
-        changes_lines.append(f"• {name}: {arrow}{abs(diff)}%")
-    
-    # Section 5: Watch list (trackers with highest velocity)
+    # Rising trackers
     rising = [t for t in sorted_trackers if t["trend"] == "rising"]
-    watch_lines = [f"{t['emoji']} {t['name']} ({t['prob']}%, rising)" for t in rising[:3]]
+    falling = [t for t in sorted_trackers if t["trend"] == "falling"]
     
-    # Determine overall confidence
-    confirmed_count = sum(1 for t in sorted_trackers for s in t.get("signals", []) if s.get("confidence") == "confirmed")
-    total_signals = sum(len(t.get("signals", [])) for t in sorted_trackers)
-    if confirmed_count >= 3:
-        conf_level = "HIGH"
-    elif total_signals >= 5:
-        conf_level = "MEDIUM"
+    # Overall assessment
+    gp_change = ""
+    if len(hist_entries) >= 2:
+        prev_g = hist_entries[-2].get("global", gp)
+        diff_g = gp - prev_g
+        if diff_g > 0:
+            gp_change = f" (+{diff_g} from prior hour)"
+        elif diff_g < 0:
+            gp_change = f" ({diff_g} from prior hour)"
+    
+    # Highest threat
+    top = sorted_trackers[0]
+    
+    # ===== CIA-STYLE NARRATIVE =====
+    # Section 1: Headline assessment
+    if gp >= 60:
+        severity_word = "ELEVATED"
+        overall = f"The global security environment remains {severity_word.lower()} with a composite threat score of {gp}%{gp_change}."
+    elif gp >= 30:
+        severity_word = "CONCERNING"
+        overall = f"The global threat posture is {severity_word.lower()} at {gp}%{gp_change}."
     else:
-        conf_level = "LOW"
+        severity_word = "STABLE"
+        overall = f"Global threat levels remain {severity_word.lower()} at {gp}%{gp_change}."
     
-    # Assemble narrative
-    narrative = f"""INTELLIGENCE BRIEF — {date_str} {time_str}
+    # Section 2: Immediate threats (imminent/critical only)
+    immediate = []
+    for z in ["imminent", "critical"]:
+        if z in zone_counts:
+            for t in zone_counts[z]:
+                sig_names = [s["name"].replace("_", " ") for s in t.get("signals", [])[:3]]
+                sig_text = "; ".join(sig_names) if sig_names else "dormant"
+                trend_word = "escalating" if t["trend"] == "rising" else "de-escalating" if t["trend"] == "falling" else "holding"
+                immediate.append(f"  {t['emoji']} {t['name']} — {t['prob']}% ({trend_word}). {sig_text}.")
+    
+    # Section 3: Notable developments (formatted concisely)
+    notable = []
+    for tname, emoji, sig_name, hrs in key_devs[:5]:
+        if hrs < 1:
+            time_ref = f"{int(hrs*60)}m"
+        else:
+            time_ref = f"{hrs:.1f}h"
+        notable.append(f"  {emoji} {tname} — {sig_name} ({time_ref} ago)")
+    
+    # Section 4: Trend analysis
+    trend_parts = []
+    if rising:
+        names = ", ".join(t["name"] for t in rising[:3])
+        trend_parts.append(f"Escalating: {names}")
+    if falling:
+        names = ", ".join(t["name"] for t in falling[:3])
+        trend_parts.append(f"De-escalating: {names}")
+    if not trend_parts:
+        trend_parts.append("No significant directional shifts this cycle")
+    
+    # Section 5: Outlook
+    outlook_parts = []
+    if rising:
+        outlook_parts.append(f"Monitor {rising[0]['name']} for continued escalation — currently {rising[0]['prob']}% and trending upward.")
+    if prob_changes:
+        biggest = max(prob_changes.items(), key=lambda x: abs(x[1]))
+        name = next((t["name"] for t in sorted_trackers if t["id"] == biggest[0]), biggest[0])
+        outlook_parts.append(f"{name} showed largest probability shift ({'+' if biggest[1] > 0 else ''}{biggest[1]}%).")
+    if not outlook_parts:
+        outlook_parts.append("No immediate escalation catalysts identified.")
+    
+    # Assemble CIA-style narrative
+    narrative = f"""THREAT ASSESSMENT — {date_str} {time_str}
 
-SITUATION OVERVIEW
-{global_section}
+{overall}
 
-KEY DEVELOPMENTS (Last 6 Hours)
-{chr(10).join(dev_lines) if dev_lines else "• No new significant developments this cycle."}
+IMMEDIATE THREATS:
+{chr(10).join(immediate) if immediate else "  None currently in IMMINENT/CRITICAL zone."}
 
-THREAT ASSESSMENT
-{chr(10).join(detail_lines)}
+NOTABLE DEVELOPMENTS:
+{chr(10).join(notable) if notable else "  No significant developments this cycle."}
 
-PROBABILITY CHANGES
-{chr(10).join(changes_lines) if changes_lines else "• No significant probability changes this cycle."}
+TREND: {' | '.join(trend_parts)}
 
-WATCH LIST
-{chr(10).join(watch_lines) if watch_lines else "• No trackers currently in rising trend."}
+OUTLOOK: {' '.join(outlook_parts)}
 
-CONFIDENCE: {conf_level} ({total_signals} active signals, {confirmed_count} confirmed)"""
+CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 else "LOW"} | {sum(len(t.get('signals',[])) for t in sorted_trackers)} active signals | {len(key_devs)} new this cycle"""
 
     # Save narrative to state for JS injection
     narrative_js = json.dumps(narrative)
@@ -592,7 +615,7 @@ CONFIDENCE: {conf_level} ({total_signals} active signals, {confirmed_count} conf
         f.write(new_html)
 
     print(f"Updated index.html — global: {gp}% ({tz}) — {len(trackers_js)} trackers — narrative generated")
-    print(f"Narrative: {len(key_devs)} key developments, {len(changes_lines)} probability changes")
+    print(f"Narrative: {len(key_devs)} key developments, {len(prob_changes)} probability changes")
 
 # Commit and push
 import subprocess
