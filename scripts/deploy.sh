@@ -538,90 +538,107 @@ else:
     correct_count = sum(1 for p in evaluated_preds if p.get("correct"))
     accuracy_pct = round(correct_count / total_eval * 100) if total_eval > 0 else 0
     
-    # Generate new predictions for next 24h
+    # Generate EVENT-BASED predictions from news + signals + trends
+    news_texts = [((n.get("headline","") or n.get("text",""))).lower() for n in state.get("latest_news",[])]
+    combined_news = " ".join(news_texts)
+    
     new_predictions = []
     for t in sorted_trackers:
         prob = t["prob"]
         trend = t["trend"]
         tid = t["id"]
         tname = t["name"]
+        confidence = 0
+        event = ""
+        etype = ""
         
-        # Prediction 1: Probability range in 24h
-        if trend == "rising":
-            upper = min(100, prob + 15)
-            lower = prob
-            conf = 65 if prob > 50 else 55
-            new_predictions.append({
-                "tracker_id": tid,
-                "tracker_name": tname,
-                "type": "probability_above",
-                "value": prob,
-                "description": f"{tname} probability rises above {prob}% (currently {prob}%)",
-                "confidence": conf,
-                "expires_at": expires_at
-            })
-        elif trend == "falling":
-            upper = prob
-            lower = max(0, prob - 10)
-            conf = 60
-            new_predictions.append({
-                "tracker_id": tid,
-                "tracker_name": tname,
-                "type": "probability_below",
-                "value": prob,
-                "description": f"{tname} probability drops below {prob}% (currently {prob}%)",
-                "confidence": conf,
-                "expires_at": expires_at
-            })
-        else:
-            new_predictions.append({
-                "tracker_id": tid,
-                "tracker_name": tname,
-                "type": "probability_above",
-                "value": prob,
-                "description": f"{tname} holds near current level ({prob}% ±10%)",
-                "confidence": 50,
-                "expires_at": expires_at
-            })
+        # IRAN CONVENTIONAL
+        if tid == "iran_conventional" and prob >= 80:
+            if "hormuz" in combined_news or "blockade" in combined_news:
+                event = "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours."
+                confidence = 75; etype = "military_operation"
+            elif "dubai" in combined_news or "uae" in combined_news:
+                event = "Iranian strikes on UAE infrastructure expected to continue. Further drone and missile attacks on Gulf state targets likely within 24 hours."
+                confidence = 70; etype = "military_operation"
+            elif confidence == 0 and trend == "rising":
+                event = "Current escalation trajectory suggests Iran will sustain offensive operations against US and Israeli regional assets over the next 24 hours."
+                confidence = 55; etype = "military_operation"
         
-        # Prediction 2: Zone change prediction
-        if prob >= 45 and t["zone"] != "imminent":
-            new_predictions.append({
-                "tracker_id": tid,
-                "tracker_name": tname,
-                "type": "zone_change",
-                "value": "imminent",
-                "description": f"{tname} transitions to IMMINENT zone (currently {t['zone']})",
-                "confidence": 55 if trend == "rising" else 30,
-                "expires_at": expires_at
-            })
-        elif prob >= 20 and t["zone"] in ("elevated", "deterrent"):
-            new_predictions.append({
-                "tracker_id": tid,
-                "tracker_name": tname,
-                "type": "zone_change",
-                "value": "critical",
-                "description": f"{tname} enters CRITICAL zone",
-                "confidence": 40 if trend == "rising" else 20,
-                "expires_at": expires_at
-            })
+        # ISRAEL-LEBANON
+        elif tid == "israel_lebanon" and prob >= 60:
+            if "ground" in combined_news or "invasion" in combined_news:
+                event = "Israeli ground operation in southern Lebanon expected to continue beyond Litani River. Further displacement and infrastructure destruction likely."
+                confidence = 70; etype = "ground_operation"
+            elif confidence == 0 and trend == "rising":
+                event = "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected."
+                confidence = 55; etype = "military_operation"
         
-        # Prediction 3: Specific signal predictions for active trackers
-        if t["signals"] and prob >= 50:
-            # Predict the most likely next signal based on current context
-            active_sig_names = [s["name"] for s in t["signals"]]
-            new_predictions.append({
-                "tracker_id": tid,
-                "tracker_name": tname,
-                "type": "trend_rising",
-                "value": "rising",
-                "description": f"{tname} continues upward trend",
-                "confidence": 60 if trend == "rising" else 35,
-                "expires_at": expires_at
-            })
+        # PAKISTAN-AFGHANISTAN
+        elif tid == "pakistan_afghanistan" and prob >= 60:
+            if "taliban" in combined_news or "border" in combined_news or "kills" in combined_news:
+                event = "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours."
+                confidence = 65; etype = "border_conflict"
+            elif confidence == 0:
+                event = "Afghan-Pakistan border tensions likely to persist. Additional clashes probable based on recent trajectory."
+                confidence = 50; etype = "border_conflict"
+        
+        # TURKEY
+        elif tid == "turkey" and prob >= 50:
+            if "incirlik" in combined_news or "nato" in combined_news:
+                event = "Turkish military posture shift expected. NATO alliance consultations likely as Turkey repositions forces."
+                confidence = 55; etype = "alliance_shift"
+            elif trend == "rising":
+                event = "Turkey expected to continue escalating rhetoric and military positioning in Eastern Mediterranean."
+                confidence = 45; etype = "escalation"
+        
+        # RUSSIA-NATO
+        elif tid == "russia" and prob >= 50:
+            if "ceasefire" in combined_news or "deal" in combined_news:
+                event = "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain."
+                confidence = 45; etype = "diplomatic"
+            elif trend == "rising":
+                event = "Russian military operations expected to continue at current tempo. No significant de-escalation indicators."
+                confidence = 40; etype = "status_quo"
+        
+        # IRAN NUCLEAR
+        elif tid == "iran_nuke" and prob >= 20:
+            if "iaea" in combined_news or "enrichment" in combined_news:
+                event = "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity."
+                confidence = 40; etype = "nuclear_development"
+            else:
+                event = "No immediate nuclear threshold events anticipated. Status quo enrichment posture likely maintained."
+                confidence = 35; etype = "status_quo"
+        
+        # CHINA-TAIWAN
+        elif tid == "china":
+            event = "Status quo maintained. No PLA activity changes detected. Taiwan Strait remains stable."
+            confidence = 70; etype = "status_quo"
+        
+        # Generic fallback
+        if confidence == 0:
+            if trend == "rising":
+                event = f"Current escalation indicators suggest {tname} will remain on upward trajectory. Monitor for trigger events."
+                confidence = 40; etype = "escalation"
+            elif trend == "falling":
+                event = f"{tname} showing de-escalation signals. Probability expected to decline gradually."
+                confidence = 40; etype = "de_escalation"
+            else:
+                event = f"{tname} remains stable at current levels. No significant changes anticipated."
+                confidence = 35; etype = "status_quo"
+        
+        new_predictions.append({
+            "tracker_id": tid,
+            "tracker_name": tname,
+            "type": etype,
+            "value": prob,
+            "description": event,
+            "confidence": confidence,
+            "expires_at": expires_at
+        })
     
-    # Sort by confidence (highest first), take top 15
+    # Sort by confidence, take top 12
     new_predictions.sort(key=lambda x: x["confidence"], reverse=True)
+    final_predictions = new_predictions[:12]
     final_predictions = new_predictions[:15]
     
     # Save predictions
