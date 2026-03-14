@@ -1116,7 +1116,8 @@ function updateGlobalClock() {
   updateThreatZones();
 
   // Mini doomsday clock
-  document.querySelector(".doomsday-hand").style.transform = "translateX(-50%) rotate(" + angle + "deg)";
+  var hand = document.querySelector(".doomsday-hand");
+  if (hand) hand.style.transform = "translateX(-50%) rotate(" + angle + "deg)";
 }
 
 // Toggle signal expansion
