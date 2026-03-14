@@ -585,8 +585,8 @@ CONFIDENCE: {conf_level} ({total_signals} active signals, {confirmed_count} conf
     narrative_js = json.dumps(narrative)
     
     # Inject narrative into HTML
-    narrative_placeholder = '<div id="narrative-content"></div>'
-    new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content">' + narrative.replace('\n', '<br>') + '</div>')
+    narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
+    new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
 
     with open("index.html", "w") as f:
         f.write(new_html)
