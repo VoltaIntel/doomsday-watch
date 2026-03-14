@@ -1369,7 +1369,7 @@ function openBriefing() {
     newsItems.slice(0,5).forEach(function(n){
       var impact = n.impact === 'up' ? '▲' : n.impact === 'down' ? '▼' : '●';
       var conf = n.confidence ? ' [' + n.confidence.toUpperCase() + ']' : '';
-      html += impact + ' ' + (n.headline || n.text || '').substring(0,80) + conf + '\n';
+      html += impact + ' ' + (n.headline || n.text || '').substring(0,120) + conf + '\n';
     });
     html += '</div></div>';
   }
