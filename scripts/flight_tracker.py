@@ -20,27 +20,27 @@ API_KEY = os.environ.get("AVIATIONSTACK_KEY", "")
 ZONE_AIRPORTS = {
     "persian_gulf": {
         "name": "Persian Gulf / Strait of Hormuz",
-        "airports": ["DXB", "DOH", "AUH"],  # Dubai, Doha, Abu Dhabi
-        "baseline_daily_flights": 1200,  # normal daily departures from these 3
+        "airports": ["DXB"],  # Dubai — main Gulf hub
+        "baseline_daily_flights": 1200,
     },
     "red_sea": {
         "name": "Red Sea / Jeddah",
-        "airports": ["JED", "MED"],  # Jeddah, Medina
+        "airports": ["JED"],  # Jeddah — main Red Sea hub
         "baseline_daily_flights": 250,
     },
     "eastern_med": {
         "name": "Eastern Mediterranean",
-        "airports": ["LCA", "BEY", "TLV"],  # Larnaca, Beirut, Tel Aviv
-        "baseline_daily_flights": 350,
+        "airports": ["LCA"],  # Larnaca — Cyprus
+        "baseline_daily_flights": 150,
     },
     "turkey_south": {
         "name": "Southern Turkey / Northern Syria",
-        "airports": ["IST", "GZT", "ADA"],  # Istanbul, Gaziantep, Adana
+        "airports": ["IST"],  # Istanbul — biggest hub
         "baseline_daily_flights": 500,
     },
     "iraq": {
         "name": "Iraq",
-        "airports": ["BGW", "EBL"],  # Baghdad, Erbil
+        "airports": ["BGW"],  # Baghdad
         "baseline_daily_flights": 100,
     },
 }
