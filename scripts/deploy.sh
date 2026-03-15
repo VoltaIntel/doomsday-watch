@@ -4,8 +4,13 @@ cd /home/openclaw/.openclaw/workspace/nuke-watch
 # Fetch oil prices before deploy
 python3 scripts/fetch_oil_prices.py 2>/dev/null
 
-# Fetch flight tracking data
-python3 scripts/track_flights.py 2>/dev/null
+# Fetch flight tracking data (Aviationstack: once daily + OpenSky: continuous)
+python3 scripts/track_flights.py 2>/dev/null  # OpenSky fallback (always runs)
+# Run Aviationstack once daily (at 06:00 and 18:00 UTC)
+HOUR=$(date -u +%H)
+if [ "$HOUR" = "06" ] || [ "$HOUR" = "18" ]; then
+  python3 scripts/flight_tracker.py 2>/dev/null
+fi
 
 # Update index.html with latest state
 python3 << 'PYEOF'
