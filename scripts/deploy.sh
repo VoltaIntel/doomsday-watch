@@ -824,10 +824,10 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     # Inject narrative into HTML
     narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
     new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
-    
-    # Inject predictions into HTML (append to state block)
+
+    # Inject predictions into HTML — after energy which is already in new_state
     pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
-    new_html = new_html.replace("  zone_alerts: " + alerts_js + "\n};", "  zone_alerts: " + alerts_js + pred_inject + "\n};")
+    new_html = new_html.replace("  energy: " + energy_js + "\n};", "  energy: " + energy_js + pred_inject + "\n};")
 
     with open("index.html", "w") as f:
         f.write(new_html)
