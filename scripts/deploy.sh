@@ -480,9 +480,12 @@ else:
 
     lines.append("")
     lines.append("// ===== RENDER")
+    lines.append("")  # blank line after marker
 
     new_state = "\n".join(lines)
-    new_html = html[:start] + new_state + html[end:]
+    # html[end:] starts with "// ===== RENDER" so skip it to avoid doubling
+    skip_marker = len("// ===== RENDER")
+    new_html = html[:start] + new_state + html[end + skip_marker:]
 
     # Insert chart SVG into HTML (after new_html is created)
     chart_placeholder = '<div id="probChart" style="width:100%;height:120px"></div>'
