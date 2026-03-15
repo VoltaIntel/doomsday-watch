@@ -4,12 +4,38 @@ cd /home/openclaw/.openclaw/workspace/nuke-watch
 # Fetch oil prices before deploy
 python3 scripts/fetch_oil_prices.py 2>/dev/null
 
-# Fetch flight tracking data (Aviationstack: once daily + OpenSky: continuous)
-python3 scripts/track_flights.py 2>/dev/null  # OpenSky fallback (always runs)
-# Run Aviationstack once daily (at 06:00 and 18:00 UTC)
+# Fetch flight tracking data
+# Aviationstack runs twice daily (06:00 and 18:00 UTC) — primary source
+# OpenSky runs as fallback only when Aviationstack data is stale/missing
 HOUR=$(date -u +%H)
+AVIATIONSTACK_KEY=$(cat ~/.openclaw/workspace/secrets-backup/aviationstack.env 2>/dev/null | cut -d= -f2)
+export AVIATIONSTACK_KEY
+
+RUN_AVIATIONSTACK=false
 if [ "$HOUR" = "06" ] || [ "$HOUR" = "18" ]; then
+  RUN_AVIATIONSTACK=true
+fi
+
+if [ "$RUN_AVIATIONSTACK" = "true" ]; then
+  echo "Running Aviationstack (primary)..."
   python3 scripts/flight_tracker.py 2>/dev/null
+else
+  # Check if we have Aviationstack data from today
+  LAST_UPDATE=$(python3 -c "
+import json
+try:
+    d = json.load(open('data/flight_tracking.json'))
+    print(d.get('last_updated', '')[:10])
+except:
+    print('')
+" 2>/dev/null)
+  TODAY=$(date -u +%Y-%m-%d)
+  if [ "$LAST_UPDATE" = "$TODAY" ]; then
+    echo "Aviationstack data is fresh from today, skipping OpenSky"
+  else
+    echo "No Aviationstack data today, using OpenSky fallback..."
+    python3 scripts/track_flights.py 2>/dev/null
+  fi
 fi
 
 # Update index.html with latest state
