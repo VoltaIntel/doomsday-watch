@@ -1,6 +1,9 @@
 #!/bin/bash
 cd /home/openclaw/.openclaw/workspace/nuke-watch
 
+# Fetch oil prices before deploy
+python3 scripts/fetch_oil_prices.py
+
 # Update index.html with latest state
 python3 << 'PYEOF'
 import json
@@ -10,6 +13,13 @@ with open("data/current_state.json") as f:
 
 with open("data/tracker_config.json") as f:
     cfg = json.load(f)
+
+# Load energy prices
+try:
+    with open("data/energy_prices.json") as f:
+        energy_data = json.load(f)
+except:
+    energy_data = {"current": {}, "history": [], "baselines": {}, "changes": {}}
 
 with open("dashboard.html") as f:
     html = f.read()
@@ -418,6 +428,14 @@ else:
     # Add pending zone alerts
     alerts_js = json.dumps(zone_alerts.get("pending", []))
     lines.append("  zone_alerts: " + alerts_js)
+    # Add energy prices
+    energy_js = json.dumps({
+        "current": energy_data.get("current", {}),
+        "baselines": energy_data.get("baselines", {}),
+        "changes": energy_data.get("changes", {}),
+        "history": energy_data.get("history", [])[-48:]
+    })
+    lines.append("  energy: " + energy_js)
     lines.append("};")
 
     # Generate static chart SVG
