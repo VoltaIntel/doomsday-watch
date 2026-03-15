@@ -44,7 +44,6 @@ def fetch_flights(bbox):
     """Fetch flights in a bounding box from OpenSky."""
     lamin, lomin, lamax, lomax = bbox
     url = f"https://opensky-network.org/api/states/all?lamin={lamin}&lomin={lomin}&lamax={lamax}&lomax={lomax}"
-    
     try:
         req = urllib.request.Request(url, headers={
             "User-Agent": "DoomsdayWatch/1.0",
@@ -54,8 +53,24 @@ def fetch_flights(bbox):
             data = json.loads(resp.read().decode())
             return data.get("states", []) or []
     except Exception as e:
-        print(f"  API error: {e}")
         return None
+
+def fetch_all_zones():
+    """Fetch all zones in parallel using threading."""
+    import concurrent.futures
+    
+    results = {}
+    def fetch_one(zone_id, zone):
+        states = fetch_flights(zone["bbox"])
+        return zone_id, zone, states
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {executor.submit(fetch_one, zid, z): zid for zid, z in CONFLICT_ZONES.items()}
+        for future in concurrent.futures.as_completed(futures):
+            zone_id, zone, states = future.result()
+            results[zone_id] = (zone, states)
+    
+    return results
 
 def analyze_flights(states, zone_config):
     """Analyze flight data for a zone."""
@@ -137,19 +152,21 @@ def main():
     
     print(f"Flight tracking update — {now}")
     
+    # Fetch all zones in parallel
+    print("  Fetching all zones (parallel)...")
+    all_zones = fetch_all_zones()
+    
     new_signals = []
     zone_results = {}
     
-    for zone_id, zone in CONFLICT_ZONES.items():
-        print(f"  Scanning {zone['name']}...", end=" ")
-        states = fetch_flights(zone["bbox"])
+    for zone_id, (zone, states) in all_zones.items():
         analysis = analyze_flights(states, zone)
         
         if analysis is None:
-            print("API ERROR")
+            print(f"  {zone['name']}: API ERROR")
             continue
         
-        print(f"{analysis['flight_count']} flights ({analysis['disruption_pct']}% disruption)")
+        print(f"  {zone['name']}: {analysis['flight_count']} flights ({analysis['disruption_pct']}% disruption)")
         
         zone_results[zone_id] = {
             "name": zone["name"],
@@ -196,10 +213,6 @@ def main():
                 "confidence": "medium",
                 "time": now,
             })
-        
-        # Rate limit: OpenSky allows ~2 req/min anonymous
-        import time
-        time.sleep(31)  # Stay well under rate limit
     
     # Update data
     data["zones"] = zone_results
