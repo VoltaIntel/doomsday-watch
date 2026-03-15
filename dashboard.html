@@ -867,9 +867,9 @@ const state = {
   last_updated: "2026-03-15T12:00:00Z",
   global_war_probability: 75,
   trackers: [
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED", "UAE EVAC ORDER", "9×MSL+33×DRN BARRAGE", "7TH MISSILE WAVE", "REGIME TOPPLE STATED", "MISSILE PROD DEFEATED", "IRGC VOWS KILL NETANYAHU", "IRAN THREATENS US BANKS"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "800K DISPLACED", "800+ KILLED", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE", "'DO WHAT WE DID IN GAZA'", "12 MEDICS KILLED", "BEIRUT FLYER THREAT", "HEZBOLLAH DRONES YA'ARA", "ISRAEL REJECTS TALKS", "EASTERN LEBANON HELIS", "HEZBOLLAH → HAIFA"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 99, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR", "AFGHAN KILLS 14 PAK", "DRONE STORAGE HIT", "INDIA CONDEMNS PK", "CHINA MEDIATION", "200+ ROCKETS/48H"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED", "UAE EVAC ORDER", "9×MSL+33×DRN BARRAGE", "7TH MISSILE WAVE", "REGIME TOPPLE STATED", "MISSILE PROD DEFEATED", "IRGC VOWS KILL NETANYAHU", "IRAN THREATENS US BANKS", "SEJJIL BALLISTIC MISSILE", "7×SALVOS SINCE MIDNIGHT", "TRUMP REJECTS DEAL"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "850K DISPLACED", "826 KILLED", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE", "'DO WHAT WE DID IN GAZA'", "31 MEDICS KILLED", "BEIRUT FLYER THREAT", "HEZBOLLAH DRONES YA'ARA", "ISRAEL REJECTS TALKS", "EASTERN LEBANON HELIS", "HEZBOLLAH → HAIFA", "6 BEIRUT SUBURBS EVAC"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 99, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR", "AFGHAN KILLS 14 PAK", "DRONE STORAGE HIT", "INDIA CONDEMNS PK", "CHINA MEDIATION", "200+ ROCKETS/48H", "ZARDARI 'RED LINE'"] },
     { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 72, zone: "imminent", trend: "stable", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
     { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 81, zone: "imminent", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "SANCTIONS LIFTED", "OIL BOOSTS RU", "460 DRN + 58 MSL", "KYIV: 6 DEAD, 15 WOUNDED", "RAILWAY INFRA HIT"] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 42, zone: "critical", trend: "stable", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "BRYANSK BLAME UK", "CEASEFARE COLLAPSE", "SHAHEDS TO IRAN"] },
@@ -879,13 +879,13 @@ const state = {
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 15, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "THAAD DEPARTED", "7 WARPLANES", "ME GAP"] }
   ],
   news: [
-    { zone: "iran", time: "0H", text: "IRAN FIRES 5TH+ BALLISTIC MISSILE WAVE AT ISRAEL SINCE MIDNIGHT — Jordan intercepts 79/85 missiles, Gulf states under fire. 7,600+ total US-Israel strikes.", impact: "up" },
-    { zone: "iran", time: "0H", text: "IRGC VOWS TO 'PURSUE AND KILL' NETANYAHU — explicit assassination threat against Israeli PM. Iran threatens US bank branches as legitimate targets.", impact: "up" },
-    { zone: "lebanon", time: "1H", text: "ISRAEL REJECTS DIRECT TALKS WITH LEBANON — FM Saar says 'no plans.' Macron peace proposal sidelined. Diplomatic off-ramp removed.", impact: "up" },
-    { zone: "lebanon", time: "2H", text: "15 ISRAELI HELICOPTERS land in eastern Lebanon near Nabi Sheet via Syrian border — major ground ops expansion beyond south. Hezbollah rockets hit Haifa.", impact: "up" },
-    { zone: "pakistan_afghanistan", time: "3H", text: "PAKISTAN FIRES 200+ ROCKETS INTO AFGHANISTAN in 48 hours — Kandahar military facilities struck. Operation 'Ghazb lil Haq' expanding. India condemns Pakistan.", impact: "up" },
-    { zone: "russia_ukraine", time: "6H", text: "RUSSIA STRIKES KYIV REGION — 6 killed, 15 wounded. Energy infrastructure, schools, residential buildings hit. US peace talks postponed due to Iran war.", impact: "up" },
-    { zone: "iran", time: "6H", text: "SAUDI ARABIA intercepts 10 drones over Riyadh. Bahrain sirens sound. UAE reports missile attack. Gulf-wide defenses activated.", impact: "up" },
+    { zone: "lebanon", time: "0H", text: "ISRAEL ORDERS EVACUATION OF 6 BEIRUT SOUTHERN SUBURBS — Bourj el-Barajneh, Haret Hreik, Ghobeiry targeted. 'Will not hesitate to target anyone near Hezbollah.' 826 killed, 850K displaced.", impact: "up" },
+    { zone: "iran", time: "0H", text: "IRAN FIRES SEJJIL ADVANCED BALLISTIC MISSILE at central Israel — new missile type deployed. 7 separate attacks since midnight. 5 injured. Sirens across Tel Aviv.", impact: "up" },
+    { zone: "iran", time: "0H", text: "TRUMP SAYS US 'NOT READY' TO DEAL WITH IRAN — 'terms aren't good enough.' May hit Kharg 'a few more times just for fun.' 200+ Iranian military sites struck by IAF.", impact: "up" },
+    { zone: "pakistan_afghanistan", time: "4H", text: "ZARDARI SAYS TALIBAN DRONES 'CROSSED RED LINE' — Pakistan strikes Kandahar military facilities and TTP tunnel infrastructure. 118K displaced (UNHCR). India condemns Pakistan.", impact: "up" },
+    { zone: "iran", time: "5H", text: "UK HAS NO SHIPS TO SEND TO HORMUS — 'Royal Navy has only one vessel.' Trump called on allies for naval coalition. European defense ministries reportedly furious.", impact: "up" },
+    { zone: "russia_ukraine", time: "6H", text: "EU EXTENDS UKRAINE SANCTIONS 6 MONTHS after Hungary/Slovakia deadlock. Russia continues aerial bombardment. Trump calls Zelensky 'far more difficult' than Putin.", impact: "up" },
+    { zone: "lebanon", time: "6H", text: "826 KILLED IN LEBANON (up from 800) — 31 health workers killed. IDF strikes expand into Beirut core. French peace plan proposes Lebanese recognition of Israel.", impact: "up" },
     { zone: "dprk", time: "10H", text: "NORTH KOREA 10-MISSILE SALVO still echoing — Kim Yo Jong condemns Freedom Shield exercises. Cruise missiles tested from destroyer Choe Hyon. No de-escalation.", impact: "up" }
   ]
 };
@@ -1462,6 +1462,13 @@ function openPredictions() {
   }
   
   document.getElementById('predModal').classList.add('active');
+}
+</script>
+
+
+</body>
+</html>
+.classList.add('active');
 }
 </script>
 
