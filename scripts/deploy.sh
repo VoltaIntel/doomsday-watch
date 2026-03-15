@@ -9,7 +9,7 @@ python3 scripts/fetch_oil_prices.py 2>/dev/null
 # OpenSky runs as fallback only when Aviationstack data is stale/missing
 HOUR=$(date -u +%H)
 AVIATIONSTACK_KEY=$(cat ~/.openclaw/workspace/secrets-backup/aviationstack.env 2>/dev/null | cut -d= -f2)
-export AVIATIONSTACK_KEY
+export AVIATIONSTACK_KEY="c613d344134b5341ea68a097ac813bf4"
 
 RUN_AVIATIONSTACK=false
 if [ "$HOUR" = "06" ] || [ "$HOUR" = "18" ]; then
