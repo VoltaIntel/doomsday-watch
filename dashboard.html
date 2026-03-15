@@ -783,6 +783,12 @@ body {
     <div id="energyGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"></div>
   </div>
 
+  <!-- AIRSPACE STATUS -->
+  <div id="airspaceSection" style="margin:16px 0;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:6px;display:none;">
+    <div class="section-label" style="margin-bottom:10px;font-size:11px;letter-spacing:1.5px;color:#00aaff;">✈️ AIRSPACE STATUS</div>
+    <div id="airspaceGrid" style="display:grid;grid-template-columns:1fr;gap:8px;"></div>
+  </div>
+
   <!-- BRIEF / PREDICTION BUTTONS -->
   <div style="text-align:center;margin:8px 0 4px;display:flex;flex-direction:column;align-items:center;gap:6px;">
     <button onclick="openBriefing()" style="width:260px;background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 0;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">INTELLIGENCE BRIEF</button>
@@ -1286,10 +1292,62 @@ function renderEnergy() {
   grid.innerHTML = html;
 }
 
+// ===== AIRSPACE STATUS =====
+function renderFlights() {
+  var f = (typeof state !== 'undefined' && state.flights) ? state.flights : null;
+  if (!f || !f.zones || Object.keys(f.zones).length === 0) return;
+  
+  var section = document.getElementById('airspaceSection');
+  var grid = document.getElementById('airspaceGrid');
+  if (!section || !grid) return;
+  
+  section.style.display = 'block';
+  
+  var html = '';
+  var zones = f.zones;
+  var zoneIds = Object.keys(zones).sort(function(a, b) {
+    return (zones[b].disruption_pct || 0) - (zones[a].disruption_pct || 0);
+  });
+  
+  zoneIds.forEach(function(zid) {
+    var z = zones[zid];
+    var disc = z.disruption_pct || 0;
+    var flights = z.flight_count || 0;
+    var baseline = z.baseline_flights || 0;
+    
+    var statusColor = disc >= 90 ? '#ff2d2d' : disc >= 70 ? '#ff8800' : disc >= 40 ? '#ffaa00' : '#00e676';
+    var statusText = disc >= 90 ? 'CLOSED' : disc >= 70 ? 'LARGELY CLOSED' : disc >= 40 ? 'RESTRICTED' : 'OPEN';
+    var barColor = disc >= 90 ? '#ff2d2d' : disc >= 70 ? '#ff8800' : disc >= 40 ? '#ffaa00' : '#00e676';
+    
+    html += '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px;padding:10px 12px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
+      '<span style="font-size:11px;color:#c9d1d3;font-weight:bold;">' + z.name + '</span>' +
+      '<span style="font-size:10px;color:' + statusColor + ';font-weight:bold;letter-spacing:1px;">' + statusText + '</span></div>' +
+      '<div style="display:flex;justify-content:space-between;font-size:10px;color:#8b949e;margin-bottom:4px;">' +
+      '<span>' + flights + ' / ' + baseline + ' flights</span>' +
+      '<span>' + disc + '% disruption</span></div>' +
+      '<div style="height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;">' +
+      '<div style="height:100%;width:' + Math.min(disc, 100) + '%;background:' + barColor + ';border-radius:2px;transition:width 0.5s;"></div></div>';
+    
+    // Military activity
+    if (z.military && z.military.length > 0) {
+      var milList = z.military.slice(0, 3).map(function(m) {
+        return '<span style="color:#484f58;font-size:9px;">' + m.callsign + ' (' + m.country + ')</span>';
+      }).join(' · ');
+      html += '<div style="margin-top:6px;font-size:9px;color:#6e7681;">⚔ ' + z.military.length + ' military: ' + milList + '</div>';
+    }
+    
+    html += '</div>';
+  });
+  
+  grid.innerHTML = html;
+}
+
 // ===== INIT =====
 renderTrackers();
 renderNews();
 renderEnergy();
+renderFlights();
 updateClock();
 updateGlobalClock();
 updateThreatZones();

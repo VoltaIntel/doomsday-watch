@@ -4,6 +4,9 @@ cd /home/openclaw/.openclaw/workspace/nuke-watch
 # Fetch oil prices before deploy
 python3 scripts/fetch_oil_prices.py 2>/dev/null
 
+# Fetch flight tracking data
+python3 scripts/track_flights.py 2>/dev/null
+
 # Update index.html with latest state
 python3 << 'PYEOF'
 import json
@@ -20,6 +23,13 @@ try:
         energy_data = json.load(f)
 except:
     energy_data = {"current": {}, "history": [], "baselines": {}, "changes": {}}
+
+# Load flight tracking data (fetched by track_flights.py)
+try:
+    with open("data/flight_tracking.json") as f:
+        flight_data = json.load(f)
+except:
+    flight_data = {"zones": {}, "signals": []}
 
 with open("dashboard.html") as f:
     html = f.read()
@@ -435,7 +445,14 @@ else:
         "changes": energy_data.get("changes", {}),
         "history": energy_data.get("history", [])[-48:]
     })
-    lines.append("  energy: " + energy_js)
+    lines.append("  energy: " + energy_js + ",")
+    # Add flight tracking data
+    flight_js = json.dumps({
+        "zones": flight_data.get("zones", {}),
+        "signals": flight_data.get("signals", []),
+        "last_updated": flight_data.get("last_updated", "")
+    })
+    lines.append("  flights: " + flight_js)
     lines.append("};")
 
     # Generate static chart SVG
@@ -822,9 +839,9 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
     new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
     
-    # Inject predictions into HTML (after energy in state block)
+    # Inject predictions into HTML (after flights in state block)
     pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
-    new_html = new_html.replace("  energy: " + energy_js + "\n};", "  energy: " + energy_js + pred_inject + "\n};")
+    new_html = new_html.replace("  flights: " + flight_js + "\n};", "  flights: " + flight_js + pred_inject + "\n};")
 
     with open("index.html", "w") as f:
         f.write(new_html)
