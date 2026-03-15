@@ -1,33 +1,42 @@
 {
   "zones": {
-    "persian_gulf": {
-      "name": "Persian Gulf / Strait of Hormuz",
-      "flight_count": 5,
-      "baseline_flights": 80,
-      "disruption_pct": 94,
-      "top_countries": {
-        "United Arab Emirates": 4,
-        "Saudi Arabia": 1
-      },
+    "red_sea_south": {
+      "name": "Red Sea / Bab el-Mandeb",
+      "flight_count": 0,
+      "baseline_flights": 60,
+      "disruption_pct": 100,
+      "top_countries": {},
       "military": [],
       "high_speed": [],
-      "updated_at": "2026-03-15T20:59:20Z"
+      "updated_at": "2026-03-15T21:06:53Z"
     },
     "eastern_mediterranean": {
       "name": "Eastern Mediterranean / Cyprus",
-      "flight_count": 10,
+      "flight_count": 11,
       "baseline_flights": 120,
-      "disruption_pct": 92,
+      "disruption_pct": 91,
       "top_countries": {
+        "Turkey": 2,
         "United Kingdom": 2,
         "Saudi Arabia": 2,
-        "Hungary": 1,
         "Israel": 1,
-        "Turkey": 1
+        "Lebanon": 1
       },
       "military": [],
       "high_speed": [],
-      "updated_at": "2026-03-15T20:59:20Z"
+      "updated_at": "2026-03-15T21:06:53Z"
+    },
+    "persian_gulf": {
+      "name": "Persian Gulf / Strait of Hormuz",
+      "flight_count": 3,
+      "baseline_flights": 80,
+      "disruption_pct": 96,
+      "top_countries": {
+        "United Arab Emirates": 3
+      },
+      "military": [],
+      "high_speed": [],
+      "updated_at": "2026-03-15T21:06:53Z"
     },
     "red_sea_north": {
       "name": "Red Sea / Jeddah",
@@ -37,7 +46,7 @@
       "top_countries": {},
       "military": [],
       "high_speed": [],
-      "updated_at": "2026-03-15T20:59:20Z"
+      "updated_at": "2026-03-15T21:06:53Z"
     },
     "turkey_syria": {
       "name": "Turkey-Syria-Iraq Border",
@@ -47,17 +56,7 @@
       "top_countries": {},
       "military": [],
       "high_speed": [],
-      "updated_at": "2026-03-15T20:59:20Z"
-    },
-    "red_sea_south": {
-      "name": "Red Sea / Bab el-Mandeb",
-      "flight_count": 0,
-      "baseline_flights": 60,
-      "disruption_pct": 100,
-      "top_countries": {},
-      "military": [],
-      "high_speed": [],
-      "updated_at": "2026-03-15T20:59:20Z"
+      "updated_at": "2026-03-15T21:06:53Z"
     }
   },
   "history": [
@@ -185,28 +184,63 @@
           "disruption_pct": 100
         }
       }
+    },
+    {
+      "timestamp": "2026-03-15T21:06:53Z",
+      "zones": {
+        "red_sea_south": {
+          "flight_count": 0,
+          "disruption_pct": 100
+        },
+        "eastern_mediterranean": {
+          "flight_count": 11,
+          "disruption_pct": 91
+        },
+        "persian_gulf": {
+          "flight_count": 3,
+          "disruption_pct": 96
+        },
+        "red_sea_north": {
+          "flight_count": 0,
+          "disruption_pct": 100
+        },
+        "turkey_syria": {
+          "flight_count": 0,
+          "disruption_pct": 100
+        }
+      }
     }
   ],
   "signals": [
     {
-      "signal": "airspace_persian_gulf_closed",
-      "zone": "persian_gulf",
-      "zone_name": "Persian Gulf / Strait of Hormuz",
-      "type": "airspace_closed",
-      "disruption_pct": 94,
-      "flights_remaining": 5,
-      "confidence": "high",
-      "time": "2026-03-15T20:59:20Z"
+      "signal": "airspace_red_sea_south_restricted",
+      "zone": "red_sea_south",
+      "zone_name": "Red Sea / Bab el-Mandeb",
+      "type": "airspace_restricted",
+      "disruption_pct": 100,
+      "flights_remaining": 0,
+      "confidence": "medium",
+      "time": "2026-03-15T21:06:53Z"
     },
     {
       "signal": "airspace_eastern_mediterranean_closed",
       "zone": "eastern_mediterranean",
       "zone_name": "Eastern Mediterranean / Cyprus",
       "type": "airspace_closed",
-      "disruption_pct": 92,
-      "flights_remaining": 10,
+      "disruption_pct": 91,
+      "flights_remaining": 11,
       "confidence": "high",
-      "time": "2026-03-15T20:59:20Z"
+      "time": "2026-03-15T21:06:53Z"
+    },
+    {
+      "signal": "airspace_persian_gulf_closed",
+      "zone": "persian_gulf",
+      "zone_name": "Persian Gulf / Strait of Hormuz",
+      "type": "airspace_closed",
+      "disruption_pct": 96,
+      "flights_remaining": 3,
+      "confidence": "high",
+      "time": "2026-03-15T21:06:53Z"
     },
     {
       "signal": "airspace_red_sea_north_restricted",
@@ -216,7 +250,7 @@
       "disruption_pct": 100,
       "flights_remaining": 0,
       "confidence": "medium",
-      "time": "2026-03-15T20:59:20Z"
+      "time": "2026-03-15T21:06:53Z"
     },
     {
       "signal": "airspace_turkey_syria_restricted",
@@ -226,18 +260,8 @@
       "disruption_pct": 100,
       "flights_remaining": 0,
       "confidence": "medium",
-      "time": "2026-03-15T20:59:20Z"
-    },
-    {
-      "signal": "airspace_red_sea_south_restricted",
-      "zone": "red_sea_south",
-      "zone_name": "Red Sea / Bab el-Mandeb",
-      "type": "airspace_restricted",
-      "disruption_pct": 100,
-      "flights_remaining": 0,
-      "confidence": "medium",
-      "time": "2026-03-15T20:59:20Z"
+      "time": "2026-03-15T21:06:53Z"
     }
   ],
-  "last_updated": "2026-03-15T20:59:20Z"
+  "last_updated": "2026-03-15T21:06:53Z"
 }
