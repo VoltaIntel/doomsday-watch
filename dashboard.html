@@ -1300,11 +1300,8 @@ function renderEnergy() {
     var maxP = Math.max.apply(null, brentData) * 1.05;
     var range = maxP - minP || 1;
     var baseLine = (e.baselines && e.baselines['BRENT_CRUDE_USD'] && e.baselines['BRENT_CRUDE_USD'].price) || 67.4;
-    var baseY = padT + cH * (1 - (baseLine - minP) / range);
     
     var svg = '<svg width="100%" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '">';
-    svg += '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (padL + cW) + '" y2="' + baseY + '" stroke="rgba(255,136,0,0.3)" stroke-dasharray="4,3"/>';
-    svg += '<text x="2" y="' + Math.min(baseY + 3, H - 3) + '" fill="#ff880080" font-size="7" font-family="monospace">$' + baseLine.toFixed(0) + '</text>';
     var pts = [];
     for (var j = 0; j < brentData.length; j++) {
       var x = padL + (j / Math.max(brentData.length - 1, 1)) * cW;
