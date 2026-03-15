@@ -1315,8 +1315,8 @@ function renderFlights() {
   zoneIds.forEach(function(zid) {
     var z = zones[zid];
     var disc = z.disruption_pct || 0;
-    var flights = z.flight_count || 0;
-    var baseline = z.baseline_flights || 0;
+    var flights = z.active_flights || z.flight_count || 0;
+    var baseline = z.baseline_flights || z.baseline_daily_flights || 0;
     
     var statusColor = disc >= 90 ? '#ff2d2d' : disc >= 70 ? '#ff8800' : disc >= 40 ? '#ffaa00' : '#00e676';
     var statusText = disc >= 90 ? 'CLOSED' : disc >= 70 ? 'LARGELY CLOSED' : disc >= 40 ? 'RESTRICTED' : 'OPEN';
