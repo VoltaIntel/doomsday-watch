@@ -1,6 +1,9 @@
 #!/bin/bash
 cd /home/openclaw/.openclaw/workspace/nuke-watch
 
+# Fetch oil prices before deploy
+python3 scripts/fetch_oil_prices.py 2>/dev/null
+
 # Update index.html with latest state
 python3 << 'PYEOF'
 import json
@@ -10,6 +13,13 @@ with open("data/current_state.json") as f:
 
 with open("data/tracker_config.json") as f:
     cfg = json.load(f)
+
+# Load energy prices (fetched by fetch_oil_prices.py)
+try:
+    with open("data/energy_prices.json") as f:
+        energy_data = json.load(f)
+except:
+    energy_data = {"current": {}, "history": [], "baselines": {}, "changes": {}}
 
 with open("dashboard.html") as f:
     html = f.read()
@@ -417,7 +427,15 @@ else:
     lines.append("  history: " + hist_js + ",")
     # Add pending zone alerts
     alerts_js = json.dumps(zone_alerts.get("pending", []))
-    lines.append("  zone_alerts: " + alerts_js)
+    lines.append("  zone_alerts: " + alerts_js + ",")
+    # Add energy prices
+    energy_js = json.dumps({
+        "current": energy_data.get("current", {}),
+        "baselines": energy_data.get("baselines", {}),
+        "changes": energy_data.get("changes", {}),
+        "history": energy_data.get("history", [])[-48:]
+    })
+    lines.append("  energy: " + energy_js)
     lines.append("};")
 
     # Generate static chart SVG
@@ -804,9 +822,9 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
     new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
     
-    # Inject predictions into HTML (append to state block)
+    # Inject predictions into HTML (after energy in state block)
     pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
-    new_html = new_html.replace("  zone_alerts: " + alerts_js + "\n};", "  zone_alerts: " + alerts_js + pred_inject + "\n};")
+    new_html = new_html.replace("  energy: " + energy_js + "\n};", "  energy: " + energy_js + pred_inject + "\n};")
 
     with open("index.html", "w") as f:
         f.write(new_html)

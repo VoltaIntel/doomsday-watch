@@ -777,6 +777,13 @@ body {
     </div>
   </div>
 
+  <!-- ENERGY PRICES -->
+  <div id="energySection" style="margin:16px 0;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:6px;display:none;">
+    <div class="section-label" style="margin-bottom:10px;font-size:11px;letter-spacing:1.5px;color:#ff8800;">ENERGY MARKET</div>
+    <div id="energyGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"></div>
+    <div id="energyChart" style="margin-top:12px;width:100%;height:80px;"></div>
+  </div>
+
   <!-- BRIEF / PREDICTION BUTTONS -->
   <div style="text-align:center;margin:8px 0 4px;display:flex;flex-direction:column;align-items:center;gap:6px;">
     <button onclick="openBriefing()" style="width:260px;background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 0;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">INTELLIGENCE BRIEF</button>
@@ -1242,9 +1249,83 @@ function initThreatMap() {
   });
 }
 
+// ===== ENERGY PANEL =====
+function renderEnergy() {
+  var e = (typeof state !== 'undefined' && state.energy) ? state.energy : null;
+  if (!e || !e.current || Object.keys(e.current).length === 0) return;
+  
+  var section = document.getElementById('energySection');
+  var grid = document.getElementById('energyGrid');
+  var chartEl = document.getElementById('energyChart');
+  if (!section || !grid) return;
+  
+  section.style.display = 'block';
+  
+  var items = [
+    {code: 'BRENT_CRUDE_USD', label: 'BRENT', color: '#ff8800'},
+    {code: 'WTI_USD', label: 'WTI', color: '#ffaa00'},
+    {code: 'NATURAL_GAS_USD', label: 'NAT GAS', color: '#66bbff'}
+  ];
+  
+  var html = '';
+  items.forEach(function(item) {
+    var data = e.current[item.code] || {};
+    var chg = (e.changes || {})[item.code] || {};
+    var price = data.price || 0;
+    var pct = chg.change_pct || 0;
+    var usdChg = chg.change_usd || 0;
+    var arrow = pct > 0 ? '▲' : pct < 0 ? '▼' : '●';
+    var chgColor = pct > 0 ? '#ff4444' : pct < 0 ? '#00e676' : '#484f58';
+    
+    html += '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px;padding:10px;text-align:center;">' +
+      '<div style="font-size:10px;letter-spacing:1px;color:' + item.color + ';margin-bottom:4px;">' + item.label + '</div>' +
+      '<div style="font-size:18px;color:#e6edf3;font-family:monospace;font-weight:bold;">$' + price.toFixed(2) + '</div>' +
+      '<div style="font-size:11px;color:' + chgColor + ';margin-top:3px;">' + arrow + ' ' + (pct > 0 ? '+' : '') + pct + '% ($' + (usdChg > 0 ? '+' : '') + usdChg.toFixed(2) + ')</div>' +
+      '<div style="font-size:9px;color:#484f58;margin-top:2px;">vs pre-conflict</div>' +
+      '</div>';
+  });
+  grid.innerHTML = html;
+  
+  // Brent price chart
+  var history = e.history || [];
+  if (history.length >= 2 && chartEl) {
+    var W = 600, H = 80, padL = 30, padR = 10, padT = 8, padB = 16;
+    var cW = W - padL - padR, cH = H - padT - padB;
+    var brentData = [];
+    for (var i = 0; i < history.length; i++) {
+      if (history[i].prices && history[i].prices['BRENT_CRUDE_USD']) brentData.push(history[i].prices['BRENT_CRUDE_USD']);
+    }
+    if (brentData.length < 2) return;
+    var minP = Math.min.apply(null, brentData) * 0.95;
+    var maxP = Math.max.apply(null, brentData) * 1.05;
+    var range = maxP - minP || 1;
+    var baseLine = (e.baselines && e.baselines['BRENT_CRUDE_USD'] && e.baselines['BRENT_CRUDE_USD'].price) || 67.4;
+    var baseY = padT + cH * (1 - (baseLine - minP) / range);
+    
+    var svg = '<svg width="100%" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '">';
+    svg += '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (padL + cW) + '" y2="' + baseY + '" stroke="rgba(255,136,0,0.3)" stroke-dasharray="4,3"/>';
+    svg += '<text x="2" y="' + Math.min(baseY + 3, H - 3) + '" fill="#ff880080" font-size="7" font-family="monospace">$' + baseLine.toFixed(0) + '</text>';
+    var pts = [];
+    for (var j = 0; j < brentData.length; j++) {
+      var x = padL + (j / Math.max(brentData.length - 1, 1)) * cW;
+      var y = padT + cH * (1 - (brentData[j] - minP) / range);
+      pts.push(x.toFixed(1) + ',' + y.toFixed(1));
+    }
+    svg += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#ff8800" stroke-width="2"/>';
+    var lastX = padL + cW;
+    var lastY = padT + cH * (1 - (brentData[brentData.length-1] - minP) / range);
+    svg += '<circle cx="' + lastX + '" cy="' + lastY + '" r="3" fill="#ff8800"/>';
+    svg += '<text x="' + (lastX - 45) + '" y="' + Math.max(lastY - 6, 12) + '" fill="#ffaa00" font-size="9" font-weight="bold" font-family="monospace">$' + brentData[brentData.length-1].toFixed(2) + '</text>';
+    svg += '<text x="' + padL + '" y="' + (H - 3) + '" fill="#484f58" font-size="7" font-family="monospace">BRENT CRUDE (48H)</text>';
+    svg += '</svg>';
+    chartEl.innerHTML = svg;
+  }
+}
+
 // ===== INIT =====
 renderTrackers();
 renderNews();
+renderEnergy();
 updateClock();
 updateGlobalClock();
 updateThreatZones();
