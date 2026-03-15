@@ -827,13 +827,6 @@ body {
     </div>
   </div>
 
-  <!-- ENERGY PRICES -->
-  <div class="energy-section" style="margin:16px 0;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:6px;">
-    <div class="section-label" style="margin-bottom:10px;font-size:11px;letter-spacing:1.5px;color:#ff8800;">⚡ ENERGY MARKET</div>
-    <div id="energyGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;"></div>
-    <div id="energyChart" style="margin-top:12px;width:100%;height:80px;"></div>
-  </div>
-
   <!-- NARRATIVE BUTTON (click to open briefing modal) -->
 
   <!-- TRACKERS -->
@@ -871,29 +864,29 @@ body {
 <script>
 // ===== DATA =====
 const state = {
-  last_updated: "2026-03-15T18:04:00Z",
+  last_updated: "2026-03-14T14:04:00Z",
   global_war_probability: 75,
   trackers: [
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED", "UAE EVAC ORDER", "9×MSL+33×DRN BARRAGE", "7TH MISSILE WAVE", "REGIME TOPPLE STATED", "MISSILE PROD DEFEATED", "IRGC VOWS KILL NETANYAHU", "IRAN THREATENS US BANKS", "SEJJIL BALLISTIC MISSILE", "7×SALVOS SINCE MIDNIGHT", "TRUMP REJECTS DEAL"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "850K DISPLACED", "826 KILLED", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE", "'DO WHAT WE DID IN GAZA'", "31 MEDICS KILLED", "BEIRUT FLYER THREAT", "HEZBOLLAH DRONES YA'ARA", "ISRAEL REJECTS TALKS", "EASTERN LEBANON HELIS", "HEZBOLLAH → HAIFA", "6 BEIRUT SUBURBS EVAC"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 99, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR", "AFGHAN KILLS 14 PAK", "DRONE STORAGE HIT", "INDIA CONDEMNS PK", "CHINA MEDIATION", "200+ ROCKETS/48H", "ZARDARI 'RED LINE'"] },
-    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 72, zone: "imminent", trend: "stable", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
-    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 81, zone: "imminent", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "SANCTIONS LIFTED", "OIL BOOSTS RU", "460 DRN + 58 MSL", "KYIV: 6 DEAD, 15 WOUNDED", "RAILWAY INFRA HIT"] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 42, zone: "critical", trend: "stable", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "BRYANSK BLAME UK", "CEASEFARE COLLAPSE", "SHAHEDS TO IRAN"] },
-    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 55, zone: "critical", trend: "rising", signals: ["10-MISSILE SALVO", "BARRAGE DURING DRILLS", "3RD PROVOCATION WEEK", "DIPLOMACY REJECTED", "12×600mm MRL TEST"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED", "UAE EVAC ORDER", "9×MSL+33×DRN BARRAGE"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "1M DISPLACED", "773+ KILLED", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE", "'DO WHAT WE DID IN GAZA'"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 80, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR", "AFGHAN KILLS 14 PAK"] },
+    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 65, zone: "imminent", trend: "stable", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
+    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 56, zone: "critical", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "SANCTIONS LIFTED", "OIL BOOSTS RU", "19K DRONES/DAY", "430 DRN + 68 MSL"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 42, zone: "critical", trend: "stable", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "BRYANSK BLAME UK", "CEASEFARE COLLAPSE"] },
+    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 41, zone: "critical", trend: "stable", signals: ["10-MISSILE SALVO", "BARRAGE DURING DRILLS", "3RD PROVOCATION WEEK", "DIPLOMACY REJECTED"] },
     { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 26, zone: "elevated", trend: "stable", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "460KG HIDDEN HEU", "11 BOMBS WORTH"] },
-    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 25, zone: "elevated", trend: "rising", signals: ["MODI CONCERN", "KASHMIR WATCH", "OIL IMPACT", "CONDEMNS PAKISTAN"] },
-    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 11, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "THAAD DEPARTED", "7 WARPLANES", "ME GAP", "PARIS TRADE TALKS"] }
+    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 20, zone: "elevated", trend: "stable", signals: ["MODI CONCERN", "KASHMIR WATCH", "OIL IMPACT"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 15, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "THAAD DEPARTED", "7 WARPLANES", "ME GAP"] }
   ],
   news: [
-    { zone: "iran", time: "0H", text: "FM ARAGHCHI: 'NEVER ASKED FOR CEASEFIRE... READY FOR LONG WAR' — refutes Trump's claim Iran wants deal. IRGC 52nd wave ongoing. Israel expands Isfahan strikes.", impact: "up" },
-    { zone: "dprk", time: "1H", text: "KIM JONG UN OVERSEES 12×600mm NUCLEAR-CAPABLE MRL TEST — 3rd provocation in a week. Kim Ju Ae in attendance. Response to Freedom Shield drills (Reuters/KCNA).", impact: "up" },
-    { zone: "iran", time: "2H", text: "ISRAEL EXPANDS STRIKES ON WESTERN IRAN — new barrage on Isfahan province. Dozens killed. Multiple sites across central Iran targeted. IRGC vows to 'kill Netanyahu.'", impact: "up" },
-    { zone: "iran", time: "3H", text: "TRUMP CALLS ALLIES FOR HORMUZ WARSHIPS — UK says it has 'only one vessel.' No public commitments. European defense ministries reportedly furious (AP/Guardian).", impact: "up" },
-    { zone: "iran", time: "4H", text: "6 US SERVICE MEMBERS IDENTIFIED FROM KC-135 CRASH in western Iran. Iranian proxy claimed responsibility. Pentagon says cause under investigation (NPR/Pentagon).", impact: "up" },
-    { zone: "china", time: "5H", text: "US-CHINA TRADE TALKS OPEN IN PARIS — paves way for Trump-Xi summit. Only de-escalation signal globally amid multi-front war (AP).", impact: "neutral" },
-    { zone: "iran", time: "6H", text: "IEA COMMITS 400M BARREL OIL RELEASE — US contributes 172M, Europe 107.5M. Emergency stockpile release by end of March (CNN).", impact: "neutral" },
-    { zone: "lebanon", time: "8H", text: "826+ KILLED IN LEBANON — IDF continues strikes on Beirut southern suburbs. No ceasefire signals. French peace plan stalled.", impact: "up" }
+    { zone: "iran", time: "0H", text: "IRGC ORDERS EVACUATION OF DUBAI, ABU DHABI, FUJAIRAH PORTS — calls UAE 'origin of American enemy missiles' and 'legitimate targets.' DIRECT threat to Gulf state territory. Unprecedented escalation.", impact: "up" },
+    { zone: "iran", time: "0H", text: "UAE INTERCEPTED 9 BALLISTIC MISSILES + 33 DRONES from Iran — massive 42-projectile barrage. Largest Iranian attack on Gulf state since war began.", impact: "up" },
+    { zone: "iran", time: "0H", text: "FUJAIRAH OIL TERMINAL HIT — Iranian drones strike oil storage, massive fire, loading operations SUSPENDED. One of world's largest bunkering hubs offline. Oil supply disrupted.", impact: "up" },
+    { zone: "iran", time: "1H", text: "TRUMP CALLS ON UK, CHINA, FRANCE TO SEND WARSHIPS TO HORMUZ — 'many countries will help.' International naval coalition forming to break Iran blockade.", impact: "up" },
+    { zone: "iran", time: "1H", text: "HEGSETH DECLARES 'NO QUARTER, NO MERCY' — legal analysts and rights groups call it war crime under Geneva Conventions. NYT/Guardian/HuffPost/Al Jazeera condemn.", impact: "up" },
+    { zone: "lebanon", time: "2H", text: "'WE ARE GOING TO DO WHAT WE DID IN GAZA' — Senior Israeli official confirms massive Lebanon ground invasion to seize entire area south of Litani. Largest since 2006.", impact: "up" },
+    { zone: "pakistan_afghanistan", time: "3H", text: "AFGHANISTAN CLAIMS KILLED 14 PAKISTANI SOLDIERS AND CAPTURED BORDER POST — forces in Kunar/Nangarhar provinces. If confirmed, major escalation. Zardari: Taliban 'crossed red line.'", impact: "up" },
+    { zone: "dprk", time: "4H", text: "NORTH KOREA CONFIRMS 10 BALLISTIC MISSILES from Sunan — third provocation this week during US-SK 'Freedom Shield.' Japan confirms 340km range. 'Unprecedented pace.'", impact: "up" }
   ]
 };
 
@@ -1249,87 +1242,9 @@ function initThreatMap() {
   });
 }
 
-// ===== ENERGY PANEL =====
-function renderEnergy() {
-  var el = document.getElementById('energyGrid');
-  var chartEl = document.getElementById('energyChart');
-  var e = (typeof state !== 'undefined' && state.energy) ? state.energy : {};
-  var current = e.current || {};
-  var changes = e.changes || {};
-  var history = e.history || [];
-  
-  var items = [
-    {code: 'BRENT_CRUDE_USD', label: 'BRENT', color: '#ff8800'},
-    {code: 'WTI_USD', label: 'WTI', color: '#ffaa00'},
-    {code: 'NATURAL_GAS_USD', label: 'NAT GAS', color: '#66bbff'}
-  ];
-  
-  var html = '';
-  items.forEach(function(item) {
-    var data = current[item.code] || {};
-    var chg = changes[item.code] || {};
-    var price = data.price || 0;
-    var pct = chg.change_pct || 0;
-    var usdChg = chg.change_usd || 0;
-    var arrow = pct > 0 ? '▲' : pct < 0 ? '▼' : '●';
-    var chgColor = pct > 0 ? '#ff4444' : pct < 0 ? '#00e676' : '#484f58';
-    
-    html += '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px;padding:10px;text-align:center;">' +
-      '<div style="font-size:10px;letter-spacing:1px;color:' + item.color + ';margin-bottom:4px;">' + item.label + '</div>' +
-      '<div style="font-size:18px;color:#e6edf3;font-family:monospace;font-weight:bold;">$' + price.toFixed(2) + '</div>' +
-      '<div style="font-size:11px;color:' + chgColor + ';margin-top:3px;">' + arrow + ' ' + (pct > 0 ? '+' : '') + pct + '% ($' + (usdChg > 0 ? '+' : '') + usdChg.toFixed(2) + ')</div>' +
-      '<div style="font-size:9px;color:#484f58;margin-top:2px;">vs pre-conflict</div>' +
-      '</div>';
-  });
-  el.innerHTML = html;
-  
-  // Price history chart (Brent)
-  if (history.length >= 2) {
-    var W = 600, H = 80, padL = 30, padR = 10, padT = 8, padB = 16;
-    var cW = W - padL - padR, cH = H - padT - padB;
-    
-    var brentHistory = history.map(function(h) { return h.prices && h.prices['BRENT_CRUDE_USD'] || 0; }).filter(function(v) { return v > 0; });
-    if (brentHistory.length < 2) { chartEl.innerHTML = ''; return; }
-    
-    var minP = Math.min.apply(null, brentHistory) * 0.95;
-    var maxP = Math.max.apply(null, brentHistory) * 1.05;
-    var range = maxP - minP || 1;
-    
-    // Baseline line
-    var baseline = (e.baselines && e.baselines['BRENT_CRUDE_USD'] && e.baselines['BRENT_CRUDE_USD'].price) || 67.4;
-    var baseY = padT + cH * (1 - (baseline - minP) / range);
-    
-    var svg = '<svg width="100%" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '">';
-    svg += '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (padL + cW) + '" y2="' + baseY + '" stroke="rgba(255,136,0,0.3)" stroke-dasharray="4,3"/>';
-    svg += '<text x="2" y="' + (baseY + 3) + '" fill="#ff880080" font-size="7" font-family="monospace">$' + baseline.toFixed(0) + '</text>';
-    
-    var pts = [];
-    for (var i = 0; i < brentHistory.length; i++) {
-      var x = padL + (i / Math.max(brentHistory.length - 1, 1)) * cW;
-      var y = padT + cH * (1 - (brentHistory[i] - minP) / range);
-      pts.push(x.toFixed(1) + ',' + y.toFixed(1));
-    }
-    svg += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#ff8800" stroke-width="2"/>';
-    
-    // Current price dot
-    var lastX = padL + cW;
-    var lastY = padT + cH * (1 - (brentHistory[brentHistory.length-1] - minP) / range);
-    svg += '<circle cx="' + lastX + '" cy="' + lastY + '" r="3" fill="#ff8800"/>';
-    svg += '<text x="' + (lastX - 40) + '" y="' + (lastY - 6) + '" fill="#ffaa00" font-size="9" font-weight="bold" font-family="monospace">$' + brentHistory[brentHistory.length-1].toFixed(2) + '</text>';
-    
-    // Labels
-    svg += '<text x="' + padL + '" y="' + (H - 3) + '" fill="#484f58" font-size="7" font-family="monospace">BRENT CRUDE (48H)</text>';
-    svg += '<text x="' + W + '" y="' + (H - 3) + '" fill="#484f58" font-size="7" font-family="monospace" text-anchor="end">$' + maxP.toFixed(0) + '</text>';
-    
-    svg += '</svg>';
-    chartEl.innerHTML = svg;
-  }
-}
-
 // ===== INIT =====
 renderTrackers();
 renderNews();
-renderEnergy();
 updateClock();
 updateGlobalClock();
 updateThreatZones();
@@ -1547,13 +1462,6 @@ function openPredictions() {
   }
   
   document.getElementById('predModal').classList.add('active');
-}
-</script>
-
-
-</body>
-</html>
-.classList.add('active');
 }
 </script>
 
