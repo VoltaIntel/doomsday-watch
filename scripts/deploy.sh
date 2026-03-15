@@ -427,7 +427,7 @@ else:
     lines.append("  history: " + hist_js + ",")
     # Add pending zone alerts
     alerts_js = json.dumps(zone_alerts.get("pending", []))
-    lines.append("  zone_alerts: " + alerts_js)
+    lines.append("  zone_alerts: " + alerts_js + ",")
     # Add energy prices
     energy_js = json.dumps({
         "current": energy_data.get("current", {}),
