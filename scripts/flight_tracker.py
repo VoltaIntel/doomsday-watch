@@ -14,6 +14,20 @@ FLIGHT_FILE = os.path.join(DATA_DIR, "flight_tracking.json")
 
 # API key — get free at aviationstack.com/signup (100 req/month)
 API_KEY = os.environ.get("AVIATIONSTACK_KEY", "")
+if not API_KEY:
+    # Try reading from secrets file
+    try:
+        # Secrets file location
+        for candidate in [
+            os.path.expanduser("~/.openclaw/workspace/secrets-backup/aviationstack.env"),
+            os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))), "secrets-backup", "aviationstack.env"),
+        ]:
+            if os.path.exists(candidate):
+                with open(candidate) as f:
+                    API_KEY = f.read().strip().split("=", 1)[1]
+                break
+    except:
+        pass
 
 # Key airports in conflict zones — query each = 1 request
 # Grouped by zone, pick the most representative airport per zone
