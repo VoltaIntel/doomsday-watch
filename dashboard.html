@@ -876,17 +876,18 @@ body {
 // ===== DATA =====
 const state = {
   last_updated: "2026-03-15T22:04:00Z",
-  global_war_probability: 86,
+  global_war_probability: 91,
   trackers: [
-    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "KC-135×5 DAMAGED", "IRGC→UAE THREAT", "FUJAIRAH SUSPENDED", "UAE EVAC ORDER", "9×MSL+33×DRN BARRAGE", "IRGC 50TH WAVE", "200+ TARGETS/24H", "SHIRAZ CIVILIAN", "GEN JALALI NASAB KILLED", "WAR ENDS 'WEEKS' (↓)", "MOJTABA HEALTHY", "IRGC WARNS US INDUSTRIES"] },
-    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 100, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "1M DISPLACED", "850+ KILLED (100 CHILDREN)", "BEIRUT BOMBED", "HEALTH CENTER HIT", "GAZA-SCALE", "'DO WHAT WE DID IN GAZA'", "BEIRUT SUBURBS EVAC"] },
-    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 80, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "ISLAMABAD STRUCK", "51 LOCATIONS BOMBED", "CIVILIAN STRIKES", "NUCLEAR RISK", "DRONE WAR", "AFGHAN KILLS 14 PAK"] },
-    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 65, zone: "imminent", trend: "stable", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "ARTICLE 4 PRESSURE", "TEHRAN DENIES"] },
-    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 56, zone: "critical", trend: "rising", signals: ["OFFENSIVE", "WEAPONS ESCALATION", "CEASEFARE DEAD (2%)", "SANCTIONS LIFTED", "OIL BOOSTS RU", "19K DRONES/DAY", "430 DRN + 68 MSL"] },
-    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 42, zone: "critical", trend: "stable", signals: ["IRAN ARMS", "SANCTIONS WAIVER", "OIL PRICE BOOST", "BRYANSK BLAME UK", "CEASEFARE COLLAPSE"] },
-    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 41, zone: "critical", trend: "stable", signals: ["10-MISSILE SALVO", "BARRAGE DURING DRILLS", "3RD PROVOCATION WEEK", "DIPLOMACY REJECTED"] },
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 26, zone: "elevated", trend: "stable", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "460KG HIDDEN HEU", "11 BOMBS WORTH"] },
-    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 20, zone: "elevated", trend: "stable", signals: ["MODI CONCERN", "KASHMIR WATCH", "OIL IMPACT"] },
+    { id: "iran_conv", name: "IRAN WAR", emoji: "⚔️", prob: 100, zone: "imminent", trend: "rising", signals: ["KHARG STRUCK", "OIL THREAT", "HORMUZ BLOCKED", "FUJAIRAH HIT", "EMBASSY BAGHDAD×2", "2000+ DEAD", "GULF-WIDE WAR", "IRGC 50TH WAVE", "SHIRAZ CIVILIAN", "GEN JALALI NASAB KILLED", "MOJTABA HEALTHY", "IRGC WARNS US INDUSTRIES", "FM: NO CEASEFIRE", "10K HOMES DESTROYED", "ISFAHAN 15 KILLED", "OIL ABOVE $120"] },
+    { id: "lebanon", name: "ISRAEL-LEBANON", emoji: "🇱🇧", prob: 97, zone: "imminent", trend: "rising", signals: ["GROUND INVASION", "25MI EVACUATION", "850+ KILLED", "BEIRUT BOMBED", "GAZA-SCALE", "LITANI PUSH", "MEDICAL WORKERS KILLED"] },
+    { id: "pakistan_afghanistan", name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰", prob: 100, zone: "imminent", trend: "rising", signals: ["OPEN WAR", "NUCLEAR RISK", "ISLAMABAD STRUCK", "CIVILIAN STRIKES", "BORDER POST CAPTURED", "KANDAHAR STRIKES", "118K DISPLACED"] },
+    { id: "turkey", name: "TURKEY-NATO", emoji: "🇹🇷", prob: 72, zone: "imminent", trend: "stable", signals: ["3 MISSILE INTERCEPTS", "INCIRLIK TARGETED", "NATO AIR DEFENSE", "4TH MISSILE INTERCEPT"] },
+    { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 100, zone: "imminent", trend: "rising", signals: ["OFFENSIVE", "MASS BOMBARDMENT", "KYIV UNDER ATTACK", "SAMP/T DELIVERED", "FRANCE ANTI-BALLISTIC"] },
+    { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 76, zone: "imminent", trend: "rising", signals: ["IRAN ARMS", "DPRK DRONES→IRAN", "FINLAND NUKES", "CEASEFIRE COLLAPSE"] },
+    { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 68, zone: "imminent", trend: "rising", signals: ["10-MISSILE SALVO", "KN-25 NUCLEAR WARNING", "MRL TEST", "KCNA THREAT"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 44, zone: "critical", trend": "rising", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "HIDDEN HEU", "WAR DESPERATION RISK"] },
+    { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 37, zone: "critical", trend: "rising", signals: ["PLA FLIGHTS RESUMED", "TAIWAN $40B DEFENSE", "THAAD REDEPLOYED", "TRUMP-DELAY XI SUMMIT"] },
+    { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 25, zone: "elevated", trend: "stable", signals: ["MODI-PEZESHKIAN CALL", "DIPLOMATIC BALANCING"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 15, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "THAAD DEPARTED", "7 WARPLANES", "ME GAP"] }
   ],
   news: [
