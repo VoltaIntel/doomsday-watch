@@ -780,15 +780,13 @@ body {
   <!-- ENERGY PRICES -->
   <div id="energySection" style="margin:16px 0;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:6px;display:none;">
     <div class="section-label" style="margin-bottom:10px;font-size:11px;letter-spacing:1.5px;color:#ff8800;">ENERGY MARKET</div>
-    <div id="energyGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"></div>
+    <div id="energyGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"></div>
   </div>
 
   <!-- BRIEF / PREDICTION BUTTONS -->
   <div style="text-align:center;margin:8px 0 4px;display:flex;flex-direction:column;align-items:center;gap:6px;">
     <button onclick="openBriefing()" style="width:260px;background:rgba(255,45,45,0.12);border:1px solid rgba(255,45,45,0.35);color:#ff4444;padding:8px 0;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">INTELLIGENCE BRIEF</button>
     <button onclick="openPredictions()" style="width:260px;background:rgba(100,150,255,0.12);border:1px solid rgba(100,150,255,0.35);color:#6688ff;padding:8px 0;border-radius:4px;cursor:pointer;font-size:11px;font-family:'Courier New',monospace;letter-spacing:2px;">24-HOUR FORECAST</button>
-  </div>
-    </div>
   </div>
 
   <!-- GLOBAL PROBABILITY -->
@@ -849,8 +847,6 @@ body {
     <div id="airspaceGrid" style="display:grid;grid-template-columns:1fr;gap:8px;"></div>
   </div>
 
-  </div>
-  </div>
 
   <!-- NEWS FEED -->
   <div class="news-section">
@@ -1001,23 +997,53 @@ function renderNews() {
     return;
   }
 
-  // Group by time blocks
+  // Group by time blocks based on relative time (H format)
   var blocks = {};
   var blockOrder = [];
   filtered.forEach(function(n) {
     var timeStr = n.time || "";
     var block = "RECENT";
-    if (timeStr.indexOf("2026-03-14") >= 0) {
-      var h = parseInt(timeStr.split("T")[1] || "00:00", 10);
-      if (h >= 12) block = "LAST 12H";
-      else if (h >= 6) block = "6-12H AGO";
-      else block = "OLDER";
-    } else if (timeStr.indexOf("2026-03-13") >= 0) {
-      block = "12-24H AGO";
+    
+    // Parse relative hour format (e.g., "0H", "1H", "12H")
+    var hourMatch = timeStr.match(/(\d+)H/);
+    if (hourMatch) {
+      var hours = parseInt(hourMatch[1], 10);
+      if (hours < 6) {
+        block = "LAST 6 HOURS";
+      } else if (hours < 12) {
+        block = "6-12 HOURS AGO";
+      } else if (hours < 24) {
+        block = "12-24 HOURS AGO";
+      } else {
+        block = "EARLIER";
+      }
+    } else if (timeStr.indexOf("T") >= 0) {
+      // ISO timestamp format - calculate hours ago
+      try {
+        var newsTime = new Date(timeStr);
+        var now = new Date();
+        var hoursAgo = (now - newsTime) / (1000 * 60 * 60);
+        if (hoursAgo < 6) {
+          block = "LAST 6 HOURS";
+        } else if (hoursAgo < 12) {
+          block = "6-12 HOURS AGO";
+        } else if (hoursAgo < 24) {
+          block = "12-24 HOURS AGO";
+        } else {
+          block = "EARLIER";
+        }
+      } catch (e) {
+        block = "RECENT";
+      }
     }
+    
     if (!blocks[block]) { blocks[block] = []; blockOrder.push(block); }
     blocks[block].push(n);
   });
+  
+  // Sort blocks in chronological order
+  var blockRank = {"LAST 6 HOURS": 0, "6-12 HOURS AGO": 1, "12-24 HOURS AGO": 2, "RECENT": 3, "EARLIER": 4};
+  blockOrder.sort(function(a, b) { return blockRank[a] - blockRank[b]; });
 
   blockOrder.forEach(function(blockName) {
     var blockDiv = document.createElement("div");
@@ -1272,7 +1298,13 @@ function renderEnergy() {
   var items = [
     {code: 'BRENT_CRUDE_USD', label: 'BRENT', color: '#ff8800'},
     {code: 'WTI_USD', label: 'WTI', color: '#ffaa00'},
-    {code: 'NATURAL_GAS_USD', label: 'NAT GAS', color: '#66bbff'}
+    {code: 'NATURAL_GAS_USD', label: 'NAT GAS', color: '#66bbff'},
+    {code: 'GOLD_USD', label: 'GOLD', color: '#ffd700'},
+    {code: 'EUR_USD', label: 'EUR/USD', color: '#00aaff'},
+    {code: 'GBP_USD', label: 'GBP/USD', color: '#ff66aa'},
+    {code: 'HEATING_OIL_USD', label: 'HEAT OIL', color: '#ff6644'},
+    {code: 'GASOLINE_USD', label: 'GASOLINE', color: '#ffaa44'},
+    {code: 'DIESEL_USD', label: 'DIESEL', color: '#aa8844'}
   ];
   
   var html = '';

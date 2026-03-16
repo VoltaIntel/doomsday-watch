@@ -7,20 +7,20 @@
           "airport": "DXB",
           "total": 100,
           "active": 53,
-          "cancelled": 33,
+          "cancelled": 34,
           "statuses": {
-            "cancelled": 33,
             "scheduled": 53,
-            "active": 14
+            "cancelled": 34,
+            "active": 13
           }
         }
       ],
       "total_flights": 100,
       "active_flights": 53,
-      "cancelled_flights": 33,
+      "cancelled_flights": 34,
       "baseline_daily_flights": 1200,
       "disruption_pct": 96,
-      "updated_at": "2026-03-16T06:06:30Z"
+      "updated_at": "2026-03-16T06:50:29Z"
     },
     "red_sea": {
       "name": "Red Sea / Jeddah",
@@ -29,20 +29,20 @@
           "airport": "JED",
           "total": 100,
           "active": 96,
-          "cancelled": 1,
+          "cancelled": 2,
           "statuses": {
             "scheduled": 96,
-            "active": 3,
-            "cancelled": 1
+            "cancelled": 2,
+            "active": 2
           }
         }
       ],
       "total_flights": 100,
       "active_flights": 96,
-      "cancelled_flights": 1,
+      "cancelled_flights": 2,
       "baseline_daily_flights": 250,
       "disruption_pct": 62,
-      "updated_at": "2026-03-16T06:06:30Z"
+      "updated_at": "2026-03-16T06:50:29Z"
     },
     "eastern_med": {
       "name": "Eastern Mediterranean",
@@ -53,12 +53,12 @@
           "active": 68,
           "cancelled": 1,
           "statuses": {
-            "active": 24,
-            "scheduled": 38,
+            "scheduled": 41,
+            "active": 23,
+            "unknown": 3,
+            "landed": 27,
             "cancelled": 1,
-            "landed": 30,
-            "null": 5,
-            "unknown": 2
+            "null": 5
           }
         }
       ],
@@ -67,7 +67,7 @@
       "cancelled_flights": 1,
       "baseline_daily_flights": 150,
       "disruption_pct": 55,
-      "updated_at": "2026-03-16T06:06:30Z"
+      "updated_at": "2026-03-16T06:50:29Z"
     },
     "turkey_south": {
       "name": "Southern Turkey / Northern Syria",
@@ -75,20 +75,20 @@
         {
           "airport": "IST",
           "total": 100,
-          "active": 95,
+          "active": 80,
           "cancelled": 0,
           "statuses": {
-            "active": 5,
-            "scheduled": 95
+            "scheduled": 80,
+            "active": 20
           }
         }
       ],
       "total_flights": 100,
-      "active_flights": 95,
+      "active_flights": 80,
       "cancelled_flights": 0,
       "baseline_daily_flights": 500,
-      "disruption_pct": 81,
-      "updated_at": "2026-03-16T06:06:30Z"
+      "disruption_pct": 84,
+      "updated_at": "2026-03-16T06:50:29Z"
     },
     "iraq": {
       "name": "Iraq",
@@ -112,7 +112,7 @@
       "cancelled_flights": 6,
       "baseline_daily_flights": 100,
       "disruption_pct": 71,
-      "updated_at": "2026-03-16T06:06:30Z"
+      "updated_at": "2026-03-16T06:50:29Z"
     }
   },
   "history": [
@@ -440,6 +440,31 @@
           "disruption": 71
         }
       }
+    },
+    {
+      "timestamp": "2026-03-16T06:50:29Z",
+      "zones": {
+        "persian_gulf": {
+          "active": 53,
+          "disruption": 96
+        },
+        "red_sea": {
+          "active": 96,
+          "disruption": 62
+        },
+        "eastern_med": {
+          "active": 68,
+          "disruption": 55
+        },
+        "turkey_south": {
+          "active": 80,
+          "disruption": 84
+        },
+        "iraq": {
+          "active": 29,
+          "disruption": 71
+        }
+      }
     }
   ],
   "signals": [
@@ -453,18 +478,18 @@
       "baseline": 1200,
       "confidence": "high",
       "source": "aviationstack",
-      "time": "2026-03-16T06:06:30Z"
+      "time": "2026-03-16T06:50:29Z"
     },
     {
       "signal": "flights_cancelled_persian_gulf",
       "zone": "persian_gulf",
       "zone_name": "Persian Gulf / Strait of Hormuz",
       "type": "high_cancellations",
-      "cancellation_pct": 33,
-      "cancelled": 33,
+      "cancellation_pct": 34,
+      "cancelled": 34,
       "confidence": "medium",
       "source": "aviationstack",
-      "time": "2026-03-16T06:06:30Z"
+      "time": "2026-03-16T06:50:29Z"
     },
     {
       "signal": "airspace_red_sea_restricted",
@@ -476,7 +501,7 @@
       "baseline": 250,
       "confidence": "medium",
       "source": "aviationstack",
-      "time": "2026-03-16T06:06:30Z"
+      "time": "2026-03-16T06:50:29Z"
     },
     {
       "signal": "airspace_eastern_med_restricted",
@@ -488,19 +513,19 @@
       "baseline": 150,
       "confidence": "medium",
       "source": "aviationstack",
-      "time": "2026-03-16T06:06:30Z"
+      "time": "2026-03-16T06:50:29Z"
     },
     {
       "signal": "airspace_turkey_south_closed",
       "zone": "turkey_south",
       "zone_name": "Southern Turkey / Northern Syria",
       "type": "airspace_closed",
-      "disruption_pct": 81,
-      "active_flights": 95,
+      "disruption_pct": 84,
+      "active_flights": 80,
       "baseline": 500,
       "confidence": "medium",
       "source": "aviationstack",
-      "time": "2026-03-16T06:06:30Z"
+      "time": "2026-03-16T06:50:29Z"
     },
     {
       "signal": "airspace_iraq_closed",
@@ -512,10 +537,10 @@
       "baseline": 100,
       "confidence": "medium",
       "source": "aviationstack",
-      "time": "2026-03-16T06:06:30Z"
+      "time": "2026-03-16T06:50:29Z"
     }
   ],
-  "last_updated": "2026-03-16T06:06:30Z",
+  "last_updated": "2026-03-16T06:50:29Z",
   "api_used": "aviationstack",
   "requests_this_run": 5
 }

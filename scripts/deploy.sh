@@ -9,7 +9,11 @@ python3 scripts/fetch_oil_prices.py 2>/dev/null
 # OpenSky: hourly fallback (free, unlimited but spotty ME coverage)
 HOUR=$(date -u +%H)
 DAY=$(date -u +%u)  # 1=Mon, 7=Sun
-AVIATIONSTACK_KEY="c613d344134b5341ea68a097ac813bf4"
+# Load API key from secrets file
+AVIATIONSTACK_KEY=$(cat ~/.openclaw/workspace/secrets-backup/aviationstack.env 2>/dev/null | cut -d= -f2)
+if [ -z "$AVIATIONSTACK_KEY" ]; then
+  echo "Warning: AVIATIONSTACK_KEY not found in secrets file"
+fi
 export AVIATIONSTACK_KEY
 
 RUN_AVIATIONSTACK=false
@@ -200,8 +204,10 @@ tn = [
     ("iran_nuke", "IRAN NUCLEAR", "🇮🇷"),
     ("iran_conventional", "IRAN WAR", "⚔️"),
     ("israel_lebanon", "ISRAEL-LEBANON", "🇱🇧"),
-    ("turkey", "TURKEY", "🇹🇷"),
+    ("turkey", "TURKEY-NATO", "🇹🇷"),
     ("india", "INDIA-PAKISTAN", "🇮🇳"),
+    ("pakistan_afghanistan", "PAKISTAN-AFGHANISTAN", "🇵🇰"),
+    ("russia_ukraine", "RUSSIA-UKRAINE", "🇺🇦"),
     ("russia", "RUSSIA-NATO", "🇷🇺"),
     ("china", "CHINA-TAIWAN", "🇨🇳"),
     ("north_korea", "DPRK", "🇰🇵"),
@@ -704,10 +710,14 @@ else:
             "expires_at": expires_at
         })
     
-    # Sort by confidence, take top 12
+    # Sort by confidence, take top 15
     new_predictions.sort(key=lambda x: x["confidence"], reverse=True)
-    final_predictions = new_predictions[:12]
     final_predictions = new_predictions[:15]
+    
+    # Add new predictions to evaluations tracker for future evaluation
+    evaluations["predictions"].extend(final_predictions)
+    # Keep only last 200 predictions to prevent unbounded growth
+    evaluations["predictions"] = evaluations["predictions"][-200:]
     
     # Save predictions
     pred_data = {
@@ -874,7 +884,8 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     
     # Inject predictions into HTML (after flights in state block)
     pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
-    new_html = new_html.replace("  flights: " + flight_js + "\n};", "  flights: " + flight_js + pred_inject + "\n};")
+    # Use a more robust anchor - find the end of the state block
+    new_html = new_html.replace("\n};\n\n// ===== RENDER", pred_inject + "\n};\n\n// ===== RENDER")
 
     with open("index.html", "w") as f:
         f.write(new_html)

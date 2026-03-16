@@ -18,12 +18,12 @@ CONFLICT_ZONES = {
         "bbox": [24.0, 49.0, 28.5, 57.0],
         "baseline_flights": 80,  # normal hourly flight count (pre-conflict)
     },
-    "eastern_mediterranean": {
+    "eastern_med": {
         "name": "Eastern Mediterranean / Cyprus",
         "bbox": [33.0, 28.0, 36.5, 37.0],
         "baseline_flights": 120,
     },
-    "red_sea_south": {
+    "red_sea": {
         "name": "Red Sea / Bab el-Mandeb",
         "bbox": [11.0, 41.0, 15.0, 45.0],
         "baseline_flights": 60,
@@ -33,7 +33,7 @@ CONFLICT_ZONES = {
         "bbox": [19.0, 37.0, 23.0, 42.0],
         "baseline_flights": 50,
     },
-    "turkey_syria": {
+    "turkey_south": {
         "name": "Turkey-Syria-Iraq Border",
         "bbox": [35.0, 35.0, 38.5, 41.0],
         "baseline_flights": 40,
