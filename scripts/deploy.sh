@@ -571,20 +571,20 @@ else:
         if not pred.get("evaluated") and pred.get("expires_at", "") < now_iso:
             # This prediction has expired — evaluate it
             pred_tid = pred["tracker_id"]
-            pred_type = pred["type"]
-            pred_value = pred["value"]
+            pred_type = pred.get("eval_type", pred["type"])
+            pred_value = pred.get("eval_value", pred["value"])
             actual_state = state.get("trackers", {}).get(pred_tid, {})
-            
+
             if pred_type == "probability_above":
                 actual_prob = actual_state.get("current_probability", 0)
                 pred["actual_value"] = actual_prob
-                pred["correct"] = actual_prob > pred_value
+                pred["correct"] = actual_prob >= pred_value
                 pred["evaluated"] = True
                 pred["evaluated_at"] = now_iso
             elif pred_type == "probability_below":
                 actual_prob = actual_state.get("current_probability", 0)
                 pred["actual_value"] = actual_prob
-                pred["correct"] = actual_prob < pred_value
+                pred["correct"] = actual_prob <= pred_value
                 pred["evaluated"] = True
                 pred["evaluated_at"] = now_iso
             elif pred_type == "trend_rising":
@@ -595,8 +595,8 @@ else:
                 pred["evaluated_at"] = now_iso
             elif pred_type == "signal_triggered":
                 actual_signals = actual_state.get("active_signals", [])
-                pred["actual_value"] = pred["signal_name"] in actual_signals
-                pred["correct"] = pred["signal_name"] in actual_signals
+                pred["actual_value"] = pred.get("signal_name", "") in actual_signals
+                pred["correct"] = pred.get("signal_name", "") in actual_signals
                 pred["evaluated"] = True
                 pred["evaluated_at"] = now_iso
             elif pred_type == "zone_change":
@@ -605,6 +605,9 @@ else:
                 pred["correct"] = actual_zone == pred_value
                 pred["evaluated"] = True
                 pred["evaluated_at"] = now_iso
+            else:
+                # Unknown eval type — mark evaluated as False so it doesn't skew stats
+                pred["evaluated"] = False
     
     # Calculate accuracy stats
     evaluated_preds = [p for p in evaluations.get("predictions", []) if p.get("evaluated")]
@@ -700,6 +703,19 @@ else:
                 event = f"{tname} remains stable at current levels. No significant changes anticipated."
                 confidence = 35; etype = "status_quo"
         
+        # Map narrative intent to an evaluable prediction type
+        # Rising/conflict predictions: probability should stay above (prob - 10)
+        # Stable predictions: probability should stay above (prob - 15)
+        # Falling predictions: probability should drop below current
+        eval_type = "probability_above"
+        eval_value = max(0, prob - 10)
+        if etype in ("de_escalation",):
+            eval_type = "probability_below"
+            eval_value = prob
+        elif etype in ("status_quo", "diplomatic", "nuclear_development"):
+            eval_type = "probability_above"
+            eval_value = max(0, prob - 15)
+
         new_predictions.append({
             "tracker_id": tid,
             "tracker_name": tname,
@@ -707,7 +723,9 @@ else:
             "value": prob,
             "description": event,
             "confidence": confidence,
-            "expires_at": expires_at
+            "expires_at": expires_at,
+            "eval_type": eval_type,
+            "eval_value": eval_value
         })
     
     # Sort by confidence, take top 15
