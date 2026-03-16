@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-16T03:04:00Z",
+  "last_updated": "2026-03-16T04:04:00Z",
   "scoring_window": "24h",
   "trackers": {
     "iran_nuke": {
@@ -271,12 +271,13 @@
         "pakistan_kandahar_strike",
         "pakistan_mass_rocket_barrage",
         "zardari_drone_red_line",
-        "mortar_bajaur_family_killed"
+        "mortar_bajaur_family_killed",
+        "refugee_crisis"
       ],
-      "current_probability": 99,
-      "trend": "stable",
+      "current_probability": 100,
+      "trend": "rising",
       "zone": "imminent",
-      "notes": "Day 17 03:00 \u2014 IMMINENT 99 (capped, STABLE). NEW: Afghan mortar from across border kills 4 family members in Bajaur, Pakistan \u2014 civilian cross-border casualties escalating (+4). Pakistan Kandahar strikes continue overnight. Afghanistan claims captured border post, claims destroyed South Waziristan camp. 99 (capped, stable).",
+      "notes": "Day 17 04:00 \u2014 IMMINENT 100 (capped, RISING). NEW: NYT confirms 75+ Afghan civilians killed by Pakistani airstrikes, 115,000 displaced (+4, refugee_crisis activated). Pakistan strikes military facilities in Kandahar overnight. Guardian: 99 total killed since conflict began. No ceasefire path. Score rises 99\u2192100 (capped).",
       "coupling_boost": 0,
       "current_probability_with_coupling": 99
     }
@@ -284,28 +285,36 @@
   "global_war_probability": 85,
   "global_zone": "imminent",
   "top_signals": [
+    "Pakistani airstrikes kill 75+ Afghan civilians, displace 115,000 \u2014 NYT \u2014 conflict escalates with no ceasefire path",
     "Israel-Lebanon ceasefire talks expected 'in coming days' \u2014 durable ceasefire + Hezbollah disarmament (Reuters/Haaretz) \u2014 de-escalation track active",
     "IDF plans 'at least 3 more weeks' of Iran campaign \u2014 no withdrawal timeline (CNN/IDF)",
     "Iran FM: 'We never asked for ceasefire, ready for long war' \u2014 hardening posture (CBS/Al Jazeera)",
-    "Trump demands 'about 7' countries join Hormuz coalition \u2014 IRGC responds defiantly (AP)",
-    "Trump says US 'not ready' for deal with Iran \u2014 no diplomatic off-ramp (Guardian/NBC)",
-    "Pakistani airstrikes continue in Kandahar \u2014 Afghan mortar kills 4 in Bajaur, Pakistan (Guardian/Al Jazeera)",
+    "Oil tops $106/barrel as Strait of Hormuz remains closed \u2014 no end in sight (Al Jazeera/BBC)",
     "Russia fires 68 missiles + 430 drones at Ukraine \u2014 massive aerial bombardment continues (Guardian/Reuters)",
-    "Macron calls Pezeshkian demands 'immediate end' to Gulf attacks \u2014 France in defensive posture (Sky)"
+    "Dubai airport fuel tank fire contained \u2014 operations resuming (Al Jazeera)",
+    "Trump demands 'about 7' countries join Hormuz coalition \u2014 IRGC responds defiantly (AP)"
   ],
   "changed_signals": {
     "new": [
-      "idf_three_weeks_campaign activated \u2014 IDF tells CNN planning 'at least 3 more weeks' of Iran campaign with 'thousands of targets' remaining \u2014 prolonged war signal (+5)",
-      "mortar_bajaur_family_killed activated \u2014 Afghan mortar fired from Afghanistan kills 4 family members in Bajaur, Pakistan \u2014 cross-border civilian casualties escalating (+4)"
+      "refugee_crisis activated \u2014 NYT: 75+ Afghan civilians killed by Pakistani airstrikes, 115,000 displaced (UNHCR) \u2014 humanitarian crisis deepening (+4)"
     ],
     "removed": [],
     "zone_changes": [
       "No zone changes this cycle"
     ],
-    "de_escalation_watch": "MIXED SIGNALS (Day 17 03:00):\n- ISRAEL-LEBANON: FALLING 92\u219290. Ceasefire talks remain on track 'in coming days.' First sustained de-escalation signal in 2+ weeks.\n- IRAN: HARDENING. IDF plans 3+ more weeks campaign. FM rejects ceasefire. Trump rejects deal. No diplomatic track. All parties committed to continued fighting.\n- PAKISTAN-AFGHANISTAN: STABLE at 99. Cross-border strikes continue. Afghan mortar kills Pakistan civilians \u2014 civilian toll rising on both sides. No ceasefire path.\n- NET: One de-escalation channel (Lebanon) vs three hot fronts (Iran, Pak-Afghan, Ukraine) with no off-ramps. Global score stable 85.",
+    "de_escalation_watch": "MIXED SIGNALS (Day 17 04:00):\n- ISRAEL-LEBANON: FALLING 92\u219290. Ceasefire talks remain on track 'in coming days.' First sustained de-escalation signal in 2+ weeks.\n- IRAN: HARDENING. IDF plans 3+ more weeks campaign. FM rejects ceasefire. Trump rejects deal. Oil at $106/barrel. No diplomatic track.\n- PAKISTAN-AFGHANISTAN: RISING 99\u2192100. NYT: 75+ civilian deaths, 115,000 displaced. Humanitarian crisis recognized internationally. No ceasefire path.\n- RUSSIA-UKRAINE: 68 missiles + 430 drones Saturday. Zelensky accuses EU of 'blackmail.' Ukraine financial frontline struggling.\n- NET: One de-escalation channel (Lebanon) vs three hot fronts (Iran, Pak-Afghan, Ukraine) worsening. Global score 85.",
     "synagogue_note": "US domestic: Michigan synagogue attack suspect's brother confirmed by IDF as Hezbollah commander killed in Israeli strike. Domestic blowback from ME conflict."
   },
   "latest_news": [
+    {
+      "headline": "NYT: Pakistani airstrikes kill 75+ Afghan civilians, displace 115,000 \u2014 no ceasefire in sight",
+      "source": "NYT / Guardian / Al Jazeera",
+      "time": "2026-03-16",
+      "zone": "pakistan_afghanistan",
+      "signal": "refugee_crisis",
+      "text": "NYT confirms at least 75 Afghan civilians killed by Pakistani airstrikes since conflict began. UNHCR: 115,000 displaced in Afghanistan, 3,000 in Pakistan. Pakistan continues overnight strikes on Kandahar military facilities. No diplomatic track. 99+ total killed.",
+      "impact": "up"
+    },
     {
       "headline": "IDF says planning 'at least 3 more weeks' of Iran campaign \u2014 'thousands of targets' remain",
       "source": "CNN / IDF",
@@ -325,48 +334,30 @@
       "impact": "down"
     },
     {
+      "headline": "Oil tops $106/barrel as Strait of Hormuz remains closed \u2014 no end in sight",
+      "source": "Al Jazeera / BBC",
+      "time": "2026-03-16",
+      "zone": "iran_conventional",
+      "signal": null,
+      "text": "Brent crude exceeds $106/barrel as markets see no end in sight to Hormuz closure. Trump seeks coalition to reopen strait. IRGC responds defiantly. Below $120 threshold but rising steadily.",
+      "impact": "up"
+    },
+    {
       "headline": "Iran FM: 'We never asked for ceasefire, ready for long war'",
-      "source": "CBS News / Al Jazeera / NPR",
+      "source": "CBS News / Al Jazeera",
       "time": "2026-03-16",
       "zone": "iran_conventional",
       "signal": "fm_rejects_dialogue",
-      "text": "Iran FM Araghchi CBS: 'We have never asked for ceasefire, never asked for negotiation. Ready to defend ourselves as long as it takes.' Trump says Iran wants deal but US 'not ready.' Both sides rejecting diplomacy.",
+      "text": "Iran FM Araghchi: 'We have never asked for ceasefire, never asked for negotiation. Ready to defend ourselves as long as it takes.' Trump says Iran wants deal but US 'not ready.' Both sides rejecting diplomacy.",
       "impact": "up"
     },
     {
       "headline": "Afghan mortar kills 4 family members in Bajaur, Pakistan",
-      "source": "The Guardian",
+      "source": "The Guardian / Pakistan Today",
       "time": "2026-03-15",
       "zone": "pakistan_afghanistan",
       "signal": "mortar_bajaur_family_killed",
-      "text": "Mortar fired from Afghanistan destroyed a home in Bajaur, northwestern Pakistan, killing 4 members of same family and wounding 2. Afghanistan also claims captured Pakistani military outpost and destroyed South Waziristan camp.",
-      "impact": "up"
-    },
-    {
-      "headline": "Pakistan continues Kandahar overnight strikes \u2014 Afghanistan denies casualties",
-      "source": "Al Jazeera / Guardian / Economic Times",
-      "time": "2026-03-15",
-      "zone": "pakistan_afghanistan",
-      "signal": "pakistan_kandahar_strike",
-      "text": "Pakistan says forces 'effectively' destroyed technical support infrastructure and equipment storage in Kandahar. Also hit tunnel used by TTP. Afghan govt says no casualties, accuses Pakistan of 'fueling fire of war.' 99 total killed since conflict began.",
-      "impact": "up"
-    },
-    {
-      "headline": "Trump demands 'about 7' countries join Hormuz coalition \u2014 NATO faces 'very bad future'",
-      "source": "AP News / Independent",
-      "time": "2026-03-16",
-      "zone": "iran_conventional",
-      "signal": "trump_7_country_hormuz_coalition",
-      "text": "Trump demands ~7 countries join US-led coalition to reopen and police Strait of Hormuz. Warns NATO faces 'very bad future' if allies refuse. IRGC responds: 'Let him send his ships.'",
-      "impact": "up"
-    },
-    {
-      "headline": "Macron calls Iranian President Pezeshkian demands 'immediate end' to Gulf attacks",
-      "source": "Sky News / X",
-      "time": "2026-03-16",
-      "zone": "iran_conventional",
-      "signal": null,
-      "text": "French President Macron spoke with Iranian President Pezeshkian, demanded 'immediate end to unacceptable attacks.' Says France intervening 'within strictly defensive framework.' Warns 'uncontrolled escalation' plunging region into chaos.",
+      "text": "Mortar fired from Afghanistan destroyed a home in Bajaur, northwestern Pakistan, killing 4 members of same family and wounding 2. Cross-border civilian casualties escalating on both sides.",
       "impact": "up"
     },
     {
@@ -377,7 +368,16 @@
       "signal": "russia_mass_aerial_barrage",
       "text": "Russia hammered Ukraine with 68 missiles and ~430 drones Saturday. 6 killed in Kyiv region. Zaporizhzhia residential area hit. Poland scrambled jets. Moldova reports drone intrusion.",
       "impact": "up"
+    },
+    {
+      "headline": "Dubai airport fuel tank fire contained \u2014 operations resuming",
+      "source": "Al Jazeera",
+      "time": "2026-03-16",
+      "zone": "iran_conventional",
+      "signal": null,
+      "text": "Fire at Dubai airport fuel storage area contained. Operations gradually resuming. Previous Iranian drone strike on fuel tank had disrupted airport operations.",
+      "impact": "down"
     }
   ],
-  "outlook": "CRITICAL \u2014 Global war probability 85% (Day 17 03:00). DAY 17 CONTINUES: (1) IRAN -> IMMINENT 100 (capped, STABLE): IDF plans '3 more weeks' of campaign (CNN). FM rejects ceasefire. Trump rejects deal. Macron demands end to attacks. 1,348 Iran civilian deaths confirmed at UN. No diplomatic track. (2) ISRAEL-LEBANON -> IMMINENT 90 (FALLING): Ceasefire talks on track for 'coming days' \u2014 durable ceasefire + Hezbollah disarmament. Score drifts down 92\u219290. (3) RUSSIA-UKRAINE -> IMMINENT 93 (RISING): 68 missiles + 430 drones Saturday. UK diverting resources to ME. (4) PAKISTAN-AFGHANISTAN -> IMMINENT 99 (capped, STABLE): Kandahar strikes continue. Afghan mortar kills 4 in Bajaur, Pakistan. 99 total dead. No ceasefire. (5) TURKEY -> IMMINENT 78. (6) RUSSIA -> IMMINENT 77. (7) DPRK -> CRITICAL 55. (8) INDIA -> ELEVATED 25. KEY WATCH: Israel-Lebanon ceasefire talks the only de-escalation channel. If talks succeed, Lebanon front could cool significantly. Meanwhile Iran front hardening with 3+ week war plan, and Pakistan-Afghanistan escalates with cross-border civilian casualties on both sides."
+  "outlook": "CRITICAL \u2014 Global war probability 85% (Day 17 04:00). DAY 17 CONTINUES: (1) IRAN -> IMMINENT 100 (capped, STABLE): IDF plans '3 more weeks' campaign. FM rejects ceasefire. Oil $106+/bbl. 1,348 Iran civilian deaths at UN. No diplomatic track. (2) ISRAEL-LEBANON -> IMMINENT 90 (FALLING): Ceasefire talks on track for 'coming days' \u2014 durable ceasefire + Hezbollah disarmament. Score drifts down. (3) RUSSIA-UKRAINE -> IMMINENT 93 (RISING): 68 missiles + 430 drones Saturday. UK diverting resources to ME. Zelensky accuses EU of 'blackmail' on oil pipeline. (4) PAKISTAN-AFGHANISTAN -> IMMINENT 100 (capped, RISING): NYT confirms 75+ Afghan civilian deaths, 115,000 displaced. Kandahar strikes continue. No ceasefire. (5) TURKEY -> IMMINENT 78. (6) RUSSIA -> IMMINENT 77. (7) DPRK -> CRITICAL 55. (8) INDIA -> ELEVATED 25. KEY WATCH: Israel-Lebanon ceasefire talks the only de-escalation channel. Pakistan-Afghanistan humanitarian crisis now internationally documented. Iran front hardening with 3+ week war plan."
 }
