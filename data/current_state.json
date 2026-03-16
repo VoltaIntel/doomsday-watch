@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-16T00:00:00Z",
+  "last_updated": "2026-03-16T00:04:00Z",
   "scoring_window": "24h",
   "trackers": {
     "iran_nuke": {
@@ -93,13 +93,14 @@
         "dubai_doha_evac_warning",
         "baghdad_airport_rockets",
         "trump_threatens_nato_hormuz",
-        "hormuz_safe_passage_talks",
-        "us_military_aircraft_down_iraq"
+        "us_military_aircraft_down_iraq",
+        "pentagon_troop_surge_5000",
+        "fm_rejects_dialogue"
       ],
       "current_probability": 100,
       "trend": "stable",
       "zone": "imminent",
-      "notes": "Day 17 00:00 \u2014 IMMINENT 100 (capped, STABLE). Day 16 close: Trump threatens NATO over Hormuz (FT). Iran FM open to safe passage talks \u2014 first softening on Hormuz. 6 US troops killed in Iraq aircraft crash. Israel projects 3+ weeks more war. IRGC vows to kill Netanyahu. Saudi Arabia (2 killed), Bahrain (2 killed), Kuwait (3 wounded) all hit. 15 killed in Isfahan strikes. Trump: deal not imminent. CNN: 3 more weeks minimum. 100 (capped, stable).",
+      "notes": "Day 17 01:00 \u2014 IMMINENT 100 (capped, STABLE). FM Araghchi now REJECTS dialogue with US (CBS) \u2014 reverses earlier safe passage signal. Iran claims 700 missiles + 3,600 drones fired since war start. Pentagon deploys 5,000 additional sailors/Marines. Macron calls Pezeshkian, demands end to Gulf attacks. IRGC vow to kill Netanyahu reiterated. 6 US troops dead in Iraq KC-135 crash. UAE: 282 missiles, 1,500+ drones, 6 killed, 130+ wounded. 5,000+ targets struck in Iran. EL AL evac flights for US citizens begin Monday. 100 (capped, stable).",
       "coupling_boost": 3,
       "current_probability_with_coupling": 100
     },
@@ -288,16 +289,17 @@
   ],
   "changed_signals": {
     "new": [
-      "trump_threatens_nato_hormuz activated \u2014 Trump warns NATO allies face 'very bad' future if they don't help open Strait of Hormuz (FT/Guardian/Reuters)",
-      "hormuz_safe_passage_talks activated \u2014 Iran FM Araghchi says Hormuz 'only being controlled' not closed, open to safe passage discussions \u2014 first softening signal (AJ/Guardian)",
-      "us_military_aircraft_down_iraq activated \u2014 6 US service members killed in aircraft crash in Iraq (AP)"
+      "fm_rejects_dialogue activated \u2014 Iran FM Araghchi explicitly rejects dialogue with US, reversing earlier safe passage overture (CBS)",
+      "pentagon_troop_surge_5000 activated \u2014 Pentagon deploying 5,000 additional sailors and Marines to Middle East (CBS/Pentagon)"
     ],
-    "removed": [],
+    "removed": [
+      "hormuz_safe_passage_talks deactivated \u2014 Iran FM now rejects dialogue, reversing earlier softening signal on Hormuz safe passage (CBS)"
+    ],
     "zone_changes": [
       "No zone changes this cycle"
     ],
-    "de_escalation_watch": "MIXED SIGNALS (Day 17 00:00):\n- DE-ESCALATION: Iran FM opens door to Hormuz safe passage talks \u2014 first concrete softening from Tehran on Strait closure. Trump's 'deal not imminent' suggests back-channel activity.\n- ESCALATION: Trump threatens NATO over Hormuz \u2014 unprecedented coercion of allies. Israel projects 3+ more weeks of war. 6 more US troops dead. Russia-Ukraine: 68 missiles + 430 drones Saturday. Pakistan-Afghanistan: fighting continues with no ceasefire.\n- Net: Hormuz safe passage talks are a genuine de-escalation signal from Iran. But Trump's NATO threat and Israel's 3-week timeline suggest conflict will persist and potentially widen diplomatically.",
-    "synagogue_note": "US domestic: Michigan synagogue attack by man whose family was killed in Israeli strike. Attacker's brother claimed as Hezbollah commander by IDF. Incident highlights blowback risk from ME conflict on US soil."
+    "de_escalation_watch": "HARDENING (Day 17 01:00):\n- DE-ESCALATION SIGNAL COLLAPSED: Hormuz safe passage talks removed \u2014 FM Araghchi now explicitly rejects dialogue with US (CBS). The one softening signal from Tehran has been walked back within hours.\n- ESCALATION CONTINUES: Pentagon surges 5,000 additional troops. Iran claims 700 missiles + 3,600 drones fired total. Macron demands Iran 'immediately' end Gulf attacks. 282 missiles + 1,500+ drones hit UAE (6 killed, 130+ wounded). Israel completes 400+ airstrike waves. EL AL runs evac flights for US citizens.\n- PAKISTAN-AFGHANISTAN: 75+ civilians killed by Pakistani airstrikes, 115,000 displaced (NYT). No ceasefire in sight. Sharpest escalation yet (AJ).\n- NET: Safe passage signal was the only de-escalation vector from Iran. Its collapse within hours suggests Tehran is hardening position, not softening. All trajectories remain hostile.",
+    "synagogue_note": "US domestic: Michigan synagogue suspect's brother confirmed by IDF as Hezbollah commander killed in Israeli airstrike. Links domestic terrorism directly to ME conflict blowback."
   },
   "latest_news": [
     {
@@ -328,13 +330,31 @@
       "impact": "up"
     },
     {
-      "headline": "Iran open to Hormuz safe passage talks \u2014 first softening signal",
-      "source": "Al Jazeera / Guardian",
+      "headline": "Iran FM REJECTS dialogue with US \u2014 reverses safe passage signal",
+      "source": "CBS News",
       "time": "2026-03-15",
       "zone": "iran_conventional",
-      "signal": "hormuz_safe_passage_talks",
-      "text": "Iran FM Araghchi says Hormuz is 'only being controlled' not closed. Iran open to countries who want to talk about safe passage. First concrete de-escalation signal on Strait from Tehran.",
-      "impact": "down"
+      "signal": "fm_rejects_dialogue",
+      "text": "Iran Foreign Minister Araghchi explicitly rejects talk of dialogue with US as strikes continue. Reverses earlier signal about being open to Hormuz safe passage discussions. Tehran hardening position.",
+      "impact": "up"
+    },
+    {
+      "headline": "Pentagon deploys 5,000 additional troops to Middle East",
+      "source": "CBS News / Pentagon",
+      "time": "2026-03-15",
+      "zone": "iran_conventional",
+      "signal": "pentagon_troop_surge_5000",
+      "text": "Pentagon plans to send up to 5,000 additional sailors and Marines to Middle East. Rep. Crenshaw says it's 'not boots on ground deployment' but could include evacuation ops from Gulf allies.",
+      "impact": "up"
+    },
+    {
+      "headline": "Pakistan airstrikes kill 75+ civilians in Afghanistan, 115K displaced",
+      "source": "New York Times",
+      "time": "2026-03-15",
+      "zone": "pakistan_afghanistan",
+      "signal": null,
+      "text": "Pakistani airstrikes have killed at least 75 civilians and displaced 115,000 in Afghanistan. Both sides vowing escalation with no talks in sight. Sharpest single escalation yet in the conflict.",
+      "impact": "up"
     },
     {
       "headline": "Russia fires 68 missiles + 430 drones at Ukraine in single day",
@@ -373,5 +393,5 @@
       "impact": "neutral"
     }
   ],
-  "outlook": "CRITICAL \u2014 Global war probability 88% (Day 17 00:00). DAY 17 BEGINS: (1) IRAN -> IMMINENT 100 (capped, STABLE): Israel projects 3+ more weeks. Trump threatens NATO over Hormuz. 6 US troops killed in Iraq. Iran signals openness to safe passage talks \u2014 first softening on Hormuz. IRGC vows to kill Netanyahu. Gulf states continue taking hits: Saudi 2 dead, Bahrain 2 dead, Kuwait 3 wounded. (2) ISRAEL-LEBANON -> IMMINENT 100 (capped, STABLE): 826-850 dead. No ceasefire. (3) RUSSIA-UKRAINE -> IMMINENT 93 (RISING): 68 missiles + 430 drones Saturday. Ukraine deep strikes intensify. UK potentially diverting interceptor drones to ME. (4) PAKISTAN-AFGHANISTAN -> IMMINENT 99 (capped, STABLE): Kandahar strikes continue. No ceasefire. (5) RUSSIA -> IMMINENT 77. (6) TURKEY -> IMMINENT 78. (7) DPRK -> CRITICAL 55 (STABLE). (8) INDIA -> ELEVATED 25. KEY WATCH: Iran's Hormuz safe passage offer is the first meaningful de-escalation signal from Tehran \u2014 if it materializes into formal talks, it could reduce global war probability. But Trump's NATO threat and Israel's 3-week timeline mean the military dimension persists. Russia-Ukraine rising as ME war diverts air defense assets from Ukraine. Michigan synagogue attack signals domestic blowback risk escalating."
+  "outlook": "CRITICAL \u2014 Global war probability 88% (Day 17 01:00). DAY 17 CONTINUES: (1) IRAN -> IMMINENT 100 (capped, STABLE): FM Araghchi rejects US dialogue \u2014 safe passage signal collapsed within hours. Pentagon surges 5,000 troops. Iran claims 700 missiles + 3,600 drones fired total. Macron demands Iran 'immediately' end Gulf attacks. UAE: 282 missiles, 1,500+ drones, 6 killed, 130+ wounded. Israel completes 400+ airstrike waves. (2) ISRAEL-LEBANON -> IMMINENT 100 (capped, STABLE): 850+ dead. No ceasefire. (3) RUSSIA-UKRAINE -> IMMINENT 93 (RISING): 68 missiles + 430 drones Saturday. Ukraine deep strikes intensify. (4) PAKISTAN-AFGHANISTAN -> IMMINENT 99 (capped, STABLE): 75+ civilians killed, 115K displaced. No ceasefire. (5) RUSSIA -> IMMINENT 77. (6) TURKEY -> IMMINENT 78. (7) DPRK -> CRITICAL 55 (STABLE). (8) INDIA -> ELEVATED 25. KEY WATCH: The one de-escalation vector from Iran \u2014 Hormuz safe passage talks \u2014 collapsed within hours as FM rejects dialogue. Tehran is hardening, not softening. Pentagon troop surge signals US commitment to sustained campaign. Israel projects 3+ more weeks minimum. All trajectories remain hostile with no diplomatic off-ramp visible."
 }
