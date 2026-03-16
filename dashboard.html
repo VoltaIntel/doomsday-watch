@@ -831,13 +831,43 @@ body {
     </div>
   </div>
 
-  <!-- NARRATIVE BUTTON (click to open briefing modal) -->
+  <!-- THREAT ASSESSMENT (narrative — injected by deploy script) -->
+  <div id="narrativeSection" style="margin:16px 0 0;padding:0;border:1px solid rgba(255,45,45,0.15);border-radius:4px;background:rgba(13,17,23,0.9);">
+    <div onclick="document.getElementById('narrative-body').style.display=document.getElementById('narrative-body').style.display==='none'?'block':'none';this.querySelector('.toggle').textContent=document.getElementById('narrative-body').style.display==='none'?'▶':'▼'" style="padding:10px 14px;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,45,45,0.1);">
+      <span class="toggle" style="color:#ff4444;font-size:10px;">▶</span>
+      <span style="font-family:var(--display);font-size:11px;letter-spacing:3px;color:#ff4444;">THREAT ASSESSMENT</span>
+      <span style="font-size:8px;color:#484f58;letter-spacing:1px;margin-left:auto;">CLASSIFIED</span>
+    </div>
+    <div id="narrative-body" style="display:none;padding:14px;border-left:2px solid rgba(255,45,45,0.3);margin:8px 12px 12px;background:rgba(6,8,12,0.7);border-radius:0 4px 4px 0;">
+      <div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>
+    </div>
+  </div>
 
   <!-- TRACKERS -->
   <div class="trackers-section">
     <div class="section-label">CONFLICT TRACKERS</div>
     <div class="trackers-grid" id="trackersGrid">
       <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- SIGNAL TIMELINE -->
+  <div class="timeline-section" style="padding:20px 24px;border-bottom:1px solid var(--border);">
+    <div onclick="toggleTimeline()" style="cursor:pointer;display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <span id="timelineToggle" style="color:var(--cyan);font-size:10px;">▶</span>
+      <span class="section-label" style="margin-bottom:0;">SIGNAL TIMELINE</span>
+      <span id="timelineCount" style="font-size:9px;color:var(--dim);letter-spacing:1px;margin-left:auto;"></span>
+    </div>
+    <div id="signalTimeline" style="display:none;">
+      <!-- Filter -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+        <span style="font-size:8px;color:var(--dim);letter-spacing:1px;">TRACKER:</span>
+        <select id="timelineFilter" onchange="renderSignalTimeline()" style="background:var(--surface-2);border:1px solid var(--border);color:var(--white);font-family:var(--mono);font-size:9px;padding:3px 6px;letter-spacing:1px;">
+          <option value="all">ALL TRACKERS</option>
+        </select>
+      </div>
+      <!-- Timeline container -->
+      <div id="timelineContainer" style="max-height:500px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;"></div>
     </div>
   </div>
 
@@ -1402,6 +1432,364 @@ state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
   // Also update global zone
   var gp = state.global_war_probability || 0;
   state.global_zone = calcZone(gp);
+</script>
+
+<!-- ===== SIGNAL TIMELINE JS ===== -->
+<script>
+var signalTimelineData = null;
+var timelineExpanded = false;
+
+function toggleTimeline() {
+  timelineExpanded = !timelineExpanded;
+  document.getElementById('signalTimeline').style.display = timelineExpanded ? 'block' : 'none';
+  document.getElementById('timelineToggle').textContent = timelineExpanded ? '▼' : '▶';
+  if (timelineExpanded && !signalTimelineData) loadSignalTimeline();
+}
+
+// Signal ID to readable name mapping
+var signalNameMap = {
+  enrichment_60: "60% ENRICHMENT",
+  enrichment_90: "90% ENRICHMENT",
+  iaea_emergency: "IAEA EMERGENCY",
+  iaea_access_denied: "IAEA ACCESS DENIED",
+  iaea_hidden_heu: "HIDDEN HEU DETECTED",
+  buried_isfahan: "ISFAHAN BURIED",
+  nuclear_scientists_killed: "SCIENTISTS KILLED",
+  bomber_redeployment: "BOMBER REDEPLOYMENT",
+  ssbn_positioning: "SSBN POSITIONING",
+  defcon_change: "DEFCON CHANGE",
+  nuclear_rhetoric_official: "NUCLEAR RHETORIC",
+  iran_nuclear_test: "NUCLEAR TEST",
+  no_choice_rhetoric: "NO CHOICE RHETORIC",
+  stratcom_alert: "STRATCOM ALERT",
+  bmews_activation: "BMEWS ACTIVATED",
+  fordow_activation: "FORDOW ACTIVATED",
+  diplomacy_refused: "DIPLOMACY REFUSED",
+  fuel_reprocessing: "FUEL REPROCESSING",
+  military_enrichment: "MILITARY ENRICHMENT",
+  missile_range_test: "MISSILE RANGE TEST",
+  diplomacy_active: "DIPLOMACY ACTIVE",
+  iran_energy_threat: "ENERGY THREAT",
+  navy_escort_committed: "NAVY ESCORT",
+  dubai_struck: "DUBAI STRUCK",
+  marine_expeditionary_deploy: "MEU DEPLOYED",
+  oil_infrastructure_threat: "OIL INFRA THREAT",
+  hormuz_closed: "HORMUZ CLOSED",
+  hormuz_blockade_full: "FULL BLOCKADE",
+  hormuz_mining: "HORMUZ MINING",
+  hormuz_zero_traffic: "HORMUZ ZERO TRAFFIC",
+  hormuz_controlled_not_closed: "HORMUZ CONTROLLED",
+  hormuz_safe_passage_talks: "SAFE PASSAGE TALKS",
+  us_carrier_hit: "US CARRIER HIT",
+  us_troops_killed: "US TROOPS KILLED",
+  us_crew_killed: "US CREW KILLED",
+  us_refueling_planes_damaged: "REFUELING PLANES HIT",
+  us_embassy_baghdad_struck: "EMBASSY BAGHDAD HIT",
+  embassy_attack_2: "EMBASSY ATTACK ×2",
+  us_iraq_evacuation_order: "IRAQ EVACUATION",
+  us_military_aircraft_down_iraq: "US AIRCRAFT DOWN",
+  us_hellfire_iranian_boat: "HELLFIRE STRIKE",
+  us_orders_iraq_evacuation: "IRAQ EVAC ORDER",
+  us_tankers_destroyed_saudi: "TANKERS DESTROYED",
+  five_us_tankers_destroyed: "5 TANKERS HIT",
+  us_base_iran_strike: "US BASE STRUCK",
+  iran_sunk_ship: "IRAN SHIP SUNK",
+  oil_above_150: "OIL ABOVE $150",
+  oil_above_120: "OIL ABOVE $120",
+  ground_invasion_talk: "GROUND INVASION TALK",
+  iran_missile_israel: "MISSILES AT ISRAEL",
+  iran_six_missile_salvos_israel: "6× MISSILE SALVOS",
+  iran_seventh_missile_wave: "7TH MISSILE WAVE",
+  hezbollah_full_barrage: "HEZBOLLAH BARRAGE",
+  regime_change_talk: "REGIME CHANGE TALK",
+  ceasefire_talks: "CEASEFIRE TALKS",
+  gulf_mediation: "GULF MEDIATION",
+  oil_terminal_attack: "OIL TERMINAL HIT",
+  iran_surrender_demands: "SURRENDER DEMANDS",
+  iran_regime_change_talk: "REGIME CHANGE",
+  iran_ceasefire: "IRAN CEASEFIRE",
+  iran_diplomacy_started: "IRAN DIPLOMACY",
+  gulf_state_missile_attack: "GULF MISSILE ATTACK",
+  centcom_mine_sweeping: "CENTCOM MINESWEEP",
+  fujairah_oil_suspended: "FUJAIRAH HIT",
+  uae_evacuation_order: "UAE EVAC ORDER",
+  uae_missile_drone_barrage: "UAE MISSILE/DRONE",
+  kuwait_drone_strike: "KUWAIT DRONE STRIKE",
+  isfahan_strikes_15_killed: "ISFAHAN 15 KILLED",
+  trump_hormuz_coalition: "HORMUZ COALITION",
+  israel_kills_iranian_officials: "OFFICIALS KILLED",
+  iran_bans_enemy_ships: "IRAN BANS SHIPS",
+  doha_partial_evacuation: "DOHA PARTIAL EVAC",
+  mojtaba_succeeds: "MOJTABA SUCCEEDS",
+  trump_warns_more_deaths: "TRUMP WARNS DEATHS",
+  irgc_hypersonic_al_dhafra: "HYPERSONIC AL-DHAFRA",
+  proxy_drone_us_iraq: "PROXY DRONE IRAQ",
+  israel_strikes_hamedan: "HAMEDAN STRIKES",
+  fighting_continues_weeks: "WEEKS OF FIGHTING",
+  war_ends_weeks: "WAR ENDS WEEKS",
+  shiraz_residential_hit: "SHIRAZ CIVILIAN HIT",
+  jalali_nasab_killed: "GEN NASAB KILLED",
+  irgc_warns_us_industries: "IRGC WARNS US",
+  irgc_50th_wave: "IRGC 50TH WAVE",
+  israel_interceptor_low: "INTERCEPTOR LOW",
+  dubai_doha_evac_warning: "DUBAI/DOHA EVAC",
+  baghdad_airport_rockets: "BAGHDAD AIRPORT HIT",
+  trump_threatens_nato_hormuz: "NATO HORMUZ THREAT",
+  pentagon_troop_surge_5000: "5000 TROOP SURGE",
+  fm_rejects_dialogue: "FM REJECTS DIALOGUE",
+  dubai_airport_suspended: "DUBAI AIRPORT DOWN",
+  dubai_airport_fuel_tank_drone: "DUBAI FUEL TANK HIT",
+  idf_80pct_defense_destroyed: "80% DEFENSE GONE",
+  trump_7_country_hormuz_coalition: "7-COUNTRY COALITION",
+  idf_no_timeline_withdrawal: "NO WITHDRAWAL TIMELINE",
+  idf_three_weeks_campaign: "3-WEEK CAMPAIGN",
+  iran_us_linked_infrastructure_threat: "US INFRA THREAT",
+  pentagon_ramps_up_campaign: "PENTAGON RAMP-UP",
+  supreme_leader_wounded: "SUPREME LEADER WOUND",
+  iran_casualties_1400: "1400 CASUALTIES",
+  total_deaths_2000: "2000+ DEAD",
+  kharg_island_struck: "KHARG STRUCK",
+  kharg_island_destroyed: "KHARG DESTROYED",
+  irgc_threatens_uae_us_forces: "IRGC THREATENS UAE",
+  iran_supreme_leader_blockade_vow: "BLOCKADE VOW",
+  iran_struck_israel_police_satcom: "ISRAEL SATCOM HIT",
+  gulf_2000_attacks_since_start: "2000+ ATTACKS",
+  saudi_intercepts_60_drones: "60 DRONES INTERCEPTED",
+  tehran_10k_homes_destroyed: "10K HOMES DESTROYED",
+  iran_fm_denies_ceasefire: "FM: NO CEASEFIRE",
+  iran_700_missiles_3600_drones: "700 MISSILES/3600 DRONES",
+  trump_deal_not_imminent: "DEAL NOT IMMINENT",
+  trump_deal_ukraine: "TRUMP UKRAINE DEAL",
+  trump_delays_xi_summit: "TRUMP DELAYS XI",
+  israel_ground_invasion_lebanon: "LEBANON INVASION",
+  israeli_casualties_high: "HIGH CASUALTIES",
+  beirut_bombing: "BEIRUT BOMBED",
+  hezbollah_rockets_heavy: "HEZBOLLAH ROCKETS",
+  us_military_support_israel: "US MIL SUPPORT",
+  gaza_scale_threat: "GAZA-SCALE",
+  infrastructure_destruction: "INFRA DESTRUCTION",
+  displacement_order_25mi: "25MI EVACUATION",
+  gaza_comparison_rhetoric: "GAZA COMPARISON",
+  litani_invasion_push: "LITANI PUSH",
+  medical_workers_killed: "MEDICAL WORKERS KILLED",
+  israel_lebanon_direct_talks: "DIRECT TALKS",
+  guterres_beirut_ceasefire_call: "GUTERRES CEASEFIRE",
+  hamas_official_sidon_killed: "HAMAS OFFICIAL KILLED",
+  israel_no_lebanon_talks_fm: "NO LEBANON TALKS",
+  france_brokers_lebanon_talks: "FRANCE BROKERS TALKS",
+  lebanon_800k_displaced: "800K DISPLACED",
+  healthcare_facility_struck: "HEALTHCARE HIT",
+  healthcare_center_burj_strike: "BURJ HEALTHCARE HIT",
+  beirut_flyers_gaza_threat: "BEIRUT FLYERS",
+  hezbollah_suicide_drones_yaara: "HEZB SUICIDE DRONES",
+  israel_rejects_lebanon_talks: "REJECTS TALKS",
+  israel_eastern_lebanon_helicopters: "LEBANON HELICOPTERS",
+  hezbollah_haifa_rockets: "HAIFA ROCKETS",
+  beirut_south_suburbs_evac_order: "BEIRUT SOUTH EVAC",
+  lebanon_deaths_850: "850+ DEATHS",
+  lebanon_negotiation_track: "NEGOTIATION TRACK",
+  uk_lebanon_aid: "UK AID",
+  idf_beirut_hezbollah_strikes: "BEIRUT HEZB STRIKES",
+  turkey_israel_tensions: "TURKEY-ISRAEL TENSIONS",
+  eastern_med_naval: "E. MED NAVAL",
+  turkish_mobilization: "TURKISH MOBILIZATION",
+  nato_third_intercept: "3RD MISSILE INTERCEPT",
+  nato_missile_intercept_latest: "NATO MISSILE INTERCEPT",
+  incirlik_targeted: "INCIRLIK TARGETED",
+  turkey_iran_clarification: "TURKEY CLARIFICATION",
+  erdogan_war_rhetoric: "ERDOGAN WAR RHETORIC",
+  nato_article_5: "NATO ARTICLE 5",
+  turkey_blocks_straits: "STRAITS BLOCKED",
+  erdogan_diplomacy: "ERDOGAN DIPLOMACY",
+  russia_iran_arms: "IRAN ARMS",
+  russia_diplomacy: "RUSSIA DIPLOMACY",
+  putin_diplomacy: "PUTIN DIPLOMACY",
+  ceasefire_collapse: "CEASEFIRE COLLAPSE",
+  russia_sends_shahed_iran: "SHAHEDS TO IRAN",
+  russia_ukraine_mass_bombardment: "MASS BOMBARDMENT",
+  sanctions_waiver: "SANCTIONS WAIVER",
+  us_talks_postponed_iran: "US TALKS POSTPONED",
+  finland_nuclear_weapons: "FINLAND NUKE BASES",
+  russian_offensive: "RUSSIAN OFFENSIVE",
+  russia_weapons_escalation: "WEAPONS ESCALATION",
+  trump_deal_stalling: "TRUMP DEAL STALLING",
+  kyiv_under_attack: "KYIV UNDER ATTACK",
+  kyiv_civilian_strike_new: "KYIV CIVILIAN HIT",
+  zaporizhzhia_nuclear_plant: "ZAPORIZHZHIA NPP",
+  france_samp_t_ukraine: "SAMP/T DELIVERED",
+  france_anti_ballistic: "FRANCE ANTI-BALLISTIC",
+  ukraine_counteroffensive: "UKRAINE COUNTER-OFF",
+  poland_scrambles_jets: "POLAND SCRAMBLES",
+  zelensky_ready_talks: "ZELENSKY READY",
+  open_war_declared: "OPEN WAR",
+  pakistan_airstrikes_civilians: "AIRSTRIKES CIVILIANS",
+  border_clashes: "BORDER CLASHES",
+  taliban_retaliation: "TALIBAN RETALIATION",
+  international_involvement: "INTERNATIONAL INVOLVEMENT",
+  nuclear_escalation: "NUCLEAR ESCALATION",
+  pakistani_capital_struck: "ISLAMABAD STRUCK",
+  china_mediation: "CHINA MEDIATION",
+  afghan_claim_kills_pakistani_soldiers: "BORDER POST CAPTURED",
+  pakistan_drone_storage_strike: "DRONE STORAGE STRIKE",
+  india_condemns_pakistan: "INDIA CONDEMNS",
+  pakistan_shoots_down_taliban_drones: "DRONES SHOT DOWN",
+  afghan_retaliatory_strikes: "AFGHAN RETALIATION",
+  reject_oppression_campaign: "OPPRESSION CAMPAIGN",
+  hajj_fuel_depots_hit: "FUEL DEPOTS HIT",
+  pakistan_kandahar_strike: "KANDAHAR STRIKES",
+  afghan_captured_border_post: "BORDER POST CAPTURED",
+  pakistan_mass_rocket_barrage: "MASS ROCKET BARRAGE",
+  zardari_red_line: "ZARDARI RED LINE",
+  zardari_drone_red_line: "DRONE RED LINE",
+  taliban_drone_pakistan: "TALIBAN DRONES",
+  mortar_bajaur_family_killed: "BAJAUR MORTAR HIT",
+  refugee_crisis: "REFUGEE CRISIS",
+  afghan_civilians_75_killed: "75 CIVILIANS KILLED",
+  pakistan_no_ceasefire_path: "NO CEASEFIRE PATH",
+  pakistan_kandahar_overnight_strikes: "KANDAHAR OVERNIGHT",
+  afghan_south_waziristan_counterattack: "WAZIRISTAN COUNTER",
+  pakistan_retaliatory_strikes_afghanistan: "PAK RETALIATION",
+  islamabad_airspace_shutdown: "ISLAMABAD AIRSPACE DOWN",
+  us_taiwan_arms_package: "TAIWAN $40B ARMS",
+  thaad_redeployment: "THAAD REDEPLOYED",
+  china_reduced_flights: "PLA FLIGHTS REDUCED",
+  china_us_trade_talks: "US-CHINA TRADE TALKS",
+  china_large_scale_flights_return: "PLA FLIGHTS RESUMED",
+  china_40b_defense_budget: "$40B DEFENSE BUDGET",
+  dprk_missile_test: "DPRK MISSILE TEST",
+  dprk_rhetoric: "DPRK RHETORIC",
+  dprk_missile_barrage: "10-MISSILE SALVO",
+  dprk_mrl_test: "600mm MRL TEST",
+  dprk_10_missiles_fired: "10 MISSILES FIRED",
+  kn25_tactical_nuclear_warning: "KN-25 NUKE WARNING"
+};
+
+function resolveSignalName(rawName) {
+  return signalNameMap[rawName] || rawName.replace(/_/g, ' ').toUpperCase();
+}
+
+var trackerDisplayMap = {
+  iran_nuke: { name: "IRAN NUCLEAR", emoji: "🇮🇷" },
+  iran_conventional: { name: "IRAN WAR", emoji: "⚔️" },
+  israel_lebanon: { name: "ISRAEL-LEBANON", emoji: "🇱🇧" },
+  turkey: { name: "TURKEY-NATO", emoji: "🇹🇷" },
+  india: { name: "INDIA-PAKISTAN", emoji: "🇮🇳" },
+  pakistan_afghanistan: { name: "PAKISTAN-AFGHANISTAN", emoji: "🇵🇰" },
+  russia_ukraine: { name: "RUSSIA-UKRAINE", emoji: "🇺🇦" },
+  russia: { name: "RUSSIA-NATO", emoji: "🇷🇺" },
+  china: { name: "CHINA-TAIWAN", emoji: "🇨🇳" },
+  north_korea: { name: "DPRK", emoji: "🇰🇵" }
+};
+
+function loadSignalTimeline() {
+  fetch('data/signal_timeline.json?' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      signalTimelineData = data.signals || {};
+      populateTimelineFilter();
+      renderSignalTimeline();
+    })
+    .catch(function(err) {
+      console.error('Timeline load error:', err);
+      document.getElementById('timelineContainer').innerHTML =
+        '<div style="color:var(--dim);font-size:10px;padding:8px;">TIMELINE DATA UNAVAILABLE</div>';
+    });
+}
+
+function populateTimelineFilter() {
+  var sel = document.getElementById('timelineFilter');
+  sel.innerHTML = '<option value="all">ALL TRACKERS</option>';
+  var trackers = {};
+  Object.keys(signalTimelineData).forEach(function(key) {
+    var tid = key.split(':')[0];
+    if (!trackers[tid]) trackers[tid] = true;
+  });
+  Object.keys(trackers).sort().forEach(function(tid) {
+    var info = trackerDisplayMap[tid] || { name: tid.toUpperCase(), emoji: "🌍" };
+    var opt = document.createElement('option');
+    opt.value = tid;
+    opt.textContent = info.emoji + ' ' + info.name;
+    sel.appendChild(opt);
+  });
+}
+
+function renderSignalTimeline() {
+  if (!signalTimelineData) return;
+  var container = document.getElementById('timelineContainer');
+  var filterVal = document.getElementById('timelineFilter').value;
+  var countEl = document.getElementById('timelineCount');
+
+  var signals = [];
+  Object.keys(signalTimelineData).forEach(function(key) {
+    var parts = key.split(':');
+    var tid = parts[0];
+    var sname = parts[1];
+    var ts = signalTimelineData[key];
+    if (filterVal !== 'all' && tid !== filterVal) return;
+    signals.push({ key: key, tid: tid, name: sname, timestamp: ts });
+  });
+
+  signals.sort(function(a, b) { return b.timestamp.localeCompare(a.timestamp); });
+  countEl.textContent = signals.length + ' SIGNALS';
+
+  var trackerZones = {};
+  (state.trackers || []).forEach(function(t) {
+    trackerZones[t.id] = t.zone || 'deterrent';
+  });
+
+  function getSignalColor(tid) {
+    var zone = trackerZones[tid] || 'deterrent';
+    if (zone === 'imminent') return '#ff2d2d';
+    if (zone === 'critical') return '#ff8800';
+    if (zone === 'elevated') return '#ffaa00';
+    return '#00e676';
+  }
+
+  var groups = {};
+  signals.forEach(function(s) {
+    var date = s.timestamp.substring(0, 10);
+    if (!groups[date]) groups[date] = [];
+    groups[date].push(s);
+  });
+
+  var html = '';
+  var dates = Object.keys(groups).sort().reverse();
+
+  dates.forEach(function(date) {
+    var dateSignals = groups[date];
+    var dateObj = new Date(date + 'T00:00:00Z');
+    var dateLabel = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    html += '<div style="font-size:9px;color:var(--cyan);letter-spacing:2px;padding:8px 0 4px;border-bottom:1px dashed rgba(0,212,255,0.2);margin-bottom:6px;">' + dateLabel + '</div>';
+    html += '<div style="position:relative;padding-left:16px;">';
+
+    dateSignals.forEach(function(s, i) {
+      var info = trackerDisplayMap[s.tid] || { name: s.tid.toUpperCase(), emoji: "🌍" };
+      var color = getSignalColor(s.tid);
+      var time = s.timestamp.substring(11, 16) + ' UTC';
+      var sigDisplayName = resolveSignalName(s.name);
+      var isLast = (i === dateSignals.length - 1);
+
+      html += '<div style="position:relative;padding:4px 0 4px 8px;">';
+      html += '<div style="position:absolute;left:-16px;top:0;bottom:' + (isLast ? '50%' : '0') + ';width:1px;background:' + color + '40;"></div>';
+      html += '<div style="position:absolute;left:-19px;top:7px;width:7px;height:7px;border-radius:50%;background:' + color + ';box-shadow:0 0 6px ' + color + '60;"></div>';
+      html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">';
+      html += '<span style="font-size:9px;color:var(--dim);min-width:42px;">' + time + '</span>';
+      html += '<span style="font-size:9px;">' + info.emoji + '</span>';
+      html += '<span style="font-size:9px;color:var(--dim);letter-spacing:1px;min-width:100px;">' + info.name + '</span>';
+      html += '<span style="font-size:10px;color:' + color + ';letter-spacing:1px;font-weight:bold;">' + sigDisplayName + '</span>';
+      html += '</div>';
+      html += '</div>';
+    });
+
+    html += '</div>';
+  });
+
+  if (signals.length === 0) {
+    html = '<div style="color:var(--dim);font-size:10px;padding:8px;">NO SIGNALS FOR THIS FILTER</div>';
+  }
+
+  container.innerHTML = html;
+}
 </script>
 
 <!-- PREDICTION MODAL -->
