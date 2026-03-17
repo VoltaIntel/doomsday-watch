@@ -421,7 +421,7 @@ for t in trackers_js:
     
     # Sum active signal weights with temporal decay applied
     signal_sum = 0
-    newest_activation = None
+    activation_times = []
     for s in t.get("signals", []):
         decayed_w = s.get("decayed_weight", s.get("original_weight", 0))
         raw_w = s.get("original_weight", 0)
@@ -430,25 +430,27 @@ for t in trackers_js:
             signal_sum -= decayed_w
         else:
             signal_sum += decayed_w
-        # Track most recent signal activation
+        # Track signal activation times for no-news decay
         activated = s.get("activated_at", "")
         if activated:
             try:
                 act_dt = datetime.fromisoformat(activated.replace("Z", "+00:00"))
-                if newest_activation is None or act_dt > newest_activation:
-                    newest_activation = act_dt
+                activation_times.append(act_dt)
             except:
                 pass
     
-    # No-news decay: -1.5% per 24h without any signal activity
+    # No-news decay: -1.5% per 24h without fresh signal activity
+    # Uses median activation time to avoid one recent signal masking otherwise stale zone
     no_news_decay = 0
-    if newest_activation:
-        hours_since = (now_dt - newest_activation).total_seconds() / 3600
+    if activation_times:
+        sorted_times = sorted(activation_times)
+        median_time = sorted_times[len(sorted_times) // 2]
+        hours_since = (now_dt - median_time).total_seconds() / 3600
         if hours_since > 24:
             no_news_decay = -1.5 * (hours_since / 24)
     elif not t.get("signals"):
-        # Zero signals = no news for a long time, apply max decay floor
-        no_news_decay = -5.0  # capped by floor at base_rate - 5
+        # Zero signals = no news for a long time
+        no_news_decay = -5.0
     
     # Calculate final probability
     calculated_prob = base + signal_sum + no_news_decay
@@ -476,6 +478,23 @@ for t in trackers_js:
     t["zone"] = new_zone
     if t["id"] in state.get("trackers", {}):
         state["trackers"][t["id"]]["zone"] = new_zone
+
+# Fix stale notes: strip old probability numbers and replace with auto-calculated values
+import re
+zone_labels = {"deterrent": "DETERRENT", "elevated": "ELEVATED", "critical": "CRITICAL", "imminent": "IMMINENT"}
+for t in trackers_js:
+    tid = t["id"]
+    trk = state.get("trackers", {}).get(tid, {})
+    notes = trk.get("notes", "")
+    if notes:
+        # Remove old "ZONE NN%" pattern from notes (e.g. "CRITICAL 79", "IMMINENT 100", "CRITICAL 35 (declining)")
+        cleaned = re.sub(r'\b(DETERRENT|ELEVATED|CRITICAL|IMMINENT)\s+\d+(\s*\([^)]*\))?', '', notes).strip()
+        # Clean up double spaces and leading artifacts
+        cleaned = re.sub(r'\s{2,}', ' ', cleaned).strip()
+        # Prepend correct zone/prob
+        zone_label = zone_labels.get(new_zone, "DETERRENT").upper()
+        trend = trk.get("trend", "stable")
+        trk["notes"] = f"Day 20 - {zone_label} {t['prob']} ({trend}). {cleaned}"
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
