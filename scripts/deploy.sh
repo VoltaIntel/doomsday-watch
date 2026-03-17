@@ -123,7 +123,7 @@ def calc_severity(impact, text):
     return min(5, max(1, severity))
 
 def calc_confidence(sources_count, max_credibility_weight=0):
-    if max_credibility_weight >= 5 or sources_count >= 3:
+    if max_credibility_weight >= 3 or sources_count >= 3:
         return "confirmed"
     if max_credibility_weight >= 2 or sources_count >= 2:
         return "reported"
@@ -356,7 +356,7 @@ for tid, tracker in state.get("trackers", {}).items():
         w = signal_weights.get((tid, s), 0)
         if w == 0:
             continue  # Signal weight is 0, skip it
-        activated_at = timeline.get(timeline_key)
+        activated_at = timeline["signals"].get(timeline_key)
         if activated_at:
             # Known signal — check if it's expired
             decayed = apply_temporal_decay(abs(w), activated_at)
@@ -432,7 +432,7 @@ else:
         boosted = all_probs.get(t["id"], t["prob"])
         t["prob"] = boosted
 
-    weights = {"iran_nuke": 0.14, "iran_conventional": 0.20, "israel_lebanon": 0.16, "russia_ukraine": 0.18, "turkey": 0.07, "india": 0.08, "russia": 0.07, "china": 0.06, "north_korea": 0.07}
+    weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.14, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.06, "pakistan_afghanistan": 0.08, "russia": 0.06, "china": 0.06, "north_korea": 0.08}
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
     if gp >= 60: tz = "imminent"
     elif gp >= 30: tz = "critical"
@@ -460,8 +460,6 @@ else:
         pass
 
     new_zones = {}
-    for rule in coupling_rules:
-        pass  # skip
     for t in trackers_js:
         new_zones[t["id"]] = t["zone"]
 
@@ -475,6 +473,7 @@ else:
             zone_rank_new = {"deterrent": 0, "elevated": 1, "critical": 2, "imminent": 3}
             direction = "⬆️" if zone_rank_new.get(new_z, 0) > zone_rank_new.get(old_z, 0) else "⬇️"
             tracker_name = next((t["name"] for t in trackers_js if t["id"] == tid), tid)
+            tracker_prob = next((t["prob"] for t in trackers_js if t["id"] == tid), 0)
             alert = {
                 "timestamp": now_iso,
                 "tracker": tracker_name,
@@ -482,7 +481,7 @@ else:
                 "from": old_z,
                 "to": new_z,
                 "direction": direction,
-                "prob": new_zones[tid]
+                "prob": tracker_prob
             }
             zone_alerts["pending"].append(alert)
             zone_alerts["history"].append(alert)
