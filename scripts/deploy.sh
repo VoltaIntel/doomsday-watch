@@ -142,21 +142,27 @@ def apply_credibility_weight(signal_weight, source_tier):
     else:
         return signal_weight * 0.2
 
+def get_half_life(signal_weight):
+    """Tiered half-life based on signal importance (weight magnitude)."""
+    w = abs(signal_weight)
+    if w >= 15: return 168   # 7 days — nuclear tests, ICBM launches, Article 5
+    elif w >= 8: return 72   # 3 days — major military actions
+    elif w >= 4: return 24   # 1 day — rhetoric, buildup, minor events
+    else: return 12          # 12 hours — noise, minor indicators
+
 def apply_temporal_decay(signal_weight, activated_at_iso):
+    """Exponential decay with tiered half-life. Returns 0 when signal is effectively expired."""
     try:
         activated = datetime.fromisoformat(activated_at_iso.replace("Z", "+00:00"))
         now = datetime.now(timezone.utc)
         hours_old = (now - activated).total_seconds() / 3600
-        if hours_old < 6:
-            return signal_weight
-        elif hours_old < 24:
-            return signal_weight * 0.75
-        elif hours_old < 48:
-            return signal_weight * 0.5
-        elif hours_old < 72:
-            return signal_weight * 0.25
-        else:
+        half_life = get_half_life(signal_weight)
+        # Exponential decay: 50% remaining at half_life, 25% at 2×, etc.
+        decayed = abs(signal_weight) * (0.5 ** (hours_old / half_life))
+        # Signal is effectively expired when below 0.5 weight
+        if decayed < 0.5:
             return 0
+        return round(decayed, 1)
     except:
         return signal_weight
 
