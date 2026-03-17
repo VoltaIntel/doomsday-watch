@@ -616,6 +616,7 @@ else:
 
     # Keep last 50 alerts in history
     zone_alerts["history"] = zone_alerts["history"][-50:]
+    zone_alerts["pending"] = zone_alerts["pending"][-3:]  # Only show last 3 pending alerts
     with open("data/zone_alerts.json", "w") as af:
         json.dump(zone_alerts, af, indent=2)
 
