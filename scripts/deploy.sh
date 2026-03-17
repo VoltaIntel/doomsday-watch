@@ -459,27 +459,40 @@ else:
     for rule in coupling_rules:
         rules_by_src[rule["source"]].append(rule)
     
+    # Track total coupling per target to enforce +25% cap
+    coupling_totals = {}  # {tgt: total_coupling_applied}
+    
     for src, src_rules in rules_by_src.items():
         src_zone = state.get("trackers", {}).get(src, {}).get("zone", "deterrent")
         src_rank = zone_rank.get(src_zone, 0)
+        # Get source probability for proportional coupling
+        src_prob = all_probs.get(src, 0)
         # Sort rules by threshold descending, apply only the FIRST matching rule
         src_rules_sorted = sorted(src_rules, key=lambda r: zone_rank.get(r["min_zone"], 0), reverse=True)
         for rule in src_rules_sorted:
             min_zone = rule["min_zone"]
             if src_rank >= zone_rank.get(min_zone, 0):
                 # This is the highest threshold that matches — apply it and stop
-                for tgt, boost in rule["targets"].items():
+                for tgt, raw_boost in rule["targets"].items():
                     if tgt in all_probs:
-                        old_val = all_probs[tgt]
-                        all_probs[tgt] = min(100, old_val + boost)
-                        if tgt not in boosts_applied:
-                            boosts_applied[tgt] = 0
-                        boosts_applied[tgt] += boost
+                        # Proportional coupling: boost scales with source probability
+                        effective_boost = raw_boost * (src_prob / 100.0)
+                        # Enforce per-target cap
+                        current_coupling = coupling_totals.get(tgt, 0)
+                        remaining = max(0, 25 - current_coupling)
+                        capped_boost = min(effective_boost, remaining)
+                        if capped_boost > 0:
+                            old_val = all_probs[tgt]
+                            all_probs[tgt] = min(100, old_val + capped_boost)
+                            coupling_totals[tgt] = current_coupling + capped_boost
+                            if tgt not in boosts_applied:
+                                boosts_applied[tgt] = 0
+                            boosts_applied[tgt] += capped_boost
                 break  # Don't apply lower-threshold rules from same source
 
     if boosts_applied:
-        boost_log = ", ".join(f"{k}+{v}" for k, v in boosts_applied.items())
-        print(f"Coupling boosts applied: {boost_log}")
+        boost_log = ", ".join(f"{k}+{v:.1f}" for k, v in boosts_applied.items())
+        print(f"Proportional coupling boosts: {boost_log}")
 
     # Push boosted probabilities to tracker cards ONLY (not state — coupling is display-only)
     for t in trackers_js:
