@@ -755,20 +755,68 @@ else:
     pred_file = f"{predictions_dir}/{today}-{hour}.json"
     eval_file = f"{predictions_dir}/evaluations.json"
     
-    # Load or create evaluations tracker
+    # Load evaluations tracker
     try:
         with open(eval_file) as f:
             evaluations = json.load(f)
     except:
         evaluations = {"predictions": []}
     
+    # Also load any unevaluated predictions from individual files (backup if evaluations.json was pruned)
+    import glob as glob_mod
+    pred_files = sorted(glob_mod.glob(f"{predictions_dir}/*.json"))
+    for pf in pred_files:
+        if pf.endswith("evaluations.json"):
+            continue
+        try:
+            with open(pf) as pfh:
+                pf_data = json.load(pfh)
+            for p in pf_data.get("predictions", []):
+                # Add to evaluations if not already there (match by description + expires_at)
+                key = f"{p.get('tracker_id')}:{p.get('expires_at')}"
+                existing_keys = {f"{ep.get('tracker_id')}:{ep.get('expires_at')}" for ep in evaluations["predictions"]}
+                if key not in existing_keys:
+                    evaluations["predictions"].append(p)
+        except:
+            pass
+    
+    # Map old narrative types to evaluable types (backward compat for Mar 14-16 predictions)
+    narrative_to_eval = {
+        "military_operation": ("probability_above", 0.7),
+        "ground_operation": ("probability_above", 0.7),
+        "diplomatic": ("probability_below", 0.5),
+        "status_quo": ("probability_above", 0.5),
+        "border_conflict": ("probability_above", 0.6),
+        "nuclear_development": ("probability_above", 0.3),
+        "economic_impact": ("probability_above", 0.5),
+        "humanitarian": ("probability_above", 0.3),
+        "arms_deal": ("probability_above", 0.4),
+        "cyber_operation": ("probability_above", 0.3),
+        "political_crisis": ("probability_above", 0.4),
+    }
+    
     # Evaluate yesterday's predictions (check if they expired)
     for pred in evaluations.get("predictions", []):
         if not pred.get("evaluated") and pred.get("expires_at", "") < now_iso:
             # This prediction has expired — evaluate it
             pred_tid = pred["tracker_id"]
-            pred_type = pred.get("eval_type", pred["type"])
-            pred_value = pred.get("eval_value", pred["value"])
+            # Get eval_type, with fallback for old narrative types
+            pred_type = pred.get("eval_type")
+            pred_value = pred.get("eval_value")
+            if not pred_type:
+                # Old prediction without eval_type — map narrative type
+                narrative_type = pred.get("type", "")
+                if narrative_type in narrative_to_eval:
+                    mapped_type, default_threshold = narrative_to_eval[narrative_type]
+                    pred_type = mapped_type
+                    # For status_quo: check if prob stayed similar
+                    if narrative_type == "status_quo":
+                        pred_value = pred.get("value", 50) * 0.7  # within 30% of original
+                    else:
+                        pred_value = default_threshold * 100  # e.g. 0.7 → 70
+                else:
+                    pred_type = "probability_above"  # default: "will it stay elevated?"
+                    pred_value = 50
             actual_state = state.get("trackers", {}).get(pred_tid, {})
 
             if pred_type == "probability_above":
@@ -804,6 +852,72 @@ else:
             else:
                 # Unknown eval type — mark evaluated as False so it doesn't skew stats
                 pred["evaluated"] = False
+    
+    # Fallback: Load expired predictions from individual files not in evaluations.json
+    # This handles predictions that were pushed out by the history limit before expiring
+    newly_added = 0
+    total_eval = 0  # Will be calculated after evaluation
+    if True:  # Always try to load from individual files
+        import glob
+        pred_files = sorted(glob.glob(f"{predictions_dir}/*.json"))
+        for pf in pred_files:
+            if pf.endswith("evaluations.json"):
+                continue
+            try:
+                with open(pf) as f:
+                    pdata = json.load(f)
+                for pred in pdata.get("predictions", []):
+                    # Only process expired predictions with eval metadata not already tracked
+                    if pred.get("expires_at", "") < now_iso and pred.get("eval_type"):
+                        # Check if already in evaluations.json by (tracker_id, expires_at) key
+                        pred_key = (pred.get("tracker_id"), pred.get("expires_at"))
+                        existing_keys = {(p.get("tracker_id"), p.get("expires_at")) for p in evaluations.get("predictions", [])}
+                        if pred_key not in existing_keys:
+                            pred["evaluated"] = False  # Mark for evaluation
+                            evaluations["predictions"].append(pred)
+                            newly_added += 1
+            except Exception:
+                pass
+        # Re-run evaluation if we added new predictions
+        if newly_added > 0:
+            for pred in evaluations.get("predictions", []):
+                if not pred.get("evaluated") and pred.get("expires_at", "") < now_iso:
+                    pred_tid = pred["tracker_id"]
+                    pred_type = pred.get("eval_type", pred["type"])
+                    pred_value = pred.get("eval_value", pred["value"])
+                    actual_state = state.get("trackers", {}).get(pred_tid, {})
+                    if pred_type == "probability_above":
+                        actual_prob = actual_state.get("current_probability", 0)
+                        pred["actual_value"] = actual_prob
+                        pred["correct"] = actual_prob >= pred_value
+                        pred["evaluated"] = True
+                        pred["evaluated_at"] = now_iso
+                    elif pred_type == "probability_below":
+                        actual_prob = actual_state.get("current_probability", 0)
+                        pred["actual_value"] = actual_prob
+                        pred["correct"] = actual_prob <= pred_value
+                        pred["evaluated"] = True
+                        pred["evaluated_at"] = now_iso
+                    elif pred_type == "trend_rising":
+                        actual_trend = actual_state.get("trend", "stable")
+                        pred["actual_value"] = actual_trend
+                        pred["correct"] = actual_trend == "rising"
+                        pred["evaluated"] = True
+                        pred["evaluated_at"] = now_iso
+                    elif pred_type == "signal_triggered":
+                        actual_signals = actual_state.get("active_signals", [])
+                        pred["actual_value"] = pred.get("signal_name", "") in actual_signals
+                        pred["correct"] = pred.get("signal_name", "") in actual_signals
+                        pred["evaluated"] = True
+                        pred["evaluated_at"] = now_iso
+                    elif pred_type == "zone_change":
+                        actual_zone = actual_state.get("zone", "deterrent")
+                        pred["actual_value"] = actual_zone
+                        pred["correct"] = actual_zone == pred_value
+                        pred["evaluated"] = True
+                        pred["evaluated_at"] = now_iso
+                    else:
+                        pred["evaluated"] = False
     
     # Calculate accuracy stats
     evaluated_preds = [p for p in evaluations.get("predictions", []) if p.get("evaluated")]
@@ -930,8 +1044,8 @@ else:
     
     # Add new predictions to evaluations tracker for future evaluation
     evaluations["predictions"].extend(final_predictions)
-    # Keep only last 200 predictions to prevent unbounded growth
-    evaluations["predictions"] = evaluations["predictions"][-200:]
+    # Keep last 2000 predictions (need 48h+ retention for 24h expiry + buffer)
+    evaluations["predictions"] = evaluations["predictions"][-2000:]
     
     # Save predictions
     pred_data = {
