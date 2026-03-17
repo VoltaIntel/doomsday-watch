@@ -422,7 +422,7 @@ for t in trackers_js:
     
     # Calculate final probability
     calculated_prob = base + signal_sum + no_news_decay
-    calculated_prob = max(0, min(100, round(calculated_prob)))
+    calculated_prob = max(2, min(100, round(calculated_prob)))  # Floor at 2% (no event is zero risk)
     
     t["prob"] = calculated_prob
     # Also update state so coupling reads the correct base value
