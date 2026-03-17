@@ -1178,6 +1178,8 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
 import subprocess
 subprocess.run(["git", "config", "user.name", "VoltaIntel"], check=True)
 subprocess.run(["git", "config", "user.email", "cryptocybrog1337@proton.me"], check=True)
+# Force-add data files (gitignored but needed on GitHub Pages)
+subprocess.run(["git", "add", "-f", "data/current_state.json", "data/signal_timeline.json", "data/predictions/", "data/energy_prices.json", "data/flight_tracking.json"], check=False)
 subprocess.run(["git", "add", "-A"], check=True)
 r = subprocess.run(["git", "commit", "-m", "Update " + state.get("last_updated", "") + " — automated"], capture_output=True, text=True)
 print("Committed" if r.returncode == 0 else "No changes to commit")
