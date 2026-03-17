@@ -4,46 +4,6 @@ cd /home/openclaw/.openclaw/workspace/nuke-watch
 # Fetch oil prices before deploy
 python3 scripts/fetch_oil_prices.py 2>/dev/null
 
-# Fetch flight tracking data
-# Aviationstack: 2x per week (Mon & Thu at 06:00 UTC) — 6 requests/month, fits in 100 limit
-# OpenSky: hourly fallback (free, unlimited but spotty ME coverage)
-HOUR=$(date -u +%H)
-DAY=$(date -u +%u)  # 1=Mon, 7=Sun
-# Load API key from secrets file
-AVIATIONSTACK_KEY=$(cat ~/.openclaw/workspace/secrets-backup/aviationstack.env 2>/dev/null | cut -d= -f2)
-if [ -z "$AVIATIONSTACK_KEY" ]; then
-  echo "Warning: AVIATIONSTACK_KEY not found in secrets file"
-fi
-export AVIATIONSTACK_KEY
-
-RUN_AVIATIONSTACK=false
-# Mon and Thu at 06:00 UTC
-if ([ "$DAY" = "1" ] || [ "$DAY" = "4" ]) && [ "$HOUR" = "06" ]; then
-  RUN_AVIATIONSTACK=true
-fi
-
-if [ "$RUN_AVIATIONSTACK" = "true" ]; then
-  echo "Running Aviationstack (2x weekly calibration)..."
-  python3 scripts/flight_tracker.py 2>/dev/null
-else
-  # Check if Aviationstack data is from today (reuse it, don't waste a request)
-  LAST_UPDATE=$(python3 -c "
-import json
-try:
-    d = json.load(open('data/flight_tracking.json'))
-    print(d.get('last_updated', '')[:10])
-except:
-    print('')
-" 2>/dev/null)
-  TODAY=$(date -u +%Y-%m-%d)
-  if [ "$LAST_UPDATE" = "$TODAY" ]; then
-    echo "Aviationstack data fresh from today, reusing"
-  else
-    echo "No Aviationstack data today, using OpenSky only"
-    python3 scripts/track_flights.py 2>/dev/null
-  fi
-fi
-
 # Update index.html with latest state
 python3 << 'PYEOF'
 import json
@@ -60,13 +20,6 @@ try:
         energy_data = json.load(f)
 except:
     energy_data = {"current": {}, "history": [], "baselines": {}, "changes": {}}
-
-# Load flight tracking data (fetched by track_flights.py)
-try:
-    with open("data/flight_tracking.json") as f:
-        flight_data = json.load(f)
-except:
-    flight_data = {"zones": {}, "signals": []}
 
 with open("dashboard.html") as f:
     html = f.read()
@@ -679,14 +632,7 @@ else:
         "changes": energy_data.get("changes", {}),
         "history": energy_data.get("history", [])[-48:]
     })
-    lines.append("  energy: " + energy_js + ",")
-    # Add flight tracking data
-    flight_js = json.dumps({
-        "zones": flight_data.get("zones", {}),
-        "signals": flight_data.get("signals", []),
-        "last_updated": flight_data.get("last_updated", "")
-    })
-    lines.append("  flights: " + flight_js)
+    lines.append("  energy: " + energy_js)
     lines.append("};")
 
     # Generate static chart SVG
@@ -1217,7 +1163,7 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
     new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
     
-    # Inject predictions into HTML (after flights in state block)
+    # Inject predictions into HTML (in state block)
     pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
     # Use a more robust anchor - find the end of the state block
     new_html = new_html.replace("\n};\n\n// ===== RENDER", pred_inject + "\n};\n\n// ===== RENDER")
