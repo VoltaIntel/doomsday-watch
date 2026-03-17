@@ -85,7 +85,8 @@ except:
     timeline = {"signals": {}}
 
 from datetime import datetime, timezone
-now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+now_dt = datetime.now(timezone.utc)
+now_iso = now_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 # --- Load credibility config and define functions BEFORE processing ---
 with open("data/source_credibility.json") as f:
@@ -378,6 +379,59 @@ for tid, tracker in state.get("trackers", {}).items():
     if added:
         print(f"[{tid}] Added {len(added)} new signals: {added}")
     tracker["active_signals"] = list(merged)
+
+# ═══════════════════════════════════════════════════════════════════
+# AUTO-CALCULATE PROBABILITIES FROM SIGNALS
+# The agent manages signals. The code manages probabilities.
+# ═══════════════════════════════════════════════════════════════════
+for t in trackers_js:
+    tid = t["id"]
+    tracker_cfg = cfg.get("trackers", {}).get(tid, {})
+    base = tracker_cfg.get("base_rate", 10)
+    
+    # Sum active signal weights with temporal decay applied
+    signal_sum = 0
+    newest_activation = None
+    for s in t.get("signals", []):
+        decayed_w = s.get("decayed_weight", s.get("original_weight", 0))
+        raw_w = s.get("original_weight", 0)
+        # De-escalation signals (positive flag) reduce probability
+        if s.get("positive", False):
+            signal_sum -= decayed_w
+        else:
+            signal_sum += decayed_w
+        # Track most recent signal activation
+        activated = s.get("activated_at", "")
+        if activated:
+            try:
+                act_dt = datetime.fromisoformat(activated.replace("Z", "+00:00"))
+                if newest_activation is None or act_dt > newest_activation:
+                    newest_activation = act_dt
+            except:
+                pass
+    
+    # No-news decay: -1.5% per 24h without any signal activity
+    no_news_decay = 0
+    if newest_activation:
+        hours_since = (now_dt - newest_activation).total_seconds() / 3600
+        if hours_since > 24:
+            no_news_decay = -1.5 * (hours_since / 24)
+    elif not t.get("signals"):
+        # Zero signals = no news for a long time, apply max decay floor
+        no_news_decay = -5.0  # capped by floor at base_rate - 5
+    
+    # Calculate final probability
+    calculated_prob = base + signal_sum + no_news_decay
+    calculated_prob = max(0, min(100, round(calculated_prob)))
+    
+    t["prob"] = calculated_prob
+    # Also update state so coupling reads the correct base value
+    if tid in state.get("trackers", {}):
+        state["trackers"][tid]["current_probability"] = calculated_prob
+
+print(f"Auto-calculated probabilities from signals:")
+for t in trackers_js:
+    print(f"  {t['name']}: base={cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0)} + signals={t['prob'] - cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0) - (-1.5 * 0 if t.get('signals') else -5):.1f} = {t['prob']}%")
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
