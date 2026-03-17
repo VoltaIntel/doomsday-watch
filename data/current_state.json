@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-17T00:00:00Z",
+  "last_updated": "2026-03-17T00:04:00Z",
   "scoring_window": "24h",
   "trackers": {
     "iran_nuke": {
@@ -138,12 +138,18 @@
         "shah_oilfield_fire",
         "trump_paper_tiger",
         "baghdad_green_zone_hotel_drone",
-        "mojtaba_status_unclear"
+        "mojtaba_status_unclear",
+        "uae_airspace_closed",
+        "us_200_troops_wounded",
+        "dubai_fire_contained",
+        "fujairah_drone_fire",
+        "israel_thousands_targets_3weeks",
+        "irgc_cache_intact_claim"
       ],
       "current_probability": 100,
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Day 17/19 00:00 - IMMINENT 100. Israel new strikes on Tehran. Shah oil field (UAE) fire. Baghdad Green Zone hotel drone strike near US embassy. Mojtaba Khamenei status unknown - Trump says \"don't know if dead or not.\" FM Araghchi rejects ceasefire claims. Iran casualties 1,444 dead, 18,551 injured. No ceasefire signals.",
+      "notes": "Day 19 01:00 - IMMINENT 100. UAE fully closes airspace. 200 US troops wounded (180 returned to duty). Dubai airport fire contained, limited flights resumed. Fujairah industrial zone drone strike fire. Israel plans 'thousands' of targets next 3 weeks. IRGC claims most weapons cache intact, hasn't fired post-12-day-war missiles. Trump claims Iran drone factories hit, says 'very little firepower left' \u2014 contradicts IRGC. Iran FM again rejects ceasefire on CBS. 1,444 Iran dead, 18,551 injured.",
       "coupling_boost": 6,
       "current_probability_with_coupling": 100,
       "changed_signals": []
@@ -184,12 +190,14 @@
         "israel_ground_maneuver",
         "idf_ground_push_deeper",
         "western_leaders_averse_offensive",
-        "unifil_patrols_fired_on"
+        "unifil_patrols_fired_on",
+        "lebanon_displaced_1m",
+        "western_lebanon_invasion_urge"
       ],
       "current_probability": 100,
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Day 19 00:00 - IMMINENT 100. Israel declares \"limited\" ground ops. 5 Western leaders (CA/FR/DE/IT/UK) call for averted offensive. UNIFIL patrols fired upon. Lebanon deaths 850+. Displacement 1M+.",
+      "notes": "Day 19 01:00 - IMMINENT 100. Lebanon displaced exceeds 1 million. 5 Western leaders (CA/FR/DE/IT/UK) urge Israel not to invade, warn 'devastating humanitarian consequences.' 8 wounded in drone/rocket barrage on northern Israel. Israel committed to 3-week campaign.",
       "coupling_boost": 3,
       "current_probability_with_coupling": 100
     },
@@ -360,16 +368,16 @@
   "global_war_probability": 100,
   "global_zone": "imminent",
   "top_signals": [
-    "Pakistan strikes Kabul hospital \u2014 Afghanistan claims 400 killed, calls it 'crime against humanity'",
-    "UNSC unanimously passes resolution calling on Taliban to combat terrorism \u2014 no ceasefire",
-    "China special envoy mediating Pakistan-Afghanistan, urges immediate ceasefire",
-    "Israel launches new wave of strikes on Tehran \u2014 Iran FM rejects all ceasefire claims on CBS",
-    "Mojtaba Khamenei status unknown \u2014 Trump says 'don't know if he's dead or not'",
+    "UAE fully closes airspace as 'exceptional precautionary measure' \u2014 first full closure since conflict began",
+    "200 US troops wounded in Iran war, 180 returned to duty \u2014 CENTCOM confirms",
+    "Israel plans to strike 'thousands' of targets over next 3 weeks \u2014 escalation commitment",
+    "IRGC claims most weapons cache intact, hasn't yet fired missiles produced since 12-day war with Israel",
+    "Dubai airport fire contained, limited flights resume; Fujairah industrial zone also struck",
+    "Pakistan strikes Kabul hospital \u2014 Afghanistan claims 400 killed",
+    "Israel launches new wave of strikes on Tehran \u2014 Iran FM rejects all ceasefire claims",
     "Russia escalates Kharkiv offensive, launches 97 drones; Biden makes surprise Kyiv visit",
-    "Ukraine recaptured 400km\u00b2 in Feb \u2014 first month gains exceed losses since 2024",
-    "China resumes large-scale military flights near Taiwan, coast guard blockade rehearsals",
-    "Shah oil field (UAE) struck by drone, fire reported; Baghdad Green Zone hotel hit",
-    "EU 'no appetite' to extend Red Sea naval mission \u2014 NATO alliance strain deepens"
+    "5 Western leaders urge Israel not to invade Lebanon \u2014 displaced exceeds 1 million",
+    "Trump claims Iran wants to negotiate \u2014 Iran FM Araghchi: 'We never asked for ceasefire or negotiation'"
   ],
   "changed_signals": {
     "new": [
@@ -390,7 +398,15 @@
       "russia_ukraine: russia_97_drones (weight 4)",
       "china: china_blockade_rehearsal (weight 6)",
       "china: china_large_scale_flights_return (weight 5)",
-      "china: taiwan_40b_defense_budget (weight 3)"
+      "china: taiwan_40b_defense_budget (weight 3)",
+      "iran_conventional: uae_airspace_closed (weight 8)",
+      "iran_conventional: us_200_troops_wounded (weight 4)",
+      "iran_conventional: dubai_fire_contained (weight -3)",
+      "iran_conventional: fujairah_drone_fire (weight 3)",
+      "iran_conventional: israel_thousands_targets_3weeks (weight 5)",
+      "iran_conventional: irgc_cache_intact_claim (weight 4)",
+      "israel_lebanon: lebanon_displaced_1m (weight 3)",
+      "israel_lebanon: western_lebanon_invasion_urge (weight -3)"
     ],
     "removed": [],
     "zone_changes": [],
@@ -398,67 +414,67 @@
   },
   "latest_news": [
     {
+      "headline": "UAE fully closes airspace \u2014 'exceptional precautionary measure'",
+      "source": "Haaretz/WAM",
+      "time": "2026-03-16T23:30:00Z",
+      "zone": "iran_conventional",
+      "signal": "uae_airspace_closed",
+      "text": "UAE General Civil Aviation Authority announces full temporary airspace closure. Defense ministry confirms responding to incoming missile and drone threats from Iran.",
+      "impact": "up"
+    },
+    {
+      "headline": "200 US troops wounded in Iran war \u2014 CENTCOM",
+      "source": "Haaretz/CENTCOM",
+      "time": "2026-03-16T22:00:00Z",
+      "zone": "iran_conventional",
+      "signal": "us_200_troops_wounded",
+      "text": "US Central Command confirms ~200 troops wounded, vast majority minor injuries, 180 returned to duty. Conflict entering third week.",
+      "impact": "up"
+    },
+    {
+      "headline": "Israel plans 'thousands' of targets over next 3 weeks",
+      "source": "CNN",
+      "time": "2026-03-16T21:00:00Z",
+      "zone": "iran_conventional",
+      "signal": "israel_thousands_targets_3weeks",
+      "text": "Israel tells CNN it plans to strike thousands of targets over next 3 weeks, with potentially more to follow. Trump admin expects conflict 'within weeks or sooner.'",
+      "impact": "up"
+    },
+    {
+      "headline": "IRGC claims most weapons cache intact, hasn't fired post-war missiles",
+      "source": "Al Jazeera",
+      "time": "2026-03-16T20:30:00Z",
+      "zone": "iran_conventional",
+      "signal": "irgc_cache_intact_claim",
+      "text": "IRGC spokesperson says most weapons cache remains intact. Missiles used in war are from 'a decade ago' \u2014 Iran has not yet fired missiles produced since 12-day war with Israel.",
+      "impact": "up"
+    },
+    {
+      "headline": "Dubai airport fire contained, limited flights resume",
+      "source": "Haaretz/Emirates",
+      "time": "2026-03-16T20:00:00Z",
+      "zone": "iran_conventional",
+      "signal": "dubai_fire_contained",
+      "text": "Dubai authorities contain fire near airport after drone strike on fuel tank. Emirates resumes limited flights, several routes cancelled.",
+      "impact": "down"
+    },
+    {
       "headline": "Pakistan strikes Kabul hospital \u2014 Afghanistan claims 400 killed",
       "source": "Al Jazeera",
       "time": "2026-03-16T22:30:00Z",
       "zone": "pakistan_afghanistan",
       "signal": "kabul_hospital_strike_400",
-      "text": "Pakistan strikes Omar Addiction Treatment Hospital in Kabul. Afghanistan claims 400 killed, 250 injured. Pakistan denies targeting hospital, says struck military installations. Taliban calls it 'crime against humanity.'",
+      "text": "Pakistan strikes Omar Addiction Treatment Hospital in Kabul. Afghanistan claims 400 killed, 250 injured. Taliban calls it 'crime against humanity.'",
       "impact": "up"
     },
     {
-      "headline": "UNSC unanimously passes resolution on Afghanistan terrorism",
-      "source": "PBS/AP",
-      "time": "2026-03-16T20:00:00Z",
-      "zone": "pakistan_afghanistan",
-      "signal": "uns.resolution_afghanistan",
-      "text": "UN Security Council unanimously adopts resolution condemning terrorism, calls on Taliban to combat militant groups. Extends UNAMA mission 3 months. Does not name Pakistan.",
-      "impact": "neutral"
-    },
-    {
-      "headline": "Israel launches new wave of strikes on Tehran",
-      "source": "Al Jazeera",
-      "time": "2026-03-16T21:00:00Z",
-      "zone": "iran_conventional",
-      "signal": "israel_tehran_new_wave",
-      "text": "Israel announces new strikes on Tehran. Iran Red Crescent clinic damaged. Iran reports responding to 'hostile targets in skies.'",
-      "impact": "up"
-    },
-    {
-      "headline": "Trump says unclear if Mojtaba Khamenei is 'dead or not'",
-      "source": "Euronews",
-      "time": "2026-03-16T20:01:00Z",
-      "zone": "iran_nuke",
-      "signal": "mojtaba_status_unclear",
-      "text": "Trump tells reporters he doesn't know if Iran's new Supreme Leader Mojtaba Khamenei is alive. Says reports he is badly disfigured or dead. Claims Iran military 'obliterated.'",
-      "impact": "up"
-    },
-    {
-      "headline": "Drone strike causes fire at UAE Shah oil field",
-      "source": "Euronews/ADNOC",
-      "time": "2026-03-16T19:28:00Z",
-      "zone": "iran_conventional",
-      "signal": "shah_oilfield_fire",
-      "text": "Drone strike hits Shah oil field in Abu Dhabi (70,000 bpd capacity). Fire reported, no injuries. ADNOC responding.",
-      "impact": "up"
-    },
-    {
-      "headline": "Russia escalates Kharkiv offensive, launches 97 drones",
-      "source": "Kyiv Post/ISW",
-      "time": "2026-03-16T18:00:00Z",
-      "zone": "russia_ukraine",
-      "signal": "russia_kharkiv_escalation",
-      "text": "Russia dramatically escalates Kharkiv offensive. 97 drones launched targeting Chernihiv, Sumy, Kharkiv. Biden surprise Kyiv visit coincides.",
-      "impact": "up"
-    },
-    {
-      "headline": "China resumes large-scale military flights near Taiwan",
-      "source": "AP News",
-      "time": "2026-03-16T17:00:00Z",
-      "zone": "china",
-      "signal": "china_large_scale_flights_return",
-      "text": "After quieter weeks, Taiwan reports large-scale Chinese military aircraft presence. Coast guard blockade rehearsals ongoing. Trump Beijing visit March 31.",
-      "impact": "up"
+      "headline": "5 Western leaders urge Israel not to invade Lebanon",
+      "source": "Haaretz",
+      "time": "2026-03-16T23:00:00Z",
+      "zone": "israel_lebanon",
+      "signal": "western_lebanon_invasion_urge",
+      "text": "Canada, France, Germany, Italy, UK urge Israel not to invade Lebanon. Warn 'devastating humanitarian consequences.' Lebanon displaced exceeds 1 million.",
+      "impact": "down"
     }
   ],
   "outlook": "CRITICAL (Day 19 00:04) - Global war probability 100%. Seven zones at/near IMMINENT. Iran war grinds on Day 19 \u2014 missile capacity degraded but strategic firing continues. Qatar urges de-escalation but no response. DPRK exploits security gap with new MRL test. Pakistan-Afghanistan civilian toll mounting (75+ dead, 115K displaced). No ceasefire frameworks in any theater. Oil declining but strategic situation unchanged."
