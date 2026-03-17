@@ -330,8 +330,9 @@ for n in news_js[:10]:
 
 news_js = enriched_news
 
-# BUG FIX: Clear and rebuild active_signals from current news only
-# Without this, signals accumulate forever and never get removed
+# BUG FIX: Merge news-found signals with agent-set signals
+# News scanner adds new signals; temporal decay removes expired ones
+# Agent-set signals (from cron) are preserved unless expired
 new_active_signals = {}  # {tracker_id: set(signal_names)}
 for n in enriched_news:
     zone = n.get("zone", "")
@@ -342,17 +343,33 @@ for n in enriched_news:
             if not sig.get("duplicate") and sig.get("weight", 0) != 0:
                 new_active_signals[zone].add(sig["name"])
 
-# Apply cleared signals back to state
+# Apply merged signals back to state
 for tid, tracker in state.get("trackers", {}).items():
-    old_signals = tracker.get("active_signals", [])
-    new_signals = list(new_active_signals.get(tid, set()))
-    removed = set(old_signals) - set(new_signals)
-    added = set(new_signals) - set(old_signals)
+    old_signals = set(tracker.get("active_signals", []))
+    news_signals = new_active_signals.get(tid, set())
+    
+    # Merge: keep old signals that haven't expired + add new news signals
+    # Check which old signals have expired via temporal decay
+    still_valid = set()
+    for s in old_signals:
+        timeline_key = f"{tid}:{s}"
+        w = signal_weights.get((tid, s), 0)
+        activated_at = timeline.get(timeline_key)
+        if activated_at and w != 0:
+            decayed = apply_temporal_decay(abs(w), activated_at)
+            if decayed > 0:
+                still_valid.add(s)
+    
+    # Merge: still_valid (agent-set, not expired) + news_signals (newly found)
+    merged = still_valid | news_signals
+    
+    removed = old_signals - merged
+    added = merged - old_signals
     if removed:
-        print(f"[{tid}] Cleared {len(removed)} stale signals: {removed}")
+        print(f"[{tid}] Cleared {len(removed)} expired signals: {removed}")
     if added:
         print(f"[{tid}] Added {len(added)} new signals: {added}")
-    tracker["active_signals"] = new_signals
+    tracker["active_signals"] = list(merged)
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
