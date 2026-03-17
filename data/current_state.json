@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-17T00:04:00Z",
+  "last_updated": "2026-03-17T01:04:00Z",
   "scoring_window": "24h",
   "trackers": {
     "iran_nuke": {
@@ -15,23 +15,33 @@
     "iran_conventional": {
       "base_rate": 35,
       "active_signals": [
-        "dubai_airport_suspended"
+        "trump_threatens_nato_hormuz",
+        "trump_hormuz_coalition",
+        "witkoff_araghchi_channel",
+        "uk_hormuz_coalition",
+        "dubai_airport_suspended",
+        "trump_hormuz_no_takers"
       ],
       "current_probability": 100,
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Day 19 01:00 - IMMINENT 100. UAE fully closes airspace. 200 US troops wounded (180 returned to duty). Dubai airport fire contained, limited flights resumed. Fujairah industrial zone drone strike fire. Israel plans 'thousands' of targets next 3 weeks. IRGC claims most weapons cache intact, hasn't fired post-12-day-war missiles. Trump claims Iran drone factories hit, says 'very little firepower left' \u2014 contradicts IRGC. Iran FM again rejects ceasefire on CBS. 1,444 Iran dead, 18,551 injured.",
+      "notes": "Day 19 01:00 - IMMINENT 100. UAE airspace fully closed. Dubai airport fire contained, limited flights resume. Trump vents frustration at allies for refusing Hormuz coalition \u2014 zero commitments. Saudi intercepts 37 drones. Iran FM Araghchi on CBS: 'We never asked for ceasefire or negotiation.' Witkoff-Araghchi channel reportedly reactivated per Axios. Israel new wave strikes on Tehran. 1,444 Iran dead, 18,551 injured.",
       "coupling_boost": 6,
       "current_probability_with_coupling": 100,
       "changed_signals": []
     },
     "israel_lebanon": {
       "base_rate": 25,
-      "active_signals": [],
+      "active_signals": [
+        "israel_mobilization_450k",
+        "lebanon_800k_displaced",
+        "israel_ground_operations_south",
+        "gaza_comparison_rhetoric"
+      ],
       "current_probability": 100,
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Day 19 01:00 - IMMINENT 100. Lebanon displaced exceeds 1 million. 5 Western leaders (CA/FR/DE/IT/UK) urge Israel not to invade, warn 'devastating humanitarian consequences.' 8 wounded in drone/rocket barrage on northern Israel. Israel committed to 3-week campaign.",
+      "notes": "Day 19 01:00 - IMMINENT 100. IDF launches 'limited' ground operations in new areas of southern Lebanon. Defense Minister: displaced won't return until northern Israel safe. Military seeks to mobilize 450,000 reservists. 5 Western leaders (CA/FR/DE/IT/UK) urge Israel to avert 'significant ground offensive.' Hezbollah rocket barrage wounds 6 in northern Israel. Beirut apartment struck.",
       "coupling_boost": 3,
       "current_probability_with_coupling": 100
     },
@@ -97,11 +107,7 @@
     },
     "pakistan_afghanistan": {
       "base_rate": 25,
-      "active_signals": [
-        "pakistan_shoots_down_taliban_drones",
-        "afghan_claim_kills_pakistani_soldiers",
-        "pakistan_drone_storage_strike"
-      ],
+      "active_signals": [],
       "current_probability": 100,
       "trend": "rising",
       "zone": "imminent",
@@ -113,16 +119,16 @@
   "global_war_probability": 100,
   "global_zone": "imminent",
   "top_signals": [
-    "UAE fully closes airspace as 'exceptional precautionary measure' \u2014 first full closure since conflict began",
-    "200 US troops wounded in Iran war, 180 returned to duty \u2014 CENTCOM confirms",
-    "Israel plans to strike 'thousands' of targets over next 3 weeks \u2014 escalation commitment",
-    "IRGC claims most weapons cache intact, hasn't yet fired missiles produced since 12-day war with Israel",
-    "Dubai airport fire contained, limited flights resume; Fujairah industrial zone also struck",
+    "BREAKING: IDF launches ground operations in southern Lebanon \u2014 450K reservists to be mobilized",
+    "5 Western leaders urge Israel not to invade Lebanon \u2014 'devastating humanitarian consequences'",
+    "Israel plans to strike 'thousands' of targets over next 3 weeks",
+    "UAE fully closes airspace as 'exceptional precautionary measure'",
+    "Trump vents frustration at allies for zero Hormuz coalition commitments",
+    "Iran FM Araghchi: 'We never asked for ceasefire or negotiation'",
+    "IRGC claims most weapons cache intact \u2014 hasn't fired post-12-day-war missiles",
+    "Saudi intercepts 37 drones; Bahrain, Kuwait, Qatar also report interceptions",
     "Pakistan strikes Kabul hospital \u2014 Afghanistan claims 400 killed",
-    "Israel launches new wave of strikes on Tehran \u2014 Iran FM rejects all ceasefire claims",
-    "Russia escalates Kharkiv offensive, launches 97 drones; Biden makes surprise Kyiv visit",
-    "5 Western leaders urge Israel not to invade Lebanon \u2014 displaced exceeds 1 million",
-    "Trump claims Iran wants to negotiate \u2014 Iran FM Araghchi: 'We never asked for ceasefire or negotiation'"
+    "Russia escalates Kharkiv offensive, 97 drones launched; Biden surprise Kyiv visit"
   ],
   "changed_signals": {
     "new": [
@@ -151,7 +157,11 @@
       "iran_conventional: israel_thousands_targets_3weeks (weight 5)",
       "iran_conventional: irgc_cache_intact_claim (weight 4)",
       "israel_lebanon: lebanon_displaced_1m (weight 3)",
-      "israel_lebanon: western_lebanon_invasion_urge (weight -3)"
+      "israel_lebanon: western_lebanon_invasion_urge (weight -3)",
+      "israel_lebanon: israel_ground_invasion_lebanon (weight 15)",
+      "israel_lebanon: israel_mobilization_450k (weight 8)",
+      "iran_conventional: trump_hormuz_zero_takers (weight 3)",
+      "iran_conventional: witkoff_araghchi_channel (weight -4)"
     ],
     "removed": [],
     "zone_changes": [],
@@ -159,68 +169,50 @@
   },
   "latest_news": [
     {
-      "headline": "UAE fully closes airspace \u2014 'exceptional precautionary measure'",
-      "source": "Haaretz/WAM",
-      "time": "2026-03-16T23:30:00Z",
-      "zone": "iran_conventional",
-      "signal": "uae_airspace_closed",
-      "text": "UAE General Civil Aviation Authority announces full temporary airspace closure. Defense ministry confirms responding to incoming missile and drone threats from Iran.",
+      "headline": "IDF launches 'limited' ground operations in southern Lebanon",
+      "source": "Reuters/Al Jazeera/Time",
+      "time": "2026-03-16T17:00:00Z",
+      "zone": "israel_lebanon",
+      "signal": "israel_ground_invasion_lebanon",
+      "text": "Israeli military announces ground manoeuvre into new areas of southern Lebanon. Defense minister says displaced Lebanese won't return until northern Israel safe. Military seeking to mobilize 450,000 reservists.",
       "impact": "up"
     },
     {
-      "headline": "200 US troops wounded in Iran war \u2014 CENTCOM",
-      "source": "Haaretz/CENTCOM",
-      "time": "2026-03-16T22:00:00Z",
-      "zone": "iran_conventional",
-      "signal": "us_200_troops_wounded",
-      "text": "US Central Command confirms ~200 troops wounded, vast majority minor injuries, 180 returned to duty. Conflict entering third week.",
-      "impact": "up"
+      "headline": "5 Western leaders urge Israel to avert 'significant ground offensive' in Lebanon",
+      "source": "Haaretz/Guardian",
+      "time": "2026-03-16T18:00:00Z",
+      "zone": "israel_lebanon",
+      "signal": "western_leaders_urge_no_invasion",
+      "text": "Canada, France, Germany, Italy, UK issue joint statement expressing 'grave concern' \u2014 warn of 'devastating humanitarian consequences.'",
+      "impact": "neutral"
     },
     {
-      "headline": "Israel plans 'thousands' of targets over next 3 weeks",
-      "source": "CNN",
-      "time": "2026-03-16T21:00:00Z",
-      "zone": "iran_conventional",
-      "signal": "israel_thousands_targets_3weeks",
-      "text": "Israel tells CNN it plans to strike thousands of targets over next 3 weeks, with potentially more to follow. Trump admin expects conflict 'within weeks or sooner.'",
-      "impact": "up"
-    },
-    {
-      "headline": "IRGC claims most weapons cache intact, hasn't fired post-war missiles",
-      "source": "Al Jazeera",
-      "time": "2026-03-16T20:30:00Z",
-      "zone": "iran_conventional",
-      "signal": "irgc_cache_intact_claim",
-      "text": "IRGC spokesperson says most weapons cache remains intact. Missiles used in war are from 'a decade ago' \u2014 Iran has not yet fired missiles produced since 12-day war with Israel.",
-      "impact": "up"
-    },
-    {
-      "headline": "Dubai airport fire contained, limited flights resume",
-      "source": "Haaretz/Emirates",
+      "headline": "Trump vents frustration at allies over Strait of Hormuz coalition",
+      "source": "Guardian/NYT",
       "time": "2026-03-16T20:00:00Z",
       "zone": "iran_conventional",
-      "signal": "dubai_fire_contained",
-      "text": "Dubai authorities contain fire near airport after drone strike on fuel tank. Emirates resumes limited flights, several routes cancelled.",
-      "impact": "down"
-    },
-    {
-      "headline": "Pakistan strikes Kabul hospital \u2014 Afghanistan claims 400 killed",
-      "source": "Al Jazeera",
-      "time": "2026-03-16T22:30:00Z",
-      "zone": "pakistan_afghanistan",
-      "signal": "kabul_hospital_strike_400",
-      "text": "Pakistan strikes Omar Addiction Treatment Hospital in Kabul. Afghanistan claims 400 killed, 250 injured. Taliban calls it 'crime against humanity.'",
+      "signal": "trump_hormuz_zero_takers",
+      "text": "Trump criticizes allies for rebuffing appeals for assistance in keeping Strait of Hormuz open. Zero coalition commitments received.",
       "impact": "up"
     },
     {
-      "headline": "5 Western leaders urge Israel not to invade Lebanon",
-      "source": "Haaretz",
-      "time": "2026-03-16T23:00:00Z",
-      "zone": "israel_lebanon",
-      "signal": "western_lebanon_invasion_urge",
-      "text": "Canada, France, Germany, Italy, UK urge Israel not to invade Lebanon. Warn 'devastating humanitarian consequences.' Lebanon displaced exceeds 1 million.",
+      "headline": "Witkoff-Araghchi communications channel reportedly reactivated",
+      "source": "Axios",
+      "time": "2026-03-16T19:00:00Z",
+      "zone": "iran_conventional",
+      "signal": "witkoff_araghchi_channel",
+      "text": "Axios reports direct communications channel between US envoy Witkoff and Iran FM Araghchi reactivated in recent days. Araghchi attempting to engage about ending war.",
       "impact": "down"
+    },
+    {
+      "headline": "IDF launches new wave of strikes on Tehran",
+      "source": "CNBC/CNN",
+      "time": "2026-03-16T22:00:00Z",
+      "zone": "iran_conventional",
+      "signal": "iran_tehran_new_wave",
+      "text": "IDF announces 'wide-scale wave of strikes targeting Iranian terror regime infrastructure in Tehran.' Iran Red Crescent clinic damaged.",
+      "impact": "up"
     }
   ],
-  "outlook": "CRITICAL (Day 19 00:04) - Global war probability 100%. Seven zones at/near IMMINENT. Iran war grinds on Day 19 \u2014 missile capacity degraded but strategic firing continues. Qatar urges de-escalation but no response. DPRK exploits security gap with new MRL test. Pakistan-Afghanistan civilian toll mounting (75+ dead, 115K displaced). No ceasefire frameworks in any theater. Oil declining but strategic situation unchanged."
+  "outlook": "CRITICAL (Day 19 01:04) - Global war probability 100%. Seven zones at/near IMMINENT. MAJOR ESCALATION: Israel launches ground invasion of southern Lebanon despite 5 Western leaders urging restraint. 450K reservists to be mobilized. Iran war Day 19 \u2014 Tehran strikes continue, Iran FM rejects all ceasefire talk. Trump isolated on Hormuz coalition. Pakistan-Afghanistan civilian toll mounting. No ceasefire frameworks in any theater. Situation deteriorating across all theaters."
 }
