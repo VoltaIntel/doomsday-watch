@@ -399,18 +399,29 @@ else:
     zone_rank = {"deterrent": 0, "elevated": 1, "critical": 2, "imminent": 3}
 
     boosts_applied = {}
+    # Group rules by source, apply ONLY the highest-threshold rule that matches
+    from collections import defaultdict
+    rules_by_src = defaultdict(list)
     for rule in coupling_rules:
-        src = rule["source"]
+        rules_by_src[rule["source"]].append(rule)
+    
+    for src, src_rules in rules_by_src.items():
         src_zone = state.get("trackers", {}).get(src, {}).get("zone", "deterrent")
-        min_zone = rule["min_zone"]
-        if zone_rank.get(src_zone, 0) >= zone_rank.get(min_zone, 0):
-            for tgt, boost in rule["targets"].items():
-                if tgt in all_probs:
-                    old_val = all_probs[tgt]
-                    all_probs[tgt] = min(100, old_val + boost)
-                    if tgt not in boosts_applied:
-                        boosts_applied[tgt] = 0
-                    boosts_applied[tgt] += boost
+        src_rank = zone_rank.get(src_zone, 0)
+        # Sort rules by threshold descending, apply only the FIRST matching rule
+        src_rules_sorted = sorted(src_rules, key=lambda r: zone_rank.get(r["min_zone"], 0), reverse=True)
+        for rule in src_rules_sorted:
+            min_zone = rule["min_zone"]
+            if src_rank >= zone_rank.get(min_zone, 0):
+                # This is the highest threshold that matches — apply it and stop
+                for tgt, boost in rule["targets"].items():
+                    if tgt in all_probs:
+                        old_val = all_probs[tgt]
+                        all_probs[tgt] = min(100, old_val + boost)
+                        if tgt not in boosts_applied:
+                            boosts_applied[tgt] = 0
+                        boosts_applied[tgt] += boost
+                break  # Don't apply lower-threshold rules from same source
 
     if boosts_applied:
         boost_log = ", ".join(f"{k}+{v}" for k, v in boosts_applied.items())
