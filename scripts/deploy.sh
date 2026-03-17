@@ -354,11 +354,19 @@ for tid, tracker in state.get("trackers", {}).items():
     for s in old_signals:
         timeline_key = f"{tid}:{s}"
         w = signal_weights.get((tid, s), 0)
+        if w == 0:
+            continue  # Signal weight is 0, skip it
         activated_at = timeline.get(timeline_key)
-        if activated_at and w != 0:
+        if activated_at:
+            # Known signal — check if it's expired
             decayed = apply_temporal_decay(abs(w), activated_at)
             if decayed > 0:
                 still_valid.add(s)
+        else:
+            # Signal in active_signals but no timeline entry — treat as newly activated
+            # (likely set by cron agent this cycle)
+            timeline["signals"][timeline_key] = now_iso
+            still_valid.add(s)
     
     # Merge: still_valid (agent-set, not expired) + news_signals (newly found)
     merged = still_valid | news_signals
