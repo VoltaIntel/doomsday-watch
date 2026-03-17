@@ -492,9 +492,9 @@ for t in trackers_js:
         # Clean up double spaces and leading artifacts
         cleaned = re.sub(r'\s{2,}', ' ', cleaned).strip()
         # Prepend correct zone/prob
-        zone_label = zone_labels.get(new_zone, "DETERRENT").upper()
+        zone_label = zone_labels.get(new_zone, "deterrent")
         trend = trk.get("trend", "stable")
-        trk["notes"] = f"Day 20 - {zone_label} {t['prob']} ({trend}). {cleaned}"
+        trk["notes"] = f"Day 20 auto - {zone_label} {t['prob']}% ({trend}). {cleaned}"
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
