@@ -433,6 +433,17 @@ print(f"Auto-calculated probabilities from signals:")
 for t in trackers_js:
     print(f"  {t['name']}: base={cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0)} + signals={t['prob'] - cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0) - (-1.5 * 0 if t.get('signals') else -5):.1f} = {t['prob']}%")
 
+# Recalculate zones based on auto-calculated probabilities (before coupling)
+for t in trackers_js:
+    p = t["prob"]
+    if p >= 60: new_zone = "imminent"
+    elif p >= 30: new_zone = "critical"
+    elif p >= 15: new_zone = "elevated"
+    else: new_zone = "deterrent"
+    t["zone"] = new_zone
+    if t["id"] in state.get("trackers", {}):
+        state["trackers"][t["id"]]["zone"] = new_zone
+
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
 end = html.find("// ===== RENDER", start)
