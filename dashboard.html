@@ -401,6 +401,19 @@ body {
 .tracker-zone.critical { color: var(--red); }
 .tracker-zone.imminent { color: var(--red); }
 
+/* Confidence badges */
+.confidence-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+.confidence-badge.high { background: rgba(34,197,94,0.25); color: #22c55e; }
+.confidence-badge.medium { background: rgba(234,179,8,0.25); color: #eab308; }
+.confidence-badge.low { background: rgba(156,163,175,0.25); color: #9ca3af; }
+
 /* Signals */
 .tracker-signals {
   display: flex;
@@ -961,7 +974,7 @@ function renderTrackers() {
         <div class="tracker-name" onclick="filterByZone('${t.id}')" style="cursor:pointer" title="Click to filter intelligence feed"><span class="tracker-emoji">${t.emoji}</span>${t.name}</div>
       </div>
       <div class="tracker-prob ${t.zone}">${t.prob}%</div>
-      <div class="tracker-zone ${t.zone}">${t.zone.toUpperCase()}</div>
+      <div class="tracker-zone ${t.zone}">${t.zone.toUpperCase()} <span class="confidence-badge ${(t.confidence || 'LOW').toLowerCase()}">${t.confidence || 'LOW'}</span></div>
       <div class="tracker-signals">${signalHTML}</div>
       <div class="tracker-trend ${trendClass}">${trendIcon} ${t.trend.toUpperCase()}</div>
     `;

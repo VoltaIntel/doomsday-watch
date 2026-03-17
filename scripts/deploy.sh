@@ -261,6 +261,29 @@ for tid, name, emoji in tn:
     signal_data = [s for s in signal_data if not s["expired"]]
     # Sort signals reverse chronologically (newest first)
     signal_data.sort(key=lambda x: x["activated_at"], reverse=True)
+    
+    # Calculate confidence: signal volume + source quality + recency
+    sig_count = len(signal_data)
+    avg_tier = 0
+    if signal_data:
+        tier_scores = {"confirmed": 3, "reported": 2, "rumored": 1}
+        avg_tier = sum(tier_scores.get(s.get("confidence", "rumored"), 1) for s in signal_data) / sig_count
+    recency_score = 0
+    for s in signal_data[:3]:  # top 3 signals
+        if s.get("activated_at"):
+            try:
+                act_dt = datetime.fromisoformat(s["activated_at"].replace("Z", "+00:00"))
+                hours_old = (now_dt - act_dt).total_seconds() / 3600
+                if hours_old < 24: recency_score += 3
+                elif hours_old < 72: recency_score += 2
+                else: recency_score += 1
+            except: pass
+    recency_score = min(3, recency_score / max(1, min(3, sig_count))) if sig_count > 0 else 0
+    conf_score = min(40, sig_count * 5) + avg_tier * 15 + min(30, recency_score * 10)
+    if conf_score >= 60: confidence = "HIGH"
+    elif conf_score >= 30: confidence = "MEDIUM"
+    else: confidence = "LOW"
+    
     trackers_js.append({
         "id": tid,
         "name": name,
@@ -268,7 +291,8 @@ for tid, name, emoji in tn:
         "prob": t.get("current_probability", t.get("base_rate", 0)),
         "zone": t.get("zone", "deterrent"),
         "trend": t.get("trend", "stable"),
-        "signals": signal_data
+        "signals": signal_data,
+        "confidence": confidence
     })
 
 news_js = state.get("latest_news", [
@@ -439,13 +463,16 @@ print(f"Auto-calculated probabilities from signals:")
 for t in trackers_js:
     print(f"  {t['name']}: base={cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0)} + signals={t['prob'] - cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0) - (-1.5 * 0 if t.get('signals') else -5):.1f} = {t['prob']}%")
 
-# Recalculate zones based on auto-calculated probabilities (before coupling)
+# Recalculate zones from config thresholds (before coupling)
+zone_thresholds = cfg.get("scoring", {}).get("zones", {})
+def classify_zone(p):
+    if p >= zone_thresholds.get("imminent", {}).get("min", 60): return "imminent"
+    elif p >= zone_thresholds.get("critical", {}).get("min", 30): return "critical"
+    elif p >= zone_thresholds.get("elevated", {}).get("min", 15): return "elevated"
+    else: return "deterrent"
+
 for t in trackers_js:
-    p = t["prob"]
-    if p >= 60: new_zone = "imminent"
-    elif p >= 30: new_zone = "critical"
-    elif p >= 15: new_zone = "elevated"
-    else: new_zone = "deterrent"
+    new_zone = classify_zone(t["prob"])
     t["zone"] = new_zone
     if t["id"] in state.get("trackers", {}):
         state["trackers"][t["id"]]["zone"] = new_zone
@@ -518,10 +545,7 @@ else:
 
     weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.14, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.06, "pakistan_afghanistan": 0.08, "russia": 0.06, "china": 0.06, "north_korea": 0.08}
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
-    if gp >= 60: tz = "imminent"
-    elif gp >= 30: tz = "critical"
-    elif gp >= 15: tz = "elevated"
-    else: tz = "deterrent"
+    tz = classify_zone(gp)
     # Update state.json with correct global
     state["global_war_probability"] = gp
     state["global_zone"] = tz
@@ -590,7 +614,8 @@ else:
         "timestamp": now_iso,
         "global": gp,
         "zone": tz,
-        "trackers": {t["id"]: t["prob"] for t in trackers_js}
+        "trackers": {t["id"]: t["prob"] for t in trackers_js},
+        "base_probs": {t["id"]: state.get("trackers", {}).get(t["id"], {}).get("current_probability", 0) for t in trackers_js}
     })
     # Keep last 336 entries (2 weeks at hourly)
     history["entries"] = history["entries"][-336:]
@@ -610,7 +635,7 @@ else:
     lines.append("  trackers: [")
     for t in trackers_js:
         signals_str = json.dumps(t["signals"])
-        lines.append('    { id: "' + t["id"] + '", name: "' + t["name"] + '", emoji: "' + t["emoji"] + '", prob: ' + str(t["prob"]) + ', zone: "' + t["zone"] + '", trend: "' + t["trend"] + '", signals: ' + signals_str + ' },')
+        lines.append('    { id: "' + t["id"] + '", name: "' + t["name"] + '", emoji: "' + t["emoji"] + '", prob: ' + str(t["prob"]) + ', zone: "' + t["zone"] + '", trend: "' + t["trend"] + '", confidence: "' + t.get("confidence", "LOW") + '", signals: ' + signals_str + ' },')
     lines.append("  ],")
     lines.append("  news: [")
     for n in news_js[:10]:
