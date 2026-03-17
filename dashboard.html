@@ -1351,10 +1351,16 @@ function renderEnergy() {
     var arrow = pct > 0 ? '▲' : pct < 0 ? '▼' : '●';
     var chgColor = pct > 0 ? '#00e676' : pct < 0 ? '#ff4444' : '#484f58';
     
+    var isForex = (item.code === 'EUR_USD' || item.code === 'GBP_USD');
+    var pricePrefix = isForex ? '' : '$';
+    var priceDecimals = isForex ? 4 : 2;
+    var chgPrefix = isForex ? '' : '$';
+    var chgDecimals = isForex ? 4 : 2;
+
     html += '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px;padding:10px;text-align:center;">' +
       '<div style="font-size:10px;letter-spacing:1px;color:' + item.color + ';margin-bottom:4px;">' + item.label + '</div>' +
-      '<div style="font-size:18px;color:#e6edf3;font-family:monospace;font-weight:bold;">$' + price.toFixed(2) + '</div>' +
-      '<div style="font-size:11px;color:' + chgColor + ';margin-top:3px;">' + arrow + ' ' + (pct > 0 ? '+' : '') + pct + '% ($' + (usdChg > 0 ? '+' : '') + usdChg.toFixed(2) + ')</div>' +
+      '<div style="font-size:18px;color:#e6edf3;font-family:monospace;font-weight:bold;">' + pricePrefix + price.toFixed(priceDecimals) + '</div>' +
+      '<div style="font-size:11px;color:' + chgColor + ';margin-top:3px;">' + arrow + ' ' + (pct > 0 ? '+' : '') + pct + '% (' + chgPrefix + (usdChg > 0 ? '+' : '') + usdChg.toFixed(chgDecimals) + ')</div>' +
       '<div style="font-size:9px;color:#484f58;margin-top:2px;">vs pre-conflict</div>' +
       '</div>';
   });

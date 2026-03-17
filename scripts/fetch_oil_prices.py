@@ -66,13 +66,22 @@ def main():
     data["current"] = current
     data["last_updated"] = now
     
-    # Set baselines (pre-conflict prices from ~March 1 2026)
-    if not data.get("baselines"):
-        data["baselines"] = {
-            "BRENT_CRUDE_USD": {"price": 67.4, "date": "2026-03-01", "note": "Pre-conflict baseline"},
-            "WTI_USD": {"price": 63.8, "date": "2026-03-01", "note": "Pre-conflict baseline"},
-            "NATURAL_GAS_USD": {"price": 2.85, "date": "2026-03-01", "note": "Pre-conflict baseline"}
-        }
+    # Ensure all baselines exist (pre-conflict prices from ~March 1 2026)
+    # Merge mode: adds missing baselines without overwriting existing ones
+    default_baselines = {
+        "BRENT_CRUDE_USD": {"price": 67.4, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "WTI_USD": {"price": 63.8, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "NATURAL_GAS_USD": {"price": 2.85, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "GOLD_USD": {"price": 2890.0, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "EUR_USD": {"price": 1.0420, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "GBP_USD": {"price": 1.2480, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "HEATING_OIL_USD": {"price": 2.38, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "GASOLINE_USD": {"price": 2.12, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+        "DIESEL_USD": {"price": 2.45, "date": "2026-03-01", "note": "Pre-conflict baseline"},
+    }
+    for code, baseline in default_baselines.items():
+        if code not in data.get("baselines", {}):
+            data.setdefault("baselines", {})[code] = baseline
     
     # Add to history (keep last 168 entries = 1 week at hourly)
     history_entry = {"timestamp": now, "prices": {}}
