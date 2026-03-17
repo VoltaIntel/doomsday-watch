@@ -1062,6 +1062,10 @@ else:
     with open(pred_file, "w") as f:
         json.dump(pred_data, f, indent=2)
     
+    # Write predictions to state for dashboard access
+    state["predictions"] = final_predictions
+    state["eval_stats"] = {"total": total_eval, "correct": correct_count, "accuracy": accuracy_pct}
+    
     # Save updated evaluations
     with open(eval_file, "w") as f:
         json.dump(evaluations, f, indent=2)
