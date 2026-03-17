@@ -642,8 +642,7 @@ else:
     with open("data/probability_history.json", "w") as hf:
         json.dump(history, hf, indent=2)
 
-    with open("data/current_state.json", "w") as sf:
-        json.dump(state, sf, indent=2)
+    # State write moved to after predictions section (line 1070+)
 
 
     lines = []
@@ -1065,6 +1064,10 @@ else:
     # Write predictions to state for dashboard access
     state["predictions"] = final_predictions
     state["eval_stats"] = {"total": total_eval, "correct": correct_count, "accuracy": accuracy_pct}
+    
+    # Write state to file (after all updates)
+    with open("data/current_state.json", "w") as sf:
+        json.dump(state, sf, indent=2)
     
     # Save updated evaluations
     with open(eval_file, "w") as f:
