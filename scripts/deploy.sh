@@ -174,14 +174,22 @@ def find_matching_signals(text, tid, source_tier="5_unverified"):
     for sname, scfg in cfg.get("trackers", {}).get(tid, {}).get("signals", {}).items():
         desc = scfg.get("description", "").lower()
         name_readable = sname.lower().replace("_", " ")
+        weight = signal_weights.get((tid, sname), 0)
         triggered = False
-        if name_readable in text_lower:
-            triggered = True
-        else:
-            terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").replace(".", "").split() if len(t) > 4]
-            matches = sum(1 for t in set(terms) if t in text_lower)
-            if matches >= 3:
+        # HIGH-WEIGHT signals (>=10) require exact name match ONLY — no fuzzy matching
+        if abs(weight) >= 10:
+            # Must have exact name match or very specific phrases
+            if name_readable in text_lower:
                 triggered = True
+        else:
+            # Lower weight signals can use fuzzy matching
+            if name_readable in text_lower:
+                triggered = True
+            else:
+                terms = [t for t in desc.replace("(", "").replace(")", "").replace(",", "").replace(".", "").split() if len(t) > 4]
+                matches = sum(1 for t in set(terms) if t in text_lower)
+                if matches >= 3:
+                    triggered = True
         if triggered:
             weight = signal_weights.get((tid, sname), 0)
             cred_weighted = apply_credibility_weight(abs(weight), source_tier)
@@ -321,6 +329,30 @@ for n in news_js[:10]:
     })
 
 news_js = enriched_news
+
+# BUG FIX: Clear and rebuild active_signals from current news only
+# Without this, signals accumulate forever and never get removed
+new_active_signals = {}  # {tracker_id: set(signal_names)}
+for n in enriched_news:
+    zone = n.get("zone", "")
+    if zone:
+        if zone not in new_active_signals:
+            new_active_signals[zone] = set()
+        for sig in n.get("signals", []):
+            if not sig.get("duplicate") and sig.get("weight", 0) != 0:
+                new_active_signals[zone].add(sig["name"])
+
+# Apply cleared signals back to state
+for tid, tracker in state.get("trackers", {}).items():
+    old_signals = tracker.get("active_signals", [])
+    new_signals = list(new_active_signals.get(tid, set()))
+    removed = set(old_signals) - set(new_signals)
+    added = set(new_signals) - set(old_signals)
+    if removed:
+        print(f"[{tid}] Cleared {len(removed)} stale signals: {removed}")
+    if added:
+        print(f"[{tid}] Added {len(added)} new signals: {added}")
+    tracker["active_signals"] = new_signals
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
