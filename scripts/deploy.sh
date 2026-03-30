@@ -513,10 +513,10 @@ else:
     # Push boosted probabilities to tracker cards ONLY (not state — coupling is display-only)
     for t in trackers_js:
         boosted = all_probs.get(t["id"], t["prob"])
-        t["prob"] = boosted
+        t["prob"] = round(boosted)  # Round to integer — no decimal percentages
 
     weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.14, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.06, "pakistan_afghanistan": 0.08, "russia": 0.06, "china": 0.06, "north_korea": 0.08}
-    gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))
+    gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))  # Already rounded — round() returns int for float input
     tz = classify_zone(gp)
     # Update state.json with correct global
     state["global_war_probability"] = gp
