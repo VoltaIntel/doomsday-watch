@@ -607,7 +607,8 @@ else:
     lines.append("  trackers: [")
     for t in trackers_js:
         signals_str = json.dumps(t["signals"])
-        lines.append('    { id: "' + t["id"] + '", name: "' + t["name"] + '", emoji: "' + t["emoji"] + '", prob: ' + str(t["prob"]) + ', zone: "' + t["zone"] + '", trend: "' + t["trend"] + '", confidence: "' + t.get("confidence", "LOW") + '", signals: ' + signals_str + ' },')
+        prob_int = int(round(float(t["prob"])))  # Force integer — no decimals ever
+        lines.append('    { id: "' + t["id"] + '", name: "' + t["name"] + '", emoji: "' + t["emoji"] + '", prob: ' + str(prob_int) + ', zone: "' + t["zone"] + '", trend: "' + t["trend"] + '", confidence: "' + t.get("confidence", "LOW") + '", signals: ' + signals_str + ' },')
     lines.append("  ],")
     lines.append("  news: [")
     for n in news_js[:10]:
@@ -975,7 +976,7 @@ else:
             "tracker_id": tid,
             "tracker_name": tname,
             "type": etype,
-            "value": prob,
+            "value": int(round(float(prob))),  # Force integer
             "description": event,
             "confidence": confidence,
             "expires_at": expires_at,
