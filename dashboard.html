@@ -1674,9 +1674,11 @@ function renderSignalTimeline() {
     var parts = key.split(':');
     var tid = parts[0];
     var sname = parts[1];
-    var ts = signalTimelineData[key];
+    var entry = signalTimelineData[key];
+    var ts = typeof entry === 'string' ? entry : (entry.activated_at || '');
+    var confirmed = typeof entry === 'object' && entry.last_confirmed ? entry.last_confirmed : null;
     if (filterVal !== 'all' && tid !== filterVal) return;
-    signals.push({ key: key, tid: tid, name: sname, timestamp: ts });
+    signals.push({ key: key, tid: tid, name: sname, timestamp: ts, last_confirmed: confirmed });
   });
 
   signals.sort(function(a, b) { return b.timestamp.localeCompare(a.timestamp); });

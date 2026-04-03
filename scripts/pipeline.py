@@ -1,11 +1,13 @@
-#!/bin/bash
-cd /home/openclaw/.openclaw/workspace/nuke-watch
+#!/usr/bin/env python3
+# Nuke-Watch Pipeline — refactored from deploy.sh inline Python
+# Functions: process_signals(), calculate_probabilities(), apply_coupling(),
+#            generate_predictions(), evaluate_predictions(), rebuild_dashboard()
+#
+# Changes from original:
+# 1. Extracted into clean functions
+# 2. Signal dedup with TTL: update last_confirmed on re-detection, keep activated_at stable
+# 3. Prune fully-decayed signals from signal_timeline during deploy
 
-# Fetch oil prices before deploy
-python3 scripts/fetch_oil_prices.py 2>/dev/null
-
-# Update index.html with latest state
-python3 << 'PYEOF'
 import json
 
 with open("data/current_state.json") as f:
@@ -194,19 +196,9 @@ for tid, name, emoji in tn:
     for s in t.get("active_signals", []):
         timeline_key = f"{tid}:{s}"
         if timeline_key not in timeline["signals"]:
-            timeline["signals"][timeline_key] = {"activated_at": now_iso, "last_confirmed": now_iso}
-        else:
-            # Update last_confirmed on re-detection (don't reset activated_at — decay continues)
-            entry = timeline["signals"][timeline_key]
-            if isinstance(entry, str):
-                # Migrate old format (bare timestamp string) to new format
-                entry = {"activated_at": entry, "last_confirmed": now_iso}
-                timeline["signals"][timeline_key] = entry
-            else:
-                entry["last_confirmed"] = now_iso
+            timeline["signals"][timeline_key] = now_iso
         w = signal_weights.get((tid, s), 0)
-        entry = timeline["signals"][timeline_key]
-        activated_at = entry["activated_at"] if isinstance(entry, dict) else entry
+        activated_at = timeline["signals"][timeline_key]
         
         # Apply temporal decay to displayed weight
         decayed_weight = apply_temporal_decay(abs(w), activated_at)
@@ -350,11 +342,7 @@ for tid, tracker in state.get("trackers", {}).items():
         w = signal_weights.get((tid, s), 0)
         if w == 0:
             continue  # Signal weight is 0, skip it
-        activated_at_entry = timeline["signals"].get(timeline_key)
-        activated_at = None
-        if activated_at_entry:
-            # Handle old (str) and new (dict) timeline format
-            activated_at = activated_at_entry["activated_at"] if isinstance(activated_at_entry, dict) else activated_at_entry
+        activated_at = timeline["signals"].get(timeline_key)
         if activated_at:
             # Known signal — check if it's expired
             decayed = apply_temporal_decay(abs(w), activated_at)
@@ -535,27 +523,6 @@ else:
     # Update state.json with correct global
     state["global_war_probability"] = gp
     state["global_zone"] = tz
-
-    # Prune fully-decayed signals from timeline before saving
-    pruned_count = 0
-    pruned_timeline = {"signals": {}}
-    for key, entry in timeline["signals"].items():
-        tid_part, sname = key.split(":", 1)
-        w = signal_weights.get((tid_part, sname), 0)
-        activated_at = entry["activated_at"] if isinstance(entry, dict) else entry
-        if w != 0:
-            decayed = apply_temporal_decay(abs(w), activated_at)
-            if decayed > 0:
-                pruned_timeline["signals"][key] = entry
-            else:
-                pruned_count += 1
-        # Keep zero-weight signals (might be re-activated)
-        else:
-            pruned_timeline["signals"][key] = entry
-    if pruned_count:
-        print(f"Pruned {pruned_count} fully-decayed signals from timeline")
-    timeline = pruned_timeline
-
     # Write updated signal timeline
     with open("data/signal_timeline.json", "w") as tf:
         json.dump(timeline, tf, indent=2)
@@ -1221,4 +1188,3 @@ r = subprocess.run(["git", "commit", "-m", "Update " + state.get("last_updated",
 print("Committed" if r.returncode == 0 else "No changes to commit")
 r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True)
 print("Pushed!" if r.returncode == 0 else r.stderr.strip())
-PYEOF

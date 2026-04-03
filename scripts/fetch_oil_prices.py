@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Fetch oil prices from OilPriceAPI demo endpoint (no key required).
+"""Fetch oil/energy prices from multiple sources with fallback.
+Primary: OilPriceAPI demo (free, no key)
+Fallback: Yahoo Finance (unofficial, free)
 Stores in data/energy_prices.json with history for charting."""
 
 import json
@@ -10,23 +12,66 @@ from datetime import datetime, timezone
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 PRICES_FILE = os.path.join(DATA_DIR, "energy_prices.json")
 
-def fetch_prices():
-    """Fetch current oil/gas prices from demo endpoint."""
+# Price thresholds referenced by deploy.sh signal matching
+PRICE_THRESHOLDS = {
+    "oil_above_100": 100,
+    "oil_above_120": 120,
+    "oil_above_150": 150,
+}
+
+
+def fetch_from_oilpriceapi():
+    """Primary: OilPriceAPI demo endpoint."""
     url = "https://api.oilpriceapi.com/v1/demo/prices"
     req = urllib.request.Request(url, headers={"User-Agent": "DoomsdayWatch/1.0"})
-    
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode())
-    except Exception as e:
-        print(f"API fetch failed: {e}")
-        return None
-    
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        data = json.loads(resp.read().decode())
     if data.get("status") != "success":
-        print(f"API error: {data}")
-        return None
-    
+        raise ValueError(f"API error: {data}")
     return data["data"]["prices"]
+
+
+def fetch_from_yahoo():
+    """Fallback: Yahoo Finance unofficial API for Brent/WTI."""
+    symbols = {
+        "BZ=F": ("BRENT_CRUDE_USD", "Brent Crude Oil", "USD"),
+        "CL=F": ("WTI_USD", "WTI Crude Oil", "USD"),
+        "NG=F": ("NATURAL_GAS_USD", "US Natural Gas", "USD"),
+        "GC=F": ("GOLD_USD", "Gold", "USD"),
+    }
+    prices = []
+    for symbol, (code, name, currency) in symbols.items():
+        url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=1d"
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode())
+            price = data["chart"]["result"][0]["meta"]["regularMarketPrice"]
+            prices.append({
+                "code": code, "name": name, "price": price,
+                "currency": currency, "updated_at": datetime.now(timezone.utc).isoformat(),
+                "change_24h": 0
+            })
+        except Exception:
+            continue
+    if not prices:
+        raise ValueError("Yahoo Finance returned no data")
+    return prices
+
+
+def fetch_prices():
+    """Fetch current oil/gas prices with fallback chain."""
+    errors = []
+    for fetcher, name in [(fetch_from_oilpriceapi, "OilPriceAPI"), (fetch_from_yahoo, "Yahoo Finance")]:
+        try:
+            result = fetcher()
+            print(f"Source: {name}")
+            return result
+        except Exception as e:
+            errors.append(f"{name}: {e}")
+            continue
+    print(f"All sources failed: {'; '.join(errors)}")
+    return None
 
 def load_prices():
     """Load existing price history."""
