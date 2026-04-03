@@ -1,22 +1,23 @@
 {
-  "last_updated": "2026-04-03T21:02:42.493982+00:00",
+  "last_updated": "2026-04-03T21:40:48.254112+00:00",
   "scoring_window": "24h",
   "trackers": {
     "iran_nuke": {
       "base_rate": 8,
       "active_signals": [
         "nuclear_facilities_struck",
-        "iran_npt_withdrawal_push",
         "nuclear_rhetoric_official",
-        "iaea_emergency"
+        "iaea_emergency",
+        "bushehr_struck_again",
+        "iran_npt_withdrawal_push"
       ],
       "current_probability": 6,
-      "trend": "down",
+      "trend": "stable",
       "zone": "deterrent",
-      "notes": "Day 20 auto - DETERRENT 6% (down). Day 40 auto - DOWN 7% (was 8%). Iran IAEA envoy Najafi denies enrichment restart - de-escalatory. JINSA confirms enrichment sites destroyed in prior strikes. Hindustan Times: programme delayed but not erased. 440kg 60% stockpile remains concern but no enrichment resumption. NPT withdrawal bill advancing in Majlis, no formal vote. IAEA access denied 9+ months. Direction: slight de-escalation on nuclear track.",
+      "notes": "Day 20 auto - DETERRENT 6% (stable). Day 21 auto - % (stable). Iran IAEA envoy Najafi denies enrichment restart (Al Arabiya, Apr 2) - de-escalatory signal confirmed. JINSA report (April 2026 TF) confirms enrichment sites destroyed in prior operations but warns of unknown stockpile locations. IAEA report: cannot verify suspension of enrichment activities, has not had access since strikes. 440kg 60% stockpile remains unaccounted. NPT withdrawal bill still advancing in Majlis. IAEA access denied 9+ months. Direction: stable with slight de-escalation on enrichment track, but unknowns persist.",
       "coupling_boost": 4,
       "current_probability_with_coupling": 57,
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "signal_timestamps": {
         "iran_npt_withdrawal_push": "2026-03-28T18:00:00Z",
         "heavy_water_reactor_struck": "2026-03-30T00:00:00Z",
@@ -76,33 +77,29 @@
     "iran_conventional": {
       "base_rate": 90,
       "active_signals": [
-        "prince_sultan_airbase_attack",
-        "israel_strikes_hamedan",
-        "israel_accelerating_strikes_before_talks",
-        "bab_el_mandeb_threat",
-        "ceasefire_15point_plan",
-        "trump_halt_israel_energy_strikes",
-        "houthi_direct_military_intervention",
+        "gulf_denies_us_base_use",
         "f35_hit_iran",
-        "rubio_weeks_not_months",
-        "pentagon_island_invasion_plan",
         "iran_mine_gulf",
-        "shiraz_residential_hit",
-        "diego_garcia_irbm",
-        "israel_iran_submarine_target",
-        "saudi_riyadh_missile",
-        "ramat_gan_killed",
-        "davids_sling_malfunction",
-        "syria_front_opened",
+        "houthi_direct_military_intervention",
+        "hormuz_zero_traffic",
+        "rubio_weeks_not_months",
         "iran_missile_program_degraded",
         "bahrain_fifth_fleet_attack",
-        "us_israel_haftgel_water",
-        "trump_distances_israel_gasfield"
+        "pentagon_island_invasion_plan",
+        "ceasefire_15point_plan",
+        "pentagon_200b_funding",
+        "diego_garcia_irbm",
+        "davids_sling_malfunction",
+        "prince_sultan_airbase_attack",
+        "hegseth_200b_funding",
+        "saudi_riyadh_missile",
+        "trump_deadline_extended_april10",
+        "bab_el_mandeb_threat"
       ],
       "current_probability": 39,
       "trend": "up",
       "zone": "critical",
-      "notes": "Day 20 auto - DETERRENT 39% (up). Day 40 auto - UP 55% (was 52%). CENTCOM denies Lincoln strike claim (debunked). Trump April 6 Hormuz deadline 3 days away - Pentagon reviewing 4 ground scenarios. Iran retains half missile launchers + drone fleet. ~30 missiles at Israel incl cluster. Joint Houthi-Iran-Hezbollah ops. Brent volatile \\$104-109. War month 2 day 12. No ceasefire.",
+      "notes": "Day 20 auto - DETERRENT 39% (up). Day 41 auto - % (up). April 6 Hormuz deadline 2 DAYS AWAY - critical inflection point. Pentagon reviewing 4 ground scenarios confirmed (Kharg Island, Larak, Abu Musa, tanker seizure). Iran retains half mobile missile launchers + drone fleet (CNN). Joint Houthi-Iran-Hezbollah targeting Israel - 3rd joint op. CENTCOM debunks Lincoln strike claim (confirmed false). Brent volatile ~$105-118 (Apr 1 closed 105.67, spiked to 118+ on Mar 31). Israel accelerating strikes pre-diplomatic halt. Houthi 'fingers on trigger' - formal intervention declared. 30+ nations convening Thu on Hormuz. Macron: Hormuz reopening 'requires Iran consultation.' No ceasefire. War month 2 day 14. DIRECTION: UPCOMING INFLECTION - April 6 deadline determines trajectory.",
       "coupling_boost": 3,
       "current_probability_with_coupling": 95,
       "changed_signals": {
@@ -118,7 +115,11 @@
           "wef_jeddah_postponed: WEF postpones Jeddah Conference \u2014 11+ major Gulf events cancelled since war began",
           "hormuz_30_nations_meeting: 30+ nations convening Thursday to discuss diplomatic/political ways to reopen Strait of Hormuz",
           "us_16_mq9_lost: US military confirms 16 MQ-9 Reaper drones lost near Isfahan since war began",
-          "macron_hormuz_iran_required: Macron says Hormuz reopening 'can only be done in consultation with Iran' \u2014 French position"
+          "macron_hormuz_iran_required: Macron says Hormuz reopening 'can only be done in consultation with Iran' \u2014 French position",
+          "houthi_formal_intervention_mar28: Houthis formally join Iran's war with missile salvo at Israel - opening fourth front (Soufan Center)",
+          "iran_axis_reinforcement: Iran tapping all Axis of Resistance branches (Houthis, Hezbollah, Iraqi militia) for coordinated operations",
+          "30_nations_hormuz_thursday: 30+ nations convening Thursday to discuss diplomatic/political ways to reopen Strait of Hormuz",
+          "macron_iran_consultation: Macron says Hormuz reopening 'can only be done in consultation with Iran' - French position"
         ],
         "removed": [
           "israel_surprised_ceasefire (stale >24h)"
@@ -305,25 +306,37 @@
         "iran_denies_trump_ceasefire_claim": "2026-04-02T06:02:39.787534+00:00",
         "brent_108_april2": "2026-04-02T21:01:21.699534+00:00"
       },
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
-      "oil_price": "~$104-109 Brent (volatile)"
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
+      "oil_price": "~$105-118 Brent (volatile, Apr 1 closed ~$105.67)"
     },
     "israel_lebanon": {
       "base_rate": 55,
       "active_signals": [
-        "hezbollah_record_attacks_day",
-        "battle_just_begun_rhetoric",
-        "litani_invasion_push",
-        "israel_expands_ground_approved",
         "katz_litani_control",
-        "irgc_commanding_hezbollah",
+        "all_litani_bridges_destroyed",
+        "annexation_litani_rhetoric",
+        "gaza_scale_threat",
+        "israel_deploys_more_troops",
+        "qasmiya_bridge_destroyed",
+        "hamas_official_sidon_killed",
+        "lebanon_ground_multiple_axes",
+        "hezbollah_resistance_grounded",
+        "million_displaced",
+        "hezbollah_4_killed_ground",
         "israel_ground_invasion_lebanon",
-        "annexation_litani_rhetoric"
+        "irgc_commanding_hezbollah",
+        "litani_invasion_push",
+        "gaza_comparison_rhetoric",
+        "battle_just_begun_rhetoric",
+        "hezbollah_tanks_destroyed_50",
+        "israel_expands_ground_approved",
+        "israel_ground_operations_south",
+        "hezbollah_record_attacks_day"
       ],
       "current_probability": 28,
       "trend": "up",
       "zone": "elevated",
-      "notes": "Day 20 auto - DETERRENT 28% (up). Day 40 auto - UP 38% (was 36%). Chatham House: occupation re-energizes Hezbollah. Katz: forces stay indefinitely. 1300+ killed. Ground deepening past Litani. Indonesia demands UN probe on 3 peacekeepers killed. 65+ Hezbollah attacks/day. Formal occupation plan.",
+      "notes": "Day 20 auto - DETERRENT 28% (up). Day 21 auto - % (up). Ground operations intensifying south of Litani. IDF Multidimensional Unit 40+ Hezbollah killed since ops began. Israel threatens more bridge destruction (Al Jazeera Apr 3). Chatham House warns occupation re-energizes Hezbollah. 1300+ killed in Lebanon. Katz: forces stay indefinitely. 65+ attacks/day continue. Foreign Affairs: 'Lebanon's coming collapse.' IDF stretched. Formal occupation plan confirmed. DIRECTION: SLOW ESCALATION - occupation deepening.",
       "coupling_boost": 5,
       "current_probability_with_coupling": 55,
       "latest_news": [
@@ -377,20 +390,17 @@
         "indonesia_un_investigation_peacekeepers": "2026-04-02T00:01:37+00:00",
         "israel_formal_occupation_plan": "2026-04-02T05:01:43.918727+00:00"
       },
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00"
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00"
     },
     "turkey": {
       "base_rate": 8,
       "active_signals": [
-        "turkey_iran_clarification",
-        "nato_third_intercept",
-        "nato_missile_intercept_latest",
         "nato_missile_intercept_4th"
       ],
       "current_probability": 2,
       "trend": "stable",
       "zone": "deterrent",
-      "notes": "Day 20 auto - DETERRENT 2% (stable). Day 40 auto - STABLE 3%. No new intercepts since March 30. 4th intercept pattern established. Patriot at Kurecik.",
+      "notes": "Day 20 auto - DETERRENT 2% (stable). Day 21 auto - % (stable). No new intercepts since March 30. 4th intercept pattern established. Patriot at Kurecik. DIRECTION: STABLE.",
       "coupling_boost": 9,
       "current_probability_with_coupling": 24,
       "latest_news": [
@@ -403,7 +413,7 @@
           "impact": "up"
         }
       ],
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "signal_timestamps": {
         "nato_missile_intercept_4th": "2026-03-30T16:00:00Z",
         "turkey_iran_clarification": "2026-03-30T17:00:00Z"
@@ -415,22 +425,24 @@
       "current_probability": 3,
       "trend": "stable",
       "zone": "deterrent",
-      "notes": "Day 20 auto - DETERRENT 3% (stable). Day 40 auto - STABLE 3%. US Threat Assessment: India-Pakistan risk for nuclear conflict. CFR Tier II. Background risk only.",
+      "notes": "Day 20 auto - DETERRENT 3% (stable). Day 20 auto - % (stable). Day 40 auto - STABLE 3%. US Threat Assessment: India-Pakistan risk for nuclear conflict. CFR Tier II. Background risk only.",
       "coupling_boost": 0,
       "current_probability_with_coupling": 3,
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "signal_timestamps": {}
     },
     "russia": {
       "base_rate": 7,
-      "active_signals": [],
+      "active_signals": [
+        "finland_nuclear_weapons"
+      ],
       "current_probability": 2,
       "trend": "up",
       "zone": "deterrent",
-      "notes": "Day 20 auto - DETERRENT 2% (up). Day 40 auto - UP 5% (was 5%). Finland nuclear hosting vote IMMINENT early April. Coalition majority. Kremlin warns countermeasures. France expanding arsenal. Arms Control: Finland joining European deterrent concept.",
+      "notes": "Day 20 auto - DETERRENT 2% (up). Day 21 auto - % (up). Finland nuclear hosting vote IMMINENT this week - coalition majority ensures passage. Kremlin warns countermeasures. France expanding arsenal + deployment to NATO allies. Arms Control: Finland joining European nuclear deterrent concept. Putin reaffirms Iran partnership. DIRECTION: ELEVATED BASELINE - Finland vote is catalyst this week.",
       "coupling_boost": 14,
-      "current_probability_with_coupling": 24,
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "current_probability_with_coupling": 26,
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "signal_timestamps": {
         "russia_drone_shipment_confirmed": "2026-03-26T10:00:00Z",
         "putin_oligarchs_donate_defense": "2026-03-28T03:00:00Z",
@@ -451,7 +463,15 @@
           "text": "Finland parliament expected to vote on lifting 1987 nuclear ban this week. Coalition majority ensures passage. Kremlin: proposal 'leads to escalation of tensions.' France also expanding nuclear arsenal and offering deployment to NATO allies. Finland joining new European nuclear deterrent concept.",
           "impact": "up"
         }
-      ]
+      ],
+      "changed_signals": {
+        "new": [
+          "finland_nuclear_vote_this_week: Finland parliament vote on lifting 1987 nuclear ban expected this week - coalition majority ensures passage",
+          "france_nuclear_expansion_arsenal: France expanding nuclear arsenal, retaining Cold War-era fissile materials for new warheads, offering deployment to NATO allies",
+          "france_uk_nuclear_cooperation: UK joins French nuclear cooperation arrangement, Northwood Declaration deepens bilateral coordination"
+        ],
+        "removed": []
+      }
     },
     "china": {
       "base_rate": 12,
@@ -461,10 +481,10 @@
       "current_probability": 8,
       "trend": "stable",
       "zone": "deterrent",
-      "notes": "Day 20 auto - DETERRENT 8% (stable). Day 40 auto - STABLE 10%. US re-evaluates 2027 invasion. PLA steady progress. Trump-Xi summit May 14-15. ASPI: 2026 not the year. No invasion detected.",
+      "notes": "Day 20 auto - DETERRENT 8% (stable). Day 21 auto - % (stable). Trump-Xi summit planned May 14-15. US intel 2026: not planning 2027 invasion. PLA steady. DIRECTION: STABLE - diplomatic engagement.",
       "coupling_boost": 0,
       "current_probability_with_coupling": 17,
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "signal_timestamps": {
         "nuclear_war_preparation_report": "2026-03-30T00:00:00Z",
         "us_intel_no_2027_invasion": "2026-03-30T18:04:02.489882+00:00",
@@ -481,18 +501,17 @@
     "north_korea": {
       "base_rate": 8,
       "active_signals": [
-        "dprk_artillery_drill",
         "dprk_icbm_engine_test",
-        "dprk_south_korea_tensions",
-        "dprk_missile_test"
+        "dprk_artillery_drill",
+        "dprk_south_korea_tensions"
       ],
       "current_probability": 5,
       "trend": "stable",
       "zone": "deterrent",
-      "notes": "Day 20 auto - DETERRENT 5% (stable). Day 40 auto - STABLE 7%. ICBM engine test March 28. 7+ days quiet. Kim: irreversibly cement nuclear status. Watch for flight test.",
+      "notes": "Day 20 auto - DETERRENT 5% (stable). Day 21 auto - % (stable). Solid-fuel ICBM engine test March 29. 6+ days quiet since. Kim: irreversibly cement nuclear status. No flight test. DIRECTION: STABLE - watching for ICBM flight test.",
       "coupling_boost": 0,
       "current_probability_with_coupling": 30,
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "signal_timestamps": {
         "dprk_belarus_treaty": "2026-03-28T02:00:00Z",
         "dprk_icbm_engine_test": "2026-04-01T18:01:58.026764+00:00",
@@ -565,14 +584,16 @@
     "russia_ukraine": {
       "base_rate": 25,
       "active_signals": [
-        "russia_1000_drone_spring",
+        "ukraine_ust_luga_4th_night",
         "russia_982_drone_record",
-        "kirishi_refinery_halts"
+        "russia_1000_drone_spring",
+        "kirishi_refinery_halts",
+        "moscow_drone_swarm"
       ],
       "current_probability": 27,
-      "trend": "up",
+      "trend": "stable",
       "zone": "elevated",
-      "notes": "Day 20 auto - DETERRENT 27% (up). Day 40 auto - UP 30% (was 30%). Russia rejects Easter ceasefire. 289 drones overnight. Putin reaffirms war goals. Polymarket: 2% ceasefire by April 30. Talks paused due to Iran war. Donbas demand.",
+      "notes": "Day 20 auto - DETERRENT 27% (stable). Day 21 auto - % (up). Russia rejects Easter ceasefire, launches 289 drones overnight. Putin reaffirms war goals. Ukraine striking Russian oil infrastructure (Kirishi, Ust-Luga). Polymarket: 2% ceasefire by April 30. Talks formally paused due to Iran war. Donbas territorial demand persists. DIRECTION: STABLE-HIGH - grinding war continues.",
       "coupling_boost": 5,
       "current_probability_with_coupling": 43,
       "latest_news": [
@@ -608,7 +629,7 @@
         "russia_doctrine_shift_concern": "2026-04-01T06:04:23.870910+00:00",
         "russia_halt_talks_territory": "2026-04-02T00:01:37+00:00"
       },
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00",
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00",
       "changed_signals": {
         "new": [
           "peace_talks_paused: US-Russia-Ukraine peace talks formally paused due to Iran war",
@@ -622,17 +643,18 @@
       "base_rate": 25,
       "active_signals": [
         "ceasefire_expired_ghazab_resumes",
-        "pakistan_brokering",
-        "ttp_ceasefire",
         "ceasefire_south_asia",
-        "ceasefire_pakistan_conditional"
+        "ttp_ceasefire",
+        "pakistan_brokering",
+        "ceasefire_pakistan_conditional",
+        "china_mediation"
       ],
       "current_probability": 15,
       "trend": "down",
       "zone": "elevated",
-      "notes": "Day 20 auto - DETERRENT 15% (down). Day 40 auto - DOWN 13% (was 14%). China mediating in Urumqi. Diplomatic track active. Taliban mid-level delegation. Fighting lower intensity. Mortar attacks continue.",
+      "notes": "Day 20 auto - DETERRENT 15% (down). Day 21 auto - % (down). China mediating ceasefire talks in Urumqi - confirmed by both sides. Taliban sent mid-level delegation. Fighting continues at lower intensity - mortar killed 2 civilians in Kunar Wednesday. Diplomatic track active. DIRECTION: DE-ESCALATING - ceasefire talks progressing.",
       "coupling_boost": 0,
-      "current_probability_with_coupling": 19,
+      "current_probability_with_coupling": 17,
       "latest_news": [
         {
           "headline": "Pakistan-Afghanistan ceasefire talks resume in Urumqi, China mediating for durable ceasefire",
@@ -655,120 +677,106 @@
         "china_mediated_pakistan_afghanistan_talks": "2026-04-02T05:01:43.918727+00:00",
         "china_mediated_ceasefire_talks_ongoing": "2026-04-02T06:02:39.787534+00:00"
       },
-      "last_signal_update": "2026-04-03T21:02:42.493982+00:00"
+      "last_signal_update": "2026-04-03T21:40:48.254112+00:00"
     }
   },
   "global_war_probability": 19,
   "global_zone": "elevated",
   "top_signals": [
-    "\ud83d\udd34 IRAN NUCLEAR: 7% (DETERRENT) \u27a1\ufe0f",
+    "\ud83d\udd34 IRAN NUCLEAR: 6% (DETERRENT) \u27a1\ufe0f",
     "\ud83d\udd34 IRAN WAR: 55% (CRITICAL) \ud83d\udd3a",
-    "\u2622\ufe0f ISRAEL-LEBANON: 38% (CRITICAL) \ud83d\udd3a",
-    "\ud83d\udee1\ufe0f TURKEY-NATO: 3% (DETERRENT) \u27a1\ufe0f",
+    "\u2622\ufe0f ISRAEL-LEBANON: 28% (ELEVATED) \ud83d\udd3a",
+    "\ud83d\udee1\ufe0f TURKEY-NATO: 2% (DETERRENT) \u27a1\ufe0f",
     "\ud83d\udee1\ufe0f INDIA-PAKISTAN: 3% (DETERRENT) \u27a1\ufe0f",
-    "\ud83d\udee1\ufe0f RUSSIA-NATO: 5% (DETERRENT) \ud83d\udd3a",
-    "\ud83d\udee1\ufe0f CHINA-TAIWAN: 10% (DETERRENT) \u27a1\ufe0f",
-    "\ud83d\udd34 DPRK: 7% (DETERRENT) \u27a1\ufe0f",
-    "\u2622\ufe0f RUSSIA-UKRAINE: 30% (ELEVATED) \ud83d\udd3a",
-    "\ud83d\udfe1 PAKISTAN-AFGHANISTAN: 13% (ELEVATED) \u2198\ufe0f"
+    "\ud83d\udee1\ufe0f RUSSIA-NATO: 4% (DETERRENT) \ud83d\udd3a",
+    "\ud83d\udee1\ufe0f CHINA-TAIWAN: 8% (DETERRENT) \u27a1\ufe0f",
+    "\ud83d\udd34 DPRK: 5% (DETERRENT) \u27a1\ufe0f",
+    "\u2622\ufe0f RUSSIA-UKRAINE: 27% (ELEVATED) \u27a1\ufe0f",
+    "\ud83d\udfe1 PAKISTAN-AFGHANISTAN: 13% (DETERRENT) \u2198\ufe0f"
   ],
   "changed_signals": {
     "new": [
-      "iran_claims_lincoln_strike: Iran claims missile strike on USS Abraham Lincoln (4 ballistic missiles) \u2014 unconfirmed, massive escalation if verified",
-      "iran_30_missiles_israel_cluster: Iran fires ~30 missiles at Israel including 3 cluster munitions \u2014 sustained barrage",
-      "houthi_iran_hezbollah_joint_3rd: Houthis claim 3rd joint missile operation with Iran and Hezbollah targeting Israel",
-      "cnn_iran_half_launchers_retained: CNN reports Iran retains half its mobile missile launchers + massive drone fleet after 35+ days of strikes",
-      "brent_109_surge: Brent crude surges to $109/Bbl \u2014 up 7.78% in single day, 33.94% in one month",
-      "iran_envoy_no_enrich_restart: Iran's IAEA envoy Najafi denies enrichment restart \u2014 de-escalatory signal on nuclear track",
-      "france_nuclear_expansion: France expanding nuclear arsenal, offering potential deployment to NATO allies \u2014 European nuclear posture shift"
+      "houthi_formal_intervention_mar28: Houthis formally join Iran war with missile salvo at Israel - opening fourth front",
+      "30_nations_hormuz_thursday: 30+ nations convening Thursday on diplomatic/political reopening of Strait of Hormuz",
+      "finland_nuclear_vote_this_week: Finland parliament expected to vote this week on lifting nuclear hosting ban",
+      "france_nuclear_expansion_arsenal: France expanding nuclear arsenal, retaining Cold War fissile materials, offering deployment to NATO allies",
+      "france_uk_nuclear_cooperation: UK joins French nuclear cooperation arrangement under Northwood Declaration",
+      "macron_iran_consultation: Macron says Hormuz reopening 'can only be done in consultation with Iran'",
+      "brent_105_118_volatile: Brent crude $105-118 range - volatile, spiked to $118 on Mar 31"
     ],
     "removed": [],
-    "zone_changes": []
+    "zone_changes": [
+      "pakistan_afghanistan: ELEVATED \u2192 DETERRENT (down to 13%) - China ceasefire talks progressing"
+    ]
   },
   "latest_news": [
     {
-      "headline": "NATO intercepts 4th Iranian ballistic missile over Turkish airspace",
-      "source": "Al Arabiya / Bloomberg / Turkish Defense Ministry",
-      "time": "2026-03-30T16:00:00Z",
-      "zone": "turkey",
-      "text": "NATO successfully intercepted a fourth Iranian ballistic missile heading toward Turkey on March 30. US Patriot deployed to Malatya Kurecik radar base. Tehran asked for clarification. Escalating pattern of Iranian missiles entering Turkish airspace during Iran war.",
+      "headline": "Trump Hormuz deadline 2 days away - Pentagon reviewing 4 ground invasion scenarios",
+      "source": "PBS/Bloomberg/Axios",
+      "time": "2026-04-03T21:40:48.254112+00:00",
+      "zone": "iran_conventional",
+      "text": "April 6 deadline approaching. Pentagon scenarios: Kharg Island, Larak, Abu Musa, tanker seizure. Pentagon requesting $200B+ supplemental funding.",
       "impact": "up"
     },
     {
-      "headline": "E3 (UK/France/Germany) formally declare Iran non-compliant at IAEA Board",
-      "source": "UK Government (GOV.UK) / IAEA",
-      "time": "2026-03-31T00:00:00Z",
+      "headline": "Iran IAEA envoy denies enrichment restart - de-escalatory signal",
+      "source": "Al Arabiya/AFP",
+      "time": "2026-04-03T21:40:48.254112+00:00",
       "zone": "iran_nuke",
-      "text": "E3 joint statement to IAEA Board of Governors: Iran non-compliant with NPT Safeguards Agreement. IAEA unable to access nuclear facilities or account for enriched uranium stockpile for 8+ months. Outstanding concerns about possible undeclared nuclear material.",
+      "text": "Iran's IAEA envoy Najafi denies Tehran has restarted enrichment. Called Bushehr strikes a war crime. JINSA report confirms enrichment sites destroyed in prior strikes.",
+      "impact": "down"
+    },
+    {
+      "headline": "Houthis formally join Iran war - open fourth front against Israel",
+      "source": "Soufan Center/JPost",
+      "time": "2026-04-03T21:40:48.254112+00:00",
+      "zone": "iran_conventional",
+      "text": "Houthis formally join Iran's war with missile salvo at Israel. Joint operations with Iran and Hezbollah confirmed. Red Sea/Bab al-Mandeb threat expanding.",
       "impact": "up"
     },
     {
-      "headline": "Day 32: US-Israeli strikes hit Isfahan 'military sites' \u2014 city hosts nuclear facilities",
-      "source": "Al Jazeera / Fars News / AP",
-      "time": "2026-03-31T18:00:00Z",
-      "zone": "iran_conventional",
-      "text": "US-Israeli forces strike Isfahan province military sites. Isfahan hosts nuclear research facilities and uranium enrichment plant. Explosions reported. Day 32 of war. Trump at crossroads: military wind-down vs. final push on targets.",
-      "impact": "up"
-    },
-    {
-      "headline": "Trump at the crossroads: Strike harder or push for ceasefire",
-      "source": "ILTV / Bloomberg / ABC News",
-      "time": "2026-03-31T18:00:00Z",
-      "zone": "iran_conventional",
-      "text": "Trump weighing whether to escalate strikes on remaining Iranian targets or push for ceasefire deal. IDF says 'days from all targets.' Hegseth reveals covert troop visit. 15-point ceasefire plan submitted via Pakistan. Iran reviewing but no formal response.",
-      "impact": "stable"
-    },
-    {
-      "headline": "Russia weighs halt to peace talks unless Ukraine cedes territory",
-      "source": "Japan Times / Moscow Times / NPR",
-      "time": "2026-03-31T12:01:26Z",
+      "headline": "Russia rejects Easter ceasefire, launches 289 drones overnight",
+      "source": "Kyiv Independent/ISW",
+      "time": "2026-04-03T21:40:48.254112+00:00",
       "zone": "russia_ukraine",
-      "text": "Russia threatens to halt peace talks unless Ukraine cedes Donbas territory. US gave June deadline for deal. Negotiations 'extending not ending' war. Oil price shock from Iran war boosts Russian revenue.",
+      "text": "Russia rejected Zelenskyy's Easter ceasefire offer. Putin reaffirms war goals. ISW: insists on continuing missile strikes on Ukrainian cities.",
       "impact": "up"
     },
     {
-      "headline": "North Korea conducts high-thrust solid-fuel ICBM engine test",
-      "source": "Politico / KCNA / AP",
-      "time": "2026-03-29T18:00:00Z",
-      "zone": "north_korea",
-      "text": "Kim Jong Un observes test of high-thrust solid-fuel ICBM engine capable of reaching US mainland. Kim pledges to 'irreversibly cement' DPRK nuclear status. DNI 2026 report confirms NK has successfully tested ICBMs.",
-      "impact": "up"
-    },
-    {
-      "headline": "NATO intercepts 4th Iranian missile \u2014 Turkey demands clarification from Tehran",
-      "source": "Bloomberg / Al Arabiya",
-      "time": "2026-03-30T16:00:00Z",
-      "zone": "turkey",
-      "text": "Fourth Iranian ballistic missile intercepted by NATO over Turkey in less than 3 weeks. Pattern of stray Iranian missiles entering Turkish airspace escalating NATO tensions. Patriot deployed to Kurecik radar base.",
-      "impact": "up"
-    },
-    {
-      "headline": "Fighting resumes Pakistan-Afghanistan after Eid ceasefire expires",
-      "source": "Washington Post / Al Jazeera",
-      "time": "2026-03-25T09:00:00Z",
-      "zone": "pakistan_afghanistan",
-      "text": "Eid ceasefire expired with no extension. Pakistani artillery shelling Kunar province, 2 civilians killed, 8 wounded. Operation Ghazab Lil Haq resumed. Pakistan simultaneously brokering US-Iran peace talks in Islamabad.",
-      "impact": "up"
-    },
-    {
-      "headline": "Taiwan defense minister calls China military buildup 'pressing threat'",
-      "source": "Reuters",
-      "time": "2026-03-20T00:00:00Z",
-      "zone": "china",
-      "text": "Taiwan Defense Minister Wellington Koo calls PLA military buildup a 'pressing threat.' US Intel 2026 report: China not planning Taiwan invasion in 2027 but steady progress on Taiwan-seizure capabilities. Trump-Xi summit planned May 14-15.",
-      "impact": "stable"
-    },
-    {
-      "headline": "Russia nuclear doctrine shifting from defensive deterrence to offensive intimidation",
-      "source": "RealClearDefense / Russia Matters / Belfer Center",
-      "time": "2026-03-09T00:00:00Z",
+      "headline": "Finland nuclear hosting vote expected this week - coalition majority",
+      "source": "Reuters/Defense News",
+      "time": "2026-04-03T21:40:48.254112+00:00",
       "zone": "russia",
-      "text": "Russia transitioning nuclear posture from traditional defensive deterrence toward offensive nuclear intimidation due to Ukraine war. ATAs warn 'deliberate escalation' including direct NATO conflict and 'nuclear exchanges.' Russia serving as backstage partner in Iran war.",
+      "text": "Finland parliament expected to vote on lifting 1987 nuclear ban this week. Coalition majority ensures passage. Kremlin warns 'leads to escalation of tensions.'",
+      "impact": "up"
+    },
+    {
+      "headline": "Israel threatens more Lebanon bridge destruction as invasion deepens",
+      "source": "Al Jazeera/NYT",
+      "time": "2026-04-03T21:40:48.254112+00:00",
+      "zone": "israel_lebanon",
+      "text": "Israeli ground operations intensifying south of Litani. IDF kills 40+ Hezbollah in recent ops. Chatham House warns occupation re-energizes Hezbollah. 1300+ killed in Lebanon.",
+      "impact": "up"
+    },
+    {
+      "headline": "China mediates Pakistan-Afghanistan ceasefire talks in Urumqi",
+      "source": "Al Jazeera/AP/Bloomberg",
+      "time": "2026-04-03T21:40:48.254112+00:00",
+      "zone": "pakistan_afghanistan",
+      "text": "Both countries confirm holding talks in Urumqi. China seeking 'durable' ceasefire. Taliban sent mid-level delegation. Fighting at lower intensity.",
+      "impact": "down"
+    },
+    {
+      "headline": "Brent crude volatile $105-118 - Hormuz blockade effect",
+      "source": "Yahoo Finance/Bloomberg",
+      "time": "2026-04-03T21:40:48.254112+00:00",
+      "zone": "iran_conventional",
+      "text": "Brent spiked to $118 on March 31, settled ~$105.67 April 1. Volatile amid Hormuz closure and 30+ nations convening Thursday.",
       "impact": "up"
     }
   ],
-  "outlook": "CRITICAL (Day 40). WAR MONTH 2 DAY 12. CENTCOM debunks Lincoln strike claim but war intensifies. Trump April 6 Hormuz deadline 3 days away \u2014 Pentagon reviewing 4 ground scenarios. Iran retains half missile launchers. ~30 missiles at Israel incl cluster. Joint Houthi-Hezbollah-Iran ops. Brent volatile. Israel occupation deepening. Finland nuclear vote imminent. Russia rejects ceasefire. Pakistan-Afghanistan talks in Urumqi. Global threat: CRITICAL (22%).",
-  "de_escalation_watch": "DE-ESCALATION: Iran IAEA envoy denies enrichment restart. CENTCOM debunks Lincoln strike. JINSA confirms enrichment destroyed. China mediating Pakistan-Afghanistan. DPRK quiet 7+ days. ESCALATION: Trump April 6 Hormuz deadline. ~30 missiles at Israel. Joint Houthi-Hezbollah-Iran ops. Israel occupation advancing. Russia rejects ceasefire. Finland vote imminent. Brent volatile. VERDICT: WAR INTENSIFYING. April 6 deadline is critical inflection point.",
+  "outlook": "CRITICAL (Day 41). WAR MONTH 2 DAY 14. Trump April 6 Hormuz deadline 2 DAYS AWAY - critical inflection point. Pentagon reviewing 4 ground invasion scenarios. Iran retains half missile launchers. Joint Houthi-Hezbollah-Iran ops. Brent volatile $105-118. Israel occupation deepening in Lebanon. Finland nuclear vote imminent this week. France expanding nuclear arsenal. Russia rejects Easter ceasefire. Pakistan-Afghanistan talks progressing in Urumqi. Global threat: ELEVATED (19%).",
+  "de_escalation_watch": "DE-ESCALATION: Iran IAEA envoy denies enrichment restart. CENTCOM debunks Lincoln strike. JINSA confirms enrichment destroyed. China mediating Pakistan-Afghanistan. DPRK quiet 7+ days. ESCALATION: Trump April 6 Hormuz deadline (2 days). Joint Houthi-Hezbollah-Iran ops. Israel occupation advancing. Russia rejects ceasefire. Finland nuclear hosting vote imminent. France nuclear expansion. Brent volatile. VERDICT: CRITICAL MOMENT - April 6 deadline is THE inflection point. Everything hinges on next 48 hours.",
   "predictions": [
     {
       "tracker_id": "china",
@@ -777,7 +785,7 @@
       "value": 8,
       "description": "Status quo maintained. No PLA activity changes detected. Taiwan Strait remains stable.",
       "confidence": 70,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     },
@@ -788,7 +796,7 @@
       "value": 39,
       "description": "IRAN WAR remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 24
     },
@@ -799,7 +807,7 @@
       "value": 29,
       "description": "ISRAEL-LEBANON remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 14
     },
@@ -810,7 +818,7 @@
       "value": 27,
       "description": "RUSSIA-UKRAINE remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 12
     },
@@ -821,7 +829,7 @@
       "value": 15,
       "description": "PAKISTAN-AFGHANISTAN remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     },
@@ -832,7 +840,7 @@
       "value": 6,
       "description": "IRAN NUCLEAR remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     },
@@ -843,7 +851,7 @@
       "value": 5,
       "description": "DPRK remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     },
@@ -854,7 +862,7 @@
       "value": 3,
       "description": "TURKEY-NATO remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     },
@@ -865,7 +873,7 @@
       "value": 3,
       "description": "INDIA-PAKISTAN remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     },
@@ -876,15 +884,15 @@
       "value": 3,
       "description": "RUSSIA-NATO remains stable at current levels. No significant changes anticipated.",
       "confidence": 35,
-      "expires_at": "2026-04-04T21:02:46Z",
+      "expires_at": "2026-04-04T21:40:56Z",
       "eval_type": "probability_above",
       "eval_value": 0
     }
   ],
   "eval_stats": {
     "total": 3590,
-    "correct": 1849,
-    "accuracy": 52
+    "correct": 1831,
+    "accuracy": 51
   },
   "signal_timestamps": {
     "russian_offensive": "2026-03-21T12:00:00Z",
