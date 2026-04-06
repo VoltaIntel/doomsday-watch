@@ -123,7 +123,7 @@ def analyze_flights(states, zone_config):
     # Calculate disruption
     flight_count = len(flights)
     baseline = zone_config["baseline_flights"]
-    disruption_pct = round((1 - flight_count / baseline) * 100) if baseline > 0 else 0
+    disruption_pct = max(0, round((1 - flight_count / baseline) * 100)) if baseline > 0 else 0
     
     return {
         "flight_count": flight_count,
@@ -175,7 +175,7 @@ def main():
         }
         
         # Generate signals for significant disruptions
-        if analysis["disruption_pct"] >= 70 and analysis["flight_count"] > 0:
+        if analysis["disruption_pct"] >= 70:
             sig = f"airspace_{zone_id}_closed"
             new_signals.append({
                 "signal": sig,

@@ -844,7 +844,6 @@ body {
     </div>
   </div>
 
-  </div>
 
   <!-- TRACKERS -->
   <div class="trackers-section">
@@ -880,7 +879,7 @@ body {
     <div class="news-filter-bar" id="newsFilterBar">
       <button class="filter-btn active" data-filter="all" onclick="filterNews('all', this)">ALL</button>
       <button class="filter-btn" data-filter="confirmed" onclick="filterNews('confidence:confirmed', this)">✓ CONFIRMED</button>
-      <button class="filter-btn" data-filter="developing" onclick="filterNews('confidence:developing', this)">● DEVELOPING</button>
+      <button class="filter-btn" data-filter="reported" onclick="filterNews('confidence:reported', this)">● REPORTED</button>
       <button class="filter-btn" data-filter="western" onclick="filterNews('source:western', this)">WESTERN</button>
       <button class="filter-btn" data-filter="arabic" onclick="filterNews('source:arabic', this)">ARABIC</button>
       <button class="filter-btn" data-filter="russian" onclick="filterNews('source:russian', this)">RUSSIAN</button>
@@ -911,7 +910,7 @@ const state = {
     { id: "russia_ukraine", name: "RUSSIA-UKRAINE", emoji: "🇺🇦", prob: 100, zone: "imminent", trend: "rising", signals: ["OFFENSIVE", "MASS BOMBARDMENT", "KYIV UNDER ATTACK", "SAMP/T DELIVERED", "FRANCE ANTI-BALLISTIC"] },
     { id: "russia", name: "RUSSIA-NATO", emoji: "🇷🇺", prob: 76, zone: "imminent", trend: "rising", signals: ["IRAN ARMS", "DPRK DRONES→IRAN", "FINLAND NUKES", "CEASEFIRE COLLAPSE"] },
     { id: "north_korea", name: "NORTH KOREA", emoji: "🇰🇵", prob: 68, zone: "imminent", trend: "rising", signals: ["10-MISSILE SALVO", "KN-25 NUCLEAR WARNING", "MRL TEST", "KCNA THREAT"] },
-    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 44, zone: "critical", trend": "rising", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "HIDDEN HEU", "WAR DESPERATION RISK"] },
+    { id: "iran_nuke", name: "IRAN NUCLEAR", emoji: "🇮🇷", prob: 44, zone: "critical", trend: "rising", signals: ["60% ENRICHMENT", "ISFAHAN BURIED", "SCIENTISTS KILLED", "HIDDEN HEU", "WAR DESPERATION RISK"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 37, zone: "critical", trend: "rising", signals: ["PLA FLIGHTS RESUMED", "TAIWAN $40B DEFENSE", "THAAD REDEPLOYED", "TRUMP-DELAY XI SUMMIT"] },
     { id: "india", name: "INDIA-PAKISTAN", emoji: "🇮🇳", prob: 25, zone: "elevated", trend: "stable", signals: ["MODI-PEZESHKIAN CALL", "DIPLOMATIC BALANCING"] },
     { id: "china", name: "CHINA-TAIWAN", emoji: "🇨🇳", prob: 15, zone: "deterrent", trend: "stable", signals: ["$14B ARMS DEAL", "THAAD DEPARTED", "7 WARPLANES", "ME GAP"] }
@@ -929,51 +928,158 @@ const state = {
 };
 
 // ===== RENDER =====
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value);
+}
+
+function normalizeTrend(trend) {
+  var value = String(trend || 'stable').toLowerCase().trim();
+  if (['up', 'rising', 'rise', 'escalating', 'escalation'].indexOf(value) >= 0) return 'rising';
+  if (['down', 'falling', 'fall', 'de-escalating', 'deescalating', 'declining'].indexOf(value) >= 0) return 'falling';
+  return 'stable';
+}
+
+function getNewsConfidence(item) {
+  var confidence = String((item && item.confidence) || 'reported').toLowerCase();
+  return confidence === 'developing' ? 'reported' : confidence;
+}
+
+function classifySourceCategory(source) {
+  var value = String(source || '').toLowerCase().trim();
+  if (!value) return 'other';
+  if (["reuters", "associated press", "ap ", "apnews", "afp", "bbc", "new york times", "nyt", "wsj", "wall street journal", "washington post", "cnbc", "cnn", "france 24", "the hindu", "abc news", "nbc", "cbs", "bloomberg", "guardian"].some(function(token) { return value.indexOf(token) >= 0; })) return 'western';
+  if (["tass", "ria", "interfax", "izvestia", "kommersant", "rossiyskaya", "rt ", "moscow times"].some(function(token) { return value.indexOf(token) >= 0; })) return 'russian';
+  if (["xinhua", "cgtn", "china daily", "global times", "scmp", "south china morning post"].some(function(token) { return value.indexOf(token) >= 0; })) return 'chinese';
+  if (["al jazeera", "al arabiya", "irna", "isna", "fars", "tasnim", "middle east", "haaretz", "times of israel", "jerusalem post", "the national", "gulf news", "khaleej", "oman news", "petra", "anadolu", "daily sabah", "hurriyet", "israel hayom"].some(function(token) { return value.indexOf(token) >= 0; })) return 'arabic';
+  if (["white house", "pentagon", "iaea", "nato", "centcom", "stratcom", "unsc", "idf", "irgc", "kremlin", "un security council", "truth social"].some(function(token) { return value.indexOf(token) >= 0; })) return 'official';
+  return 'other';
+}
+
+function getSourceCategories(item) {
+  var categories = [];
+  (item.source_types || []).forEach(function(value) {
+    if (['western', 'arabic', 'russian', 'chinese', 'official', 'other'].indexOf(value) >= 0 && categories.indexOf(value) === -1) {
+      categories.push(value);
+    }
+  });
+  (item.sources || []).forEach(function(source) {
+    var category = classifySourceCategory(source);
+    if (categories.indexOf(category) === -1) categories.push(category);
+  });
+  return categories;
+}
+
+function matchesSourceFilter(item, filterValue) {
+  return getSourceCategories(item).indexOf(filterValue) >= 0;
+}
+
+function formatShortTime(timeStr) {
+  var value = String(timeStr || '');
+  if (!value) return 'LIVE';
+  if (/^\d+H$/.test(value)) return value;
+  if (value.indexOf('T') >= 0) {
+    var date = new Date(value);
+    if (!isNaN(date.getTime())) return date.toISOString().substring(11, 16);
+  }
+  return value.length > 5 ? value.substring(0, 5) : value;
+}
+
+function getTimeBlockLabel(timeStr) {
+  var value = String(timeStr || '');
+  var relativeMatch = value.match(/^(\d+)H$/);
+  if (relativeMatch) {
+    var hours = parseInt(relativeMatch[1], 10);
+    if (hours < 6) return 'LAST 6 HOURS';
+    if (hours < 12) return '6-12 HOURS AGO';
+    if (hours < 24) return '12-24 HOURS AGO';
+    return 'EARLIER';
+  }
+  if (value.indexOf('T') >= 0) {
+    var date = new Date(value);
+    if (!isNaN(date.getTime())) {
+      var hoursAgo = (Date.now() - date.getTime()) / 3600000;
+      if (hoursAgo < 6) return 'LAST 6 HOURS';
+      if (hoursAgo < 12) return '6-12 HOURS AGO';
+      if (hoursAgo < 24) return '12-24 HOURS AGO';
+      return 'EARLIER';
+    }
+  }
+  return 'RECENT';
+}
+
 function renderTrackers() {
   const grid = document.getElementById("trackersGrid");
   grid.innerHTML = "";
-  
-  // Sort by probability descending (highest first)
+
   var sorted = state.trackers.slice().sort(function(a, b) { return b.prob - a.prob; });
-  
-  sorted.forEach((t, i) => {
+
+  sorted.forEach(function(t, i) {
     const card = document.createElement("div");
+    const trend = normalizeTrend(t.trend);
+    const confidence = String(t.confidence || 'LOW').toUpperCase();
     card.className = `tracker ${t.zone}`;
     card.style.animationDelay = `${i * 0.1}s`;
 
-    let signalHTML;
-    function sigClass(s) {
-      const cls = s.positive ? "signal active positive" : "signal active";
-      const name = s.name || s;
-      const title = s.activated_at ? ` title="Activated: ${s.activated_at}"` : "";
+    function sigClass(signal) {
+      const isPositive = !!(signal && signal.positive);
+      const cls = isPositive ? "signal active positive" : "signal active";
+      const name = escapeHtml(signal && signal.name ? signal.name : signal);
+      const title = signal && signal.activated_at ? ` title="Activated: ${escapeAttr(signal.activated_at)}"` : "";
       return `<span class="${cls}"${title}>${name}</span>`;
     }
-    if (t.signals.length === 0) {
+
+    let signalHTML;
+    if (!t.signals || t.signals.length === 0) {
       signalHTML = '<span class="signal">NO ACTIVE SIGNALS</span>';
     } else if (t.signals.length <= 5) {
       signalHTML = t.signals.map(sigClass).join("");
     } else {
       const shown = t.signals.slice(0, 5).map(sigClass).join("");
-      const hidden = t.signals.slice(5).map(s => sigClass(s).replace('class="', 'class="hidden-signal ').replace('">', '" style="display:none">')).join("");
-      const moreBtn = `<span class="signal more-btn" onclick="toggleSignals(this)" data-count="${t.signals.length - 5}">+${t.signals.length - 5} MORE</span>`;
+      const hidden = t.signals.slice(5).map(function(signal) {
+        return sigClass(signal).replace('class="', 'class="hidden-signal ').replace('">', '" style="display:none">');
+      }).join("");
+      const moreBtn = `<span class="signal more-btn" data-count="${t.signals.length - 5}">+${t.signals.length - 5} MORE</span>`;
       signalHTML = shown + moreBtn + hidden;
     }
 
-    const trendIcon = t.trend === "rising" ? "▲" : t.trend === "falling" ? "▼" : "—";
-    const trendClass = t.trend === "rising" ? "trend-up" : t.trend === "falling" ? "trend-down" : "trend-stable";
+    const trendIcon = trend === "rising" ? "▲" : trend === "falling" ? "▼" : "—";
+    const trendClass = trend === "rising" ? "trend-up" : trend === "falling" ? "trend-down" : "trend-stable";
 
     card.innerHTML = `
       <div class="tracker-header">
-        <div class="tracker-name" onclick="filterByZone('${t.id}')" style="cursor:pointer" title="Click to filter intelligence feed"><span class="tracker-emoji">${t.emoji}</span>${t.name}</div>
+        <div class="tracker-name" data-zone="${escapeAttr(t.id || '')}" style="cursor:pointer" title="Click to filter intelligence feed"><span class="tracker-emoji">${escapeHtml(t.emoji || '')}</span>${escapeHtml(t.name || '')}</div>
       </div>
-      <div class="tracker-prob ${t.zone}">${t.prob}%</div>
-      <div class="tracker-zone ${t.zone}">${t.zone.toUpperCase()} <span class="confidence-badge ${(t.confidence || 'LOW').toLowerCase()}">${t.confidence || 'LOW'}</span></div>
+      <div class="tracker-prob ${t.zone}">${Math.round(Number(t.prob || 0))}%</div>
+      <div class="tracker-zone ${t.zone}">${escapeHtml(String(t.zone || '').toUpperCase())} <span class="confidence-badge ${confidence.toLowerCase()}">${escapeHtml(confidence)}</span></div>
       <div class="tracker-signals">${signalHTML}</div>
-      <div class="tracker-trend ${trendClass}">${trendIcon} ${t.trend.toUpperCase()}</div>
+      <div class="tracker-trend ${trendClass}">${trendIcon} ${escapeHtml(trend.toUpperCase())}</div>
     `;
+
+    var trackerName = card.querySelector('.tracker-name');
+    if (trackerName) {
+      trackerName.addEventListener('click', function() {
+        filterByZone(this.getAttribute('data-zone'));
+      });
+    }
+    var moreBtn = card.querySelector('.more-btn');
+    if (moreBtn) {
+      moreBtn.addEventListener('click', function() {
+        toggleSignals(this);
+      });
+    }
     grid.appendChild(card);
   });
 }
+
 
 var activeNewsFilter = "all";
 
@@ -1009,13 +1115,12 @@ function renderNews() {
   feed.innerHTML = "";
   var items = state.news || [];
 
-  // Apply filter
   var filtered = items.filter(function(n) {
     if (activeNewsFilter === "all") return true;
     if (activeNewsFilter.startsWith("zone:")) return n.zone === activeNewsFilter.replace("zone:", "");
-    if (activeNewsFilter === "confidence:confirmed") return n.confidence === "confirmed";
-    if (activeNewsFilter === "confidence:developing") return n.confidence === "developing";
-    if (activeNewsFilter.startsWith("source:")) return (n.source_types || []).indexOf(activeNewsFilter.replace("source:", "")) >= 0;
+    if (activeNewsFilter === "confidence:confirmed") return getNewsConfidence(n) === "confirmed";
+    if (activeNewsFilter === "confidence:reported") return getNewsConfidence(n) === "reported";
+    if (activeNewsFilter.startsWith("source:")) return matchesSourceFilter(n, activeNewsFilter.replace("source:", ""));
     return true;
   });
 
@@ -1024,51 +1129,17 @@ function renderNews() {
     return;
   }
 
-  // Group by time blocks based on relative time (H format)
   var blocks = {};
   var blockOrder = [];
   filtered.forEach(function(n) {
-    var timeStr = n.time || "";
-    var block = "RECENT";
-    
-    // Parse relative hour format (e.g., "0H", "1H", "12H")
-    var hourMatch = timeStr.match(/(\d+)H/);
-    if (hourMatch) {
-      var hours = parseInt(hourMatch[1], 10);
-      if (hours < 6) {
-        block = "LAST 6 HOURS";
-      } else if (hours < 12) {
-        block = "6-12 HOURS AGO";
-      } else if (hours < 24) {
-        block = "12-24 HOURS AGO";
-      } else {
-        block = "EARLIER";
-      }
-    } else if (timeStr.indexOf("T") >= 0) {
-      // ISO timestamp format - calculate hours ago
-      try {
-        var newsTime = new Date(timeStr);
-        var now = new Date();
-        var hoursAgo = (now - newsTime) / (1000 * 60 * 60);
-        if (hoursAgo < 6) {
-          block = "LAST 6 HOURS";
-        } else if (hoursAgo < 12) {
-          block = "6-12 HOURS AGO";
-        } else if (hoursAgo < 24) {
-          block = "12-24 HOURS AGO";
-        } else {
-          block = "EARLIER";
-        }
-      } catch (e) {
-        block = "RECENT";
-      }
+    var block = getTimeBlockLabel(n.time || "");
+    if (!blocks[block]) {
+      blocks[block] = [];
+      blockOrder.push(block);
     }
-    
-    if (!blocks[block]) { blocks[block] = []; blockOrder.push(block); }
     blocks[block].push(n);
   });
-  
-  // Sort blocks in chronological order
+
   var blockRank = {"LAST 6 HOURS": 0, "6-12 HOURS AGO": 1, "12-24 HOURS AGO": 2, "RECENT": 3, "EARLIER": 4};
   blockOrder.sort(function(a, b) { return blockRank[a] - blockRank[b]; });
 
@@ -1085,55 +1156,66 @@ function renderNews() {
       var item = document.createElement("div");
       item.className = "news-item";
 
-      var icon = n.impact === "up" ? "\u25B2" : n.impact === "down" ? "\u25BC" : "\u2014";
+      var icon = n.impact === "up" ? "▲" : n.impact === "down" ? "▼" : "—";
       var impTxt = n.impact === "up" ? "ESCALATION" : n.impact === "down" ? "DE-ESCALATION" : "STABLE";
+      var confidence = getNewsConfidence(n);
 
-      // Severity dots
       var sevDots = "";
       for (var s = 1; s <= 5; s++) {
-        sevDots += s <= n.severity ? "\u25CF" : "\u25CB";
+        sevDots += s <= (n.severity || 1) ? "●" : "○";
       }
 
-      // Source links
       var srcHtml = "";
       if (n.sources && n.sources.length > 0) {
         srcHtml = '<div class="news-sources">' + n.sources.map(function(src) {
-          return '<a href="#" onclick="return false">' + src + '</a>';
+          return '<span>' + escapeHtml(src) + '</span>';
         }).join(" · ") + '</div>';
       }
 
-      // Signal tags
       var sigHtml = "";
       if (n.signals && n.signals.length > 0) {
-        sigHtml = '<div class="news-signals-row">' + n.signals.map(function(sig) {
+        sigHtml = '<div class="news-signals-row" style="display:none;">' + n.signals.map(function(sig) {
           var cls = sig.weight < 0 ? "neg" : "pos";
           var prefix = sig.weight < 0 ? "↓" : "↑";
-          return '<span class="news-signal-tag ' + cls + '">' + prefix + sig.name + '</span>';
+          return '<span class="news-signal-tag ' + cls + '">' + prefix + escapeHtml(sig.name) + '</span>';
         }).join("") + '</div>';
       }
 
       var h = '<div class="news-header">';
       h += '<div class="news-header-left">';
-      h += '<span class="news-severity sev' + (n.severity||1) + '" title="Severity ' + (n.severity||1) + '/5">' + sevDots + '</span>';
-      h += '<span class="news-zone ' + (n.zone||'') + '" onclick="filterByZone(\'' + (n.zone||'') + '\')" style="cursor:pointer">' + (n.zone||'unknown').toUpperCase() + '</span>';
-      h += '<span class="news-confidence ' + (n.confidence||'developing') + '">' + (n.confidence||'dev') + '</span>';
+      h += '<span class="news-severity sev' + (n.severity || 1) + '" title="Severity ' + (n.severity || 1) + '/5">' + sevDots + '</span>';
+      h += '<span class="news-zone ' + escapeAttr(n.zone || '') + '" data-zone="' + escapeAttr(n.zone || '') + '" style="cursor:pointer">' + escapeHtml((n.zone || 'unknown').toUpperCase()) + '</span>';
+      h += '<span class="news-confidence ' + escapeAttr(confidence) + '">' + escapeHtml(confidence) + '</span>';
       h += '</div>';
-      var timeStr = n.time || "";
-var shortTime = timeStr.indexOf("T") >= 0 ? timeStr.split("T")[1].replace("Z","").substring(0,5) : timeStr.substring(5);
-h += '<span class="news-time">' + shortTime + '</span>';
+      h += '<span class="news-time">' + escapeHtml(formatShortTime(n.time || '')) + '</span>';
       h += '</div>';
       h += srcHtml;
-      h += '<div class="news-text">' + (n.text||n.headline||'No details available') + '</div>';
-      h += '<div class="news-impact ' + (n.impact||'neutral') + '">' + icon + ' ' + impTxt + '</div>';
-      if (sigHtml) h += '<button class="news-expand-btn" onclick="toggleNewsItem(this.parentElement)">▼ SIGNALS</button>' + sigHtml;
+      h += '<div class="news-text">' + escapeHtml(n.text || n.headline || 'No details available') + '</div>';
+      h += '<div class="news-impact ' + escapeAttr(n.impact || 'neutral') + '">' + icon + ' ' + impTxt + '</div>';
+      if (sigHtml) h += '<button class="news-expand-btn">▼ SIGNALS</button>' + sigHtml;
 
       item.innerHTML = h;
+
+      var zoneEl = item.querySelector('.news-zone');
+      if (zoneEl) {
+        zoneEl.addEventListener('click', function() {
+          filterByZone(this.getAttribute('data-zone'));
+        });
+      }
+      var expandBtn = item.querySelector('.news-expand-btn');
+      if (expandBtn) {
+        expandBtn.addEventListener('click', function() {
+          toggleNewsItem(item);
+        });
+      }
+
       blockDiv.appendChild(item);
     });
 
     feed.appendChild(blockDiv);
   });
 }
+
 
 function updateClock() {
   const now = new Date();
@@ -1168,14 +1250,13 @@ function updateGlobalClock() {
   document.getElementById("globalProb").innerHTML = globalProb + '<span style="font-size:0.4em;opacity:0.6">%</span>';
 
   const probEl = document.getElementById("globalProb");
-  probEl.className = "global-prob " + (globalProb < 15 ? "deterrent" : globalProb < 30 ? "elevated" : globalProb < 60 ? "critical" : "imminent");
+  const currentZone = state.global_zone || calcZone(globalProb);
+  probEl.className = "global-prob " + currentZone;
 
   const zoneEl = document.getElementById("globalZone");
-  const zone = probEl.className.replace("global-prob ", "");
-  zoneEl.textContent = zone.toUpperCase();
-  zoneEl.className = "global-zone " + zone;
+  zoneEl.textContent = currentZone.toUpperCase();
+  zoneEl.className = "global-zone " + currentZone;
 
-  // Threat bar — snap to zone position, not raw percentage
   const fill = document.getElementById("threatFill");
   const zonePositions = { deterrent: 12.5, elevated: 37.5, critical: 62.5, imminent: 100 };
   const zoneColors = {
@@ -1184,17 +1265,15 @@ function updateGlobalClock() {
     critical: "linear-gradient(90deg, var(--amber), var(--red))",
     imminent: "var(--red)"
   };
-  const currentZone = calcZone(globalProb);
   fill.style.width = zonePositions[currentZone] + "%";
   fill.style.background = zoneColors[currentZone];
 
-  // Update zone labels
   updateThreatZones();
 
-  // Mini doomsday clock
   var hand = document.querySelector(".doomsday-hand");
   if (hand) hand.style.transform = "translateX(-50%) rotate(" + angle + "deg)";
 }
+
 
 // Toggle signal expansion
 function toggleSignals(el) {
@@ -1294,7 +1373,7 @@ function initThreatMap() {
     var marker = L.marker(pos, { icon: icon }).addTo(map);
     marker.bindTooltip(
       '<span style="font-family:monospace;font-size:10px">' +
-      t.emoji + " " + t.name + "<br><b>" + t.prob + "%</b> " + t.zone.toUpperCase() +
+      escapeHtml(t.emoji || '') + ' ' + escapeHtml(t.name || '') + '<br><b>' + escapeHtml(Math.round(Number(t.prob || 0))) + '%</b> ' + escapeHtml(String(t.zone || '').toUpperCase()) +
       '</span>',
       { direction: "top", offset: [0, -10], className: "" }
     );
@@ -1338,9 +1417,10 @@ function renderEnergy() {
   items.forEach(function(item) {
     var data = e.current[item.code] || {};
     var chg = (e.changes || {})[item.code] || {};
-    var price = data.price || 0;
-    var pct = chg.change_pct || 0;
-    var usdChg = chg.change_usd || 0;
+    var hasPrice = data.price !== null && data.price !== undefined && isFinite(Number(data.price));
+    var price = hasPrice ? Number(data.price) : 0;
+    var pct = Number(chg.change_pct || 0);
+    var usdChg = Number(chg.change_usd || 0);
     var arrow = pct > 0 ? '▲' : pct < 0 ? '▼' : '●';
     var chgColor = pct > 0 ? '#00e676' : pct < 0 ? '#ff4444' : '#484f58';
     
@@ -1350,10 +1430,17 @@ function renderEnergy() {
     var chgPrefix = isForex ? '' : '$';
     var chgDecimals = isForex ? 4 : 2;
 
+    var valueHtml = hasPrice
+      ? pricePrefix + price.toFixed(priceDecimals)
+      : '<span style="color:#484f58;">N/A</span>';
+    var changeHtml = hasPrice
+      ? (arrow + ' ' + (pct > 0 ? '+' : '') + pct + '% (' + chgPrefix + (usdChg > 0 ? '+' : '') + usdChg.toFixed(chgDecimals) + ')')
+      : 'SOURCE UNAVAILABLE';
+
     html += '<div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:4px;padding:10px;text-align:center;">' +
       '<div style="font-size:10px;letter-spacing:1px;color:' + item.color + ';margin-bottom:4px;">' + item.label + '</div>' +
-      '<div style="font-size:18px;color:#e6edf3;font-family:monospace;font-weight:bold;">' + pricePrefix + price.toFixed(priceDecimals) + '</div>' +
-      '<div style="font-size:11px;color:' + chgColor + ';margin-top:3px;">' + arrow + ' ' + (pct > 0 ? '+' : '') + pct + '% (' + chgPrefix + (usdChg > 0 ? '+' : '') + usdChg.toFixed(chgDecimals) + ')</div>' +
+      '<div style="font-size:18px;color:#e6edf3;font-family:monospace;font-weight:bold;">' + valueHtml + '</div>' +
+      '<div style="font-size:11px;color:' + (hasPrice ? chgColor : '#484f58') + ';margin-top:3px;">' + changeHtml + '</div>' +
       '<div style="font-size:9px;color:#484f58;margin-top:2px;">vs pre-conflict</div>' +
       '</div>';
   });
@@ -1375,13 +1462,11 @@ setTimeout(function() {
 // Update time every second
 setInterval(updateClock, 1000);
 
-// Auto-calculate zone from probability (override state file)
-
-// Auto-fix zones on load
-state.trackers.forEach(function(t) { t.zone = calcZone(t.prob); });
-  // Also update global zone
-  var gp = state.global_war_probability || 0;
-  state.global_zone = calcZone(gp);
+// Normalize tracker trends on load and preserve pipeline-computed zones
+state.trackers.forEach(function(t) { t.trend = normalizeTrend(t.trend); });
+if (!state.global_zone) {
+  state.global_zone = calcZone(state.global_war_probability || 0);
+}
 </script>
 
 <!-- ===== SIGNAL TIMELINE JS ===== -->
@@ -1673,7 +1758,7 @@ function renderSignalTimeline() {
   Object.keys(signalTimelineData).forEach(function(key) {
     var parts = key.split(':');
     var tid = parts[0];
-    var sname = parts[1];
+    var sname = parts.slice(1).join(':');
     var entry = signalTimelineData[key];
     var ts = typeof entry === 'string' ? entry : (entry.activated_at || '');
     var confirmed = typeof entry === 'object' && entry.last_confirmed ? entry.last_confirmed : null;
@@ -1698,10 +1783,10 @@ function renderSignalTimeline() {
   }
 
   var groups = {};
-  signals.forEach(function(s) {
-    var date = s.timestamp.substring(0, 10);
+  signals.forEach(function(signal) {
+    var date = signal.timestamp.substring(0, 10);
     if (!groups[date]) groups[date] = [];
-    groups[date].push(s);
+    groups[date].push(signal);
   });
 
   var html = '';
@@ -1710,25 +1795,25 @@ function renderSignalTimeline() {
   dates.forEach(function(date) {
     var dateSignals = groups[date];
     var dateObj = new Date(date + 'T00:00:00Z');
-    var dateLabel = dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-    html += '<div style="font-size:9px;color:var(--cyan);letter-spacing:2px;padding:8px 0 4px;border-bottom:1px dashed rgba(0,212,255,0.2);margin-bottom:6px;">' + dateLabel + '</div>';
+    var dateLabel = isNaN(dateObj.getTime()) ? date : dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    html += '<div style="font-size:9px;color:var(--cyan);letter-spacing:2px;padding:8px 0 4px;border-bottom:1px dashed rgba(0,212,255,0.2);margin-bottom:6px;">' + escapeHtml(dateLabel) + '</div>';
     html += '<div style="position:relative;padding-left:16px;">';
 
-    dateSignals.forEach(function(s, i) {
-      var info = trackerDisplayMap[s.tid] || { name: s.tid.toUpperCase(), emoji: "🌍" };
-      var color = getSignalColor(s.tid);
-      var time = s.timestamp.substring(11, 16) + ' UTC';
-      var sigDisplayName = resolveSignalName(s.name);
+    dateSignals.forEach(function(signal, i) {
+      var info = trackerDisplayMap[signal.tid] || { name: signal.tid.toUpperCase(), emoji: '🌍' };
+      var color = getSignalColor(signal.tid);
+      var time = signal.timestamp.substring(11, 16) + ' UTC';
+      var sigDisplayName = resolveSignalName(signal.name);
       var isLast = (i === dateSignals.length - 1);
 
       html += '<div style="position:relative;padding:4px 0 4px 8px;">';
       html += '<div style="position:absolute;left:-16px;top:0;bottom:' + (isLast ? '50%' : '0') + ';width:1px;background:' + color + '40;"></div>';
       html += '<div style="position:absolute;left:-19px;top:7px;width:7px;height:7px;border-radius:50%;background:' + color + ';box-shadow:0 0 6px ' + color + '60;"></div>';
       html += '<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">';
-      html += '<span style="font-size:9px;color:var(--dim);min-width:42px;">' + time + '</span>';
-      html += '<span style="font-size:9px;">' + info.emoji + '</span>';
-      html += '<span style="font-size:9px;color:var(--dim);letter-spacing:1px;min-width:100px;">' + info.name + '</span>';
-      html += '<span style="font-size:10px;color:' + color + ';letter-spacing:1px;font-weight:bold;">' + sigDisplayName + '</span>';
+      html += '<span style="font-size:9px;color:var(--dim);min-width:42px;">' + escapeHtml(time) + '</span>';
+      html += '<span style="font-size:9px;">' + escapeHtml(info.emoji) + '</span>';
+      html += '<span style="font-size:9px;color:var(--dim);letter-spacing:1px;min-width:100px;">' + escapeHtml(info.name) + '</span>';
+      html += '<span style="font-size:10px;color:' + color + ';letter-spacing:1px;font-weight:bold;">' + escapeHtml(sigDisplayName) + '</span>';
       html += '</div>';
       html += '</div>';
     });
@@ -1742,6 +1827,7 @@ function renderSignalTimeline() {
 
   container.innerHTML = html;
 }
+
 </script>
 
 <!-- PREDICTION MODAL -->
@@ -1828,61 +1914,62 @@ function openBriefing() {
   var hdr = document.getElementById('briefHeader');
   var s = (typeof state !== 'undefined') ? state : {};
   var ts = s.last_updated || '';
-  var dateStr = ts.substring(0,10);
-  var timeStr = ts.substring(11,16) + ' UTC';
+  var dateStr = ts.substring(0, 10);
+  var timeStr = ts.substring(11, 16) + ' UTC';
   hdr.textContent = 'THREAT ASSESSMENT — ' + dateStr + ' ' + timeStr;
   var gp = s.global_war_probability || 0;
   var trackers = s.trackers || [];
   var newsItems = s.news || [];
-  var sorted = trackers.slice().sort(function(a,b){return b.prob - a.prob;});
-  var rising = sorted.filter(function(t){return t.trend === 'rising';});
-  var imminent = sorted.filter(function(t){return t.zone === 'imminent';});
-  var critical = sorted.filter(function(t){return t.zone === 'critical';});
-  
+  var sorted = trackers.slice().sort(function(a, b) { return b.prob - a.prob; });
+  var rising = sorted.filter(function(t) { return normalizeTrend(t.trend) === 'rising'; });
+  var imminent = sorted.filter(function(t) { return t.zone === 'imminent'; });
+  var critical = sorted.filter(function(t) { return t.zone === 'critical'; });
+
   var html = '';
-  html += '<div class="brief-section"><div class="brief-line">The global security environment ' + (gp >= 60 ? 'remains ELEVATED' : gp >= 30 ? 'is CONCERNING' : 'is STABLE') + ' with a composite threat score of <b style="color:#ff6666">' + gp + '%</b>.</div></div>';
-  
+  html += '<div class="brief-section"><div class="brief-line">The global security environment ' + (gp >= 60 ? 'remains ELEVATED' : gp >= 30 ? 'is CONCERNING' : 'is STABLE') + ' with a composite threat score of <b style="color:#ff6666">' + Math.round(gp) + '%</b>.</div></div>';
+
   if (imminent.length > 0 || critical.length > 0) {
     html += '<div class="brief-section"><div class="brief-section-title">IMMEDIATE THREATS:</div><div class="brief-line">';
-    imminent.concat(critical).forEach(function(t){
-      var trend = t.trend === 'rising' ? 'escalating' : t.trend === 'falling' ? 'de-escalating' : 'holding';
-      var sigs = (t.signals || []).slice(0,3).map(function(x){return x.name.replace(/_/g,' ');}).join('; ');
-      html += t.emoji + ' ' + t.name + ' — ' + t.prob + '% (' + trend + '). ' + sigs + '.\n';
+    imminent.concat(critical).forEach(function(t) {
+      var trend = normalizeTrend(t.trend) === 'rising' ? 'escalating' : normalizeTrend(t.trend) === 'falling' ? 'de-escalating' : 'holding';
+      var sigs = (t.signals || []).slice(0, 3).map(function(x) { return escapeHtml((x.name || '').replace(/_/g, ' ')); }).join('; ');
+      html += escapeHtml(t.emoji || '') + ' ' + escapeHtml(t.name || '') + ' — ' + Math.round(Number(t.prob || 0)) + '% (' + escapeHtml(trend) + '). ' + (sigs || 'dormant') + '.\n';
     });
     html += '</div></div>';
   }
-  
+
   if (newsItems.length > 0) {
     html += '<div class="brief-section"><div class="brief-section-title">NOTABLE DEVELOPMENTS:</div><div class="brief-line">';
-    newsItems.slice(0,5).forEach(function(n){
+    newsItems.slice(0, 5).forEach(function(n) {
       var impact = n.impact === 'up' ? '▲' : n.impact === 'down' ? '▼' : '●';
-      var conf = n.confidence ? ' [' + n.confidence.toUpperCase() + ']' : '';
-      html += impact + ' ' + (n.headline || n.text || '').substring(0,120) + conf + '\n';
+      var conf = n.confidence ? ' [' + escapeHtml(String(n.confidence).toUpperCase()) + ']' : '';
+      html += impact + ' ' + escapeHtml((n.headline || n.text || '').substring(0, 120)) + conf + '\n';
     });
     html += '</div></div>';
   }
-  
+
   html += '<div class="brief-section"><div class="brief-section-title">TREND:</div><div class="brief-line">';
   if (rising.length > 0) {
-    html += 'Escalating: ' + rising.map(function(t){return t.name;}).join(', ');
+    html += 'Escalating: ' + rising.map(function(t) { return escapeHtml(t.name); }).join(', ');
   } else {
     html += 'No significant directional shifts this cycle';
   }
   html += '</div></div>';
-  
+
   html += '<div class="brief-section"><div class="brief-section-title">OUTLOOK:</div><div class="brief-line">';
   if (rising.length > 0) {
-    html += 'Monitor ' + rising[0].name + ' for continued escalation — currently ' + rising[0].prob + '% and trending upward.';
+    html += 'Monitor ' + escapeHtml(rising[0].name) + ' for continued escalation — currently ' + Math.round(Number(rising[0].prob || 0)) + '% and trending upward.';
   } else {
     html += 'No immediate escalation catalysts identified.';
   }
   html += '</div></div>';
-  
+
   html += '<div class="brief-section" style="border-top:1px solid rgba(255,45,45,0.15);padding-top:10px;margin-top:16px;"><div class="brief-line" style="color:#484f58;font-size:11px;">' + newsItems.length + ' sources processed | ' + trackers.length + ' active trackers</div></div>';
-  
+
   el.innerHTML = html;
   document.getElementById('briefingModal').classList.add('active');
 }
+
 
 // ===== PREDICTIONS MODAL =====
 function openPredictions() {
@@ -1891,57 +1978,55 @@ function openPredictions() {
   var statsEl = document.getElementById('predStats');
   var s = (typeof state !== 'undefined') ? state : {};
   var preds = s.predictions || [];
-  var stats = s.eval_stats || {total: 0, correct: 0, accuracy: 0};
-  
+  var stats = s.eval_stats || { total: 0, correct: 0, accuracy: 0 };
+
   var ts = s.last_updated || '';
-  hdr.textContent = '24-HOUR FORECAST — ' + ts.substring(0,10) + ' ' + ts.substring(11,16) + ' UTC';
-  
-  // Accuracy bar
+  hdr.textContent = '24-HOUR FORECAST — ' + ts.substring(0, 10) + ' ' + ts.substring(11, 16) + ' UTC';
+
   var accColor = stats.accuracy >= 60 ? '#00e676' : stats.accuracy >= 40 ? '#ffaa00' : '#ff4444';
   statsEl.innerHTML = '<div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">' +
     '<span style="color:#484f58;font-size:11px;">TRACK RECORD</span>' +
-    '<span style="color:' + accColor + ';font-size:14px;font-weight:bold;">' + stats.accuracy + '%</span>' +
-    '<span style="color:#484f58;font-size:10px;">' + stats.correct + '/' + stats.total + ' correct</span>' +
+    '<span style="color:' + accColor + ';font-size:14px;font-weight:bold;">' + escapeHtml(stats.accuracy) + '%</span>' +
+    '<span style="color:#484f58;font-size:10px;">' + escapeHtml(stats.correct) + '/' + escapeHtml(stats.total) + ' correct</span>' +
     '</div>' +
-    '<div style="height:3px;background:rgba(255,255,255,0.05);border-radius:2px;"><div style="height:100%;width:' + stats.accuracy + '%;background:' + accColor + ';border-radius:2px;transition:width 0.5s;"></div></div>';
-  
+    '<div style="height:3px;background:rgba(255,255,255,0.05);border-radius:2px;"><div style="height:100%;width:' + Number(stats.accuracy || 0) + '%;background:' + accColor + ';border-radius:2px;transition:width 0.5s;"></div></div>';
+
   if (preds.length === 0) {
     el.innerHTML = '<div style="color:#484f58;text-align:center;padding:20px;">FORECAST UNAVAILABLE — Insufficient data for this cycle.</div>';
   } else {
     var html = '';
-    
-    // Executive summary
-    var high = preds.filter(function(p){return p.confidence >= 60;});
-    var med = preds.filter(function(p){return p.confidence >= 40 && p.confidence < 60;});
-    var low = preds.filter(function(p){return p.confidence < 40;});
-    
+    var high = preds.filter(function(p) { return p.confidence >= 60; });
+    var med = preds.filter(function(p) { return p.confidence >= 40 && p.confidence < 60; });
+    var low = preds.filter(function(p) { return p.confidence < 40; });
+
     html += '<div style="margin-bottom:16px;color:#c9d1d9;font-size:12px;">' +
-      'Based on current probability levels, active signals, and trend velocity across ' + (s.trackers||[]).length + ' tracked conflicts. ' +
+      'Based on current probability levels, active signals, and trend velocity across ' + escapeHtml((s.trackers || []).length) + ' tracked conflicts. ' +
       'Forecasts below represent most likely outcomes within a 24-hour window. Confidence reflects signal density and trend consistency.</div>';
-    
+
     function renderGroup(items, title, color) {
       if (items.length === 0) return '';
-      var h = '<div style="margin-bottom:14px;"><div style="color:' + color + ';font-size:10px;letter-spacing:1.5px;margin-bottom:6px;border-bottom:1px solid ' + color + '33;padding-bottom:4px;">' + title + '</div>';
-      items.forEach(function(p){
+      var h = '<div style="margin-bottom:14px;"><div style="color:' + color + ';font-size:10px;letter-spacing:1.5px;margin-bottom:6px;border-bottom:1px solid ' + color + '33;padding-bottom:4px;">' + escapeHtml(title) + '</div>';
+      items.forEach(function(p) {
         h += '<div style="padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.02);font-size:12px;color:#8b949e;">' +
-          '<span style="color:' + color + ';font-size:10px;font-weight:bold;">[' + p.confidence + '%]</span> ' + p.description + '</div>';
+          '<span style="color:' + color + ';font-size:10px;font-weight:bold;">[' + escapeHtml(p.confidence) + '%]</span> ' + escapeHtml(p.description) + '</div>';
       });
       h += '</div>';
       return h;
     }
-    
+
     html += renderGroup(high, 'HIGH CONFIDENCE', '#00e676');
     html += renderGroup(med, 'MEDIUM CONFIDENCE', '#ffaa00');
     html += renderGroup(low, 'LOW CONFIDENCE', '#ff4444');
-    
+
     html += '<div style="border-top:1px solid rgba(100,150,255,0.15);padding-top:10px;margin-top:16px;color:#484f58;font-size:10px;letter-spacing:1px;">' +
-      'FORECAST WINDOW: 24 HOURS | ' + preds.length + ' PREDICTIONS | EVALUATED ON NEXT CYCLE</div>';
-    
+      'FORECAST WINDOW: 24 HOURS | ' + escapeHtml(preds.length) + ' PREDICTIONS | EVALUATED ON NEXT CYCLE</div>';
+
     el.innerHTML = html;
   }
-  
+
   document.getElementById('predModal').classList.add('active');
 }
+
 </script>
 
 

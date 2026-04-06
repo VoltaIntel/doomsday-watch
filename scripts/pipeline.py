@@ -8,7 +8,16 @@
 # 2. Signal dedup with TTL: update last_confirmed on re-detection, keep activated_at stable
 # 3. Prune fully-decayed signals from signal_timeline during deploy
 
+import html as html_lib
 import json
+import os
+import re
+from collections import defaultdict
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+os.chdir(ROOT)
 
 with open("data/current_state.json") as f:
     state = json.load(f)
@@ -39,9 +48,9 @@ try:
 except:
     timeline = {"signals": {}}
 
-from datetime import datetime, timezone
 now_dt = datetime.now(timezone.utc)
 now_iso = now_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+state["last_updated"] = now_iso
 
 # --- Load credibility config and define functions BEFORE processing ---
 with open("data/source_credibility.json") as f:
@@ -67,6 +76,20 @@ def classify_source(source_str):
     tier, _, _ = classify_source_credibility(source_str)
     if tier == "1_official": return "official"
     if tier in ("2_wire", "3_established"): return "western"
+    return "other"
+
+def classify_source_category(source_str):
+    sl = source_str.lower().strip()
+    if any(k in sl for k in ["reuters", "associated press", "ap ", "apnews", "afp", "bbc", "new york times", "nyt", "wsj", "wall street journal", "washington post", "cnbc", "cnn", "france 24", "the hindu", "abc news", "nbc", "cbs", "bloomberg", "guardian"]):
+        return "western"
+    if any(k in sl for k in ["tass", "ria", "interfax", "izvestia", "kommersant", "rossiyskaya", "rt ", "moscow times"]):
+        return "russian"
+    if any(k in sl for k in ["xinhua", "cgtn", "china daily", "global times", "scmp", "south china morning post"]):
+        return "chinese"
+    if any(k in sl for k in ["al jazeera", "al arabiya", "irna", "isna", "fars", "tasnim", "middle east", "haaretz", "times of israel", "jerusalem post", "the national", "gulf news", "khaleej", "oman news", "petra", "anadolu", "daily sabah", "hurriyet", "israel hayom"]):
+        return "arabic"
+    if any(k in sl for k in ["white house", "pentagon", "iaea", "nato", "centcom", "stratcom", "unsc", "idf", "irgc", "kremlin", "un security council", "truth social"]):
+        return "official"
     return "other"
 
 def calc_severity(impact, text):
@@ -166,10 +189,152 @@ def find_matching_signals(text, tid, source_tier="5_unverified"):
                 "confidence": "confirmed" if source_tier in ["1_official", "2_wire"] else "reported" if source_tier == "3_established" else "rumored"
             })
     return matched
+
+def normalize_trend(trend):
+    trend = (trend or "stable").lower().strip()
+    if trend in {"up", "rising", "rise", "escalating", "escalation"}:
+        return "rising"
+    if trend in {"down", "falling", "fall", "de-escalating", "deescalating", "declining"}:
+        return "falling"
+    return "stable"
+
+def get_timeline_details(timeline_key, create=False):
+    entry = timeline["signals"].get(timeline_key)
+    if isinstance(entry, dict):
+        activated_at = entry.get("activated_at") or entry.get("last_confirmed") or now_iso
+        last_confirmed = entry.get("last_confirmed") or activated_at
+        entry["activated_at"] = activated_at
+        entry["last_confirmed"] = last_confirmed
+        timeline["signals"][timeline_key] = entry
+        return entry, activated_at, last_confirmed
+    if isinstance(entry, str):
+        migrated = {"activated_at": entry, "last_confirmed": entry}
+        timeline["signals"][timeline_key] = migrated
+        return migrated, entry, entry
+    if create:
+        created = {"activated_at": now_iso, "last_confirmed": now_iso}
+        timeline["signals"][timeline_key] = created
+        return created, created["activated_at"], created["last_confirmed"]
+    return None, None, None
+
+def confirm_signal(tid, signal_name, confirmed_at=None):
+    timeline_key = f"{tid}:{signal_name}"
+    entry, activated_at, _ = get_timeline_details(timeline_key, create=True)
+    entry["activated_at"] = activated_at or (confirmed_at or now_iso)
+    entry["last_confirmed"] = confirmed_at or now_iso
+    timeline["signals"][timeline_key] = entry
+
+def build_signal_data(tid):
+    tracker = state.get("trackers", {}).get(tid, {})
+    signal_data = []
+    for signal_name in tracker.get("active_signals", []):
+        timeline_key = f"{tid}:{signal_name}"
+        _, activated_at, last_confirmed = get_timeline_details(timeline_key, create=True)
+        weight = signal_weights.get((tid, signal_name), 0)
+        if weight == 0:
+            continue
+        decayed_weight = apply_temporal_decay(abs(weight), activated_at)
+        if decayed_weight == 0:
+            continue
+        signal_data.append({
+            "name": signal_name,
+            "positive": weight < 0,
+            "activated_at": activated_at,
+            "last_confirmed": last_confirmed,
+            "original_weight": abs(weight),
+            "decayed_weight": round(decayed_weight, 1),
+            "expired": False,
+            "is_deescalatory": weight < 0
+        })
+
+    signal_data.sort(key=lambda item: item["activated_at"], reverse=True)
+
+    sig_count = len(signal_data)
+    avg_tier = 0
+    if signal_data:
+        tier_scores = {"confirmed": 3, "reported": 2, "rumored": 1}
+        avg_tier = sum(tier_scores.get(s.get("confidence", "rumored"), 1) for s in signal_data) / sig_count
+
+    recency_score = 0
+    for signal in signal_data[:3]:
+        recency_marker = signal.get("last_confirmed") or signal.get("activated_at")
+        if recency_marker:
+            try:
+                act_dt = datetime.fromisoformat(recency_marker.replace("Z", "+00:00"))
+                hours_old = (now_dt - act_dt).total_seconds() / 3600
+                if hours_old < 24:
+                    recency_score += 3
+                elif hours_old < 72:
+                    recency_score += 2
+                else:
+                    recency_score += 1
+            except Exception:
+                pass
+
+    recency_score = min(3, recency_score / max(1, min(3, sig_count))) if sig_count > 0 else 0
+    conf_score = min(40, sig_count * 5) + avg_tier * 15 + min(30, recency_score * 10)
+    if conf_score >= 60:
+        confidence = "HIGH"
+    elif conf_score >= 30:
+        confidence = "MEDIUM"
+    else:
+        confidence = "LOW"
+    return signal_data, confidence
+
+def build_tracker_cards():
+    cards = []
+    for tid, name, emoji in tn:
+        tracker = state.get("trackers", {}).get(tid, {})
+        signal_data, confidence = build_signal_data(tid)
+        trend = normalize_trend(tracker.get("trend", "stable"))
+        tracker["trend"] = trend
+        tracker["base_rate"] = cfg.get("trackers", {}).get(tid, {}).get("base_rate", tracker.get("base_rate", 0))
+        cards.append({
+            "id": tid,
+            "name": name,
+            "emoji": emoji,
+            "prob": tracker.get("current_probability", tracker.get("base_rate", 0)),
+            "zone": tracker.get("zone", "deterrent"),
+            "trend": trend,
+            "signals": signal_data,
+            "confidence": confidence
+        })
+    return cards
+
+def prediction_identity(pred):
+    return (pred.get("tracker_id"), pred.get("expires_at"))
+
+def merge_prediction_records(existing, incoming):
+    merged = dict(existing)
+    for key, value in incoming.items():
+        if value is not None:
+            merged[key] = value
+
+    if existing.get("evaluated") and not incoming.get("evaluated"):
+        for key in ("evaluated", "evaluated_at", "actual_value", "correct"):
+            if key in existing:
+                merged[key] = existing[key]
+
+    for key in ("eval_type", "eval_value", "type", "value", "description", "confidence", "signal_name"):
+        if merged.get(key) is None and existing.get(key) is not None:
+            merged[key] = existing[key]
+
+    return merged
+
+def dedupe_predictions(predictions):
+    deduped = {}
+    order = []
+    for pred in predictions:
+        key = prediction_identity(pred)
+        if key not in deduped:
+            deduped[key] = pred
+            order.append(key)
+        else:
+            deduped[key] = merge_prediction_records(deduped[key], pred)
+    return [deduped[key] for key in order]
 # --- End functions ---
 
-# Build tracker data
-trackers_js = []
+# Build tracker labels
 tn = [
     ("iran_nuke", "IRAN NUCLEAR", "🇮🇷"),
     ("iran_conventional", "IRAN WAR", "⚔️"),
@@ -188,67 +353,6 @@ known = set(t[0] for t in tn)
 for k in state.get("trackers", {}).keys():
     if k not in known:
         tn.append((k, k.upper().replace("_", " "), "🌍"))
-
-for tid, name, emoji in tn:
-    t = state.get("trackers", {}).get(tid, {})
-    # Record signal activation times, tag with weight sign, and apply temporal decay
-    signal_data = []
-    for s in t.get("active_signals", []):
-        timeline_key = f"{tid}:{s}"
-        if timeline_key not in timeline["signals"]:
-            timeline["signals"][timeline_key] = now_iso
-        w = signal_weights.get((tid, s), 0)
-        activated_at = timeline["signals"][timeline_key]
-        
-        # Apply temporal decay to displayed weight
-        decayed_weight = apply_temporal_decay(abs(w), activated_at)
-        is_expired = decayed_weight == 0
-        
-        signal_data.append({
-            "name": s,
-            "positive": w < 0,
-            "activated_at": activated_at,
-            "original_weight": abs(w),
-            "decayed_weight": round(decayed_weight, 1),
-            "expired": is_expired
-        })
-    # Filter out expired signals from display
-    signal_data = [s for s in signal_data if not s["expired"]]
-    # Sort signals reverse chronologically (newest first)
-    signal_data.sort(key=lambda x: x["activated_at"], reverse=True)
-    
-    # Calculate confidence: signal volume + source quality + recency
-    sig_count = len(signal_data)
-    avg_tier = 0
-    if signal_data:
-        tier_scores = {"confirmed": 3, "reported": 2, "rumored": 1}
-        avg_tier = sum(tier_scores.get(s.get("confidence", "rumored"), 1) for s in signal_data) / sig_count
-    recency_score = 0
-    for s in signal_data[:3]:  # top 3 signals
-        if s.get("activated_at"):
-            try:
-                act_dt = datetime.fromisoformat(s["activated_at"].replace("Z", "+00:00"))
-                hours_old = (now_dt - act_dt).total_seconds() / 3600
-                if hours_old < 24: recency_score += 3
-                elif hours_old < 72: recency_score += 2
-                else: recency_score += 1
-            except: pass
-    recency_score = min(3, recency_score / max(1, min(3, sig_count))) if sig_count > 0 else 0
-    conf_score = min(40, sig_count * 5) + avg_tier * 15 + min(30, recency_score * 10)
-    if conf_score >= 60: confidence = "HIGH"
-    elif conf_score >= 30: confidence = "MEDIUM"
-    else: confidence = "LOW"
-    
-    trackers_js.append({
-        "id": tid,
-        "name": name,
-        "emoji": emoji,
-        "prob": t.get("current_probability", t.get("base_rate", 0)),
-        "zone": t.get("zone", "deterrent"),
-        "trend": t.get("trend", "stable"),
-        "signals": signal_data,
-        "confidence": confidence
-    })
 
 news_js = state.get("latest_news", [
     {"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}
@@ -277,7 +381,7 @@ for n in news_js[:10]:
     primary_tier = "5_unverified"
     for s in sources:
         tier, weight, label = classify_source_credibility(s)
-        source_types.append(tier)
+        source_types.append(classify_source_category(s))
         if weight > max_cred_weight:
             max_cred_weight = weight
             primary_tier = tier
@@ -341,21 +445,16 @@ for tid, tracker in state.get("trackers", {}).items():
         timeline_key = f"{tid}:{s}"
         w = signal_weights.get((tid, s), 0)
         if w == 0:
-            continue  # Signal weight is 0, skip it
-        activated_at = timeline["signals"].get(timeline_key)
-        if activated_at:
-            # Known signal — check if it's expired
-            decayed = apply_temporal_decay(abs(w), activated_at)
-            if decayed > 0:
-                still_valid.add(s)
-        else:
-            # Signal in active_signals but no timeline entry — treat as newly activated
-            # (likely set by cron agent this cycle)
-            timeline["signals"][timeline_key] = now_iso
+            continue  # Signal removed from config or invalid
+        _, activated_at, _ = get_timeline_details(timeline_key, create=True)
+        decayed = apply_temporal_decay(abs(w), activated_at)
+        if decayed > 0:
             still_valid.add(s)
     
     # Merge: still_valid (agent-set, not expired) + news_signals (newly found)
     merged = still_valid | news_signals
+    for signal_name in merged:
+        confirm_signal(tid, signal_name)
     
     removed = old_signals - merged
     added = merged - old_signals
@@ -363,7 +462,18 @@ for tid, tracker in state.get("trackers", {}).items():
         print(f"[{tid}] Cleared {len(removed)} expired signals: {removed}")
     if added:
         print(f"[{tid}] Added {len(added)} new signals: {added}")
-    tracker["active_signals"] = list(merged)
+    tracker["active_signals"] = sorted(merged)
+    tracker["signal_timestamps"] = {}
+    for signal_name in tracker["active_signals"]:
+        _, activated_at, _ = get_timeline_details(f"{tid}:{signal_name}", create=True)
+        tracker["signal_timestamps"][signal_name] = activated_at or now_iso
+
+state["signal_timestamps"] = {
+    key: (entry.get("activated_at") if isinstance(entry, dict) else entry)
+    for key, entry in timeline.get("signals", {}).items()
+}
+
+trackers_js = build_tracker_cards()
 
 # ═══════════════════════════════════════════════════════════════════
 # AUTO-CALCULATE PROBABILITIES FROM SIGNALS
@@ -442,14 +552,25 @@ for t in trackers_js:
     trk = state.get("trackers", {}).get(tid, {})
     notes = trk.get("notes", "")
     if notes:
-        # Remove old "ZONE NN%" pattern from notes (e.g. "CRITICAL 79", "IMMINENT 100", "CRITICAL 35 (declining)")
-        cleaned = re.sub(r'\b(DETERRENT|ELEVATED|CRITICAL|IMMINENT)\s+\d+(\s*\([^)]*\))?', '', notes).strip()
-        # Clean up double spaces and leading artifacts
-        cleaned = re.sub(r'\s{2,}', ' ', cleaned).strip()
-        # Prepend correct zone/prob
-        zone_label = zone_labels.get(new_zone, "deterrent")
-        trend = trk.get("trend", "stable")
-        trk["notes"] = f"Day 20 auto - {zone_label} {t['prob']}% ({trend}). {cleaned}"
+        day_match = re.search(r'\bDay\s+\d+\b', notes, re.IGNORECASE)
+        day_prefix = f"{day_match.group(0)} auto - " if day_match else "Auto - "
+        cleaned = re.sub(
+            r'Day\s+\d+\s+auto\s*-\s*(?:DETERRENT|ELEVATED|CRITICAL|IMMINENT)?\s*\d*%?(?:\s*\([^)]*\))?\.?\s*',
+            '',
+            notes,
+            flags=re.IGNORECASE,
+        )
+        cleaned = re.sub(
+            r'Day\s+\d+\s*-\s*(?:DETERRENT|ELEVATED|CRITICAL|IMMINENT)?\s*\d*%?(?:\s*\([^)]*\))?\.?\s*',
+            '',
+            cleaned,
+            flags=re.IGNORECASE,
+        )
+        cleaned = re.sub(r'\b(DETERRENT|ELEVATED|CRITICAL|IMMINENT)\s+\d+%?(\s*\([^)]*\))?', '', cleaned)
+        cleaned = re.sub(r'\s{2,}', ' ', cleaned).strip(' .')
+        zone_label = zone_labels.get(t["zone"], "DETERRENT")
+        trend = normalize_trend(trk.get("trend", "stable"))
+        trk["notes"] = f"{day_prefix}{zone_label} {t['prob']}% ({trend}). {cleaned}" if cleaned else f"{day_prefix}{zone_label} {t['prob']}% ({trend})."
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
@@ -512,10 +633,16 @@ else:
         boost_log = ", ".join(f"{k}+{v:.1f}" for k, v in boosts_applied.items())
         print(f"Proportional coupling boosts: {boost_log}")
 
-    # Push boosted probabilities to tracker cards ONLY (not state — coupling is display-only)
+    # Push boosted probabilities to tracker cards and keep state coupling fields in sync
     for t in trackers_js:
         boosted = all_probs.get(t["id"], t["prob"])
         t["prob"] = round(boosted)  # Round to integer — no decimal percentages
+        t["zone"] = classify_zone(t["prob"])
+        tracker_state = state.get("trackers", {}).get(t["id"], {})
+        base_prob = tracker_state.get("current_probability", 0)
+        tracker_state["current_probability_with_coupling"] = t["prob"]
+        tracker_state["coupling_boost"] = round(max(0, t["prob"] - base_prob), 1)
+        tracker_state["zone"] = t["zone"]
 
     weights = {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.14, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.06, "pakistan_afghanistan": 0.08, "russia": 0.06, "china": 0.06, "north_korea": 0.08}
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))  # Already rounded — round() returns int for float input
@@ -523,6 +650,27 @@ else:
     # Update state.json with correct global
     state["global_war_probability"] = gp
     state["global_zone"] = tz
+    state["global_probability"] = gp
+
+    # Prune stale timeline entries before saving
+    pruned_timeline = {"signals": {}}
+    for key, entry in timeline.get("signals", {}).items():
+        if ":" not in key:
+            continue
+        tid_part, sname = key.split(":", 1)
+        tracker_signals = cfg.get("trackers", {}).get(tid_part, {}).get("signals", {})
+        if sname not in tracker_signals:
+            continue
+        activated_at = entry.get("activated_at") if isinstance(entry, dict) else entry
+        weight = signal_weights.get((tid_part, sname), 0)
+        if weight and apply_temporal_decay(abs(weight), activated_at) == 0:
+            continue
+        if isinstance(entry, dict):
+            pruned_timeline["signals"][key] = entry
+        else:
+            pruned_timeline["signals"][key] = {"activated_at": entry, "last_confirmed": entry}
+    timeline = pruned_timeline
+
     # Write updated signal timeline
     with open("data/signal_timeline.json", "w") as tf:
         json.dump(timeline, tf, indent=2)
@@ -602,24 +750,44 @@ else:
 
     lines = []
     lines.append("const state = {")
-    lines.append('  last_updated: "' + state.get("last_updated", "") + '",')
+    lines.append("  last_updated: " + json.dumps(state.get("last_updated", "")) + ",")
     lines.append("  global_war_probability: " + str(gp) + ",")
-    lines.append("  global_zone: \"" + tz + "\",")
+    lines.append("  global_zone: " + json.dumps(tz) + ",")
 
     lines.append("  trackers: [")
     for t in trackers_js:
         signals_str = json.dumps(t["signals"])
         prob_int = int(round(float(t["prob"])))  # Force integer — no decimals ever
-        lines.append('    { id: "' + t["id"] + '", name: "' + t["name"] + '", emoji: "' + t["emoji"] + '", prob: ' + str(prob_int) + ', zone: "' + t["zone"] + '", trend: "' + t["trend"] + '", confidence: "' + t.get("confidence", "LOW") + '", signals: ' + signals_str + ' },')
+        lines.append(
+            "    { id: " + json.dumps(t["id"]) +
+            ", name: " + json.dumps(t["name"]) +
+            ", emoji: " + json.dumps(t["emoji"]) +
+            ", prob: " + str(prob_int) +
+            ", zone: " + json.dumps(t["zone"]) +
+            ", trend: " + json.dumps(t["trend"]) +
+            ", confidence: " + json.dumps(t.get("confidence", "LOW")) +
+            ", signals: " + signals_str + " },"
+        )
     lines.append("  ],")
     lines.append("  news: [")
     for n in news_js[:10]:
-        txt = json.dumps(n.get("text",""))  # safe JSON encoding
-        hl = json.dumps(n.get("headline",""))
-        src = json.dumps(n.get("sources",[]))
-        src_types = json.dumps(n.get("source_types",[]))
-        sigs = json.dumps(n.get("signals",[]))
-        lines.append('    { zone: "' + n.get("zone","") + '", time: "' + n.get("time","") + '", text: ' + txt + ', headline: ' + hl + ', impact: "' + n.get("impact","neutral") + '", sources: ' + src + ', source_types: ' + src_types + ', confidence: "' + n.get("confidence","developing") + '", severity: ' + str(n.get("severity",1)) + ', signals: ' + sigs + ' },')
+        txt = json.dumps(n.get("text", ""))
+        hl = json.dumps(n.get("headline", ""))
+        src = json.dumps(n.get("sources", []))
+        src_types = json.dumps(n.get("source_types", []))
+        sigs = json.dumps(n.get("signals", []))
+        lines.append(
+            "    { zone: " + json.dumps(n.get("zone", "")) +
+            ", time: " + json.dumps(n.get("time", "")) +
+            ", text: " + txt +
+            ", headline: " + hl +
+            ", impact: " + json.dumps(n.get("impact", "neutral")) +
+            ", sources: " + src +
+            ", source_types: " + src_types +
+            ", confidence: " + json.dumps(n.get("confidence", "reported")) +
+            ", severity: " + str(n.get("severity", 1)) +
+            ", signals: " + sigs + " },"
+        )
     lines.append("  ],")
     # Add probability history (last 48 entries for chart)
     hist_entries = history["entries"][-48:]
@@ -728,6 +896,8 @@ else:
         except:
             pass
     
+    evaluations["predictions"] = dedupe_predictions(evaluations.get("predictions", []))
+
     # Map old narrative types to evaluable types (backward compat for Mar 14-16 predictions)
     narrative_to_eval = {
         "military_operation": ("probability_above", 0.7),
@@ -768,13 +938,13 @@ else:
             actual_state = state.get("trackers", {}).get(pred_tid, {})
 
             if pred_type == "probability_above":
-                actual_prob = actual_state.get("current_probability", 0)
+                actual_prob = actual_state.get("current_probability_with_coupling", actual_state.get("current_probability", 0))
                 pred["actual_value"] = actual_prob
                 pred["correct"] = actual_prob >= pred_value
                 pred["evaluated"] = True
                 pred["evaluated_at"] = now_iso
             elif pred_type == "probability_below":
-                actual_prob = actual_state.get("current_probability", 0)
+                actual_prob = actual_state.get("current_probability_with_coupling", actual_state.get("current_probability", 0))
                 pred["actual_value"] = actual_prob
                 pred["correct"] = actual_prob <= pred_value
                 pred["evaluated"] = True
@@ -835,13 +1005,13 @@ else:
                     pred_value = pred.get("eval_value", pred["value"])
                     actual_state = state.get("trackers", {}).get(pred_tid, {})
                     if pred_type == "probability_above":
-                        actual_prob = actual_state.get("current_probability", 0)
+                        actual_prob = actual_state.get("current_probability_with_coupling", actual_state.get("current_probability", 0))
                         pred["actual_value"] = actual_prob
                         pred["correct"] = actual_prob >= pred_value
                         pred["evaluated"] = True
                         pred["evaluated_at"] = now_iso
                     elif pred_type == "probability_below":
-                        actual_prob = actual_state.get("current_probability", 0)
+                        actual_prob = actual_state.get("current_probability_with_coupling", actual_state.get("current_probability", 0))
                         pred["actual_value"] = actual_prob
                         pred["correct"] = actual_prob <= pred_value
                         pred["evaluated"] = True
@@ -866,12 +1036,6 @@ else:
                         pred["evaluated_at"] = now_iso
                     else:
                         pred["evaluated"] = False
-    
-    # Calculate accuracy stats
-    evaluated_preds = [p for p in evaluations.get("predictions", []) if p.get("evaluated")]
-    total_eval = len(evaluated_preds)
-    correct_count = sum(1 for p in evaluated_preds if p.get("correct"))
-    accuracy_pct = round(correct_count / total_eval * 100) if total_eval > 0 else 0
     
     # Generate EVENT-BASED predictions from news + signals + trends
     news_texts = [((n.get("headline","") or n.get("text",""))).lower() for n in state.get("latest_news",[])]
@@ -992,8 +1156,14 @@ else:
     
     # Add new predictions to evaluations tracker for future evaluation
     evaluations["predictions"].extend(final_predictions)
+    evaluations["predictions"] = dedupe_predictions(evaluations.get("predictions", []))
     # Keep last 2000 predictions (need 48h+ retention for 24h expiry + buffer)
     evaluations["predictions"] = evaluations["predictions"][-2000:]
+
+    evaluated_preds = [p for p in evaluations.get("predictions", []) if p.get("evaluated")]
+    total_eval = len(evaluated_preds)
+    correct_count = sum(1 for p in evaluated_preds if p.get("correct"))
+    accuracy_pct = round(correct_count / total_eval * 100) if total_eval > 0 else 0
     
     # Save predictions
     pred_data = {
@@ -1164,7 +1334,8 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     
     # Inject narrative into HTML
     narrative_placeholder = '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;"></div>'
-    new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + narrative.replace('\n', '<br>') + '</div>')
+    safe_narrative_html = html_lib.escape(narrative).replace("\n", "<br>")
+    new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + safe_narrative_html + '</div>')
     
     # Inject predictions into HTML (in state block)
     pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
@@ -1177,14 +1348,17 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     print(f"Updated index.html — global: {gp}% ({tz}) — {len(trackers_js)} trackers — narrative generated")
     print(f"Narrative: {len(key_devs)} key developments, {len(prob_changes)} probability changes")
 
-# Commit and push
-import subprocess
-subprocess.run(["git", "config", "user.name", "VoltaIntel"], check=True)
-subprocess.run(["git", "config", "user.email", "cryptocybrog1337@proton.me"], check=True)
-# Force-add data files (gitignored but needed on GitHub Pages)
-subprocess.run(["git", "add", "-f", "data/current_state.json", "data/signal_timeline.json", "data/predictions/", "data/energy_prices.json", "data/flight_tracking.json"], check=False)
-subprocess.run(["git", "add", "-A"], check=True)
-r = subprocess.run(["git", "commit", "-m", "Update " + state.get("last_updated", "") + " — automated"], capture_output=True, text=True)
-print("Committed" if r.returncode == 0 else "No changes to commit")
-r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True)
-print("Pushed!" if r.returncode == 0 else r.stderr.strip())
+# Commit and push only when explicitly requested by the deploy wrapper.
+if os.environ.get("NUKE_WATCH_AUTO_GIT") == "1":
+    import subprocess
+    subprocess.run(["git", "config", "user.name", "VoltaIntel"], check=True)
+    subprocess.run(["git", "config", "user.email", "cryptocybrog1337@proton.me"], check=True)
+    # Force-add data files (gitignored but needed on GitHub Pages)
+    subprocess.run(["git", "add", "-f", "data/current_state.json", "data/signal_timeline.json", "data/predictions/", "data/energy_prices.json", "data/flight_tracking.json"], check=False)
+    subprocess.run(["git", "add", "-A"], check=True)
+    r = subprocess.run(["git", "commit", "-m", "Update " + state.get("last_updated", "") + " — automated"], capture_output=True, text=True)
+    print("Committed" if r.returncode == 0 else "No changes to commit")
+    r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True)
+    print("Pushed!" if r.returncode == 0 else r.stderr.strip())
+else:
+    print("Skipped git commit/push (set NUKE_WATCH_AUTO_GIT=1 to enable).")
