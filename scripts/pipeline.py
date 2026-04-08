@@ -542,6 +542,7 @@ trackers_js = build_tracker_cards()
 # Only auto-calculate when running standalone with signal data present.
 # ═══════════════════════════════════════════════════════════════════
 has_authoritative_trackors = bool(state.get("trackers", {}))
+any_auto_calculated = False  # Track if any tracker was truly auto-calculated
 
 for t in trackers_js:
     tid = t["id"]
@@ -559,6 +560,9 @@ for t in trackers_js:
         if zone_prob is not None:
             t["prob"] = int(round(zone_prob))
         continue
+
+    # ═══════════════ ACTUAL AUTO-CALCULATION (only real signal data) ═══════════════
+    any_auto_calculated = True
     tracker_cfg = cfg.get("trackers", {}).get(tid, {})
     base = tracker_cfg.get("base_rate", 10)
     
@@ -617,9 +621,12 @@ for t in trackers_js:
         if zone_prob is not None:
             t["prob"] = int(round(zone_prob))
 
-print(f"Auto-calculated probabilities from signals:")
-for t in trackers_js:
-    print(f"  {t['name']}: base={cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0)} + signals={t['prob'] - cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0) - (-1.5 * 0 if t.get('signals') else -5):.1f} = {t['prob']}%")
+if any_auto_calculated:
+    print(f"Auto-calculated probabilities from signals:")
+    for t in trackers_js:
+        print(f"  {t['name']}: base={cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0)} + signals={t['prob'] - cfg.get('trackers',{}).get(t['id'],{}).get('base_rate',0) - (-1.5 * 0 if t.get('signals') else -5):.1f} = {t['prob']}%")
+else:
+    print("All trackers using zone fallback (cron job set authoritative probabilities)")
 
 # Recalculate zones from config thresholds (before coupling)
 zone_thresholds = cfg.get("scoring", {}).get("zones", {})
