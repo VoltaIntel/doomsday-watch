@@ -548,8 +548,12 @@ for t in trackers_js:
     # Skip auto-calculation if:
     # (a) no trackers schema exists (cron job uses zones — authoritative probs already set)
     # (b) tracker has no real signals in trackers schema (uses zone fallback instead)
-    tracker_has_signals = bool(state.get("trackers", {}).get(tid, {}).get("active_signals"))
-    if not has_authoritative_trackors or not tracker_has_signals:
+    tracker_signals = state.get("trackers", {}).get(tid, {}).get("active_signals", [])
+    has_real_signals = bool(tracker_signals and any(
+        s.get("original_weight", 0) > 0 and not s.get("_from_zones")
+        for s in tracker_signals
+    ))
+    if not has_authoritative_trackors or not has_real_signals:
         # Use zone's authoritative probability
         zone_prob = state.get("zones", {}).get(tid, {}).get("current_prob")
         if zone_prob is not None:
