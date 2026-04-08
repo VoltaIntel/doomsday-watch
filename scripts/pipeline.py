@@ -265,7 +265,8 @@ def build_signal_data(tid):
                         "original_weight": weight_map[sig_level],
                         "decayed_weight": weight_map[sig_level],
                         "expired": False,
-                        "is_deescalatory": False
+                        "is_deescalatory": False,
+                        "_from_zones": True  # Tag so auto-calculate knows to skip these
                     })
 
     signal_data.sort(key=lambda item: item["activated_at"], reverse=True)
@@ -587,10 +588,23 @@ for t in trackers_js:
     calculated_prob = base + signal_sum + no_news_decay
     calculated_prob = max(2, min(100, round(calculated_prob)))  # Floor at 2% (no event is zero risk)
     
-    t["prob"] = calculated_prob
-    # Also update state so coupling reads the correct base value
-    if tid in state.get("trackers", {}):
-        state["trackers"][tid]["current_probability"] = calculated_prob
+    # If tracker had no active_signals, use zone's authoritative probability instead
+    # (the cron job already set correct probs in zones schema — don't overwrite with 5%)
+    # Only auto-calculate if signals came from trackers schema (not zone fallback)
+    has_real_signals = (
+        t.get("signals") and
+        any(s.get("original_weight", 0) > 0 and not s.get("_from_zones") for s in t["signals"])
+    )
+    if has_real_signals:
+        t["prob"] = calculated_prob
+        # Also update state so coupling reads the correct base value
+        if tid in state.get("trackers", {}):
+            state["trackers"][tid]["current_probability"] = calculated_prob
+    else:
+        # No signals from trackers schema (empty active_signals) — use zone's authoritative prob
+        zone_prob = state.get("zones", {}).get(tid, {}).get("current_prob")
+        if zone_prob is not None:
+            t["prob"] = int(round(zone_prob))
 
 print(f"Auto-calculated probabilities from signals:")
 for t in trackers_js:
