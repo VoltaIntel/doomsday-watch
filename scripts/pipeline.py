@@ -227,6 +227,8 @@ def confirm_signal(tid, signal_name, confirmed_at=None):
 def build_signal_data(tid):
     tracker = state.get("trackers", {}).get(tid, {})
     signal_data = []
+
+    # Primary: read active_signals from trackers schema (agent-managed signals)
     for signal_name in tracker.get("active_signals", []):
         timeline_key = f"{tid}:{signal_name}"
         _, activated_at, last_confirmed = get_timeline_details(timeline_key, create=True)
@@ -246,6 +248,25 @@ def build_signal_data(tid):
             "expired": False,
             "is_deescalatory": weight < 0
         })
+
+    # Fallback: if no signals from trackers schema, read qualitative zone signals
+    # (cron job writes to zones[].signals as {"rhetoric": "medium", ...})
+    if not signal_data:
+        zone_sigs = state.get("zones", {}).get(tid, {}).get("signals", {})
+        if isinstance(zone_sigs, dict):
+            weight_map = {"critical": 8, "high": 6, "medium": 4, "low": 2, "rising": 5, "elevated": 4}
+            for sig_name, sig_level in zone_sigs.items():
+                if sig_level in weight_map:
+                    signal_data.append({
+                        "name": sig_name.title() + " (" + sig_level + ")",
+                        "positive": False,
+                        "activated_at": state.get("last_updated", now_iso),
+                        "last_confirmed": state.get("last_updated", now_iso),
+                        "original_weight": weight_map[sig_level],
+                        "decayed_weight": weight_map[sig_level],
+                        "expired": False,
+                        "is_deescalatory": False
+                    })
 
     signal_data.sort(key=lambda item: item["activated_at"], reverse=True)
 
@@ -368,9 +389,33 @@ for k in state.get("trackers", {}).keys():
     if k not in known:
         tn.append((k, k.upper().replace("_", " "), "🌍"))
 
-news_js = state.get("latest_news", [
-    {"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}
-])
+# BRIDGE: When latest_news is absent (zones schema written by cron),
+# convert zone signals into news items so the signal feed is populated.
+raw_news = state.get("latest_news")
+if not raw_news:
+    zones = state.get("zones", {})
+    news_js = []
+    for zid, zdata in zones.items():
+        sigs = zdata.get("signals", {})
+        if isinstance(sigs, dict) and sigs:
+            sig_parts = []
+            for k, v in sigs.items():
+                if v and v not in ("none", "low"):
+                    sig_parts.append(f"{k}: {v}")
+            if sig_parts:
+                news_js.append({
+                    "zone": zid,
+                    "time": "LIVE",
+                    "text": f"{zdata.get('name', zid.upper())} — " + " | ".join(sig_parts),
+                    "headline": f"Signal update: {', '.join(sig_parts)}",
+                    "impact": "elevated" if any(v in ("high", "critical", "rising") for v in sigs.values()) else "neutral",
+                    "sources": ["NUCLEAR ESCALATION WATCH"],
+                    "severity": 2
+                })
+    if not news_js:
+        news_js = [{"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}]
+else:
+    news_js = raw_news
 
 # (credibility config and functions loaded at top of script)
 
