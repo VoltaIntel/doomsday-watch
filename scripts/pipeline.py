@@ -545,8 +545,15 @@ has_authoritative_trackors = bool(state.get("trackers", {}))
 
 for t in trackers_js:
     tid = t["id"]
-    # Skip auto-calculation when using zones schema — cron job already set authoritative probs
-    if not has_authoritative_trackors:
+    # Skip auto-calculation if:
+    # (a) no trackers schema exists (cron job uses zones — authoritative probs already set)
+    # (b) tracker has no real signals in trackers schema (uses zone fallback instead)
+    tracker_has_signals = bool(state.get("trackers", {}).get(tid, {}).get("active_signals"))
+    if not has_authoritative_trackors or not tracker_has_signals:
+        # Use zone's authoritative probability
+        zone_prob = state.get("zones", {}).get(tid, {}).get("current_prob")
+        if zone_prob is not None:
+            t["prob"] = int(round(zone_prob))
         continue
     tracker_cfg = cfg.get("trackers", {}).get(tid, {})
     base = tracker_cfg.get("base_rate", 10)
