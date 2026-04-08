@@ -283,21 +283,35 @@ def build_signal_data(tid):
 
 def build_tracker_cards():
     cards = []
+    # Fallback: if state["trackers"] is absent/empty, read from state["zones"]
+    # (cron job writes to zones; pipeline previously only read trackers)
+    trackers_src = state.get("trackers", {}) or state.get("zones", {})
     for tid, name, emoji in tn:
-        tracker = state.get("trackers", {}).get(tid, {})
+        tracker = trackers_src.get(tid, {})
         signal_data, confidence = build_signal_data(tid)
-        trend = normalize_trend(tracker.get("trend", "stable"))
-        tracker["trend"] = trend
-        tracker["base_rate"] = cfg.get("trackers", {}).get(tid, {}).get("base_rate", tracker.get("base_rate", 0))
+        trend = normalize_trend(tracker.get("trend", tracker.get("trend", "stable")))
+        # current_probability (trackers schema) or current_prob (zones schema)
+        prob = tracker.get("current_probability", tracker.get("current_prob", 0))
+        # zone field: zones schema uses no zone field — derive from probability
+        zone = tracker.get("zone")
+        if not zone:
+            zone_thresholds = cfg.get("scoring", {}).get("zones", {})
+            p = prob
+            if p >= zone_thresholds.get("imminent", {}).get("min", 60): zone = "imminent"
+            elif p >= zone_thresholds.get("critical", {}).get("min", 30): zone = "critical"
+            elif p >= zone_thresholds.get("elevated", {}).get("min", 15): zone = "elevated"
+            else: zone = "deterrent"
+        base_rate = tracker.get("base_rate", cfg.get("trackers", {}).get(tid, {}).get("base_rate", 0))
         cards.append({
             "id": tid,
             "name": name,
             "emoji": emoji,
-            "prob": tracker.get("current_probability", tracker.get("base_rate", 0)),
-            "zone": tracker.get("zone", "deterrent"),
+            "prob": prob,
+            "zone": zone,
             "trend": trend,
             "signals": signal_data,
-            "confidence": confidence
+            "confidence": confidence,
+            "base_rate": base_rate
         })
     return cards
 
@@ -336,7 +350,7 @@ def dedupe_predictions(predictions):
 
 # Build tracker labels
 tn = [
-    ("iran_nuke", "IRAN NUCLEAR", "🇮🇷"),
+    ("iran_nuclear", "IRAN NUCLEAR", "🇮🇷"),
     ("iran_conventional", "IRAN WAR", "⚔️"),
     ("israel_lebanon", "ISRAEL-LEBANON", "🇱🇧"),
     ("turkey", "TURKEY-NATO", "🇹🇷"),
@@ -478,9 +492,16 @@ trackers_js = build_tracker_cards()
 # ═══════════════════════════════════════════════════════════════════
 # AUTO-CALCULATE PROBABILITIES FROM SIGNALS
 # The agent manages signals. The code manages probabilities.
+# Skip if state was written by cron job (zones schema — authoritative probs already set)
+# Only auto-calculate when running standalone with signal data present.
 # ═══════════════════════════════════════════════════════════════════
+has_authoritative_trackors = bool(state.get("trackers", {}))
+
 for t in trackers_js:
     tid = t["id"]
+    # Skip auto-calculation when using zones schema — cron job already set authoritative probs
+    if not has_authoritative_trackors:
+        continue
     tracker_cfg = cfg.get("trackers", {}).get(tid, {})
     base = tracker_cfg.get("base_rate", 10)
     
