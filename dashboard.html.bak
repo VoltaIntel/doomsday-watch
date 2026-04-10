@@ -920,34 +920,6 @@ const state = {
   eval_stats: { total: 0, correct: 0, accuracy: 0 }
 };
 
-// ===== STALENESS DETECTION =====
-(function() {
-  var ts = state.last_updated;
-  if (!ts) return;
-  var updated = new Date(ts);
-  if (isNaN(updated.getTime())) return;
-  var now = new Date();
-  var ageMs = now - updated;
-  var ageHours = ageMs / (1000 * 60 * 60);
-
-  var banner = document.createElement('div');
-  banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;padding:10px 24px;font-family:var(--mono);font-size:12px;text-align:center;letter-spacing:1px;';
-
-  if (ageHours > 24) {
-    banner.style.background = 'rgba(255,45,45,0.2)';
-    banner.style.borderBottom = '1px solid #ff2d2d';
-    banner.style.color = '#ff2d2d';
-    banner.innerHTML = '&#9888; DATA STALE — Last updated ' + Math.floor(ageHours) + 'h ago. Information may be unreliable.';
-    document.body.prepend(banner);
-  } else if (ageHours > 12) {
-    banner.style.background = 'rgba(255,170,0,0.15)';
-    banner.style.borderBottom = '1px solid #ffaa00';
-    banner.style.color = '#ffaa00';
-    banner.innerHTML = '&#9888; DATA AGING — Last updated ' + Math.floor(ageHours) + 'h ago. Update recommended.';
-    document.body.prepend(banner);
-  }
-})();
-
 // ===== RENDER =====
 function escapeHtml(value) {
   return String(value == null ? '' : value)

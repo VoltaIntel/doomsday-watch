@@ -18,7 +18,45 @@
     "technical": 0.3,
     "alliance": 0.1
   },
+  "trackers": {
+    "iran_nuke": {"base_rate": 8, "description": "Iran nuclear weapons development/testing"},
+    "iran_conventional": {"base_rate": 22, "description": "Conventional military strikes on Iran"},
+    "israel_lebanon": {"base_rate": 18, "description": "Israel-Hezbollah/Lebanon conflict"},
+    "turkey": {"base_rate": 5, "description": "Turkey regional military action"},
+    "india": {"base_rate": 6, "description": "India-Pakistan military confrontation"},
+    "russia": {"base_rate": 4, "description": "Russia-NATO direct confrontation"},
+    "china": {"base_rate": 3, "description": "China-Taiwan military action"},
+    "north_korea": {"base_rate": 5, "description": "North Korea provocations"},
+    "russia_ukraine": {"base_rate": 30, "description": "Russia-Ukraine conflict escalation"},
+    "pakistan_afghanistan": {"base_rate": 5, "description": "Pakistan-Afghanistan conflict"}
+  },
+  "coupling": {
+    "iran_conventional": {"affects": {"iran_nuke": 0.3, "israel_lebanon": 0.4}},
+    "israel_lebanon": {"affects": {"iran_conventional": 0.3}},
+    "russia_ukraine": {"affects": {"russia": 0.4}},
+    "north_korea": {"affects": {"china": 0.2}}
+  },
+  "scoring": {
+    "zones": {"deterrent": [0, 15], "elevated": [15, 30], "critical": [30, 60], "imminent": [60, 100]}
+  },
+  "auto_detection": {
+    "min_mentions": 3,
+    "min_sources": 2,
+    "keywords": ["escalation", "military", "nuclear", "strike", "conflict", "war"]
+  },
+  "global_weights": {
+    "iran_nuke": 0.12,
+    "iran_conventional": 0.18,
+    "israel_lebanon": 0.14,
+    "russia_ukraine": 0.16,
+    "turkey": 0.06,
+    "india": 0.06,
+    "pakistan_afghanistan": 0.08,
+    "russia": 0.06,
+    "china": 0.06,
+    "north_korea": 0.08
+  },
   "update_interval_hours": 6,
   "last_updated": "2026-04-10T09:02:19.988014+00:00",
-  "dashboard_path": "/home/openclaw/.openclaw/workspace/nuke-watch/dashboard.html"
+  "dashboard_path": "dashboard.html"
 }
