@@ -365,10 +365,15 @@ def build_tracker_cards():
         zone = tracker.get("zone")
         if not zone:
             zone_thresholds = cfg.get("scoring", {}).get("zones", {})
+            def _zmin(key, default):
+                val = zone_thresholds.get(key, {})
+                if isinstance(val, list): return val[0] if val else default
+                if isinstance(val, dict): return val.get("min", default)
+                return default
             p = prob
-            if p >= zone_thresholds.get("imminent", {}).get("min", 60): zone = "imminent"
-            elif p >= zone_thresholds.get("critical", {}).get("min", 30): zone = "critical"
-            elif p >= zone_thresholds.get("elevated", {}).get("min", 15): zone = "elevated"
+            if p >= _zmin("imminent", 60): zone = "imminent"
+            elif p >= _zmin("critical", 30): zone = "critical"
+            elif p >= _zmin("elevated", 15): zone = "elevated"
             else: zone = "deterrent"
         base_rate = tracker.get("base_rate", cfg.get("trackers", {}).get(tid, {}).get("base_rate", 0))
         cards.append({
@@ -609,6 +614,56 @@ state["signal_timestamps"] = {
     for key, entry in timeline.get("signals", {}).items()
 }
 
+# ═══════════════════════════════════════════════════════════════════
+# EXTRACT SPECIFIC SIGNALS FROM ZONE NOTES (fallback for cron jobs)
+# Maps notes content to named signals from signalNameMap in dashboard
+# ═══════════════════════════════════════════════════════════════════
+_SIGNAL_KEYWORDS = {
+    "hormuz_closed": ["hormuz closed", "hormuz shut", "strait closed", "re-closed strait"],
+    "hormuz_controlled_not_closed": ["hormuz controlled", "hormuz restricted", "hormuz limited"],
+    "hormuz_mining": ["hormuz min", "mined strait", "naval mine"],
+    "hormuz_zero_traffic": ["hormuz zero", "hormuz no traffic"],
+    "nuclear_rhetoric_official": ["nuclear rhetoric", "nuclear weapon", "nuclear threat", "nuclear capabilit"],
+    "enrichment_90": ["90% enrich", "90 percent enrich", "weapons-grade", "weapon-grade enrich"],
+    "enrichment_60": ["60% enrich", "60 percent enrich"],
+    "diplomacy_refused": ["rejects peace", "rejects diplomacy", "peace talk", "refused diplomac", "refusing diplomac", "unreasonable"],
+    "diplomacy_active": ["ceasefire", "peace deal", "diplomatic talk", "negotiat"],
+    "missile_range_test": ["missile test", "missile launch", "ballistic missile", "missile range"],
+    "iaea_access_denied": ["iaea access", "iaea denied", "iaea inspect"],
+    "military_buildup": ["troop deploy", "military buildup", "force deploy", "carrier group"],
+    "bomber_redeployment": ["bomber", "b-2", "b-52"],
+    "ssbn_positioning": ["ssbn", "submarine deploy", "nuclear sub"],
+    "ground_invasion_talk": ["ground invasion", "ground operation", "ground force"],
+    "nuclear_test": ["nuclear test", "nuclear detonat"],
+    "oil_infrastructure_threat": ["oil threat", "oil infrastructure", "oil target"],
+    "ceasefire_violation": ["ceasefire violat", "broke ceasefire", "broke truce", "strikes despite ceasefire"],
+}
+
+# Ensure trackers dict exists
+if "trackers" not in state:
+    state["trackers"] = {}
+
+for zone_id, zone_data in state.get("zones", {}).items():
+    notes = zone_data.get("notes", "")
+    if not notes or len(notes) < 20:
+        continue
+    notes_lower = notes.lower()
+    matched_signals = []
+    for signal_name, keywords in _SIGNAL_KEYWORDS.items():
+        for kw in keywords:
+            if kw in notes_lower:
+                matched_signals.append(signal_name)
+                break
+    if matched_signals:
+        if zone_id not in state["trackers"]:
+            state["trackers"][zone_id] = {}
+        # Merge with existing active_signals (don't overwrite)
+        existing = set(state["trackers"][zone_id].get("active_signals", []))
+        existing.update(matched_signals)
+        state["trackers"][zone_id]["active_signals"] = sorted(existing)
+        if "current_probability" not in state["trackers"][zone_id]:
+            state["trackers"][zone_id]["current_probability"] = zone_data.get("current_prob", 0)
+
 trackers_js = build_tracker_cards()
 
 # ═══════════════════════════════════════════════════════════════════
@@ -627,7 +682,7 @@ for t in trackers_js:
     # (b) tracker has no real signals in trackers schema (uses zone fallback instead)
     tracker_signals = state.get("trackers", {}).get(tid, {}).get("active_signals", [])
     has_real_signals = bool(tracker_signals and any(
-        s.get("original_weight", 0) > 0 and not s.get("_from_zones")
+        (s.get("original_weight", 0) > 0 and not s.get("_from_zones")) if isinstance(s, dict) else True
         for s in tracker_signals
     ))
     if not has_authoritative_trackors or not has_real_signals:
