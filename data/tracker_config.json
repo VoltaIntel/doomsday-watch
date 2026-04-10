@@ -19,16 +19,57 @@
     "alliance": 0.1
   },
   "trackers": {
-    "iran_nuke": {"base_rate": 8, "description": "Iran nuclear weapons development/testing"},
-    "iran_conventional": {"base_rate": 22, "description": "Conventional military strikes on Iran"},
-    "israel_lebanon": {"base_rate": 18, "description": "Israel-Hezbollah/Lebanon conflict"},
-    "turkey": {"base_rate": 5, "description": "Turkey regional military action"},
-    "india": {"base_rate": 6, "description": "India-Pakistan military confrontation"},
-    "russia": {"base_rate": 4, "description": "Russia-NATO direct confrontation"},
-    "china": {"base_rate": 3, "description": "China-Taiwan military action"},
-    "north_korea": {"base_rate": 5, "description": "North Korea provocations"},
-    "russia_ukraine": {"base_rate": 30, "description": "Russia-Ukraine conflict escalation"},
-    "pakistan_afghanistan": {"base_rate": 5, "description": "Pakistan-Afghanistan conflict"}
+    "iran_nuke": {
+      "base_rate": 8,
+      "description": "Iran nuclear weapons development/testing",
+      "signals": {
+        "enrichment_60": {"weight": 6},
+        "enrichment_90": {"weight": 10},
+        "nuclear_rhetoric_official": {"weight": 5},
+        "iaea_access_denied": {"weight": 7},
+        "iaea_emergency": {"weight": 8},
+        "fordow_activation": {"weight": 9},
+        "nuclear_test": {"weight": 15},
+        "fuel_reprocessing": {"weight": 6},
+        "diplomacy_active": {"weight": -4},
+        "diplomacy_refused": {"weight": 4}
+      }
+    },
+    "iran_conventional": {
+      "base_rate": 22,
+      "description": "Conventional military strikes on Iran",
+      "signals": {
+        "hormuz_closed": {"weight": 8},
+        "hormuz_controlled_not_closed": {"weight": 4},
+        "hormuz_mining": {"weight": 10},
+        "hormuz_zero_traffic": {"weight": 12},
+        "oil_infrastructure_threat": {"weight": 6},
+        "military_buildup": {"weight": 5},
+        "bomber_redeployment": {"weight": 7},
+        "ssbn_positioning": {"weight": 8},
+        "diplomacy_refused": {"weight": 4},
+        "diplomacy_active": {"weight": -5},
+        "ceasefire_violation": {"weight": 6}
+      }
+    },
+    "israel_lebanon": {
+      "base_rate": 18,
+      "description": "Israel-Hezbollah/Lebanon conflict",
+      "signals": {
+        "ceasefire_violation": {"weight": 6},
+        "diplomacy_active": {"weight": -4},
+        "diplomacy_refused": {"weight": 4},
+        "military_buildup": {"weight": 5},
+        "missile_range_test": {"weight": 6}
+      }
+    },
+    "turkey": {"base_rate": 5, "description": "Turkey regional military action", "signals": {"nuclear_rhetoric_official": {"weight": 5}, "diplomacy_active": {"weight": -3}}},
+    "india": {"base_rate": 6, "description": "India-Pakistan military confrontation", "signals": {"diplomacy_active": {"weight": -3}, "military_buildup": {"weight": 5}}},
+    "russia": {"base_rate": 4, "description": "Russia-NATO direct confrontation", "signals": {"nuclear_rhetoric_official": {"weight": 6}, "diplomacy_refused": {"weight": 4}}},
+    "china": {"base_rate": 3, "description": "China-Taiwan military action", "signals": {"military_buildup": {"weight": 6}, "diplomacy_refused": {"weight": 4}}},
+    "north_korea": {"base_rate": 5, "description": "North Korea provocations", "signals": {"missile_range_test": {"weight": 6}, "nuclear_test": {"weight": 12}}},
+    "russia_ukraine": {"base_rate": 30, "description": "Russia-Ukraine conflict escalation", "signals": {"nuclear_rhetoric_official": {"weight": 5}, "diplomacy_active": {"weight": -4}, "military_buildup": {"weight": 4}}},
+    "pakistan_afghanistan": {"base_rate": 5, "description": "Pakistan-Afghanistan conflict", "signals": {"diplomacy_active": {"weight": -3}, "military_buildup": {"weight": 5}}}
   },
   "coupling": {
     "iran_conventional": {"affects": {"iran_nuke": 0.3, "israel_lebanon": 0.4}},
