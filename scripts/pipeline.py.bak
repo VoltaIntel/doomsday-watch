@@ -678,10 +678,18 @@ else:
 
 # Recalculate zones from config thresholds (before coupling)
 zone_thresholds = cfg.get("scoring", {}).get("zones", {})
+def _zone_min(key, default):
+    val = zone_thresholds.get(key, {})
+    if isinstance(val, list):
+        return val[0] if val else default
+    if isinstance(val, dict):
+        return val.get("min", default)
+    return default
+
 def classify_zone(p):
-    if p >= zone_thresholds.get("imminent", {}).get("min", 60): return "imminent"
-    elif p >= zone_thresholds.get("critical", {}).get("min", 30): return "critical"
-    elif p >= zone_thresholds.get("elevated", {}).get("min", 15): return "elevated"
+    if p >= _zone_min("imminent", 60): return "imminent"
+    elif p >= _zone_min("critical", 30): return "critical"
+    elif p >= _zone_min("elevated", 15): return "elevated"
     else: return "deterrent"
 
 for t in trackers_js:

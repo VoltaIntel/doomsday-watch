@@ -441,9 +441,37 @@ for k in state.get("trackers", {}).keys():
 # convert zone signals into news items so the signal feed is populated.
 raw_news = state.get("latest_news")
 if not raw_news:
+    # Enhanced fallback: extract news from zone notes + signals
+    raw_news = []
+    trackers = state.get("trackers", {})
     zones = state.get("zones", {})
-    news_js = []
-    for zid, zdata in zones.items():
+
+    # First pass: extract news from zone/tracker notes fields
+    for zone_id, zone_data in {**trackers, **zones}.items():
+        notes = zone_data.get("notes", "")
+        if notes and len(notes) > 20:
+            # Extract first meaningful sentences as headlines
+            sentences = [s.strip() for s in notes.replace('\n', '. ').split('.') if len(s.strip()) > 15]
+            for sent in sentences[:2]:
+                # Detect source from notes
+                source = "Unknown"
+                for src in ["Reuters", "AP", "CNN", "BBC", "NYT", "Al Jazeera", "NPR", "ISW", "LA Times", "WaPo", "Guardian", "Bloomberg", "TASS", "Xinhua"]:
+                    if src.lower() in sent.lower():
+                        source = src
+                        break
+                # Detect impact direction
+                impact = "up" if any(w in sent.lower() for w in ["escalat", "strike", "bomb", "attack", "reject", "critical", "warn", "destroy", "kill", "invasion"]) else "down"
+                raw_news.append({
+                    "zone": zone_id,
+                    "text": sent[:200],
+                    "headline": sent[:80],
+                    "sources": [source],
+                    "impact": impact,
+                    "time": "24H"
+                })
+
+    # Second pass: convert zone signals into news items
+    for zid, zdata in {**zones, **trackers}.items():
         sigs = zdata.get("signals", {})
         if isinstance(sigs, dict) and sigs:
             sig_parts = []
@@ -451,7 +479,7 @@ if not raw_news:
                 if v and v not in ("none", "low"):
                     sig_parts.append(f"{k}: {v}")
             if sig_parts:
-                news_js.append({
+                raw_news.append({
                     "zone": zid,
                     "time": "LIVE",
                     "text": f"{zdata.get('name', zid.upper())} — " + " | ".join(sig_parts),
@@ -460,10 +488,11 @@ if not raw_news:
                     "sources": ["NUCLEAR ESCALATION WATCH"],
                     "severity": 2
                 })
-    if not news_js:
-        news_js = [{"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}]
-else:
-    news_js = raw_news
+
+    if not raw_news:
+        raw_news = [{"zone": "iran", "time": "LIVE", "text": "Monitoring active", "impact": "neutral"}]
+
+news_js = raw_news
 
 # (credibility config and functions loaded at top of script)
 
