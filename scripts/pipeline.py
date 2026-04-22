@@ -692,6 +692,13 @@ for t in trackers_js:
             t["prob"] = int(round(zone_prob))
         continue
 
+    # Respect manually-set probabilities from cron job / agent analysis
+    tracker_state = state.get("trackers", {}).get(tid, {})
+    manual_prob = tracker_state.get("current_probability")
+    if manual_prob is not None and manual_prob > 0:
+        t["prob"] = int(round(manual_prob))
+        continue
+
     # ═══════════════ ACTUAL AUTO-CALCULATION (only real signal data) ═══════════════
     any_auto_calculated = True
     tracker_cfg = cfg.get("trackers", {}).get(tid, {})
