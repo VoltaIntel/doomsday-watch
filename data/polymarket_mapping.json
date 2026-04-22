@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "description": "Maps DoomsdayWatch tracker IDs to Polymarket market slugs for cross-checking. weight: contribution to implied prob (sum need not be 1). horizon_days: market's outcome horizon. invert: true when YES price represents the OPPOSITE of escalation (e.g. ceasefire=YES means de-escalation).",
+    "last_updated": "2026-04-22",
+    "notes": "Slugs are examples and must be updated when markets resolve or new ones list. Run refresh_cache() to confirm which slugs are currently active."
+  },
+  "iran_conventional": [
+    {"slug": "israel-strikes-iran-by-june-30-2026", "weight": 0.6, "horizon_days": 70, "invert": false},
+    {"slug": "us-iran-nuclear-deal-by-june-30", "weight": 0.4, "horizon_days": 70, "invert": true},
+    {"slug": "will-the-us-invade-iran-before-2027", "weight": 0.5, "horizon_days": 250, "invert": false},
+    {"slug": "us-iran-nuclear-deal-before-2027", "weight": 0.3, "horizon_days": 250, "invert": true}
+  ],
+  "iran_nuclear": [
+    {"slug": "iran-nuke-before-2027", "weight": 1.0, "horizon_days": 250, "invert": false},
+    {"slug": "iran-nuclear-test-before-2027", "weight": 0.4, "horizon_days": 250, "invert": false},
+    {"slug": "will-iran-withdraw-from-the-npt-before-2027", "weight": 0.2, "horizon_days": 250, "invert": false}
+  ],
+  "russia_ukraine": [
+    {"slug": "russia-ukraine-ceasefire-by-june-30-2026", "weight": 0.5, "horizon_days": 60, "invert": true},
+    {"slug": "russia-x-ukraine-ceasefire-before-2027", "weight": 0.5, "horizon_days": 250, "invert": true},
+    {"slug": "ukraine-signs-peace-deal-with-russia-before-2027", "weight": 0.3, "horizon_days": 250, "invert": true}
+  ],
+  "russia": [
+    {"slug": "nato-article-5-invoked-2026", "weight": 1.0, "horizon_days": 250, "invert": false},
+    {"slug": "nato-article-5-before-2027", "weight": 0.8, "horizon_days": 250, "invert": false},
+    {"slug": "natoeu-troops-fighting-in-ukraine-in-june-30-2026", "weight": 0.3, "horizon_days": 60, "invert": false}
+  ],
+  "china": [
+    {"slug": "china-invades-taiwan-by-dec-31-2026", "weight": 1.0, "horizon_days": 250, "invert": false},
+    {"slug": "will-china-invade-taiwan-before-2027", "weight": 0.8, "horizon_days": 250, "invert": false},
+    {"slug": "china-x-taiwan-military-clash-before-2027", "weight": 0.5, "horizon_days": 250, "invert": false},
+    {"slug": "will-china-blockade-taiwan-by-june-30", "weight": 0.3, "horizon_days": 60, "invert": false}
+  ],
+  "north_korea": [
+    {"slug": "north-korea-nuclear-test-2026", "weight": 1.0, "horizon_days": 250, "invert": false},
+    {"slug": "will-north-korea-invade-south-korea-before-2027", "weight": 0.6, "horizon_days": 250, "invert": false},
+    {"slug": "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027", "weight": 0.2, "horizon_days": 250, "invert": false}
+  ],
+  "israel_lebanon": [
+    {"slug": "israel-hezbollah-ceasefire-holds-through-june-30", "weight": 0.5, "horizon_days": 70, "invert": true},
+    {"slug": "israel-and-lebanon-normalize-relations-before-2027", "weight": 0.3, "horizon_days": 250, "invert": true}
+  ],
+  "india": [
+    {"slug": "india-pakistan-armed-conflict-2026", "weight": 1.0, "horizon_days": 250, "invert": false}
+  ]
+}

@@ -5,20 +5,24 @@ signals.py — Signal classification, credibility, decay, and matching.
 Extracted from pipeline.py for DoomsdayWatch modular architecture.
 """
 
+import re
 from datetime import datetime, timedelta, timezone
 
 
 def classify_source_credibility(source_str, SOURCE_CREDIBILITY, TIER_WEIGHTS, TIER_LABELS):
     """Classify a source string into a credibility tier.
     Returns (tier_key, weight, label).
-    Best-match wins: longest keyword substring match."""
+    Longest word-boundary keyword match wins."""
     sl = source_str.lower().strip()
     best_tier = "5_unverified"
     best_match_len = 0
     for keyword, tier in SOURCE_CREDIBILITY.items():
-        if keyword in sl and len(keyword) > best_match_len:
+        kw = keyword.lower().strip()
+        if not kw:
+            continue
+        if re.search(rf'\b{re.escape(kw)}\b', sl) and len(kw) > best_match_len:
             best_tier = tier
-            best_match_len = len(keyword)
+            best_match_len = len(kw)
     weight = TIER_WEIGHTS.get(best_tier, 0.3)
     label = TIER_LABELS.get(best_tier, "Unknown")
     return best_tier, weight, label

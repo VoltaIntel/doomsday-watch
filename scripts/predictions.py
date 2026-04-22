@@ -187,7 +187,7 @@ def generate_predictions(trackers_js, state, now_iso):
         etype = ""
 
         # IRAN CONVENTIONAL
-        if tid == "iran_conventional" and prob >= 80:
+        if tid == "iran_conventional" and prob >= 30:
             if "hormuz" in combined_news or "blockade" in combined_news:
                 event = ("Strait of Hormuz expected to remain under Iranian blockade. "
                          "Additional shipping attacks probable within 12 hours.")
@@ -202,7 +202,7 @@ def generate_predictions(trackers_js, state, now_iso):
                 confidence = 55; etype = "military_operation"
 
         # ISRAEL-LEBANON
-        elif tid == "israel_lebanon" and prob >= 60:
+        elif tid == "israel_lebanon" and prob >= 20:
             if "ground" in combined_news or "invasion" in combined_news:
                 event = ("Israeli ground operation in southern Lebanon expected to continue "
                          "beyond Litani River. Further displacement and infrastructure destruction likely.")
@@ -213,7 +213,7 @@ def generate_predictions(trackers_js, state, now_iso):
                 confidence = 55; etype = "military_operation"
 
         # PAKISTAN-AFGHANISTAN
-        elif tid == "pakistan_afghanistan" and prob >= 60:
+        elif tid == "pakistan_afghanistan" and prob >= 20:
             if "taliban" in combined_news or "border" in combined_news or "kills" in combined_news:
                 event = ("Border escalation between Afghanistan and Pakistan likely to intensify. "
                          "Cross-border strikes expected within 24 hours.")
@@ -224,7 +224,7 @@ def generate_predictions(trackers_js, state, now_iso):
                 confidence = 50; etype = "border_conflict"
 
         # TURKEY
-        elif tid == "turkey" and prob >= 50:
+        elif tid == "turkey" and prob >= 15:
             if "incirlik" in combined_news or "nato" in combined_news:
                 event = ("Turkish military posture shift expected. NATO alliance consultations "
                          "likely as Turkey repositions forces.")
@@ -246,7 +246,7 @@ def generate_predictions(trackers_js, state, now_iso):
                 confidence = 40; etype = "status_quo"
 
         # IRAN NUCLEAR
-        elif tid == "iran_nuke" and prob >= 20:
+        elif tid == "iran_nuclear" and prob >= 20:
             if "iaea" in combined_news or "enrichment" in combined_news:
                 event = ("IAEA monitoring likely to produce findings within 72 hours. "
                          "Iran may announce further enrichment activity.")
@@ -255,12 +255,6 @@ def generate_predictions(trackers_js, state, now_iso):
                 event = ("No immediate nuclear threshold events anticipated. "
                          "Status quo enrichment posture likely maintained.")
                 confidence = 35; etype = "status_quo"
-
-        # CHINA-TAIWAN
-        elif tid == "china":
-            event = ("Status quo maintained. No PLA activity changes detected. "
-                     "Taiwan Strait remains stable.")
-            confidence = 70; etype = "status_quo"
 
         # Generic fallback
         if confidence == 0:
@@ -286,11 +280,21 @@ def generate_predictions(trackers_js, state, now_iso):
             eval_type = "probability_above"
             eval_value = max(0, prob - 15)
 
+        # Differentiated forecast value so escalation/de-escalation survive the
+        # trivial-prediction filter below.
+        prob_f = float(prob)
+        if etype == "escalation":
+            pred_value = int(round(min(100.0, prob_f * 1.15)))
+        elif etype == "de_escalation":
+            pred_value = int(round(max(0.0, prob_f * 0.85)))
+        else:
+            pred_value = int(round(prob_f))
+
         new_predictions.append({
             "tracker_id": tid,
             "tracker_name": tname,
             "type": etype,
-            "value": int(round(float(prob))),
+            "value": pred_value,
             "description": event,
             "confidence": confidence,
             "expires_at": expires_at,
@@ -298,15 +302,14 @@ def generate_predictions(trackers_js, state, now_iso):
             "eval_value": eval_value,
         })
 
-    # Filter trivial predictions (within 10pp of current)
+    # Drop status_quo forecasts that don't say anything new (pred == current).
+    # Escalation / de_escalation carry a differentiated value so they survive.
     filtered = []
     for pred in new_predictions:
         tid = pred["tracker_id"]
         current_prob = next((t["prob"] for t in sorted_trackers if t["id"] == tid), 0)
         pred_prob = pred["value"]
-        if abs(pred_prob - current_prob) <= 10 and pred["type"] in (
-            "status_quo", "escalation", "de_escalation"
-        ):
+        if pred["type"] == "status_quo" and abs(pred_prob - current_prob) <= 3:
             continue
         filtered.append(pred)
 

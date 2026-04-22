@@ -153,21 +153,18 @@
     }
   },
   "global_uncertainty_index": 25,
-  "doomsday_clock_minutes": 60,
-  "last_updated": "2026-04-22T17:02:49Z",
+  "doomsday_clock_minutes": 1.4,
+  "last_updated": "2026-04-22T19:33:48Z",
   "signal_timestamps": {
-    "iran_conventional:hormuz_closed": "2026-04-10T18:11:53Z",
     "iran_nuclear:enrichment_90": "2026-04-13T03:08:49Z",
     "iran_nuclear:fordow_activation": "2026-04-14T03:06:27Z",
     "north_korea:nuclear_test": "2026-04-14T03:06:27Z",
-    "iran_nuclear:diplomacy_active": "2026-04-19T17:03:15Z",
     "iran_conventional:military_buildup": "2026-04-20T09:03:35Z",
     "russia_ukraine:military_buildup": "2026-04-20T09:03:35Z",
     "china:diplomacy_refused": "2026-04-20T09:03:35Z",
     "iran_conventional:diplomacy_refused": "2026-04-21T03:05:22Z",
     "iran_nuclear:nuclear_rhetoric_official": "2026-04-21T03:05:22Z",
     "russia_ukraine:nuclear_rhetoric_official": "2026-04-21T03:05:22Z",
-    "pakistan_afghanistan:diplomacy_active": "2026-04-21T03:05:22Z",
     "iran_conventional:oil_infrastructure_threat": "2026-04-21T09:05:47Z",
     "israel_lebanon:diplomacy_active": "2026-04-21T09:05:47Z",
     "russia_ukraine:diplomacy_active": "2026-04-21T09:05:47Z",
@@ -183,14 +180,104 @@
     "turkey:nuclear_rhetoric_official": "2026-04-22T09:06:26Z",
     "north_korea:missile_range_test": "2026-04-22T09:09:09Z"
   },
-  "global_war_probability": 28,
-  "global_zone": "elevated",
-  "global_probability": 28,
-  "predictions": [],
+  "global_war_probability": 33,
+  "global_zone": "critical",
+  "global_probability": 33,
+  "predictions": [
+    {
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "type": "military_operation",
+      "value": 52,
+      "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
+      "confidence": 75,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 42
+    },
+    {
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "type": "military_operation",
+      "value": 29,
+      "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
+      "confidence": 55,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 19
+    },
+    {
+      "tracker_id": "russia",
+      "tracker_name": "RUSSIA-NATO",
+      "type": "escalation",
+      "value": 53,
+      "description": "Current escalation indicators suggest RUSSIA-NATO will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 36
+    },
+    {
+      "tracker_id": "china",
+      "tracker_name": "CHINA-TAIWAN",
+      "type": "escalation",
+      "value": 51,
+      "description": "Current escalation indicators suggest CHINA-TAIWAN will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 34
+    },
+    {
+      "tracker_id": "iran_nuclear",
+      "tracker_name": "IRAN NUCLEAR",
+      "type": "nuclear_development",
+      "value": 42,
+      "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
+      "confidence": 40,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 27
+    },
+    {
+      "tracker_id": "north_korea",
+      "tracker_name": "DPRK",
+      "type": "escalation",
+      "value": 24,
+      "description": "Current escalation indicators suggest DPRK will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 11
+    },
+    {
+      "tracker_id": "turkey",
+      "tracker_name": "TURKEY-NATO",
+      "type": "escalation",
+      "value": 7,
+      "description": "Current escalation indicators suggest TURKEY-NATO will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 0
+    },
+    {
+      "tracker_id": "pakistan_afghanistan",
+      "tracker_name": "PAKISTAN-AFGHANISTAN",
+      "type": "escalation",
+      "value": 7,
+      "description": "Current escalation indicators suggest PAKISTAN-AFGHANISTAN will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-04-23T19:33:48Z",
+      "eval_type": "probability_above",
+      "eval_value": 0
+    }
+  ],
   "eval_stats": {
-    "total": 2000,
-    "correct": 1110,
-    "accuracy": 56
+    "total": 19147,
+    "correct": 10498,
+    "accuracy": 55,
+    "mean_brier": 0.6781
   },
   "_meta": {
     "last_writer": "deep_scan_cron",
@@ -210,8 +297,8 @@
       "name": "IRAN NUCLEAR",
       "zone": "critical",
       "trend": "rising",
-      "current_probability_with_coupling": 34,
-      "coupling_boost": 0,
+      "current_probability_with_coupling": 42,
+      "coupling_boost": 8,
       "signal_timestamps": {
         "diplomacy_refused": "2026-04-22T09:06:26Z",
         "enrichment_90": "2026-04-13T03:08:49Z",
@@ -223,7 +310,6 @@
       "active_signals": [
         "diplomacy_active",
         "diplomacy_refused",
-        "hormuz_closed",
         "military_buildup",
         "nuclear_rhetoric_official",
         "oil_infrastructure_threat"
@@ -232,11 +318,11 @@
       "name": "IRAN WAR",
       "zone": "critical",
       "trend": "rising",
-      "current_probability_with_coupling": 45,
-      "coupling_boost": 0,
+      "current_probability_with_coupling": 52,
+      "coupling_boost": 7,
       "signal_timestamps": {
+        "diplomacy_active": "2026-04-22T03:07:48Z",
         "diplomacy_refused": "2026-04-21T03:05:22Z",
-        "hormuz_closed": "2026-04-10T18:11:53Z",
         "military_buildup": "2026-04-20T09:03:35Z",
         "oil_infrastructure_threat": "2026-04-21T09:05:47Z"
       }
@@ -250,8 +336,8 @@
       "name": "ISRAEL-LEBANON",
       "zone": "elevated",
       "trend": "rising",
-      "current_probability_with_coupling": 19,
-      "coupling_boost": 0,
+      "current_probability_with_coupling": 29,
+      "coupling_boost": 10,
       "signal_timestamps": {
         "ceasefire_violation": "2026-04-21T17:04:31Z",
         "diplomacy_active": "2026-04-21T09:05:47Z"
@@ -271,6 +357,7 @@
       "current_probability_with_coupling": 36,
       "coupling_boost": 0,
       "signal_timestamps": {
+        "diplomacy_active": "2026-04-21T09:05:47Z",
         "military_buildup": "2026-04-20T09:03:35Z",
         "nuclear_rhetoric_official": "2026-04-21T03:05:22Z"
       }
@@ -284,8 +371,8 @@
       "name": "RUSSIA-NATO",
       "zone": "critical",
       "trend": "rising",
-      "current_probability_with_coupling": 36,
-      "coupling_boost": 0,
+      "current_probability_with_coupling": 46,
+      "coupling_boost": 10,
       "signal_timestamps": {
         "diplomacy_refused": "2026-04-21T09:05:47Z",
         "nuclear_rhetoric_official": "2026-04-21T17:04:31Z"
@@ -300,8 +387,8 @@
       "name": "CHINA",
       "zone": "critical",
       "trend": "rising",
-      "current_probability_with_coupling": 40,
-      "coupling_boost": 0,
+      "current_probability_with_coupling": 44,
+      "coupling_boost": 4,
       "signal_timestamps": {
         "diplomacy_refused": "2026-04-20T09:03:35Z",
         "military_buildup": "2026-04-21T17:04:31Z"
@@ -501,5 +588,322 @@
       ],
       "source_date": "2026-04-22"
     }
-  ]
+  ],
+  "polymarket": {
+    "generated_at": "2026-04-22T19:33:58Z",
+    "fetched_at": "2026-04-22T19:30:14Z",
+    "comparisons": {
+      "iran_conventional": {
+        "tracker_id": "iran_conventional",
+        "status": "ok",
+        "dw_prob_pct": 52.0,
+        "pm_implied_raw_pct": 30.44,
+        "pm_implied_24h_pct": 0.145,
+        "horizon_days_avg": 250.0,
+        "used_slugs": [
+          "will-the-us-invade-iran-before-2027",
+          "us-iran-nuclear-deal-before-2027"
+        ],
+        "total_volume_24h": 1306149.21,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "will-the-us-invade-iran-before-2027",
+            "weight": 0.5,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.295,
+            "contribution": 0.295,
+            "volume_24h": 1302101.2541809904,
+            "question": "Will the U.S. invade Iran before 2027?"
+          },
+          {
+            "slug": "us-iran-nuclear-deal-before-2027",
+            "weight": 0.3,
+            "horizon_days": 250.0,
+            "invert": true,
+            "yes_price": 0.68,
+            "contribution": 0.31999999999999995,
+            "volume_24h": 4047.9554810000004,
+            "question": "US-Iran nuclear deal before 2027?"
+          }
+        ],
+        "delta_pp": 51.85,
+        "abs_delta_pp": 51.85,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "iran_nuclear": {
+        "tracker_id": "iran_nuclear",
+        "status": "ok",
+        "dw_prob_pct": 42.0,
+        "pm_implied_raw_pct": 10.56,
+        "pm_implied_24h_pct": 0.045,
+        "horizon_days_avg": 250.0,
+        "used_slugs": [
+          "iran-nuke-before-2027",
+          "iran-nuclear-test-before-2027",
+          "will-iran-withdraw-from-the-npt-before-2027"
+        ],
+        "total_volume_24h": 10225.98,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "iran-nuke-before-2027",
+            "weight": 1.0,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.095,
+            "contribution": 0.095,
+            "volume_24h": 8188.850256000001,
+            "question": "Iran Nuke before 2027?"
+          },
+          {
+            "slug": "iran-nuclear-test-before-2027",
+            "weight": 0.4,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.08,
+            "contribution": 0.08,
+            "volume_24h": 1807.125267,
+            "question": "Iran nuclear test before 2027?"
+          },
+          {
+            "slug": "will-iran-withdraw-from-the-npt-before-2027",
+            "weight": 0.2,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.21,
+            "contribution": 0.21,
+            "volume_24h": 230.0,
+            "question": "Will Iran withdraw from the NPT before 2027?"
+          }
+        ],
+        "delta_pp": 41.95,
+        "abs_delta_pp": 41.95,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "russia_ukraine": {
+        "tracker_id": "russia_ukraine",
+        "status": "ok",
+        "dw_prob_pct": 36.0,
+        "pm_implied_raw_pct": 73.37,
+        "pm_implied_24h_pct": 0.528,
+        "horizon_days_avg": 250.0,
+        "used_slugs": [
+          "russia-x-ukraine-ceasefire-before-2027",
+          "ukraine-signs-peace-deal-with-russia-before-2027"
+        ],
+        "total_volume_24h": 49248.9,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "russia-x-ukraine-ceasefire-before-2027",
+            "weight": 0.5,
+            "horizon_days": 250.0,
+            "invert": true,
+            "yes_price": 0.255,
+            "contribution": 0.745,
+            "volume_24h": 49029.688754999996,
+            "question": "Russia x Ukraine ceasefire by end of 2026?"
+          },
+          {
+            "slug": "ukraine-signs-peace-deal-with-russia-before-2027",
+            "weight": 0.3,
+            "horizon_days": 250.0,
+            "invert": true,
+            "yes_price": 0.285,
+            "contribution": 0.7150000000000001,
+            "volume_24h": 219.21539000000004,
+            "question": "Ukraine signs peace deal with Russia before 2027?"
+          }
+        ],
+        "delta_pp": 35.47,
+        "abs_delta_pp": 35.47,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "russia": {
+        "tracker_id": "russia",
+        "status": "ok",
+        "dw_prob_pct": 46.0,
+        "pm_implied_raw_pct": 12.02,
+        "pm_implied_24h_pct": 0.065,
+        "horizon_days_avg": 198.2,
+        "used_slugs": [
+          "nato-article-5-before-2027",
+          "natoeu-troops-fighting-in-ukraine-in-june-30-2026"
+        ],
+        "total_volume_24h": 15.11,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "nato-article-5-before-2027",
+            "weight": 0.8,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.155,
+            "contribution": 0.155,
+            "volume_24h": 5.81,
+            "question": "NATO article 5 before 2027?"
+          },
+          {
+            "slug": "natoeu-troops-fighting-in-ukraine-in-june-30-2026",
+            "weight": 0.3,
+            "horizon_days": 60.0,
+            "invert": false,
+            "yes_price": 0.0275,
+            "contribution": 0.0275,
+            "volume_24h": 9.296138,
+            "question": "NATO/EU troops fighting in Ukraine in June 30, 2026?"
+          }
+        ],
+        "delta_pp": 45.94,
+        "abs_delta_pp": 45.94,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "china": {
+        "tracker_id": "china",
+        "status": "ok",
+        "dw_prob_pct": 44.0,
+        "pm_implied_raw_pct": 8.19,
+        "pm_implied_24h_pct": 0.04,
+        "horizon_days_avg": 214.4,
+        "used_slugs": [
+          "will-china-invade-taiwan-before-2027",
+          "china-x-taiwan-military-clash-before-2027",
+          "will-china-blockade-taiwan-by-june-30"
+        ],
+        "total_volume_24h": 344997.78,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "will-china-invade-taiwan-before-2027",
+            "weight": 0.8,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.0745,
+            "contribution": 0.0745,
+            "volume_24h": 335460.3321659998,
+            "question": "Will China invade Taiwan by end of 2026?"
+          },
+          {
+            "slug": "china-x-taiwan-military-clash-before-2027",
+            "weight": 0.5,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.12,
+            "contribution": 0.12,
+            "volume_24h": 500.673212,
+            "question": "China x Taiwan military clash before 2027?"
+          },
+          {
+            "slug": "will-china-blockade-taiwan-by-june-30",
+            "weight": 0.3,
+            "horizon_days": 60.0,
+            "invert": false,
+            "yes_price": 0.038,
+            "contribution": 0.038,
+            "volume_24h": 9036.778538999999,
+            "question": "Will China blockade Taiwan by June 30?"
+          }
+        ],
+        "delta_pp": 43.96,
+        "abs_delta_pp": 43.96,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "north_korea": {
+        "tracker_id": "north_korea",
+        "status": "ok",
+        "dw_prob_pct": 21.0,
+        "pm_implied_raw_pct": 6.72,
+        "pm_implied_24h_pct": 0.028,
+        "horizon_days_avg": 250.0,
+        "used_slugs": [
+          "will-north-korea-invade-south-korea-before-2027",
+          "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027"
+        ],
+        "total_volume_24h": 1128.62,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "will-north-korea-invade-south-korea-before-2027",
+            "weight": 0.6,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.073,
+            "contribution": 0.073,
+            "volume_24h": 1126.5,
+            "question": "Will North Korea invade South Korea before 2027?"
+          },
+          {
+            "slug": "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
+            "weight": 0.2,
+            "horizon_days": 250.0,
+            "invert": false,
+            "yes_price": 0.05,
+            "contribution": 0.05,
+            "volume_24h": 2.12,
+            "question": "Kim Jong Un out as Supreme Leader of North Korea by December 31, 2026?"
+          }
+        ],
+        "delta_pp": 20.97,
+        "abs_delta_pp": 20.97,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "israel_lebanon": {
+        "tracker_id": "israel_lebanon",
+        "status": "ok",
+        "dw_prob_pct": 29.0,
+        "pm_implied_raw_pct": 76.5,
+        "pm_implied_24h_pct": 0.578,
+        "horizon_days_avg": 250.0,
+        "used_slugs": [
+          "israel-and-lebanon-normalize-relations-before-2027"
+        ],
+        "total_volume_24h": 297.08,
+        "liquidity_warn": true,
+        "markets": [
+          {
+            "slug": "israel-and-lebanon-normalize-relations-before-2027",
+            "weight": 0.3,
+            "horizon_days": 250.0,
+            "invert": true,
+            "yes_price": 0.235,
+            "contribution": 0.765,
+            "volume_24h": 297.08153699999997,
+            "question": "Israel and Lebanon normalize relations before 2027?"
+          }
+        ],
+        "delta_pp": 28.42,
+        "abs_delta_pp": 28.42,
+        "flag": "divergence",
+        "color": "red",
+        "arrow": "up"
+      },
+      "india": {
+        "tracker_id": "india",
+        "status": "no_market",
+        "mapped_slugs": [
+          "india-pakistan-armed-conflict-2026"
+        ]
+      }
+    },
+    "banner": {
+      "any_divergence": true,
+      "any_critical": false,
+      "worst_abs_delta_pp": 51.85,
+      "worst_tracker": "iran_conventional"
+    }
+  }
 }

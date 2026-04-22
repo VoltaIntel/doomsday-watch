@@ -853,6 +853,18 @@ body {
     </div>
   </div>
 
+  <!-- POLYMARKET CROSS-CHECK -->
+  <div class="polymarket-section" style="padding:20px 24px;border-bottom:1px solid var(--border);">
+    <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:12px;">
+      <span class="section-label" style="margin-bottom:0;">POLYMARKET CROSS-CHECK</span>
+      <span id="pmFetchedAt" style="font-size:9px;color:var(--dim);letter-spacing:1px;margin-left:auto;"></span>
+    </div>
+    <div id="pmBanner" style="display:none;margin-bottom:12px;padding:8px 12px;border-radius:4px;font-size:11px;font-family:var(--mono);letter-spacing:1px;"></div>
+    <div id="pmGrid" class="trackers-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
   <!-- SIGNAL TIMELINE -->
   <div class="timeline-section" style="padding:20px 24px;border-bottom:1px solid var(--border);">
     <div onclick="toggleTimeline()" style="cursor:pointer;display:flex;align-items:center;gap:8px;margin-bottom:12px;">
@@ -917,7 +929,7 @@ const state = {
   ],
   news: [],
   predictions: [],
-  eval_stats: { total: 0, correct: 0, accuracy: 0 }
+  eval_stats: { total: 0, correct: 0, accuracy: 0, mean_brier: 0 }
 };
 
 // ===== STALENESS DETECTION =====
@@ -1468,8 +1480,99 @@ function renderEnergy() {
   grid.innerHTML = html;
 }
 
+// ===== POLYMARKET CROSS-CHECK =====
+function renderPolymarket() {
+  var grid = document.getElementById("pmGrid");
+  var banner = document.getElementById("pmBanner");
+  var stamp = document.getElementById("pmFetchedAt");
+  if (!grid) return;
+  var pm = state.polymarket || {};
+  var comps = pm.comparisons || {};
+  var bnr = pm.banner || {};
+  grid.innerHTML = "";
+
+  if (stamp) {
+    stamp.textContent = pm.fetched_at ? ("FETCHED " + String(pm.fetched_at).replace("T", " ").replace("Z", " UTC")) : "CACHE MISSING";
+  }
+
+  // Global banner — red when any divergence, yellow hidden otherwise
+  if (banner) {
+    if (bnr.any_critical) {
+      banner.style.display = "block";
+      banner.style.background = "rgba(255,45,45,0.12)";
+      banner.style.border = "1px solid rgba(255,45,45,0.35)";
+      banner.style.color = "#ff6b6b";
+      banner.innerHTML = "CRITICAL: PM SANITY FLOOR TRIPPED — " + escapeHtml(String(bnr.worst_tracker || "")).toUpperCase() + " DW=" + bnr.worst_abs_delta_pp + "pp ABOVE MARKET";
+    } else if (bnr.any_divergence) {
+      banner.style.display = "block";
+      banner.style.background = "rgba(255,45,45,0.08)";
+      banner.style.border = "1px solid rgba(255,45,45,0.25)";
+      banner.style.color = "#ff8080";
+      banner.innerHTML = "MARKET DIVERGENCE — WORST: " + escapeHtml(String(bnr.worst_tracker || "")).toUpperCase() + " Δ " + bnr.worst_abs_delta_pp + "pp";
+    } else {
+      banner.style.display = "none";
+    }
+  }
+
+  var ids = Object.keys(comps);
+  if (!ids.length) {
+    grid.innerHTML = '<div style="font-size:10px;color:var(--dim);letter-spacing:1px;">NO POLYMARKET MAPPING ACTIVE</div>';
+    return;
+  }
+  ids.sort(function(a, b) {
+    var ca = comps[a], cb = comps[b];
+    var da = (ca && typeof ca.abs_delta_pp === "number") ? ca.abs_delta_pp : -1;
+    var db = (cb && typeof cb.abs_delta_pp === "number") ? cb.abs_delta_pp : -1;
+    return db - da;
+  });
+  ids.forEach(function(tid) {
+    var c = comps[tid] || {};
+    var card = document.createElement("div");
+    card.style.background = "rgba(255,255,255,0.02)";
+    card.style.border = "1px solid rgba(255,255,255,0.05)";
+    card.style.borderRadius = "4px";
+    card.style.padding = "10px 12px";
+    card.style.fontFamily = "var(--mono)";
+    var label = escapeHtml(tid.replace(/_/g, " ").toUpperCase());
+    if (c.status !== "ok") {
+      card.innerHTML = '<div style="font-size:10px;letter-spacing:1px;color:var(--dim);margin-bottom:6px;">' + label + '</div>' +
+        '<div style="font-size:10px;color:#666;">NO MARKET DATA</div>';
+      grid.appendChild(card);
+      return;
+    }
+    var color = c.color === "red" ? "#ff5c5c" : c.color === "yellow" ? "#ffbf47" : "#3fb950";
+    var arrow = c.delta_pp > 0 ? "▲" : c.delta_pp < 0 ? "▼" : "→";
+    var flagLabel = String(c.flag || "").toUpperCase();
+    var dw = (typeof c.dw_prob_pct === "number") ? c.dw_prob_pct.toFixed(1) : "?";
+    var pm24 = (typeof c.pm_implied_24h_pct === "number") ? c.pm_implied_24h_pct.toFixed(2) : "?";
+    var pmRaw = (typeof c.pm_implied_raw_pct === "number") ? c.pm_implied_raw_pct.toFixed(1) : "?";
+    var delta = (typeof c.delta_pp === "number") ? ((c.delta_pp > 0 ? "+" : "") + c.delta_pp.toFixed(1)) : "?";
+    var vol = (typeof c.total_volume_24h === "number")
+      ? ("$" + Math.round(c.total_volume_24h).toLocaleString())
+      : "—";
+    var horizon = (typeof c.horizon_days_avg === "number") ? (c.horizon_days_avg.toFixed(0) + "d") : "?";
+    var liq = c.liquidity_warn ? ' <span style="color:#ffbf47;">THIN</span>' : "";
+    card.innerHTML =
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">' +
+        '<span style="font-size:10px;letter-spacing:1px;color:#e6edf3;">' + label + '</span>' +
+        '<span style="font-size:9px;letter-spacing:1px;color:' + color + ';">' + arrow + ' ' + escapeHtml(flagLabel) + '</span>' +
+      '</div>' +
+      '<div style="display:flex;justify-content:space-between;font-size:11px;color:#c9d1d9;">' +
+        '<span>DW <b style="color:#e6edf3;">' + dw + '%</b></span>' +
+        '<span>PM <b style="color:#e6edf3;">' + pm24 + '%</b><span style="color:#666"> /24h</span></span>' +
+      '</div>' +
+      '<div style="display:flex;justify-content:space-between;font-size:9px;color:#8b949e;margin-top:4px;">' +
+        '<span>Δ <b style="color:' + color + ';">' + delta + 'pp</b></span>' +
+        '<span>PM RAW ' + pmRaw + '% (' + horizon + ')</span>' +
+      '</div>' +
+      '<div style="font-size:9px;color:#484f58;margin-top:2px;">VOL ' + vol + liq + '</div>';
+    grid.appendChild(card);
+  });
+}
+
 // ===== INIT =====
 renderTrackers();
+renderPolymarket();
 renderNews();
 renderEnergy();
 updateClock();
@@ -1999,16 +2102,27 @@ function openPredictions() {
   var statsEl = document.getElementById('predStats');
   var s = (typeof state !== 'undefined') ? state : {};
   var preds = s.predictions || [];
-  var stats = s.eval_stats || { total: 0, correct: 0, accuracy: 0 };
+  var stats = s.eval_stats || { total: 0, correct: 0, accuracy: 0, mean_brier: 0 };
 
   var ts = s.last_updated || '';
   hdr.textContent = '24-HOUR FORECAST — ' + ts.substring(0, 10) + ' ' + ts.substring(11, 16) + ' UTC';
 
   var accColor = stats.accuracy >= 60 ? '#00e676' : stats.accuracy >= 40 ? '#ffaa00' : '#ff4444';
-  statsEl.innerHTML = '<div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">' +
+  var brier = (stats.mean_brier === undefined || stats.mean_brier === null) ? null : Number(stats.mean_brier);
+  // Superforecaster ~0.086, persistence baseline ~0.20. Colour accordingly.
+  var brierColor = '#484f58';
+  var brierStr = '—';
+  if (brier !== null && !isNaN(brier)) {
+    brierStr = brier.toFixed(3);
+    brierColor = brier <= 0.10 ? '#00e676' : brier <= 0.20 ? '#ffaa00' : '#ff4444';
+  }
+  statsEl.innerHTML = '<div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap;">' +
     '<span style="color:#484f58;font-size:11px;">TRACK RECORD</span>' +
     '<span style="color:' + accColor + ';font-size:14px;font-weight:bold;">' + escapeHtml(stats.accuracy) + '%</span>' +
     '<span style="color:#484f58;font-size:10px;">' + escapeHtml(stats.correct) + '/' + escapeHtml(stats.total) + ' correct</span>' +
+    '<span style="color:#484f58;font-size:11px;margin-left:8px;">BRIER</span>' +
+    '<span style="color:' + brierColor + ';font-size:14px;font-weight:bold;">' + brierStr + '</span>' +
+    '<span style="color:#484f58;font-size:10px;">lower is better</span>' +
     '</div>' +
     '<div style="height:3px;background:rgba(255,255,255,0.05);border-radius:2px;"><div style="height:100%;width:' + Number(stats.accuracy || 0) + '%;background:' + accColor + ';border-radius:2px;transition:width 0.5s;"></div></div>';
 

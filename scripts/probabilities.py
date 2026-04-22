@@ -30,7 +30,7 @@ def calculate_global_probability(all_probs, cfg):
     Returns (global_prob_int, zone_string).
     """
     weights = cfg.get("global_weights", {
-        "iran_nuke": 0.12,
+        "iran_nuclear": 0.12,
         "iran_conventional": 0.18,
         "israel_lebanon": 0.14,
         "russia_ukraine": 0.16,

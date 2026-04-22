@@ -17,42 +17,63 @@ from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+# Make sibling modules importable whether pipeline.py is run as a script
+# (python scripts/pipeline.py) or as a package (python -m scripts.pipeline).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from signals import (  # noqa: E402
+    calc_severity,
+    calc_confidence,
+    apply_credibility_weight,
+    get_half_life,
+    apply_temporal_decay,
+    normalize_trend,
+    classify_source_category,
+)
+from probabilities import classify_zone as _classify_zone_cfg  # noqa: E402
+from log_setup import get_logger  # noqa: E402
+
+log = get_logger()
+
+
+try:
+    from models import validate_state as _pyd_validate_state, validate_config as _pyd_validate_config  # noqa: E402
+    from pydantic import ValidationError as _PydValidationError  # noqa: E402
+except Exception as _e:
+    # Pydantic is optional; fall back to no-op validators so pipeline still runs.
+    _pyd_validate_state = None
+    _pyd_validate_config = None
+    _PydValidationError = Exception
+    print(f"[pipeline] Pydantic unavailable, skipping strict validation: {_e}")
+
 
 def validate_state(state):
-    """Validate current_state.json has required fields before processing.
-    Returns (is_valid, errors) tuple.
+    """Strict validation of current_state.json.
+
+    Returns (is_valid, errors). When pydantic is installed, validation errors
+    abort the pipeline run — the writer contract is not optional.
     """
-    errors = []
-    required_top = ["last_updated", "trackers"]
-    for field in required_top:
-        if field not in state:
-            errors.append(f"Missing required top-level field: {field}")
-
-    if not isinstance(state.get("trackers"), dict):
-        errors.append("'trackers' must be a dict")
-        return False, errors
-
-    required_tracker_fields = ["name", "current_probability", "trend"]
-    for tid, tdata in state.get("trackers", {}).items():
-        if not isinstance(tdata, dict):
-            errors.append(f"Tracker '{tid}' is not a dict")
-            continue
-        for field in required_tracker_fields:
-            if field not in tdata:
-                errors.append(f"Tracker '{tid}' missing field: {field}")
-
-    # Validate timestamp format
-    ts = state.get("last_updated", "")
-    if ts:
-        try:
-            datetime.fromisoformat(ts.replace("Z", "+00:00"))
-        except (ValueError, TypeError):
-            errors.append(f"Invalid last_updated timestamp: {ts}")
-
-    is_valid = len(errors) == 0
-    if not is_valid:
-        print(f"[pipeline] State validation FAILED: {'; '.join(errors)}")
-    return is_valid, errors
+    if _pyd_validate_state is None:
+        # Legacy fallback check — only verifies top-level structure.
+        errors = []
+        required_top = ["last_updated", "trackers"]
+        for field in required_top:
+            if field not in state:
+                errors.append(f"Missing required top-level field: {field}")
+        if not isinstance(state.get("trackers"), dict):
+            errors.append("'trackers' must be a dict")
+        if errors:
+            print(f"[pipeline] State validation FAILED: {'; '.join(errors)}")
+            return False, errors
+        return True, []
+    try:
+        _pyd_validate_state(state)
+        return True, []
+    except _PydValidationError as e:
+        msgs = [f"{err['loc']}: {err['msg']}" for err in e.errors()]
+        print("[pipeline] State validation FAILED:")
+        for m in msgs:
+            print(f"  - {m}")
+        return False, msgs
 
 ROOT = Path(__file__).resolve().parent.parent
 os.chdir(ROOT)
@@ -60,14 +81,40 @@ os.chdir(ROOT)
 with open("data/current_state.json") as f:
     state = json.load(f)
 
-# Validate state before processing
+# Validate state before processing. Hard fail when pydantic flags a bad writer.
 _valid, _errors = validate_state(state)
 if not _valid:
+    if _pyd_validate_state is not None:
+        raise SystemExit(
+            f"[pipeline] ABORT: state validation failed ({len(_errors)} errors). "
+            "Fix data/current_state.json before re-running."
+        )
+    # Legacy fallback: warn only.
     print(f"[pipeline] WARNING: State validation issues: {_errors}")
-    # Continue with warnings but don't abort — some fields may be optional
+
+# Sanity-guard the Doomsday Clock: the published value has been <= 2 minutes
+# for years (2026: 85 seconds ≈ 1.4 min). Any value above 10 is almost
+# certainly a cron-writer bug — cap it and warn so the dashboard stops
+# publishing impossible numbers.
+_ddc = state.get("doomsday_clock_minutes")
+if isinstance(_ddc, (int, float)) and _ddc > 10:
+    print(f"[pipeline] WARNING: doomsday_clock_minutes={_ddc} is implausible; capping at 2.0")
+    state["doomsday_clock_minutes"] = 2.0
 
 with open("data/tracker_config.json") as f:
     cfg = json.load(f)
+
+# Validate config too — a malformed tracker_config is just as fatal as
+# bad state.
+if _pyd_validate_config is not None:
+    try:
+        _pyd_validate_config(cfg)
+    except _PydValidationError as _cfg_err:
+        _errs = [f"{e['loc']}: {e['msg']}" for e in _cfg_err.errors()]
+        raise SystemExit(
+            "[pipeline] ABORT: tracker_config.json validation failed:\n  - "
+            + "\n  - ".join(_errs)
+        )
 
 # Load energy prices (fetched by fetch_oil_prices.py)
 try:
@@ -111,9 +158,13 @@ def classify_source_credibility(source_str):
     best_tier = "5_unverified"
     best_match_len = 0
     for keyword, tier in SOURCE_CREDIBILITY.items():
-        if keyword in sl and len(keyword) > best_match_len:
+        kw = keyword.lower().strip()
+        if not kw:
+            continue
+        # Word-boundary match so "the national" does not hit "the national review".
+        if re.search(rf'\b{re.escape(kw)}\b', sl) and len(kw) > best_match_len:
             best_tier = tier
-            best_match_len = len(keyword)
+            best_match_len = len(kw)
     weight = TIER_WEIGHTS.get(best_tier, 0.3)
     label = TIER_LABELS.get(best_tier, "Unknown")
     return best_tier, weight, label
@@ -124,72 +175,9 @@ def classify_source(source_str):
     if tier in ("2_wire", "3_established"): return "western"
     return "other"
 
-def classify_source_category(source_str):
-    sl = source_str.lower().strip()
-    if any(k in sl for k in ["reuters", "associated press", "ap ", "apnews", "afp", "bbc", "new york times", "nyt", "wsj", "wall street journal", "washington post", "cnbc", "cnn", "france 24", "the hindu", "abc news", "nbc", "cbs", "bloomberg", "guardian"]):
-        return "western"
-    if any(k in sl for k in ["tass", "ria", "interfax", "izvestia", "kommersant", "rossiyskaya", "rt ", "moscow times"]):
-        return "russian"
-    if any(k in sl for k in ["xinhua", "cgtn", "china daily", "global times", "scmp", "south china morning post"]):
-        return "chinese"
-    if any(k in sl for k in ["al jazeera", "al arabiya", "irna", "isna", "fars", "tasnim", "middle east", "haaretz", "times of israel", "jerusalem post", "the national", "gulf news", "khaleej", "oman news", "petra", "anadolu", "daily sabah", "hurriyet", "israel hayom"]):
-        return "arabic"
-    if any(k in sl for k in ["white house", "pentagon", "iaea", "nato", "centcom", "stratcom", "unsc", "idf", "irgc", "kremlin", "un security council", "truth social"]):
-        return "official"
-    return "other"
-
-def calc_severity(impact, text):
-    text_lower = text.lower()
-    severity = 2 if impact == "up" else 1 if impact == "down" else 1
-    if any(w in text_lower for w in ["nuclear", "obliterated", "destroyed", "massive", "record"]):
-        severity = min(5, severity + 2)
-    elif any(w in text_lower for w in ["killed", "strikes", "attack", "crash", "invasion"]):
-        severity = min(5, severity + 1)
-    return min(5, max(1, severity))
-
-def calc_confidence(sources_count, max_credibility_weight=0):
-    if max_credibility_weight >= 3 or sources_count >= 3:
-        return "confirmed"
-    if max_credibility_weight >= 2 or sources_count >= 2:
-        return "reported"
-    return "rumored"
-
-def apply_credibility_weight(signal_weight, source_tier):
-    tier_order = {"1_official": 3, "2_wire": 2, "3_established": 1.5, "4_regional": 1, "5_unverified": 0}
-    tier_val = tier_order.get(source_tier, 0)
-    if tier_val >= 2:
-        return signal_weight * 1.0
-    elif tier_val >= 1.5:
-        return signal_weight * 0.75
-    elif tier_val >= 1:
-        return signal_weight * 0.5
-    else:
-        return signal_weight * 0.2
-
-def get_half_life(signal_weight):
-    """Tiered half-life based on signal importance (weight magnitude)."""
-    w = abs(signal_weight)
-    if w >= 15: return 168   # 7 days — nuclear tests, ICBM launches, Article 5
-    elif w >= 8: return 72   # 3 days — major military actions
-    elif w >= 4: return 24   # 1 day — rhetoric, buildup, minor events
-    else: return 12          # 12 hours — noise, minor indicators
-
-def apply_temporal_decay(signal_weight, activated_at_iso):
-    """Exponential decay with tiered half-life. Returns 0 when signal is effectively expired."""
-    try:
-        activated = datetime.fromisoformat(activated_at_iso.replace("Z", "+00:00"))
-        now = datetime.now(timezone.utc)
-        hours_old = (now - activated).total_seconds() / 3600
-        half_life = get_half_life(signal_weight)
-        # Exponential decay: 50% remaining at half_life, 25% at 2×, etc.
-        decayed = abs(signal_weight) * (0.5 ** (hours_old / half_life))
-        # Signal is effectively expired when below 0.5 weight
-        if decayed < 0.5:
-            return 0
-        return round(decayed, 1)
-    except Exception as e:
-        print(f"[pipeline] Error in temporal decay calculation: {e}")
-        return signal_weight
+# classify_source_category, calc_severity, calc_confidence,
+# apply_credibility_weight, get_half_life, apply_temporal_decay are now
+# imported from signals.py at the top of this file.
 
 def is_deescalation_signal(text):
     text_lower = text.lower()
@@ -237,13 +225,7 @@ def find_matching_signals(text, tid, source_tier="5_unverified"):
             })
     return matched
 
-def normalize_trend(trend):
-    trend = (trend or "stable").lower().strip()
-    if trend in {"up", "rising", "rise", "escalating", "escalation"}:
-        return "rising"
-    if trend in {"down", "falling", "fall", "de-escalating", "deescalating", "declining"}:
-        return "falling"
-    return "stable"
+# normalize_trend is imported from signals.py.
 
 def get_timeline_details(timeline_key, create=False):
     entry = timeline["signals"].get(timeline_key)
@@ -337,8 +319,12 @@ def build_signal_data(tid):
                     recency_score += 2
                 else:
                     recency_score += 1
-            except Exception:
-                pass
+            except Exception as _e:
+                log.warning(
+                    "recency_score_parse_error",
+                    extra={"signal": signal.get("name"), "err": repr(_e)},
+                    exc_info=True,
+                )
 
     recency_score = min(3, recency_score / max(1, min(3, sig_count))) if sig_count > 0 else 0
     conf_score = min(40, sig_count * 5) + avg_tier * 15 + min(30, recency_score * 10)
@@ -722,18 +708,21 @@ for t in trackers_js:
                 act_dt = datetime.fromisoformat(activated.replace("Z", "+00:00"))
                 activation_times.append(act_dt)
             except Exception as e:
-                print(f"[pipeline] Error parsing activation time '{activated}': {e}")
-                pass
+                log.warning(
+                    "activation_parse_error",
+                    extra={"activated": activated, "err": repr(e)},
+                    exc_info=True,
+                )
 
-    # No-news decay: -1.5% per 24h without fresh signal activity
-    # Uses median activation time to avoid one recent signal masking otherwise stale zone
+    # No-news decay: -1.5% per 24h without fresh signal activity, floored at -15
+    # so dormant trackers don't get dragged to 2% by compounding silence.
     no_news_decay = 0
     if activation_times:
         sorted_times = sorted(activation_times)
         median_time = sorted_times[len(sorted_times) // 2]
         hours_since = (now_dt - median_time).total_seconds() / 3600
         if hours_since > 24:
-            no_news_decay = -1.5 * (hours_since / 24)
+            no_news_decay = max(-15, -1.5 * (hours_since / 24))
     elif not t.get("signals"):
         # Zero signals = no news for a long time
         no_news_decay = -5.0
@@ -830,49 +819,49 @@ else:
     for t in trackers_js:
         all_probs[t["id"]] = t["prob"]
 
-    # Apply coupling boosts — when a tracker is CRITICAL/IMMINENT, boost connected trackers
+    # Apply coupling boosts — when a tracker is ELEVATED/CRITICAL/IMMINENT,
+    # spill probability into connected trackers using the dict-of-dicts schema:
+    #   cfg["coupling"][source_tracker]["affects"][target_tracker] = ratio (0-1)
     with open("data/tracker_config.json") as cf:
         cfg = json.load(cf)
-    coupling_rules = cfg.get("coupling", {}).get("rules", [])
+    coupling_cfg = cfg.get("coupling", {})
     zone_rank = {"deterrent": 0, "elevated": 1, "critical": 2, "imminent": 3}
+    # A source must be at least "elevated" before it contaminates other trackers.
+    min_source_rank = zone_rank["elevated"]
+    per_target_cap = 25.0
 
     boosts_applied = {}
-    # Group rules by source, apply ONLY the highest-threshold rule that matches
-    from collections import defaultdict
-    rules_by_src = defaultdict(list)
-    for rule in coupling_rules:
-        rules_by_src[rule["source"]].append(rule)
-    
-    # Track total coupling per target to enforce +25% cap
     coupling_totals = {}  # {tgt: total_coupling_applied}
-    
-    for src, src_rules in rules_by_src.items():
+
+    for src, src_block in coupling_cfg.items():
+        if not isinstance(src_block, dict):
+            continue
+        affects = src_block.get("affects", {})
+        if not isinstance(affects, dict):
+            continue
         src_zone = state.get("trackers", {}).get(src, {}).get("zone", "deterrent")
-        src_rank = zone_rank.get(src_zone, 0)
-        # Get source probability for proportional coupling
+        if zone_rank.get(src_zone, 0) < min_source_rank:
+            continue
         src_prob = all_probs.get(src, 0)
-        # Sort rules by threshold descending, apply only the FIRST matching rule
-        src_rules_sorted = sorted(src_rules, key=lambda r: zone_rank.get(r["min_zone"], 0), reverse=True)
-        for rule in src_rules_sorted:
-            min_zone = rule["min_zone"]
-            if src_rank >= zone_rank.get(min_zone, 0):
-                # This is the highest threshold that matches — apply it and stop
-                for tgt, raw_boost in rule["targets"].items():
-                    if tgt in all_probs:
-                        # Proportional coupling: boost scales with source probability
-                        effective_boost = raw_boost * (src_prob / 100.0)
-                        # Enforce per-target cap
-                        current_coupling = coupling_totals.get(tgt, 0)
-                        remaining = max(0, 25 - current_coupling)
-                        capped_boost = min(effective_boost, remaining)
-                        if capped_boost > 0:
-                            old_val = all_probs[tgt]
-                            all_probs[tgt] = min(100, old_val + capped_boost)
-                            coupling_totals[tgt] = current_coupling + capped_boost
-                            if tgt not in boosts_applied:
-                                boosts_applied[tgt] = 0
-                            boosts_applied[tgt] += capped_boost
-                break  # Don't apply lower-threshold rules from same source
+        if src_prob <= 0:
+            continue
+        for tgt, ratio in affects.items():
+            if tgt not in all_probs:
+                continue
+            try:
+                ratio_f = float(ratio)
+            except (TypeError, ValueError):
+                continue
+            # Proportional spillover, capped at per_target_cap per target.
+            raw_boost = ratio_f * min(per_target_cap, float(src_prob))
+            current_coupling = coupling_totals.get(tgt, 0.0)
+            remaining = max(0.0, per_target_cap - current_coupling)
+            capped_boost = max(0.0, min(raw_boost, remaining))
+            if capped_boost <= 0:
+                continue
+            all_probs[tgt] = min(100, all_probs[tgt] + capped_boost)
+            coupling_totals[tgt] = current_coupling + capped_boost
+            boosts_applied[tgt] = boosts_applied.get(tgt, 0.0) + capped_boost
 
     if boosts_applied:
         boost_log = ", ".join(f"{k}+{v:.1f}" for k, v in boosts_applied.items())
@@ -889,7 +878,7 @@ else:
         tracker_state["coupling_boost"] = round(max(0, t["prob"] - base_prob), 1)
         tracker_state["zone"] = t["zone"]
 
-    weights = cfg.get("global_weights", {"iran_nuke": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.14, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.06, "pakistan_afghanistan": 0.08, "russia": 0.06, "china": 0.06, "north_korea": 0.08})
+    weights = cfg.get("global_weights", {"iran_nuclear": 0.12, "iran_conventional": 0.18, "israel_lebanon": 0.14, "russia_ukraine": 0.16, "turkey": 0.06, "india": 0.06, "pakistan_afghanistan": 0.08, "russia": 0.06, "china": 0.06, "north_korea": 0.08})
     gp = round(sum(all_probs.get(k, 10) * weights.get(k, 0.08) for k in all_probs))  # Already rounded — round() returns int for float input
     tz = classify_zone(gp)
     # Update state.json with correct global
@@ -933,8 +922,11 @@ else:
         with open("data/previous_zones.json") as pf:
             old_zones = json.load(pf)
     except Exception as e:
-        print(f"[pipeline] Error loading previous_zones.json: {e}")
-        pass
+        log.warning(
+            "previous_zones_load_error",
+            extra={"err": repr(e)},
+            exc_info=True,
+        )
 
     new_zones = {}
     for t in trackers_js:
@@ -1126,6 +1118,41 @@ else:
     except Exception as e:
         print(f"[pipeline] Error loading evaluations.json: {e}")
         evaluations = {"predictions": []}
+
+    # Load lifetime (running) prediction stats — never truncated. Captures
+    # cumulative Brier + accuracy across ALL evaluated predictions so the
+    # windowed stats in evaluations.json can be rebuilt but the lifetime
+    # numbers keep growing.
+    lifetime_stats_file = f"{predictions_dir}/lifetime_stats.json"
+    try:
+        with open(lifetime_stats_file) as f:
+            lifetime_stats = json.load(f)
+    except Exception:
+        lifetime_stats = {
+            "total_evaluated": 0,
+            "correct": 0,
+            "sum_brier": 0.0,
+            "last_updated": None,
+        }
+    brier_history_file = f"{predictions_dir}/brier_history.json"
+    try:
+        with open(brier_history_file) as f:
+            brier_history = json.load(f)
+    except Exception:
+        brier_history = {"entries": []}
+
+    def _prediction_brier(pred):
+        """Brier contribution for a single evaluated prediction: (p - outcome)^2
+        where p is the forecast as a probability in [0,1] and outcome is 1 if
+        `correct`, else 0. Non-probability predictions fall back to value/100.
+        """
+        try:
+            p = float(pred.get("value", 50)) / 100.0
+        except (TypeError, ValueError):
+            p = 0.5
+        p = max(0.0, min(1.0, p))
+        outcome = 1.0 if pred.get("correct") else 0.0
+        return (p - outcome) ** 2
     
     # Also load any unevaluated predictions from individual files (backup if evaluations.json was pruned)
     import glob as glob_mod
@@ -1143,8 +1170,11 @@ else:
                 if key not in existing_keys:
                     evaluations["predictions"].append(p)
         except Exception as e:
-            print(f"[pipeline] Error loading prediction file {pf}: {e}")
-            pass
+            log.warning(
+                "prediction_file_load_error",
+                extra={"file": pf, "err": repr(e)},
+                exc_info=True,
+            )
 
     evaluations["predictions"] = dedupe_predictions(evaluations.get("predictions", []))
 
@@ -1244,8 +1274,12 @@ else:
                             pred["evaluated"] = False  # Mark for evaluation
                             evaluations["predictions"].append(pred)
                             newly_added += 1
-            except Exception:
-                pass
+            except Exception as _e:
+                log.warning(
+                    "prediction_backfill_error",
+                    extra={"file": pf, "err": repr(_e)},
+                    exc_info=True,
+                )
         # Re-run evaluation if we added new predictions
         if newly_added > 0:
             for pred in evaluations.get("predictions", []):
@@ -1302,7 +1336,7 @@ else:
         etype = ""
         
         # IRAN CONVENTIONAL
-        if tid == "iran_conventional" and prob >= 80:
+        if tid == "iran_conventional" and prob >= 30:
             if "hormuz" in combined_news or "blockade" in combined_news:
                 event = "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours."
                 confidence = 75; etype = "military_operation"
@@ -1312,34 +1346,34 @@ else:
             elif confidence == 0 and trend == "rising":
                 event = "Current escalation trajectory suggests Iran will sustain offensive operations against US and Israeli regional assets over the next 24 hours."
                 confidence = 55; etype = "military_operation"
-        
+
         # ISRAEL-LEBANON
-        elif tid == "israel_lebanon" and prob >= 60:
+        elif tid == "israel_lebanon" and prob >= 20:
             if "ground" in combined_news or "invasion" in combined_news:
                 event = "Israeli ground operation in southern Lebanon expected to continue beyond Litani River. Further displacement and infrastructure destruction likely."
                 confidence = 70; etype = "ground_operation"
             elif confidence == 0 and trend == "rising":
                 event = "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected."
                 confidence = 55; etype = "military_operation"
-        
+
         # PAKISTAN-AFGHANISTAN
-        elif tid == "pakistan_afghanistan" and prob >= 60:
+        elif tid == "pakistan_afghanistan" and prob >= 20:
             if "taliban" in combined_news or "border" in combined_news or "kills" in combined_news:
                 event = "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours."
                 confidence = 65; etype = "border_conflict"
             elif confidence == 0:
                 event = "Afghan-Pakistan border tensions likely to persist. Additional clashes probable based on recent trajectory."
                 confidence = 50; etype = "border_conflict"
-        
+
         # TURKEY
-        elif tid == "turkey" and prob >= 50:
+        elif tid == "turkey" and prob >= 15:
             if "incirlik" in combined_news or "nato" in combined_news:
                 event = "Turkish military posture shift expected. NATO alliance consultations likely as Turkey repositions forces."
                 confidence = 55; etype = "alliance_shift"
             elif trend == "rising":
                 event = "Turkey expected to continue escalating rhetoric and military positioning in Eastern Mediterranean."
                 confidence = 45; etype = "escalation"
-        
+
         # RUSSIA-NATO
         elif tid == "russia" and prob >= 50:
             if "ceasefire" in combined_news or "deal" in combined_news:
@@ -1348,21 +1382,16 @@ else:
             elif trend == "rising":
                 event = "Russian military operations expected to continue at current tempo. No significant de-escalation indicators."
                 confidence = 40; etype = "status_quo"
-        
+
         # IRAN NUCLEAR
-        elif tid == "iran_nuke" and prob >= 20:
+        elif tid == "iran_nuclear" and prob >= 20:
             if "iaea" in combined_news or "enrichment" in combined_news:
                 event = "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity."
                 confidence = 40; etype = "nuclear_development"
             else:
                 event = "No immediate nuclear threshold events anticipated. Status quo enrichment posture likely maintained."
                 confidence = 35; etype = "status_quo"
-        
-        # CHINA-TAIWAN
-        elif tid == "china":
-            event = "Status quo maintained. No PLA activity changes detected. Taiwan Strait remains stable."
-            confidence = 70; etype = "status_quo"
-        
+
         # Generic fallback
         if confidence == 0:
             if trend == "rising":
@@ -1388,43 +1417,89 @@ else:
             eval_type = "probability_above"
             eval_value = max(0, prob - 15)
 
+        # Compute a DIFFERENTIATED forecast value per prediction type so the
+        # filter below actually measures whether the forecast moves vs today.
+        prob_f = float(prob)
+        if etype == "escalation":
+            pred_value = int(round(min(100.0, prob_f * 1.15)))
+        elif etype == "de_escalation":
+            pred_value = int(round(max(0.0, prob_f * 0.85)))
+        elif etype == "status_quo":
+            pred_value = int(round(prob_f))
+        else:
+            # operation / diplomatic / nuclear_development / etc. — these are
+            # "something happens at current intensity" forecasts; value = current prob.
+            pred_value = int(round(prob_f))
+
         new_predictions.append({
             "tracker_id": tid,
             "tracker_name": tname,
             "type": etype,
-            "value": int(round(float(prob))),  # Force integer
+            "value": pred_value,
             "description": event,
             "confidence": confidence,
             "expires_at": expires_at,
             "eval_type": eval_type,
             "eval_value": eval_value
         })
-    
-    # Filter out trivial predictions (predicted probability within 10% of current)
+
+    # Drop status_quo forecasts that don't say anything new (pred == current).
+    # Escalation / de_escalation now carry a differentiated `value` so they survive.
     filtered_predictions = []
     for pred in new_predictions:
         tid = pred["tracker_id"]
         current_prob = next((t["prob"] for t in sorted_trackers if t["id"] == tid), 0)
         pred_prob = pred["value"]
-        # Skip if predicted probability is within 10 percentage points of current
-        if abs(pred_prob - current_prob) <= 10 and pred["type"] in ("status_quo", "escalation", "de_escalation"):
+        if pred["type"] == "status_quo" and abs(pred_prob - current_prob) <= 3:
             continue
         filtered_predictions.append(pred)
 
     # Sort by confidence, take top 15
     filtered_predictions.sort(key=lambda x: x["confidence"], reverse=True)
     final_predictions = filtered_predictions[:15]
-    
+
+    # ========== Update LIFETIME stats incrementally ==========
+    # Every prediction that is `evaluated` but not yet `lifetime_counted` rolls
+    # into cumulative counters. Stored separately from the truncated
+    # evaluations.json window so lifetime numbers are monotonic.
+    new_evaluated = [
+        p for p in evaluations.get("predictions", [])
+        if p.get("evaluated") and not p.get("lifetime_counted")
+    ]
+    for p in new_evaluated:
+        b = _prediction_brier(p)
+        p["brier"] = round(b, 4)
+        p["lifetime_counted"] = True
+        lifetime_stats["total_evaluated"] = lifetime_stats.get("total_evaluated", 0) + 1
+        if p.get("correct"):
+            lifetime_stats["correct"] = lifetime_stats.get("correct", 0) + 1
+        lifetime_stats["sum_brier"] = lifetime_stats.get("sum_brier", 0.0) + b
+    if new_evaluated:
+        lifetime_stats["last_updated"] = now_iso
+        tot = lifetime_stats.get("total_evaluated", 0)
+        mean_brier = lifetime_stats.get("sum_brier", 0.0) / tot if tot else 0.0
+        brier_history.setdefault("entries", []).append({
+            "timestamp": now_iso,
+            "total_evaluated": tot,
+            "correct": lifetime_stats.get("correct", 0),
+            "mean_brier": round(mean_brier, 4),
+        })
+        # Keep brier_history bounded so the file doesn't grow forever.
+        brier_history["entries"] = brier_history["entries"][-1000:]
+
     # Add new predictions to evaluations tracker for future evaluation
     evaluations["predictions"].extend(final_predictions)
     evaluations["predictions"] = dedupe_predictions(evaluations.get("predictions", []))
-    # Keep last 2000 predictions (need 48h+ retention for 24h expiry + buffer)
+    # Keep last 2000 predictions (need 48h+ retention for 24h expiry + buffer).
+    # Lifetime accuracy is tracked separately in lifetime_stats.json so this
+    # truncation no longer biases published stats.
     evaluations["predictions"] = evaluations["predictions"][-2000:]
 
     evaluated_preds = [p for p in evaluations.get("predictions", []) if p.get("evaluated")]
-    total_eval = len(evaluated_preds)
-    correct_count = sum(1 for p in evaluated_preds if p.get("correct"))
+    total_eval = lifetime_stats.get("total_evaluated", 0)
+    correct_count = lifetime_stats.get("correct", 0)
     accuracy_pct = round(correct_count / total_eval * 100) if total_eval > 0 else 0
+    mean_brier = round(lifetime_stats.get("sum_brier", 0.0) / total_eval, 4) if total_eval > 0 else 0.0
     
     # Save predictions
     pred_data = {
@@ -1435,27 +1510,62 @@ else:
         "accuracy": {
             "total_evaluated": total_eval,
             "correct": correct_count,
-            "accuracy_pct": accuracy_pct
+            "accuracy_pct": accuracy_pct,
+            "mean_brier": mean_brier,
         }
     }
     with open(pred_file, "w") as f:
         json.dump(pred_data, f, indent=2)
-    
+
     # Write predictions to state for dashboard access
     state["predictions"] = final_predictions
-    state["eval_stats"] = {"total": total_eval, "correct": correct_count, "accuracy": accuracy_pct}
-    
+    state["eval_stats"] = {
+        "total": total_eval,
+        "correct": correct_count,
+        "accuracy": accuracy_pct,
+        "mean_brier": mean_brier,
+    }
+
+    # ===== POLYMARKET CROSS-CHECK =====
+    # Compare DW probabilities against Polymarket implied probs, flag
+    # divergence, surface to dashboard. Missing cache / network failures do not
+    # block the pipeline — we degrade to no-op.
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+        from scripts.scoring.polymarket_check import check_all as _pm_check_all
+        pm_result = _pm_check_all(state=state, append_log=True)
+        state["polymarket"] = pm_result
+        if pm_result["banner"].get("any_divergence"):
+            worst = pm_result["banner"].get("worst_tracker")
+            delta = pm_result["banner"].get("worst_abs_delta_pp")
+            print(f"[polymarket] divergence detected — worst: {worst} {delta:.1f}pp")
+        else:
+            checked = len([c for c in pm_result["comparisons"].values() if c.get("status") == "ok"])
+            print(f"[polymarket] aligned — {checked} trackers compared")
+    except Exception as _pm_e:
+        log.warning("polymarket_check_failed", extra={"err": repr(_pm_e)}, exc_info=True)
+        state["polymarket"] = {"comparisons": {}, "banner": {"any_divergence": False}, "error": repr(_pm_e)}
+
     # Write state to file (after all updates)
     with open("data/current_state.json", "w") as sf:
         json.dump(state, sf, indent=2)
-    
-    # Save updated evaluations
+
+    # Save updated evaluations + lifetime stats
     with open(eval_file, "w") as f:
         json.dump(evaluations, f, indent=2)
-    
+    with open(lifetime_stats_file, "w") as f:
+        json.dump(lifetime_stats, f, indent=2)
+    with open(brier_history_file, "w") as f:
+        json.dump(brier_history, f, indent=2)
+
     # Format predictions for JS modal
     predictions_js = json.dumps(final_predictions)
-    eval_stats_js = json.dumps({"total": total_eval, "correct": correct_count, "accuracy": accuracy_pct})
+    eval_stats_js = json.dumps({
+        "total": total_eval,
+        "correct": correct_count,
+        "accuracy": accuracy_pct,
+        "mean_brier": mean_brier,
+    })
     
     # ===== GENERATE INTELLIGENCE NARRATIVE =====
     from datetime import datetime, timezone
@@ -1476,8 +1586,11 @@ else:
                 if hours_ago < 6:
                     key_devs.append((t["name"], t["emoji"], s["name"].replace("_", " "), hours_ago))
             except Exception as e:
-                print(f"[pipeline] Error parsing signal timestamp: {e}")
-                pass
+                log.warning(
+                    "signal_timestamp_parse_error",
+                    extra={"err": repr(e)},
+                    exc_info=True,
+                )
 
     # Zone summary
     zone_counts = {}
@@ -1599,8 +1712,29 @@ CONFIDENCE: {"HIGH" if len(key_devs) >= 5 else "MEDIUM" if len(key_devs) >= 2 el
     safe_narrative_html = html_lib.escape(narrative).replace("\n", "<br>")
     new_html = new_html.replace(narrative_placeholder, '<div id="narrative-content" style="font-size:12px;line-height:1.7;color:#8b949e;white-space:normal;">' + safe_narrative_html + '</div>')
     
-    # Inject predictions into HTML (in state block)
-    pred_inject = ",\n  predictions: " + predictions_js + ",\n  eval_stats: " + eval_stats_js
+    # Inject predictions + polymarket into HTML (in state block)
+    # Slim polymarket payload for dashboard (drop heavy `markets` list from per-tracker
+    # entries but keep summary fields + banner).
+    pm_for_dash = {"comparisons": {}, "banner": state.get("polymarket", {}).get("banner", {}),
+                   "fetched_at": state.get("polymarket", {}).get("fetched_at")}
+    for _tid, _c in (state.get("polymarket", {}) or {}).get("comparisons", {}).items():
+        if _c.get("status") != "ok":
+            pm_for_dash["comparisons"][_tid] = _c
+            continue
+        pm_for_dash["comparisons"][_tid] = {
+            k: _c[k] for k in (
+                "tracker_id", "status", "dw_prob_pct", "pm_implied_raw_pct",
+                "pm_implied_24h_pct", "horizon_days_avg", "used_slugs",
+                "total_volume_24h", "liquidity_warn", "delta_pp",
+                "abs_delta_pp", "flag", "color", "arrow",
+            ) if k in _c
+        }
+    polymarket_js = json.dumps(pm_for_dash)
+    pred_inject = (
+        ",\n  predictions: " + predictions_js
+        + ",\n  eval_stats: " + eval_stats_js
+        + ",\n  polymarket: " + polymarket_js
+    )
     # Use a more robust anchor - find the end of the state block
     new_html = new_html.replace("\n};\n\n// ===== RENDER", pred_inject + "\n};\n\n// ===== RENDER")
 
