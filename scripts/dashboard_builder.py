@@ -8,10 +8,23 @@ Extracted from pipeline.py for DoomsdayWatch modular architecture.
 import html as html_lib
 import json
 import re
+import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
-from .signals import normalize_trend, build_signal_data
-from .probabilities import classify_zone
+# Support both package import (from .signals) and script import (from signals)
+# so dashboard_builder works whether pipeline.py runs as a script or module.
+try:
+    from .signals import normalize_trend, build_signal_data
+    from .probabilities import classify_zone
+    from .log_setup import get_logger
+except ImportError:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from signals import normalize_trend, build_signal_data  # type: ignore
+    from probabilities import classify_zone  # type: ignore
+    from log_setup import get_logger  # type: ignore
+
+log = get_logger()
 
 # ── State injection marker ────────────────────────────────────────────────────
 __STATE_INJECTION__ = "const state = {"
@@ -289,8 +302,12 @@ def generate_narrative(trackers_js, hist_entries, gp, now_dt):
                         t["name"], t["emoji"],
                         s["name"].replace("_", " "), hours_ago
                     ))
-            except Exception:
-                pass
+            except Exception as e:
+                log.warning(
+                    "narrative_signal_parse_error",
+                    extra={"signal": s.get("name"), "err": repr(e)},
+                    exc_info=True,
+                )
 
     # Zone summary
     zone_counts = {}

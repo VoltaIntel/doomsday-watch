@@ -5,8 +5,11 @@ signals.py — Signal classification, credibility, decay, and matching.
 Extracted from pipeline.py for DoomsdayWatch modular architecture.
 """
 
+import logging
 import re
 from datetime import datetime, timedelta, timezone
+
+log = logging.getLogger("doomsdaywatch.signals")
 
 
 def classify_source_credibility(source_str, SOURCE_CREDIBILITY, TIER_WEIGHTS, TIER_LABELS):
@@ -38,34 +41,43 @@ def classify_source(source_str, SOURCE_CREDIBILITY, TIER_WEIGHTS, TIER_LABELS):
     return "other"
 
 
+def _any_word_match(sl, keywords):
+    """Return True if any keyword matches on word boundaries in sl."""
+    for kw in keywords:
+        if re.search(rf'\b{re.escape(kw)}\b', sl):
+            return True
+    return False
+
+
 def classify_source_category(source_str):
-    """Categorise source by geopolitical media bloc."""
+    """Categorise source by geopolitical media bloc. Uses word-boundary matching
+    so short tokens like "ap" and "rt" don't hit substrings inside other words."""
     sl = source_str.lower().strip()
-    if any(k in sl for k in [
-        "reuters", "associated press", "ap ", "apnews", "afp", "bbc",
+    if _any_word_match(sl, [
+        "reuters", "associated press", "ap", "apnews", "afp", "bbc",
         "new york times", "nyt", "wsj", "wall street journal",
         "washington post", "cnbc", "cnn", "france 24", "the hindu",
         "abc news", "nbc", "cbs", "bloomberg", "guardian"
     ]):
         return "western"
-    if any(k in sl for k in [
+    if _any_word_match(sl, [
         "tass", "ria", "interfax", "izvestia", "kommersant",
-        "rossiyskaya", "rt ", "moscow times"
+        "rossiyskaya", "rt", "moscow times"
     ]):
         return "russian"
-    if any(k in sl for k in [
+    if _any_word_match(sl, [
         "xinhua", "cgtn", "china daily", "global times", "scmp",
         "south china morning post"
     ]):
         return "chinese"
-    if any(k in sl for k in [
+    if _any_word_match(sl, [
         "al jazeera", "al arabiya", "irna", "isna", "fars", "tasnim",
         "middle east", "haaretz", "times of israel", "jerusalem post",
         "the national", "gulf news", "khaleej", "oman news", "petra",
         "anadolu", "daily sabah", "hurriyet", "israel hayom"
     ]):
         return "arabic"
-    if any(k in sl for k in [
+    if _any_word_match(sl, [
         "white house", "pentagon", "iaea", "nato", "centcom",
         "stratcom", "unsc", "idf", "irgc", "kremlin",
         "un security council", "truth social"
@@ -148,7 +160,10 @@ def apply_temporal_decay(signal_weight, activated_at_iso):
             return 0
         return round(decayed, 1)
     except Exception as e:
-        print(f"[signals] Error in temporal decay: {e}")
+        log.error(
+            "temporal_decay_error weight=%s activated=%s err=%r",
+            signal_weight, activated_at_iso, e, exc_info=True,
+        )
         return signal_weight
 
 
@@ -334,8 +349,11 @@ def build_signal_data(tid, state, signal_weights, timeline, now_dt, now_iso):
                     recency_score += 2
                 else:
                     recency_score += 1
-            except Exception:
-                pass
+            except Exception as e:
+                log.warning(
+                    "recency_score_parse_error signal=%s err=%r",
+                    signal.get("name"), e, exc_info=True,
+                )
 
     recency_score = (
         min(3, recency_score / max(1, min(3, sig_count)))
@@ -349,3 +367,237 @@ def build_signal_data(tid, state, signal_weights, timeline, now_dt, now_iso):
     else:
         confidence = "LOW"
     return signal_data, confidence
+
+
+# ── News-feed helpers (moved from pipeline.py) ────────────────────────────────
+
+KNOWN_NEWS_SOURCES = [
+    "Reuters", "AP", "CNN", "BBC", "NYT", "Al Jazeera", "NPR", "ISW",
+    "LA Times", "WaPo", "Guardian", "Bloomberg", "TASS", "Xinhua",
+]
+
+ESCALATION_WORDS = [
+    "escalat", "strike", "bomb", "attack", "reject", "critical",
+    "warn", "destroy", "kill", "invasion",
+]
+
+ZONE_SIGNAL_KEYWORDS = {
+    "hormuz_closed": ["hormuz closed", "hormuz shut", "strait closed", "re-closed strait"],
+    "hormuz_controlled_not_closed": ["hormuz controlled", "hormuz restricted", "hormuz limited"],
+    "hormuz_mining": ["hormuz min", "mined strait", "naval mine"],
+    "hormuz_zero_traffic": ["hormuz zero", "hormuz no traffic"],
+    "nuclear_rhetoric_official": ["nuclear rhetoric", "nuclear weapon", "nuclear threat", "nuclear capabilit"],
+    "enrichment_90": ["90% enrich", "90 percent enrich", "weapons-grade", "weapon-grade enrich"],
+    "enrichment_60": ["60% enrich", "60 percent enrich"],
+    "diplomacy_refused": ["rejects peace", "rejects diplomacy", "peace talk", "refused diplomac", "refusing diplomac", "unreasonable"],
+    "diplomacy_active": ["ceasefire", "peace deal", "diplomatic talk", "negotiat"],
+    "missile_range_test": ["missile test", "missile launch", "ballistic missile", "missile range"],
+    "iaea_access_denied": ["iaea access", "iaea denied", "iaea inspect"],
+    "military_buildup": ["troop deploy", "military buildup", "force deploy", "carrier group"],
+    "bomber_redeployment": ["bomber", "b-2", "b-52"],
+    "ssbn_positioning": ["ssbn", "submarine deploy", "nuclear sub"],
+    "ground_invasion_talk": ["ground invasion", "ground operation", "ground force"],
+    "nuclear_test": ["nuclear test", "nuclear detonat"],
+    "oil_infrastructure_threat": ["oil threat", "oil infrastructure", "oil target"],
+    "ceasefire_violation": ["ceasefire violat", "broke ceasefire", "broke truce", "strikes despite ceasefire"],
+}
+
+
+def build_raw_news_fallback(state):
+    """Synthesise raw_news from zone notes + zone signals when latest_news is
+    absent. Returns at minimum a single placeholder item."""
+    raw_news = []
+    trackers = state.get("trackers", {})
+    zones = state.get("zones", {})
+
+    for zone_id, zone_data in {**trackers, **zones}.items():
+        notes = zone_data.get("notes", "")
+        if notes and len(notes) > 20:
+            sentences = [
+                s.strip() for s in notes.replace('\n', '. ').split('.')
+                if len(s.strip()) > 15
+            ]
+            for sent in sentences[:2]:
+                source = "Unknown"
+                for src in KNOWN_NEWS_SOURCES:
+                    if src.lower() in sent.lower():
+                        source = src
+                        break
+                sent_l = sent.lower()
+                impact = "up" if any(w in sent_l for w in ESCALATION_WORDS) else "down"
+                raw_news.append({
+                    "zone": zone_id,
+                    "text": sent[:200],
+                    "headline": sent[:80],
+                    "sources": [source],
+                    "impact": impact,
+                    "time": "24H",
+                })
+
+    for zid, zdata in {**zones, **trackers}.items():
+        sigs = zdata.get("signals", {})
+        if isinstance(sigs, dict) and sigs:
+            sig_parts = [f"{k}: {v}" for k, v in sigs.items()
+                         if v and v not in ("none", "low")]
+            if sig_parts:
+                raw_news.append({
+                    "zone": zid,
+                    "time": "LIVE",
+                    "text": f"{zdata.get('name', zid.upper())} — " + " | ".join(sig_parts),
+                    "headline": f"Signal update: {', '.join(sig_parts)}",
+                    "impact": "elevated" if any(
+                        v in ("high", "critical", "rising") for v in sigs.values()
+                    ) else "neutral",
+                    "sources": ["NUCLEAR ESCALATION WATCH"],
+                    "severity": 2,
+                })
+
+    if not raw_news:
+        raw_news = [{
+            "zone": "iran", "time": "LIVE",
+            "text": "Monitoring active", "impact": "neutral",
+        }]
+    return raw_news
+
+
+def _extract_sources(n):
+    """Normalise a news item's source(s) to a list of strings."""
+    if isinstance(n.get("source"), str):
+        return [s.strip() for s in n["source"].split("/")]
+    if isinstance(n.get("sources"), list):
+        return n["sources"]
+    if isinstance(n.get("source"), list):
+        return n["source"]
+    return []
+
+
+def enrich_news(raw_news, *, classify_credibility, classify_category,
+                find_matching_signals_fn, calc_confidence_fn, calc_severity_fn):
+    """Add credibility tier, source category, matched signals, and severity
+    to each news item. Deduplicates signals across items — first (highest-
+    credibility) source "owns" each signal; duplicates keep entries for
+    display but drop the weight.
+
+    Returns enriched list (up to first 10 items).
+    """
+    enriched = []
+    seen_signals = {}
+
+    for n in raw_news[:10]:
+        sources = _extract_sources(n)
+
+        source_types = []
+        max_cred_weight = 0
+        primary_tier = "5_unverified"
+        for s in sources:
+            tier, weight, _label = classify_credibility(s)
+            source_types.append(classify_category(s))
+            if weight > max_cred_weight:
+                max_cred_weight = weight
+                primary_tier = tier
+
+        full_text = (n.get("headline", "") + " " + n.get("text", ""))
+        zone = n.get("zone", "")
+        zone_signals = find_matching_signals_fn(full_text, zone, primary_tier) if zone else []
+
+        deduped_signals = []
+        for sig in zone_signals:
+            sig_key = f"{zone}:{sig['name']}"
+            if sig_key not in seen_signals:
+                seen_signals[sig_key] = primary_tier
+                deduped_signals.append(sig)
+            else:
+                sig["weight"] = 0
+                sig["duplicate"] = True
+                deduped_signals.append(sig)
+
+        enriched.append({
+            "zone": zone,
+            "time": n.get("time", ""),
+            "text": n.get("text", n.get("headline", "")),
+            "headline": n.get("headline", ""),
+            "impact": n.get("impact", "neutral"),
+            "sources": sources,
+            "source_types": source_types,
+            "source_tier": primary_tier,
+            "credibility_weight": max_cred_weight,
+            "confidence": calc_confidence_fn(len(sources), max_cred_weight),
+            "severity": calc_severity_fn(n.get("impact", "neutral"), full_text),
+            "signals": deduped_signals,
+        })
+    return enriched
+
+
+def merge_news_signals_into_state(enriched_news, state, signal_weights, *,
+                                  apply_temporal_decay_fn, get_timeline_details_fn,
+                                  confirm_signal_fn, now_iso):
+    """Merge news-found signals with agent-set signals on each tracker. Drops
+    signals whose temporal decay has expired. Writes active_signals +
+    signal_timestamps back into state."""
+    new_active = {}
+    for n in enriched_news:
+        zone = n.get("zone", "")
+        if not zone:
+            continue
+        new_active.setdefault(zone, set())
+        for sig in n.get("signals", []):
+            if not sig.get("duplicate") and sig.get("weight", 0) != 0:
+                new_active[zone].add(sig["name"])
+
+    for tid, tracker in state.get("trackers", {}).items():
+        old_signals = set(tracker.get("active_signals", []))
+        news_signals = new_active.get(tid, set())
+
+        still_valid = set()
+        for s in old_signals:
+            w = signal_weights.get((tid, s), 0)
+            if w == 0:
+                continue
+            _, activated_at, _ = get_timeline_details_fn(f"{tid}:{s}", create=True)
+            if apply_temporal_decay_fn(abs(w), activated_at) > 0:
+                still_valid.add(s)
+
+        merged = still_valid | news_signals
+        for signal_name in merged:
+            confirm_signal_fn(tid, signal_name)
+
+        removed = old_signals - merged
+        added = merged - old_signals
+        if removed:
+            print(f"[{tid}] Cleared {len(removed)} expired signals: {removed}")
+        if added:
+            print(f"[{tid}] Added {len(added)} new signals: {added}")
+        tracker["active_signals"] = sorted(merged)
+        tracker["signal_timestamps"] = {}
+        for signal_name in tracker["active_signals"]:
+            _, activated_at, _ = get_timeline_details_fn(f"{tid}:{signal_name}", create=True)
+            tracker["signal_timestamps"][signal_name] = activated_at or now_iso
+
+
+def extract_signals_from_notes(state):
+    """Keyword-match zone notes → named signals. Fallback for cron writers
+    that populate zones[].notes but not trackers[].active_signals directly.
+
+    Mutates state["trackers"][zone_id]["active_signals"] in place.
+    """
+    if "trackers" not in state:
+        state["trackers"] = {}
+
+    for zone_id, zone_data in state.get("zones", {}).items():
+        notes = zone_data.get("notes", "")
+        if not notes or len(notes) < 20:
+            continue
+        notes_lower = notes.lower()
+        matched = []
+        for signal_name, keywords in ZONE_SIGNAL_KEYWORDS.items():
+            for kw in keywords:
+                if kw in notes_lower:
+                    matched.append(signal_name)
+                    break
+        if matched:
+            state["trackers"].setdefault(zone_id, {})
+            existing = set(state["trackers"][zone_id].get("active_signals", []))
+            existing.update(matched)
+            state["trackers"][zone_id]["active_signals"] = sorted(existing)
+            if "current_probability" not in state["trackers"][zone_id]:
+                state["trackers"][zone_id]["current_probability"] = zone_data.get("current_prob", 0)
