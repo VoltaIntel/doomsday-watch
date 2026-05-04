@@ -25,6 +25,38 @@ GAMMA_MARKETS_URL = "https://gamma-api.polymarket.com/markets"
 CACHE_PATH = _ROOT / "data" / "polymarket_cache.json"
 DEFAULT_LIMIT = 500
 REQUEST_TIMEOUT = 20.0
+DEFAULT_MAX_CACHE_AGE_HOURS = 12.0
+
+
+def _parse_utc(ts: Any) -> Optional[datetime]:
+    if not ts:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
+    except Exception:
+        return None
+
+
+def cache_age_hours(cache: Dict[str, Any], now: Optional[datetime] = None) -> Optional[float]:
+    """Return cache age in hours, or None when fetched_at is missing/invalid."""
+    fetched = _parse_utc(cache.get("fetched_at") if isinstance(cache, dict) else None)
+    if fetched is None:
+        return None
+    now_dt = now or datetime.now(timezone.utc)
+    if now_dt.tzinfo is None:
+        now_dt = now_dt.replace(tzinfo=timezone.utc)
+    return max(0.0, (now_dt.astimezone(timezone.utc) - fetched).total_seconds() / 3600.0)
+
+
+def cache_is_fresh(cache: Dict[str, Any], max_age_hours: float = DEFAULT_MAX_CACHE_AGE_HOURS) -> bool:
+    """True only when the cache has markets and fetched_at is within max_age_hours."""
+    if not isinstance(cache, dict) or not cache.get("markets"):
+        return False
+    age = cache_age_hours(cache)
+    return age is not None and age <= float(max_age_hours)
 
 
 def _fetch_page(offset: int, limit: int) -> List[Dict[str, Any]]:
@@ -177,6 +209,29 @@ def refresh_cache(slugs: Optional[Iterable[str]] = None, offline_ok: bool = True
         )
         return cache
     raise RuntimeError("polymarket refresh failed and offline_ok=False")
+
+
+def refresh_cache_if_stale(
+    slugs: Optional[Iterable[str]] = None,
+    max_age_hours: float = DEFAULT_MAX_CACHE_AGE_HOURS,
+    offline_ok: bool = True,
+) -> Dict[str, Any]:
+    """Refresh only when the local cache is stale/missing.
+
+    This keeps normal pipeline runs fast while preventing the dashboard from
+    silently carrying multi-day-old Polymarket data.
+    """
+    cache = load_cache()
+    if cache_is_fresh(cache, max_age_hours=max_age_hours):
+        log.info(
+            "polymarket_cache_fresh",
+            extra={
+                "fetched_at": cache.get("fetched_at"),
+                "age_hours": round(cache_age_hours(cache) or 0.0, 2),
+            },
+        )
+        return cache
+    return refresh_cache(slugs=slugs, offline_ok=offline_ok)
 
 
 if __name__ == "__main__":

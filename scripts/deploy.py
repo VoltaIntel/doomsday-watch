@@ -44,6 +44,8 @@ def deploy_changes(state, auto_git=True):
                 "git", "add", "-f",
                 "data/current_state.json",
                 "data/signal_timeline.json",
+                "data/polymarket_cache.json",
+                "data/polymarket_mapping.json",
                 "data/predictions/",
                 "data/energy_prices.json",
                 "data/flight_tracking.json",

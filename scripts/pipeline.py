@@ -789,8 +789,10 @@ else:
     # block the pipeline — we degrade to no-op.
     try:
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+        from scripts.ingest.polymarket import refresh_cache_if_stale as _pm_refresh_if_stale
         from scripts.scoring.polymarket_check import check_all as _pm_check_all
-        pm_result = _pm_check_all(state=state, append_log=True)
+        pm_cache = _pm_refresh_if_stale(max_age_hours=12.0, offline_ok=True)
+        pm_result = _pm_check_all(cache=pm_cache, state=state, append_log=True)
         state["polymarket"] = pm_result
         if pm_result["banner"].get("any_divergence"):
             worst = pm_result["banner"].get("worst_tracker")
@@ -895,7 +897,7 @@ if os.environ.get("NUKE_WATCH_AUTO_GIT") == "1":
     subprocess.run(["git", "config", "user.name", "VoltaIntel"], check=True)
     subprocess.run(["git", "config", "user.email", "cryptocybrog1337@proton.me"], check=True)
     # Force-add data files (gitignored but needed on GitHub Pages)
-    subprocess.run(["git", "add", "-f", "data/current_state.json", "data/signal_timeline.json", "data/predictions/", "data/energy_prices.json", "data/flight_tracking.json"], check=False)
+    subprocess.run(["git", "add", "-f", "data/current_state.json", "data/signal_timeline.json", "data/polymarket_cache.json", "data/polymarket_mapping.json", "data/predictions/", "data/energy_prices.json", "data/flight_tracking.json"], check=False)
     subprocess.run(["git", "add", "-A"], check=True)
     r = subprocess.run(["git", "commit", "-m", "Update " + state.get("last_updated", "") + " — automated"], capture_output=True, text=True)
     print("Committed" if r.returncode == 0 else "No changes to commit")
