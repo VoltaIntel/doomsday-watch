@@ -414,6 +414,81 @@ body {
 .confidence-badge.medium { background: rgba(234,179,8,0.25); color: #eab308; }
 .confidence-badge.low { background: rgba(156,163,175,0.25); color: #9ca3af; }
 
+.tracker-intel {
+  margin-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.tracker-mini-title {
+  font-size: 8px;
+  color: var(--cyan);
+  letter-spacing: 1.6px;
+  margin-bottom: 3px;
+}
+
+.tracker-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.tracker-metric {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 3px;
+  padding: 5px 4px;
+  text-align: center;
+}
+
+.tracker-metric span {
+  display: block;
+  font-size: 7px;
+  color: var(--dim);
+  letter-spacing: 1px;
+}
+
+.tracker-metric b {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--white);
+}
+
+.watch-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.watch-col {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 3px;
+  padding: 6px;
+  min-width: 0;
+}
+
+.watch-label {
+  font-size: 7px;
+  color: var(--dim);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.watch-tag {
+  display: block;
+  font-size: 8px;
+  line-height: 1.35;
+  color: #8b949e;
+  margin: 2px 0;
+}
+
+.watch-tag.up { color: #ff8080; }
+.watch-tag.down { color: #7ee787; }
+
 /* Signals */
 .tracker-signals {
   display: flex;
@@ -1049,6 +1124,47 @@ function getTimeBlockLabel(timeStr) {
   return 'RECENT';
 }
 
+function formatDelta(value) {
+  var num = Number(value || 0);
+  return (num > 0 ? '+' : '') + num.toFixed(Math.abs(num) >= 10 ? 0 : 1);
+}
+
+function renderTrackerIntel(t) {
+  var attr = t.attribution || {};
+  var eq = t.evidence_quality || {};
+  var watch = t.watch_triggers || { up: [], down: [] };
+  function metric(label, value, suffix) {
+    return '<div class="tracker-metric"><span>' + escapeHtml(label) + '</span><b>' + escapeHtml(value) + (suffix || '') + '</b></div>';
+  }
+  function triggerList(items, cls) {
+    if (!items || !items.length) return '<span class="watch-tag">NO TRIGGER</span>';
+    return items.slice(0, 3).map(function(x) {
+      var sign = Number(x.weight || 0) > 0 ? '+' : '';
+      return '<span class="watch-tag ' + cls + '">' + sign + escapeHtml(x.weight || 0) + ' ' + escapeHtml(x.label || x.name || '') + '</span>';
+    }).join('');
+  }
+  var age = eq.newest_signal_age_hours == null ? '—' : (eq.newest_signal_age_hours + 'h');
+  return '<div class="tracker-intel">' +
+    '<div><div class="tracker-mini-title">WHY THIS MOVED</div>' +
+      '<div class="tracker-metrics">' +
+        metric('BASE', attr.base_rate == null ? '—' : attr.base_rate, '%') +
+        metric('SIGNAL', formatDelta(attr.signal_delta), 'pp') +
+        metric('COUPLING', formatDelta(attr.coupling_boost), 'pp') +
+        metric('FINAL', attr.final_probability == null ? Math.round(Number(t.prob || 0)) : attr.final_probability, '%') +
+      '</div></div>' +
+    '<div><div class="tracker-mini-title">EVIDENCE</div>' +
+      '<div class="tracker-metrics">' +
+        metric('GRADE', eq.label || 'LOW', '') +
+        metric('SRC', eq.source_count == null ? 0 : eq.source_count, '') +
+        metric('SIG', eq.signal_count == null ? 0 : eq.signal_count, '') +
+        metric('FRESH', age, '') +
+      '</div></div>' +
+    '<div><div class="tracker-mini-title">NEXT WATCH</div>' +
+      '<div class="watch-row"><div class="watch-col"><div class="watch-label">UP IF</div>' + triggerList(watch.up, 'up') + '</div>' +
+      '<div class="watch-col"><div class="watch-label">DOWN IF</div>' + triggerList(watch.down, 'down') + '</div></div></div>' +
+    '</div>';
+}
+
 function renderTrackers() {
   const grid = document.getElementById("trackersGrid");
   grid.innerHTML = "";
@@ -1095,6 +1211,7 @@ function renderTrackers() {
       <div class="tracker-zone ${t.zone}">${escapeHtml(String(t.zone || '').toUpperCase())} <span class="confidence-badge ${confidence.toLowerCase()}">${escapeHtml(confidence)}</span></div>
       <div class="tracker-signals">${signalHTML}</div>
       <div class="tracker-trend ${trendClass}">${trendIcon} ${escapeHtml(trend.toUpperCase())}</div>
+      ${renderTrackerIntel(t)}
     `;
 
     var trackerName = card.querySelector('.tracker-name');
@@ -1492,7 +1609,11 @@ function renderPolymarket() {
   grid.innerHTML = "";
 
   if (stamp) {
-    stamp.textContent = pm.fetched_at ? ("FETCHED " + String(pm.fetched_at).replace("T", " ").replace("Z", " UTC")) : "CACHE MISSING";
+    var cacheText = pm.fetched_at ? ("PM CACHE " + String(pm.fetched_at).replace("T", " ").replace("Z", " UTC")) : "PM CACHE MISSING";
+    if (pm.age_hours != null) cacheText += " · " + pm.age_hours + "H OLD";
+    if (pm.stale) cacheText += " · STALE";
+    stamp.textContent = cacheText;
+    stamp.style.color = pm.stale ? "#ffbf47" : "var(--dim)";
   }
 
   // Global banner — red when any divergence, yellow hidden otherwise

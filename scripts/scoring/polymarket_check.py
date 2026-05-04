@@ -156,7 +156,17 @@ def check_all(
         state = _load_json(STATE_PATH, {"trackers": {}})
 
     markets = cache.get("markets", {}) if isinstance(cache, dict) else {}
-    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    now_dt = datetime.now(timezone.utc)
+    now_iso = now_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    fetched_at = cache.get("fetched_at") if isinstance(cache, dict) else None
+    cache_age_hours = None
+    if fetched_at:
+        try:
+            fetched_dt = datetime.fromisoformat(str(fetched_at).replace("Z", "+00:00"))
+            cache_age_hours = round(max(0.0, (now_dt - fetched_dt).total_seconds() / 3600.0), 1)
+        except Exception:
+            cache_age_hours = None
+    cache_stale = cache_age_hours is None or cache_age_hours > 12.0
 
     comparisons: Dict[str, Any] = {}
     banner = {
@@ -221,7 +231,10 @@ def check_all(
 
     result = {
         "generated_at": now_iso,
-        "fetched_at": cache.get("fetched_at") if isinstance(cache, dict) else None,
+        "fetched_at": fetched_at,
+        "age_hours": cache_age_hours,
+        "stale": cache_stale,
+        "stale_after_hours": 12,
         "comparisons": comparisons,
         "banner": banner,
     }

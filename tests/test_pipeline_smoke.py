@@ -106,3 +106,33 @@ def test_pipeline_lifetime_stats_written(pipeline_run):
     assert "total_evaluated" in stats
     assert "sum_brier" in stats
     assert stats["total_evaluated"] >= 0
+
+
+def test_dashboard_exposes_probability_attribution_and_watch_triggers(pipeline_run):
+    _, html, state = pipeline_run
+    tracker = next(t for t in state["dashboard_trackers"] if t["id"] == "iran_conventional")
+    attribution = tracker.get("attribution")
+    assert attribution, "tracker cards should expose probability attribution"
+    assert attribution["base_rate"] >= 0
+    assert "signal_delta" in attribution
+    assert "coupling_boost" in attribution
+    assert attribution["final_probability"] == tracker["prob"]
+    assert tracker.get("watch_triggers", {}).get("up"), "missing upward watch triggers"
+    assert tracker.get("watch_triggers", {}).get("down"), "missing downward watch triggers"
+    assert "WHY THIS MOVED" in html
+    assert "NEXT WATCH" in html
+
+
+def test_dashboard_exposes_evidence_quality_and_polymarket_staleness(pipeline_run):
+    _, html, state = pipeline_run
+    tracker = next(t for t in state["dashboard_trackers"] if t["id"] == "iran_conventional")
+    quality = tracker.get("evidence_quality")
+    assert quality, "tracker cards should expose evidence quality"
+    assert quality["label"] in {"HIGH", "MEDIUM", "LOW"}
+    assert "source_count" in quality
+    assert "newest_signal_age_hours" in quality
+    pm = state.get("polymarket", {})
+    assert "stale" in pm, "polymarket payload should include staleness flag"
+    assert "age_hours" in pm, "polymarket payload should include cache age"
+    assert "EVIDENCE" in html
+    assert "PM CACHE" in html

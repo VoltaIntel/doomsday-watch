@@ -286,6 +286,79 @@ zone_thresholds = cfg.get("scoring", {}).get("zones", {})
 def classify_zone(p):
     return _classify_zone_cfg(p, zone_thresholds)
 
+
+def _iso_age_hours(ts):
+    if not ts:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        return round(max(0.0, (now_dt - dt).total_seconds() / 3600.0), 1)
+    except Exception:
+        return None
+
+
+def _build_watch_triggers(tid, limit=3):
+    """Expose the most important up/down triggers for the dashboard."""
+    sigs = cfg.get("trackers", {}).get(tid, {}).get("signals", {})
+    rows = []
+    for name, block in sigs.items():
+        if not isinstance(block, dict):
+            continue
+        weight = float(block.get("weight", 0) or 0)
+        rows.append({
+            "name": name,
+            "weight": weight,
+            "label": name.replace("_", " ").upper(),
+        })
+    up = sorted([r for r in rows if r["weight"] > 0], key=lambda r: r["weight"], reverse=True)[:limit]
+    down = sorted([r for r in rows if r["weight"] < 0], key=lambda r: abs(r["weight"]), reverse=True)[:limit]
+    return {"up": up, "down": down}
+
+
+def _source_count_for_tracker(tid):
+    sources = set()
+    for n in news_js:
+        if n.get("zone") != tid:
+            continue
+        for src in n.get("sources", []) or []:
+            if src:
+                sources.add(str(src))
+    return len(sources)
+
+
+def _decorate_dashboard_trackers(trackers):
+    for t in trackers:
+        tid = t["id"]
+        trk = state.get("trackers", {}).get(tid, {})
+        base_rate = cfg.get("trackers", {}).get(tid, {}).get("base_rate", t.get("base_rate", 0))
+        raw_prob = trk.get("current_probability", t.get("prob", 0))
+        boost = trk.get("coupling_boost", max(0, t.get("prob", 0) - raw_prob))
+        try:
+            signal_delta = round(float(raw_prob) - float(base_rate), 1)
+        except Exception:
+            signal_delta = 0
+        t["attribution"] = {
+            "base_rate": round(float(base_rate or 0), 1),
+            "raw_probability": round(float(raw_prob or 0), 1),
+            "signal_delta": signal_delta,
+            "coupling_boost": round(float(boost or 0), 1),
+            "final_probability": int(round(float(t.get("prob", 0)))),
+        }
+        ages = [_iso_age_hours(s.get("activated_at")) for s in t.get("signals", []) if isinstance(s, dict)]
+        ages = [a for a in ages if a is not None]
+        source_count = _source_count_for_tracker(tid)
+        signal_count = len(t.get("signals", []) or [])
+        newest = min(ages) if ages else None
+        label = "HIGH" if source_count >= 3 and signal_count >= 3 else "MEDIUM" if source_count >= 1 or signal_count >= 2 else "LOW"
+        t["evidence_quality"] = {
+            "label": label,
+            "source_count": source_count,
+            "signal_count": signal_count,
+            "newest_signal_age_hours": newest,
+        }
+        t["watch_triggers"] = _build_watch_triggers(tid)
+    return trackers
+
 for t in trackers_js:
     new_zone = classify_zone(t["prob"])
     t["zone"] = new_zone
@@ -339,6 +412,8 @@ else:
         print(f"Proportional coupling boosts: {boost_log}")
 
     gp, tz = calculate_global_probability(all_probs, cfg)
+    trackers_js = _decorate_dashboard_trackers(trackers_js)
+    state["dashboard_trackers"] = trackers_js
     # Update state.json with correct global
     state["global_war_probability"] = gp
     state["global_zone"] = tz
@@ -455,6 +530,9 @@ else:
     lines.append("  trackers: [")
     for t in trackers_js:
         signals_str = json.dumps(t["signals"])
+        attribution_str = json.dumps(t.get("attribution", {}))
+        evidence_str = json.dumps(t.get("evidence_quality", {}))
+        watch_str = json.dumps(t.get("watch_triggers", {"up": [], "down": []}))
         prob_int = int(round(float(t["prob"])))  # Force integer — no decimals ever
         lines.append(
             "    { id: " + json.dumps(t["id"]) +
@@ -464,6 +542,9 @@ else:
             ", zone: " + json.dumps(t["zone"]) +
             ", trend: " + json.dumps(t["trend"]) +
             ", confidence: " + json.dumps(t.get("confidence", "LOW")) +
+            ", attribution: " + attribution_str +
+            ", evidence_quality: " + evidence_str +
+            ", watch_triggers: " + watch_str +
             ", signals: " + signals_str + " },"
         )
     lines.append("  ],")
@@ -777,7 +858,10 @@ else:
     # Slim polymarket payload for dashboard (drop heavy `markets` list from per-tracker
     # entries but keep summary fields + banner).
     pm_for_dash = {"comparisons": {}, "banner": state.get("polymarket", {}).get("banner", {}),
-                   "fetched_at": state.get("polymarket", {}).get("fetched_at")}
+                   "fetched_at": state.get("polymarket", {}).get("fetched_at"),
+                   "generated_at": state.get("polymarket", {}).get("generated_at"),
+                   "stale": state.get("polymarket", {}).get("stale", False),
+                   "age_hours": state.get("polymarket", {}).get("age_hours")}
     for _tid, _c in (state.get("polymarket", {}) or {}).get("comparisons", {}).items():
         if _c.get("status") != "ok":
             pm_for_dash["comparisons"][_tid] = _c
