@@ -9,7 +9,8 @@
     "china",
     "north_korea",
     "russia_ukraine",
-    "pakistan_afghanistan"
+    "pakistan_afghanistan",
+    "sudan"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -207,6 +208,32 @@
           "weight": 4
         }
       }
+    },
+    "sudan": {
+      "name": "Sudan / Red Sea spillover",
+      "base_rate": 8,
+      "signals": {
+        "military_buildup": {
+          "weight": 6,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -274,9 +301,10 @@
     "russia": 0.06,
     "china": 0.06,
     "north_korea": 0.08,
-    "iran_nuclear": 0.12
+    "iran_nuclear": 0.12,
+    "sudan": 0.03
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-05-06T03:03:19Z",
+  "last_updated": "2026-05-07T03:04:07Z",
   "dashboard_path": "dashboard.html"
 }
