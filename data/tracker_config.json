@@ -10,7 +10,8 @@
     "north_korea",
     "russia_ukraine",
     "pakistan_afghanistan",
-    "sudan"
+    "sudan",
+    "israel_palestine"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -234,6 +235,30 @@
           "decay_hours": 72
         }
       }
+    },
+    "israel_palestine": {
+      "base_rate": 18,
+      "description": "Israel-Palestine / Gaza-Jerusalem escalation spillover",
+      "signals": {
+        "ceasefire_violation": {
+          "weight": 6
+        },
+        "diplomacy_active": {
+          "weight": -4
+        },
+        "diplomacy_refused": {
+          "weight": 4
+        },
+        "military_buildup": {
+          "weight": 5
+        },
+        "extremist_mobilization": {
+          "weight": 4
+        },
+        "holy_site_tension": {
+          "weight": 5
+        }
+      }
     }
   },
   "coupling": {
@@ -302,9 +327,10 @@
     "china": 0.06,
     "north_korea": 0.08,
     "iran_nuclear": 0.12,
-    "sudan": 0.03
+    "sudan": 0.03,
+    "israel_palestine": 0.05
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-05-13T03:02:19Z",
+  "last_updated": "2026-05-15T03:10:04Z",
   "dashboard_path": "dashboard.html"
 }
