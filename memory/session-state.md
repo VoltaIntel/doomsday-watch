@@ -1,9 +1,5 @@
-## 2026-05-14T03:04:57Z — Nuke Watch Morning Deep Scan
+# Session State
 
-- Ran May 14 morning deep scan across configured zones plus energy, UNSC/IAEA/allied positions and emerging-crisis probes.
-- Updated `/home/openclaw/.openclaw/workspace/nuke-watch/data/current_state.json` atomically and rebuilt `signal_timeline.json` with intended configured signals only.
-- Deployed dashboard with `bash scripts/deploy.sh`; commit `bf66e3b` pushed.
-- Post-deploy verified dashboard news injection, fresh Polymarket cache, inline JS syntax, and raw-vs-coupled probabilities.
-- Final dashboard: global 59% imminent; raw global before coupling 53%.
-- Key coupled probabilities: Iran war 100, Russia-Ukraine 92, Israel-Lebanon 75, Iran nuclear 58, Russia-NATO 55, China 23, Pakistan-Afghanistan 24, Sudan 20, India/Turkey/North Korea 7.
-- No new tracker added: South China Sea remains under China; Thailand-Cambodia, Venezuela/Guyana, Serbia-Kosovo did not meet fresh 3+ mentions / 2+ credible sources threshold.
+Last updated: 2026-05-16T03:13:21Z
+
+DoomsdayWatch morning deep scan completed and deployed. Final post-deploy global is 59% (imminent). Dashboard data verified with 10 latest_news items and clean inline JS.
