@@ -11,7 +11,8 @@
     "russia_ukraine",
     "pakistan_afghanistan",
     "sudan",
-    "israel_palestine"
+    "israel_palestine",
+    "south_sudan_abyei"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -259,6 +260,33 @@
           "weight": 5
         }
       }
+    },
+    "south_sudan_abyei": {
+      "name": "South Sudan / Abyei",
+      "base_rate": 12,
+      "description": "South Sudan transitional crisis and Abyei spillover conflict",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "ceasefire_violation": {
+          "weight": 4,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -328,9 +356,10 @@
     "north_korea": 0.08,
     "iran_nuclear": 0.12,
     "sudan": 0.03,
-    "israel_palestine": 0.05
+    "israel_palestine": 0.05,
+    "south_sudan_abyei": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-05-19T03:03:42Z",
+  "last_updated": "2026-05-22T03:06:31Z",
   "dashboard_path": "dashboard.html"
 }
