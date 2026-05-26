@@ -1,13 +1,5 @@
 # Session State
 
-Last updated: 2026-05-21T03:04:10Z
+Last updated: 2026-05-26T03:10:38Z
 
-
-## Morning Deep Scan — 2026-05-21
-- Ran Tavily/web_search deep scan across 12 tracked zones plus oil/energy, UNSC/IAEA/allied positions, and emerging-crisis detection.
-- Updated `data/current_state.json` atomically via Python tmp+rename; rebuilt `data/signal_timeline.json`; confirmed scoring thresholds 0-10/10-25/25-50/50+.
-- No new tracker added: emerging crisis hits did not meet 3+ mentions across 2+ credible sources outside existing trackers.
-- Deployed with `scripts/deploy.sh`; oil data refreshed; Polymarket cache fresh; commit pushed.
-- Final dashboard global: 51% imminent after coupling (raw/manual 46% critical). Key coupled trackers: Russia-Ukraine 95, Iran conventional 70, Iran nuclear 60, Russia-NATO 56, Israel-Palestine 50.
-- Verification: dashboard news tokens present in `index.html`; inline JavaScript passed `node --check`; post-deploy active signals inspected.
-
+Latest nuke-watch run: Morning Deep Scan deployed. Global 42% critical post-coupling; no new tracker added. Key risks: Russia-Ukraine/Russia-NATO/Iran War/Israel-Lebanon.
