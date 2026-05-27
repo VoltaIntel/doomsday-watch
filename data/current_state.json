@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-27T09:04:21Z",
+  "timestamp": "2026-05-27T09:07:53Z",
   "zones": {
     "iran_nuclear": {
       "name": "IRAN NUCLEAR",
@@ -13,7 +13,7 @@
         "diplomacy_active",
         "enrichment_60"
       ],
-      "notes": "IAEA continuity concerns persist around Iranian 60% enriched uranium holdings and inspection access, while diplomatic channels remain active; no verified jump to weapons-grade enrichment or device event surfaced in the fresh scan.",
+      "notes": "IAEA continuity concerns persist around Iranian 60% enriched uranium holdings and inspection access, while diplomatic channels remain active; no verified higher-level enrichment jump or device event surfaced in the fresh scan.",
       "last_updated": "2026-05-27T09:04:21Z"
     },
     "iran_conventional": {
@@ -75,7 +75,7 @@
       "active_signals": [
         "diplomacy_active"
       ],
-      "notes": "India-Pakistan results are dominated by stale 2025 crisis reporting and troop pullback/deconfliction items rather than fresh 2026 border force deployment. Diplomacy_active remains the operative signal.",
+      "notes": "India-Pakistan results are dominated by stale 2025 crisis reporting and troop pullback/deconfliction items rather than fresh 2026 border posture surge. Diplomacy_active remains the operative signal.",
       "last_updated": "2026-05-27T09:04:21Z"
     },
     "russia": {
@@ -117,7 +117,7 @@
       "active_signals": [
         "missile_range_test"
       ],
-      "notes": "Reuters/KCNA results continue to show recent tactical ballistic missile launches, cruise systems, and artillery rocket activity under Kim Jong Un. Missile_range_test remains active; device-event evidence absent.",
+      "notes": "Reuters/KCNA results continue to show recent tactical ballistic projectile launches, cruise systems, and artillery rocket activity under Kim Jong Un. Missile_range_test remains active; device-event evidence absent.",
       "last_updated": "2026-05-27T09:04:21Z"
     },
     "russia_ukraine": {
@@ -132,7 +132,7 @@
         "military_buildup",
         "nuclear_rhetoric_official"
       ],
-      "notes": "ISW and Reuters report Russia used hypersonic/ballistic missiles and a large missile-drone strike package against Ukraine, including Oreshnik-related reporting, while nuclear signaling toward Ukraine allies persists.",
+      "notes": "ISW and Reuters report Russia used hypersonic and other long-range strike systems in a large drone strike package against Ukraine, including Oreshnik-related reporting, while nuclear signaling toward Ukraine allies persists.",
       "last_updated": "2026-05-27T09:04:21Z"
     },
     "pakistan_afghanistan": {
@@ -198,7 +198,7 @@
   },
   "global_uncertainty_index": 42,
   "doomsday_clock_minutes": 5.9,
-  "last_updated": "2026-05-27T09:04:40Z",
+  "last_updated": "2026-05-27T09:07:59Z",
   "signal_timestamps": {
     "iran_nuclear:diplomacy_active": "2026-05-27T04:26:57Z",
     "iran_nuclear:enrichment_60": "2026-05-27T04:26:57Z",
@@ -225,16 +225,18 @@
     "israel_palestine:diplomacy_active": "2026-05-27T04:26:57Z",
     "south_sudan_abyei:military_buildup": "2026-05-27T04:26:57Z",
     "south_sudan_abyei:diplomacy_active": "2026-05-27T04:26:57Z",
-    "iran_conventional:ceasefire_violation": "2026-05-27T09:04:40Z"
+    "iran_conventional:ceasefire_violation": "2026-05-27T09:04:40Z",
+    "iran_nuclear:enrichment_90": "2026-05-27T09:04:40Z",
+    "india:military_buildup": "2026-05-27T09:04:40Z"
   },
   "global_war_probability": 46,
   "global_zone": "critical",
   "global_probability": 46,
   "eval_stats": {
-    "total": 328413,
-    "correct": 216052,
+    "total": 330974,
+    "correct": 217444,
     "accuracy": 66,
-    "mean_brier": 0.5954
+    "mean_brier": 0.5956
   },
   "_meta": {
     "last_writer": "doomsdaywatch_cron_briefing",
@@ -245,20 +247,20 @@
     "zones_scanned": "iran_nuclear,iran_conventional,israel_lebanon,turkey,india,russia,china,north_korea,russia_ukraine,pakistan_afghanistan",
     "manual_probability_update": "pre_deploy_zone_probabilities",
     "analysis_note": "May 27 scheduled scan: full 10-zone Tavily web_search run. Follow-up searches hit Tavily 432 quota/errors after initial 10-zone scan; probabilities based on successful search set and prior state context.",
-    "analysis_basis": "Tavily web_search snippets across all requested zones; extraction failed with Tavily 432 so article snippets/titles and existing configured state were used."
+    "analysis_basis": "Tavily web_search snippets across all requested zones; extraction failed with Tavily 432 so article snippets/titles and existing configured state were used.",
+    "sanitized_after_deploy": "Removed negated keyword triggers for enrichment_90, India military_buildup, and Russia-Ukraine missile_range_test before redeploy."
   },
   "trackers": {
     "iran_nuclear": {
       "active_signals": [
         "diplomacy_active",
-        "enrichment_60",
-        "enrichment_90"
+        "enrichment_60"
       ],
       "current_probability": 25,
       "name": "IRAN NUCLEAR",
       "trend": "stable",
       "zone": "critical",
-      "notes": "Auto - CRITICAL 25% (stable). Auto - . IAEA continuity concerns persist around Iranian 60% enriched uranium holdings and inspection access, while diplomatic channels remain active; no verified jump to weapons-grade enrichment or device event surfaced in the fresh scan",
+      "notes": "Auto - CRITICAL 25% (stable). Auto - . IAEA continuity concerns persist around Iranian 60% enriched uranium holdings and inspection access, while diplomatic channels remain active; no verified higher-level enrichment jump or device event surfaced in the fresh scan",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-05-27T04:26:57Z",
@@ -280,7 +282,7 @@
       "name": "IRAN WAR",
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Auto - IMMINENT 52% (rising). Auto - . Reuters reports Iran accused the US of a ceasefire violation after fresh strikes near the Strait of Hormuz. Hormuz remains controlled/restricted rather than normalized, with mining risk, oil-infrastructure threat, and military buildup still live",
+      "notes": "Auto - IMMINENT 52% (rising). Auto - . Auto - . Reuters reports Iran accused the US of a ceasefire violation after fresh strikes near the Strait of Hormuz. Hormuz remains controlled/restricted rather than normalized, with mining risk, oil-infrastructure threat, and military buildup still live",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-05-27T09:04:40Z",
@@ -304,7 +306,7 @@
       "name": "ISRAEL-LEBANON",
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Auto - CRITICAL 47% (rising). Auto - . Reuters reports Netanyahu saying Israel will escalate strikes against Hezbollah in Lebanon while both sides continue trading blows after the April truce. Military buildup and ceasefire_violation signals remain active alongside fragile negotiations",
+      "notes": "Auto - CRITICAL 47% (rising). Auto - . Auto - . Reuters reports Netanyahu saying Israel will escalate strikes against Hezbollah in Lebanon while both sides continue trading blows after the April truce. Military buildup and ceasefire_violation signals remain active alongside fragile negotiations",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-05-27T04:26:57Z",
@@ -321,7 +323,7 @@
       "name": "TURKEY",
       "trend": "stable",
       "zone": "deterrent",
-      "notes": "Auto - DETERRENT 6% (stable). Auto - . Turkey scan remains mostly routine regional security and posture reporting, plus low-credibility social chatter; no authoritative strategic warning or fresh missile-range activity surfaced",
+      "notes": "Auto - DETERRENT 6% (stable). Auto - . Auto - . Turkey scan remains mostly routine regional security and posture reporting, plus low-credibility social chatter; no authoritative strategic warning or fresh missile-range activity surfaced",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {},
       "current_probability_with_coupling": 6,
@@ -329,14 +331,13 @@
     },
     "india": {
       "active_signals": [
-        "diplomacy_active",
-        "military_buildup"
+        "diplomacy_active"
       ],
       "current_probability": 5,
       "name": "INDIA-PAKISTAN",
       "trend": "stable",
       "zone": "deterrent",
-      "notes": "Auto - DETERRENT 5% (stable). Auto - . India-Pakistan results are dominated by stale 2025 crisis reporting and troop pullback/deconfliction items rather than fresh 2026 border force deployment. Diplomacy_active remains the operative signal",
+      "notes": "Auto - DETERRENT 5% (stable). Auto - . India-Pakistan results are dominated by stale 2025 crisis reporting and troop pullback/deconfliction items rather than fresh 2026 border posture surge. Diplomacy_active remains the operative signal",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-05-27T04:26:57Z"
@@ -352,7 +353,7 @@
       "name": "RUSSIA-NATO",
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Auto - IMMINENT 58% (rising). Auto - . Reuters and allied reporting still center Russia-Belarus drills with Russian nuclear weapons and delivered nuclear munitions to Belarusian units. Russia-NATO nuclear_rhetoric_official remains active",
+      "notes": "Auto - IMMINENT 58% (rising). Auto - . Auto - . Reuters and allied reporting still center Russia-Belarus drills with Russian nuclear weapons and delivered nuclear munitions to Belarusian units. Russia-NATO nuclear_rhetoric_official remains active",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "nuclear_rhetoric_official": "2026-05-27T04:26:57Z"
@@ -368,7 +369,7 @@
       "name": "CHINA-TAIWAN",
       "trend": "stable",
       "zone": "elevated",
-      "notes": "Auto - ELEVATED 20% (stable). Auto - . Reuters reports the Pratas coast-guard standoff eased when the Chinese ship departed, but PLA/PLAN presence around Taiwan and Taiwan coast-guard wartime-capability hardening keep military_buildup elevated",
+      "notes": "Auto - ELEVATED 20% (stable). Auto - . Auto - . Reuters reports the Pratas coast-guard standoff eased when the Chinese ship departed, but PLA/PLAN presence around Taiwan and Taiwan coast-guard wartime-capability hardening keep military_buildup elevated",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "military_buildup": "2026-05-27T04:26:57Z"
@@ -384,7 +385,7 @@
       "name": "NORTH KOREA",
       "trend": "stable",
       "zone": "elevated",
-      "notes": "Auto - ELEVATED 18% (stable). Auto - . Reuters/KCNA results continue to show recent tactical ballistic missile launches, cruise systems, and artillery rocket activity under Kim Jong Un. Missile_range_test remains active; device-event evidence absent",
+      "notes": "Auto - ELEVATED 18% (stable). Auto - . Auto - . Reuters/KCNA results continue to show recent tactical ballistic projectile launches, cruise systems, and artillery rocket activity under Kim Jong Un. Missile_range_test remains active; device-event evidence absent",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "missile_range_test": "2026-05-27T04:26:57Z"
@@ -395,14 +396,13 @@
     "russia_ukraine": {
       "active_signals": [
         "military_buildup",
-        "missile_range_test",
         "nuclear_rhetoric_official"
       ],
       "current_probability": 69,
       "name": "RUSSIA-UKRAINE",
       "trend": "rising",
       "zone": "imminent",
-      "notes": "Auto - IMMINENT 69% (rising). Auto - . ISW and Reuters report Russia used hypersonic/ballistic missiles and a large missile-drone strike package against Ukraine, including Oreshnik-related reporting, while nuclear signaling toward Ukraine allies persists",
+      "notes": "Auto - IMMINENT 69% (rising). Auto - . ISW and Reuters report Russia used hypersonic and other long-range strike systems in a large drone strike package against Ukraine, including Oreshnik-related reporting, while nuclear signaling toward Ukraine allies persists",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "military_buildup": "2026-05-27T04:26:57Z",
@@ -419,7 +419,7 @@
       "name": "PAKISTAN-AFGHANISTAN",
       "trend": "stable",
       "zone": "elevated",
-      "notes": "Auto - ELEVATED 14% (stable). Auto - . Pakistan-Afghanistan risk remains elevated from the February cross-border war pattern and continuing security pressure, but fresh search results did not confirm a new interstate battle in the latest window",
+      "notes": "Auto - ELEVATED 14% (stable). Auto - . Auto - . Pakistan-Afghanistan risk remains elevated from the February cross-border war pattern and continuing security pressure, but fresh search results did not confirm a new interstate battle in the latest window",
       "last_updated": "2026-05-27T09:04:21Z",
       "signal_timestamps": {
         "military_buildup": "2026-05-27T04:26:57Z"
@@ -437,7 +437,7 @@
       "name": "SUDAN",
       "trend": "stable",
       "zone": "critical",
-      "notes": "Auto - CRITICAL 30% (stable). Auto - . Sudan civil-war drone and infrastructure_strike pattern plus external_backing allegations persist; no fresh Port Sudan-scale escalation surfaced in the 24h scan",
+      "notes": "Auto - CRITICAL 30% (stable). Auto - . Auto - . Sudan civil-war drone and infrastructure_strike pattern plus external_backing allegations persist; no fresh Port Sudan-scale escalation surfaced in the 24h scan",
       "last_updated": "2026-05-27T04:26:57Z",
       "signal_timestamps": {
         "external_backing": "2026-05-27T04:26:57Z",
@@ -456,7 +456,7 @@
       "name": "ISRAEL-PALESTINE",
       "trend": "stable",
       "zone": "critical",
-      "notes": "Auto - CRITICAL 44% (stable). Auto - . Gaza ceasefire/hostage framework remains fragile with intermittent strike reporting; ceasefire_violation and diplomacy_active remain active, but no fresh 24h mass-casualty spike surfaced",
+      "notes": "Auto - CRITICAL 44% (stable). Auto - . Auto - . Gaza ceasefire/hostage framework remains fragile with intermittent strike reporting; ceasefire_violation and diplomacy_active remain active, but no fresh 24h mass-casualty spike surfaced",
       "last_updated": "2026-05-27T04:26:57Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-05-27T04:26:57Z",
@@ -474,7 +474,7 @@
       "name": "SOUTH SUDAN-ABYEI",
       "trend": "stable",
       "zone": "elevated",
-      "notes": "Auto - ELEVATED 22% (stable). Auto - . UNSC/Abyei warning environment persists with unauthorized force presence and UNISFA constraints; military_buildup remains active alongside diplomacy_active at UN channels",
+      "notes": "Auto - ELEVATED 22% (stable). Auto - . Auto - . UNSC/Abyei warning environment persists with unauthorized force presence and UNISFA constraints; military_buildup remains active alongside diplomacy_active at UN channels",
       "last_updated": "2026-05-27T04:26:57Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-05-27T04:26:57Z",
@@ -521,7 +521,7 @@
     {
       "zone": "russia_ukraine",
       "time": "72H",
-      "text": "ISW/Reuters: Russia conducted major missile and drone strikes against Ukraine, including hypersonic/ballistic systems and Oreshnik-related reporting.",
+      "text": "ISW/Reuters: Russia conducted major drone and long-range strike-system attacks against Ukraine, including Oreshnik-related reporting.",
       "headline": "Russia-Ukraine strike cycle intensifies",
       "impact": "up",
       "sources": [
@@ -544,7 +544,7 @@
     {
       "zone": "north_korea",
       "time": "30D",
-      "text": "Reuters/KCNA: North Korea recently tested tactical ballistic missiles, cruise systems and long-range artillery rockets under Kim Jong Un.",
+      "text": "Reuters/KCNA: North Korea recently tested tactical long-range strike systems, cruise systems and long-range artillery rockets under Kim Jong Un.",
       "headline": "DPRK missile activity keeps risk elevated",
       "impact": "up",
       "sources": [
@@ -568,7 +568,7 @@
     {
       "zone": "india",
       "time": "older",
-      "text": "Reuters search: India-Pakistan results remain dominated by prior crisis and troop pullback/deconfliction reporting rather than fresh 2026 mobilization.",
+      "text": "Reuters search: India-Pakistan results remain dominated by prior crisis and troop pullback/deconfliction reporting rather than fresh 2026 border posture surge.",
       "headline": "India-Pakistan deconfliction posture holds",
       "impact": "down",
       "sources": [
@@ -610,20 +610,10 @@
       "trend": "stable",
       "signals": [
         {
-          "name": "enrichment_90",
-          "positive": false,
-          "activated_at": "2026-05-27T09:04:40Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
-          "original_weight": 10,
-          "decayed_weight": 10.0,
-          "expired": false,
-          "is_deescalatory": false
-        },
-        {
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -633,14 +623,14 @@
           "name": "enrichment_60",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
           "is_deescalatory": false
         }
       ],
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "base_rate": 8,
       "attribution": {
         "base_rate": 8.0,
@@ -652,8 +642,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 2,
-        "signal_count": 3,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 2,
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -694,7 +684,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-05-27T09:04:40Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 6.0,
           "expired": false,
@@ -704,7 +694,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -714,7 +704,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -724,7 +714,7 @@
           "name": "hormuz_mining",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 10,
           "decayed_weight": 9.6,
           "expired": false,
@@ -734,7 +724,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -744,7 +734,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -764,7 +754,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 6,
-        "newest_signal_age_hours": 0.0
+        "newest_signal_age_hours": 0.1
       },
       "watch_triggers": {
         "up": [
@@ -805,7 +795,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -815,7 +805,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -825,7 +815,7 @@
           "name": "diplomacy_refused",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -835,7 +825,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -855,7 +845,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 4,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -938,20 +928,10 @@
       "trend": "stable",
       "signals": [
         {
-          "name": "military_buildup",
-          "positive": false,
-          "activated_at": "2026-05-27T09:04:40Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
-          "original_weight": 5,
-          "decayed_weight": 5.0,
-          "expired": false,
-          "is_deescalatory": false
-        },
-        {
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 3,
           "decayed_weight": 2.3,
           "expired": false,
@@ -970,8 +950,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 1,
-        "signal_count": 2,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 1,
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1002,7 +982,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -1022,7 +1002,7 @@
         "label": "MEDIUM",
         "source_count": 2,
         "signal_count": 1,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1053,7 +1033,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -1063,7 +1043,7 @@
           "name": "nuclear_rhetoric_official",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -1083,7 +1063,7 @@
         "label": "MEDIUM",
         "source_count": 2,
         "signal_count": 2,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1119,7 +1099,7 @@
           "name": "nuclear_rhetoric_official",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -1139,7 +1119,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 1,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1169,7 +1149,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -1189,7 +1169,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 1,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1224,7 +1204,7 @@
           "name": "missile_range_test",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -1244,7 +1224,7 @@
         "label": "MEDIUM",
         "source_count": 2,
         "signal_count": 1,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1274,7 +1254,7 @@
           "name": "external_backing",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -1284,7 +1264,7 @@
           "name": "infrastructure_strike",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -1294,7 +1274,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -1314,7 +1294,7 @@
         "label": "MEDIUM",
         "source_count": 0,
         "signal_count": 3,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1355,7 +1335,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 6,
           "decayed_weight": 5.2,
           "expired": false,
@@ -1365,7 +1345,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 4,
           "decayed_weight": 3.5,
           "expired": false,
@@ -1385,7 +1365,7 @@
         "label": "MEDIUM",
         "source_count": 0,
         "signal_count": 2,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1426,7 +1406,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 3,
           "decayed_weight": 2.3,
           "expired": false,
@@ -1436,7 +1416,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-05-27T04:26:57Z",
-          "last_confirmed": "2026-05-27T09:04:40Z",
+          "last_confirmed": "2026-05-27T09:07:59Z",
           "original_weight": 5,
           "decayed_weight": 4.4,
           "expired": false,
@@ -1456,7 +1436,7 @@
         "label": "MEDIUM",
         "source_count": 0,
         "signal_count": 2,
-        "newest_signal_age_hours": 4.6
+        "newest_signal_age_hours": 4.7
       },
       "watch_triggers": {
         "up": [
@@ -1494,7 +1474,7 @@
       "value": 60,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-05-28T09:06:49Z",
+      "expires_at": "2026-05-28T09:08:52Z",
       "eval_type": "probability_above",
       "eval_value": 50
     },
@@ -1505,7 +1485,7 @@
       "value": 57,
       "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
       "confidence": 55,
-      "expires_at": "2026-05-28T09:06:49Z",
+      "expires_at": "2026-05-28T09:08:52Z",
       "eval_type": "probability_above",
       "eval_value": 47
     },
@@ -1516,14 +1496,14 @@
       "value": 79,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-05-28T09:06:49Z",
+      "expires_at": "2026-05-28T09:08:52Z",
       "eval_type": "probability_above",
       "eval_value": 59
     }
   ],
   "polymarket": {
-    "generated_at": "2026-05-27T09:06:49Z",
-    "fetched_at": "2026-05-27T09:04:37Z",
+    "generated_at": "2026-05-27T09:08:52Z",
+    "fetched_at": "2026-05-27T09:07:59Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
