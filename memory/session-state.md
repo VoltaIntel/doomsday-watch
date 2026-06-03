@@ -1,13 +1,3 @@
 # Session State
 
-Last updated: 2026-05-31T17:05:40Z
-
-
-## DoomsdayWatch full briefing — 2026-05-31T17:05:40Z
-
-- Completed required 10-zone nuclear escalation scan. All required Tavily/web_search calls were attempted and failed with HTTP 432; completed analysis with Google News RSS fallback and recorded source limitation in current_state.json `_meta`.
-- Atomically updated `data/current_state.json` and `data/signal_timeline.json` with structured `latest_news`, tracker active signals, raw probabilities, and auxiliary tracker preservation.
-- Ran `scripts/deploy.sh`; oil and Polymarket cache refreshed, pipeline deployed successfully, committed and pushed.
-- Post-deploy global probability: 68% imminent. Raw vs coupled highlights: Israel-Lebanon 94→100, Iran War 68→76, Russia 66→76, Iran Nuclear 34→42, China 18→23. DPRK crossed to 50% imminent; India crossed to 28% critical.
-- Verified local dashboard tokens, inline JavaScript syntax via `node --check`, and public GitHub Pages tokens with cache-busted retry.
-
+Latest: DoomsdayWatch morning deep scan deployed 2026-06-03T03:05Z. Post-deploy global 69% imminent; no new tracker added; PM cache fresh; dashboard/public verified.
