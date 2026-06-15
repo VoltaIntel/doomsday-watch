@@ -150,6 +150,22 @@ def test_dashboard_exposes_probability_attribution_and_watch_triggers(pipeline_r
     assert "NEXT WATCH" in html
 
 
+def test_pipeline_sanitizes_tracker_notes_for_dashboard_dossiers(pipeline_run):
+    _, html, state = pipeline_run
+    texts = []
+    for collection in ("trackers", "zones"):
+        for item in state.get(collection, {}).values():
+            if isinstance(item, dict):
+                texts.append(str(item.get("notes", "")))
+    for item in state.get("dashboard_trackers", []):
+        if isinstance(item, dict):
+            texts.append(str(item.get("notes", "")))
+    joined = "\n".join(texts)
+    assert "Auto - ." not in joined
+    assert joined.count("Auto -") == 0
+    assert "Auto -" not in html
+
+
 def test_dashboard_exposes_evidence_quality_and_polymarket_staleness(pipeline_run):
     _, html, state = pipeline_run
     tracker = next(t for t in state["dashboard_trackers"] if t["id"] == "iran_conventional")

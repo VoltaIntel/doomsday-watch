@@ -331,6 +331,34 @@ def _source_count_for_tracker(tid):
     return len(sources)
 
 
+def _strip_auto_note_scaffolding(note):
+    """Remove legacy generated `Auto - ...` prefixes from tracker narrative notes."""
+    text = str(note or "")
+    if not text:
+        return ""
+    # Repeated pipeline runs used to prepend `Auto - ZONE NN% (trend).` and then
+    # fail to remove the previous prefix, producing mobile garbage like
+    # `Auto - IMMINENT 100% ... Auto - . Auto - .`.
+    text = re.sub(
+        r"(?:\bDay\s+\d+\s+)?\b(?:auto|manual)\s*-\s*"
+        r"(?:(?:DETERRENT|ELEVATED|CRITICAL|IMMINENT)\s*\d*%?(?:\s*\([^)]*\))?)?\s*\.?\s*",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\s{2,}", " ", text)
+    return text.strip(" .")
+
+
+def _dashboard_note_for_tracker(tid, trk):
+    zone_note = state.get("zones", {}).get(tid, {}).get("notes", "")
+    clean_zone = _strip_auto_note_scaffolding(zone_note)
+    clean_tracker = _strip_auto_note_scaffolding(trk.get("notes", ""))
+    if len(clean_zone) > 20:
+        return clean_zone
+    return clean_tracker
+
+
 def _decorate_dashboard_trackers(trackers):
     for t in trackers:
         tid = t["id"]
@@ -342,6 +370,7 @@ def _decorate_dashboard_trackers(trackers):
             signal_delta = round(float(raw_prob) - float(base_rate), 1)
         except Exception:
             signal_delta = 0
+        t["notes"] = _dashboard_note_for_tracker(tid, trk)
         t["attribution"] = {
             "base_rate": round(float(base_rate or 0), 1),
             "raw_probability": round(float(raw_prob or 0), 1),
@@ -370,33 +399,19 @@ for t in trackers_js:
     if t["id"] in state.get("trackers", {}):
         state["trackers"][t["id"]]["zone"] = new_zone
 
-# Fix stale notes: strip old probability numbers and replace with auto-calculated values
-import re
-zone_labels = {"deterrent": "DETERRENT", "elevated": "ELEVATED", "critical": "CRITICAL", "imminent": "IMMINENT"}
+# Sanitize tracker narratives for dashboard use. Previous pipeline versions prepended
+# `Auto - ZONE NN% ...` on every run; repeated executions produced `Auto - .`
+# garbage that dominated mobile dossier cards. Keep probability/zone as structured
+# fields and leave notes as plain source narrative.
 for t in trackers_js:
     tid = t["id"]
     trk = state.get("trackers", {}).get(tid, {})
-    notes = trk.get("notes", "")
-    if notes:
-        day_match = re.search(r'\bDay\s+\d+\b', notes, re.IGNORECASE)
-        day_prefix = f"{day_match.group(0)} auto - " if day_match else "Auto - "
-        cleaned = re.sub(
-            r'Day\s+\d+\s+auto\s*-\s*(?:DETERRENT|ELEVATED|CRITICAL|IMMINENT)?\s*\d*%?(?:\s*\([^)]*\))?\.?\s*',
-            '',
-            notes,
-            flags=re.IGNORECASE,
-        )
-        cleaned = re.sub(
-            r'Day\s+\d+\s*-\s*(?:DETERRENT|ELEVATED|CRITICAL|IMMINENT)?\s*\d*%?(?:\s*\([^)]*\))?\.?\s*',
-            '',
-            cleaned,
-            flags=re.IGNORECASE,
-        )
-        cleaned = re.sub(r'\b(DETERRENT|ELEVATED|CRITICAL|IMMINENT)\s+\d+%?(\s*\([^)]*\))?', '', cleaned)
-        cleaned = re.sub(r'\s{2,}', ' ', cleaned).strip(' .')
-        zone_label = zone_labels.get(t["zone"], "DETERRENT")
-        trend = normalize_trend(trk.get("trend", "stable"))
-        trk["notes"] = f"{day_prefix}{zone_label} {t['prob']}% ({trend}). {cleaned}" if cleaned else f"{day_prefix}{zone_label} {t['prob']}% ({trend})."
+    if not trk:
+        continue
+    cleaned = _dashboard_note_for_tracker(tid, trk)
+    trk["notes"] = cleaned
+    if tid in state.get("zones", {}):
+        state["zones"][tid]["notes"] = _strip_auto_note_scaffolding(state["zones"][tid].get("notes", ""))
 
 # Find and replace the state block using string slicing (NO REGEX)
 start = html.find("const state = {")
