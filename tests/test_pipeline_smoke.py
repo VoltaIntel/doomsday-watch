@@ -96,9 +96,12 @@ def test_pipeline_exposes_forecast_engine_v2_ladder(pipeline_run):
     assert engine.get("model_version") == "base_rate_evidence_v1"
     assert engine.get("calibration_version") == "forecast_calibration_v1"
     assert engine.get("resolution_status_version") == "forecast_resolution_status_v1"
+    assert engine.get("review_status_version") == "forecast_review_status_v1"
     assert state.get("forecast_resolution_status", {}).get("version") == "forecast_resolution_status_v1"
+    assert state.get("forecast_review_status", {}).get("version") == "forecast_review_status_v1"
     assert "forecast_ladder" in html
     assert "forecast_calibration" in html
+    assert "forecast_review_status" in html
     assert "FORECAST ENGINE V2" in html
 
 

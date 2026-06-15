@@ -10,6 +10,7 @@ if str(SCRIPTS) not in sys.path:
 
 from predictions import (  # noqa: E402
     brier_score,
+    build_forecast_review_queue,
     compute_horizon_calibration,
     generate_forecast_ladder,
     resolve_forecast,
@@ -241,3 +242,44 @@ def test_summarize_forecast_resolution_ledger_counts_resolved_and_current_pendin
     assert status["current_pending"] == len(forecasts) - 1
     assert status["last_resolved_at"] == "2026-06-15T18:00:00Z"
     assert status["by_horizon"][forecasts[0]["horizon_label"]]["resolved"] == 1
+
+
+def test_build_forecast_review_queue_lists_only_expired_unresolved_forecasts():
+    old_forecasts = generate_forecast_ladder(
+        _sample_trackers(),
+        _sample_state(),
+        "2026-06-15T12:00:00Z",
+    )
+    current_forecasts = generate_forecast_ladder(
+        _sample_trackers(),
+        _sample_state(),
+        "2026-07-20T12:00:00Z",
+    )
+    resolved = resolve_forecast(
+        old_forecasts[0],
+        outcome=False,
+        resolved_at="2026-06-16T18:00:00Z",
+        evidence=[{"title": "No qualifying event before expiry", "url": "https://reuters.com/example", "source": "Reuters"}],
+    )
+    ledger = upsert_forecast_resolution({"version": "forecast_resolutions_v1", "forecasts": []}, resolved)
+
+    queue = build_forecast_review_queue(
+        old_forecasts + current_forecasts,
+        ledger,
+        "2026-07-20T12:00:00Z",
+        limit=50,
+    )
+
+    assert queue["version"] == "forecast_review_queue_v1"
+    assert queue["generated_at"] == "2026-07-20T12:00:00Z"
+    queued_ids = {item["forecast_id"] for item in queue["items"]}
+    assert old_forecasts[0]["forecast_id"] not in queued_ids, "resolved forecasts should not re-enter review"
+    assert all(f["forecast_id"] not in queued_ids for f in current_forecasts), "unexpired current forecasts should not enter review"
+    assert queued_ids, "expected expired unresolved forecasts to require operator review"
+    first = queue["items"][0]
+    assert first["review_status"] == "needs_manual_resolution"
+    assert first["resolution_evidence_required"] is True
+    assert first["auto_resolution"] is False
+    assert first["age_hours"] > 0
+    assert first["resolution_command"].startswith("python3 scripts/resolve_forecast.py --forecast-id")
+    assert first["suggested_queries"], "review queue should provide source-search prompts, not guesses"

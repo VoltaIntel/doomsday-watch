@@ -53,6 +53,8 @@ from predictions import (  # noqa: E402
     generate_forecast_ladder,
     compute_horizon_calibration,
     summarize_forecast_resolution_ledger,
+    build_forecast_review_queue,
+    summarize_forecast_review_queue,
     compute_eval_stats,
     NARRATIVE_TO_EVAL,
 )
@@ -647,6 +649,7 @@ else:
         brier_history = {"entries": []}
 
     forecast_resolutions_file = f"{predictions_dir}/forecast_resolutions.json"
+    forecast_review_queue_file = f"{predictions_dir}/forecast_review_queue.json"
     try:
         with open(forecast_resolutions_file) as f:
             forecast_resolutions = json.load(f)
@@ -725,10 +728,34 @@ else:
     # Generate new 24-hour predictions from news + signals + trends
     final_predictions = _module_generate_predictions(trackers_js, state, now_iso)
     forecast_ladder = generate_forecast_ladder(trackers_js, state, now_iso)
+    historical_forecasts = []
+    for pf in sorted(_glob.glob(f"{predictions_dir}/*.json")):
+        if pf.endswith((
+            "evaluations.json",
+            "lifetime_stats.json",
+            "brier_history.json",
+            "forecast_resolutions.json",
+            "forecast_review_queue.json",
+        )):
+            continue
+        try:
+            with open(pf) as f:
+                pdata = json.load(f)
+            historical_forecasts.extend(pdata.get("forecast_ladder", []) or [])
+        except Exception as _fe:
+            log.warning(
+                "forecast_review_history_read_failed",
+                extra={"file": pf, "err": repr(_fe)},
+                exc_info=True,
+            )
+    all_forecasts_for_review = historical_forecasts + forecast_ladder
     forecast_calibration = compute_horizon_calibration(forecast_resolutions.get("forecasts", []))
     forecast_resolution_status = summarize_forecast_resolution_ledger(forecast_resolutions, forecast_ladder)
+    forecast_review_queue = build_forecast_review_queue(all_forecasts_for_review, forecast_resolutions, now_iso, limit=50)
+    forecast_review_status = summarize_forecast_review_queue(forecast_review_queue)
     forecast_resolutions["calibration"] = forecast_calibration
     forecast_resolutions["status"] = forecast_resolution_status
+    forecast_resolutions["review_status"] = forecast_review_status
 
     # ========== Update LIFETIME stats incrementally ==========
     # Every prediction that is `evaluated` but not yet `lifetime_counted` rolls
@@ -784,12 +811,14 @@ else:
             "model_version": "base_rate_evidence_v1",
             "calibration_version": forecast_calibration.get("version"),
             "resolution_status_version": forecast_resolution_status.get("version"),
+            "review_status_version": forecast_review_status.get("version"),
             "resolution_method": "manual_or_source_verified",
             "horizons": ["24h", "72h", "7d", "30d"],
         },
         "forecast_ladder": forecast_ladder,
         "forecast_calibration": forecast_calibration,
         "forecast_resolution_status": forecast_resolution_status,
+        "forecast_review_status": forecast_review_status,
         "accuracy": {
             "total_evaluated": total_eval,
             "correct": correct_count,
@@ -808,11 +837,13 @@ else:
         "model_version": "base_rate_evidence_v1",
         "calibration_version": forecast_calibration.get("version"),
         "resolution_status_version": forecast_resolution_status.get("version"),
+        "review_status_version": forecast_review_status.get("version"),
         "resolution_method": "manual_or_source_verified",
         "horizons": ["24h", "72h", "7d", "30d"],
     }
     state["forecast_calibration"] = forecast_calibration
     state["forecast_resolution_status"] = forecast_resolution_status
+    state["forecast_review_status"] = forecast_review_status
     state["eval_stats"] = {
         "total": total_eval,
         "correct": correct_count,
@@ -867,12 +898,15 @@ else:
         json.dump(brier_history, f, indent=2)
     with open(forecast_resolutions_file, "w") as f:
         json.dump(forecast_resolutions, f, indent=2)
+    with open(forecast_review_queue_file, "w") as f:
+        json.dump(forecast_review_queue, f, indent=2)
 
     # Format predictions for JS modal
     predictions_js = json.dumps(final_predictions)
     forecast_ladder_js = json.dumps(forecast_ladder)
     forecast_calibration_js = json.dumps(forecast_calibration)
     forecast_resolution_status_js = json.dumps(forecast_resolution_status)
+    forecast_review_status_js = json.dumps(forecast_review_status)
     eval_stats_js = json.dumps({
         "total": total_eval,
         "correct": correct_count,
@@ -936,6 +970,7 @@ else:
         + ",\n  forecast_ladder: " + forecast_ladder_js
         + ",\n  forecast_calibration: " + forecast_calibration_js
         + ",\n  forecast_resolution_status: " + forecast_resolution_status_js
+        + ",\n  forecast_review_status: " + forecast_review_status_js
         + ",\n  eval_stats: " + eval_stats_js
         + ",\n  polymarket: " + polymarket_js
     )

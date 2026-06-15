@@ -139,15 +139,24 @@ function resolutionLine(){
   const last = st.last_resolved_at ? ` · last ${shortTime(st.last_resolved_at)}` : '';
   return `RES ${resolved}/${resolved + pending || (STATE.forecast_ladder||[]).length || 0} current · ledger ${total}${last}`;
 }
+function reviewLine(){
+  const st = STATE.forecast_review_status || {};
+  const n = Number(st.expired_unresolved || 0);
+  if(!n) return 'REV clear';
+  const age = Number(st.oldest_age_hours || 0);
+  const ageTxt = age >= 24 ? `${Math.round(age/24)}d oldest` : `${Math.round(age)}h oldest`;
+  return `REV ${n} expired · ${ageTxt}`;
+}
 function calibrationLine(){
   const horizons = STATE.forecast_calibration?.horizons || {};
   const rows = Object.values(horizons);
   const count = rows.reduce((n,h)=>n+Number(h.count||0),0);
   const res = resolutionLine();
-  if(!count) return `${res} · CAL pending manual resolutions`;
+  const review = reviewLine();
+  if(!count) return `${res} · ${review} · CAL pending manual resolutions`;
   const brierVals = rows.filter(h=>h.mean_brier!==null && h.mean_brier!==undefined).map(h=>Number(h.mean_brier));
   const avg = brierVals.length ? (brierVals.reduce((a,b)=>a+b,0)/brierVals.length).toFixed(3) : '--';
-  return `${res} · CAL n=${count} · Brier ${avg}`;
+  return `${res} · ${review} · CAL n=${count} · Brier ${avg}`;
 }
 function renderPredictions(){
   const ladder = STATE.forecast_ladder || [];

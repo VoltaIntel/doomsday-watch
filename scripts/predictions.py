@@ -278,6 +278,99 @@ def summarize_forecast_resolution_ledger(ledger, current_forecasts=None):
     }
 
 
+def _forecast_review_queries(forecast):
+    tracker = str(forecast.get("tracker_name") or forecast.get("tracker_id") or "forecast")
+    event = str(forecast.get("event_type") or "event").replace("_", " ")
+    expires = str(forecast.get("expires_at") or "")[:10]
+    sources = "Reuters OR AP OR AFP OR BBC OR official"
+    return [
+        f'"{tracker}" "{event}" {expires} {sources}',
+        f'"{tracker}" escalation before {expires} {sources}',
+        f'"{tracker}" ceasefire diplomacy no event before {expires} {sources}',
+    ]
+
+
+def build_forecast_review_queue(forecasts, ledger, now_iso, *, limit=50):
+    """Return expired unresolved forecast_v2 records that need operator review.
+
+    Phase 4 is intentionally conservative: it never infers outcomes. It only
+    builds a queue with source-search prompts and the exact resolution command.
+    """
+    now_dt = _parse_utc(now_iso)
+    generated_at = now_dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    resolved_ids = {
+        f.get("forecast_id")
+        for f in (ledger or {}).get("forecasts", []) or []
+        if f.get("forecast_id")
+    }
+    seen = set()
+    items = []
+    total_seen = 0
+    for forecast in forecasts or []:
+        if forecast.get("schema_version") != "forecast_v2":
+            continue
+        fid = forecast.get("forecast_id")
+        if not fid or fid in seen:
+            continue
+        seen.add(fid)
+        total_seen += 1
+        if fid in resolved_ids:
+            continue
+        expires_at = forecast.get("expires_at")
+        expires_dt = _parse_utc(expires_at)
+        if expires_dt > now_dt:
+            continue
+        age_hours = round(max(0.0, (now_dt - expires_dt).total_seconds() / 3600.0), 1)
+        items.append({
+            "forecast_id": fid,
+            "tracker_id": forecast.get("tracker_id"),
+            "tracker_name": forecast.get("tracker_name"),
+            "event_type": forecast.get("event_type"),
+            "horizon_label": forecast.get("horizon_label"),
+            "probability": forecast.get("probability"),
+            "generated_at": forecast.get("generated_at"),
+            "expires_at": expires_at,
+            "age_hours": age_hours,
+            "resolution_criteria": forecast.get("resolution_criteria"),
+            "review_status": "needs_manual_resolution",
+            "resolution_evidence_required": True,
+            "auto_resolution": False,
+            "suggested_queries": _forecast_review_queries(forecast),
+            "resolution_command": (
+                "python3 scripts/resolve_forecast.py "
+                f"--forecast-id {fid} --outcome true|false "
+                f"--resolved-at {generated_at} "
+                "--evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+            ),
+        })
+    items.sort(key=lambda item: (-item.get("age_hours", 0), item.get("expires_at") or "", item.get("forecast_id") or ""))
+    if limit is not None:
+        items = items[: int(limit)]
+    return {
+        "version": "forecast_review_queue_v1",
+        "generated_at": generated_at,
+        "total_forecasts_seen": total_seen,
+        "resolved_in_ledger": len(resolved_ids),
+        "expired_unresolved": len(items),
+        "items": items,
+    }
+
+
+def summarize_forecast_review_queue(queue):
+    """Compact status object for dashboard display."""
+    items = (queue or {}).get("items", []) or []
+    oldest = items[0] if items else None
+    return {
+        "version": "forecast_review_status_v1",
+        "expired_unresolved": int((queue or {}).get("expired_unresolved", len(items)) or 0),
+        "review_queue_version": (queue or {}).get("version"),
+        "oldest_age_hours": oldest.get("age_hours") if oldest else 0,
+        "next_forecast_id": oldest.get("forecast_id") if oldest else None,
+        "evidence_required": True,
+        "auto_resolution": False,
+    }
+
+
 def compute_horizon_calibration(forecasts):
     """Group resolved forecast_v2 records by horizon and 10pp probability bucket."""
     horizons = {}
