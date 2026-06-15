@@ -50,6 +50,7 @@ from predictions import (  # noqa: E402
     dedupe_predictions,
     evaluate_all_predictions,
     generate_predictions as _module_generate_predictions,
+    generate_forecast_ladder,
     compute_eval_stats,
     NARRATIVE_TO_EVAL,
 )
@@ -714,6 +715,7 @@ else:
 
     # Generate new 24-hour predictions from news + signals + trends
     final_predictions = _module_generate_predictions(trackers_js, state, now_iso)
+    forecast_ladder = generate_forecast_ladder(trackers_js, state, now_iso)
 
     # ========== Update LIFETIME stats incrementally ==========
     # Every prediction that is `evaluated` but not yet `lifetime_counted` rolls
@@ -764,6 +766,12 @@ else:
         "date": today,
         "hour": hour,
         "predictions": final_predictions,
+        "forecast_engine": {
+            "version": "forecast_v2",
+            "resolution_method": "manual_or_source_verified",
+            "horizons": ["24h", "72h", "7d", "30d"],
+        },
+        "forecast_ladder": forecast_ladder,
         "accuracy": {
             "total_evaluated": total_eval,
             "correct": correct_count,
@@ -776,6 +784,12 @@ else:
 
     # Write predictions to state for dashboard access
     state["predictions"] = final_predictions
+    state["forecast_ladder"] = forecast_ladder
+    state["forecast_engine"] = {
+        "version": "forecast_v2",
+        "resolution_method": "manual_or_source_verified",
+        "horizons": ["24h", "72h", "7d", "30d"],
+    }
     state["eval_stats"] = {
         "total": total_eval,
         "correct": correct_count,
@@ -831,6 +845,7 @@ else:
 
     # Format predictions for JS modal
     predictions_js = json.dumps(final_predictions)
+    forecast_ladder_js = json.dumps(forecast_ladder)
     eval_stats_js = json.dumps({
         "total": total_eval,
         "correct": correct_count,
@@ -891,6 +906,7 @@ else:
     polymarket_js = json.dumps(pm_for_dash)
     pred_inject = (
         ",\n  predictions: " + predictions_js
+        + ",\n  forecast_ladder: " + forecast_ladder_js
         + ",\n  eval_stats: " + eval_stats_js
         + ",\n  polymarket: " + polymarket_js
     )

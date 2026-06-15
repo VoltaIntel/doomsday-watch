@@ -66,7 +66,7 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;back
       <div class="dossier-grid" id="dossierGrid"></div>
     </section>
     <section class="secondary">
-      <article class="panel pad"><div class="section-head"><div><div class="kicker">24-hour forecast</div><div class="updated">Top model-generated predictions</div></div></div><div class="forecast-list" id="predictionList"></div></article>
+      <article class="panel pad"><div class="section-head"><div><div class="kicker">FORECAST ENGINE V2</div><div class="updated">Auditable multi-horizon event forecasts</div></div></div><div class="forecast-list" id="predictionList"></div></article>
       <article class="panel pad"><div class="section-head"><div><div class="kicker">Market sanity check</div><div class="updated">Polymarket cache and divergence layer</div></div></div><div class="market-list" id="marketList"></div></article>
     </section>
   </main>
@@ -132,6 +132,11 @@ function renderDossiers(){
   document.querySelectorAll('.dossier').forEach(el => el.addEventListener('click',()=>openDetail(el.dataset.id)));
 }
 function renderPredictions(){
+  const ladder = STATE.forecast_ladder || [];
+  if(ladder.length){
+    $('#predictionList').innerHTML = ladder.slice(0,6).map(f => `<article class="prediction"><h3>${esc(zoneName(f.tracker_id))} · ${esc(f.horizon_label)} · ${esc(f.probability)}%</h3><p>${esc(f.description)}</p><p>${esc(f.confidence_label || 'MEDIUM')} confidence · ${esc((f.evidence_for||[])[0] || 'No escalation evidence isolated.')} Against: ${esc((f.evidence_against||[])[0] || 'No contradiction isolated.')}</p></article>`).join('');
+    return;
+  }
   const preds = STATE.predictions || [];
   $('#predictionList').innerHTML = preds.slice(0,5).map(p => `<article class="prediction"><h3>${esc(zoneName(p.tracker_id || p.zone || p.tracker))} · ${esc(p.type || p.event_type || 'FORECAST')}</h3><p>${esc(p.description || p.text || p.prediction || JSON.stringify(p).slice(0,160))}</p></article>`).join('') || '<div class="updated">No forecast payload available.</div>';
 }
@@ -178,6 +183,13 @@ function buildBrief(){
   $('#briefBody').innerHTML = `<p>The global security environment is <b style="color:${zoneColor(z)}">${esc(z.toUpperCase())}</b> with a composite coupled score of <b>${p}%</b>. The dashboard is currently being rendered as a triage-first command deck: global state, priority flashpoints, map, signal tape, then dossiers.</p><h3>Primary active flashpoints</h3><p>${esc(top.map(t=>`${t.name} ${pct(t.prob)}%`).join(' · '))}</p><h3>Rising pressure</h3><p>${esc(rising.map(t=>`${t.name} (${(t.signals||[]).length} signals)`).join(' · ') || 'No rising zones in current payload.')}</p><h3>Source caveat</h3><p>${esc(STATE._meta?.source_limitation || STATE._meta?.search_engine || 'No source limitation attached to this state payload.')}</p>`;
 }
 function buildForecast(){
+  const ladder = STATE.forecast_ladder || [];
+  if(ladder.length){
+    const grouped = {};
+    ladder.slice(0,24).forEach(f => { (grouped[f.tracker_id] ||= []).push(f); });
+    $('#forecastBody').innerHTML = Object.entries(grouped).slice(0,6).map(([tid, rows])=>`<h3>${esc(zoneName(tid))}</h3>${rows.map(f=>`<p><b>${esc(f.horizon_label)} · ${esc(f.probability)}%</b> — ${esc(f.event_type || 'forecast')} · ${esc(f.confidence_label || 'MEDIUM')} confidence<br><span>${esc(f.resolution_criteria || '')}</span></p>`).join('')}`).join('');
+    return;
+  }
   const preds = STATE.predictions || [];
   $('#forecastBody').innerHTML = preds.length ? preds.slice(0,8).map(p=>`<h3>${esc(zoneName(p.tracker_id || p.zone || p.tracker))}</h3><p>${esc(p.description || p.text || p.prediction || JSON.stringify(p))}</p>`).join('') : '<p>No predictions available in the current payload.</p>';
 }

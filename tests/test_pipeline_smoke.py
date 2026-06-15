@@ -78,6 +78,21 @@ def test_pipeline_produces_predictions_when_active(pipeline_run):
     assert preds, "expected predictions to be non-empty when trackers are active"
 
 
+def test_pipeline_exposes_forecast_engine_v2_ladder(pipeline_run):
+    _, html, state = pipeline_run
+    forecasts = state.get("forecast_ladder", [])
+    assert forecasts, "expected structured forecast_v2 ladder in state"
+    assert {"24h", "72h", "7d", "30d"}.issubset({f.get("horizon_label") for f in forecasts})
+    first = forecasts[0]
+    assert first.get("schema_version") == "forecast_v2"
+    assert first.get("resolution_method") == "manual_or_source_verified"
+    assert first.get("resolution_criteria", "").startswith("Resolved true if")
+    assert isinstance(first.get("evidence_for"), list) and first["evidence_for"]
+    assert isinstance(first.get("evidence_against"), list) and first["evidence_against"]
+    assert "forecast_ladder" in html
+    assert "FORECAST ENGINE V2" in html
+
+
 def test_pipeline_coupling_fires(pipeline_run):
     _, _, state = pipeline_run
     boosts = [

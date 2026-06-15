@@ -7,6 +7,230 @@ Extracted from pipeline.py for DoomsdayWatch modular architecture.
 """
 
 from datetime import datetime, timedelta, timezone
+import re
+
+
+# ── Structured Forecasts v2 ──────────────────────────────────────────────────
+
+FORECAST_HORIZONS = (
+    ("24h", 24, 0.55),
+    ("72h", 72, 0.70),
+    ("7d", 24 * 7, 0.85),
+    ("30d", 24 * 30, 0.95),
+)
+
+RESOLUTION_CRITERIA = {
+    "iran_nuclear": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
+    "iran_conventional": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+    "israel_lebanon": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+    "russia": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
+    "russia_ukraine": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+    "china": "Resolved true if verified wire/official reporting confirms PLA live-fire/blockade activity, major Taiwan-zone air/naval surge, cable/cyber disruption tied to pressure, or emergency political response before expiry.",
+    "north_korea": "Resolved true if verified wire/official reporting confirms a missile/device test, nuclear-status escalation, border clash, or direct military provocation before expiry.",
+    "india": "Resolved true if verified wire/official reporting confirms a new India-Pakistan cross-border clash, strike, major mobilization, or nuclear/missile escalation signal before expiry.",
+    "pakistan_afghanistan": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
+}
+
+DEESCALATION_TERMS = (
+    "ceasefire", "deal", "diplomacy", "talk", "negotiation", "stand-down",
+    "de-escal", "reopen", "withdraw", "inspection", "access restored",
+)
+
+
+def _parse_utc(ts):
+    try:
+        return datetime.fromisoformat(str(ts).replace("Z", "+00:00")).astimezone(timezone.utc)
+    except Exception:
+        return datetime.now(timezone.utc)
+
+
+def _slug(text):
+    return re.sub(r"[^a-z0-9]+", "_", str(text).lower()).strip("_") or "forecast"
+
+
+def _clamp_probability(value):
+    return int(round(max(0.0, min(100.0, float(value)))))
+
+
+def brier_score(probability_pct, outcome):
+    """Return binary-event Brier score using the stated probability.
+
+    `outcome` may be bool or 0/1. The returned value is rounded for stable JSON
+    and test output.
+    """
+    p = max(0.0, min(1.0, float(probability_pct) / 100.0))
+    o = 1.0 if bool(outcome) else 0.0
+    return round((p - o) ** 2, 4)
+
+
+def _tracker_event_type(tracker_id, trend, prob):
+    if tracker_id == "iran_nuclear":
+        return "nuclear_threshold"
+    if tracker_id == "iran_conventional":
+        return "gulf_conventional_escalation"
+    if tracker_id == "israel_lebanon":
+        return "border_war_escalation"
+    if tracker_id in ("russia", "russia_ukraine"):
+        return "nato_war_escalation"
+    if tracker_id == "china":
+        return "taiwan_pressure_escalation"
+    if tracker_id == "north_korea":
+        return "dprk_military_escalation"
+    if tracker_id in ("india", "pakistan_afghanistan"):
+        return "border_conflict_escalation"
+    if trend == "falling" and prob < 20:
+        return "de_escalation_continuation"
+    return "escalation_watch"
+
+
+def _forecast_description(tracker_name, event_type, horizon_label, probability):
+    readable_event = event_type.replace("_", " ")
+    return (
+        f"{tracker_name}: {readable_event} risk over the next {horizon_label} "
+        f"is estimated at {probability}%."
+    )
+
+
+def _extract_forecast_evidence(tracker, state):
+    evidence_for = []
+    evidence_against = []
+
+    for sig in tracker.get("signals", []) or []:
+        if isinstance(sig, dict):
+            label = sig.get("name") or sig.get("signal") or sig.get("id") or "signal"
+            weight = sig.get("original_weight", sig.get("weight", 0))
+            item = f"{label} ({weight:+} signal weight)" if isinstance(weight, (int, float)) else str(label)
+            if sig.get("positive"):
+                evidence_against.append(item)
+            else:
+                evidence_for.append(item)
+        elif sig:
+            evidence_for.append(str(sig))
+
+    tid = tracker.get("id")
+    tracker_state = state.get("trackers", {}).get(tid, {})
+    for sig in tracker_state.get("active_signals", []) or []:
+        label = str(sig).replace("_", " ")
+        if any(term in label.lower() for term in DEESCALATION_TERMS):
+            evidence_against.append(label)
+        else:
+            evidence_for.append(label)
+
+    for news in state.get("latest_news", []) or []:
+        if news.get("zone") not in (None, "", tid, tracker.get("name")):
+            continue
+        text = (news.get("headline") or news.get("text") or "").strip()
+        if not text:
+            continue
+        item = text[:180]
+        if any(term in text.lower() for term in DEESCALATION_TERMS):
+            evidence_against.append(item)
+        else:
+            evidence_for.append(item)
+
+    notes = tracker_state.get("notes") or ""
+    if notes:
+        if any(term in notes.lower() for term in DEESCALATION_TERMS):
+            evidence_against.append(notes[:180])
+        elif len(evidence_for) < 3:
+            evidence_for.append(notes[:180])
+
+    # De-duplicate while preserving order and keep payload compact.
+    def _dedupe(items):
+        seen = set()
+        out = []
+        for item in items:
+            key = str(item).lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(str(item))
+        return out[:4]
+
+    evidence_for = _dedupe(evidence_for) or ["No discrete escalation signal isolated; forecast is driven by current threat score."]
+    evidence_against = _dedupe(evidence_against) or ["No clear de-escalation or contradiction signal isolated."]
+    return evidence_for, evidence_against
+
+
+def _forecast_confidence(tracker, state, evidence_for, evidence_against):
+    tid = tracker.get("id")
+    source_count = 0
+    for news in state.get("latest_news", []) or []:
+        if news.get("zone") in (None, "", tid, tracker.get("name")):
+            source_count += len(news.get("sources", []) or []) or 1
+    signal_count = len(tracker.get("signals", []) or []) + len(
+        state.get("trackers", {}).get(tid, {}).get("active_signals", []) or []
+    )
+    score = min(100, 25 + source_count * 12 + signal_count * 8 + min(20, len(evidence_for) * 4))
+    if len(evidence_against) > len(evidence_for):
+        score = max(0, score - 12)
+    label = "HIGH" if score >= 70 else "MEDIUM" if score >= 45 else "LOW"
+    return score, label
+
+
+def generate_forecast_ladder(trackers_js, state, now_iso, *, max_trackers=6):
+    """Generate auditable multi-horizon Forecast Engine v2 records.
+
+    These are not auto-resolved against future internal probabilities. They are
+    explicit event forecasts with manual/source-verified resolution criteria so
+    the dashboard can evolve away from circular self-scoring.
+    """
+    now_dt = _parse_utc(now_iso)
+    ranked = sorted(
+        trackers_js,
+        key=lambda t: (float(t.get("prob", 0)), {"rising": 2, "stable": 1, "falling": 0}.get(t.get("trend"), 1)),
+        reverse=True,
+    )
+    active = [
+        t for t in ranked
+        if float(t.get("prob", 0)) >= 15 or t.get("zone") in {"elevated", "critical", "imminent"}
+    ][:max_trackers]
+
+    forecasts = []
+    for tracker in active:
+        tid = tracker.get("id")
+        tname = tracker.get("name", tid)
+        prob = float(tracker.get("prob", 0))
+        trend = tracker.get("trend", "stable")
+        event_type = _tracker_event_type(tid, trend, prob)
+        evidence_for, evidence_against = _extract_forecast_evidence(tracker, state)
+        confidence_score, confidence_label = _forecast_confidence(tracker, state, evidence_for, evidence_against)
+
+        trend_adj = {"rising": 6, "stable": 0, "falling": -8}.get(trend, 0)
+        contradiction_penalty = min(12, max(0, len(evidence_against) - 1) * 3)
+        support_bonus = min(10, max(0, len(evidence_for) - 1) * 2)
+
+        for horizon_label, horizon_hours, multiplier in FORECAST_HORIZONS:
+            expires = (now_dt + timedelta(hours=horizon_hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            event_probability = _clamp_probability(
+                prob * multiplier + trend_adj + support_bonus - contradiction_penalty
+            )
+            forecast_id = f"{_slug(tid)}:{_slug(event_type)}:{horizon_label}:{expires}"
+            forecasts.append({
+                "schema_version": "forecast_v2",
+                "forecast_id": forecast_id,
+                "generated_at": now_dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "tracker_id": tid,
+                "tracker_name": tname,
+                "event_type": event_type,
+                "horizon_label": horizon_label,
+                "horizon_hours": horizon_hours,
+                "probability": event_probability,
+                "confidence_score": confidence_score,
+                "confidence_label": confidence_label,
+                "description": _forecast_description(tname, event_type, horizon_label, event_probability),
+                "resolution_criteria": RESOLUTION_CRITERIA.get(
+                    tid,
+                    "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+                ),
+                "resolution_method": "manual_or_source_verified",
+                "evaluation_status": "pending",
+                "expires_at": expires,
+                "evidence_for": evidence_for,
+                "evidence_against": evidence_against,
+            })
+
+    return forecasts
 
 
 # ── Identity & Dedup ──────────────────────────────────────────────────────────
