@@ -33,7 +33,6 @@ body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;back
     <nav class="nav" aria-label="Dashboard actions">
       <button class="btn" type="button" id="briefBtn">Intel Brief</button>
       <button class="btn" type="button" id="forecastBtn">24H Forecast</button>
-      <button class="btn red" type="button" id="legacyBtn">Legacy UI</button>
     </nav>
   </header>
   <div class="zone-alerts" id="zoneAlerts"></div>
@@ -138,8 +137,11 @@ function renderPredictions(){
 }
 function renderMarkets(){
   const pm = STATE.polymarket || {}; const comps = Object.values(pm.comparisons || {});
-  const cache = `<article class="market"><h3>PM CACHE · ${pm.stale ? 'STALE' : 'FRESH'}</h3><p>Fetched ${esc(shortTime(pm.fetched_at))}; age ${esc(pm.age_hours ?? '--')}h; stale after ${esc(pm.stale_after_hours ?? '--')}h.</p></article>`;
-  $('#marketList').innerHTML = cache + comps.slice(0,4).map(c => `<article class="market"><h3>${esc(zoneName(c.tracker_id))}</h3><p>${esc(c.status || 'mapped')} ${c.pm_24h_probability ? '· 24h '+pct(c.pm_24h_probability)+'%' : ''}</p></article>`).join('');
+  const ok = comps.filter(c => c.status === 'ok').sort((a,b)=>Number(b.abs_delta_pp||0)-Number(a.abs_delta_pp||0));
+  const missing = comps.length - ok.length;
+  const cache = `<article class="market"><h3>PM CACHE · ${pm.stale ? 'STALE' : 'FRESH'} · ${ok.length}/${comps.length || 0} mapped live</h3><p>Fetched ${esc(shortTime(pm.fetched_at))}; age ${esc(pm.age_hours ?? '--')}h; stale after ${esc(pm.stale_after_hours ?? '--')}h${missing ? `; ${missing} mapped slug(s) unavailable/resolved` : ''}.</p></article>`;
+  const rows = ok.slice(0,6).map(c => `<article class="market"><h3>${esc(zoneName(c.tracker_id))} · ${esc(String(c.flag || 'mapped').toUpperCase())}</h3><p>DW ${esc(c.dw_prob_pct ?? '--')}% vs PM 24h ${esc(c.pm_implied_24h_pct ?? '--')}% · raw ${esc(c.pm_implied_raw_pct ?? '--')}% over ${esc(c.horizon_days_avg ?? '--')}d · Δ ${esc(c.delta_pp ?? '--')}pp${c.liquidity_warn ? ' · thin liquidity' : ''}</p></article>`).join('') || `<article class="market"><h3>NO LIVE MAPPED MARKETS</h3><p>${missing || comps.length || 0} mapped Polymarket slug(s) missing from cache or resolved. Refresh mapping before trusting this sanity layer.</p></article>`;
+  $('#marketList').innerHTML = cache + rows;
 }
 function renderAlerts(){
   const alerts = STATE.zone_alerts || [];
@@ -184,7 +186,6 @@ document.addEventListener('click', e => { const close=e.target.closest('[data-cl
 document.addEventListener('keydown', e => { if(e.key==='Escape') document.querySelectorAll('.modal.active').forEach(m=>m.classList.remove('active')); });
 $('#briefBtn').addEventListener('click',()=>{buildBrief();openModal('briefModal');});
 $('#forecastBtn').addEventListener('click',()=>{buildForecast();openModal('forecastModal');});
-$('#legacyBtn').addEventListener('click',()=>{ location.href='index.html'; });
 async function boot(){
   const res = await fetch('data/current_state.json?redesign=' + Date.now());
   if(!res.ok) throw new Error('state fetch failed '+res.status);

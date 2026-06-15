@@ -791,8 +791,20 @@ else:
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
         from scripts.ingest.polymarket import refresh_cache_if_stale as _pm_refresh_if_stale
         from scripts.scoring.polymarket_check import check_all as _pm_check_all
-        pm_cache = _pm_refresh_if_stale(max_age_hours=12.0, offline_ok=True)
-        pm_result = _pm_check_all(cache=pm_cache, state=state, append_log=True)
+
+        pm_mapping = {}
+        pm_slugs = []
+        try:
+            with open("data/polymarket_mapping.json") as _pmf:
+                pm_mapping = json.load(_pmf)
+            for _entries in pm_mapping.values():
+                if isinstance(_entries, list):
+                    pm_slugs.extend([_e.get("slug") for _e in _entries if _e.get("slug")])
+        except Exception as _map_e:
+            log.warning("polymarket_mapping_read_failed", extra={"err": repr(_map_e)}, exc_info=True)
+
+        pm_cache = _pm_refresh_if_stale(slugs=pm_slugs, max_age_hours=12.0, offline_ok=True)
+        pm_result = _pm_check_all(cache=pm_cache, mapping=pm_mapping or None, state=state, append_log=True)
         state["polymarket"] = pm_result
         if pm_result["banner"].get("any_divergence"):
             worst = pm_result["banner"].get("worst_tracker")

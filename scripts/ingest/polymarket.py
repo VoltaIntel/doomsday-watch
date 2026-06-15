@@ -9,6 +9,7 @@ import json
 import os
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -51,9 +52,28 @@ def cache_age_hours(cache: Dict[str, Any], now: Optional[datetime] = None) -> Op
     return max(0.0, (now_dt.astimezone(timezone.utc) - fetched).total_seconds() / 3600.0)
 
 
-def cache_is_fresh(cache: Dict[str, Any], max_age_hours: float = DEFAULT_MAX_CACHE_AGE_HOURS) -> bool:
-    """True only when the cache has markets and fetched_at is within max_age_hours."""
+def _missing_slugs(cache: Dict[str, Any], slugs: Optional[Iterable[str]] = None) -> List[str]:
+    """Return requested slugs absent from the cache.
+
+    Gamma's active-market listing is capped/sorted and often omits older-but-live
+    geopolitics markets. When the sanity layer asks for explicit mapped slugs,
+    a fresh cache is only usable if those live slugs have been fetched directly.
+    """
+    if not slugs:
+        return []
+    markets = cache.get("markets", {}) if isinstance(cache, dict) else {}
+    return [slug for slug in dict.fromkeys(slugs) if slug and slug not in markets]
+
+
+def cache_is_fresh(
+    cache: Dict[str, Any],
+    max_age_hours: float = DEFAULT_MAX_CACHE_AGE_HOURS,
+    slugs: Optional[Iterable[str]] = None,
+) -> bool:
+    """True only when the cache has markets, is recent, and contains requested slugs."""
     if not isinstance(cache, dict) or not cache.get("markets"):
+        return False
+    if _missing_slugs(cache, slugs):
         return False
     age = cache_age_hours(cache)
     return age is not None and age <= float(max_age_hours)
@@ -73,6 +93,29 @@ def _fetch_page(offset: int, limit: int) -> List[Dict[str, Any]]:
     if isinstance(payload, dict) and isinstance(payload.get("data"), list):
         return payload["data"]
     return []
+
+
+def _fetch_slug(slug: str) -> Optional[Dict[str, Any]]:
+    """Fetch one market by exact slug.
+
+    The public Gamma listing endpoint currently returns only a capped first page
+    for broad active-market requests. Exact `?slug=` requests still return live
+    older markets, so mapped DoomsdayWatch markets must use this path.
+    """
+    if not slug:
+        return None
+    qs = "?slug=" + urllib.parse.quote(slug)
+    url = GAMMA_MARKETS_URL + qs
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "nuke-watch/1.0 (+github.com/openclaw)"},
+    )
+    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    rows = payload.get("data") if isinstance(payload, dict) else payload
+    if isinstance(rows, list) and rows:
+        return rows[0]
+    return None
 
 
 def fetch_active_markets(max_pages: int = 4, per_page: int = DEFAULT_LIMIT) -> List[Dict[str, Any]]:
@@ -153,15 +196,27 @@ def summarise_market(m: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def build_cache(slugs: Optional[Iterable[str]] = None) -> Dict[str, Any]:
-    """Fetch markets and return a cache dict. If slugs provided, only keep those."""
-    markets = fetch_active_markets()
-    wanted = set(slugs) if slugs else None
+    """Fetch markets and return a cache dict. If slugs provided, fetch them directly."""
+    wanted = [s for s in dict.fromkeys(slugs or []) if s]
     filtered = []
-    for m in markets:
-        slug = m.get("slug") or ""
-        if wanted is not None and slug not in wanted:
-            continue
-        filtered.append(summarise_market(m))
+    if wanted:
+        for slug in wanted:
+            try:
+                market = _fetch_slug(slug)
+            except urllib.error.URLError as e:
+                log.warning("polymarket_slug_fetch_failed", extra={"slug": slug, "err": repr(e)})
+                continue
+            except Exception as e:  # pragma: no cover — defensive
+                log.warning("polymarket_slug_unexpected_error", extra={"slug": slug, "err": repr(e)}, exc_info=True)
+                continue
+            if not market:
+                continue
+            if market.get("closed") or market.get("active") is False:
+                continue
+            filtered.append(summarise_market(market))
+    else:
+        markets = fetch_active_markets()
+        filtered = [summarise_market(m) for m in markets]
     now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     return {
         "fetched_at": now,
@@ -222,12 +277,13 @@ def refresh_cache_if_stale(
     silently carrying multi-day-old Polymarket data.
     """
     cache = load_cache()
-    if cache_is_fresh(cache, max_age_hours=max_age_hours):
+    if cache_is_fresh(cache, max_age_hours=max_age_hours, slugs=slugs):
         log.info(
             "polymarket_cache_fresh",
             extra={
                 "fetched_at": cache.get("fetched_at"),
                 "age_hours": round(cache_age_hours(cache) or 0.0, 2),
+                "requested_slugs": len(list(dict.fromkeys(slugs or []))),
             },
         )
         return cache
