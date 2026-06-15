@@ -12,6 +12,9 @@ from predictions import (  # noqa: E402
     brier_score,
     compute_horizon_calibration,
     generate_forecast_ladder,
+    resolve_forecast,
+    summarize_forecast_resolution_ledger,
+    upsert_forecast_resolution,
 )
 
 
@@ -139,3 +142,102 @@ def test_compute_horizon_calibration_groups_resolved_forecasts_by_horizon_and_bu
     assert calibration["horizons"]["24h"]["buckets"]["70-79"]["count"] == 1
     assert calibration["horizons"]["24h"]["buckets"]["60-69"]["count"] == 1
     assert calibration["horizons"]["7d"]["count"] == 1
+
+
+def test_resolve_forecast_requires_source_evidence_and_records_brier_score():
+    forecast = generate_forecast_ladder(
+        _sample_trackers(),
+        _sample_state(),
+        "2026-06-15T12:00:00Z",
+    )[0]
+
+    try:
+        resolve_forecast(
+            forecast,
+            outcome=True,
+            resolved_at="2026-06-15T18:00:00Z",
+            evidence=[],
+        )
+    except ValueError as exc:
+        assert "evidence" in str(exc).lower()
+    else:
+        raise AssertionError("resolving a forecast without source evidence should fail")
+
+    resolved = resolve_forecast(
+        forecast,
+        outcome=True,
+        resolved_at="2026-06-15T18:00:00Z",
+        evidence=[{
+            "title": "IAEA confirms emergency board action",
+            "url": "https://www.iaea.org/news/example",
+            "source": "IAEA",
+        }],
+        resolved_by="operator",
+        notes="Verified against IAEA public release.",
+    )
+
+    assert resolved["schema_version"] == "forecast_v2"
+    assert resolved["evaluation_status"] == "resolved"
+    assert resolved["resolved_outcome"] is True
+    assert resolved["outcome"] is True
+    assert resolved["resolved_at"] == "2026-06-15T18:00:00Z"
+    assert resolved["resolved_by"] == "operator"
+    assert resolved["resolution_evidence"][0]["source"] == "IAEA"
+    assert resolved["brier"] == brier_score(forecast["probability"], True)
+
+
+def test_upsert_forecast_resolution_dedupes_by_forecast_id_and_feeds_calibration():
+    forecast = generate_forecast_ladder(
+        _sample_trackers(),
+        _sample_state(),
+        "2026-06-15T12:00:00Z",
+    )[0]
+    resolved_true = resolve_forecast(
+        forecast,
+        outcome=True,
+        resolved_at="2026-06-15T18:00:00Z",
+        evidence=[{"title": "Wire confirms event", "url": "https://reuters.com/example", "source": "Reuters"}],
+    )
+    resolved_false = resolve_forecast(
+        forecast,
+        outcome=False,
+        resolved_at="2026-06-15T19:00:00Z",
+        evidence=[{"title": "Correction: event did not occur", "url": "https://reuters.com/correction", "source": "Reuters"}],
+    )
+
+    ledger = upsert_forecast_resolution({"version": "forecast_resolutions_v1", "forecasts": []}, resolved_true)
+    ledger = upsert_forecast_resolution(ledger, resolved_false)
+
+    assert ledger["version"] == "forecast_resolutions_v1"
+    assert ledger["updated_at"] == "2026-06-15T19:00:00Z"
+    assert len(ledger["forecasts"]) == 1
+    assert ledger["forecasts"][0]["resolved_outcome"] is False
+
+    calibration = compute_horizon_calibration(ledger["forecasts"])
+    horizon = forecast["horizon_label"]
+    assert calibration["horizons"][horizon]["count"] == 1
+    assert calibration["horizons"][horizon]["mean_brier"] == brier_score(forecast["probability"], False)
+
+
+def test_summarize_forecast_resolution_ledger_counts_resolved_and_current_pending():
+    forecasts = generate_forecast_ladder(
+        _sample_trackers(),
+        _sample_state(),
+        "2026-06-15T12:00:00Z",
+    )
+    resolved = resolve_forecast(
+        forecasts[0],
+        outcome=True,
+        resolved_at="2026-06-15T18:00:00Z",
+        evidence=[{"title": "IAEA confirms event", "url": "https://www.iaea.org/news/example", "source": "IAEA"}],
+    )
+    ledger = upsert_forecast_resolution({"version": "forecast_resolutions_v1", "forecasts": []}, resolved)
+
+    status = summarize_forecast_resolution_ledger(ledger, forecasts)
+
+    assert status["version"] == "forecast_resolution_status_v1"
+    assert status["total_resolved"] == 1
+    assert status["current_resolved"] == 1
+    assert status["current_pending"] == len(forecasts) - 1
+    assert status["last_resolved_at"] == "2026-06-15T18:00:00Z"
+    assert status["by_horizon"][forecasts[0]["horizon_label"]]["resolved"] == 1

@@ -86,6 +86,85 @@ def brier_score(probability_pct, outcome):
     return round((p - o) ** 2, 4)
 
 
+def _normalize_resolution_evidence(evidence):
+    """Validate and compact operator/source evidence for a forecast resolution."""
+    if not evidence:
+        raise ValueError("forecast resolution requires at least one source evidence item")
+    normalized = []
+    for idx, item in enumerate(evidence, start=1):
+        if isinstance(item, str):
+            item = {"title": item}
+        if not isinstance(item, dict):
+            raise ValueError(f"resolution evidence item {idx} must be a string or object")
+        title = str(item.get("title") or item.get("headline") or "").strip()
+        url = str(item.get("url") or "").strip()
+        source = str(item.get("source") or item.get("publisher") or "").strip()
+        if not title and not url:
+            raise ValueError(f"resolution evidence item {idx} must include title/headline or url")
+        normalized.append({
+            "title": title or url,
+            "url": url,
+            "source": source or "operator_supplied",
+        })
+    return normalized[:8]
+
+
+def resolve_forecast(forecast, *, outcome, resolved_at, evidence, resolved_by="operator", notes=""):
+    """Return a resolved forecast_v2 record suitable for the resolution ledger.
+
+    Phase 3 deliberately requires source/operator evidence. A bare true/false is
+    not enough to calibrate an intelligence dashboard.
+    """
+    if forecast.get("schema_version") != "forecast_v2":
+        raise ValueError("only forecast_v2 records can be resolved with this ledger")
+    if not forecast.get("forecast_id"):
+        raise ValueError("forecast must include forecast_id")
+    resolved_at_dt = _parse_utc(resolved_at)
+    normalized_evidence = _normalize_resolution_evidence(evidence)
+    resolved_outcome = bool(outcome)
+    resolved = dict(forecast)
+    resolved.update({
+        "evaluation_status": "resolved",
+        "resolved_at": resolved_at_dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "resolved_by": str(resolved_by or "operator"),
+        "resolved_outcome": resolved_outcome,
+        "outcome": resolved_outcome,
+        "resolution_evidence": normalized_evidence,
+        "resolution_notes": str(notes or ""),
+        "resolution_method": "manual_or_source_verified",
+        "brier": brier_score(forecast.get("probability", 0), resolved_outcome),
+    })
+    return resolved
+
+
+def upsert_forecast_resolution(ledger, resolved_forecast):
+    """Insert/replace a resolved forecast in the durable resolution ledger."""
+    if resolved_forecast.get("schema_version") != "forecast_v2":
+        raise ValueError("resolved forecast must use schema_version forecast_v2")
+    if resolved_forecast.get("evaluation_status") != "resolved":
+        raise ValueError("resolved forecast must have evaluation_status=resolved")
+    fid = resolved_forecast.get("forecast_id")
+    if not fid:
+        raise ValueError("resolved forecast must include forecast_id")
+    forecasts = []
+    replaced = False
+    for item in (ledger or {}).get("forecasts", []) or []:
+        if item.get("forecast_id") == fid:
+            forecasts.append(resolved_forecast)
+            replaced = True
+        else:
+            forecasts.append(item)
+    if not replaced:
+        forecasts.append(resolved_forecast)
+    forecasts.sort(key=lambda f: (f.get("resolved_at", ""), f.get("forecast_id", "")))
+    return {
+        "version": "forecast_resolutions_v1",
+        "updated_at": resolved_forecast.get("resolved_at"),
+        "count": len(forecasts),
+        "forecasts": forecasts,
+    }
+
+
 def _event_base_rate(event_type, horizon_label):
     base = EVENT_BASE_RATES_24H.get(event_type, EVENT_BASE_RATES_24H["escalation_watch"])
     return round(min(60.0, base * HORIZON_BASE_MULTIPLIER.get(horizon_label, 1.0)), 2)
@@ -169,6 +248,34 @@ def _calibration_bucket(probability_pct):
     low = min(90, (p // 10) * 10)
     high = 100 if low == 90 else low + 9
     return f"{low}-{high}"
+
+
+def summarize_forecast_resolution_ledger(ledger, current_forecasts=None):
+    """Compact operator-ledger status for dashboard/pipeline display."""
+    resolved = [
+        f for f in (ledger or {}).get("forecasts", []) or []
+        if f.get("schema_version") == "forecast_v2" and f.get("evaluation_status") == "resolved"
+    ]
+    by_horizon = {}
+    for item in resolved:
+        horizon = item.get("horizon_label") or "unknown"
+        row = by_horizon.setdefault(horizon, {"resolved": 0, "true": 0, "false": 0})
+        row["resolved"] += 1
+        if bool(item.get("resolved_outcome", item.get("outcome"))):
+            row["true"] += 1
+        else:
+            row["false"] += 1
+    resolved_ids = {f.get("forecast_id") for f in resolved if f.get("forecast_id")}
+    current_ids = {f.get("forecast_id") for f in current_forecasts or [] if f.get("forecast_id")}
+    current_resolved = len(current_ids & resolved_ids)
+    return {
+        "version": "forecast_resolution_status_v1",
+        "total_resolved": len(resolved),
+        "current_resolved": current_resolved,
+        "current_pending": max(0, len(current_ids) - current_resolved),
+        "last_resolved_at": max((f.get("resolved_at", "") for f in resolved), default=None),
+        "by_horizon": by_horizon,
+    }
 
 
 def compute_horizon_calibration(forecasts):

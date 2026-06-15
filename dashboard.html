@@ -131,14 +131,23 @@ function renderDossiers(){
   $('#dossierGrid').innerHTML = TRACKERS.map(t => { const z=t.zone||zoneOf(t.prob); const note=trimNote(t); return `<article class="dossier" data-id="${esc(t.id)}" style="--zone:${zoneColor(z)}"><div class="dossier-top"><div><div class="emoji">${esc(t.emoji||'🌐')}</div><h3>${esc(t.name)}</h3></div><div><div class="dossier-prob">${pct(t.prob)}</div><div class="dossier-zone">${esc(z)}</div></div></div><div class="bars"><i style="--w:${pct(t.prob)}%"></i></div><div class="dossier-note">${esc(note || 'No narrative note supplied.')}</div><div class="chips"><span class="chip ${String(t.trend)==='falling'?'good':'bad'}">${trendIcon(t.trend)} ${esc(t.trend||'stable')}</span><span class="chip">${esc(t.confidence || t.evidence_quality?.label || 'MED')}</span><span class="chip">${esc((t.signals||[]).length)} SIG</span></div></article>`; }).join('');
   document.querySelectorAll('.dossier').forEach(el => el.addEventListener('click',()=>openDetail(el.dataset.id)));
 }
+function resolutionLine(){
+  const st = STATE.forecast_resolution_status || {};
+  const total = Number(st.total_resolved || 0);
+  const pending = Number(st.current_pending || 0);
+  const resolved = Number(st.current_resolved || 0);
+  const last = st.last_resolved_at ? ` · last ${shortTime(st.last_resolved_at)}` : '';
+  return `RES ${resolved}/${resolved + pending || (STATE.forecast_ladder||[]).length || 0} current · ledger ${total}${last}`;
+}
 function calibrationLine(){
   const horizons = STATE.forecast_calibration?.horizons || {};
   const rows = Object.values(horizons);
   const count = rows.reduce((n,h)=>n+Number(h.count||0),0);
-  if(!count) return 'CAL pending manual resolutions';
+  const res = resolutionLine();
+  if(!count) return `${res} · CAL pending manual resolutions`;
   const brierVals = rows.filter(h=>h.mean_brier!==null && h.mean_brier!==undefined).map(h=>Number(h.mean_brier));
   const avg = brierVals.length ? (brierVals.reduce((a,b)=>a+b,0)/brierVals.length).toFixed(3) : '--';
-  return `CAL n=${count} · Brier ${avg}`;
+  return `${res} · CAL n=${count} · Brier ${avg}`;
 }
 function renderPredictions(){
   const ladder = STATE.forecast_ladder || [];

@@ -52,6 +52,7 @@ from predictions import (  # noqa: E402
     generate_predictions as _module_generate_predictions,
     generate_forecast_ladder,
     compute_horizon_calibration,
+    summarize_forecast_resolution_ledger,
     compute_eval_stats,
     NARRATIVE_TO_EVAL,
 )
@@ -725,6 +726,9 @@ else:
     final_predictions = _module_generate_predictions(trackers_js, state, now_iso)
     forecast_ladder = generate_forecast_ladder(trackers_js, state, now_iso)
     forecast_calibration = compute_horizon_calibration(forecast_resolutions.get("forecasts", []))
+    forecast_resolution_status = summarize_forecast_resolution_ledger(forecast_resolutions, forecast_ladder)
+    forecast_resolutions["calibration"] = forecast_calibration
+    forecast_resolutions["status"] = forecast_resolution_status
 
     # ========== Update LIFETIME stats incrementally ==========
     # Every prediction that is `evaluated` but not yet `lifetime_counted` rolls
@@ -779,11 +783,13 @@ else:
             "version": "forecast_v2",
             "model_version": "base_rate_evidence_v1",
             "calibration_version": forecast_calibration.get("version"),
+            "resolution_status_version": forecast_resolution_status.get("version"),
             "resolution_method": "manual_or_source_verified",
             "horizons": ["24h", "72h", "7d", "30d"],
         },
         "forecast_ladder": forecast_ladder,
         "forecast_calibration": forecast_calibration,
+        "forecast_resolution_status": forecast_resolution_status,
         "accuracy": {
             "total_evaluated": total_eval,
             "correct": correct_count,
@@ -801,10 +807,12 @@ else:
         "version": "forecast_v2",
         "model_version": "base_rate_evidence_v1",
         "calibration_version": forecast_calibration.get("version"),
+        "resolution_status_version": forecast_resolution_status.get("version"),
         "resolution_method": "manual_or_source_verified",
         "horizons": ["24h", "72h", "7d", "30d"],
     }
     state["forecast_calibration"] = forecast_calibration
+    state["forecast_resolution_status"] = forecast_resolution_status
     state["eval_stats"] = {
         "total": total_eval,
         "correct": correct_count,
@@ -864,6 +872,7 @@ else:
     predictions_js = json.dumps(final_predictions)
     forecast_ladder_js = json.dumps(forecast_ladder)
     forecast_calibration_js = json.dumps(forecast_calibration)
+    forecast_resolution_status_js = json.dumps(forecast_resolution_status)
     eval_stats_js = json.dumps({
         "total": total_eval,
         "correct": correct_count,
@@ -926,6 +935,7 @@ else:
         ",\n  predictions: " + predictions_js
         + ",\n  forecast_ladder: " + forecast_ladder_js
         + ",\n  forecast_calibration: " + forecast_calibration_js
+        + ",\n  forecast_resolution_status: " + forecast_resolution_status_js
         + ",\n  eval_stats: " + eval_stats_js
         + ",\n  polymarket: " + polymarket_js
     )
