@@ -8,7 +8,11 @@ SCRIPTS = REPO_ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from predictions import brier_score, generate_forecast_ladder  # noqa: E402
+from predictions import (  # noqa: E402
+    brier_score,
+    compute_horizon_calibration,
+    generate_forecast_ladder,
+)
 
 
 def _sample_trackers():
@@ -96,3 +100,42 @@ def test_brier_score_uses_probability_not_binary_correctness():
     assert brier_score(75, False) == 0.5625
     assert brier_score(0, False) == 0.0
     assert brier_score(100, True) == 0.0
+
+
+def test_forecast_ladder_exposes_auditable_probability_model_components():
+    forecasts = generate_forecast_ladder(
+        _sample_trackers(),
+        _sample_state(),
+        "2026-06-15T12:00:00Z",
+    )
+
+    forecast = next(f for f in forecasts if f["horizon_label"] == "24h")
+    model = forecast.get("probability_model")
+    assert model, "forecast should expose auditable scoring components"
+    assert model["version"] == "base_rate_evidence_v1"
+    assert model["formula"].startswith("base_rate + threat_component")
+    assert model["base_rate_pct"] >= 0
+    assert model["threat_component_pp"] >= 0
+    assert model["signal_delta_pp"] > 0
+    assert model["contradiction_delta_pp"] <= 0
+    assert model["final_probability_pct"] == forecast["probability"]
+    assert forecast["base_rate_pct"] == model["base_rate_pct"]
+    assert forecast["model_version"] == "base_rate_evidence_v1"
+
+
+def test_compute_horizon_calibration_groups_resolved_forecasts_by_horizon_and_bucket():
+    resolved = [
+        {"schema_version": "forecast_v2", "horizon_label": "24h", "probability": 72, "outcome": True},
+        {"schema_version": "forecast_v2", "horizon_label": "24h", "probability": 68, "outcome": False},
+        {"schema_version": "forecast_v2", "horizon_label": "7d", "probability": 32, "resolved_outcome": True},
+        {"schema_version": "legacy", "horizon_label": "24h", "probability": 10, "outcome": False},
+    ]
+
+    calibration = compute_horizon_calibration(resolved)
+
+    assert calibration["version"] == "forecast_calibration_v1"
+    assert calibration["horizons"]["24h"]["count"] == 2
+    assert calibration["horizons"]["24h"]["mean_brier"] == 0.2704
+    assert calibration["horizons"]["24h"]["buckets"]["70-79"]["count"] == 1
+    assert calibration["horizons"]["24h"]["buckets"]["60-69"]["count"] == 1
+    assert calibration["horizons"]["7d"]["count"] == 1

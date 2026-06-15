@@ -87,9 +87,14 @@ def test_pipeline_exposes_forecast_engine_v2_ladder(pipeline_run):
     assert first.get("schema_version") == "forecast_v2"
     assert first.get("resolution_method") == "manual_or_source_verified"
     assert first.get("resolution_criteria", "").startswith("Resolved true if")
+    assert first.get("model_version") == "base_rate_evidence_v1"
+    assert first.get("probability_model", {}).get("final_probability_pct") == first.get("probability")
     assert isinstance(first.get("evidence_for"), list) and first["evidence_for"]
     assert isinstance(first.get("evidence_against"), list) and first["evidence_against"]
+    assert state.get("forecast_engine", {}).get("model_version") == "base_rate_evidence_v1"
+    assert state.get("forecast_calibration", {}).get("version") == "forecast_calibration_v1"
     assert "forecast_ladder" in html
+    assert "forecast_calibration" in html
     assert "FORECAST ENGINE V2" in html
 
 

@@ -51,6 +51,7 @@ from predictions import (  # noqa: E402
     evaluate_all_predictions,
     generate_predictions as _module_generate_predictions,
     generate_forecast_ladder,
+    compute_horizon_calibration,
     compute_eval_stats,
     NARRATIVE_TO_EVAL,
 )
@@ -644,6 +645,13 @@ else:
     except Exception:
         brier_history = {"entries": []}
 
+    forecast_resolutions_file = f"{predictions_dir}/forecast_resolutions.json"
+    try:
+        with open(forecast_resolutions_file) as f:
+            forecast_resolutions = json.load(f)
+    except Exception:
+        forecast_resolutions = {"version": "forecast_resolutions_v1", "forecasts": []}
+
     def _prediction_brier(pred):
         """Brier contribution for a single evaluated prediction: (p - outcome)^2
         where p is the forecast as a probability in [0,1] and outcome is 1 if
@@ -716,6 +724,7 @@ else:
     # Generate new 24-hour predictions from news + signals + trends
     final_predictions = _module_generate_predictions(trackers_js, state, now_iso)
     forecast_ladder = generate_forecast_ladder(trackers_js, state, now_iso)
+    forecast_calibration = compute_horizon_calibration(forecast_resolutions.get("forecasts", []))
 
     # ========== Update LIFETIME stats incrementally ==========
     # Every prediction that is `evaluated` but not yet `lifetime_counted` rolls
@@ -768,10 +777,13 @@ else:
         "predictions": final_predictions,
         "forecast_engine": {
             "version": "forecast_v2",
+            "model_version": "base_rate_evidence_v1",
+            "calibration_version": forecast_calibration.get("version"),
             "resolution_method": "manual_or_source_verified",
             "horizons": ["24h", "72h", "7d", "30d"],
         },
         "forecast_ladder": forecast_ladder,
+        "forecast_calibration": forecast_calibration,
         "accuracy": {
             "total_evaluated": total_eval,
             "correct": correct_count,
@@ -787,9 +799,12 @@ else:
     state["forecast_ladder"] = forecast_ladder
     state["forecast_engine"] = {
         "version": "forecast_v2",
+        "model_version": "base_rate_evidence_v1",
+        "calibration_version": forecast_calibration.get("version"),
         "resolution_method": "manual_or_source_verified",
         "horizons": ["24h", "72h", "7d", "30d"],
     }
+    state["forecast_calibration"] = forecast_calibration
     state["eval_stats"] = {
         "total": total_eval,
         "correct": correct_count,
@@ -842,10 +857,13 @@ else:
         json.dump(lifetime_stats, f, indent=2)
     with open(brier_history_file, "w") as f:
         json.dump(brier_history, f, indent=2)
+    with open(forecast_resolutions_file, "w") as f:
+        json.dump(forecast_resolutions, f, indent=2)
 
     # Format predictions for JS modal
     predictions_js = json.dumps(final_predictions)
     forecast_ladder_js = json.dumps(forecast_ladder)
+    forecast_calibration_js = json.dumps(forecast_calibration)
     eval_stats_js = json.dumps({
         "total": total_eval,
         "correct": correct_count,
@@ -907,6 +925,7 @@ else:
     pred_inject = (
         ",\n  predictions: " + predictions_js
         + ",\n  forecast_ladder: " + forecast_ladder_js
+        + ",\n  forecast_calibration: " + forecast_calibration_js
         + ",\n  eval_stats: " + eval_stats_js
         + ",\n  polymarket: " + polymarket_js
     )

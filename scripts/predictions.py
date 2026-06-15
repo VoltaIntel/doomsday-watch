@@ -19,6 +19,29 @@ FORECAST_HORIZONS = (
     ("30d", 24 * 30, 0.95),
 )
 
+FORECAST_MODEL_VERSION = "base_rate_evidence_v1"
+
+EVENT_BASE_RATES_24H = {
+    "nuclear_threshold": 4,
+    "gulf_conventional_escalation": 12,
+    "border_war_escalation": 18,
+    "nato_war_escalation": 6,
+    "taiwan_pressure_escalation": 5,
+    "dprk_military_escalation": 8,
+    "border_conflict_escalation": 14,
+    "de_escalation_continuation": 18,
+    "escalation_watch": 10,
+}
+
+HORIZON_BASE_MULTIPLIER = {"24h": 1.0, "72h": 1.8, "7d": 2.7, "30d": 4.5}
+HORIZON_THREAT_WEIGHT = {"24h": 0.18, "72h": 0.24, "7d": 0.30, "30d": 0.36}
+
+TIER1_SOURCES = {
+    "reuters", "associated press", "ap", "afp", "bbc", "iaea", "un", "united nations",
+    "nato", "white house", "state department", "pentagon",
+}
+TIER2_SOURCES = {"al jazeera", "cbs", "nbc", "abc", "cnn", "dw", "france 24", "the guardian", "financial times"}
+
 RESOLUTION_CRITERIA = {
     "iran_nuclear": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
     "iran_conventional": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
@@ -61,6 +84,125 @@ def brier_score(probability_pct, outcome):
     p = max(0.0, min(1.0, float(probability_pct) / 100.0))
     o = 1.0 if bool(outcome) else 0.0
     return round((p - o) ** 2, 4)
+
+
+def _event_base_rate(event_type, horizon_label):
+    base = EVENT_BASE_RATES_24H.get(event_type, EVENT_BASE_RATES_24H["escalation_watch"])
+    return round(min(60.0, base * HORIZON_BASE_MULTIPLIER.get(horizon_label, 1.0)), 2)
+
+
+def _source_quality_delta(tracker, state):
+    tid = tracker.get("id")
+    delta = 0.0
+    matched_sources = []
+    for news in state.get("latest_news", []) or []:
+        if news.get("zone") not in (None, "", tid, tracker.get("name")):
+            continue
+        for source in news.get("sources", []) or []:
+            source_l = str(source).lower()
+            matched_sources.append(str(source))
+            if any(s in source_l for s in TIER1_SOURCES):
+                delta += 3.0
+            elif any(s in source_l for s in TIER2_SOURCES):
+                delta += 1.5
+            else:
+                delta += 0.5
+    return round(min(10.0, delta), 2), matched_sources[:6]
+
+
+def _signal_delta(tracker, state, evidence_for, evidence_against):
+    tid = tracker.get("id")
+    delta = 0.0
+    for sig in tracker.get("signals", []) or []:
+        if not isinstance(sig, dict):
+            delta += 1.0
+            continue
+        weight = sig.get("original_weight", sig.get("weight", 0))
+        try:
+            weight = float(weight)
+        except Exception:
+            weight = 1.0
+        delta += (-0.35 * abs(weight)) if sig.get("positive") else (0.65 * abs(weight))
+    for sig in state.get("trackers", {}).get(tid, {}).get("active_signals", []) or []:
+        label = str(sig).lower().replace("_", " ")
+        delta += -2.0 if any(term in label for term in DEESCALATION_TERMS) else 2.5
+    if evidence_for and not evidence_for[0].startswith("No discrete"):
+        delta += min(5.0, len(evidence_for) * 1.25)
+    if evidence_against and not evidence_against[0].startswith("No clear"):
+        delta -= min(6.0, len(evidence_against) * 1.5)
+    return round(max(-15.0, min(20.0, delta)), 2)
+
+
+def build_probability_model(tracker, state, event_type, horizon_label, *, evidence_for=None, evidence_against=None):
+    """Build auditable base-rate + evidence model for one forecast."""
+    evidence_for = evidence_for or []
+    evidence_against = evidence_against or []
+    threat_score = float(tracker.get("prob", 0) or 0)
+    base_rate = _event_base_rate(event_type, horizon_label)
+    threat_component = round(threat_score * HORIZON_THREAT_WEIGHT.get(horizon_label, 0.18), 2)
+    signal_delta = _signal_delta(tracker, state, evidence_for, evidence_against)
+    trend_delta = {"rising": 5.0, "stable": 0.0, "falling": -6.0}.get(tracker.get("trend"), 0.0)
+    source_delta, matched_sources = _source_quality_delta(tracker, state)
+    contradiction_delta = 0.0
+    if evidence_against and not evidence_against[0].startswith("No clear"):
+        contradiction_delta = round(-min(10.0, len(evidence_against) * 2.0), 2)
+    raw = base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta
+    final_probability = _clamp_probability(raw)
+    return {
+        "version": FORECAST_MODEL_VERSION,
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": base_rate,
+        "threat_score_pct": round(threat_score, 2),
+        "threat_component_pp": threat_component,
+        "signal_delta_pp": signal_delta,
+        "trend_delta_pp": trend_delta,
+        "source_delta_pp": source_delta,
+        "contradiction_delta_pp": contradiction_delta,
+        "raw_probability_pct": round(raw, 2),
+        "final_probability_pct": final_probability,
+        "matched_sources": matched_sources,
+    }
+
+
+def _calibration_bucket(probability_pct):
+    p = int(max(0, min(100, float(probability_pct))))
+    low = min(90, (p // 10) * 10)
+    high = 100 if low == 90 else low + 9
+    return f"{low}-{high}"
+
+
+def compute_horizon_calibration(forecasts):
+    """Group resolved forecast_v2 records by horizon and 10pp probability bucket."""
+    horizons = {}
+    for forecast in forecasts or []:
+        if forecast.get("schema_version") != "forecast_v2":
+            continue
+        if "outcome" in forecast:
+            outcome = forecast.get("outcome")
+        elif "resolved_outcome" in forecast:
+            outcome = forecast.get("resolved_outcome")
+        else:
+            continue
+        horizon = forecast.get("horizon_label") or "unknown"
+        probability = float(forecast.get("probability", 0) or 0)
+        brier = brier_score(probability, outcome)
+        bucket = _calibration_bucket(probability)
+        h = horizons.setdefault(horizon, {"count": 0, "sum_brier": 0.0, "mean_brier": None, "buckets": {}})
+        h["count"] += 1
+        h["sum_brier"] += brier
+        b = h["buckets"].setdefault(bucket, {"count": 0, "sum_brier": 0.0, "mean_brier": None, "observed_rate": None, "observed_true": 0})
+        b["count"] += 1
+        b["sum_brier"] += brier
+        b["observed_true"] += 1 if bool(outcome) else 0
+    for h in horizons.values():
+        h["mean_brier"] = round(h["sum_brier"] / h["count"], 4) if h["count"] else None
+        h["sum_brier"] = round(h["sum_brier"], 4)
+        for b in h["buckets"].values():
+            b["mean_brier"] = round(b["sum_brier"] / b["count"], 4) if b["count"] else None
+            b["sum_brier"] = round(b["sum_brier"], 4)
+            b["observed_rate"] = round(b.get("observed_true", 0) / b["count"], 4) if b["count"] else None
+            b.pop("observed_true", None)
+    return {"version": "forecast_calibration_v1", "horizons": horizons}
 
 
 def _tracker_event_type(tracker_id, trend, prob):
@@ -202,9 +344,15 @@ def generate_forecast_ladder(trackers_js, state, now_iso, *, max_trackers=6):
 
         for horizon_label, horizon_hours, multiplier in FORECAST_HORIZONS:
             expires = (now_dt + timedelta(hours=horizon_hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
-            event_probability = _clamp_probability(
-                prob * multiplier + trend_adj + support_bonus - contradiction_penalty
+            probability_model = build_probability_model(
+                tracker,
+                state,
+                event_type,
+                horizon_label,
+                evidence_for=evidence_for,
+                evidence_against=evidence_against,
             )
+            event_probability = probability_model["final_probability_pct"]
             forecast_id = f"{_slug(tid)}:{_slug(event_type)}:{horizon_label}:{expires}"
             forecasts.append({
                 "schema_version": "forecast_v2",
@@ -216,6 +364,9 @@ def generate_forecast_ladder(trackers_js, state, now_iso, *, max_trackers=6):
                 "horizon_label": horizon_label,
                 "horizon_hours": horizon_hours,
                 "probability": event_probability,
+                "base_rate_pct": probability_model["base_rate_pct"],
+                "model_version": FORECAST_MODEL_VERSION,
+                "probability_model": probability_model,
                 "confidence_score": confidence_score,
                 "confidence_label": confidence_label,
                 "description": _forecast_description(tname, event_type, horizon_label, event_probability),
