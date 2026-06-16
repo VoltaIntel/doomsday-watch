@@ -1,8 +1,10 @@
 # Session State
 
-## Morning Deep Scan — 2026-06-10 03:03Z
-- Ran full DoomsdayWatch morning scan using web_search plus Google News RSS `when:1d` freshness cross-check because search results were mixed with stale/social/video/background hits.
-- Updated `nuke-watch/data/current_state.json`, `tracker_config.json` thresholds, and `signal_timeline.json` atomically via Python heredoc; no write/edit tool used for state.
-- Deployed commit `ae7b56f`; GitHub Pages run `27250272360` completed successfully. Public dashboard verified fresh on cache-busted attempt 3.
-- Final deployed global risk: 78% imminent. Key escalators: US-Iran strikes after Hormuz helicopter crash, IAEA/Iran access gap, Tyre/Lebanon strikes, Chornobyl nuclear fuel-site strike, Pakistan airstrikes in Afghanistan, Sudan drone/infrastructure strikes.
-- Post-deploy coupled trackers: Iran Nuclear 82, Iran War 100, Israel-Lebanon 100, Russia-NATO 78, Russia-Ukraine 100, Israel-Palestine 86, DPRK 40, Pakistan-Afghanistan 38, Sudan 37, China 29, India 16, South Sudan-Abyei 12, Turkey 8.
+## DoomsdayWatch morning deep scan — 2026-06-16 09:10Z
+- Ran the scheduled morning deep scan from `/home/openclaw/.openclaw/workspace/nuke-watch` using canonical tracker IDs/signals from `data/tracker_config.json`.
+- Tavily-backed `web_search`/`web_extract` failed HTTP 432; fallback used Google News RSS, terminal HTTP official probes, UN Press RSS, OilPriceAPI, and deploy-time Polymarket Gamma refresh. IAEA direct pages returned 403.
+- Updated `data/current_state.json` atomically; no command-deck UI files were hand-edited before deploy.
+- Deployed through `bash scripts/deploy.sh`; dashboard deploy commit `f1c160c` (`Update 2026-06-16T09:09:51Z — automated`) pushed.
+- Final dashboard global: **65% / imminent**. Coupled probabilities: Iran Nuclear 71, Iran War 30, Israel-Lebanon 91, Turkey 5, India 11, Pakistan-Afghanistan 97, Russia-Ukraine 98, Russia-NATO 55, China-Taiwan 28, DPRK 34, Sudan 58, Israel-Palestine 87, South Sudan-Abyei 8.
+- Top changes vs 06:06Z: India 12→11 and China 29→28; global unchanged at 65. Pakistan-Afghanistan remains the main upward watch item; oil/Hormuz signal leans down.
+- Verification passed: local `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; canonical active-signal validation clean; Polymarket cache fresh at `2026-06-16T09:10:24Z`.
