@@ -1,8 +1,387 @@
 {
   "version": "forecast_review_queue_v1",
-  "generated_at": "2026-06-16T12:12:52Z",
-  "total_forecasts_seen": 264,
+  "generated_at": "2026-06-16T15:04:52Z",
+  "total_forecasts_seen": 288,
   "resolved_in_ledger": 0,
-  "expired_unresolved": 0,
-  "items": []
+  "expired_unresolved": 18,
+  "items": [
+    {
+      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
+      "tracker_id": "iran_nuclear",
+      "tracker_name": "IRAN NUCLEAR",
+      "event_type": "nuclear_threshold",
+      "horizon_label": "24h",
+      "probability": 33,
+      "generated_at": "2026-06-15T12:59:40Z",
+      "expires_at": "2026-06-16T12:59:40Z",
+      "age_hours": 2.1,
+      "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"IRAN NUCLEAR\" \"nuclear threshold\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"IRAN NUCLEAR\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"IRAN NUCLEAR\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-06-16T12:59:40Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "24h",
+      "probability": 40,
+      "generated_at": "2026-06-15T12:59:40Z",
+      "expires_at": "2026-06-16T12:59:40Z",
+      "age_hours": 2.1,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"ISRAEL-LEBANON\" \"border war escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL-LEBANON\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL-LEBANON\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id israel_lebanon:border_war_escalation:24h:2026-06-16T12:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-06-16T12:59:40Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "probability": 34,
+      "generated_at": "2026-06-15T12:59:40Z",
+      "expires_at": "2026-06-16T12:59:40Z",
+      "age_hours": 2.1,
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"ISRAEL PALESTINE\" \"escalation watch\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL PALESTINE\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL PALESTINE\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id israel_palestine:escalation_watch:24h:2026-06-16T12:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:24h:2026-06-16T12:59:40Z",
+      "tracker_id": "pakistan_afghanistan",
+      "tracker_name": "PAKISTAN-AFGHANISTAN",
+      "event_type": "border_conflict_escalation",
+      "horizon_label": "24h",
+      "probability": 43,
+      "generated_at": "2026-06-15T12:59:40Z",
+      "expires_at": "2026-06-16T12:59:40Z",
+      "age_hours": 2.1,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"PAKISTAN-AFGHANISTAN\" \"border conflict escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"PAKISTAN-AFGHANISTAN\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"PAKISTAN-AFGHANISTAN\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id pakistan_afghanistan:border_conflict_escalation:24h:2026-06-16T12:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-06-16T12:59:40Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "24h",
+      "probability": 37,
+      "generated_at": "2026-06-15T12:59:40Z",
+      "expires_at": "2026-06-16T12:59:40Z",
+      "age_hours": 2.1,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"RUSSIA-UKRAINE\" \"nato war escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"RUSSIA-UKRAINE\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"RUSSIA-UKRAINE\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id russia_ukraine:nato_war_escalation:24h:2026-06-16T12:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "sudan:escalation_watch:24h:2026-06-16T12:59:40Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "probability": 49,
+      "generated_at": "2026-06-15T12:59:40Z",
+      "expires_at": "2026-06-16T12:59:40Z",
+      "age_hours": 2.1,
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"SUDAN\" \"escalation watch\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"SUDAN\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"SUDAN\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id sudan:escalation_watch:24h:2026-06-16T12:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T13:59:40Z",
+      "tracker_id": "iran_nuclear",
+      "tracker_name": "IRAN NUCLEAR",
+      "event_type": "nuclear_threshold",
+      "horizon_label": "24h",
+      "probability": 33,
+      "generated_at": "2026-06-15T13:59:40Z",
+      "expires_at": "2026-06-16T13:59:40Z",
+      "age_hours": 1.1,
+      "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"IRAN NUCLEAR\" \"nuclear threshold\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"IRAN NUCLEAR\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"IRAN NUCLEAR\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id iran_nuclear:nuclear_threshold:24h:2026-06-16T13:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-06-16T13:59:40Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "24h",
+      "probability": 40,
+      "generated_at": "2026-06-15T13:59:40Z",
+      "expires_at": "2026-06-16T13:59:40Z",
+      "age_hours": 1.1,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"ISRAEL-LEBANON\" \"border war escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL-LEBANON\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL-LEBANON\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id israel_lebanon:border_war_escalation:24h:2026-06-16T13:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-06-16T13:59:40Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "probability": 34,
+      "generated_at": "2026-06-15T13:59:40Z",
+      "expires_at": "2026-06-16T13:59:40Z",
+      "age_hours": 1.1,
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"ISRAEL PALESTINE\" \"escalation watch\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL PALESTINE\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL PALESTINE\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id israel_palestine:escalation_watch:24h:2026-06-16T13:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:24h:2026-06-16T13:59:40Z",
+      "tracker_id": "pakistan_afghanistan",
+      "tracker_name": "PAKISTAN-AFGHANISTAN",
+      "event_type": "border_conflict_escalation",
+      "horizon_label": "24h",
+      "probability": 43,
+      "generated_at": "2026-06-15T13:59:40Z",
+      "expires_at": "2026-06-16T13:59:40Z",
+      "age_hours": 1.1,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"PAKISTAN-AFGHANISTAN\" \"border conflict escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"PAKISTAN-AFGHANISTAN\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"PAKISTAN-AFGHANISTAN\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id pakistan_afghanistan:border_conflict_escalation:24h:2026-06-16T13:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-06-16T13:59:40Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "24h",
+      "probability": 37,
+      "generated_at": "2026-06-15T13:59:40Z",
+      "expires_at": "2026-06-16T13:59:40Z",
+      "age_hours": 1.1,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"RUSSIA-UKRAINE\" \"nato war escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"RUSSIA-UKRAINE\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"RUSSIA-UKRAINE\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id russia_ukraine:nato_war_escalation:24h:2026-06-16T13:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "sudan:escalation_watch:24h:2026-06-16T13:59:40Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "probability": 49,
+      "generated_at": "2026-06-15T13:59:40Z",
+      "expires_at": "2026-06-16T13:59:40Z",
+      "age_hours": 1.1,
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"SUDAN\" \"escalation watch\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"SUDAN\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"SUDAN\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id sudan:escalation_watch:24h:2026-06-16T13:59:40Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T14:29:08Z",
+      "tracker_id": "iran_nuclear",
+      "tracker_name": "IRAN NUCLEAR",
+      "event_type": "nuclear_threshold",
+      "horizon_label": "24h",
+      "probability": 33,
+      "generated_at": "2026-06-15T14:29:08Z",
+      "expires_at": "2026-06-16T14:29:08Z",
+      "age_hours": 0.6,
+      "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"IRAN NUCLEAR\" \"nuclear threshold\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"IRAN NUCLEAR\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"IRAN NUCLEAR\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id iran_nuclear:nuclear_threshold:24h:2026-06-16T14:29:08Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-06-16T14:29:08Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "24h",
+      "probability": 40,
+      "generated_at": "2026-06-15T14:29:08Z",
+      "expires_at": "2026-06-16T14:29:08Z",
+      "age_hours": 0.6,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"ISRAEL-LEBANON\" \"border war escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL-LEBANON\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL-LEBANON\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id israel_lebanon:border_war_escalation:24h:2026-06-16T14:29:08Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-06-16T14:29:08Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "probability": 34,
+      "generated_at": "2026-06-15T14:29:08Z",
+      "expires_at": "2026-06-16T14:29:08Z",
+      "age_hours": 0.6,
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"ISRAEL PALESTINE\" \"escalation watch\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL PALESTINE\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"ISRAEL PALESTINE\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id israel_palestine:escalation_watch:24h:2026-06-16T14:29:08Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:24h:2026-06-16T14:29:08Z",
+      "tracker_id": "pakistan_afghanistan",
+      "tracker_name": "PAKISTAN-AFGHANISTAN",
+      "event_type": "border_conflict_escalation",
+      "horizon_label": "24h",
+      "probability": 43,
+      "generated_at": "2026-06-15T14:29:08Z",
+      "expires_at": "2026-06-16T14:29:08Z",
+      "age_hours": 0.6,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"PAKISTAN-AFGHANISTAN\" \"border conflict escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"PAKISTAN-AFGHANISTAN\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"PAKISTAN-AFGHANISTAN\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id pakistan_afghanistan:border_conflict_escalation:24h:2026-06-16T14:29:08Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-06-16T14:29:08Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "24h",
+      "probability": 37,
+      "generated_at": "2026-06-15T14:29:08Z",
+      "expires_at": "2026-06-16T14:29:08Z",
+      "age_hours": 0.6,
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"RUSSIA-UKRAINE\" \"nato war escalation\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"RUSSIA-UKRAINE\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"RUSSIA-UKRAINE\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id russia_ukraine:nato_war_escalation:24h:2026-06-16T14:29:08Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    },
+    {
+      "forecast_id": "sudan:escalation_watch:24h:2026-06-16T14:29:08Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "probability": 49,
+      "generated_at": "2026-06-15T14:29:08Z",
+      "expires_at": "2026-06-16T14:29:08Z",
+      "age_hours": 0.6,
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "review_status": "needs_manual_resolution",
+      "resolution_evidence_required": true,
+      "auto_resolution": false,
+      "suggested_queries": [
+        "\"SUDAN\" \"escalation watch\" 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"SUDAN\" escalation before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official",
+        "\"SUDAN\" ceasefire diplomacy no event before 2026-06-16 Reuters OR AP OR AFP OR BBC OR official"
+      ],
+      "resolution_command": "python3 scripts/resolve_forecast.py --forecast-id sudan:escalation_watch:24h:2026-06-16T14:29:08Z --outcome true|false --resolved-at 2026-06-16T15:04:52Z --evidence-title '<source headline>' --evidence-url '<url>' --evidence-source '<source>'"
+    }
+  ]
 }
