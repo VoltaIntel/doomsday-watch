@@ -1,12 +1,12 @@
 # Session State
 
-## DoomsdayWatch morning deep scan — 2026-06-17 03:06Z
+## DoomsdayWatch morning deep scan — 2026-06-17 03:11Z
 - Ran scheduled morning deep scan from `/home/openclaw/.openclaw/workspace/nuke-watch` using canonical tracker IDs/signals from `data/tracker_config.json`.
 - Source caveat: Tavily-backed `web_search` failed HTTP 432 for required zone queries; fallback used Google News RSS past-24h scans, sparse 7d crosschecks, terminal HTTP probes of IAEA/UN/NATO/EIA/OPEC/Polymarket pages. IAEA news/press and OPEC pages returned 403; UN Press RSS, UN Security Council, NATO, EIA, and Polymarket Gamma were reachable.
 - Updated `data/current_state.json` and `data/signal_timeline.json` atomically; no command-deck UI shell files were hand-edited. `scripts/deploy.sh` then refreshed OilPriceAPI/Polymarket and rebuilt the dashboard.
-- Deploy succeeded through `bash scripts/deploy.sh`; dashboard deploy commit `432be4c` (`Update 2026-06-17T03:05:58Z — automated`) pushed.
+- Deploy succeeded through `bash scripts/deploy.sh`; dashboard deploy commit `e444d52` (`Update 2026-06-17T03:10:52Z — automated`) pushed.
 - Final dashboard global: **62% / imminent**. Coupled probabilities: Iran Nuclear 62, Iran War 34, Israel-Lebanon 92, Turkey 5, India 10, Russia-NATO 55, China-Taiwan 20, DPRK 5, Russia-Ukraine 98, Pakistan-Afghanistan 98, Sudan 54, Israel-Palestine 85, South Sudan-Abyei 8.
 - Top movers vs 00:14Z: Israel-Lebanon 94→92 and Sudan 55→54; global unchanged at 62. Iran nuclear raw eased 55→54 but coupled display remains 62; Iran conventional stays 34 coupled due Hormuz uncertainty and Lebanon coupling.
 - Active canonical signals after deploy: Iran Nuclear `diplomacy_active`, `enrichment_60`, `iaea_emergency`; Iran War `diplomacy_active`, `hormuz_controlled_not_closed`; Israel-Lebanon `ceasefire_violation`, `diplomacy_active`; Russia-NATO `nuclear_rhetoric_official`; China `military_buildup`; Russia-Ukraine `military_buildup`; Pakistan-Afghanistan `military_buildup`; Sudan `external_backing`, `military_buildup`; Israel-Palestine `ceasefire_violation`, `diplomacy_active`, `military_buildup`.
-- Market sanity: OilPriceAPI refreshed at deploy with Brent $79.08, WTI $76.09, Gold $4332.96, Natural Gas $3.25; Polymarket cache refreshed at `2026-06-17T03:06:33Z`, worst divergence remains `russia_ukraine` ~97.5pp due long-horizon market mapping vs short-horizon DW operational risk.
-- Verification passed: `current_state.json` and `signal_timeline.json` JSON-valid; canonical active-signal check clean; local `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; git status clean after push.
+- Market sanity: OilPriceAPI refreshed at deploy with Brent $79.08, WTI $75.92, Gold $4352.82, Natural Gas $3.25; Polymarket cache refreshed at `2026-06-17T03:11:17Z`, worst divergence remains `russia_ukraine` ~97.5pp due long-horizon market mapping vs short-horizon DW operational risk.
+- Verification passed: `current_state.json` and `signal_timeline.json` JSON-valid; canonical active-signal check clean; local `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; git status clean after deploy push.
