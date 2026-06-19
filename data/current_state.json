@@ -192,7 +192,7 @@
   },
   "global_uncertainty_index": 39,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-06-19T09:11:14Z",
+  "last_updated": "2026-06-19T09:14:11Z",
   "signal_timestamps": {
     "iran_nuclear:iaea_emergency": "2026-06-15T09:03:57Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-06-17T00:06:48Z",
@@ -208,10 +208,10 @@
   "global_zone": "imminent",
   "global_probability": 58,
   "eval_stats": {
-    "total": 718002,
-    "correct": 498647,
+    "total": 721208,
+    "correct": 500893,
     "accuracy": 69,
-    "mean_brier": 0.5503
+    "mean_brier": 0.5502
   },
   "_meta": {
     "last_writer": "doomsdaywatch_morning_deep_scan_cron",
@@ -362,7 +362,7 @@
     "north_korea_false_positive_status": "No DPRK canonical signal promoted: WFMZ launch headline appears to be stale/syndicated AP when crosschecked against AP May result and lacks fresh corroboration.",
     "morning_deep_scan_movers": "Versus 06:07Z coupled final expected: iran_nuclear 39\u219241, iran_conventional 24\u219226, israel_palestine 85\u219287, israel_lebanon holds 100, global holds 58/imminent.",
     "false_positive_cleanup_10": "Removed iran_nuclear:enrichment_90 caused by the phrase weapons-grade step in negated narrative; neutralized wording to higher-level enrichment and removed timeline entry before redeploy.",
-    "signals_changed": "Canonical signals only. New configured signal activated: israel_palestine:holy_site_tension from West Bank mosque/Al-Aqsa tension reporting. Refreshed existing lanes: israel_lebanon:ceasefire_violation, pakistan_afghanistan:military_buildup, sudan:military_buildup; no non-canonical signals used.",
+    "signals_changed": "Canonical signals only. New configured signal activated: israel_palestine:holy_site_tension from West Bank mosque/Al-Aqsa tension reporting. Refreshed existing lanes: israel_lebanon:ceasefire_violation, pakistan_afghanistan:military_buildup, sudan:military_buildup; removed stray israel_lebanon:diplomacy_active matcher artefact before redeploy; no non-canonical signals used.",
     "raw_probabilities_before_coupling": {
       "iran_nuclear": 35,
       "iran_conventional": 19,
@@ -630,7 +630,7 @@
       "zone": "israel_lebanon",
       "time": "24H",
       "headline": "Israel-Lebanon front worsens: strikes, deaths, no withdrawal",
-      "text": "Reuters/NBC/Jerusalem Post/Ynet/Guardian-linked and regional feeds report expanded Israeli strikes in southern Lebanon, Netanyahu ruling out withdrawal, and at least 15 killed in strike reporting. Canonical ceasefire_violation remains active; no confirmed wider ground-war breakpoint beyond the already-hot front.",
+      "text": "Reuters/NBC/Jerusalem Post/Ynet/Guardian-linked and regional feeds report expanded Israeli strikes in southern Lebanon, Netanyahu ruling out withdrawal, and at least 15 killed in strike reporting. Configured Lebanon truce-breach lane remains active; no confirmed wider ground-war breakpoint beyond the already-hot front.",
       "impact": "up",
       "sources": [
         "Reuters",
@@ -647,7 +647,7 @@
       "zone": "iran_conventional",
       "time": "24H",
       "headline": "Hormuz still moving, but shipowner caution returns",
-      "text": "CNBC, Yahoo, Anadolu, Nikkei and Rigzone still show tankers transiting and oil slipping from the war premium, but Bloomberg reports Hormuz traffic thinned Friday as shipowners chose caution and Reuters/OilPrice headlines show residual uncertainty. Canonical hormuz_controlled_not_closed remains active; no zero-traffic or waterway-obstruction trigger was corroborated.",
+      "text": "CNBC, Yahoo, Anadolu, Nikkei and Rigzone still show tankers transiting and oil slipping from the war premium, but Bloomberg reports Hormuz traffic thinned Friday as shipowners chose caution and Reuters/OilPrice headlines show residual uncertainty. Configured Hormuz traffic-moving lane remains active; no zero-traffic or waterway-obstruction trigger was corroborated.",
       "impact": "mixed",
       "sources": [
         "Bloomberg",
@@ -665,7 +665,7 @@
       "zone": "iran_nuclear",
       "time": "24H",
       "headline": "IAEA implementation path alive; talks delayed/called off clouds durability",
-      "text": "UN News says technical work can begin under the US-Iran arrangement, while Jerusalem Post/Israel National News report Tehran will invite agency site visits. Times of Israel, ABC, Ynet and Guardian-linked headlines say the next nuclear talks were delayed or called off. Canonical diplomacy_active and iaea_emergency remain active; no verified access-denial or device-level breakpoint appeared.",
+      "text": "UN News says technical work can begin under the US-Iran arrangement, while Jerusalem Post/Israel National News report Tehran will invite agency site visits. Times of Israel, ABC, Ynet and Guardian-linked headlines say the next nuclear talks were delayed or called off. Configured diplomatic-channel and agency-emergency lanes remain active; no verified access-denial or device-level breakpoint appeared.",
       "impact": "mixed",
       "sources": [
         "UN News",
@@ -699,7 +699,7 @@
       "zone": "pakistan_afghanistan",
       "time": "24H/7D",
       "headline": "Taliban outpost-capture claim refreshed, still thinly corroborated",
-      "text": "News On AIR reports a Taliban claim that a Pakistani outpost was captured during clashes with Pakistani soldiers. The canonical military_buildup lane is refreshed, but the severe claim remains single-source/thinly corroborated so no probability increase this pass.",
+      "text": "News On AIR reports a Taliban claim that a Pakistani outpost was captured during clashes with Pakistani soldiers. The configured Pakistan-Afghanistan force-posture lane is refreshed, but the severe claim remains single-source/thinly corroborated so no probability increase this pass.",
       "impact": "stable",
       "sources": [
         "News On AIR",
@@ -711,7 +711,7 @@
       "zone": "israel_palestine",
       "time": "7D",
       "headline": "West Bank/Jerusalem holy-site flashpoints move higher",
-      "text": "Al Jazeera reports a violent West Bank settler attack; The Express Tribune reports settlers torched two West Bank mosques; Middle East Monitor reports East Jerusalem demolition/eviction pressure; The New Arab reports Netanyahu refusing to limit Ben-Gvir involvement in Al-Aqsa. Canonical holy_site_tension is activated, but no wider regional-breakout trigger was isolated.",
+      "text": "Al Jazeera reports a violent West Bank settler attack; The Express Tribune reports settlers torched two West Bank mosques; Middle East Monitor reports East Jerusalem demolition/eviction pressure; The New Arab reports Netanyahu refusing to limit Ben-Gvir involvement in Al-Aqsa. Configured Jerusalem holy-site lane is activated, but no wider regional-breakout trigger was isolated.",
       "impact": "up",
       "sources": [
         "Al Jazeera",
@@ -759,7 +759,7 @@
       "zone": "sudan",
       "time": "7D",
       "headline": "Sudan/El Obeid RSF mobilisation reporting persists",
-      "text": "IDN-InDepthNews and Ayin/Eastleigh-linked fallback keep RSF mobilisation around El Obeid in view. This sustains the configured military_buildup lane without a new external-state escalation or Red Sea spillover trigger.",
+      "text": "IDN-InDepthNews and Ayin/Eastleigh-linked fallback keep RSF mobilisation around El Obeid in view. This sustains the configured Sudan force-posture lane without a new external-state escalation or Red Sea spillover trigger.",
       "impact": "up",
       "sources": [
         "IDN-InDepthNews",
@@ -879,8 +879,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-06-19T09:12:42Z",
-    "fetched_at": "2026-06-19T09:12:42Z",
+    "generated_at": "2026-06-19T09:15:10Z",
+    "fetched_at": "2026-06-19T09:15:10Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -1050,7 +1050,7 @@
           "china-x-taiwan-military-clash-before-2027",
           "will-china-blockade-taiwan-by-june-30"
         ],
-        "total_volume_24h": 716797.51,
+        "total_volume_24h": 716727.45,
         "liquidity_warn": true,
         "markets": [
           {
@@ -1060,7 +1060,7 @@
             "invert": false,
             "yes_price": 0.0635,
             "contribution": 0.0635,
-            "volume_24h": 600591.3498339992,
+            "volume_24h": 600550.1628159992,
             "question": "Will China invade Taiwan by end of 2026?"
           },
           {
@@ -1070,7 +1070,7 @@
             "invert": false,
             "yes_price": 0.08,
             "contribution": 0.08,
-            "volume_24h": 94989.849726,
+            "volume_24h": 94960.980164,
             "question": "China x Taiwan military clash before 2027?"
           },
           {
@@ -1204,7 +1204,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-06-18T12:09:32Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 4,
           "decayed_weight": 2.2,
           "expired": false,
@@ -1214,7 +1214,7 @@
           "name": "iaea_emergency",
           "positive": false,
           "activated_at": "2026-06-15T09:03:57Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 8,
           "decayed_weight": 3.2,
           "expired": false,
@@ -1235,7 +1235,7 @@
         "label": "MEDIUM",
         "source_count": 8,
         "signal_count": 2,
-        "newest_signal_age_hours": 21.0
+        "newest_signal_age_hours": 21.1
       },
       "watch_triggers": {
         "up": [
@@ -1276,7 +1276,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-06-17T00:06:48Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 4,
           "decayed_weight": 0.8,
           "expired": false,
@@ -1337,8 +1337,8 @@
         {
           "name": "diplomacy_active",
           "positive": true,
-          "activated_at": "2026-06-19T09:11:14Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "activated_at": "2026-06-19T09:14:11Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 4,
           "decayed_weight": 4.0,
           "expired": false,
@@ -1348,7 +1348,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-06-19T00:16:52Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 6,
           "decayed_weight": 4.6,
           "expired": false,
@@ -1497,7 +1497,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-06-18T21:07:37Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 5,
           "decayed_weight": 3.5,
           "expired": false,
@@ -1720,7 +1720,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-06-19T00:16:52Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 6,
           "decayed_weight": 4.6,
           "expired": false,
@@ -1741,7 +1741,7 @@
         "label": "MEDIUM",
         "source_count": 4,
         "signal_count": 1,
-        "newest_signal_age_hours": 8.9
+        "newest_signal_age_hours": 9.0
       },
       "watch_triggers": {
         "up": [
@@ -1782,7 +1782,7 @@
           "name": "holy_site_tension",
           "positive": false,
           "activated_at": "2026-06-19T09:11:14Z",
-          "last_confirmed": "2026-06-19T09:11:14Z",
+          "last_confirmed": "2026-06-19T09:14:11Z",
           "original_weight": 5,
           "decayed_weight": 5.0,
           "expired": false,
@@ -1892,7 +1892,7 @@
       "value": 94,
       "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
       "confidence": 65,
-      "expires_at": "2026-06-20T09:12:37Z",
+      "expires_at": "2026-06-20T09:15:06Z",
       "eval_type": "probability_above",
       "eval_value": 84
     },
@@ -1903,7 +1903,7 @@
       "value": 100,
       "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
       "confidence": 55,
-      "expires_at": "2026-06-20T09:12:37Z",
+      "expires_at": "2026-06-20T09:15:06Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -1914,7 +1914,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-06-20T09:12:37Z",
+      "expires_at": "2026-06-20T09:15:06Z",
       "eval_type": "probability_above",
       "eval_value": 77
     },
@@ -1925,7 +1925,7 @@
       "value": 51,
       "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-06-20T09:12:37Z",
+      "expires_at": "2026-06-20T09:15:06Z",
       "eval_type": "probability_above",
       "eval_value": 34
     },
@@ -1936,7 +1936,7 @@
       "value": 41,
       "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
       "confidence": 40,
-      "expires_at": "2026-06-20T09:12:37Z",
+      "expires_at": "2026-06-20T09:15:06Z",
       "eval_type": "probability_above",
       "eval_value": 26
     }
@@ -1944,8 +1944,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-06-20T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-06-20T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -1981,7 +1981,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-20T09:11:14Z",
+      "expires_at": "2026-06-20T09:14:11Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -1994,8 +1994,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-06-22T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-06-22T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2031,7 +2031,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-22T09:11:14Z",
+      "expires_at": "2026-06-22T09:14:11Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2044,8 +2044,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-06-26T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-06-26T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2081,7 +2081,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-26T09:11:14Z",
+      "expires_at": "2026-06-26T09:14:11Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2094,8 +2094,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-07-19T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-07-19T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2131,7 +2131,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-19T09:11:14Z",
+      "expires_at": "2026-07-19T09:14:11Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2144,8 +2144,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-06-20T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-06-20T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2181,7 +2181,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-20T09:11:14Z",
+      "expires_at": "2026-06-20T09:14:11Z",
       "evidence_for": [
         "Ukraine drone wave hits Moscow/refinery targets; NATO-entry line unchanged",
         "Russia-Ukraine remains ceiling-level battlefield stress: PBS, Kyiv Independent, France 24, The War Zone and other feeds report a major Ukrainian drone wave hitting Moscow/refinery "
@@ -2192,8 +2192,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-06-22T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-06-22T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2229,7 +2229,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-22T09:11:14Z",
+      "expires_at": "2026-06-22T09:14:11Z",
       "evidence_for": [
         "Ukraine drone wave hits Moscow/refinery targets; NATO-entry line unchanged",
         "Russia-Ukraine remains ceiling-level battlefield stress: PBS, Kyiv Independent, France 24, The War Zone and other feeds report a major Ukrainian drone wave hitting Moscow/refinery "
@@ -2240,8 +2240,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-06-26T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-06-26T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2277,7 +2277,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-26T09:11:14Z",
+      "expires_at": "2026-06-26T09:14:11Z",
       "evidence_for": [
         "Ukraine drone wave hits Moscow/refinery targets; NATO-entry line unchanged",
         "Russia-Ukraine remains ceiling-level battlefield stress: PBS, Kyiv Independent, France 24, The War Zone and other feeds report a major Ukrainian drone wave hitting Moscow/refinery "
@@ -2288,8 +2288,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-07-19T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-07-19T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2325,7 +2325,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-19T09:11:14Z",
+      "expires_at": "2026-07-19T09:14:11Z",
       "evidence_for": [
         "Ukraine drone wave hits Moscow/refinery targets; NATO-entry line unchanged",
         "Russia-Ukraine remains ceiling-level battlefield stress: PBS, Kyiv Independent, France 24, The War Zone and other feeds report a major Ukrainian drone wave hitting Moscow/refinery "
@@ -2336,8 +2336,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:24h:2026-06-20T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:24h:2026-06-20T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "pakistan_afghanistan",
       "tracker_name": "PAKISTAN-AFGHANISTAN",
       "event_type": "border_conflict_escalation",
@@ -2369,7 +2369,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-20T09:11:14Z",
+      "expires_at": "2026-06-20T09:14:11Z",
       "evidence_for": [
         "military_buildup (+5 signal weight)",
         "military buildup",
@@ -2381,8 +2381,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:72h:2026-06-22T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:72h:2026-06-22T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "pakistan_afghanistan",
       "tracker_name": "PAKISTAN-AFGHANISTAN",
       "event_type": "border_conflict_escalation",
@@ -2414,7 +2414,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-22T09:11:14Z",
+      "expires_at": "2026-06-22T09:14:11Z",
       "evidence_for": [
         "military_buildup (+5 signal weight)",
         "military buildup",
@@ -2426,8 +2426,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:7d:2026-06-26T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:7d:2026-06-26T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "pakistan_afghanistan",
       "tracker_name": "PAKISTAN-AFGHANISTAN",
       "event_type": "border_conflict_escalation",
@@ -2459,7 +2459,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-26T09:11:14Z",
+      "expires_at": "2026-06-26T09:14:11Z",
       "evidence_for": [
         "military_buildup (+5 signal weight)",
         "military buildup",
@@ -2471,8 +2471,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:30d:2026-07-19T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "pakistan_afghanistan:border_conflict_escalation:30d:2026-07-19T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "pakistan_afghanistan",
       "tracker_name": "PAKISTAN-AFGHANISTAN",
       "event_type": "border_conflict_escalation",
@@ -2504,7 +2504,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a new Afghanistan-Pakistan border clash, cross-border strike, airstrike, or major diplomatic rupture before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-19T09:11:14Z",
+      "expires_at": "2026-07-19T09:14:11Z",
       "evidence_for": [
         "military_buildup (+5 signal weight)",
         "military buildup",
@@ -2516,8 +2516,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-06-20T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-06-20T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2552,7 +2552,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-20T09:11:14Z",
+      "expires_at": "2026-06-20T09:14:11Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "holy site tension",
@@ -2564,8 +2564,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-06-22T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-06-22T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2600,7 +2600,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-22T09:11:14Z",
+      "expires_at": "2026-06-22T09:14:11Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "holy site tension",
@@ -2612,8 +2612,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-06-26T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-06-26T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2648,7 +2648,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-26T09:11:14Z",
+      "expires_at": "2026-06-26T09:14:11Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "holy site tension",
@@ -2660,8 +2660,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-07-19T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-07-19T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2696,7 +2696,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-19T09:11:14Z",
+      "expires_at": "2026-07-19T09:14:11Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "holy site tension",
@@ -2708,8 +2708,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia:nato_war_escalation:24h:2026-06-20T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia:nato_war_escalation:24h:2026-06-20T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia",
       "tracker_name": "RUSSIA-NATO",
       "event_type": "nato_war_escalation",
@@ -2744,7 +2744,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-20T09:11:14Z",
+      "expires_at": "2026-06-20T09:14:11Z",
       "evidence_for": [
         "Russia-NATO direct lane unchanged",
         "Russia-NATO direct lane is unchanged: Washington Post/CNN/Stars and Stripes/Reuters-linked headlines report Hegseth reviewing US force posture in Europe and pressuring allies. This"
@@ -2755,8 +2755,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia:nato_war_escalation:72h:2026-06-22T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia:nato_war_escalation:72h:2026-06-22T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia",
       "tracker_name": "RUSSIA-NATO",
       "event_type": "nato_war_escalation",
@@ -2791,7 +2791,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-22T09:11:14Z",
+      "expires_at": "2026-06-22T09:14:11Z",
       "evidence_for": [
         "Russia-NATO direct lane unchanged",
         "Russia-NATO direct lane is unchanged: Washington Post/CNN/Stars and Stripes/Reuters-linked headlines report Hegseth reviewing US force posture in Europe and pressuring allies. This"
@@ -2802,8 +2802,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia:nato_war_escalation:7d:2026-06-26T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia:nato_war_escalation:7d:2026-06-26T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia",
       "tracker_name": "RUSSIA-NATO",
       "event_type": "nato_war_escalation",
@@ -2838,7 +2838,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-26T09:11:14Z",
+      "expires_at": "2026-06-26T09:14:11Z",
       "evidence_for": [
         "Russia-NATO direct lane unchanged",
         "Russia-NATO direct lane is unchanged: Washington Post/CNN/Stars and Stripes/Reuters-linked headlines report Hegseth reviewing US force posture in Europe and pressuring allies. This"
@@ -2849,8 +2849,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia:nato_war_escalation:30d:2026-07-19T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "russia:nato_war_escalation:30d:2026-07-19T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "russia",
       "tracker_name": "RUSSIA-NATO",
       "event_type": "nato_war_escalation",
@@ -2885,7 +2885,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-19T09:11:14Z",
+      "expires_at": "2026-07-19T09:14:11Z",
       "evidence_for": [
         "Russia-NATO direct lane unchanged",
         "Russia-NATO direct lane is unchanged: Washington Post/CNN/Stars and Stripes/Reuters-linked headlines report Hegseth reviewing US force posture in Europe and pressuring allies. This"
@@ -2896,8 +2896,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-06-20T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-06-20T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2931,7 +2931,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-20T09:11:14Z",
+      "expires_at": "2026-06-20T09:14:11Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -2943,8 +2943,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-06-22T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-06-22T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2978,7 +2978,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-22T09:11:14Z",
+      "expires_at": "2026-06-22T09:14:11Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -2990,8 +2990,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-06-26T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-06-26T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -3025,7 +3025,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-06-26T09:11:14Z",
+      "expires_at": "2026-06-26T09:14:11Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -3037,8 +3037,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-07-19T09:11:14Z",
-      "generated_at": "2026-06-19T09:11:14Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-07-19T09:14:11Z",
+      "generated_at": "2026-06-19T09:14:11Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -3072,7 +3072,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-19T09:11:14Z",
+      "expires_at": "2026-07-19T09:14:11Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
