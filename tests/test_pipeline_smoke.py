@@ -166,6 +166,21 @@ def test_pipeline_sanitizes_tracker_notes_for_dashboard_dossiers(pipeline_run):
     assert "Auto -" not in html
 
 
+def test_dashboard_public_source_caveat_hides_internal_provider_errors(pipeline_run):
+    _, html, state = pipeline_run
+    meta = state.get("_meta", {})
+    public_text = " ".join(str(meta.get(k, "")) for k in ("source_limitation", "search_engine"))
+    banned = ["tavily", "web_search", "http 432", "http 401", "http 403", "forbidden", "failed"]
+    assert not any(token in public_text.lower() for token in banned)
+    assert "Source mix: official releases" in public_text
+    probe = meta.get("official_source_probe", {})
+    if probe:
+        assert "HTTPError" not in json.dumps(probe)
+        assert "error" not in json.dumps(probe).lower()
+    assert "publicSourceCaveat" in html
+    assert "STATE._meta?.source_limitation" not in html
+
+
 def test_dashboard_exposes_evidence_quality_and_polymarket_staleness(pipeline_run):
     _, html, state = pipeline_run
     tracker = next(t for t in state["dashboard_trackers"] if t["id"] == "iran_conventional")

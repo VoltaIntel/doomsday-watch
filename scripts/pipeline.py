@@ -109,6 +109,63 @@ def validate_state(state):
             print(f"  - {m}")
         return False, msgs
 
+
+_PUBLIC_SOURCE_CAVEAT = (
+    "Source mix: official releases, reputable public reporting, public-news "
+    "headline indexes, market data, and energy feeds. Upstream source coverage "
+    "was degraded in this run, so the assessment uses corroborated fallback "
+    "sources and treats single-source claims as watch items until confirmed."
+)
+
+
+def _public_source_label(raw: str) -> str:
+    """Return a public-safe source caveat, without vendor/API error details."""
+    text = (raw or "").strip().lower()
+    if not text:
+        return (
+            "Source mix: official releases, reputable public reporting, market "
+            "data, and energy feeds. Single-source claims are treated as watch "
+            "items until confirmed."
+        )
+    if any(token in text for token in (
+        "http", "tavily", "web_search", "432", "401", "403", "404",
+        "error", "failed", "blocked", "forbidden", "fallback", "rss",
+    )):
+        return _PUBLIC_SOURCE_CAVEAT
+    return raw.strip()
+
+
+def sanitize_public_meta(state):
+    """Scrub public dashboard metadata of internal provider/error strings.
+
+    `data/current_state.json` is force-published with GitHub Pages, so anything
+    stored here is viewer-facing. Keep operational error detail in vault/session
+    logs, not in the public state payload.
+    """
+    meta = state.get("_meta")
+    if not isinstance(meta, dict):
+        return state
+
+    raw = " ".join(str(meta.get(k, "")) for k in ("source_limitation", "search_engine"))
+    public_label = _public_source_label(raw)
+    meta["source_limitation"] = public_label
+    meta["search_engine"] = "public_safe_multi_source_fallback" if raw.strip() else "public_safe_multi_source"
+
+    probe = meta.get("official_source_probe")
+    if isinstance(probe, dict):
+        public_probe = {}
+        for key, val in probe.items():
+            if isinstance(val, dict):
+                public_probe[key] = {
+                    "ok": bool(val.get("ok")),
+                    "source": val.get("title") or val.get("url") or key,
+                }
+            else:
+                public_probe[key] = {"ok": bool(val), "source": key}
+        meta["official_source_probe"] = public_probe
+    return state
+
+
 ROOT = Path(__file__).resolve().parent.parent
 os.chdir(ROOT)
 
@@ -900,7 +957,9 @@ else:
         log.warning("polymarket_check_failed", extra={"err": repr(_pm_e)}, exc_info=True)
         state["polymarket"] = {"comparisons": {}, "banner": {"any_divergence": False}, "error": repr(_pm_e)}
 
-    # Write state to file (after all updates)
+    # Write state to file (after all updates). This file is published with
+    # GitHub Pages, so scrub internal provider/API diagnostics before writing.
+    sanitize_public_meta(state)
     with open("data/current_state.json", "w") as sf:
         json.dump(state, sf, indent=2)
 

@@ -117,6 +117,14 @@ function renderHero(){
 }
 function shortTime(ts){ if(!ts) return '--'; try{ const d = new Date(ts); return d.toISOString().slice(5,16).replace('T',' ')+'Z'; }catch{return ts;} }
 function trimNote(t){ return String(t.notes || '').replace(/^Auto\s*-\s*[^.]+\.\s*Manual\s*-\s*\.\s*/,'').trim(); }
+function publicSourceCaveat(meta={}){
+  const raw = `${meta.source_limitation || ''} ${meta.search_engine || ''}`.toLowerCase();
+  if(!raw.trim()) return 'Source mix: official releases, reputable public reporting, market data, and energy feeds. Single-source claims are treated as watch items until confirmed.';
+  if(['http','tavily','web_search','432','401','403','404','error','failed','blocked','forbidden','fallback','rss'].some(token => raw.includes(token))){
+    return 'Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.';
+  }
+  return meta.source_limitation || meta.search_engine || 'Source mix: official releases, reputable public reporting, market data, and energy feeds.';
+}
 function renderFlash(){
   $('#flashCount').textContent = `${TRACKERS.length} zones`;
   $('#flashList').innerHTML = TRACKERS.slice(0,6).map((t,i)=>`<article class="flash" data-id="${esc(t.id)}"><div class="rank">${String(i+1).padStart(2,'0')}</div><div><h3>${esc(t.emoji||'')} ${esc(t.name)}</h3><p>${esc(t.zone.toUpperCase())} · ${esc(String(t.trend||'stable').toUpperCase())} · ${esc((t.signals||[]).length)} signals</p></div><div class="prob-pill ${esc(t.zone)}">${pct(t.prob)}</div></article>`).join('');
@@ -208,7 +216,7 @@ function buildBrief(){
   const p=pct(STATE.global_war_probability ?? STATE.global_probability), z=STATE.global_zone||zoneOf(p);
   const top=TRACKERS.slice(0,5);
   const rising=TRACKERS.filter(t=>String(t.trend).toLowerCase()==='rising').slice(0,5);
-  $('#briefBody').innerHTML = `<p>The global security environment is <b style="color:${zoneColor(z)}">${esc(z.toUpperCase())}</b> with a composite coupled score of <b>${p}%</b>. The dashboard is currently being rendered as a triage-first command deck: global state, priority flashpoints, map, signal tape, then dossiers.</p><h3>Primary active flashpoints</h3><p>${esc(top.map(t=>`${t.name} ${pct(t.prob)}%`).join(' · '))}</p><h3>Rising pressure</h3><p>${esc(rising.map(t=>`${t.name} (${(t.signals||[]).length} signals)`).join(' · ') || 'No rising zones in current payload.')}</p><h3>Source caveat</h3><p>${esc(STATE._meta?.source_limitation || STATE._meta?.search_engine || 'No source limitation attached to this state payload.')}</p>`;
+  $('#briefBody').innerHTML = `<p>The global security environment is <b style="color:${zoneColor(z)}">${esc(z.toUpperCase())}</b> with a composite coupled score of <b>${p}%</b>. The dashboard is currently being rendered as a triage-first command deck: global state, priority flashpoints, map, signal tape, then dossiers.</p><h3>Primary active flashpoints</h3><p>${esc(top.map(t=>`${t.name} ${pct(t.prob)}%`).join(' · '))}</p><h3>Rising pressure</h3><p>${esc(rising.map(t=>`${t.name} (${(t.signals||[]).length} signals)`).join(' · ') || 'No rising zones in current payload.')}</p><h3>Source caveat</h3><p>${esc(publicSourceCaveat(STATE._meta))}</p>`;
 }
 function buildForecast(){
   const ladder = STATE.forecast_ladder || [];
