@@ -1,6 +1,12 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-20T03:07:56Z
+Updated: 2026-06-20T08:10:40Z
+
+## Latest dashboard repair
+- Issue: Intel Brief `Source caveat` exposed internal Tavily/web_search HTTP/provider errors to viewers.
+- Fix: patched `scripts/pipeline.py` to sanitize public `_meta.source_limitation`, `_meta.search_engine`, and `official_source_probe` before publishing `data/current_state.json`; patched `dashboard.html`/`index-redesign.html` to render `publicSourceCaveat(STATE._meta)` instead of raw metadata.
+- Verification: `pytest tests/test_pipeline_smoke.py -q` passed (11 tests); `NUKE_WATCH_AUTO_GIT=0 python3 scripts/pipeline.py` succeeded; inline JS `node --check` succeeded; local browser Intel Brief showed no Tavily/HTTP/internal error strings; public GitHub Pages `index.html` and `data/current_state.json` verified cache-busted clean.
+- Deploy: fix deployed in commit `cdec2d2`; cleanup commit `ea376f8` reverted a pytest bytecode artifact. Pages run `27865209186` completed success.
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning/deep scan.
