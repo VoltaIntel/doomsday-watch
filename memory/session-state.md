@@ -1,18 +1,18 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-21T09:09:00Z
+Updated: 2026-06-21T12:09:00Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning/deep scan.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `578da09` (`Update 2026-06-21T09:04:46Z — automated`).
+- Dashboard deploy commit: `01c8054` (`Update 2026-06-21T12:04:25Z — automated`).
 - Final deployed dashboard: **62% / imminent**; raw global in state: **61.98%**.
 - Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 98, `israel_palestine` 88, `sudan` 51, `russia` 50, `iran_nuclear` 48, `iran_conventional` 40.
-- Main movement vs 06:05Z: no numeric probability changes. Qualitative pressure/reinforcement: Washington Post/DW/CBC/TOI/World Oil carried renewed Hormuz-closure claims while CBC/Euronews/open-flow reporting still contradicted total stoppage; Al Jazeera/BBC/TOI/Arab Weekly/Kurdistan24 reported Lebanon strikes/casualties after ceasefire language; Reuters/Kyiv Independent/TRT/AnewZ reported Ukraine warnings of a possible large Russian strike wave; UN News/UN Press/Arab News/New Arab reinforced Sudan El Obeid atrocity-risk watch; Gaza UN diplomacy remained high stress.
-- Signal hygiene: canonical-only clean. No new canonical signal promoted. Maintained `iran_nuclear:diplomacy_active/iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_closed`, `israel_lebanon:ceasefire_violation/diplomacy_active`, `pakistan_afghanistan:military_buildup`, `sudan:military_buildup`, and `israel_palestine:holy_site_tension`. DPRK single broad-feed projectile item was not promoted after targeted Yonhap/Reuters fallback failed to corroborate.
-- Source caveat: `web_search` failed HTTP 432; fallback used Google News RSS 24h scans, 7d/30d sparse-zone crosschecks, terminal HTTP probes, UN News/UN Press, OilPriceAPI, Polymarket. Direct IAEA/OPEC returned 403; NATO RSS returned 404; EIA Today endpoint returned 404.
-- Market sanity: OilPriceAPI refreshed during deploy (Brent $80.38, WTI $76.51, gasoline $3.00, diesel $3.19, gold $4156.56); Polymarket cache refreshed at `2026-06-21T09:05:10Z`; worst mapped divergence `israel_lebanon` ~99.3pp, DPRK aligned.
-- Deploy verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON files valid; canonical active-signal check clean; deploy/push succeeded.
+- Main movement vs 09:04Z: no numeric probability changes. Qualitative reinforcement: Sudan/El Obeid is the cleanest fresh watch item with UN News/OHCHR/Reuters/Al Jazeera/Arab News/The Media Line/Tempo atrocity-risk reporting; Reuters/BBC/Times of Israel reinforced Israel-Lebanon strike/casualty pressure after ceasefire language; Hormuz remains contradictory with closure claims plus i Paper/CBC/open-flow reporting; sparse zones remained no-trigger.
+- Signal hygiene: canonical-only clean. No new canonical signal promoted. Maintained `iran_nuclear:diplomacy_active/iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_closed`, `israel_lebanon:ceasefire_violation/diplomacy_active`, `pakistan_afghanistan:military_buildup`, `sudan:military_buildup`, and `israel_palestine:holy_site_tension`.
+- Source caveat: `web_search`/`web_extract` failed HTTP 432; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press, EIA RSS, OilPriceAPI, and Polymarket. Direct IAEA/OPEC returned 403; NATO XML returned 404. Public `_meta` was sanitized to the standard multi-source fallback caveat.
+- Market sanity: OilPriceAPI refreshed during deploy (Brent $80.38, WTI $76.51, gasoline $3.00, diesel $3.19, gold $4156.56); Polymarket cache refreshed at `2026-06-21T12:04:47Z`; worst mapped divergence `israel_lebanon` ~99.3pp, DPRK aligned.
+- Deploy verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded.
 
 ## Recent dashboard repair
 - Issue: Intel Brief `Source caveat` exposed internal Tavily/web_search HTTP/provider errors to viewers.
