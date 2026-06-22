@@ -1,30 +1,30 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-22T12:11:00Z
+Updated: 2026-06-22T18:09:07Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `209fe3c` (`Update 2026-06-22T12:06:15Z — automated`).
-- Final deployed dashboard: **63% / imminent**; raw global in state: **63.09%**.
-- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 98, `israel_palestine` 88, `sudan` 55, `russia` 50, `iran_nuclear` 46, `iran_conventional` 46.
-- Main movement vs 09:05Z: **no numeric probability changes**. Qualitative reinforcement: CNBC/Al Jazeera/Reuters/CBC kept Hormuz shipping-stall-but-not-zero-flow picture alive; DD News kept Pakistan-Afghanistan open-war/airstrike pressure visible; Dabanga/UN-linked Sudan El Obeid atrocity warnings amplified; India-Pakistan Indus rhetoric stayed elevated.
-- Signal hygiene: canonical-only clean. No new configured signal promoted. Maintained `iran_nuclear:diplomacy_active/iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_closed`, `israel_lebanon:ceasefire_violation/diplomacy_active`, `pakistan_afghanistan:military_buildup`, `sudan:military_buildup`, and `israel_palestine:holy_site_tension`. No other configured signal active.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all required zone queries; fallback used Google News RSS, direct public-source pages, UN/NATO public-site probes, local energy cache/OilPriceAPI, and Polymarket Gamma/cache. UN/IAEA/OPEC/NATO RSS feeds were partially blocked/malformed; IAEA direct news returned 403.
-- Market sanity: OilPriceAPI refreshed during deploy (Brent $79.03, WTI $75.17, gasoline $2.99, diesel $3.15, gold $4206.04); Polymarket cache refreshed at `2026-06-22T12:06:55Z`; worst mapped divergence remains `israel_lebanon` ~99.3pp.
-- Deploy verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded.
+- Dashboard deploy commit: `4b34ee3` (`Update 2026-06-22T18:08:22Z — automated`).
+- Final deployed dashboard: **61% / imminent**; raw global in state: **58.05%**.
+- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 55, `russia` 50, `iran_nuclear` 42, `iran_conventional` 40.
+- Main movement vs 15:08Z: global held **61%**; Iran War final eased **42→40** as Reuters/Bloomberg/Insurance Journal showed Hormuz traffic picking up; Israel-Palestine eased **86→84** after stale Jerusalem-specific `holy_site_tension` aged out; Iran Nuclear stayed 42 but monitor-return claim is now disputed.
+- Signal hygiene: canonical-only clean. Refreshed `iran_conventional:hormuz_controlled_not_closed` and `sudan:military_buildup`; maintained `iran_nuclear:diplomacy_active/iaea_emergency`, `israel_lebanon:ceasefire_violation/diplomacy_active`, and `pakistan_afghanistan:military_buildup/diplomacy_active`. Removed `israel_palestine:holy_site_tension`; no DPRK signal promoted from launcher-system reporting.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required zone/topic queries; fallback used direct Google News RSS, UN News/NATO public-site probes, local OilPriceAPI energy refresh, and Polymarket Gamma/cache. IAEA/OPEC direct pages returned 403; UN Press returned client challenge.
+- Market sanity: OilPriceAPI refreshed during deploy (Brent $77.45, WTI $73.34, gold $4182.66); Polymarket cache refreshed at `2026-06-22T18:09:07Z`; worst mapped divergence remains `israel_lebanon` ~99.3pp.
+- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded.
 
 ## Previous important state
-- 06:08Z run deployed commit `95687f2`; dashboard **63% / imminent**. Final cleanup removed transient false positives `china:nuclear_rhetoric_official` and `israel_palestine:diplomacy_active`.
+- 12:06Z run deployed commit `209fe3c`; dashboard **63% / imminent**; later 15:08Z run had **61% / imminent** after Iran/Hormuz and Israel-Palestine easing.
 - Intel Brief source-caveat repair remains in place: `scripts/pipeline.py` sanitizes public `_meta.source_limitation`, `_meta.search_engine`, and `official_source_probe`; dashboard renders public-safe caveat.
 
 ## Watch next
-- Hormuz: independent AIS/ship-flow confirmation, insurer/charterer suspension, explicit waterway obstruction, naval escort incidents, or official reversal/denial of the shut-waterway claim.
+- Hormuz: independent AIS/ship-flow confirmation, insurer/charterer suspension, explicit waterway obstruction, naval escort incidents, or official reversal/denial of the waterway-closure claim.
+- Iran/IAEA: official access restoration vs monitoring-denial breakpoint; current reporting is mixed between U.S. claims and Iranian contradiction.
 - Israel-Lebanon: additional confirmed strikes/fatalities after truce arrangements, Hezbollah retaliation, or collapse of restoration channel.
-- Iran/IAEA: official access restoration vs monitoring-denial breakpoint; current reporting remains mixed between talks/technical work and site-access dispute.
 - Russia-Ukraine/Russia-NATO: NATO direct-entry, Article 5, allied combat-role decision, or verified Russia-NATO kinetic incident.
 - Pakistan-Afghanistan: corroborated cross-border strikes, drone losses, Pakistani retaliation, or verified Taliban/IEA force movement after contested claims.
-- DPRK: corroborated South Korean/Japanese/US official confirmation of fresh strategic projectile activity; single-source/commentary items are not enough.
+- DPRK: corroborated South Korean/Japanese/US official confirmation of fresh strategic projectile activity; launcher-system items alone are not enough.
 - India-Pakistan: whether Indus Waters threat rhetoric turns into force movement or cross-border incident.
 - Israel-Palestine: East Jerusalem/holy-site clashes, West Bank settler-attack cycles, or Gaza crisis moves that broaden into multi-front violence.
 - Sudan/El Obeid: whether warning/mobilisation reporting turns into confirmed offensive, infrastructure strike, or external-state involvement.
