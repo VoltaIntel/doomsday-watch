@@ -1,21 +1,22 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-23T00:09:14Z
+Updated: 2026-06-23T03:08:27Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `e95a8c9` (`Update 2026-06-23T00:08:36Z — automated`).
-- Final deployed dashboard: **61% / imminent**; raw global in state: **57.94%**.
-- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 62, `russia` 50, `iran_nuclear` 42, `iran_conventional` 40.
-- Main movement vs 21:05Z: global held **61%**; Sudan raw/final **60→62** after UN News El Obeid drone/critical-services report and Al Jazeera/U.S. RSF encirclement concern. Other numeric lanes held: Hormuz remains restricted/not zero-flow, Iran nuclear remains mixed with inspector-access claims disputed by Tehran, Lebanon remains near ceiling with fresh combat-breach reporting but truce framework not fully collapsed.
-- Signal hygiene: canonical-only clean. Refreshed `israel_lebanon:ceasefire_violation`, `sudan:infrastructure_strike`, `sudan:military_buildup`, `iran_conventional:hormuz_controlled_not_closed`, `pakistan_afghanistan:military_buildup/diplomacy_active`, and `iran_nuclear:diplomacy_active/iaea_emergency`. No DPRK, Turkey, China, India, Russia-NATO, Russia-Ukraine, Israel-Palestine, or Abyei canonical signal promoted.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required zone/topic queries; fallback used Google News RSS, UN News/UN Press/NATO/EIA public-site probes, local OilPriceAPI energy refresh, and Polymarket Gamma/cache. IAEA news/press/RSS and OPEC direct pages returned 403.
-- Market sanity: OilPriceAPI refreshed during deploy (Brent $78.15, WTI $74.19, gold $4189.22); Polymarket cache refreshed at `2026-06-23T00:09:14Z`; mapped markets remain horizon-mismatched divergence checks only.
+- Dashboard deploy commit: `a19337e` (`Update 2026-06-23T03:07:50Z — automated`).
+- Final deployed dashboard: **61% / imminent**; raw global in state: **57.97%**.
+- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 63, `russia` 50, `iran_nuclear` 42, `iran_conventional` 40.
+- Main movement vs 00:09Z: global held **61%**; Sudan raw/final **62→63** after Anadolu added displacement-shelter drone-casualty reporting on top of UN News El Obeid critical-services disruption and Al Jazeera/U.S. concern over RSF encirclement. Other numeric lanes held.
+- Signal hygiene: canonical-only clean. Active signals after final deploy: `iran_nuclear:diplomacy_active/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No DPRK, Turkey, China, India, Russia-NATO, Russia-Ukraine, Israel-Palestine, or Abyei canonical signal promoted.
+- False-positive cleanup: first 03Z deploy reintroduced `iran_conventional:diplomacy_active` from “negotiation” wording in Hormuz/oil notes. Neutralized wording, removed timeline entry, redeployed; final canonical check clean.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403.
+- Market sanity: OilPriceAPI refreshed during final deploy (Brent $77.92, WTI $74.09, gold $4150.66); Polymarket cache refreshed at `2026-06-23T03:08:27Z`; mapped markets remain horizon-mismatched divergence checks only.
 - Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded; git status clean immediately after deploy.
 
 ## Previous important state
-- 2026-06-22 21:05Z run deployed commit `b21522b`; dashboard **61% / imminent**, raw global **57.88%**, Sudan rose to 60 on El Obeid infrastructure/service disruption.
+- 2026-06-23 00:09Z run deployed commit `e95a8c9`; dashboard **61% / imminent**, raw global **57.94%**, Sudan rose to 62 on El Obeid infrastructure/service disruption.
 - Intel Brief source-caveat repair remains in place: `scripts/pipeline.py` sanitizes public `_meta.source_limitation`, `_meta.search_engine`, and `official_source_probe`; dashboard renders public-safe caveat.
 
 ## Watch next
