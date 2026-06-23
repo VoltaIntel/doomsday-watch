@@ -1,30 +1,40 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-23T15:09:30Z
+Updated: 2026-06-23T18:12:59Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `e954f68` (`Update 2026-06-23T15:08:56Z — automated`). A superseded 15:07Z commit (`daf6ba3`) was corrected for meta/global wording before final deploy.
-- Final deployed dashboard: **61% / imminent**; raw global in state: **57.74%**.
-- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 70, `russia` 50, `iran_nuclear` 46, `iran_conventional` 38.
-- Main movement vs 12:09Z: global held **61%**. `sudan` rose **67→70** after UN News, Sudan Tribune, GOV.UK/allied statement, and Channel Africa reported El Obeid/Kordofan drone/service disruption plus warnings/demands around an imminent RSF assault. No new canonical signal added.
-- Other lane status: Iran nuclear held at 46 coupled with IAEA access disputed/denied in fallback reporting; Hormuz remains constrained/half-open but not zero-flow; Israel-Lebanon stays 100 after coupling with mixed strike/breach + talk-channel evidence; Russia/NATO, Ukraine, Pakistan-Afghanistan, Gaza, DPRK, China, India, Turkey and Abyei held.
+- Dashboard deploy commit: `dc5ef24` (`Update 2026-06-23T18:06:39Z — automated`). Earlier 18:05Z commit `0ae7141` was superseded by a final metadata-alignment deploy.
+- Final deployed dashboard: **61% / imminent**; raw global in state: **57.44%**.
+- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 72, `russia` 50, `iran_nuclear` 46, `iran_conventional` 36.
+- Main movement vs 15:09Z: global held **61%**. `iran_conventional` eased **38→36 coupled** / raw **30→28** after BBC, Reuters, CNBC, Times of Israel, and Fox Business reported dozens of ships/tankers moving through Hormuz, traffic picking up, and oil easing. `sudan` rose **70→72** after GOV.UK/TRT World allied warnings that El Obeid is on the precipice of atrocity and demands that RSF halt an imminent assault.
+- Other lane status: Iran nuclear held 46 coupled with IAEA access still impaired; Israel-Lebanon stayed 100 after coupling; Russia/NATO, Ukraine, Pakistan-Afghanistan, Gaza, DPRK, China, India, Turkey and Abyei held.
 - Signal hygiene: canonical-only clean. Active signals after final deploy: `iran_nuclear:diplomacy_active/iaea_emergency/iaea_access_denied`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No noncanonical signals in zones/trackers/dashboard.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all attempted required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403. Public state sanitized by pipeline to safe fallback caveat, with detailed fallback retained in `_meta.source_fallback_detail`.
-- Market sanity: final deploy refreshed OilPriceAPI (Brent $76.93, WTI $73.38, gold $4129.00); Polymarket mapped cache refreshed at `2026-06-23T15:09:30Z`; worst mapped divergence remains `israel_lebanon` at ~99.3pp due horizon mismatch.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for attempted required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403. Public state sanitized by pipeline to safe fallback caveat, with detailed fallback retained in `_meta.source_fallback_detail`.
+- Market sanity: final deploy refreshed OilPriceAPI (Brent $77.11, WTI $73.13, gold $4129.63); Polymarket mapped cache refreshed at `2026-06-23T18:07:12Z`; worst mapped divergence remains `israel_lebanon` at ~99.3pp due horizon mismatch.
 - Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded; git status clean immediately after deploy before memory/vault logging.
 
+## Kabul Watch latest cron run
+- Job: Kenan daily Afghanistan/Kabul Watch summary for Discord/Telegram.
+- Research mode: Tavily/web_search disabled by prompt; used direct terminal/browser checks, Google News RSS, AP direct, Afghanistan International direct pages/feed, Amu TV, FlightStats, Safe Airspace, and carrier pages where reachable.
+- Kabul bottom line: no mass-casualty Kabul attack confirmed in the last 24h; main Kabul items were a Taliban raid that halted Tamadon TV broadcasts and a contained Mandawi market fire.
+- Confirmed Kabul items: Amu TV + Afghanistan International reported Taliban raided Tamadon TV in Kabul and broadcasts were cut; Afghanistan International, citing Taliban interior ministry, reported a Monday-night Mandawi fire burned 8 shops with about AFN 8m damage and firefighters prevented spread to 497 other shops/warehouses.
+- Afghanistan-wide / external: AP and Afghanistan International reported first closed-door EU-Taliban Brussels talks focused on deportations/consular issues; Taliban MFA said the delegation ended its Europe trip emphasizing broader diplomatic ties.
+- Aviation: no material KBL disruption found. FlightStats listed 23 Jun KBL departures including Ariana, Turkish, Kam Air, Flydubai/Emirates, and Ariana domestic sectors. Safe Airspace still lists Afghanistan and Pakistan at Risk Level 2; OAKX/Kabul FIR remains open but uncontrolled/no ATC. Ariana's direct site was unreachable from this environment, so aviation confidence stayed medium.
+- Unverified/local watch: Afghanistan International, citing sources, said Taliban justice minister detained Shiite elders in Kabul over Muharram flags and warned mourners to observe restrictions; not independently confirmed.
+- Delivery: prepared platform-split Discord + Telegram summary with matched facts/URLs and risk judged Medium / confidence Medium.
+
 ## Previous important state
+- 2026-06-23 15:09Z run deployed commit `e954f68`; dashboard **61% / imminent**, raw global **57.74%**, Sudan rose to 70.
 - 2026-06-23 12:09Z run deployed commit `2a35853`; dashboard **61% / imminent**, raw global **57.65%**, Iran Nuclear rose to 46 coupled on IAEA access-denial reports.
 - 2026-06-23 09:10Z run deployed commit `0f42cae`; dashboard **61% / imminent**, raw global **57.17%**, Sudan rose to 67.
-- 2026-06-23 06:09Z run deployed commit `dab968e`; dashboard **61% / imminent**, raw global **57.11%**, Iran War eased to 38 and Sudan rose to 65.
 - Intel Brief source-caveat repair remains in place: `scripts/pipeline.py` sanitizes public `_meta.source_limitation`, `_meta.search_engine`, and `official_source_probe`; dashboard renders public-safe caveat.
 
 ## Watch next
-- Sudan/El Obeid/Kordofan: whether warnings turn into confirmed offensive, broader infrastructure strike wave, or external-state involvement.
+- Sudan/El Obeid/Kordofan: whether allied atrocity warning turns into confirmed offensive, broader infrastructure strike wave, or external-state involvement.
+- Hormuz: independent AIS/ship-flow confirmation that recovery sustains; insurer/charterer suspension; explicit waterway obstruction; naval escort incidents; or official reversal/denial of traffic recovery.
 - Iran/IAEA: official confirmation/refutation of access-denial reports; inspector return; IAEA emergency board action; verified higher-level enrichment, underground-site restart, or device event.
-- Hormuz: independent AIS/ship-flow confirmation, insurer/charterer suspension, explicit waterway obstruction, naval escort incidents, or official reversal/denial of the waterway-closure claim.
 - Israel-Lebanon: additional confirmed strikes/fatalities after truce arrangements, Hezbollah retaliation, or collapse of restoration channel.
 - Russia-Ukraine/Russia-NATO: NATO direct-entry, Article 5, allied combat-role decision, or verified Russia-NATO kinetic incident.
 - Pakistan-Afghanistan: corroborated cross-border strikes, drone losses, Pakistani retaliation, or verified Taliban/IEA force movement after contested claims.
