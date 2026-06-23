@@ -1,17 +1,17 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-23T09:07:12Z
+Updated: 2026-06-23T09:10:48Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `424f94c` (`Update 2026-06-23T09:06:19Z — automated`).
+- Dashboard deploy commit: `0f42cae` (`Update 2026-06-23T09:10:09Z — automated`).
 - Final deployed dashboard: **61% / imminent**; raw global in state: **57.17%**.
 - Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 67, `russia` 50, `iran_nuclear` 42, `iran_conventional` 38.
 - Main movement vs 06:09Z: global held **61%**. `sudan` **65→67** on additional UN News/Sudan Tribune/Al Jazeera/RFI/allAfrica/Anadolu evidence for Kordofan infrastructure disruption, El Obeid service shutdowns, RSF encirclement pressure, and mass-atrocity warnings. DPRK rhetoric worsened qualitatively (Türkiye Today/Express Tribune nuclear-state/risk language) but no configured `north_korea` signal was promoted. Other numeric lanes held.
 - Signal hygiene: canonical-only clean. Active signals after deploy: `iran_nuclear:diplomacy_active/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No DPRK, Turkey, China, India, Russia-NATO, Russia-Ukraine, Israel-Palestine, or Abyei canonical signal promoted.
 - Source caveat: `web_search`/Tavily failed HTTP 432 for all attempted required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403. Public state was sanitized by pipeline to the safe fallback caveat.
-- Market sanity: OilPriceAPI refreshed during deploy (Brent $77.51, WTI $73.45, gold $4116.61); Polymarket mapped cache refreshed at `2026-06-23T09:07:12Z`; worst mapped divergence remains `israel_lebanon` at ~99.3pp due horizon mismatch.
+- Market sanity: OilPriceAPI refreshed during final deploy (Brent $77.51, WTI $73.52, gold $4128.84); Polymarket mapped cache refreshed at `2026-06-23T09:10:48Z`; worst mapped divergence remains `israel_lebanon` at ~99.3pp due horizon mismatch.
 - Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded; git status clean immediately after deploy before memory/vault logging.
 
 ## Previous important state
