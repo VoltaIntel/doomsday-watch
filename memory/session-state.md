@@ -1,19 +1,18 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-23T03:08:27Z
+Updated: 2026-06-23T06:09:06Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `a19337e` (`Update 2026-06-23T03:07:50Z — automated`).
-- Final deployed dashboard: **61% / imminent**; raw global in state: **57.97%**.
-- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 63, `russia` 50, `iran_nuclear` 42, `iran_conventional` 40.
-- Main movement vs 00:09Z: global held **61%**; Sudan raw/final **62→63** after Anadolu added displacement-shelter drone-casualty reporting on top of UN News El Obeid critical-services disruption and Al Jazeera/U.S. concern over RSF encirclement. Other numeric lanes held.
-- Signal hygiene: canonical-only clean. Active signals after final deploy: `iran_nuclear:diplomacy_active/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No DPRK, Turkey, China, India, Russia-NATO, Russia-Ukraine, Israel-Palestine, or Abyei canonical signal promoted.
-- False-positive cleanup: first 03Z deploy reintroduced `iran_conventional:diplomacy_active` from “negotiation” wording in Hormuz/oil notes. Neutralized wording, removed timeline entry, redeployed; final canonical check clean.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403.
-- Market sanity: OilPriceAPI refreshed during final deploy (Brent $77.92, WTI $74.09, gold $4150.66); Polymarket cache refreshed at `2026-06-23T03:08:27Z`; mapped markets remain horizon-mismatched divergence checks only.
-- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded; git status clean immediately after deploy.
+- Dashboard deploy commit: `dab968e` (`Update 2026-06-23T06:08:25Z — automated`).
+- Final deployed dashboard: **61% / imminent**; raw global in state: **57.11%**.
+- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 65, `russia` 50, `iran_nuclear` 42, `iran_conventional` 38.
+- Main movement vs 03:08Z: global held **61%**. `iran_conventional` final **40→38** after traffic/oil recovery evidence (EnergyNow/Al Arabiya/NBC/OilPriceAPI); `sudan` **63→65** after UN News/Al Jazeera/Sudan Tribune/Anadolu El Obeid encirclement, service-shutdown and shelter-casualty evidence. `israel_lebanon` raw eased **98→94** on Reuters/Gulf News truce-line reporting but final stayed 100 after Iran coupling.
+- Signal hygiene: canonical-only clean. Active signals after deploy: `iran_nuclear:diplomacy_active/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No DPRK, Turkey, China, India, Russia-NATO, Russia-Ukraine, Israel-Palestine, or Abyei canonical signal promoted.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for all required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403.
+- Market sanity: OilPriceAPI refreshed during deploy (Brent $77.00, WTI $72.98, gold $4138.09); Polymarket cache refreshed at `2026-06-23T06:09:06Z`; mapped markets remain horizon-mismatched divergence checks only.
+- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded; git status clean immediately after deploy before memory/vault logging.
 
 ## Previous important state
 - 2026-06-23 00:09Z run deployed commit `e95a8c9`; dashboard **61% / imminent**, raw global **57.94%**, Sudan rose to 62 on El Obeid infrastructure/service disruption.
