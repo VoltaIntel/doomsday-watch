@@ -1,18 +1,18 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-23T18:12:59Z
+Updated: 2026-06-23T21:12:00Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Dashboard deploy commit: `dc5ef24` (`Update 2026-06-23T18:06:39Z — automated`). Earlier 18:05Z commit `0ae7141` was superseded by a final metadata-alignment deploy.
-- Final deployed dashboard: **61% / imminent**; raw global in state: **57.44%**.
-- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 72, `russia` 50, `iran_nuclear` 46, `iran_conventional` 36.
-- Main movement vs 15:09Z: global held **61%**. `iran_conventional` eased **38→36 coupled** / raw **30→28** after BBC, Reuters, CNBC, Times of Israel, and Fox Business reported dozens of ships/tankers moving through Hormuz, traffic picking up, and oil easing. `sudan` rose **70→72** after GOV.UK/TRT World allied warnings that El Obeid is on the precipice of atrocity and demands that RSF halt an imminent assault.
-- Other lane status: Iran nuclear held 46 coupled with IAEA access still impaired; Israel-Lebanon stayed 100 after coupling; Russia/NATO, Ukraine, Pakistan-Afghanistan, Gaza, DPRK, China, India, Turkey and Abyei held.
-- Signal hygiene: canonical-only clean. Active signals after final deploy: `iran_nuclear:diplomacy_active/iaea_emergency/iaea_access_denied`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No noncanonical signals in zones/trackers/dashboard.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for attempted required zone/topic queries; fallback used Google News RSS, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403. Public state sanitized by pipeline to safe fallback caveat, with detailed fallback retained in `_meta.source_fallback_detail`.
-- Market sanity: final deploy refreshed OilPriceAPI (Brent $77.11, WTI $73.13, gold $4129.63); Polymarket mapped cache refreshed at `2026-06-23T18:07:12Z`; worst mapped divergence remains `israel_lebanon` at ~99.3pp due horizon mismatch.
+- Dashboard deploy commit: `1613f40` (`Update 2026-06-23T21:08:33Z — automated`). Earlier 21:06Z commit `8707991` was superseded by a final metadata-correction deploy.
+- Final deployed dashboard: **61% / imminent**; raw global in state: **57.50%**.
+- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 94, `israel_palestine` 84, `sudan` 74, `russia` 50, `iran_nuclear` 46, `iran_conventional` 36.
+- Main movement vs 18:07Z: global held **61%**. `sudan` rose **72→74** after GOV.UK, Anadolu and Sudan Tribune reported El Obeid atrocity warning, continued RSF drone attacks, civilian-infrastructure disruption and supply-route pressure. Other numeric lanes held.
+- Other lane status: Iran/Hormuz remains constrained-not-closed with BBC/gCaptain/Democracy Now evidence; Iran nuclear stayed 46 coupled with verification access impaired; Israel-Lebanon stayed 100 after coupling; Russia/NATO, Ukraine, Pakistan-Afghanistan, Gaza/West Bank, DPRK, China, India, Turkey and Abyei held.
+- Signal hygiene: canonical-only clean. Pipeline pruned expired `iran_nuclear:diplomacy_active`; active signals after final deploy: `iran_nuclear:iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `pakistan_afghanistan:diplomacy_active/military_buildup`, `sudan:infrastructure_strike/military_buildup`. No noncanonical signals in zones/trackers/dashboard.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for all attempted required zone/topic queries; fallback used Google News RSS, browser direct GOV.UK page, terminal HTTP official probes, UN News/UN Press/NATO/EIA, OilPriceAPI, and Polymarket Gamma/cache. IAEA news/press and OPEC direct pages returned 403. Public state sanitized by pipeline to safe fallback caveat, with detailed fallback retained in `_meta.source_fallback_detail`.
+- Market sanity: final deploy refreshed OilPriceAPI (Brent $76.88, WTI $73.06, gold $4110.02); Polymarket mapped cache refreshed at `2026-06-23T21:09:08Z`; worst mapped divergence remains `israel_lebanon` at ~99.3pp due horizon mismatch.
 - Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical active-signal check clean; deploy/push succeeded; git status clean immediately after deploy before memory/vault logging.
 
 ## Kabul Watch latest cron run
