@@ -1,22 +1,22 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-25T03:10:00Z
+Updated: 2026-06-25T06:10:00Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Deploy pushed HEAD: `8225609` (`Update 2026-06-25T03:07:08Z — automated`).
+- Deploy pushed HEAD: `ec60959` (`Update 2026-06-25T06:04:46Z — automated`).
 - Final dashboard/current state: **61% / imminent**; raw global in state: **61.06**.
 - Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 96, `israel_palestine` 86, `sudan` 78, `russia` 50, `iran_nuclear` 48, `iran_conventional` 30.
-- Movement vs 00Z: global **61→61** and all final coupled tracker probabilities unchanged. Iran conventional trend set to falling on stronger Hormuz/oil de-risking (CNBC/NYT/Al-Monitor/WSJ; Brent $72.62, WTI $69.44). Israel-Lebanon breach lane refreshed by south-Lebanon fatality/truce-breach coverage. Sudan/El Obeid pressure remains acute. DPRK/China remain rising/watch without configured trigger. Pakistan-Afghanistan remains narrow-source/noisy.
-- Signal hygiene: canonical-only clean after final redeploy. Active: `iran_nuclear:iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `russia_ukraine:military_buildup`, `pakistan_afghanistan:military_buildup`, `sudan:infrastructure_strike/military_buildup`. Removed false-positive `israel_lebanon:diplomacy_active` caused by broad note keyword matching of ceasefire phrasing, neutralized wording, removed timeline entry, redeployed.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required query groups. Fallback used Google News RSS, direct official/public terminal probes, UN/NATO/EIA/ISW pages, Polymarket Gamma/cache, and OilPriceAPI. IAEA/OPEC direct pages returned 403/access-denied. Google RSS sparse/empty for Turkey and South Sudan/Abyei.
-- Energy/markets: deploy refreshed OilPriceAPI Brent **$72.62**, WTI **$69.44**, gold **$3981.30**; Polymarket cache refreshed `2026-06-25T03:07:39Z`; worst mapped divergence remains `israel_lebanon` (~99.4pp, horizon mismatch).
-- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical signal check clean; deploy/push succeeded.
+- Movement vs 03Z: global **61→61** and all final coupled tracker probabilities unchanged. Oil/Hormuz de-risking persists (Brent $72.48, WTI $69.37 after deploy) but Türkiye Today adds Iran approved-route warning, so `iran_conventional:hormuz_controlled_not_closed` remains appropriate. Israel-Lebanon breach lane remains active on south-Lebanon fatalities/truce-breach coverage. Russia-Ukraine/Belarus pressure remains watch-high. Sudan/El Obeid pressure remains acute. China/DPRK remain rising/watch without configured triggers.
+- Signal hygiene: canonical-only clean after deploy. Active: `iran_nuclear:iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `russia_ukraine:military_buildup`, `pakistan_afghanistan:military_buildup`, `sudan:infrastructure_strike/military_buildup`. No noncanonical signals found.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required query groups. Fallback used Google News RSS, direct official/public terminal probes, UN/NATO/EIA/ISW pages, Polymarket Gamma/cache, and OilPriceAPI. IAEA/OPEC direct pages returned 403/access-denied; South Sudan/Abyei and broad emerging RSS were empty, Turkey/NATO allied sparse.
+- Energy/markets: deploy refreshed OilPriceAPI Brent **$72.48**, WTI **$69.37**, gold **$3995.33**; Polymarket cache refreshed `2026-06-25T06:05:21Z`; worst mapped divergence remains `israel_lebanon` (~99.4pp, horizon mismatch).
+- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical signal check clean; deploy/push succeeded. Memory files were updated after deploy.
 
 ## Watch next
 - Iran/IAEA: direct agency-page access returning; official confirmation/refutation of site-access modalities; inspector return; board action; verified higher-level enrichment, underground-site restart, or device-event.
-- Hormuz/oil: sustained AIS/ship-flow recovery vs tanker/vessel attack claims; insurer/charterer suspensions; explicit waterway obstruction; naval escort incidents; or official reversal/denial of traffic recovery.
+- Hormuz/oil: sustained AIS/ship-flow recovery vs tanker/vessel attack claims; insurer/charterer suspensions; explicit waterway obstruction; route-control escalation; naval escort incidents; or official reversal/denial of traffic recovery.
 - Russia-Ukraine/Belarus: confirmed Belarus-front activation, larger call-up, border assembly, Union State/treaty invocation, or allied direct-entry breakpoint.
 - Pakistan-Afghanistan: corroborated Durand Line casualty reports, Pakistani retaliation, cross-border strikes, drone losses, or confirmed force movement; current claims remain narrow-source/noisy.
 - Sudan/El Obeid/Kordofan: confirmed RSF offensive/entry into El Obeid, broader infrastructure/service disruption wave, external backing, or atrocity reporting.
