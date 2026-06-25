@@ -1,18 +1,18 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-25T06:10:00Z
+Updated: 2026-06-25T09:10:00Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Deploy pushed HEAD: `ec60959` (`Update 2026-06-25T06:04:46Z — automated`).
+- Deploy pushed HEAD: `23d9711` (`Update 2026-06-25T09:05:14Z — automated`).
 - Final dashboard/current state: **61% / imminent**; raw global in state: **61.06**.
 - Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 96, `israel_palestine` 86, `sudan` 78, `russia` 50, `iran_nuclear` 48, `iran_conventional` 30.
-- Movement vs 03Z: global **61→61** and all final coupled tracker probabilities unchanged. Oil/Hormuz de-risking persists (Brent $72.48, WTI $69.37 after deploy) but Türkiye Today adds Iran approved-route warning, so `iran_conventional:hormuz_controlled_not_closed` remains appropriate. Israel-Lebanon breach lane remains active on south-Lebanon fatalities/truce-breach coverage. Russia-Ukraine/Belarus pressure remains watch-high. Sudan/El Obeid pressure remains acute. China/DPRK remain rising/watch without configured triggers.
+- Movement vs 06Z: global **61→61** and all final coupled tracker probabilities unchanged. Oil/Hormuz de-risking continues (deploy: Brent $72.42, WTI $69.20, oil headlines lower on traffic recovery) while Lloyd’s List/WSJ route-control coverage keeps `iran_conventional:hormuz_controlled_not_closed` alive. Iran/IAEA access dispute persists; Israel-Lebanon breach lane active; Russia-Ukraine/Belarus pressure watch remains high; Sudan/El Obeid pressure remains acute; China/DPRK rising-watch but no configured trigger.
 - Signal hygiene: canonical-only clean after deploy. Active: `iran_nuclear:iaea_access_denied/iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `russia_ukraine:military_buildup`, `pakistan_afghanistan:military_buildup`, `sudan:infrastructure_strike/military_buildup`. No noncanonical signals found.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required query groups. Fallback used Google News RSS, direct official/public terminal probes, UN/NATO/EIA/ISW pages, Polymarket Gamma/cache, and OilPriceAPI. IAEA/OPEC direct pages returned 403/access-denied; South Sudan/Abyei and broad emerging RSS were empty, Turkey/NATO allied sparse.
-- Energy/markets: deploy refreshed OilPriceAPI Brent **$72.48**, WTI **$69.37**, gold **$3995.33**; Polymarket cache refreshed `2026-06-25T06:05:21Z`; worst mapped divergence remains `israel_lebanon` (~99.4pp, horizon mismatch).
-- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical signal check clean; deploy/push succeeded. Memory files were updated after deploy.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required query groups. Fallback used Google News RSS, direct official/public terminal probes, UN/NATO/EIA/ISW pages, Polymarket Gamma/cache, and OilPriceAPI. IAEA/OPEC direct pages returned 403/access-denied; initial Israel-Palestine and South Sudan/Abyei targeted RSS sparse, broader fallback used.
+- Energy/markets: deploy refreshed OilPriceAPI Brent **$72.42**, WTI **$69.20**, gold **$3989.32**; Polymarket cache refreshed `2026-06-25T09:05:48Z`; worst mapped divergence remains `israel_lebanon` (~99.3pp, horizon mismatch).
+- Verification: `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; JSON valid; canonical signal check clean; deploy/push succeeded. Memory and vault files updated after deploy.
 
 ## Watch next
 - Iran/IAEA: direct agency-page access returning; official confirmation/refutation of site-access modalities; inspector return; board action; verified higher-level enrichment, underground-site restart, or device-event.
