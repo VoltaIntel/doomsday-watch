@@ -1,29 +1,29 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-25T21:12:30Z
+Updated: 2026-06-26T00:07:10Z
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation morning deep scan refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Deploy pushed HEAD: `710878a` (`Update 2026-06-25T21:07:47Z — automated`).
-- Final dashboard/current state: **61% / imminent**; raw global in state: **61.38**.
-- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 92, `israel_palestine` 88, `sudan` 82, `russia` 50, `iran_nuclear` 48, `iran_conventional` 32.
-- Movement vs 18Z: global **60→61**. `pakistan_afghanistan` **88→92** with fresh cross-border clash/airstrike/shelling reports and canonical `military_buildup` reactivated; `sudan` **80→82**; `israel_palestine` **87→88**; `iran_conventional` coupled **30→32**; `israel_lebanon` raw **94→95** but capped at 100.
+- Deploy pushed HEAD: `7f1329b` (`Update 2026-06-26T00:05:45Z — automated`).
+- Final dashboard/current state: **61% / imminent**; raw global in state: **61.46**.
+- Top coupled trackers: `israel_lebanon` 100, `russia_ukraine` 98, `pakistan_afghanistan` 92, `israel_palestine` 88, `sudan` 82, `russia` 50, `iran_nuclear` 48, `iran_conventional` 32, `china` 24, `india` 11, `north_korea` 6.
+- Movement vs 21Z: global held **61**. Only numeric change was `north_korea` **5→6** as a watch-only adjustment on DPRK warship/strategic naval messaging; no configured DPRK firing-event/device-event signal was activated. Other active lanes were refreshed/reconfirmed without inflating probabilities.
 - Active canonical signals: `iran_nuclear:iaea_access_denied`, `iran_nuclear:iaea_emergency`, `iran_conventional:hormuz_controlled_not_closed`, `israel_lebanon:ceasefire_violation`, `russia_ukraine:military_buildup`, `pakistan_afghanistan:military_buildup`, `sudan:infrastructure_strike`, `sudan:military_buildup`, `israel_palestine:ceasefire_violation`.
-- Signal hygiene: post-deploy check caught false-positive `israel_lebanon:diplomacy_active` and `israel_palestine:diplomacy_active` from broad `ceasefire` keyword matching. Removed both, neutralized wording, redeployed, and verified no diplomacy-active timeline keys remain.
-- Source caveat: `web_search`/Tavily failed HTTP 432 for all 17 required query groups. Fallback used Google News RSS, direct official/public terminal probes, UN Press RSS, NATO public HTML pages, UN News HTML, EIA, OilPriceAPI and Polymarket Gamma/cache. IAEA direct pages returned 403; NATO RSS endpoints returned 404 while HTML pages were reachable; ISW direct page returned 403 but ISW headlines were visible via Google News RSS.
-- Energy/markets: deploy OilPriceAPI 21:07Z Brent **$74.68**, WTI **$71.40**, gold **$4026.48**; Polymarket cache refreshed `2026-06-25T21:08:21Z`; worst divergence remains `israel_lebanon` (~99.36pp, horizon mismatch).
-- Verification: JSON valid; canonical signals clean; `index.html` contains required command-deck markers; deploy/push succeeded; latest commit `710878a`.
+- Signal hygiene: canonical check clean after deploy; no non-canonical signals and no `diplomacy_active` false positives. Notes/news kept sanitized to avoid broad keyword traps.
+- Source caveat: `web_search`/Tavily failed HTTP 432 for required query groups. Fallback used Google News RSS, direct official/public terminal probes, UN Press RSS, UN News HTML, NATO public HTML pages, EIA, OilPriceAPI and Polymarket Gamma/cache. IAEA direct pages returned 403; South Sudan/Abyei and emerging-crisis RSS sparse/zero-hit.
+- Energy/markets: deploy OilPriceAPI 00:05Z Brent **$74.84**, WTI **$71.52**, gold **$4032.70**; Polymarket mapped-slug cache refreshed `2026-06-26T00:06:22Z`; worst divergence remains `israel_lebanon` (~99.4pp, horizon mismatch).
+- Verification: JSON valid; canonical signals clean; `index.html` contains required command-deck markers; deploy/push succeeded; latest commit `7f1329b`.
 
 ## Watch next
-- Pakistan-Afghanistan: corroboration/refutation of reported Durand Line clashes, Pakistani airstrikes/shelling, casualty claims, border closures, or official mobilization; downgrade quickly if reports prove single-source/noisy.
-- Hormuz/oil: whether ship-hit story becomes a pattern, insurer/charterer suspensions, explicit waterway obstruction, route-control escalation, naval escort incidents, or actual sustained traffic collapse.
+- Hormuz/oil: repeated ship strikes, explicit waterway obstruction, insurer/charterer suspensions, naval escort incidents, mining, or sustained traffic collapse.
 - Iran/IAEA: direct agency-page access returning; official confirmation/refutation of site-access modalities; inspector return; board action; verified higher-level enrichment, underground-site restart, or device event.
-- Russia-Ukraine/Belarus: confirmed Belarus-front activation, larger call-up, border assembly, Union State/treaty invocation, or allied direct-entry breakpoint.
+- Pakistan-Afghanistan: corroboration/refutation of Durand Line airstrike/shelling/casualty claims, border closures, or official mobilization; downgrade quickly if claims prove single-source/noisy.
 - Sudan/El Obeid/Kordofan: confirmed RSF entry/offensive into El Obeid, broader infrastructure/service disruption wave, external backing, or atrocity reporting.
+- Russia-Ukraine/Belarus: confirmed Belarus-front activation, larger call-up, border assembly, Union State/treaty invocation, or allied direct-entry breakpoint.
 - Israel-Lebanon and Gaza/West Bank: more confirmed truce-breach fatalities, Hezbollah retaliation, multi-front violence, holy-site tension, or wider regional spillover.
-- China-Taiwan: whether authority/law-enforcement or tabletop-drill evidence becomes sea-isolation, blockade execution, amphibious movement, or major PLA force-movement threshold.
-- DPRK: credible official/wire confirmation of a fresh configured firing-event or device-event activity; shipbuilding/social repost noise is not enough.
+- DPRK: credible official/wire confirmation of a configured strategic firing-event or device-event activity; warship/naval-rhetoric alone is not enough.
+- China-Taiwan: whether carrier/tabletop/quarantine evidence becomes sea-isolation, blockade execution, amphibious movement, or major PLA force-movement threshold.
 - Turkey, India-Pakistan, South Sudan/Abyei: currently sparse/no configured triggers; keep checks.
 
 ## Operational reminders
