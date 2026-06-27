@@ -1,6 +1,16 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-27T12:08:00Z
+Updated: 2026-06-27T18:18:15Z
+
+## Latest Kabul Watch cron run
+- Job: Kenan daily Afghanistan/Kabul Watch summary.
+- Time: 2026-06-27T18:18:15Z.
+- Result: delivered platform-split Discord + Telegram summary.
+- Bottom line: no major confirmed Kabul security incident in the last 24h; main fresh confirmed development was the Hindu Kush earthquake felt in Kabul with no immediate casualties/damage reported.
+- Kabul posture: IEA-linked Ariana quoted Shahabuddin Delawar in Kabul saying Ashura passed peacefully under full security and Afghanistan had achieved security/unity; treated as official messaging only.
+- Pakistan/civil disruption: WFP said Pakistan border closures plus the Middle East crisis are worsening food security and have pushed ~60% of trade through Iran; Ariana reported Torkham trade/pedestrian closure continuing with stranded drivers/vehicles and protest threats after Eid.
+- Aviation: no material KBL disruption found. Live OAKB/OAKX NOTAM decode showed standing 2026-06-25 operating notices, not a new closure; Safe Airspace baseline still lists OAKX open but uncontrolled Class G; Kam Air's latest notice is added Kabul-Tashkent frequency from 2026-07-02.
+- Reachability caveat: KIA flights page, Flydubai updates, and Turkish announcements timed out from this environment.
 
 ## Latest cron run
 - Job: DoomsdayWatch nuclear escalation MORNING DEEP SCAN 12Z refresh.
