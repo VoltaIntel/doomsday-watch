@@ -1,30 +1,29 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-27T21:10:00Z
+Updated: 2026-06-28T00:12:00Z
 
 ## Latest cron run
-- Job: DoomsdayWatch nuclear escalation MORNING DEEP SCAN 21Z refresh.
+- Job: DoomsdayWatch nuclear escalation MORNING DEEP SCAN 00Z refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
-- Deploy pushed HEAD: `208772f` (`Update 2026-06-27T21:07:59Z — automated`).
-- Final dashboard/current state: **65% / imminent**; raw global in state: **65.02** after deploy.
-- Movement vs 18Z: `iran_conventional` **80→82** coupled on Reuters/AP/WSJ/WaPo/CNBC follow-through for tanker/Bahrain/U.S.-Iran exchange coverage; `israel_lebanon` **90→92** coupled after Hezbollah rejection and new south-Lebanon hits; `sudan` **84→86** on UN/DW/NDTV/Sudan Tribune El Obeid/drone/backing pressure; `pakistan_afghanistan` **38→36** on continued zero fresh corroboration.
-- Coupled tracker table: `russia_ukraine` 98, `israel_lebanon` 92, `israel_palestine` 88, `sudan` 86, `iran_conventional` 82, `russia` 50, `iran_nuclear` 44, `pakistan_afghanistan` 36, `china` 26, `north_korea` 11, `india` 11, `turkey` 5, `south_sudan_abyei` 8.
+- Deploy pushed HEAD: `056a752` (`Update 2026-06-28T00:07:26Z — automated`).
+- Final dashboard/current state: **65% / imminent**; raw global in state: **65.22** after deploy.
+- Movement vs 21Z: global stayed **65**; `iran_conventional` **82→84** coupled after NPR/PBS/LA Times joined Reuters/WSJ/CNBC reporting on U.S. strikes against Iranian targets following the Hormuz tanker hit; `pakistan_afghanistan` **36→34** as targeted fresh corroboration remained absent and the older border signal decayed. All other coupled tracker probabilities unchanged.
+- Coupled tracker table: `russia_ukraine` 98, `israel_lebanon` 92, `israel_palestine` 88, `sudan` 86, `iran_conventional` 84, `russia` 50, `iran_nuclear` 44, `pakistan_afghanistan` 34, `china` 26, `north_korea` 11, `india` 11, `turkey` 5, `south_sudan_abyei` 8.
 - Active canonical signals after deploy: `iran_conventional:ceasefire_violation`, `iran_conventional:hormuz_controlled_not_closed`, `iran_conventional:military_buildup`, `israel_lebanon:ceasefire_violation`, `israel_lebanon:diplomacy_active`, `israel_lebanon:diplomacy_refused`, `iran_nuclear:diplomacy_active`, `north_korea:missile_range_test`, `russia_ukraine:military_buildup`, `pakistan_afghanistan:military_buildup`, `sudan:infrastructure_strike`, `sudan:military_buildup`, `israel_palestine:ceasefire_violation`.
-- Signal hygiene: canonical check clean after deploy. Removed false-positive `iran_nuclear:iaea_access_denied` caused by IAEA inspection/access phrasing; neutralized Iran nuclear notes/latest_news and removed `iran_nuclear:iaea_access_denied` from `data/signal_timeline.json` before final redeploy.
-- Source caveat: `web_search`/Tavily failed HTTP 432 on all required queries. Fallback used Google News RSS, direct terminal official/public probes, UN Press RSS, NATO pages, OCHA oPt, EIA, OilPriceAPI and Polymarket Gamma/cache. IAEA pages returned 403; ReliefWeb API returned 410; Pakistan-Afghanistan targeted RSS was zero-hit.
-- Energy/markets: OilPriceAPI 21Z Brent **$73.08**, WTI **$69.23**, gold **$4080.83**. Energy/RSS coverage remains mixed but still shows tanker passage/traffic recovery, rejecting full waterway-stoppage thresholds. Polymarket mapped cache refreshed `2026-06-27T21:08:38Z`; worst mapped divergence remains `russia_ukraine` (~97.5pp, horizon mismatch).
-- Emerging review: no tracker added. Thailand-Cambodia rose to watch-only with multiple 7d dispute/mediation/drill/HIMARS-acquisition hits but no nuclear/alliance-spillover threshold; Ethiopia-Eritrea, Guyana/Venezuela and Kosovo-Serbia remain below scope.
+- Signal hygiene: canonical check clean after deploy. No new canonical signal added at 00Z. Reconfirmed active signals in Iran conventional, Israel-Lebanon, Iran nuclear, DPRK, Russia-Ukraine, Sudan, and Israel-Palestine. Pakistan-Afghanistan was not reconfirmed and continues to decay.
+- Source caveat: `web_search`/Tavily failed HTTP 432 on all required queries. Fallback used Google News RSS, direct terminal official/public probes, UN News/Press RSS, NATO pages, OCHA oPt, EIA, OilPriceAPI and Polymarket Gamma/cache. IAEA pages returned 403; ReliefWeb old endpoint returned 410.
+- Energy/markets: OilPriceAPI 00Z Brent **$73.08**, WTI **$69.23**, gold **$4080.83**. Energy/RSS coverage shows oil sliding as Hormuz traffic rebounds/resumes, rejecting full waterway-stoppage thresholds. Polymarket cache refreshed `2026-06-28T00:08:01Z`; worst mapped divergence remains `russia_ukraine` (~97.5pp, horizon mismatch).
+- Emerging review: no tracker added. Thailand-Cambodia softened to watch-only/older-data status; Ethiopia-Eritrea remains low-confidence; Guyana/Venezuela and Kosovo-Serbia remain stale/low-confidence for dashboard scope.
 - Verification: JSON valid; canonical signal check clean; `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; deploy/push succeeded.
 
 ## Watch next
-- Iran/Hormuz: repeated ship strikes, explicit waterway obstruction, insurer/charterer suspensions, naval escort incidents, mining, or sustained traffic collapse.
-- Iran conventional: whether U.S.-Iran exchanges remain contained or broaden to Bahrain/Gulf targets, U.S. bases, Israel, shipping, or oil infrastructure.
+- Iran/Hormuz: repeated ship strikes, waterway obstruction, mining, escort incidents, traffic collapse, insurance/charterer suspensions, oil shock, or U.S./Iran retaliation loop broadening.
+- Iran/agency verification: actual site visit execution, reversal of monitoring framework, verified higher-level enrichment, underground restart, device event.
 - Israel-Lebanon: framework implementation vs collapse; Hezbollah retaliation, IDF escalation, multi-front spillover, or rejection hardening.
-- Iran/agency verification: actual site visit execution, direct agency-page accessibility, verified higher-level enrichment, underground-site restart, device event.
 - Pakistan-Afghanistan: corroboration/refutation of Kunar/Asadabad/TTP border-shelling claim; downgrade further if still unconfirmed.
 - Sudan/El Obeid: confirmed RSF entry/offensive, broader drone/infrastructure disruption, external backing, or atrocity reporting.
 - Russia/NATO: Baltic/Poland incident, treaty invocation, Article 5 language, allied direct-entry breakpoint, or Russian hybrid action moving from warning to event.
-- Thailand-Cambodia: watch-only unless escalation gains nuclear/alliance-spillover relevance or stronger configured trigger evidence.
+- DPRK: whether Kim-supervised weapons events stay tactical or expand into strategic systems, DMZ escalation, or device event.
 
 ## Operational reminders
 - Always read `data/tracker_config.json` first and use canonical tracker IDs/signals only.
