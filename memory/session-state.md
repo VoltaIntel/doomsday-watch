@@ -1,5 +1,15 @@
 # Nuke Watch Session State
 
+Updated: 2026-06-30T18:10:42Z
+
+## Latest Kabul Watch cron
+- Researched via terminal/browser-direct fallbacks only; Tavily/web_search/web_extract not used per job instructions.
+- Output risk judgment: **High / confidence Medium** for Kabul/travel due Pakistan-Taliban escalation, with no major confirmed Kabul security incident in strict last 24h and no material KBL cancellation pattern found.
+- Key confirmed sources used: AP, BBC, Afghan MFA, KabulNow, Afghanistan International, FlightStats, SafeAirspace.
+- Core findings: Pakistani strikes in Paktia/Paktika/Kunar remain dominant escalation; UN/BBC say at least 28 civilians killed/49 injured, Taliban/MFA/AP say 36 killed/160+ injured; Taliban summoned Pakistan chargé; UN SG urged halt/civilian protection; Pakistan spokesman warned Taliban support for militants would have consequences; Australia renewed do-not-travel warning; FlightStats showed scheduled KBL Ariana/Kam/TK/FZ/EK-code-share ops with no cancellation/delay terms in fetched pages.
+- Unverified/older-than-strict-24h Kabul watch item retained as caveat: Afghanistan International Jun29 report of explosion/fire/smoke in Parwan-e-Seh/PD4 with unknown cause and no Taliban comment in article.
+
+
 Updated: 2026-06-30T18:10:00Z
 
 ## Latest cron run
