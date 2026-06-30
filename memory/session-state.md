@@ -1,19 +1,19 @@
 # Nuke Watch Session State
 
-Updated: 2026-06-30T00:12:00Z
+Updated: 2026-06-30T03:12:00Z
 
 ## Latest cron run
-- Job: DoomsdayWatch nuclear escalation MORNING DEEP SCAN 00Z refresh.
+- Job: DoomsdayWatch nuclear escalation MORNING DEEP SCAN 03Z refresh.
 - Repo: `/home/openclaw/.openclaw/workspace/nuke-watch`
 - Published state: **67% / imminent** (raw **67.22**).
-- Deploy: succeeded, latest deploy commit `e4a4a4a` (`Update 2026-06-30T00:07:30Z — automated`).
-- Mover vs 21Z: **Pakistan-Afghanistan raw/coupled 36→40** after Al Jazeera/PBS/ABC/KabulNow/Los Angeles Times/France24 corroborated Pakistani cross-border actions, civilian casualty claims and Taliban retaliation language. Global stayed rounded at **67**. Other numeric lanes unchanged.
+- Deploy: succeeded, latest deploy commit `835872b` (`Update 2026-06-30T03:05:22Z — automated`).
+- Mover vs 00Z: **no numeric probability moves**. Pakistan-Afghanistan remains the main active rising lane at **40 critical**; global stayed rounded at **67**.
 - Current coupled table: Russia-Ukraine **98**, Israel-Lebanon **94**, Iran War **90**, Israel-Palestine **88**, Sudan **86**, Russia-NATO **50**, Iran Nuclear **46**, Pakistan-Afghanistan **40**, China-Taiwan **26**, India-Pakistan **11**, DPRK **10**, South Sudan/Abyei **8**, Turkey **5**.
 - Active canonical signals after deploy: Iran conventional (`ceasefire_violation`, `diplomacy_active`, `hormuz_controlled_not_closed`, `military_buildup`); Israel-Lebanon (`ceasefire_violation`, `diplomacy_active`, `diplomacy_refused`); Pakistan-Afghanistan (`military_buildup`); Sudan (`military_buildup`). Canonical active-signal check clean.
-- Source caveat: `web_search`/Tavily failed HTTP 432 on required searches; fallback used Google News RSS for all trackers + oil/energy + IAEA/UN + NATO/allied + emerging, direct UN/NATO/OCHA/EIA/IAEA/OPEC probes, terminal HTTP, Yahoo/OilPrice local energy feed, and Polymarket cache. Official probe: UN News/Press OK, NATO public pages OK, OCHA oPt OK, EIA RSS OK, IAEA news/press 403, OPEC 403.
-- Energy/markets: deploy refreshed Yahoo energy feed: Brent **$73.51**, WTI **$70.16**, gas **$3.176**, gold **$4028.50**. Hormuz/tanker-hit headlines are live, but Reuters/loading and oil-pricing context still reject full-waterway-stoppage pricing. Polymarket refreshed `2026-06-30T00:08:09Z`; mapped markets remain horizon-mismatched sanity flags, worst `russia_ukraine` about **97.5pp**.
+- Source caveat: `web_search`/Tavily failed HTTP 432 on 17/17 required searches; fallback used Google News RSS for all trackers + oil/energy + IAEA/UN + NATO/allied + emerging, direct UN/NATO/OCHA/EIA/IAEA/OPEC probes, terminal HTTP, Yahoo energy feed, and Polymarket cache. Official probe: UN News/Press OK, NATO public pages OK, OCHA oPt OK, EIA RSS OK, IAEA news/press 403, OPEC 403.
+- Energy/markets: deploy refreshed Yahoo energy feed: Brent **$73.99**, WTI **$70.78**, gas **$3.172**, gold **$3980.20**. Hormuz/tanker-risk headlines are live, but shipping-resumption reports and oil pricing still reject full-waterway-stoppage pricing. Polymarket refreshed `2026-06-30T03:06:06Z`; mapped markets remain horizon-mismatched sanity flags, worst `russia_ukraine` about **97.5pp**.
 - Auto-detection: no tracker added. Emerging fallback for Thailand-Cambodia/Ethiopia-Eritrea/Guyana-Venezuela/Kosovo-Serbia returned zero qualifying fresh items.
-- DPRK: DD News surfaced a fresh-indexed ballistic-firing headline, but exact-title crosscheck pointed to older Reuters/Straits Times reporting; treated watch-only and no `north_korea:missile_range_test` was promoted.
+- DPRK: NK News/KCNA-style tactical-strike drill headline treated watch-only; no `north_korea` canonical signal promoted.
 - Verification: JSON valid; canonical signal check clean; `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`; deploy/push succeeded.
 
 ## Watch next
