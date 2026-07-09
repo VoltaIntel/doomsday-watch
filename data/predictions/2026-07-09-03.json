@@ -1,0 +1,1232 @@
+{
+  "generated_at": "2026-07-09T03:05:59Z",
+  "date": "2026-07-09",
+  "hour": "03",
+  "predictions": [
+    {
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "type": "military_operation",
+      "value": 98,
+      "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
+      "confidence": 75,
+      "expires_at": "2026-07-10T03:06:46Z",
+      "eval_type": "probability_above",
+      "eval_value": 88
+    },
+    {
+      "tracker_id": "pakistan_afghanistan",
+      "tracker_name": "PAKISTAN-AFGHANISTAN",
+      "type": "border_conflict",
+      "value": 46,
+      "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
+      "confidence": 65,
+      "expires_at": "2026-07-10T03:06:46Z",
+      "eval_type": "probability_above",
+      "eval_value": 36
+    },
+    {
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "type": "military_operation",
+      "value": 98,
+      "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
+      "confidence": 55,
+      "expires_at": "2026-07-10T03:06:46Z",
+      "eval_type": "probability_above",
+      "eval_value": 88
+    },
+    {
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "type": "escalation",
+      "value": 100,
+      "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-10T03:06:46Z",
+      "eval_type": "probability_above",
+      "eval_value": 78
+    },
+    {
+      "tracker_id": "iran_nuclear",
+      "tracker_name": "IRAN NUCLEAR",
+      "type": "nuclear_development",
+      "value": 50,
+      "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
+      "confidence": 40,
+      "expires_at": "2026-07-10T03:06:46Z",
+      "eval_type": "probability_above",
+      "eval_value": 35
+    },
+    {
+      "tracker_id": "south_sudan_abyei",
+      "tracker_name": "SOUTH SUDAN ABYEI",
+      "type": "escalation",
+      "value": 14,
+      "description": "Current escalation indicators suggest SOUTH SUDAN ABYEI will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-10T03:06:46Z",
+      "eval_type": "probability_above",
+      "eval_value": 2
+    }
+  ],
+  "forecast_engine": {
+    "version": "forecast_v2",
+    "model_version": "base_rate_evidence_v1",
+    "calibration_version": "forecast_calibration_v1",
+    "resolution_status_version": "forecast_resolution_status_v1",
+    "review_status_version": "forecast_review_status_v1",
+    "resolution_method": "manual_or_source_verified",
+    "horizons": [
+      "24h",
+      "72h",
+      "7d",
+      "30d"
+    ]
+  },
+  "forecast_ladder": [
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-10T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 51,
+      "base_rate_pct": 12.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 12.0,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 17.64,
+        "signal_delta_pp": 10.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 7.5,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 50.64,
+        "final_probability_pct": 51,
+        "matched_sources": [
+          "Reuters via Google News RSS 2026-07-08T13:32Z",
+          "CNBC/PBS via web_search 2026-07-07/08",
+          "OilPriceAPI cache 2026-07-08T22:20Z"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 24h is estimated at 51%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-10T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "hormuz controlled not closed",
+        "US-Iran/Hormuz cycle keeps Iran conventional risk at ceiling watch"
+      ],
+      "evidence_against": [
+        "ceasefire violation"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-12T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 66,
+      "base_rate_pct": 21.6,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 21.6,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 23.52,
+        "signal_delta_pp": 10.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 7.5,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 66.12,
+        "final_probability_pct": 66,
+        "matched_sources": [
+          "Reuters via Google News RSS 2026-07-08T13:32Z",
+          "CNBC/PBS via web_search 2026-07-07/08",
+          "OilPriceAPI cache 2026-07-08T22:20Z"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 72h is estimated at 66%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-12T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "hormuz controlled not closed",
+        "US-Iran/Hormuz cycle keeps Iran conventional risk at ceiling watch"
+      ],
+      "evidence_against": [
+        "ceasefire violation"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-16T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 83,
+      "base_rate_pct": 32.4,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 32.4,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 29.4,
+        "signal_delta_pp": 10.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 7.5,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 82.8,
+        "final_probability_pct": 83,
+        "matched_sources": [
+          "Reuters via Google News RSS 2026-07-08T13:32Z",
+          "CNBC/PBS via web_search 2026-07-07/08",
+          "OilPriceAPI cache 2026-07-08T22:20Z"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 7d is estimated at 83%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-16T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "hormuz controlled not closed",
+        "US-Iran/Hormuz cycle keeps Iran conventional risk at ceiling watch"
+      ],
+      "evidence_against": [
+        "ceasefire violation"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-08T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 100,
+      "base_rate_pct": 54.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 54.0,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 35.28,
+        "signal_delta_pp": 10.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 7.5,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 110.28,
+        "final_probability_pct": 100,
+        "matched_sources": [
+          "Reuters via Google News RSS 2026-07-08T13:32Z",
+          "CNBC/PBS via web_search 2026-07-07/08",
+          "OilPriceAPI cache 2026-07-08T22:20Z"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 30d is estimated at 100%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-08T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "hormuz controlled not closed",
+        "US-Iran/Hormuz cycle keeps Iran conventional risk at ceiling watch"
+      ],
+      "evidence_against": [
+        "ceasefire violation"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-10T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 32,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 17.64,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 31.64,
+        "final_probability_pct": 32,
+        "matched_sources": [
+          "AOL/Reuters via Google News RSS 2026-07-09T00:41Z",
+          "Asharq Al-Awsat via Google News RSS 2026-07-08T17:34Z",
+          "Amnesty/CTV via Google News RSS 2026-07-08T23:05Z"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 24h is estimated at 32%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-10T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "South Lebanon strike/capture reporting continues"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: fresh south-Lebanon reporting shows Israeli strikes, four killed including a school principal, Hezbollah-capture reporting, and renewed war-crimes scrutiny. The ca"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-12T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 52,
+      "base_rate_pct": 32.4,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 32.4,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 23.52,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 51.92,
+        "final_probability_pct": 52,
+        "matched_sources": [
+          "AOL/Reuters via Google News RSS 2026-07-09T00:41Z",
+          "Asharq Al-Awsat via Google News RSS 2026-07-08T17:34Z",
+          "Amnesty/CTV via Google News RSS 2026-07-08T23:05Z"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 72h is estimated at 52%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-12T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "South Lebanon strike/capture reporting continues"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: fresh south-Lebanon reporting shows Israeli strikes, four killed including a school principal, Hezbollah-capture reporting, and renewed war-crimes scrutiny. The ca"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-16T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 74,
+      "base_rate_pct": 48.6,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 48.6,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 29.4,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 74.0,
+        "final_probability_pct": 74,
+        "matched_sources": [
+          "AOL/Reuters via Google News RSS 2026-07-09T00:41Z",
+          "Asharq Al-Awsat via Google News RSS 2026-07-08T17:34Z",
+          "Amnesty/CTV via Google News RSS 2026-07-08T23:05Z"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 7d is estimated at 74%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-16T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "South Lebanon strike/capture reporting continues"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: fresh south-Lebanon reporting shows Israeli strikes, four killed including a school principal, Hezbollah-capture reporting, and renewed war-crimes scrutiny. The ca"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-08T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 91,
+      "base_rate_pct": 60.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 60.0,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 35.28,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 91.28,
+        "final_probability_pct": 91,
+        "matched_sources": [
+          "AOL/Reuters via Google News RSS 2026-07-09T00:41Z",
+          "Asharq Al-Awsat via Google News RSS 2026-07-08T17:34Z",
+          "Amnesty/CTV via Google News RSS 2026-07-08T23:05Z"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 30d is estimated at 91%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-08T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "South Lebanon strike/capture reporting continues"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: fresh south-Lebanon reporting shows Israeli strikes, four killed including a school principal, Hezbollah-capture reporting, and renewed war-crimes scrutiny. The ca"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-10T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 28,
+      "base_rate_pct": 6.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 6.0,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 17.64,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 27.64,
+        "final_probability_pct": 28,
+        "matched_sources": [
+          "Washington Post via Google News RSS 2026-07-09T01:05Z",
+          "Meduza via Google News RSS 2026-07-08T14:54Z",
+          "Moscow Times via Google News RSS 2026-07-08T21:51Z"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 24h is estimated at 28%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-10T03:05:59Z",
+      "evidence_for": [
+        "Ukraine war severe; NATO-summit support debate continues",
+        "03:01 deep scan: NATO-summit/Patriot-manufacture/refinery-strike debate keeps the war severe. No public direct NATO-entry decision or new nuclear-rhetoric threshold surfaced"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-12T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 38,
+      "base_rate_pct": 10.8,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.8,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 23.52,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 38.32,
+        "final_probability_pct": 38,
+        "matched_sources": [
+          "Washington Post via Google News RSS 2026-07-09T01:05Z",
+          "Meduza via Google News RSS 2026-07-08T14:54Z",
+          "Moscow Times via Google News RSS 2026-07-08T21:51Z"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 72h is estimated at 38%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-12T03:05:59Z",
+      "evidence_for": [
+        "Ukraine war severe; NATO-summit support debate continues",
+        "03:01 deep scan: NATO-summit/Patriot-manufacture/refinery-strike debate keeps the war severe. No public direct NATO-entry decision or new nuclear-rhetoric threshold surfaced"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-16T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 50,
+      "base_rate_pct": 16.2,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 16.2,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 29.4,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 49.6,
+        "final_probability_pct": 50,
+        "matched_sources": [
+          "Washington Post via Google News RSS 2026-07-09T01:05Z",
+          "Meduza via Google News RSS 2026-07-08T14:54Z",
+          "Moscow Times via Google News RSS 2026-07-08T21:51Z"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 7d is estimated at 50%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-16T03:05:59Z",
+      "evidence_for": [
+        "Ukraine war severe; NATO-summit support debate continues",
+        "03:01 deep scan: NATO-summit/Patriot-manufacture/refinery-strike debate keeps the war severe. No public direct NATO-entry decision or new nuclear-rhetoric threshold surfaced"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-08T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 66,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 98.0,
+        "threat_component_pp": 35.28,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 66.28,
+        "final_probability_pct": 66,
+        "matched_sources": [
+          "Washington Post via Google News RSS 2026-07-09T01:05Z",
+          "Meduza via Google News RSS 2026-07-08T14:54Z",
+          "Moscow Times via Google News RSS 2026-07-08T21:51Z"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 30d is estimated at 66%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-08T03:05:59Z",
+      "evidence_for": [
+        "Ukraine war severe; NATO-summit support debate continues",
+        "03:01 deep scan: NATO-summit/Patriot-manufacture/refinery-strike debate keeps the war severe. No public direct NATO-entry decision or new nuclear-rhetoric threshold surfaced"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:24h:2026-07-10T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 46,
+      "base_rate_pct": 10.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 15.84,
+        "signal_delta_pp": 10.15,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 45.99,
+        "final_probability_pct": 46,
+        "matched_sources": [
+          "UN News via Google News RSS 2026-07-03",
+          "Al Jazeera via Google News RSS 2026-07-07",
+          "PBS via Google News RSS 2026-07-06"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 24h is estimated at 46%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-10T03:05:59Z",
+      "evidence_for": [
+        "military_buildup (+6 signal weight)",
+        "military buildup",
+        "El Obeid drone/siege danger remains top humanitarian escalation"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:72h:2026-07-12T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 59,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 21.12,
+        "signal_delta_pp": 10.15,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 59.27,
+        "final_probability_pct": 59,
+        "matched_sources": [
+          "UN News via Google News RSS 2026-07-03",
+          "Al Jazeera via Google News RSS 2026-07-07",
+          "PBS via Google News RSS 2026-07-06"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 72h is estimated at 59%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-12T03:05:59Z",
+      "evidence_for": [
+        "military_buildup (+6 signal weight)",
+        "military buildup",
+        "El Obeid drone/siege danger remains top humanitarian escalation"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:7d:2026-07-16T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 74,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 26.4,
+        "signal_delta_pp": 10.15,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 73.55,
+        "final_probability_pct": 74,
+        "matched_sources": [
+          "UN News via Google News RSS 2026-07-03",
+          "Al Jazeera via Google News RSS 2026-07-07",
+          "PBS via Google News RSS 2026-07-06"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 7d is estimated at 74%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-16T03:05:59Z",
+      "evidence_for": [
+        "military_buildup (+6 signal weight)",
+        "military buildup",
+        "El Obeid drone/siege danger remains top humanitarian escalation"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:30d:2026-08-08T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 97,
+      "base_rate_pct": 45.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 45.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 31.68,
+        "signal_delta_pp": 10.15,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 96.83,
+        "final_probability_pct": 97,
+        "matched_sources": [
+          "UN News via Google News RSS 2026-07-03",
+          "Al Jazeera via Google News RSS 2026-07-07",
+          "PBS via Google News RSS 2026-07-06"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 30d is estimated at 97%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-08T03:05:59Z",
+      "evidence_for": [
+        "military_buildup (+6 signal weight)",
+        "military buildup",
+        "El Obeid drone/siege danger remains top humanitarian escalation"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-10T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 15,
+      "base_rate_pct": 10.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 15.84,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 2.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 15.34,
+        "final_probability_pct": 15,
+        "matched_sources": [
+          "NBC/local via Google News RSS 2026-07-08T19:42Z",
+          "IMEMC/Arab News via Google News RSS 2026-07-08",
+          "Al Arabiya/MEE via Google News RSS 2026-07-08"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 15%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-10T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "Gaza lethal-incident reporting remains fresh"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: Gaza lethal-incident reporting remains fresh across NBC/local syndication, IMEMC, Arab News, Al Arabiya and MEE-indexed items. Existing ceasefire_violation lane re"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-12T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 29,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 21.12,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 2.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 28.62,
+        "final_probability_pct": 29,
+        "matched_sources": [
+          "NBC/local via Google News RSS 2026-07-08T19:42Z",
+          "IMEMC/Arab News via Google News RSS 2026-07-08",
+          "Al Arabiya/MEE via Google News RSS 2026-07-08"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 29%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-12T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "Gaza lethal-incident reporting remains fresh"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: Gaza lethal-incident reporting remains fresh across NBC/local syndication, IMEMC, Arab News, Al Arabiya and MEE-indexed items. Existing ceasefire_violation lane re"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-16T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 43,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 26.4,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 2.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 42.9,
+        "final_probability_pct": 43,
+        "matched_sources": [
+          "NBC/local via Google News RSS 2026-07-08T19:42Z",
+          "IMEMC/Arab News via Google News RSS 2026-07-08",
+          "Al Arabiya/MEE via Google News RSS 2026-07-08"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 43%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-16T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "Gaza lethal-incident reporting remains fresh"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: Gaza lethal-incident reporting remains fresh across NBC/local syndication, IMEMC, Arab News, Al Arabiya and MEE-indexed items. Existing ceasefire_violation lane re"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-08T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 66,
+      "base_rate_pct": 45.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 45.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 31.68,
+        "signal_delta_pp": -5.0,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 2.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 66.18,
+        "final_probability_pct": 66,
+        "matched_sources": [
+          "NBC/local via Google News RSS 2026-07-08T19:42Z",
+          "IMEMC/Arab News via Google News RSS 2026-07-08",
+          "Al Arabiya/MEE via Google News RSS 2026-07-08"
+        ]
+      },
+      "confidence_score": 88,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 66%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-08T03:05:59Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
+        "Gaza lethal-incident reporting remains fresh"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "03:01 deep scan: Gaza lethal-incident reporting remains fresh across NBC/local syndication, IMEMC, Arab News, Al Arabiya and MEE-indexed items. Existing ceasefire_violation lane re"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia:nato_war_escalation:24h:2026-07-10T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia",
+      "tracker_name": "RUSSIA-NATO",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 22,
+      "base_rate_pct": 6.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 6.0,
+        "threat_score_pct": 52.0,
+        "threat_component_pp": 9.36,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 21.86,
+        "final_probability_pct": 22,
+        "matched_sources": [
+          "Guardian via web_search 2026-06-26",
+          "Telegraph via Google News RSS 2026-07-03",
+          "ERR via Google News RSS 2026-07-07"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-NATO: nato war escalation risk over the next 24h is estimated at 22%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-10T03:05:59Z",
+      "evidence_for": [
+        "Poland/Baltic provocation warnings persist, but no Article 5 event",
+        "03:01 deep scan: Poland/Baltic provocation-warning cycle persists across Guardian/Telegraph/Politico/WaPo-indexed coverage, balanced by ERR reporting no concrete attack plan. No Ar"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia:nato_war_escalation:72h:2026-07-12T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia",
+      "tracker_name": "RUSSIA-NATO",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 30,
+      "base_rate_pct": 10.8,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.8,
+        "threat_score_pct": 52.0,
+        "threat_component_pp": 12.48,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 29.78,
+        "final_probability_pct": 30,
+        "matched_sources": [
+          "Guardian via web_search 2026-06-26",
+          "Telegraph via Google News RSS 2026-07-03",
+          "ERR via Google News RSS 2026-07-07"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-NATO: nato war escalation risk over the next 72h is estimated at 30%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-12T03:05:59Z",
+      "evidence_for": [
+        "Poland/Baltic provocation warnings persist, but no Article 5 event",
+        "03:01 deep scan: Poland/Baltic provocation-warning cycle persists across Guardian/Telegraph/Politico/WaPo-indexed coverage, balanced by ERR reporting no concrete attack plan. No Ar"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia:nato_war_escalation:7d:2026-07-16T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia",
+      "tracker_name": "RUSSIA-NATO",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 38,
+      "base_rate_pct": 16.2,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 16.2,
+        "threat_score_pct": 52.0,
+        "threat_component_pp": 15.6,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 38.3,
+        "final_probability_pct": 38,
+        "matched_sources": [
+          "Guardian via web_search 2026-06-26",
+          "Telegraph via Google News RSS 2026-07-03",
+          "ERR via Google News RSS 2026-07-07"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-NATO: nato war escalation risk over the next 7d is estimated at 38%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-16T03:05:59Z",
+      "evidence_for": [
+        "Poland/Baltic provocation warnings persist, but no Article 5 event",
+        "03:01 deep scan: Poland/Baltic provocation-warning cycle persists across Guardian/Telegraph/Politico/WaPo-indexed coverage, balanced by ERR reporting no concrete attack plan. No Ar"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia:nato_war_escalation:30d:2026-08-08T03:05:59Z",
+      "generated_at": "2026-07-09T03:05:59Z",
+      "tracker_id": "russia",
+      "tracker_name": "RUSSIA-NATO",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 52,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 52.0,
+        "threat_component_pp": 18.72,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 0.0,
+        "source_delta_pp": 4.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 52.22,
+        "final_probability_pct": 52,
+        "matched_sources": [
+          "Guardian via web_search 2026-06-26",
+          "Telegraph via Google News RSS 2026-07-03",
+          "ERR via Google News RSS 2026-07-07"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-NATO: nato war escalation risk over the next 30d is estimated at 52%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new Russia-NATO direct incident, nuclear deployment signal, unscheduled nuclear exercise, or explicit NATO-targeted escalation before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-08T03:05:59Z",
+      "evidence_for": [
+        "Poland/Baltic provocation warnings persist, but no Article 5 event",
+        "03:01 deep scan: Poland/Baltic provocation-warning cycle persists across Guardian/Telegraph/Politico/WaPo-indexed coverage, balanced by ERR reporting no concrete attack plan. No Ar"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    }
+  ],
+  "forecast_calibration": {
+    "version": "forecast_calibration_v1",
+    "horizons": {}
+  },
+  "forecast_resolution_status": {
+    "version": "forecast_resolution_status_v1",
+    "total_resolved": 0,
+    "current_resolved": 0,
+    "current_pending": 24,
+    "last_resolved_at": null,
+    "by_horizon": {}
+  },
+  "forecast_review_status": {
+    "version": "forecast_review_status_v1",
+    "expired_unresolved": 50,
+    "review_queue_version": "forecast_review_queue_v1",
+    "oldest_age_hours": 542.1,
+    "next_forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
+    "evidence_required": true,
+    "auto_resolution": false
+  },
+  "accuracy": {
+    "total_evaluated": 1577692,
+    "correct": 1151506,
+    "accuracy_pct": 73,
+    "mean_brier": 0.5126
+  }
+}
