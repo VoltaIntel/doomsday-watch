@@ -248,7 +248,6 @@
     "sudan:military_buildup": "2026-07-07T12:12:27Z",
     "israel_palestine:ceasefire_violation": "2026-07-07T12:12:27Z",
     "iran_conventional:ceasefire_violation": "2026-07-08T00:04:30Z",
-    "iran_nuclear:diplomacy_refused": "2026-07-09T00:04:55Z",
     "south_sudan_abyei:military_buildup": "2026-07-09T06:06:05Z",
     "iran_conventional:oil_infrastructure_threat": "2026-07-09T12:06:19Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-07-10T15:07:12Z",
@@ -269,8 +268,8 @@
     "last_scan": "2026-07-10T18:07:06Z",
     "scan_time_utc": "2026-07-10T18:07:06Z",
     "analysis_window": "18z_morning_deep_scan_past_24h_with_7d_crosschecks_all_configured_trackers_oil_energy_iaea_un_nato_allied_emerging_crises_polymarket",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "web_search_plus_google_news_rss_direct_official",
+    "source_limitation": "web_search returned results for all 17 required tracker and sector groups. Google News RSS and direct Reuters, NBC/AP, Al Jazeera, Taiwan MND, UN, NATO, UNISFA and EIA pages provided fallback or corroboration. Direct IAEA and OPEC collector probes returned HTTP 403; configured OCHA OPT and UN Sudan feed paths returned HTTP 404. Single-source claims were not promoted.",
     "old_probabilities": {
       "iran_conventional": 100,
       "israel_lebanon": 88,
@@ -295,7 +294,7 @@
     "raw_global_probability": 69.3,
     "allied_positions": "NATO\u2019s July 8 Ankara declaration remains the governing allied position: Article 5 reaffirmed, Russia treated as a long-term threat, at least EUR70 billion committed for Ukraine in 2026, and free Hormuz navigation plus a verifiable Iran outcome supported.",
     "false_positive_cleanup_4": "Removed negation-triggered iran_nuclear:enrichment_90 and north_korea:nuclear_test; neutralized higher-level enrichment/device-test wording before redeploy.",
-    "energy_oil": "18:04Z OilPriceAPI: Brent $75.77, WTI $71.20, gasoline $2.97, diesel $3.52, heating oil $3.52, natural gas $2.93 and gold $4,112.12.",
+    "energy_oil": "18:07Z OilPriceAPI: Brent $75.73, WTI $71.26, gasoline $2.97, diesel $3.52, heating oil $3.52, natural gas $2.92 and gold $4,101.92.",
     "polymarket_sanity": "18:05Z exact-slug snapshot: U.S. invasion of Iran 16.5%, Iran weapon 5.7%, Iran device test 4.5%, NPT withdrawal 14.2%, NATO Article 5 6.5%, China invasion 3.95%, China-Taiwan clash 6.55%, DPRK invasion 3.9%, Ukraine agreement 21.5%, Israel-Lebanon normalization 17.0%. Horizon and definition mismatches make these sanity checks only.",
     "false_positive_cleanup_5": "Removed negation-triggered turkey:nuclear_rhetoric_official created by \u201cno nuclear rhetoric\u201d wording; neutralized Turkey note/news wording before redeploy.",
     "false_positive_cleanup_6": "Removed negation-triggered iran_nuclear:enrichment_90, iran_conventional:bomber_redeployment, and turkey:missile_range_test; neutralized higher-level-enrichment/strategic-aviation/weapon-firing wording before redeploy.",
@@ -1438,7 +1437,7 @@
       "iran_nuclear:diplomacy_refused->diplomacy_active"
     ],
     "auto_detection_18z": "No new zone met the configured threshold of three mentions across two sources. The emerging-crisis RSS basket returned zero fresh items; wider search surfaced background/watch-list material only.",
-    "energy_oil_18z": "18:04Z OilPriceAPI: Brent $75.77, WTI $71.20, gasoline $2.97, diesel $3.52, heating oil $3.52, natural gas $2.93 and gold $4,112.12. Prices and continuing selective transit reject literal zero-flow or formal-closure treatment.",
+    "energy_oil_18z": "18:07Z OilPriceAPI: Brent $75.73, WTI $71.26, gasoline $2.97, diesel $3.52, heating oil $3.52, natural gas $2.92 and gold $4,101.92. Prices and selective transit reject literal zero-flow or formal-closure treatment.",
     "allied_positions_18z": "NATO\u2019s July 8 Ankara declaration reaffirmed Article 5, described Russia as a long-term threat, committed at least EUR70 billion for Ukraine in 2026, backed free navigation through Hormuz and supported a verifiable diplomatic outcome for Iran. No Article 5 invocation or direct NATO-Russia kinetic event was confirmed.",
     "polymarket_sanity_18z": "18:05Z exact-slug snapshot: U.S. invasion of Iran 16.5%, Iran weapon 5.7%, Iran device test 4.5%, NPT withdrawal 14.2%, NATO Article 5 6.5%, China invasion 3.95%, China-Taiwan clash 6.55%, DPRK invasion 3.9%, Ukraine agreement 21.5%, Israel-Lebanon normalization 17.0%. Horizon and definition mismatches make these sanity checks only.",
     "old_probabilities_raw_18z": {
@@ -6527,7 +6526,8 @@
         ]
       }
     },
-    "signal_reactivation_20260710_15z": "iran_conventional:hormuz_controlled_not_closed reactivated at 2026-07-10T15:07:12Z after temporal expiry because Reuters 2026-07-10 directly reconfirmed selective passage under asserted Iranian terms while traffic continued."
+    "signal_reactivation_20260710_15z": "iran_conventional:hormuz_controlled_not_closed reactivated at 2026-07-10T15:07:12Z after temporal expiry because Reuters 2026-07-10 directly reconfirmed selective passage under asserted Iranian terms while traffic continued.",
+    "post_deploy_meta_fix_18z": "Restored the honest public source/fallback description after pipeline sanitisation and removed the superseded Iran-nuclear refusal marker from top-level timestamps and signal_timeline."
   },
   "trackers": {
     "iran_conventional": {
