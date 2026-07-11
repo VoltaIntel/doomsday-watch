@@ -1,14 +1,14 @@
 # Session State
 
-Last update: 2026-07-11T12:05Z
+Last update: 2026-07-11T15:09Z
 
-DoomsdayWatch 12Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
+DoomsdayWatch 15Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
-- Published state: **72% / imminent**; no numeric tracker or global changes versus 09Z and no canonical signal additions/removals.
-- Full coupled table: Iran War **100**, Russia-Ukraine **99**, Israel-Lebanon **98**, Sudan **90**, Israel-Palestine **88**, Iran Nuclear **54**, Russia-NATO **52**, Pakistan-Afghanistan **46**, China-Taiwan **28**, DPRK **18**, South Sudan/Abyei **17**, India-Pakistan **11**, Turkey **5**.
-- Fresh developments: Washington is seeking a public Iranian navigation pledge by Saturday while Hormuz tanker traffic remains slow but nonzero; Israeli shelling/demolitions continued in Deir Seryan and Khiam ahead of a proposed pilot handover; UN/OHCHR documented 15 El Obeid drone strikes in three weeks killing at least 45 civilians.
-- Auto-detection: eastern DRC remains the leading untracked watch item but has only two independent fresh source groups versus the configured three-source threshold. No tracker added.
-- False-positive review excluded a July 11-indexed Russia-Belarus drill story whose underlying event was May 19-21 and an Abyei 54-death story recycled from January 2024.
-- Sources: all required live web-search lanes attempted successfully, cross-checked with Google News RSS and direct UN/NATO/Reuters/The Hill/The National pages. Direct IAEA/OPEC and configured OCHA/UN Sudan feed paths failed; weekend energy values are Friday closes. Artifact: `data/morning_deep_scan_sources_20260711T120309Z.json`.
-- Energy/markets: Brent **$75.22**, WTI **$71.41**. Polymarket refreshed at 12:05Z; definition/horizon mismatches remain material.
-- Deploy: `bash scripts/deploy.sh` succeeded and pushed. Post-deploy source-provenance fix pushed as `022cd60`; required Command Deck markers, canonical IDs/signals, JSON validity, clean status and local/origin parity verified.
+- Published state: **73% / imminent** (raw **69.9%**), up 1 point from 12Z.
+- Full coupled table: Iran War **100**, Russia-Ukraine **99**, Israel-Lebanon **94**, Sudan **90**, Israel-Palestine **88**, Eastern DR Congo **58**, Iran Nuclear **54**, Russia-NATO **52**, Pakistan-Afghanistan **46**, China-Taiwan **28**, DPRK **18**, South Sudan/Abyei **17**, India-Pakistan **11**, Turkey **5**.
+- Top mover: Israel-Lebanon **98→94** after KAN reporting, carried by several outlets, that Israel froze sensitive south-Lebanon operations at Washington’s request and is preparing a pilot-area handover alongside Rome talks. `israel_lebanon:diplomacy_active` activated while `ceasefire_violation` remains active pending implementation.
+- Auto-detection: added canonical tracker `eastern_drc` at **58 / imminent**. OHCHR, UN News and AP established at least three mentions across two source groups of intensified/expanding fighting with armed drones, heavy artillery, Rwanda-backed M23 and civilian harm, satisfying `tracker_config.json` (`min_mentions=3`, `min_sources=2`).
+- Existing Iran conventional truce-breach and Iran nuclear verification-gap signals were reconfirmed after deploy TTL checks.
+- Sources: all 17 live web-search lanes returned. RSS and direct OHCHR/UN/AP/Reuters/Middle East Monitor pages supplied corroboration. Local fallback helper recorded HTTP 432 on its own search path but completed RSS/direct collection. IAEA/OPEC direct pages and configured OCHA/UN Sudan feeds remained unavailable.
+- Energy: weekend Friday closes remain Brent **$75.22**, WTI **$71.41**. Polymarket mapped refresh succeeded at 15:08Z; horizon/definition mismatch remains material.
+- Deploy: `bash scripts/deploy.sh` succeeded twice (second pass restored TTL-confirmed signals) and pushed. Required Command Deck markers, JSON/canonical validation, 14-tracker coverage, clean local status and origin parity passed. Final deploy commit: `9eb6e36`.
