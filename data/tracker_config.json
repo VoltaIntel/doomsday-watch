@@ -12,7 +12,8 @@
     "pakistan_afghanistan",
     "sudan",
     "israel_palestine",
-    "south_sudan_abyei"
+    "south_sudan_abyei",
+    "eastern_drc"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -287,6 +288,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "eastern_drc": {
+      "name": "Eastern DR Congo",
+      "base_rate": 20,
+      "description": "Eastern DR Congo / M23-Rwanda regional escalation",
+      "signals": {
+        "military_buildup": {
+          "weight": 6,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -357,9 +385,10 @@
     "iran_nuclear": 0.12,
     "sudan": 0.03,
     "israel_palestine": 0.05,
-    "south_sudan_abyei": 0.02
+    "south_sudan_abyei": 0.02,
+    "eastern_drc": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-06-15T03:01:42Z",
+  "last_updated": "2026-07-11T15:05:53Z",
   "dashboard_path": "dashboard.html"
 }
