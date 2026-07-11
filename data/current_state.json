@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-11T00:07:22Z",
+  "timestamp": "2026-07-11T00:08:50Z",
   "zones": {
     "iran_conventional": {
       "base_prob": 100,
@@ -38,8 +38,8 @@
       "active_signals": [
         "ceasefire_violation"
       ],
-      "notes": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet strong enough to establish diplomacy active or a durable halt",
-      "last_updated": "2026-07-11T00:07:22Z",
+      "notes": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet sufficiently corroborated to establish a new diplomatic signal or a durable halt",
+      "last_updated": "2026-07-11T00:08:50Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-07-07T12:12:27Z"
       },
@@ -202,8 +202,8 @@
       "active_signals": [
         "ceasefire_violation"
       ],
-      "notes": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The ceasefire violation remains active; no separate configured signal was promoted",
-      "last_updated": "2026-07-11T00:07:22Z",
+      "notes": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured signal was promoted",
+      "last_updated": "2026-07-11T00:08:50Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-07-07T12:12:27Z"
       },
@@ -231,7 +231,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-07-11T00:07:27Z",
+  "last_updated": "2026-07-11T00:08:51Z",
   "signal_timestamps": {
     "israel_lebanon:ceasefire_violation": "2026-07-07T12:12:27Z",
     "iran_nuclear:iaea_access_denied": "2026-07-07T12:12:27Z",
@@ -242,17 +242,16 @@
     "iran_conventional:oil_infrastructure_threat": "2026-07-09T12:06:19Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-07-10T15:07:12Z",
     "iran_conventional:diplomacy_active": "2026-07-10T18:07:27Z",
-    "iran_nuclear:diplomacy_active": "2026-07-10T18:07:27Z",
-    "israel_lebanon:diplomacy_active": "2026-07-11T00:07:27Z"
+    "iran_nuclear:diplomacy_active": "2026-07-10T18:07:27Z"
   },
   "global_war_probability": 72,
   "global_zone": "imminent",
   "global_probability": 72,
   "eval_stats": {
-    "total": 1676496,
-    "correct": 1230440,
+    "total": 1680495,
+    "correct": 1233653,
     "accuracy": 73,
-    "mean_brier": 0.509
+    "mean_brier": 0.5089
   },
   "_meta": {
     "last_writer": "doomsdaywatch_00z_morning_deep_scan_cron",
@@ -1735,7 +1734,9 @@
     },
     "morning_deep_scan_movers_00z": "00Z change vs 21Z: no numeric tracker or global moves. AP reported fresh unclaimed strikes inside Iran after U.S. operations ended, while Reuters documented slow but nonzero Strait traffic and continued mediation. Late south-Lebanon and Gaza/West Bank incidents refreshed existing hot lanes. Global remains 72/imminent.",
     "signals_changed_00z": [
-      "north_korea:missile_range_test removed as unsupported stale marker"
+      "north_korea:missile_range_test removed as unsupported stale marker",
+      "israel_lebanon:diplomacy_active removed as keyword false positive",
+      "israel_palestine:diplomacy_active removed as keyword false positive"
     ],
     "auto_detection_00z": "No new tracker added. The configured emerging-crisis RSS basket returned zero items, and broader search found background/watch-list material only; no untracked crisis met three mentions across two sources.",
     "energy_oil_00z": "Pre-deploy cache: Brent $76.02, WTI $71.51, gasoline $2.98, diesel/heating oil $3.53, natural gas $2.94 and gold $4,127.45. Reuters reported a roughly 6% weekly Brent gain, but selective transit and mid-$70s pricing reject total-waterway-halt treatment.",
@@ -6522,7 +6523,9 @@
       }
     },
     "signal_reactivation_20260710_15z": "iran_conventional:hormuz_controlled_not_closed reactivated at 2026-07-10T15:07:12Z after temporal expiry because Reuters 2026-07-10 directly reconfirmed selective passage under asserted Iranian terms while traffic continued.",
-    "post_deploy_meta_fix_18z": "Restored the honest public source/fallback description after pipeline sanitisation and removed the superseded Iran-nuclear refusal marker from top-level timestamps and signal_timeline."
+    "post_deploy_meta_fix_18z": "Restored the honest public source/fallback description after pipeline sanitisation and removed the superseded Iran-nuclear refusal marker from top-level timestamps and signal_timeline.",
+    "false_positive_cleanup_00z": "Removed israel_lebanon:diplomacy_active and israel_palestine:diplomacy_active created by broad note keyword matching of truce-breach coverage; neutralized wording and removed timeline entries before redeploy.",
+    "cleanup_time_utc_00z": "2026-07-11T00:08:50Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -6560,14 +6563,12 @@
       "zone": "imminent",
       "trend": "rising",
       "active_signals": [
-        "ceasefire_violation",
-        "diplomacy_active"
+        "ceasefire_violation"
       ],
-      "notes": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet strong enough to establish diplomacy active or a durable halt",
-      "last_updated": "2026-07-11T00:07:22Z",
+      "notes": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet sufficiently corroborated to establish a new diplomatic signal or a durable halt",
+      "last_updated": "2026-07-11T00:08:50Z",
       "signal_timestamps": {
-        "ceasefire_violation": "2026-07-07T12:12:27Z",
-        "diplomacy_active": "2026-07-11T00:07:27Z"
+        "ceasefire_violation": "2026-07-07T12:12:27Z"
       },
       "name": "ISRAEL-LEBANON"
     },
@@ -6726,11 +6727,10 @@
       "zone": "imminent",
       "trend": "rising",
       "active_signals": [
-        "ceasefire_violation",
-        "diplomacy_active"
+        "ceasefire_violation"
       ],
-      "notes": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The ceasefire violation remains active; no separate configured signal was promoted",
-      "last_updated": "2026-07-11T00:07:22Z",
+      "notes": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured signal was promoted",
+      "last_updated": "2026-07-11T00:08:50Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-07-07T12:12:27Z"
       },
@@ -6774,8 +6774,8 @@
       "zone": "israel_lebanon",
       "time": "00:07",
       "date": "2026-07-11",
-      "headline": "Fatal south-Lebanon action refreshes the ceasefire-violation lane",
-      "text": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet strong enough to establish diplomacy active or a durable halt.",
+      "headline": "Fatal south-Lebanon action refreshes the truce-breach lane",
+      "text": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet sufficiently corroborated to establish a new diplomatic signal or a durable halt.",
       "sources": [
         "Al Jazeera 2026-07-10 20:27Z",
         "Arab News 2026-07-10 20:43Z",
@@ -6800,8 +6800,8 @@
       "zone": "israel_palestine",
       "time": "00:07",
       "date": "2026-07-11",
-      "headline": "Fresh Gaza and West Bank incidents sustain the ceasefire-violation lane",
-      "text": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The ceasefire violation remains active; no separate configured signal was promoted.",
+      "headline": "Fresh Gaza and West Bank incidents sustain the truce-breach lane",
+      "text": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured signal was promoted.",
       "sources": [
         "NBC News 2026-07-10",
         "Dawn 2026-07-10",
@@ -6928,8 +6928,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-07-11T00:08:04Z",
-    "fetched_at": "2026-07-11T00:08:04Z",
+    "generated_at": "2026-07-11T00:09:34Z",
+    "fetched_at": "2026-07-11T00:09:33Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -6944,7 +6944,7 @@
         "used_slugs": [
           "will-the-us-invade-iran-before-2027"
         ],
-        "total_volume_24h": 130970.59,
+        "total_volume_24h": 130976.84,
         "liquidity_warn": false,
         "markets": [
           {
@@ -6954,7 +6954,7 @@
             "invert": false,
             "yes_price": 0.165,
             "contribution": 0.165,
-            "volume_24h": 130970.59410599997,
+            "volume_24h": 130976.84410599997,
             "question": "Will the U.S. invade Iran before 2027?"
           }
         ],
@@ -7231,7 +7231,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-10T18:07:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 4,
           "decayed_weight": 3.4,
           "expired": false,
@@ -7241,7 +7241,7 @@
           "name": "iaea_access_denied",
           "positive": false,
           "activated_at": "2026-07-07T12:12:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 7,
           "decayed_weight": 0.6,
           "expired": false,
@@ -7303,7 +7303,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-10T18:07:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 5,
           "decayed_weight": 4.2,
           "expired": false,
@@ -7313,7 +7313,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-07-10T15:07:12Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 4,
           "decayed_weight": 3.1,
           "expired": false,
@@ -7323,7 +7323,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-07-09T12:06:19Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 6,
           "decayed_weight": 2.1,
           "expired": false,
@@ -7333,7 +7333,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-08T00:04:30Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 6,
           "decayed_weight": 0.7,
           "expired": false,
@@ -7392,20 +7392,10 @@
       "trend": "rising",
       "signals": [
         {
-          "name": "diplomacy_active",
-          "positive": true,
-          "activated_at": "2026-07-11T00:07:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
-          "original_weight": 4,
-          "decayed_weight": 4.0,
-          "expired": false,
-          "is_deescalatory": true
-        },
-        {
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-07T12:12:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 6,
           "decayed_weight": 0.5,
           "expired": false,
@@ -7414,7 +7404,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 18,
-      "notes": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet strong enough to establish diplomacy active or a durable halt",
+      "notes": "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was not yet sufficiently corroborated to establish a new diplomatic signal or a durable halt",
       "attribution": {
         "base_rate": 18.0,
         "raw_probability": 88.0,
@@ -7425,8 +7415,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 3,
-        "signal_count": 2,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 1,
+        "newest_signal_age_hours": 83.9
       },
       "watch_triggers": {
         "up": [
@@ -7766,7 +7756,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-07T12:12:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 6,
           "decayed_weight": 0.5,
           "expired": false,
@@ -7825,20 +7815,10 @@
       "trend": "rising",
       "signals": [
         {
-          "name": "diplomacy_active",
-          "positive": true,
-          "activated_at": "2026-07-11T00:07:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
-          "original_weight": 4,
-          "decayed_weight": 4.0,
-          "expired": false,
-          "is_deescalatory": true
-        },
-        {
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-07T12:12:27Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 6,
           "decayed_weight": 0.5,
           "expired": false,
@@ -7847,7 +7827,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 18,
-      "notes": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The ceasefire violation remains active; no separate configured signal was promoted",
+      "notes": "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured signal was promoted",
       "attribution": {
         "base_rate": 18.0,
         "raw_probability": 88.0,
@@ -7858,8 +7838,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 3,
-        "signal_count": 2,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 1,
+        "newest_signal_age_hours": 83.9
       },
       "watch_triggers": {
         "up": [
@@ -7900,7 +7880,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-09T06:06:05Z",
-          "last_confirmed": "2026-07-11T00:07:27Z",
+          "last_confirmed": "2026-07-11T00:08:51Z",
           "original_weight": 5,
           "decayed_weight": 1.5,
           "expired": false,
@@ -7959,7 +7939,7 @@
       "value": 98,
       "description": "Israeli ground operation in southern Lebanon expected to continue beyond Litani River. Further displacement and infrastructure destruction likely.",
       "confidence": 70,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 88
     },
@@ -7970,7 +7950,7 @@
       "value": 46,
       "description": "Afghan-Pakistan border tensions likely to persist. Additional clashes probable based on recent trajectory.",
       "confidence": 50,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 36
     },
@@ -7981,7 +7961,7 @@
       "value": 52,
       "description": "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain.",
       "confidence": 45,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 37
     },
@@ -7992,7 +7972,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -8003,7 +7983,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 80
     },
@@ -8014,7 +7994,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 78
     },
@@ -8025,7 +8005,7 @@
       "value": 54,
       "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
       "confidence": 40,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 39
     },
@@ -8036,7 +8016,7 @@
       "value": 32,
       "description": "Current escalation indicators suggest CHINA-TAIWAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 18
     },
@@ -8047,7 +8027,7 @@
       "value": 21,
       "description": "Current escalation indicators suggest DPRK will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T00:08:02Z",
+      "expires_at": "2026-07-12T00:09:32Z",
       "eval_type": "probability_above",
       "eval_value": 8
     }
@@ -8055,8 +8035,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-12T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-12T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8089,7 +8069,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T00:07:27Z",
+      "expires_at": "2026-07-12T00:08:51Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -8105,8 +8085,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-14T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-14T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8139,7 +8119,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T00:07:27Z",
+      "expires_at": "2026-07-14T00:08:51Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -8155,8 +8135,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-18T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-18T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8189,7 +8169,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T00:07:27Z",
+      "expires_at": "2026-07-18T00:08:51Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -8205,8 +8185,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-10T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-10T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8239,7 +8219,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T00:07:27Z",
+      "expires_at": "2026-08-10T00:08:51Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -8255,8 +8235,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-12T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-12T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8289,7 +8269,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T00:07:27Z",
+      "expires_at": "2026-07-12T00:08:51Z",
       "evidence_for": [
         "Deep-strike cycle and planned Russian buffer expansion sustain peak risk",
         "Moscow said Ukrainian deep strikes would prolong the war and announced a wider security buffer. Reuters sources continue to assess intensified operations as highly likely in coming"
@@ -8300,8 +8280,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-14T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-14T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8334,7 +8314,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T00:07:27Z",
+      "expires_at": "2026-07-14T00:08:51Z",
       "evidence_for": [
         "Deep-strike cycle and planned Russian buffer expansion sustain peak risk",
         "Moscow said Ukrainian deep strikes would prolong the war and announced a wider security buffer. Reuters sources continue to assess intensified operations as highly likely in coming"
@@ -8345,8 +8325,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-18T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-18T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8379,7 +8359,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T00:07:27Z",
+      "expires_at": "2026-07-18T00:08:51Z",
       "evidence_for": [
         "Deep-strike cycle and planned Russian buffer expansion sustain peak risk",
         "Moscow said Ukrainian deep strikes would prolong the war and announced a wider security buffer. Reuters sources continue to assess intensified operations as highly likely in coming"
@@ -8390,8 +8370,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-10T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-10T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8424,7 +8404,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T00:07:27Z",
+      "expires_at": "2026-08-10T00:08:51Z",
       "evidence_for": [
         "Deep-strike cycle and planned Russian buffer expansion sustain peak risk",
         "Moscow said Ukrainian deep strikes would prolong the war and announced a wider security buffer. Reuters sources continue to assess intensified operations as highly likely in coming"
@@ -8435,14 +8415,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-12T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-12T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 29,
+      "probability": 45,
       "base_rate_pct": 18.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8451,45 +8431,44 @@
         "base_rate_pct": 18.0,
         "threat_score_pct": 98.0,
         "threat_component_pp": 17.64,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 28.89,
-        "final_probability_pct": 29,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 45.29,
+        "final_probability_pct": 45,
         "matched_sources": [
           "Al Jazeera 2026-07-10 20:27Z",
           "Arab News 2026-07-10 20:43Z",
           "Times of Israel 2026-07-10 19:17Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL-LEBANON: border war escalation risk over the next 24h is estimated at 29%.",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 24h is estimated at 45%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T00:07:27Z",
+      "expires_at": "2026-07-12T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fatal south-Lebanon action refreshes the truce-breach lane",
+        "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was n"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fatal south-Lebanon action refreshes the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-14T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-14T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 49,
+      "probability": 66,
       "base_rate_pct": 32.4,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8498,45 +8477,44 @@
         "base_rate_pct": 32.4,
         "threat_score_pct": 98.0,
         "threat_component_pp": 23.52,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 49.17,
-        "final_probability_pct": 49,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 65.57,
+        "final_probability_pct": 66,
         "matched_sources": [
           "Al Jazeera 2026-07-10 20:27Z",
           "Arab News 2026-07-10 20:43Z",
           "Times of Israel 2026-07-10 19:17Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL-LEBANON: border war escalation risk over the next 72h is estimated at 49%.",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 72h is estimated at 66%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T00:07:27Z",
+      "expires_at": "2026-07-14T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fatal south-Lebanon action refreshes the truce-breach lane",
+        "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was n"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fatal south-Lebanon action refreshes the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-18T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-18T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 71,
+      "probability": 88,
       "base_rate_pct": 48.6,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8545,45 +8523,44 @@
         "base_rate_pct": 48.6,
         "threat_score_pct": 98.0,
         "threat_component_pp": 29.4,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 71.25,
-        "final_probability_pct": 71,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 87.65,
+        "final_probability_pct": 88,
         "matched_sources": [
           "Al Jazeera 2026-07-10 20:27Z",
           "Arab News 2026-07-10 20:43Z",
           "Times of Israel 2026-07-10 19:17Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL-LEBANON: border war escalation risk over the next 7d is estimated at 71%.",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 7d is estimated at 88%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T00:07:27Z",
+      "expires_at": "2026-07-18T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fatal south-Lebanon action refreshes the truce-breach lane",
+        "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was n"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fatal south-Lebanon action refreshes the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-10T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-10T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
       "horizon_label": "30d",
       "horizon_hours": 720,
-      "probability": 89,
+      "probability": 100,
       "base_rate_pct": 60.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8592,39 +8569,38 @@
         "base_rate_pct": 60.0,
         "threat_score_pct": 98.0,
         "threat_component_pp": 35.28,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 88.53,
-        "final_probability_pct": 89,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 104.93,
+        "final_probability_pct": 100,
         "matched_sources": [
           "Al Jazeera 2026-07-10 20:27Z",
           "Arab News 2026-07-10 20:43Z",
           "Times of Israel 2026-07-10 19:17Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL-LEBANON: border war escalation risk over the next 30d is estimated at 89%.",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 30d is estimated at 100%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T00:07:27Z",
+      "expires_at": "2026-08-10T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fatal south-Lebanon action refreshes the truce-breach lane",
+        "Al Jazeera and Arab News reported further Israeli drone activity and a fatal south-Lebanon strike late July 10. A report of U.S. monitoring personnel and pressure for a pause was n"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fatal south-Lebanon action refreshes the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-07-12T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-07-12T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8657,7 +8633,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T00:07:27Z",
+      "expires_at": "2026-07-12T00:08:51Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8669,8 +8645,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-07-14T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-07-14T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8703,7 +8679,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T00:07:27Z",
+      "expires_at": "2026-07-14T00:08:51Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8715,8 +8691,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-07-18T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-07-18T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8749,7 +8725,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T00:07:27Z",
+      "expires_at": "2026-07-18T00:08:51Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8761,8 +8737,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-08-10T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-08-10T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8795,7 +8771,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T00:07:27Z",
+      "expires_at": "2026-08-10T00:08:51Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8807,14 +8783,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-12T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-12T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 19,
+      "probability": 35,
       "base_rate_pct": 10.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8823,45 +8799,44 @@
         "base_rate_pct": 10.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 15.84,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 19.09,
-        "final_probability_pct": 19,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 35.49,
+        "final_probability_pct": 35,
         "matched_sources": [
           "NBC News 2026-07-10",
           "Dawn 2026-07-10",
           "Google News RSS 2026-07-10 21:16Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 19%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 35%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T00:07:27Z",
+      "expires_at": "2026-07-12T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fresh Gaza and West Bank incidents sustain the truce-breach lane",
+        "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured si"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fresh Gaza and West Bank incidents sustain the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-14T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-14T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 32,
+      "probability": 49,
       "base_rate_pct": 18.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8870,45 +8845,44 @@
         "base_rate_pct": 18.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 21.12,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 32.37,
-        "final_probability_pct": 32,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 48.77,
+        "final_probability_pct": 49,
         "matched_sources": [
           "NBC News 2026-07-10",
           "Dawn 2026-07-10",
           "Google News RSS 2026-07-10 21:16Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 32%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 49%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T00:07:27Z",
+      "expires_at": "2026-07-14T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fresh Gaza and West Bank incidents sustain the truce-breach lane",
+        "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured si"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fresh Gaza and West Bank incidents sustain the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-18T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-18T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 47,
+      "probability": 63,
       "base_rate_pct": 27.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8917,45 +8891,44 @@
         "base_rate_pct": 27.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 26.4,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 46.65,
-        "final_probability_pct": 47,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 63.05,
+        "final_probability_pct": 63,
         "matched_sources": [
           "NBC News 2026-07-10",
           "Dawn 2026-07-10",
           "Google News RSS 2026-07-10 21:16Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 47%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 63%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T00:07:27Z",
+      "expires_at": "2026-07-18T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fresh Gaza and West Bank incidents sustain the truce-breach lane",
+        "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured si"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fresh Gaza and West Bank incidents sustain the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-10T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-10T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "30d",
       "horizon_hours": 720,
-      "probability": 70,
+      "probability": 86,
       "base_rate_pct": 45.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8964,39 +8937,38 @@
         "base_rate_pct": 45.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 31.68,
-        "signal_delta_pp": -6.25,
+        "signal_delta_pp": 4.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 2.5,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 69.93,
-        "final_probability_pct": 70,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 86.33,
+        "final_probability_pct": 86,
         "matched_sources": [
           "NBC News 2026-07-10",
           "Dawn 2026-07-10",
           "Google News RSS 2026-07-10 21:16Z"
         ]
       },
-      "confidence_score": 85,
+      "confidence_score": 89,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 70%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 86%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T00:07:27Z",
+      "expires_at": "2026-08-10T00:08:51Z",
       "evidence_for": [
-        "ceasefire_violation (+6 signal weight)"
+        "ceasefire_violation (+6 signal weight)",
+        "Fresh Gaza and West Bank incidents sustain the truce-breach lane",
+        "Past-24-hour reporting recorded further fatal Gaza incidents and injuries during settler violence near Nablus. The existing violation lane remains active; no separate configured si"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "Fresh Gaza and West Bank incidents sustain the ceasefire-violation lane"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-07-12T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-07-12T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9030,7 +9002,7 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T00:07:27Z",
+      "expires_at": "2026-07-12T00:08:51Z",
       "evidence_for": [
         "iaea_access_denied (+7 signal weight)",
         "iaea access denied"
@@ -9044,8 +9016,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:72h:2026-07-14T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:72h:2026-07-14T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9079,7 +9051,7 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T00:07:27Z",
+      "expires_at": "2026-07-14T00:08:51Z",
       "evidence_for": [
         "iaea_access_denied (+7 signal weight)",
         "iaea access denied"
@@ -9093,8 +9065,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:7d:2026-07-18T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:7d:2026-07-18T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9128,7 +9100,7 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T00:07:27Z",
+      "expires_at": "2026-07-18T00:08:51Z",
       "evidence_for": [
         "iaea_access_denied (+7 signal weight)",
         "iaea access denied"
@@ -9142,8 +9114,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:30d:2026-08-10T00:07:27Z",
-      "generated_at": "2026-07-11T00:07:27Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:30d:2026-08-10T00:08:51Z",
+      "generated_at": "2026-07-11T00:08:51Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9177,7 +9149,7 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T00:07:27Z",
+      "expires_at": "2026-08-10T00:08:51Z",
       "evidence_for": [
         "iaea_access_denied (+7 signal weight)",
         "iaea access denied"
@@ -9206,7 +9178,7 @@
     "version": "forecast_review_status_v1",
     "expired_unresolved": 50,
     "review_queue_version": "forecast_review_queue_v1",
-    "oldest_age_hours": 587.1,
+    "oldest_age_hours": 587.2,
     "next_forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
     "evidence_required": true,
     "auto_resolution": false
