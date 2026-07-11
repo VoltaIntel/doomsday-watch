@@ -1,13 +1,14 @@
 # Session State
 
-Last update: 2026-07-11T09:07Z
+Last update: 2026-07-11T12:05Z
 
-DoomsdayWatch 09Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
+DoomsdayWatch 12Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
-- Published state: **72% / imminent**; no numeric tracker or global changes versus 06Z and no evidence-driven canonical signal additions/removals.
+- Published state: **72% / imminent**; no numeric tracker or global changes versus 09Z and no canonical signal additions/removals.
 - Full coupled table: Iran War **100**, Russia-Ukraine **99**, Israel-Lebanon **98**, Sudan **90**, Israel-Palestine **88**, Iran Nuclear **54**, Russia-NATO **52**, Pakistan-Afghanistan **46**, China-Taiwan **28**, DPRK **18**, South Sudan/Abyei **17**, India-Pakistan **11**, Turkey **5**.
-- Main fresh watch item: UN/OHCHR and Critical Threats corroborated renewed eastern DRC/South Kivu fighting with armed drones, heavy weapons, position changes and civilian harm. It remains below the configured three-independent-mentions auto-add threshold, so no tracker was added.
-- Existing lanes held: Hormuz traffic remains slow but nonzero; Iran verification continuity remains lost; fatal south-Lebanon and Gaza/West Bank incidents, El Obeid risk and Russia-Ukraine escalation expectations reinforce existing assessments.
-- Source mode: live web search plus direct UN/Critical Threats extraction and the 06Z Google News RSS/direct-feed artifact. IAEA pages remain access-limited; some claims are headline-index only; weekend energy quotes are Friday closes. Evidence artifact: `data/morning_deep_scan_sources_20260711T090129Z.json`.
-- Allied/energy/markets: NATO’s July 8 Ankara posture remains governing. Brent **$75.22**, WTI **$71.41**, gasoline **$2.98**, diesel/heating oil **$3.55**, natural gas **$2.94**, gold **$4,111.45**. Polymarket refreshed at 09:05Z; horizon/definition mismatches remain material.
-- Deploy: `bash scripts/deploy.sh` succeeded twice (second run reconciled TTL-pruned `iran_nuclear:iaea_access_denied` with fresh July 10 UN confirmation). Final pushed commit `47c2fcf`; required Command Deck markers, JSON/timeline coherence and local/origin parity verified.
+- Fresh developments: Washington is seeking a public Iranian navigation pledge by Saturday while Hormuz tanker traffic remains slow but nonzero; Israeli shelling/demolitions continued in Deir Seryan and Khiam ahead of a proposed pilot handover; UN/OHCHR documented 15 El Obeid drone strikes in three weeks killing at least 45 civilians.
+- Auto-detection: eastern DRC remains the leading untracked watch item but has only two independent fresh source groups versus the configured three-source threshold. No tracker added.
+- False-positive review excluded a July 11-indexed Russia-Belarus drill story whose underlying event was May 19-21 and an Abyei 54-death story recycled from January 2024.
+- Sources: all required live web-search lanes attempted successfully, cross-checked with Google News RSS and direct UN/NATO/Reuters/The Hill/The National pages. Direct IAEA/OPEC and configured OCHA/UN Sudan feed paths failed; weekend energy values are Friday closes. Artifact: `data/morning_deep_scan_sources_20260711T120309Z.json`.
+- Energy/markets: Brent **$75.22**, WTI **$71.41**. Polymarket refreshed at 12:05Z; definition/horizon mismatches remain material.
+- Deploy: `bash scripts/deploy.sh` succeeded and pushed. Post-deploy source-provenance fix pushed as `022cd60`; required Command Deck markers, canonical IDs/signals, JSON validity, clean status and local/origin parity verified.
