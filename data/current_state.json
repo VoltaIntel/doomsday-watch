@@ -19,7 +19,7 @@
       "notes": "Reuters documented slowed but nonzero Strait traffic after the latest U.S.-Iran exchange. Washington is now seeking a public Iranian navigation pledge by Saturday while Qatar-mediated contacts continue; physical risk remains severe",
       "last_updated": "2026-07-11T12:03:09Z",
       "signal_timestamps": {
-        "ceasefire_violation": "2026-07-08T00:04:30Z",
+        "ceasefire_violation": "2026-07-11T15:07:30Z",
         "hormuz_controlled_not_closed": "2026-07-10T15:07:12Z",
         "oil_infrastructure_threat": "2026-07-09T12:06:19Z",
         "diplomacy_active": "2026-07-10T18:07:06Z"
@@ -168,7 +168,7 @@
       "notes": "The UN political chief said the agency cannot determine the size, composition or location of Iran's enriched-material holdings. The June framework offers a diplomatic counterweight, but restored verification has not been documented",
       "last_updated": "2026-07-11T12:03:09Z",
       "signal_timestamps": {
-        "iaea_access_denied": "2026-07-11T09:06:30Z",
+        "iaea_access_denied": "2026-07-11T15:07:30Z",
         "diplomacy_active": "2026-07-10T18:07:06Z"
       },
       "name": "IRAN NUCLEAR"
@@ -254,9 +254,8 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-07-11T15:06:00Z",
+  "last_updated": "2026-07-11T15:07:31Z",
   "signal_timestamps": {
-    "iran_conventional:ceasefire_violation": "2026-07-08T00:04:30Z",
     "south_sudan_abyei:military_buildup": "2026-07-09T06:06:05Z",
     "iran_conventional:oil_infrastructure_threat": "2026-07-09T12:06:19Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-07-10T15:07:12Z",
@@ -265,19 +264,20 @@
     "israel_lebanon:ceasefire_violation": "2026-07-11T06:03:22Z",
     "sudan:military_buildup": "2026-07-11T06:03:22Z",
     "israel_palestine:ceasefire_violation": "2026-07-11T06:03:22Z",
-    "iran_nuclear:iaea_access_denied": "2026-07-11T09:06:30Z",
+    "iran_nuclear:iaea_access_denied": "2026-07-11T15:07:30Z",
     "israel_lebanon:diplomacy_active": "2026-07-11T15:05:53Z",
     "eastern_drc:military_buildup": "2026-07-11T15:05:53Z",
-    "eastern_drc:external_backing": "2026-07-11T15:05:53Z"
+    "eastern_drc:external_backing": "2026-07-11T15:05:53Z",
+    "iran_conventional:ceasefire_violation": "2026-07-11T15:07:30Z"
   },
   "global_war_probability": 73,
   "global_zone": "imminent",
   "global_probability": 73,
   "eval_stats": {
-    "total": 1708643,
-    "correct": 1256209,
+    "total": 1712665,
+    "correct": 1259445,
     "accuracy": 74,
-    "mean_brier": 0.5079
+    "mean_brier": 0.5078
   },
   "_meta": {
     "last_writer": "doomsdaywatch_15z_morning_deep_scan_cron",
@@ -311,7 +311,7 @@
     "allied_positions": "NATO\u2019s July 8 Ankara posture remains governing: collective defence, higher production/investment and continued Ukraine support. No Article 5 invocation or direct NATO-Russia kinetic event was confirmed. Washington\u2019s request for Israel to freeze sensitive south-Lebanon operations is the material allied de-escalation development.",
     "false_positive_cleanup_4": "Removed negation-triggered iran_nuclear:enrichment_90 and north_korea:nuclear_test; neutralized higher-level enrichment/device-test wording before redeploy.",
     "energy_oil": "15:03Z OilPriceAPI: Brent $75.22 and WTI $71.41; both are Friday closes. Slow but nonzero Hormuz traffic and mid-$70s Brent still reject a total-waterway-halt interpretation.",
-    "polymarket_sanity": "15:03Z broad cache refresh succeeded, but mapped exact-slug HTTP probes returned 403. Last successful 12Z mapped snapshot: U.S. invasion of Iran 15.5%, Iran weapon 5.15%, Iran device test 4.5%, NPT withdrawal 14.35%, NATO Article 5 6.5%, China invasion 3.75%, China-Taiwan clash 6.0%, DPRK invasion 3.85%, Ukraine agreement 21.5%, Israel-Lebanon normalization 15.5%. Horizons/definitions differ materially.",
+    "polymarket_sanity": "15:06Z mapped refresh: U.S. invasion of Iran 14.5%, Iran weapon 5.05%, Iran device test 4.5%, NPT withdrawal 11.9%, NATO Article 5 6.5%, China invasion 3.75%, China-Taiwan clash 6.0%, DPRK invasion 3.7%, Ukraine agreement 21.5%, Israel-Lebanon normalization 15.5%. Horizons and definitions differ materially from tracker probabilities.",
     "false_positive_cleanup_5": "Removed negation-triggered turkey:nuclear_rhetoric_official created by \u201cno nuclear rhetoric\u201d wording; neutralized Turkey note/news wording before redeploy.",
     "false_positive_cleanup_6": "Removed negation-triggered iran_nuclear:enrichment_90, iran_conventional:bomber_redeployment, and turkey:missile_range_test; neutralized higher-level-enrichment/strategic-aviation/weapon-firing wording before redeploy.",
     "latest_rss_scan_keys": [
@@ -1272,7 +1272,9 @@
     "signals_changed_15z": [
       "israel_lebanon:diplomacy_active activated",
       "eastern_drc:military_buildup activated",
-      "eastern_drc:external_backing activated"
+      "eastern_drc:external_backing activated",
+      "iran_conventional:ceasefire_violation reconfirmed after deploy TTL check",
+      "iran_nuclear:iaea_access_denied reconfirmed after deploy TTL check"
     ],
     "auto_detection_15z": "No new zone met the configured threshold of three mentions across two sources. The broad emerging-crisis RSS query returned zero fresh items; wider web results were stale or background material, not a qualifying current cluster.",
     "energy_oil_15z": "15:05Z OilPriceAPI: Brent $76.36, WTI $71.83, gasoline $2.97, diesel $3.57, heating oil $3.55, natural gas $2.90 and gold $4,097.16. Reuters said traffic slowed and oil remained on track for a 4-5% weekly gain; selective transit rejects a total-halt interpretation.",
@@ -6506,7 +6508,8 @@
       "Fresh cross-border exchanges in Pakistan-Afghanistan or India-Pakistan",
       "Blockade-scale Chinese activity around Taiwan or a fresh DPRK strategic-weapons event"
     ],
-    "false_positive_review_12z": "Excluded a July 11-indexed Russia-Belarus drill headline because the underlying exercise occurred May 19-21, and excluded the Abyei 54-death result because it recycled January 2024 reporting. No false canonical signal was promoted."
+    "false_positive_review_12z": "Excluded a July 11-indexed Russia-Belarus drill headline because the underlying exercise occurred May 19-21, and excluded the Abyei 54-death result because it recycled January 2024 reporting. No false canonical signal was promoted.",
+    "post_deploy_ttl_reconfirmation_15z": "Reconfirmed ongoing iran_conventional:ceasefire_violation and iran_nuclear:iaea_access_denied after the first deploy pruned their older timeline activations; both remain supported by past-day strike-cycle and UN verification-gap evidence."
   },
   "trackers": {
     "iran_conventional": {
@@ -6519,6 +6522,7 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [
+        "ceasefire_violation",
         "diplomacy_active",
         "hormuz_controlled_not_closed",
         "oil_infrastructure_threat"
@@ -6526,6 +6530,7 @@
       "notes": "Reuters documented slowed but nonzero Strait traffic after the latest U.S.-Iran exchange. Washington is now seeking a public Iranian navigation pledge by Saturday while Qatar-mediated contacts continue; physical risk remains severe",
       "last_updated": "2026-07-11T09:01:29Z",
       "signal_timestamps": {
+        "ceasefire_violation": "2026-07-11T15:07:30Z",
         "diplomacy_active": "2026-07-10T18:07:27Z",
         "hormuz_controlled_not_closed": "2026-07-10T15:07:12Z",
         "oil_infrastructure_threat": "2026-07-09T12:06:19Z"
@@ -6668,12 +6673,14 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [
-        "diplomacy_active"
+        "diplomacy_active",
+        "iaea_access_denied"
       ],
       "notes": "The UN political chief said the agency cannot determine the size, composition or location of Iran's enriched-material holdings. The June framework offers a diplomatic counterweight, but restored verification has not been documented",
       "last_updated": "2026-07-11T09:01:29Z",
       "signal_timestamps": {
-        "diplomacy_active": "2026-07-10T18:07:27Z"
+        "diplomacy_active": "2026-07-10T18:07:27Z",
+        "iaea_access_denied": "2026-07-11T15:07:30Z"
       },
       "name": "IRAN NUCLEAR"
     },
@@ -6961,8 +6968,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-07-11T15:06:45Z",
-    "fetched_at": "2026-07-11T15:06:45Z",
+    "generated_at": "2026-07-11T15:08:19Z",
+    "fetched_at": "2026-07-11T15:08:19Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -7009,7 +7016,7 @@
           "iran-nuclear-test-before-2027",
           "will-iran-withdraw-from-the-npt-before-2027"
         ],
-        "total_volume_24h": 228679.36,
+        "total_volume_24h": 227637.66,
         "liquidity_warn": true,
         "markets": [
           {
@@ -7039,7 +7046,7 @@
             "invert": false,
             "yes_price": 0.119,
             "contribution": 0.119,
-            "volume_24h": 5201.988307000001,
+            "volume_24h": 4160.290335,
             "question": "Will Iran withdraw from the NPT before 2027?"
           }
         ],
@@ -7261,10 +7268,20 @@
       "trend": "stable",
       "signals": [
         {
+          "name": "iaea_access_denied",
+          "positive": false,
+          "activated_at": "2026-07-11T15:07:30Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
+          "original_weight": 7,
+          "decayed_weight": 7.0,
+          "expired": false,
+          "is_deescalatory": false
+        },
+        {
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-10T18:07:27Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 4,
           "decayed_weight": 2.2,
           "expired": false,
@@ -7284,8 +7301,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 5,
-        "signal_count": 1,
-        "newest_signal_age_hours": 21.0
+        "signal_count": 2,
+        "newest_signal_age_hours": 0.0
       },
       "watch_triggers": {
         "up": [
@@ -7323,10 +7340,20 @@
       "trend": "stable",
       "signals": [
         {
+          "name": "ceasefire_violation",
+          "positive": false,
+          "activated_at": "2026-07-11T15:07:30Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
+          "original_weight": 6,
+          "decayed_weight": 6.0,
+          "expired": false,
+          "is_deescalatory": false
+        },
+        {
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-10T18:07:27Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 5,
           "decayed_weight": 2.7,
           "expired": false,
@@ -7336,7 +7363,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-07-10T15:07:12Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 4,
           "decayed_weight": 2.0,
           "expired": false,
@@ -7346,7 +7373,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-07-09T12:06:19Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 6,
           "decayed_weight": 1.4,
           "expired": false,
@@ -7366,8 +7393,8 @@
       "evidence_quality": {
         "label": "HIGH",
         "source_count": 5,
-        "signal_count": 3,
-        "newest_signal_age_hours": 21.0
+        "signal_count": 4,
+        "newest_signal_age_hours": 0.0
       },
       "watch_triggers": {
         "up": [
@@ -7408,7 +7435,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-11T15:05:53Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 4,
           "decayed_weight": 4.0,
           "expired": false,
@@ -7418,7 +7445,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-11T06:03:22Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 6,
           "decayed_weight": 4.6,
           "expired": false,
@@ -7779,7 +7806,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-11T06:03:22Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 6,
           "decayed_weight": 4.6,
           "expired": false,
@@ -7800,7 +7827,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 9.0
+        "newest_signal_age_hours": 9.1
       },
       "watch_triggers": {
         "up": [
@@ -7841,7 +7868,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-11T06:03:22Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 6,
           "decayed_weight": 4.6,
           "expired": false,
@@ -7862,7 +7889,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 9.0
+        "newest_signal_age_hours": 9.1
       },
       "watch_triggers": {
         "up": [
@@ -7903,7 +7930,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-09T06:06:05Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 5,
           "decayed_weight": 1.0,
           "expired": false,
@@ -7965,7 +7992,7 @@
           "name": "external_backing",
           "positive": false,
           "activated_at": "2026-07-11T15:05:53Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 4,
           "decayed_weight": 4.0,
           "expired": false,
@@ -7975,7 +8002,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-11T15:05:53Z",
-          "last_confirmed": "2026-07-11T15:06:00Z",
+          "last_confirmed": "2026-07-11T15:07:31Z",
           "original_weight": 6,
           "decayed_weight": 6.0,
           "expired": false,
@@ -8034,7 +8061,7 @@
       "value": 100,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -8045,7 +8072,7 @@
       "value": 46,
       "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
       "confidence": 65,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 36
     },
@@ -8056,7 +8083,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -8067,7 +8094,7 @@
       "value": 80,
       "description": "ISRAEL-LEBANON showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_below",
       "eval_value": 94
     },
@@ -8078,7 +8105,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 80
     },
@@ -8089,7 +8116,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 78
     },
@@ -8100,7 +8127,7 @@
       "value": 67,
       "description": "Current escalation indicators suggest EASTERN DRC will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 48
     },
@@ -8111,7 +8138,7 @@
       "value": 32,
       "description": "Current escalation indicators suggest CHINA-TAIWAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 18
     },
@@ -8122,7 +8149,7 @@
       "value": 21,
       "description": "Current escalation indicators suggest DPRK will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-12T15:06:43Z",
+      "expires_at": "2026-07-12T15:08:17Z",
       "eval_type": "probability_above",
       "eval_value": 8
     }
@@ -8130,14 +8157,14 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-12T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-12T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 41,
+      "probability": 39,
       "base_rate_pct": 12.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8146,12 +8173,12 @@
         "base_rate_pct": 12.0,
         "threat_score_pct": 100.0,
         "threat_component_pp": 18.0,
-        "signal_delta_pp": 9.75,
+        "signal_delta_pp": 10.15,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 5.0,
-        "contradiction_delta_pp": -4.0,
-        "raw_probability_pct": 40.75,
-        "final_probability_pct": 41,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 39.15,
+        "final_probability_pct": 39,
         "matched_sources": [
           "Reuters 2026-07-10 12:06Z",
           "The Hill 2026-07-10 20:07 ET",
@@ -8162,32 +8189,33 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "IRAN WAR: gulf conventional escalation risk over the next 24h is estimated at 41%.",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 24h is estimated at 39%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T15:06:00Z",
+      "expires_at": "2026-07-12T15:07:31Z",
       "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
-        "hormuz controlled not closed",
-        "oil infrastructure threat"
+        "hormuz controlled not closed"
       ],
       "evidence_against": [
         "diplomacy_active (+5 signal weight)",
+        "ceasefire violation",
         "diplomacy active"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-14T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-14T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 56,
+      "probability": 55,
       "base_rate_pct": 21.6,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8196,12 +8224,12 @@
         "base_rate_pct": 21.6,
         "threat_score_pct": 100.0,
         "threat_component_pp": 24.0,
-        "signal_delta_pp": 9.75,
+        "signal_delta_pp": 10.15,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 5.0,
-        "contradiction_delta_pp": -4.0,
-        "raw_probability_pct": 56.35,
-        "final_probability_pct": 56,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 54.75,
+        "final_probability_pct": 55,
         "matched_sources": [
           "Reuters 2026-07-10 12:06Z",
           "The Hill 2026-07-10 20:07 ET",
@@ -8212,32 +8240,33 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "IRAN WAR: gulf conventional escalation risk over the next 72h is estimated at 56%.",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 72h is estimated at 55%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T15:06:00Z",
+      "expires_at": "2026-07-14T15:07:31Z",
       "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
-        "hormuz controlled not closed",
-        "oil infrastructure threat"
+        "hormuz controlled not closed"
       ],
       "evidence_against": [
         "diplomacy_active (+5 signal weight)",
+        "ceasefire violation",
         "diplomacy active"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-18T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-18T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 73,
+      "probability": 72,
       "base_rate_pct": 32.4,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8246,12 +8275,12 @@
         "base_rate_pct": 32.4,
         "threat_score_pct": 100.0,
         "threat_component_pp": 30.0,
-        "signal_delta_pp": 9.75,
+        "signal_delta_pp": 10.15,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 5.0,
-        "contradiction_delta_pp": -4.0,
-        "raw_probability_pct": 73.15,
-        "final_probability_pct": 73,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 71.55,
+        "final_probability_pct": 72,
         "matched_sources": [
           "Reuters 2026-07-10 12:06Z",
           "The Hill 2026-07-10 20:07 ET",
@@ -8262,32 +8291,33 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "IRAN WAR: gulf conventional escalation risk over the next 7d is estimated at 73%.",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 7d is estimated at 72%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:06:00Z",
+      "expires_at": "2026-07-18T15:07:31Z",
       "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
-        "hormuz controlled not closed",
-        "oil infrastructure threat"
+        "hormuz controlled not closed"
       ],
       "evidence_against": [
         "diplomacy_active (+5 signal weight)",
+        "ceasefire violation",
         "diplomacy active"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-10T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-10T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
       "horizon_label": "30d",
       "horizon_hours": 720,
-      "probability": 100,
+      "probability": 99,
       "base_rate_pct": 54.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -8296,12 +8326,12 @@
         "base_rate_pct": 54.0,
         "threat_score_pct": 100.0,
         "threat_component_pp": 36.0,
-        "signal_delta_pp": 9.75,
+        "signal_delta_pp": 10.15,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 5.0,
-        "contradiction_delta_pp": -4.0,
-        "raw_probability_pct": 100.75,
-        "final_probability_pct": 100,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 99.15,
+        "final_probability_pct": 99,
         "matched_sources": [
           "Reuters 2026-07-10 12:06Z",
           "The Hill 2026-07-10 20:07 ET",
@@ -8312,26 +8342,27 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "IRAN WAR: gulf conventional escalation risk over the next 30d is estimated at 100%.",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 30d is estimated at 99%.",
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T15:06:00Z",
+      "expires_at": "2026-08-10T15:07:31Z",
       "evidence_for": [
+        "ceasefire_violation (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
-        "hormuz controlled not closed",
-        "oil infrastructure threat"
+        "hormuz controlled not closed"
       ],
       "evidence_against": [
         "diplomacy_active (+5 signal weight)",
+        "ceasefire violation",
         "diplomacy active"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-12T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-12T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8366,7 +8397,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T15:06:00Z",
+      "expires_at": "2026-07-12T15:07:31Z",
       "evidence_for": [
         "Moscow escalation outlook and wider buffer plan keep risk pinned near ceiling",
         "Reuters sources assess intensified Russian operations as likely, while Moscow announced a wider security buffer in response to Ukrainian deep strikes. No credible peace turn was fo"
@@ -8377,8 +8408,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-14T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-14T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8413,7 +8444,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T15:06:00Z",
+      "expires_at": "2026-07-14T15:07:31Z",
       "evidence_for": [
         "Moscow escalation outlook and wider buffer plan keep risk pinned near ceiling",
         "Reuters sources assess intensified Russian operations as likely, while Moscow announced a wider security buffer in response to Ukrainian deep strikes. No credible peace turn was fo"
@@ -8424,8 +8455,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-18T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-18T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8460,7 +8491,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:06:00Z",
+      "expires_at": "2026-07-18T15:07:31Z",
       "evidence_for": [
         "Moscow escalation outlook and wider buffer plan keep risk pinned near ceiling",
         "Reuters sources assess intensified Russian operations as likely, while Moscow announced a wider security buffer in response to Ukrainian deep strikes. No credible peace turn was fo"
@@ -8471,8 +8502,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-10T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-10T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8507,7 +8538,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T15:06:00Z",
+      "expires_at": "2026-08-10T15:07:31Z",
       "evidence_for": [
         "Moscow escalation outlook and wider buffer plan keep risk pinned near ceiling",
         "Reuters sources assess intensified Russian operations as likely, while Moscow announced a wider security buffer in response to Ukrainian deep strikes. No credible peace turn was fo"
@@ -8518,8 +8549,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-12T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-12T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8553,7 +8584,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T15:06:00Z",
+      "expires_at": "2026-07-12T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -8566,8 +8597,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-14T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-14T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8601,7 +8632,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T15:06:00Z",
+      "expires_at": "2026-07-14T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -8614,8 +8645,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-18T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-18T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8649,7 +8680,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:06:00Z",
+      "expires_at": "2026-07-18T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -8662,8 +8693,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-10T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-10T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8697,7 +8728,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T15:06:00Z",
+      "expires_at": "2026-08-10T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -8710,8 +8741,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-07-12T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-07-12T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8745,7 +8776,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T15:06:00Z",
+      "expires_at": "2026-07-12T15:07:31Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8757,8 +8788,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-07-14T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-07-14T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8792,7 +8823,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T15:06:00Z",
+      "expires_at": "2026-07-14T15:07:31Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8804,8 +8835,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-07-18T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-07-18T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8839,7 +8870,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:06:00Z",
+      "expires_at": "2026-07-18T15:07:31Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8851,8 +8882,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-08-10T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-08-10T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8886,7 +8917,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T15:06:00Z",
+      "expires_at": "2026-08-10T15:07:31Z",
       "evidence_for": [
         "military_buildup (+6 signal weight)",
         "military buildup",
@@ -8898,8 +8929,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-12T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-12T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -8934,7 +8965,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T15:06:00Z",
+      "expires_at": "2026-07-12T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza and West Bank incidents sustain the existing hot lane",
@@ -8946,8 +8977,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-14T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-14T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -8982,7 +9013,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T15:06:00Z",
+      "expires_at": "2026-07-14T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza and West Bank incidents sustain the existing hot lane",
@@ -8994,8 +9025,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-18T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-18T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -9030,7 +9061,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:06:00Z",
+      "expires_at": "2026-07-18T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza and West Bank incidents sustain the existing hot lane",
@@ -9042,8 +9073,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-10T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-10T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -9078,7 +9109,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T15:06:00Z",
+      "expires_at": "2026-08-10T15:07:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza and West Bank incidents sustain the existing hot lane",
@@ -9090,8 +9121,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "eastern_drc:escalation_watch:24h:2026-07-12T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "eastern_drc:escalation_watch:24h:2026-07-12T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "eastern_drc",
       "tracker_name": "EASTERN DRC",
       "event_type": "escalation_watch",
@@ -9125,7 +9156,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-12T15:06:00Z",
+      "expires_at": "2026-07-12T15:07:31Z",
       "evidence_for": [
         "external_backing (+4 signal weight)",
         "military_buildup (+6 signal weight)",
@@ -9138,8 +9169,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "eastern_drc:escalation_watch:72h:2026-07-14T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "eastern_drc:escalation_watch:72h:2026-07-14T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "eastern_drc",
       "tracker_name": "EASTERN DRC",
       "event_type": "escalation_watch",
@@ -9173,7 +9204,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-14T15:06:00Z",
+      "expires_at": "2026-07-14T15:07:31Z",
       "evidence_for": [
         "external_backing (+4 signal weight)",
         "military_buildup (+6 signal weight)",
@@ -9186,8 +9217,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "eastern_drc:escalation_watch:7d:2026-07-18T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "eastern_drc:escalation_watch:7d:2026-07-18T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "eastern_drc",
       "tracker_name": "EASTERN DRC",
       "event_type": "escalation_watch",
@@ -9221,7 +9252,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:06:00Z",
+      "expires_at": "2026-07-18T15:07:31Z",
       "evidence_for": [
         "external_backing (+4 signal weight)",
         "military_buildup (+6 signal weight)",
@@ -9234,8 +9265,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "eastern_drc:escalation_watch:30d:2026-08-10T15:06:00Z",
-      "generated_at": "2026-07-11T15:06:00Z",
+      "forecast_id": "eastern_drc:escalation_watch:30d:2026-08-10T15:07:31Z",
+      "generated_at": "2026-07-11T15:07:31Z",
       "tracker_id": "eastern_drc",
       "tracker_name": "EASTERN DRC",
       "event_type": "escalation_watch",
@@ -9269,7 +9300,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-10T15:06:00Z",
+      "expires_at": "2026-08-10T15:07:31Z",
       "evidence_for": [
         "external_backing (+4 signal weight)",
         "military_buildup (+6 signal weight)",
