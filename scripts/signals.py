@@ -541,8 +541,17 @@ def merge_news_signals_into_state(enriched_news, state, signal_weights, *,
             continue
         new_active.setdefault(zone, set())
         for sig in n.get("signals", []):
-            if not sig.get("duplicate") and sig.get("weight", 0) != 0:
-                new_active[zone].add(sig["name"])
+            signal_name = sig.get("name")
+            # Signal matching is global, but activation is tracker-specific.
+            # Never attach a matched signal to a tracker that does not define it
+            # in the canonical tracker config (represented by signal_weights).
+            if (
+                signal_name
+                and signal_weights.get((zone, signal_name), 0) != 0
+                and not sig.get("duplicate")
+                and sig.get("weight", 0) != 0
+            ):
+                new_active[zone].add(signal_name)
 
     for tid, tracker in state.get("trackers", {}).items():
         old_signals = set(tracker.get("active_signals", []))
