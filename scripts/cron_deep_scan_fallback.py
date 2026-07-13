@@ -142,10 +142,11 @@ def main() -> int:
         "sudan": "Sudan Kordofan El Obeid RSF SAF fighting humanitarian when:7d",
         "israel_palestine": "Gaza West Bank Israel Palestine casualties strike when:1d",
         "south_sudan_abyei": "South Sudan Abyei clashes military buildup UNISFA when:30d",
+        "yemen_red_sea": "Yemen Sanaa airport Houthis Saudi missiles Red Sea escalation when:1d",
         "oil_energy": "oil prices Strait of Hormuz Brent WTI tanker risk when:1d",
         "iaea_un": "IAEA UN Iran nuclear monitoring official when:7d",
         "nato_allied": "NATO allies Poland Baltic Russia Ukraine Article 5 official when:7d",
-        "emerging_7d": "Thailand Cambodia Ethiopia Eritrea Guyana Venezuela Kosovo Serbia military escalation when:7d",
+        "emerging_7d": "Yemen Red Sea Syria Thailand Cambodia Ethiopia Eritrea Guyana Venezuela Kosovo Serbia military escalation when:7d",
     }
     rss = {k: google_news(q, limit=10) for k, q in queries.items()}
 
