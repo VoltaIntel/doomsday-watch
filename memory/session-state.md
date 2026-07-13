@@ -1,16 +1,15 @@
 # Session State
 
-Last update: 2026-07-12T21:08Z
+Last update: 2026-07-13T00:06Z
 
-DoomsdayWatch 21Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
+DoomsdayWatch 00Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
-- Published state: **73% / imminent** (raw **69.8%**); no numeric mover and no canonical signal change.
-- Principal new evidence: a new U.S. round hit Iranian missile, air-defence and fast-boat assets around Hormuz after the GFS Galaxy incident; Iran then claimed attacks across multiple Gulf host states. Iran War remains capped at **100%**.
-- Russia-Ukraine remains **99%** after Reuters reported eight killed and dozens wounded in the latest Russian attacks; Ukrainian long-range operations continued.
-- Gaza reporting converged on six July 12 fatalities, including a child; `israel_palestine:ceasefire_violation` remains active without a new indicator.
-- Full coupled table: Iran War **100**, Russia-Ukraine **99**, Israel-Lebanon **94**, Sudan **90**, Israel-Palestine **88**, Eastern DR Congo **58**, Iran Nuclear **54**, Russia-NATO **52**, Pakistan-Afghanistan **46**, China-Taiwan **28**, DPRK **18**, South Sudan/Abyei **12**, India-Pakistan **11**, Turkey **5**.
-- No untracked crisis met auto-detection thresholds. Gulf-state attacks remain spillover from canonical `iran_conventional`; Ethiopia-Eritrea/Tigray and Thailand-Cambodia remain watch items.
-- OilPriceAPI refreshed at 21:05Z: Brent **$75.22**, WTI **$71.41** (weekend-unchanged). Polymarket refreshed at 21:06Z; exact-slug prices remain horizon/definition-mismatched sanity checks only.
-- Live public search succeeded across required lanes, supplemented by Reuters/UN/NATO/DW extraction and Google News. Direct IAEA yielded no fresh dated item; several local/single-source claims were not promoted.
-- Deploy/push succeeded. Command Deck markers, canonical JSON/signals, origin parity, and clean worktree passed.
-- Final published head: `4941a50`.
+- Published state: **73% / imminent** (raw **69.8%**); no numeric probability mover and no canonical signal change.
+- Fresh evidence: post-21Z reporting confirmed another U.S. round against Iranian military systems near Hormuz. Fresh video/reporting also showed large Israeli demolitions of underground infrastructure in southern Lebanon. Both reinforce already-active lanes rather than crossing a new threshold.
+- Energy repriced materially after the weekend: deploy-time OilPriceAPI showed Brent **$78.39** and WTI **$73.78**, versus $75.22/$71.41 at 21Z.
+- Full coupled table: Iran War **100 / imminent**, Russia-Ukraine **99 / imminent**, Israel-Lebanon **94 / imminent**, Sudan **90 / imminent**, Israel-Palestine **88 / imminent**, Eastern DR Congo **58 / imminent**, Iran Nuclear **54 / imminent**, Russia-NATO **52 / imminent**, Pakistan-Afghanistan **46 / critical**, China-Taiwan **28 / critical**, DPRK **18 / elevated**, South Sudan/Abyei **12 / elevated**, India-Pakistan **11 / elevated**, Turkey **5 / deterrent**.
+- No untracked crisis met auto-detection thresholds. The broad emerging basket returned zero fresh items; Thailand-Cambodia and Ethiopia-Eritrea/Tigray remain watch items.
+- Live public web search worked across required lanes, but freshness was uneven. Google News RSS and direct UN/NATO/EIA feeds supplied fallback/corroboration. Direct IAEA/OPEC pages and configured OCHA/UN Sudan feed paths failed.
+- Exact-slug Polymarket refresh at 00:04Z: U.S. invasion of Iran **17.5%**, Iran weapon **5.05%**, Iran test **4.5%**, NPT withdrawal **12.5%**, NATO Article 5 **6.5%**, China invasion **3.85%**, China-Taiwan clash **5.15%**, DPRK invasion **2.0%**, Ukraine peace deal **19.5%**, Israel-Lebanon normalization **16.0%**. Definition/horizon mismatches mean sanity check only.
+- `data/current_state.json` was written atomically. `bash scripts/deploy.sh` succeeded and pushed. JSON validity, canonical tracker/signal checks, all three Command Deck markers, and local/origin parity passed.
+- Published head: `a0975da`.
