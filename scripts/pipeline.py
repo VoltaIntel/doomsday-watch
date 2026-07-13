@@ -327,7 +327,7 @@ state["signal_timestamps"] = {
 
 # Fallback: extract named signals from zone notes when cron writer only
 # populates notes (not active_signals directly).
-extract_signals_from_notes(state)
+extract_signals_from_notes(state, signal_weights)
 
 trackers_js = build_tracker_cards()
 

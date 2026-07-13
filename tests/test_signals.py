@@ -1,4 +1,4 @@
-from scripts.signals import merge_news_signals_into_state
+from scripts.signals import extract_signals_from_notes, merge_news_signals_into_state
 
 
 def test_merge_news_signals_rejects_signal_not_configured_for_tracker():
@@ -33,3 +33,19 @@ def test_merge_news_signals_rejects_signal_not_configured_for_tracker():
     assert state["trackers"]["yemen_red_sea"]["active_signals"] == ["infrastructure_strike"]
     assert confirmed == [("yemen_red_sea", "infrastructure_strike")]
     assert "yemen_red_sea:missile_range_test" not in timeline
+
+
+def test_extract_signals_from_notes_rejects_signal_not_configured_for_tracker():
+    state = {
+        "zones": {
+            "yemen_red_sea": {
+                "notes": "The airport was hit by strikes despite ceasefire and ballistic missiles were fired."
+            }
+        },
+        "trackers": {"yemen_red_sea": {"active_signals": []}},
+    }
+    signal_weights = {("yemen_red_sea", "ceasefire_violation"): 6}
+
+    extract_signals_from_notes(state, signal_weights)
+
+    assert state["trackers"]["yemen_red_sea"]["active_signals"] == ["ceasefire_violation"]

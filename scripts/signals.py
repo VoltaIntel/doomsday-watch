@@ -583,7 +583,7 @@ def merge_news_signals_into_state(enriched_news, state, signal_weights, *,
             tracker["signal_timestamps"][signal_name] = activated_at or now_iso
 
 
-def extract_signals_from_notes(state):
+def extract_signals_from_notes(state, signal_weights=None):
     """Keyword-match zone notes → named signals. Fallback for cron writers
     that populate zones[].notes but not trackers[].active_signals directly.
 
@@ -599,6 +599,8 @@ def extract_signals_from_notes(state):
         notes_lower = notes.lower()
         matched = []
         for signal_name, keywords in ZONE_SIGNAL_KEYWORDS.items():
+            if signal_weights is not None and signal_weights.get((zone_id, signal_name), 0) == 0:
+                continue
             for kw in keywords:
                 if kw in notes_lower:
                     matched.append(signal_name)
