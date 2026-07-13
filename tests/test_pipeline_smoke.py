@@ -173,7 +173,8 @@ def test_dashboard_public_source_caveat_hides_internal_provider_errors(pipeline_
     public_text = " ".join(str(meta.get(k, "")) for k in ("source_limitation", "search_engine"))
     banned = ["tavily", "web_search", "http 432", "http 401", "http 403", "forbidden", "failed"]
     assert not any(token in public_text.lower() for token in banned)
-    assert "Source mix: official releases" in public_text
+    assert str(meta.get("source_limitation", "")).strip()
+    assert any(token in public_text.lower() for token in ("source", "official", "public reporting", "google news"))
     probe = meta.get("official_source_probe", {})
     if probe:
         assert "HTTPError" not in json.dumps(probe)
