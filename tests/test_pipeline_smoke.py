@@ -30,13 +30,14 @@ TRACKER_IDS = [
 ]
 
 
-@pytest.fixture()
-def pipeline_run(tmp_path):
-    """Copy repo into tmp_path, run pipeline, return (workdir, html, state)."""
-    workdir = tmp_path / "nuke-watch"
+@pytest.fixture(scope="module")
+def pipeline_run(tmp_path_factory):
+    """Copy the repo once per module, run pipeline, return its stable outputs."""
+    workdir = tmp_path_factory.mktemp("pipeline-run") / "nuke-watch"
     shutil.copytree(REPO_ROOT, workdir, ignore=shutil.ignore_patterns(
         ".git", "__pycache__", "*.pyc", "tests", "no_chart.png",
-        "test_no_baseline.png", "verify.png",
+        "test_no_baseline.png", "verify.png", ".venv*", ".serena",
+        ".pytest_cache", "tmp",
     ))
     result = subprocess.run(
         [sys.executable, "scripts/pipeline.py"],

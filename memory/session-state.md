@@ -1,16 +1,16 @@
 # Session State
 
-Last update: 2026-07-13T03:07Z
+Last update: 2026-07-13T06:12Z
 
-DoomsdayWatch 03Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
+DoomsdayWatch 06Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
-- Published state: **73% / imminent** (raw **69.8%**); no numeric probability mover.
-- Canonical signal change: `iran_conventional:oil_infrastructure_threat` cleared after expiry/decay review. The broader Hormuz conflict remains represented by `ceasefire_violation`, `diplomacy_active`, and `hormuz_closed`; Iran War remains 100%.
-- Fresh evidence: Al Jazeera/NYT and RSS reporting reinforced the latest U.S. action near Hormuz and Iranian retaliation. No additional tracker crossed an evidence threshold.
-- Energy: OilPriceAPI showed Brent **$79.02** and WTI **$74.28** at deploy.
-- Full coupled table: Iran War **100 / imminent**, Russia-Ukraine **99 / imminent**, Israel-Lebanon **94 / imminent**, Sudan **90 / imminent**, Israel-Palestine **88 / imminent**, Eastern DR Congo **58 / imminent**, Iran Nuclear **54 / imminent**, Russia-NATO **52 / critical**, Pakistan-Afghanistan **46 / critical**, China-Taiwan **28 / elevated** (coupled score), DPRK **18 / elevated**, South Sudan/Abyei **12 / elevated**, India-Pakistan **11 / elevated**, Turkey **5 / deterrent**.
+- Published assessment remains **73% / imminent** (raw **69.8%**); no numeric probability mover.
+- Canonical Iran conventional signal transition: `diplomacy_active` cleared and `diplomacy_refused` activated after Iran's foreign ministry said recent efforts were rendered futile amid another U.S. strike wave and broader Iranian retaliation across Gulf states. Iran War remains capped at 100%.
+- A negated-sentence keyword false positive briefly activated `iran_nuclear:enrichment_90`; it was removed from state and timeline before the final deploy. No technical nuclear escalation indicator was found.
+- Russia-Ukraine: ISW reported 90 Russian oil tankers struck in the Sea of Azov since July 6; Russia's overnight package included 115 drones and 13 missiles. Lane remains 99%.
+- Full coupled table: Iran War **100**, Russia-Ukraine **99**, Israel-Lebanon **94**, Sudan **90**, Israel-Palestine **88**, Eastern DR Congo **58**, Iran Nuclear **54**, Russia-NATO **52**, Pakistan-Afghanistan **46**, China-Taiwan **28**, DPRK **18**, South Sudan/Abyei **12**, India-Pakistan **11**, Turkey **5**.
+- Fresh Pakistan-Afghanistan casualty claims were not corroborated by Reuters/AP, a matching official statement or a new UN notice and were not scored.
 - No untracked crisis met the configured three-mention/two-source threshold.
-- Live web search worked; Google News RSS and direct UN/NATO/EIA pages provided fallback/corroboration. Direct IAEA/OPEC returned 403 and configured OCHA/UN Sudan feed paths returned 404.
-- Polymarket exact-slug sanity check refreshed at 03:06Z: U.S. invasion Iran 17.5%, Iran weapon 5.05%, Iran test 4.5%, NPT withdrawal 12.5%, NATO Article 5 6.5%, China invasion 3.85%, China-Taiwan clash 5.15%, DPRK invasion 2.0%, Ukraine peace deal 19.5%, Israel-Lebanon normalization 15.5%. Horizon/definition mismatch; not used for scoring.
-- `data/current_state.json` was written atomically. `bash scripts/deploy.sh` succeeded twice (second run reconciled the expired signal), pushed, and passed JSON/canonical checks, all three Command Deck markers, clean worktree, and origin parity.
-- Published head: `050053c`.
+- Deploy-time energy after the second pass: Brent **$79.38**, WTI **$74.70**. Polymarket exact-slug refresh completed at 06:12Z and remained a horizon/definition-mismatched sanity check only.
+- Live search, Google News, direct UN/NATO pages and public reporting were used. IAEA page extraction remained unavailable; past-day reporting was thin for several lower-volume lanes.
+- Atomic state write, canonical validation, signal false-positive cleanup, deploy/push and all three Command Deck marker checks succeeded. Final post-summary deploy and parity verification follow.
