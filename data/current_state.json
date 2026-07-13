@@ -300,8 +300,8 @@
     "last_scan": "2026-07-13T21:08:55Z",
     "scan_time_utc": "2026-07-13T21:08:55Z",
     "analysis_window": "21z_morning_deep_scan_past_24h_with_extended_crosschecks_all_15_configured_trackers_oil_energy_iaea_un_nato_allied_emerging_crises_polymarket",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "web_search_tavily_http_432_then_google_news_rss_direct_official_feeds_terminal_http",
+    "source_limitation": "All 20 live web_search requests and all five web_extract requests returned HTTP 432. Browser fallback was also unavailable because the local agent-browser binary is missing. The scan continued through Google News RSS for all 15 canonical trackers and required sectors, terminal HTTP, direct UN/NATO/EIA pages, OilPriceAPI and Polymarket Gamma. Direct IAEA and OPEC pages returned HTTP 403; configured OCHA/UN Sudan feed paths returned HTTP 404. Single-source claims were not promoted.",
     "old_probabilities": {
       "iran_conventional": 100,
       "israel_lebanon": 94,
@@ -330,7 +330,7 @@
     "false_positive_cleanup_4": "Removed pipeline keyword false positives: a negated DPRK sentence did not establish nuclear_test, and Houthi combat use did not establish missile_range_test. Reworded news to prevent reactivation; no probability was changed.",
     "energy_oil": "15:07Z OilPriceAPI: Brent $79.08 (+0.58% 24h) and WTI $74.56 (+0.76% 24h). Reuters/Kpler's six Sunday Strait transits remain the quantified low-flow baseline; DP World is planning a UAE east-coast bypass port.",
     "polymarket_sanity": "Deploy-time exact-slug Polymarket ingest requested; prediction-market prices are corroborative sanity checks only and do not drive tracker probabilities.",
-    "false_positive_cleanup_5": "Removed negation-triggered turkey:nuclear_rhetoric_official created by \u201cno nuclear rhetoric\u201d wording; neutralized Turkey note/news wording before redeploy.",
+    "false_positive_cleanup_5": "Removed negation-triggered turkey:nuclear_rhetoric_official created by “no nuclear rhetoric” wording; neutralized Turkey note/news wording before redeploy.",
     "false_positive_cleanup_6": "Removed negation-triggered iran_nuclear:enrichment_90, iran_conventional:bomber_redeployment, and turkey:missile_range_test; neutralized higher-level-enrichment/strategic-aviation/weapon-firing wording before redeploy.",
     "latest_rss_scan_keys": [
       "iran_nuclear",
@@ -457,7 +457,7 @@
       "israel_palestine": 0,
       "south_sudan_abyei": 0
     },
-    "false_positive_cleanup_8": "Removed negation-triggered north_korea:missile_range_test caused by \u201cNo fresh missile launch\u201d wording; neutralized DPRK note/news wording before redeploy.",
+    "false_positive_cleanup_8": "Removed negation-triggered north_korea:missile_range_test caused by “No fresh missile launch” wording; neutralized DPRK note/news wording before redeploy.",
     "false_positive_cleanup_9": "Removed reintroduced negation-triggered north_korea:missile_range_test from tracker notes; neutralized missile-keyword wording before redeploy.",
     "north_korea_false_positive_status": "No DPRK canonical signal promoted: 24h targeted search returned no fresh corroborated strategic-weapons event or major provocation.",
     "morning_deep_scan_movers": {
@@ -665,7 +665,7 @@
       },
       "will-beto-orourke-win-the-2028-democratic-presidential-nomination": {
         "ok": true,
-        "question": "Will Beto O\u2019Rourke win the 2028 Democratic presidential nomination?",
+        "question": "Will Beto O’Rourke win the 2028 Democratic presidential nomination?",
         "yes_price": 0.0065,
         "volume24hr": 24242.612483,
         "liquidity": 2495606.87162
@@ -862,7 +862,7 @@
     "signals_changed_06z": [],
     "auto_detection_06z": "No new tracker added. The emerging-crisis RSS basket returned zero fresh items, and broader review found only background/watch-list material; no untracked crisis met three mentions across two sources.",
     "energy_oil_06z": "06:01Z OilPriceAPI: Brent $75.22, WTI $71.41, gasoline $2.98, diesel/heating oil $3.55, natural gas $2.94 and gold $4,111.45. Slow but nonzero tanker movement and mid-$70s Brent reject a total-waterway-halt interpretation.",
-    "allied_positions_06z": "NATO\u2019s July 8 Ankara declaration remains governing: collective defence reaffirmed, Russia treated as a long-term threat, Ukraine support sustained, open Hormuz navigation backed, and a verifiable Iran outcome supported. No formal invocation or direct NATO-Russia kinetic event was confirmed.",
+    "allied_positions_06z": "NATO’s July 8 Ankara declaration remains governing: collective defence reaffirmed, Russia treated as a long-term threat, Ukraine support sustained, open Hormuz navigation backed, and a verifiable Iran outcome supported. No formal invocation or direct NATO-Russia kinetic event was confirmed.",
     "polymarket_sanity_06z": "06:01Z exact-slug Gamma snapshot: U.S. invasion of Iran 15.5%, Iran weapon 5.6%, Iran device test 4.5%, NPT withdrawal 14.25%, NATO Article 5 6.5%, China invasion 3.75%, China-Taiwan clash 6.45%, DPRK invasion 3.85%, Ukraine agreement 21.5%, Israel-Lebanon normalization 16.5%. Horizon and definition mismatches make these sanity checks only.",
     "latest_rss_scan_keys_06z": [
       "iran_nuclear",
@@ -1054,7 +1054,7 @@
         "content_type": "application/rss+xml; charset=utf-8",
         "items": [
           {
-            "title": "New cholera outbreak alert for Sudan\u2019s war-weary communities",
+            "title": "New cholera outbreak alert for Sudan’s war-weary communities",
             "published": "2026-07-10T12:00:00Z",
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167913"
           },
@@ -1079,7 +1079,7 @@
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167910"
           }
         ],
-        "title": "New cholera outbreak alert for Sudan\u2019s war-weary communities"
+        "title": "New cholera outbreak alert for Sudan’s war-weary communities"
       },
       "un_press_rss": {
         "ok": true,
@@ -1187,7 +1187,7 @@
     ],
     "auto_detection_15z": "No new zone met the configured threshold of three mentions across two sources. The broad emerging-crisis RSS query returned zero fresh items; wider web results were stale or background material, not a qualifying current cluster.",
     "energy_oil_15z": "15:05Z OilPriceAPI: Brent $76.36, WTI $71.83, gasoline $2.97, diesel $3.57, heating oil $3.55, natural gas $2.90 and gold $4,097.16. Reuters said traffic slowed and oil remained on track for a 4-5% weekly gain; selective transit rejects a total-halt interpretation.",
-    "allied_positions_15z": "NATO\u2019s July 8 Ankara declaration reaffirmed Article 5, described Russia as a long-term threat, committed at least EUR70 billion for Ukraine in 2026 and backed free navigation through Hormuz and a verifiable diplomatic outcome for Iran. No allied direct-entry event was confirmed.",
+    "allied_positions_15z": "NATO’s July 8 Ankara declaration reaffirmed Article 5, described Russia as a long-term threat, committed at least EUR70 billion for Ukraine in 2026 and backed free navigation through Hormuz and a verifiable diplomatic outcome for Iran. No allied direct-entry event was confirmed.",
     "polymarket_sanity_15z": "15:06Z exact-slug snapshot: U.S. invasion of Iran 16.5%, Iran weapon 5.65%, Iran device test 4.5%, NPT withdrawal 13.45%, NATO Article 5 6.5%, China invasion 3.95%, China-Taiwan clash 6.55%, DPRK invasion 3.9%, Ukraine agreement 21.5%, Israel-Lebanon normalization 17.0%. Horizon and definition mismatches make these sanity checks only.",
     "old_probabilities_raw_15z": {
       "iran_conventional": 100,
@@ -1370,7 +1370,7 @@
     ],
     "auto_detection_18z": "No new zone met the configured threshold of three mentions across two sources. The emerging-crisis RSS basket returned zero fresh items; wider search surfaced background/watch-list material only.",
     "energy_oil_18z": "18:07Z OilPriceAPI: Brent $75.73, WTI $71.26, gasoline $2.97, diesel $3.52, heating oil $3.52, natural gas $2.92 and gold $4,101.92. Prices and selective transit reject literal zero-flow or formal-closure treatment.",
-    "allied_positions_18z": "NATO\u2019s July 8 Ankara declaration reaffirmed Article 5, described Russia as a long-term threat, committed at least EUR70 billion for Ukraine in 2026, backed free navigation through Hormuz and supported a verifiable diplomatic outcome for Iran. No Article 5 invocation or direct NATO-Russia kinetic event was confirmed.",
+    "allied_positions_18z": "NATO’s July 8 Ankara declaration reaffirmed Article 5, described Russia as a long-term threat, committed at least EUR70 billion for Ukraine in 2026, backed free navigation through Hormuz and supported a verifiable diplomatic outcome for Iran. No Article 5 invocation or direct NATO-Russia kinetic event was confirmed.",
     "polymarket_sanity_18z": "18:05Z exact-slug snapshot: U.S. invasion of Iran 16.5%, Iran weapon 5.7%, Iran device test 4.5%, NPT withdrawal 14.2%, NATO Article 5 6.5%, China invasion 3.95%, China-Taiwan clash 6.55%, DPRK invasion 3.9%, Ukraine agreement 21.5%, Israel-Lebanon normalization 17.0%. Horizon and definition mismatches make these sanity checks only.",
     "old_probabilities_raw_18z": {
       "iran_conventional": 100,
@@ -1459,7 +1459,7 @@
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167920"
           },
           {
-            "title": "UN chief urges Iran and US to \u2018urgently resume negotiations\u2019 as Gulf strikes escalate",
+            "title": "UN chief urges Iran and US to ‘urgently resume negotiations’ as Gulf strikes escalate",
             "published": "2026-07-12T12:00:00Z",
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167923"
           },
@@ -1575,7 +1575,7 @@
     "morning_deep_scan_movers_21z": "No numeric tracker or global change versus 18Z. Yemen/Red Sea received stronger Reuters-led confirmation after 19:55Z, and Brent rose to $83.33 (+5.51% over 24h) as Hormuz traffic stayed severely restricted. Both reinforce already-active or capped lanes.",
     "signals_changed_21z": [],
     "auto_detection_21z": "No new tracker added. Yemen/Red Sea remains the newest canonical tracker. The broad emerging-crisis basket returned zero qualifying items, and no untracked crisis met the configured minimum of three mentions across two independent sources.",
-    "energy_oil_21z": "21:02Z OilPriceAPI: Brent $83.33 (+5.51% 24h), WTI $77.97 (+5.36%), gasoline $3.17 (+4.62%), diesel $3.84 (+5.21%), heating oil $3.83 (+5.22%), natural gas $2.89 (-1.70%) and gold $4,006.56 (-2.49%). Severe but nonzero Hormuz traffic argues against literal zero-flow treatment.",
+    "energy_oil_21z": "21:09Z OilPriceAPI: Brent $82.99 (+5.51% 24h), WTI $77.93 (+5.36%), gasoline $3.17 (+4.62%), diesel $3.84 (+5.21%), heating oil $3.83 (+5.22%), natural gas $2.90 (-1.70%) and gold $4,008.65 (-2.49%). Severe but nonzero Hormuz traffic argues against literal zero-flow treatment.",
     "allied_positions_21z": "NATO official pages were reachable. The July 8 Ankara commitments remain governing: collective defence, sustained Ukraine support, and open navigation. No formal Article 5 invocation, allied direct-entry decision, or verified Russia-NATO kinetic exchange was found.",
     "polymarket_sanity_21z": "21:05Z exact-slug snapshot retrieved 11 of 23 mapped markets: U.S. invasion of Iran 19.5%, Iran device 5.3%, Iran test 4.5%, NPT withdrawal 12.5%, NATO Article 5 6.0%, China invasion 3.85%, China-Taiwan clash 5.7%, DPRK invasion 2.05%, Ukraine agreement 19.5%, Israel-Lebanon normalization 15.5%. Definitions and horizons differ; no market price set a tracker probability.",
     "old_probabilities_raw_21z": {
@@ -1686,7 +1686,7 @@
     "signals_changed_00z": [],
     "auto_detection_00z": "No new tracker added. The emerging-crisis basket returned zero fresh items, and separate review found no untracked cluster meeting the configured minimum of three mentions across two sources.",
     "energy_oil_00z": "00:01Z OilPriceAPI: Brent $78.45 and WTI $73.78, up $3.23 and $2.37 respectively from 21Z; gasoline $2.98, diesel $3.55, heating oil $3.64, natural gas $2.91 and gold $4,088.47. The repricing confirms a live Hormuz premium, while reported nonzero traffic still argues against literal zero-flow treatment.",
-    "allied_positions_00z": "NATO\u2019s July 8 Ankara declaration remains governing: collective defence reaffirmed, Russia treated as a long-term threat, Ukraine support sustained, open Hormuz navigation backed, and a verifiable Iran outcome supported. No formal invocation, allied direct-entry decision or verified Russia-NATO kinetic event was found.",
+    "allied_positions_00z": "NATO’s July 8 Ankara declaration remains governing: collective defence reaffirmed, Russia treated as a long-term threat, Ukraine support sustained, open Hormuz navigation backed, and a verifiable Iran outcome supported. No formal invocation, allied direct-entry decision or verified Russia-NATO kinetic event was found.",
     "polymarket_sanity_00z": "The 21:06Z exact-slug snapshot remained the latest complete mapped set before deploy: China-Taiwan clash 4.95%, Taiwan invasion 3.85%, Iran test 4.5%, Iran nuclear-device 5.05%, NATO Article 5 6.5%, U.S. invasion of Iran 16.5%, Ukraine peace deal 20.5%. A 00:01Z generic refresh succeeded but omitted several mapped slugs from its first 100 markets; deploy will request mapped markets. Horizons and definitions differ materially, so these are sanity checks only.",
     "old_probabilities_raw_00z": {
       "iran_conventional": 83,
@@ -1795,17 +1795,17 @@
             "link": "https://press.un.org/en/2026/db260708.doc.htm"
           },
           {
-            "title": "\u2018Massive\u2019 Investment in Education Needed to Unlock Young People\u2019s Potential, Close Skills Gap, Secretary-General Says in International Day Message",
+            "title": "‘Massive’ Investment in Education Needed to Unlock Young People’s Potential, Close Skills Gap, Secretary-General Says in International Day Message",
             "published": "2026-07-08T21:43:09Z",
             "link": "https://press.un.org/en/2026/sgsm23215.doc.htm"
           },
           {
-            "title": "Ending Poverty an Act of Justice, Secretary-General Says in International Day Message Championing Nelson Mandela\u2019s \u2018Clear-Eyed\u2019 Vision of Equality",
+            "title": "Ending Poverty an Act of Justice, Secretary-General Says in International Day Message Championing Nelson Mandela’s ‘Clear-Eyed’ Vision of Equality",
             "published": "2026-07-08T21:36:04Z",
             "link": "https://press.un.org/en/2026/sgsm23214.doc.htm"
           },
           {
-            "title": "Security Council ISIL (Da\u2019esh) and Al-Qaida Sanctions Committee Amends One Entry\u00a0to Its Sanctions List",
+            "title": "Security Council ISIL (Da’esh) and Al-Qaida Sanctions Committee Amends One Entry to Its Sanctions List",
             "published": "2026-07-08T21:09:50Z",
             "link": "https://press.un.org/en/2026/sc16407.doc.htm"
           },
@@ -2451,7 +2451,7 @@
         "source": "https://news.un.org/en/tags/sudan/feed"
       }
     },
-    "morning_deep_scan_movers_20260704_00z": "00Z change vs 21Z: Iran nuclear raw probability rises 38\u219241 and coupled final rises 46\u219248 after fresh multi-source reporting that IAEA access is denied or sharply limited at bombed sites. Global remains rounded at 68/imminent. Russia-NATO stays at 42 raw / 52 final; Israel-Lebanon remains hottest non-Ukraine coupled lane at 96 final; Iran conventional remains 90 final on controlled Hormuz/tanker-risk without full halt.",
+    "morning_deep_scan_movers_20260704_00z": "00Z change vs 21Z: Iran nuclear raw probability rises 38→41 and coupled final rises 46→48 after fresh multi-source reporting that IAEA access is denied or sharply limited at bombed sites. Global remains rounded at 68/imminent. Russia-NATO stays at 42 raw / 52 final; Israel-Lebanon remains hottest non-Ukraine coupled lane at 96 final; Iran conventional remains 90 final on controlled Hormuz/tanker-risk without full halt.",
     "signals_changed_20260704_00z": "Canonical signals only. Added iran_nuclear:iaea_access_denied based on fresh multi-source site-access restriction evidence while keeping Iran nuclear critical because higher technical thresholds were not corroborated. Re-activated iran_conventional:hormuz_controlled_not_closed from fresh route-control/tanker-warning evidence. Deploy decay cleared older Israel-Lebanon diplomacy_active/diplomacy_refused entries; israel_lebanon:ceasefire_violation remains active. Pakistan-Afghanistan, Sudan and Israel-Palestine active lanes were preserved/reconfirmed. No DPRK configured signal was promoted. No untracked zone was auto-added.",
     "auto_detection_20260704_00z": "No untracked nuclear-escalation/alliance-spillover zone auto-added. Emerging-crisis review for Thailand-Cambodia/Ethiopia-Eritrea/Guyana-Venezuela/Kosovo-Serbia returned no qualifying fresh multi-source trigger evidence in RSS; broader web_search returned watch-list/background material only.",
     "energy_oil_20260704_00z": "00Z pre-deploy view: Brent/WTI latest cache near $71.94/$68.78 with RSS evidence of sliding prices and Gulf export recovery. Hormuz/tanker-risk headlines remain visible, but price and flow evidence reject full-waterway-halt thresholds.",
@@ -2533,7 +2533,7 @@
       "south_sudan_abyei": 0
     },
     "raw_global_probability_20260704_00z": 68.18,
-    "over_threshold_correction_20260704_00z": "Corrected Iran nuclear raw 42\u219241 / final 50\u219248 after first deploy to avoid an evidence-weak critical\u2192imminent threshold crossing; iaea_access_denied remains active, but higher technical triggers remain uncorroborated.",
+    "over_threshold_correction_20260704_00z": "Corrected Iran nuclear raw 42→41 / final 50→48 after first deploy to avoid an evidence-weak critical→imminent threshold crossing; iaea_access_denied remains active, but higher technical triggers remain uncorroborated.",
     "post_deploy_signal_decay_20260704_00z": "First 00Z deploy decayed older iran_conventional:hormuz_controlled_not_closed and Israel-Lebanon diplomacy signals. Hormuz controlled-route signal was reactivated from fresh 3 Jul tanker-route warning evidence; Israel-Lebanon diplomacy signals were left cleared to avoid stale low-weight triggers.",
     "source_fallback_detail_20260704_09z": "web_search attempted for 17/17 required tracker/sector groups and returned results; fallback artifact data/morning_deep_scan_sources_20260704T090134Z.json used Google News RSS plus direct UN/NATO/EIA/IAEA/OPEC/OCHA probes. UN News/Press, NATO pages and EIA RSS reachable; direct IAEA/OPEC pages and configured OCHA/UN Sudan tag feeds unavailable from this node.",
     "latest_source_artifact_20260704_09z": "data/morning_deep_scan_sources_20260704T090134Z.json",
@@ -2754,7 +2754,7 @@
         "content_type": "application/rss+xml; charset=utf-8",
         "items": [
           {
-            "title": "Invisible peacebuilders: How \u2018diplomacy works\u2019 to prevent conflict",
+            "title": "Invisible peacebuilders: How ‘diplomacy works’ to prevent conflict",
             "published": "2026-07-04T12:00:00Z",
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167866"
           },
@@ -2764,12 +2764,12 @@
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167854"
           },
           {
-            "title": "Sudan\u2019s people subject to \u2018relentless\u2019 drone strikes in El Obeid",
+            "title": "Sudan’s people subject to ‘relentless’ drone strikes in El Obeid",
             "published": "2026-07-03T12:00:00Z",
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167871"
           },
           {
-            "title": "El Ni\u00f1o forecast to intensify, increasing likelihood of extreme weather",
+            "title": "El Niño forecast to intensify, increasing likelihood of extreme weather",
             "published": "2026-07-03T12:00:00Z",
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167870"
           },
@@ -2779,7 +2779,7 @@
             "link": "https://news.un.org/feed/view/en/story/2026/07/1167868"
           }
         ],
-        "title": "Invisible peacebuilders: How \u2018diplomacy works\u2019 to prevent conflict"
+        "title": "Invisible peacebuilders: How ‘diplomacy works’ to prevent conflict"
       },
       "un_press_rss": {
         "ok": true,
@@ -2794,7 +2794,7 @@
             "link": "https://press.un.org/en/2026/sgsm23210.doc.htm"
           },
           {
-            "title": "Activities of Secretary-General in\u00a0United Kingdom, 22-24 June",
+            "title": "Activities of Secretary-General in United Kingdom, 22-24 June",
             "published": "2026-07-02T19:49:35Z",
             "link": "https://press.un.org/en/2026/sgt3467.doc.htm"
           },
@@ -2804,7 +2804,7 @@
             "link": "https://press.un.org/en/2026/db260702.doc.htm"
           },
           {
-            "title": "Implement Peace Deal Now, Speakers\u00a0Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
+            "title": "Implement Peace Deal Now, Speakers Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
             "published": "2026-07-02T19:37:01Z",
             "link": "https://press.un.org/en/2026/sc16405.doc.htm"
           },
@@ -3196,7 +3196,7 @@
             "link": "https://press.un.org/en/2026/sgsm23210.doc.htm"
           },
           {
-            "title": "Activities of Secretary-General in\u00a0United Kingdom, 22-24 June",
+            "title": "Activities of Secretary-General in United Kingdom, 22-24 June",
             "published": "2026-07-02T19:49:35Z",
             "link": "https://press.un.org/en/2026/sgt3467.doc.htm"
           },
@@ -3206,7 +3206,7 @@
             "link": "https://press.un.org/en/2026/db260702.doc.htm"
           },
           {
-            "title": "Implement Peace Deal Now, Speakers\u00a0Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
+            "title": "Implement Peace Deal Now, Speakers Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
             "published": "2026-07-02T19:37:01Z",
             "link": "https://press.un.org/en/2026/sc16405.doc.htm"
           },
@@ -3455,7 +3455,7 @@
             "link": "https://press.un.org/en/2026/sgsm23210.doc.htm"
           },
           {
-            "title": "Activities of Secretary-General in\u00a0United Kingdom, 22-24 June",
+            "title": "Activities of Secretary-General in United Kingdom, 22-24 June",
             "published": "2026-07-02T19:49:35Z",
             "link": "https://press.un.org/en/2026/sgt3467.doc.htm"
           },
@@ -3465,7 +3465,7 @@
             "link": "https://press.un.org/en/2026/db260702.doc.htm"
           },
           {
-            "title": "Implement Peace Deal Now, Speakers\u00a0Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
+            "title": "Implement Peace Deal Now, Speakers Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
             "published": "2026-07-02T19:37:01Z",
             "link": "https://press.un.org/en/2026/sc16405.doc.htm"
           },
@@ -3712,7 +3712,7 @@
             "link": "https://press.un.org/en/2026/sgsm23210.doc.htm"
           },
           {
-            "title": "Activities of Secretary-General in\u00a0United Kingdom, 22-24 June",
+            "title": "Activities of Secretary-General in United Kingdom, 22-24 June",
             "published": "2026-07-02T19:49:35Z",
             "link": "https://press.un.org/en/2026/sgt3467.doc.htm"
           },
@@ -3722,7 +3722,7 @@
             "link": "https://press.un.org/en/2026/db260702.doc.htm"
           },
           {
-            "title": "Implement Peace Deal Now, Speakers\u00a0Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
+            "title": "Implement Peace Deal Now, Speakers Urge, as Security Council Meets in Wake of Resumed Military Confrontation between United States, Iran",
             "published": "2026-07-02T19:37:01Z",
             "link": "https://press.un.org/en/2026/sc16405.doc.htm"
           },
@@ -3891,9 +3891,9 @@
     "post_deploy_meta_fix_time_utc_03z_20260706": "2026-07-06T03:05:12Z",
     "latest_rss_sample_heads_06z": {
       "iran_nuclear": [
-        "Reconstructing Iran\u2019s Nuclear Baseline",
+        "Reconstructing Iran’s Nuclear Baseline",
         "Can inspectors return to Iran's nuclear sites?",
-        "Trump\u2019s $100 Billion Iran War Mistake"
+        "Trump’s $100 Billion Iran War Mistake"
       ],
       "iran_conventional": [
         "7 OPEC+ countries agree to expand monthly oil production modestly as prices slide",
@@ -3902,7 +3902,7 @@
       ],
       "israel_lebanon": [
         "Israeli military says struck Hezbollah cell in S. Lebanon",
-        "Netanyahu says some Lebanese villages \u2018asked to be annexed to Israel\u2019",
+        "Netanyahu says some Lebanese villages ‘asked to be annexed to Israel’",
         "IDF says Hezbollah cell hit in south Lebanon, warns it will attack if truce violated"
       ],
       "turkey": [],
@@ -3914,12 +3914,12 @@
       "russia": [
         "Polish Intel Warns Russia Could Use Unmarked Troops Against Baltic States",
         "Russia planning attack on Poland to test Nato resolve, US warns",
-        "Russia\u2019s Poland Test Would Be a Test of NATO\u2019s Political Nerve"
+        "Russia’s Poland Test Would Be a Test of NATO’s Political Nerve"
       ],
       "china": [
         "China & Taiwan Update, July 2, 2026",
         "China Raises Pressure on Taiwan With Expanded Coast Guard Patrols",
-        "Inside Taiwan\u2019s nightmare scenario: Chinese blockade, earthquake, sabotage and invasion"
+        "Inside Taiwan’s nightmare scenario: Chinese blockade, earthquake, sabotage and invasion"
       ],
       "north_korea": [
         "North Korea denounces US-Japan drill as Seoul defends missile tracking",
@@ -3927,7 +3927,7 @@
         "Pyongyang marks Korean War anniversary with tests of improved weaponry"
       ],
       "russia_ukraine": [
-        "An attack on Poland would be Putin\u2019s last fail",
+        "An attack on Poland would be Putin’s last fail",
         "With Putin visibly weakened, now is the time to back Ukraine",
         "Shadow over Ukraine: Why Kremlin escalates ahead of NATO Summit"
       ],
@@ -3937,8 +3937,8 @@
         "Pakistan says its security forces killed 29 fighters along Afghan border"
       ],
       "sudan": [
-        "Sudan\u2019s people subject to \u2018relentless\u2019 drone strikes in El Obeid",
-        "\u2018The situation is terrible\u2019: aid workers on life in Sudanese city pummelled by drone strikes",
+        "Sudan’s people subject to ‘relentless’ drone strikes in El Obeid",
+        "‘The situation is terrible’: aid workers on life in Sudanese city pummelled by drone strikes",
         "Humanitarian Disaster Looms in Sudan as RSF Prepares New Offensive"
       ],
       "israel_palestine": [
@@ -3947,7 +3947,7 @@
         "Israeli strike kills Palestinian in Gaza as army continues demolitions"
       ],
       "south_sudan_abyei": [
-        "The Blue Helmet\u2019s New Battlefield: Drones, Proxies, and Weak Intelligence"
+        "The Blue Helmet’s New Battlefield: Drones, Proxies, and Weak Intelligence"
       ],
       "oil_energy": [
         "Oil prices to drop further on OPEC+ supply, but risks still loom",
@@ -3956,12 +3956,12 @@
       ],
       "iaea_un": [
         "Can inspectors return to Iran's nuclear sites?",
-        "Iran urges nuclear watchdog chief to stop \u2018political statements,\u2019 focus on his duties",
+        "Iran urges nuclear watchdog chief to stop ‘political statements,’ focus on his duties",
         "IAEA chief says Iran's enriched uranium likely still at nuclear sites"
       ],
       "nato_allied": [
         "Russia planning attack on Poland to test Nato resolve, US warns",
-        "On the Ground Along NATO\u2019s Eastern Flank \u2014 as Russia Threatens",
+        "On the Ground Along NATO’s Eastern Flank — as Russia Threatens",
         "Polish PM warns critical months ahead in face of Russian threat"
       ],
       "emerging_7d": []
@@ -4023,9 +4023,9 @@
     },
     "latest_rss_sample_heads_12z": {
       "iran_nuclear": [
-        "Reconstructing Iran\u2019s Nuclear Baseline",
+        "Reconstructing Iran’s Nuclear Baseline",
         "Can inspectors return to Iran's nuclear sites?",
-        "Trump\u2019s $100 Billion Iran War Mistake"
+        "Trump’s $100 Billion Iran War Mistake"
       ],
       "iran_conventional": [
         "Can the World Withstand Another Oil Shock After the Iran War?",
@@ -4035,7 +4035,7 @@
       "israel_lebanon": [
         "Israeli military says struck Hezbollah cell in S. Lebanon",
         "Lebanon state media says Israeli strike on south kills 4, including 3 women",
-        "Netanyahu says some Lebanese villages \u2018asked to be annexed to Israel\u2019"
+        "Netanyahu says some Lebanese villages ‘asked to be annexed to Israel’"
       ],
       "turkey": [
         "China's Pacific Missile Test Sparks Regional Tensions",
@@ -4048,13 +4048,13 @@
       ],
       "russia": [
         "Russia planning attack on Poland to test Nato resolve, US warns",
-        "Russia\u2019s Poland Test Would Be a Test of NATO\u2019s Political Nerve",
+        "Russia’s Poland Test Would Be a Test of NATO’s Political Nerve",
         "US warns Poland of possible Russian border provocation"
       ],
       "china": [
         "China & Taiwan Update, July 2, 2026",
         "China Raises Pressure on Taiwan With Expanded Coast Guard Patrols",
-        "Inside Taiwan\u2019s nightmare scenario: Chinese blockade, earthquake, sabotage and invasion"
+        "Inside Taiwan’s nightmare scenario: Chinese blockade, earthquake, sabotage and invasion"
       ],
       "north_korea": [
         "Five Things to Know, July 6, 2026",
@@ -4062,9 +4062,9 @@
         "China Test-Launches a Ballistic Missile in the South Pacific and Raises Regional Concerns"
       ],
       "russia_ukraine": [
-        "An attack on Poland would be Putin\u2019s last fail",
+        "An attack on Poland would be Putin’s last fail",
         "Shadow over Ukraine: Why Kremlin escalates ahead of NATO Summit",
-        "Poland\u2019s Russia Warnings Are Alarming. They Are Also Unclear."
+        "Poland’s Russia Warnings Are Alarming. They Are Also Unclear."
       ],
       "pakistan_afghanistan": [
         "Pakistan says it carried out ground operation, strikes along Afghan border, killing 29 militants",
@@ -4072,8 +4072,8 @@
         "Pakistan says its security forces killed 29 fighters along Afghan border"
       ],
       "sudan": [
-        "Sudan\u2019s people subject to \u2018relentless\u2019 drone strikes in El Obeid",
-        "\u2018The situation is terrible\u2019: aid workers on life in Sudanese city pummelled by drone strikes",
+        "Sudan’s people subject to ‘relentless’ drone strikes in El Obeid",
+        "‘The situation is terrible’: aid workers on life in Sudanese city pummelled by drone strikes",
         "RSF Defections to Sudanese Army Continue"
       ],
       "israel_palestine": [
@@ -4082,7 +4082,7 @@
         "Four-month-old Palestinian baby dies after medical transfer delayed at Israeli checkpoint"
       ],
       "south_sudan_abyei": [
-        "The Blue Helmet\u2019s New Battlefield: Drones, Proxies, and Weak Intelligence"
+        "The Blue Helmet’s New Battlefield: Drones, Proxies, and Weak Intelligence"
       ],
       "oil_energy": [
         "Why Oil and Natural Gas are no longer trading the same story",
@@ -4091,12 +4091,12 @@
       ],
       "iaea_un": [
         "Can inspectors return to Iran's nuclear sites?",
-        "Iran urges nuclear watchdog chief to stop \u2018political statements,\u2019 focus on his duties",
+        "Iran urges nuclear watchdog chief to stop ‘political statements,’ focus on his duties",
         "IAEA chief says Iran's enriched uranium likely still at nuclear sites"
       ],
       "nato_allied": [
         "Russia planning attack on Poland to test Nato resolve, US warns",
-        "On the Ground Along NATO\u2019s Eastern Flank \u2014 as Russia Threatens",
+        "On the Ground Along NATO’s Eastern Flank — as Russia Threatens",
         "Polish PM warns critical months ahead in face of Russian threat"
       ],
       "emerging_7d": []
@@ -4828,7 +4828,7 @@
             "link": "https://press.un.org/en/2026/db260706.doc.htm"
           },
           {
-            "title": "Responsibility to Protect Begins at Home, Speakers Tell General Assembly, amid Calls to \u2018Act Before Warning Signs Become Mass Graves\u2019",
+            "title": "Responsibility to Protect Begins at Home, Speakers Tell General Assembly, amid Calls to ‘Act Before Warning Signs Become Mass Graves’",
             "published": "2026-07-06T19:32:37Z",
             "link": "https://press.un.org/en/2026/ga12768.doc.htm"
           },
@@ -5220,7 +5220,7 @@
             "link": "https://press.un.org/en/2026/db260706.doc.htm"
           },
           {
-            "title": "Responsibility to Protect Begins at Home, Speakers Tell General Assembly, amid Calls to \u2018Act Before Warning Signs Become Mass Graves\u2019",
+            "title": "Responsibility to Protect Begins at Home, Speakers Tell General Assembly, amid Calls to ‘Act Before Warning Signs Become Mass Graves’",
             "published": "2026-07-06T19:32:37Z",
             "link": "https://press.un.org/en/2026/ga12768.doc.htm"
           },
@@ -5721,7 +5721,7 @@
         "content_type": "application/rss+xml; charset=utf-8",
         "items": [
           {
-            "title": "General Assembly Resumes Debate on Ending Cuban Embargo, as Havana Leads Outcry against \u2018Cruel\u2019 Extraterritorial Ambitions of United States",
+            "title": "General Assembly Resumes Debate on Ending Cuban Embargo, as Havana Leads Outcry against ‘Cruel’ Extraterritorial Ambitions of United States",
             "published": "2026-07-07T20:58:48Z",
             "link": "https://press.un.org/en/2026/ga12769.doc.htm"
           },
@@ -5746,7 +5746,7 @@
             "link": "https://press.un.org/en/blog/ga12769"
           }
         ],
-        "title": "General Assembly Resumes Debate on Ending Cuban Embargo, as Havana Leads Outcry against \u2018Cruel\u2019 Extraterritorial Ambitions of United States"
+        "title": "General Assembly Resumes Debate on Ending Cuban Embargo, as Havana Leads Outcry against ‘Cruel’ Extraterritorial Ambitions of United States"
       },
       "nato_news": {
         "ok": true,
@@ -5896,7 +5896,7 @@
       "south_sudan_abyei": 8
     },
     "raw_global_probability_00z_20260708": 70.3,
-    "morning_deep_scan_movers_00z_20260708": "00Z change vs 21Z: Iran conventional +4 coupled (92\u219296) on AP/Reuters-indexed US-strike-after-Hormuz-tanker-hit reporting and oil jump; Pakistan-Afghanistan +2 (44\u219246) on renewed cross-border strike/retaliation cycle. Global remains rounded at 70/imminent.",
+    "morning_deep_scan_movers_00z_20260708": "00Z change vs 21Z: Iran conventional +4 coupled (92→96) on AP/Reuters-indexed US-strike-after-Hormuz-tanker-hit reporting and oil jump; Pakistan-Afghanistan +2 (44→46) on renewed cross-border strike/retaliation cycle. Global remains rounded at 70/imminent.",
     "signals_changed_00z_20260708": "Canonical signals only. Added/reconfirmed iran_conventional:ceasefire_violation alongside iran_conventional:hormuz_controlled_not_closed. Existing active lanes preserved/reconfirmed: israel_lebanon:ceasefire_violation, north_korea:missile_range_test, pakistan_afghanistan:military_buildup, iran_nuclear:iaea_access_denied, sudan:military_buildup, israel_palestine:ceasefire_violation. No noncanonical/legacy signal present.",
     "auto_detection_00z_20260708": "No untracked nuclear-escalation/alliance-spillover zone auto-added. Emerging-crisis RSS returned zero qualifying fresh items; broader web_search surfaced Thailand-Cambodia/Venezuela and other watch-list/background material only, not a fresh multi-source trigger meeting auto-add thresholds. Abyei remains watch-only pending official corroboration.",
     "allied_positions_00z_20260708": "NATO public pages reachable; Ankara summit material emphasizes allied investment, eastern-flank deterrence and Ukraine support. Poland/Baltic warning cycle remains live, but no Article 5 invocation, public direct-combat decision or verified Russia-NATO kinetic incident surfaced.",
@@ -6064,7 +6064,7 @@
         "source": "UN Sudan tag feed"
       }
     },
-    "morning_deep_scan_movers_00z_20260709": "00Z change vs 21Z: global rises 70\u219271/imminent. Iran conventional raw 88\u219290 on renewed US-Iran armed-action/Hormuz/oil-risk evidence. Iran nuclear raw 41\u219243 and coupled 48\u219251 after nuclear-channel suspension plus persistent IAEA access gaps. South Sudan/Abyei 8\u219212 on fresh 54-killed clash report, with no configured signal promoted due thin sourcing. Other lanes unchanged numerically.",
+    "morning_deep_scan_movers_00z_20260709": "00Z change vs 21Z: global rises 70→71/imminent. Iran conventional raw 88→90 on renewed US-Iran armed-action/Hormuz/oil-risk evidence. Iran nuclear raw 41→43 and coupled 48→51 after nuclear-channel suspension plus persistent IAEA access gaps. South Sudan/Abyei 8→12 on fresh 54-killed clash report, with no configured signal promoted due thin sourcing. Other lanes unchanged numerically.",
     "signals_changed_00z_20260709": "Canonical signals only. Added iran_nuclear:diplomacy_refused from reporting that Tehran suspended US nuclear-channel engagement. Preserved/reconfirmed: iran_conventional:hormuz_controlled_not_closed, iran_conventional:ceasefire_violation, israel_lebanon:ceasefire_violation, north_korea:missile_range_test, pakistan_afghanistan:military_buildup, iran_nuclear:iaea_access_denied, sudan:military_buildup, israel_palestine:ceasefire_violation. No noncanonical/legacy signal present.",
     "auto_detection_00z_20260709": "No untracked nuclear-escalation/alliance-spillover zone auto-added. Emerging-crisis RSS fallback returned zero qualifying fresh items; broader web_search surfaced Thailand-Cambodia/Ethiopia-Eritrea/Guyana-Venezuela/Kosovo-Serbia watch-list/background material only, not a fresh multi-source trigger meeting auto-add thresholds.",
     "energy_oil_00z_20260709": "00Z pre-deploy view: cached Brent $79.13, WTI $74.72; gasoline $3.04, diesel $3.25, heating oil $3.72, natural gas $3.23, gold $4077.61. Gulf/Hormuz tanker-risk headlines keep a risk premium live, but pricing and continued flow reporting reject full-stoppage thresholds.",
@@ -6677,11 +6677,11 @@
       "time": "21:08",
       "date": "2026-07-13",
       "headline": "Hormuz traffic at two-month low as energy risk premium jumps",
-      "text": "Shipping reports show severe but nonzero traffic while U.S.-Iran exchanges continue. OilPriceAPI put Brent at $83.33 and WTI at $77.97, both up more than 5% over 24 hours. The lane remains capped without further numeric inflation.",
+      "text": "Shipping reports show severe but nonzero traffic while U.S.-Iran exchanges continue. OilPriceAPI put Brent at $82.99 and WTI at $77.93, both up more than 5% over 24 hours. The lane remains capped without further numeric inflation.",
       "sources": [
         "Associated Press published 2026-07-13 17:19Z",
         "The National published 2026-07-13 15:05Z",
-        "OilPriceAPI updated 2026-07-13 21:02Z",
+        "OilPriceAPI updated 2026-07-13 21:09Z",
         "Google News RSS checked 2026-07-13T21:08:55Z"
       ],
       "impact": "up"
@@ -7155,7 +7155,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -7217,7 +7217,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "stable",
@@ -7299,7 +7299,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "falling",
@@ -7371,7 +7371,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -7417,7 +7417,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 11,
       "zone": "elevated",
       "trend": "stable",
@@ -7458,7 +7458,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -7499,7 +7499,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -7545,7 +7545,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -7585,7 +7585,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -7630,7 +7630,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "rising",
@@ -7670,7 +7670,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -7732,7 +7732,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -7794,7 +7794,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 12,
       "zone": "elevated",
       "trend": "falling",
@@ -7845,7 +7845,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 58,
       "zone": "imminent",
       "trend": "rising",
@@ -7917,7 +7917,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
