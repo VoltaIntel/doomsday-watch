@@ -253,7 +253,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-07-15T15:11:19Z",
+  "last_updated": "2026-07-15T15:13:38Z",
   "signal_timestamps": {
     "iran_conventional:hormuz_closed": "2026-07-12T03:04:09Z",
     "iran_conventional:diplomacy_refused": "2026-07-13T06:09:13Z",
@@ -268,10 +268,10 @@
   "global_zone": "imminent",
   "global_probability": 74,
   "eval_stats": {
-    "total": 1909499,
-    "correct": 1418681,
+    "total": 1913839,
+    "correct": 1422225,
     "accuracy": 74,
-    "mean_brier": 0.5017
+    "mean_brier": 0.5015
   },
   "_meta": {
     "last_writer": "cron_morning_deep_scan",
@@ -1104,9 +1104,9 @@
     "morning_deep_scan_movers_15z": "No numeric tracker or global move versus 12Z. Evidence movers: Baltic and Polish leaders publicly warned of a possible limited Russian provocation; the Rome Israel-Lebanon round concluded with the channel intact; UN reporting identified illicit commodity flows financing Sudan belligerents; further Gaza deaths were reported.",
     "signals_changed_15z": [],
     "auto_detection_15z": "No new tracker added. Ethiopia/Tigray returned two warning sources, below min_mentions=3. Thailand-Cambodia returned two items and only one fresh operational report. South China Sea and Syria results were dominated by scheduled drills, anniversary statements or withdrawal pressure; Sahel, Kosovo-Serbia, Armenia-Azerbaijan and Guyana-Venezuela lacked a distinct fresh multi-source operational cluster.",
-    "energy_oil_15z": "15:09Z OilPriceAPI: Brent $83.79, WTI $78.79, Gulf Coast diesel $3.95, gasoline $3.25, heating oil $3.93, natural gas $2.92 and gold $4,064.10. EIA published a 15 July review of Q2 Middle East disruptions. The risk premium remains elevated, but prices did not set tracker probabilities.",
+    "energy_oil_15z": "15:11Z deploy-time OilPriceAPI: Brent $83.71, WTI $78.79, Gulf Coast diesel $3.93, gasoline $3.23, heating oil $3.91, natural gas $2.92 and gold $4,064.10. EIA published a 15 July review of Q2 Middle East disruptions. Prices did not set tracker probabilities.",
     "allied_positions_15z": "NATO official pages were reachable. Baltic and Polish leaders warned publicly of a possible limited Russian military or hybrid provocation, but no formal Article 5 invocation, allied direct-entry decision or verified Russia-NATO kinetic exchange was found. The July 8 Ankara collective-defence, Ukraine-support and open-navigation baseline remains governing.",
-    "polymarket_sanity_15z": "15:09Z generic Polymarket cache refresh returned 100 markets. Exact mapped markets will be refreshed during deploy; definitions and horizons differ, so sanity-only.",
+    "polymarket_sanity_15z": "15:12Z exact-slug Gamma refresh returned 11 mapped markets across 8 tracker comparisons: U.S.-Iran invasion 17.5%, Iran device 5.2%, Iran test 4.5%, NPT withdrawal 16.85%, NATO Article 5 8.0%, China invasion 3.75%, China-Taiwan clash 6.8%, DPRK invasion 2.0%, Ukraine agreement 18.5%, Israel-Lebanon normalization 15.5%. Definitions, liquidity and horizons differ; sanity-only.",
     "old_probabilities_raw_15z": {
       "iran_conventional": 100,
       "israel_lebanon": 84,
@@ -6683,7 +6683,8 @@
       "Removed sudan:diplomacy_active",
       "Restored continuing iran_nuclear:iaea_access_denied"
     ],
-    "cleanup_time_utc_12z_20260715": "2026-07-15T12:08:53Z"
+    "cleanup_time_utc_12z_20260715": "2026-07-15T12:08:53Z",
+    "signal_reconciliation_15z": "Deploy temporal decay briefly removed the timeline entry for iran_nuclear:iaea_access_denied, but current UN-linked evidence still establishes denied access and no restoration. The canonical status signal was reconciled before the final deploy; no probability changed."
   },
   "trackers": {
     "iran_conventional": {
@@ -7050,8 +7051,8 @@
       "date": "2026-07-15",
       "time": "15:12",
       "zone": "iran_nuclear",
-      "headline": "Safeguards knowledge gap remains unresolved",
-      "text": "UN-linked coverage continues to describe lost agency oversight; no new technical threshold or restoration of monitoring was verified.",
+      "headline": "IAEA access remains denied; safeguards gap unresolved",
+      "text": "UN-linked coverage indicates IAEA access remains denied. No new technical threshold or restoration of monitoring was verified.",
       "impact": "stable",
       "sources": [
         "EL PA\u00cdS published 2026-07-15 10:09Z",
@@ -7123,8 +7124,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-07-15T15:12:25Z",
-    "fetched_at": "2026-07-15T15:12:25Z",
+    "generated_at": "2026-07-15T15:14:21Z",
+    "fetched_at": "2026-07-15T15:14:21Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -7139,7 +7140,7 @@
         "used_slugs": [
           "will-the-us-invade-iran-before-2027"
         ],
-        "total_volume_24h": 376655.96,
+        "total_volume_24h": 376978.63,
         "liquidity_warn": false,
         "markets": [
           {
@@ -7149,7 +7150,7 @@
             "invert": false,
             "yes_price": 0.175,
             "contribution": 0.175,
-            "volume_24h": 376655.95807,
+            "volume_24h": 376978.62741099996,
             "question": "Will the U.S. invade Iran before 2027?"
           }
         ],
@@ -7282,7 +7283,7 @@
           "will-china-invade-taiwan-before-2027",
           "china-x-taiwan-military-clash-before-2027"
         ],
-        "total_volume_24h": 158336.62,
+        "total_volume_24h": 158335.35,
         "liquidity_warn": true,
         "markets": [
           {
@@ -7292,7 +7293,7 @@
             "invert": false,
             "yes_price": 0.0375,
             "contribution": 0.0375,
-            "volume_24h": 146883.80312499948,
+            "volume_24h": 146882.52970999948,
             "question": "Will China invade Taiwan by end of 2026?"
           },
           {
@@ -7477,7 +7478,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-07-14T00:05:54Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 6,
           "decayed_weight": 1.9,
           "expired": false,
@@ -7487,7 +7488,7 @@
           "name": "diplomacy_refused",
           "positive": false,
           "activated_at": "2026-07-13T06:09:13Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 4,
           "decayed_weight": 0.8,
           "expired": false,
@@ -7497,7 +7498,7 @@
           "name": "hormuz_closed",
           "positive": false,
           "activated_at": "2026-07-12T03:04:09Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 8,
           "decayed_weight": 3.6,
           "expired": false,
@@ -7559,7 +7560,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-14T15:14:19Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 4,
           "decayed_weight": 2.0,
           "expired": false,
@@ -8124,7 +8125,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-13T18:07:53Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 6,
           "decayed_weight": 1.6,
           "expired": false,
@@ -8134,7 +8135,7 @@
           "name": "external_backing",
           "positive": false,
           "activated_at": "2026-07-13T18:07:53Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 4,
           "decayed_weight": 1.1,
           "expired": false,
@@ -8144,7 +8145,7 @@
           "name": "infrastructure_strike",
           "positive": false,
           "activated_at": "2026-07-13T18:07:53Z",
-          "last_confirmed": "2026-07-15T15:11:19Z",
+          "last_confirmed": "2026-07-15T15:13:38Z",
           "original_weight": 5,
           "decayed_weight": 1.4,
           "expired": false,
@@ -8203,7 +8204,7 @@
       "value": 100,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -8214,7 +8215,7 @@
       "value": 46,
       "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
       "confidence": 65,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 36
     },
@@ -8225,7 +8226,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -8236,7 +8237,7 @@
       "value": 80,
       "description": "ISRAEL-LEBANON showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_below",
       "eval_value": 94
     },
@@ -8247,7 +8248,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 80
     },
@@ -8258,9 +8259,20 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 78
+    },
+    {
+      "tracker_id": "iran_nuclear",
+      "tracker_name": "IRAN NUCLEAR",
+      "type": "nuclear_development",
+      "value": 54,
+      "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
+      "confidence": 40,
+      "expires_at": "2026-07-16T15:14:19Z",
+      "eval_type": "probability_above",
+      "eval_value": 39
     },
     {
       "tracker_id": "eastern_drc",
@@ -8269,7 +8281,7 @@
       "value": 44,
       "description": "EASTERN DRC showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_below",
       "eval_value": 52
     },
@@ -8280,7 +8292,7 @@
       "value": 44,
       "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 28
     },
@@ -8291,7 +8303,7 @@
       "value": 32,
       "description": "Current escalation indicators suggest CHINA-TAIWAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_above",
       "eval_value": 18
     },
@@ -8302,7 +8314,7 @@
       "value": 10,
       "description": "SOUTH SUDAN ABYEI showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-07-16T15:12:23Z",
+      "expires_at": "2026-07-16T15:14:19Z",
       "eval_type": "probability_below",
       "eval_value": 12
     }
@@ -8310,8 +8322,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-16T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-16T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8344,7 +8356,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-16T15:11:19Z",
+      "expires_at": "2026-07-16T15:13:38Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "diplomacy_refused (+4 signal weight)",
@@ -8357,8 +8369,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-18T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-18T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8391,7 +8403,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:11:19Z",
+      "expires_at": "2026-07-18T15:13:38Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "diplomacy_refused (+4 signal weight)",
@@ -8404,8 +8416,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-22T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-22T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8438,7 +8450,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-22T15:11:19Z",
+      "expires_at": "2026-07-22T15:13:38Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "diplomacy_refused (+4 signal weight)",
@@ -8451,8 +8463,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-14T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-14T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -8485,7 +8497,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-14T15:11:19Z",
+      "expires_at": "2026-08-14T15:13:38Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "diplomacy_refused (+4 signal weight)",
@@ -8498,8 +8510,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-16T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-16T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8531,7 +8543,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-16T15:11:19Z",
+      "expires_at": "2026-07-16T15:13:38Z",
       "evidence_for": [
         "UN civilian-casualty warning remains the key official mover",
         "The UN finding that June was the worst month for Ukrainian civilians since 2022 remains the strongest recent official evidence. No direct NATO-entry threshold was found"
@@ -8542,8 +8554,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-18T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-18T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8575,7 +8587,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:11:19Z",
+      "expires_at": "2026-07-18T15:13:38Z",
       "evidence_for": [
         "UN civilian-casualty warning remains the key official mover",
         "The UN finding that June was the worst month for Ukrainian civilians since 2022 remains the strongest recent official evidence. No direct NATO-entry threshold was found"
@@ -8586,8 +8598,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-22T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-22T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8619,7 +8631,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-22T15:11:19Z",
+      "expires_at": "2026-07-22T15:13:38Z",
       "evidence_for": [
         "UN civilian-casualty warning remains the key official mover",
         "The UN finding that June was the worst month for Ukrainian civilians since 2022 remains the strongest recent official evidence. No direct NATO-entry threshold was found"
@@ -8630,8 +8642,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-14T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-14T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -8663,7 +8675,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-14T15:11:19Z",
+      "expires_at": "2026-08-14T15:13:38Z",
       "evidence_for": [
         "UN civilian-casualty warning remains the key official mover",
         "The UN finding that June was the worst month for Ukrainian civilians since 2022 remains the strongest recent official evidence. No direct NATO-entry threshold was found"
@@ -8674,8 +8686,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-16T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-16T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8708,7 +8720,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-16T15:11:19Z",
+      "expires_at": "2026-07-16T15:13:38Z",
       "evidence_for": [
         "Rome implementation round ends with channel intact"
       ],
@@ -8720,8 +8732,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-18T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-18T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8754,7 +8766,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:11:19Z",
+      "expires_at": "2026-07-18T15:13:38Z",
       "evidence_for": [
         "Rome implementation round ends with channel intact"
       ],
@@ -8766,8 +8778,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-22T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-22T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8800,7 +8812,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-22T15:11:19Z",
+      "expires_at": "2026-07-22T15:13:38Z",
       "evidence_for": [
         "Rome implementation round ends with channel intact"
       ],
@@ -8812,8 +8824,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-14T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-14T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -8846,7 +8858,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-14T15:11:19Z",
+      "expires_at": "2026-08-14T15:13:38Z",
       "evidence_for": [
         "Rome implementation round ends with channel intact"
       ],
@@ -8858,8 +8870,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-07-16T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-07-16T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8891,7 +8903,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-16T15:11:19Z",
+      "expires_at": "2026-07-16T15:13:38Z",
       "evidence_for": [
         "UN says illicit commodity flows are financing the war",
         "New UN reporting says illicit gold and gum-arabic flows are financing the war, while WFP-linked coverage says Hormuz disruption is worsening hunger risk. No distinct new battlefiel"
@@ -8902,8 +8914,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-07-18T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-07-18T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8935,7 +8947,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:11:19Z",
+      "expires_at": "2026-07-18T15:13:38Z",
       "evidence_for": [
         "UN says illicit commodity flows are financing the war",
         "New UN reporting says illicit gold and gum-arabic flows are financing the war, while WFP-linked coverage says Hormuz disruption is worsening hunger risk. No distinct new battlefiel"
@@ -8946,8 +8958,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-07-22T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-07-22T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -8979,7 +8991,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-22T15:11:19Z",
+      "expires_at": "2026-07-22T15:13:38Z",
       "evidence_for": [
         "UN says illicit commodity flows are financing the war",
         "New UN reporting says illicit gold and gum-arabic flows are financing the war, while WFP-linked coverage says Hormuz disruption is worsening hunger risk. No distinct new battlefiel"
@@ -8990,8 +9002,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-08-14T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-08-14T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -9023,7 +9035,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-14T15:11:19Z",
+      "expires_at": "2026-08-14T15:13:38Z",
       "evidence_for": [
         "UN says illicit commodity flows are financing the war",
         "New UN reporting says illicit gold and gum-arabic flows are financing the war, while WFP-linked coverage says Hormuz disruption is worsening hunger risk. No distinct new battlefiel"
@@ -9034,8 +9046,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-16T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-16T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -9068,7 +9080,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-16T15:11:19Z",
+      "expires_at": "2026-07-16T15:13:38Z",
       "evidence_for": [
         "Further Gaza fatalities reinforce the high-risk lane",
         "AP-syndicated and other reporting documented further Gaza fatalities, including police officers and a child. Continuing attacks reinforce the existing high-risk lane; no implemente"
@@ -9079,8 +9091,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-18T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-18T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -9113,7 +9125,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:11:19Z",
+      "expires_at": "2026-07-18T15:13:38Z",
       "evidence_for": [
         "Further Gaza fatalities reinforce the high-risk lane",
         "AP-syndicated and other reporting documented further Gaza fatalities, including police officers and a child. Continuing attacks reinforce the existing high-risk lane; no implemente"
@@ -9124,8 +9136,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-22T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-22T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -9158,7 +9170,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-22T15:11:19Z",
+      "expires_at": "2026-07-22T15:13:38Z",
       "evidence_for": [
         "Further Gaza fatalities reinforce the high-risk lane",
         "AP-syndicated and other reporting documented further Gaza fatalities, including police officers and a child. Continuing attacks reinforce the existing high-risk lane; no implemente"
@@ -9169,8 +9181,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-14T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-14T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -9203,7 +9215,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-14T15:11:19Z",
+      "expires_at": "2026-08-14T15:13:38Z",
       "evidence_for": [
         "Further Gaza fatalities reinforce the high-risk lane",
         "AP-syndicated and other reporting documented further Gaza fatalities, including police officers and a child. Continuing attacks reinforce the existing high-risk lane; no implemente"
@@ -9214,8 +9226,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-07-16T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-07-16T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9248,10 +9260,10 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-16T15:11:19Z",
+      "expires_at": "2026-07-16T15:13:38Z",
       "evidence_for": [
         "iaea access denied",
-        "Safeguards knowledge gap remains unresolved",
+        "IAEA access remains denied; safeguards gap unresolved",
         "UN-linked reporting indicates IAEA access remains denied and the safeguards knowledge gap persists. No additional technical threshold or restored oversight was established; direct "
       ],
       "evidence_against": [
@@ -9260,8 +9272,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:72h:2026-07-18T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:72h:2026-07-18T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9294,10 +9306,10 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-18T15:11:19Z",
+      "expires_at": "2026-07-18T15:13:38Z",
       "evidence_for": [
         "iaea access denied",
-        "Safeguards knowledge gap remains unresolved",
+        "IAEA access remains denied; safeguards gap unresolved",
         "UN-linked reporting indicates IAEA access remains denied and the safeguards knowledge gap persists. No additional technical threshold or restored oversight was established; direct "
       ],
       "evidence_against": [
@@ -9306,8 +9318,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:7d:2026-07-22T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:7d:2026-07-22T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9340,10 +9352,10 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-22T15:11:19Z",
+      "expires_at": "2026-07-22T15:13:38Z",
       "evidence_for": [
         "iaea access denied",
-        "Safeguards knowledge gap remains unresolved",
+        "IAEA access remains denied; safeguards gap unresolved",
         "UN-linked reporting indicates IAEA access remains denied and the safeguards knowledge gap persists. No additional technical threshold or restored oversight was established; direct "
       ],
       "evidence_against": [
@@ -9352,8 +9364,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:30d:2026-08-14T15:11:19Z",
-      "generated_at": "2026-07-15T15:11:19Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:30d:2026-08-14T15:13:38Z",
+      "generated_at": "2026-07-15T15:13:38Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
@@ -9386,10 +9398,10 @@
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-14T15:11:19Z",
+      "expires_at": "2026-08-14T15:13:38Z",
       "evidence_for": [
         "iaea access denied",
-        "Safeguards knowledge gap remains unresolved",
+        "IAEA access remains denied; safeguards gap unresolved",
         "UN-linked reporting indicates IAEA access remains denied and the safeguards knowledge gap persists. No additional technical threshold or restored oversight was established; direct "
       ],
       "evidence_against": [
