@@ -1,4 +1,8 @@
-from scripts.signals import extract_signals_from_notes, merge_news_signals_into_state
+from scripts.signals import (
+    extract_signals_from_notes,
+    find_matching_signals,
+    merge_news_signals_into_state,
+)
 
 
 def test_merge_news_signals_rejects_signal_not_configured_for_tracker():
@@ -49,3 +53,72 @@ def test_extract_signals_from_notes_rejects_signal_not_configured_for_tracker():
     extract_signals_from_notes(state, signal_weights)
 
     assert state["trackers"]["yemen_red_sea"]["active_signals"] == ["ceasefire_violation"]
+
+
+def test_extract_signals_from_notes_ignores_locally_negated_keywords():
+    state = {
+        "zones": {
+            "north_korea": {
+                "notes": (
+                    "No credible fresh missile launch, nuclear test, or abrupt posture "
+                    "change was found in the focused scan."
+                )
+            }
+        },
+        "trackers": {"north_korea": {"active_signals": []}},
+    }
+    signal_weights = {
+        ("north_korea", "missile_range_test"): 6,
+        ("north_korea", "nuclear_test"): 12,
+    }
+
+    extract_signals_from_notes(state, signal_weights)
+
+    assert state["trackers"]["north_korea"]["active_signals"] == []
+
+
+def test_find_matching_signals_ignores_negated_exact_mentions():
+    cfg = {
+        "trackers": {
+            "north_korea": {
+                "signals": {
+                    "missile_range_test": {"weight": 6},
+                    "nuclear_test": {"weight": 12},
+                }
+            }
+        }
+    }
+    signal_weights = {
+        ("north_korea", "missile_range_test"): 6,
+        ("north_korea", "nuclear_test"): 12,
+    }
+
+    matched = find_matching_signals(
+        "No credible fresh missile range test or nuclear test was found.",
+        "north_korea",
+        cfg,
+        signal_weights,
+        {},
+    )
+
+    assert matched == []
+
+
+def test_find_matching_signals_preserves_positive_exact_mentions():
+    cfg = {
+        "trackers": {
+            "north_korea": {
+                "signals": {"nuclear_test": {"weight": 12}}
+            }
+        }
+    }
+
+    matched = find_matching_signals(
+        "Officials confirmed a nuclear test overnight.",
+        "north_korea",
+        cfg,
+        {("north_korea", "nuclear_test"): 12},
+        {},
+    )
+
+    assert [signal["name"] for signal in matched] == ["nuclear_test"]

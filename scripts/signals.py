@@ -177,12 +177,32 @@ def is_deescalation_signal(text, credibility_cfg):
     return deesc_count > esc_count
 
 
+def _keyword_is_only_negated(text, keyword):
+    """Return True when every keyword occurrence is inside a local negation.
+
+    Scanner-written notes routinely say things like "no missile launch was found".
+    Treating those review statements as evidence creates synthetic signals.
+    """
+    matches = list(re.finditer(re.escape(keyword), text))
+    if not matches:
+        return False
+    negation = re.compile(
+        r"(?:\bno\b|\bnot\b|\bwithout\b|\black(?:ed|s|ing)?\b|\babsent\b|"
+        r"\bnone\b|\bneither\b|\bfailed to\b|\bdid not\b|\bdoes not\b|"
+        r"\bwas not\b|\bwere not\b|\bhas not\b|\bhave not\b|\bhad not\b|"
+        r"\bdidn't\b|\bdoesn't\b|\bwasn't\b|\bweren't\b)"
+        r"[^.!?;:]{0,60}$"
+    )
+    return all(negation.search(text[max(0, match.start() - 80):match.start()]) for match in matches)
+
+
 def find_matching_signals(text, tid, cfg, signal_weights, credibility_cfg,
                           source_tier="5_unverified"):
     """Match text against tracker signals. Returns list of matched signal dicts.
 
     High-weight signals (|w| >= 10) require exact name match only.
     Lower-weight signals allow fuzzy description matching (>=3 term hits).
+    Locally negated exact mentions are review findings, not signal evidence.
     """
     text_lower = text.lower()
     matched = []
@@ -192,14 +212,16 @@ def find_matching_signals(text, tid, cfg, signal_weights, credibility_cfg,
         name_readable = sname.lower().replace("_", " ")
         weight = signal_weights.get((tid, sname), 0)
         triggered = False
-        # HIGH-WEIGHT signals (>=10) require exact name match ONLY
+        exact_present = name_readable in text_lower
+        exact_negated = exact_present and _keyword_is_only_negated(text_lower, name_readable)
+        # HIGH-WEIGHT signals (>=10) require a non-negated exact name match ONLY.
         if abs(weight) >= 10:
-            if name_readable in text_lower:
+            if exact_present and not exact_negated:
                 triggered = True
         else:
-            if name_readable in text_lower:
+            if exact_present and not exact_negated:
                 triggered = True
-            else:
+            elif not exact_present:
                 terms = [
                     t for t in desc.replace("(", "").replace(")", "")
                     .replace(",", "").replace(".", "").split()
@@ -587,7 +609,8 @@ def extract_signals_from_notes(state, signal_weights=None):
     """Keyword-match zone notes → named signals. Fallback for cron writers
     that populate zones[].notes but not trackers[].active_signals directly.
 
-    Mutates state["trackers"][zone_id]["active_signals"] in place.
+    Locally negated keyword mentions are ignored. Mutates
+    state["trackers"][zone_id]["active_signals"] in place.
     """
     if "trackers" not in state:
         state["trackers"] = {}
@@ -602,7 +625,7 @@ def extract_signals_from_notes(state, signal_weights=None):
             if signal_weights is not None and signal_weights.get((zone_id, signal_name), 0) == 0:
                 continue
             for kw in keywords:
-                if kw in notes_lower:
+                if kw in notes_lower and not _keyword_is_only_negated(notes_lower, kw):
                     matched.append(signal_name)
                     break
         if matched:
