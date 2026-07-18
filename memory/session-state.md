@@ -2,7 +2,7 @@
 
 Last update: 2026-07-18T12:27Z
 
-DoomsdayWatch 12Z morning deep scan is in final deployment verification from `/home/openclaw/.openclaw/workspace/nuke-watch`.
+DoomsdayWatch 12Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
 - Atomic pre-deploy state is complete at **74% / imminent**; weighted coupled score **73.60%**. No tracker probability, global value or canonical signal changed versus 09Z.
 - New evidence: multiple Indian outlets report roughly 90 minutes of small-arms fire across the Rajouri LoC with no casualties. It does not establish India’s configured force-concentration threshold, so India holds **11%**.
