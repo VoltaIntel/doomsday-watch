@@ -12,5 +12,6 @@ DoomsdayWatch 15Z morning deep scan completed from `/home/openclaw/.openclaw/wor
 - OilPriceAPI: Brent **$88.10**, WTI **$82.49**. Gamma exact-slug sanity: U.S.-Iran invasion **28.5%**, NATO Article 5 **8.0%**, China-Taiwan clash **5.3%**, Iran device **5.15%**; no market value set a tracker probability.
 - All **19 Tavily searches** failed HTTP 432. Fallback completed through Google News RSS, targeted deep/emerging queries, direct UN/NATO/EIA sources, browser, terminal HTTP, Jina Reader, OilPriceAPI and Gamma. IAEA remains Cloudflare/403; OPEC 403; configured OCHA/UN Sudan paths 404. A Google-indexed AsiaNews Kashmir item was verified as a 2013 page and excluded.
 - Evidence artifacts: `data/morning_deep_scan_sources_20260718T150145Z.json` and `data/deep_scan_supplement_20260718T150558Z.json`.
-- `bash scripts/deploy.sh` succeeded. Automated commit `5eafdbe7` and explicit source-metadata restoration commit `46d3b93d` are pushed; HEAD equals `origin/main`, worktree is clean, post-pipeline JSON/canonical checks and all three required Command Deck markers pass.
+- `bash scripts/deploy.sh` succeeded. The corrected final deploy is `8c49cee3` with explicit source-metadata restoration `b8501a9e`; both are pushed. The earlier deploy pair `5eafdbe7`/`46d3b93d` is superseded only by a source-date-label correction, not an assessment change.
+- Post-pipeline JSON/canonical checks and all three required Command Deck markers pass; HEAD equals `origin/main` and the worktree is clean.
 - Regression status: **31/31 non-smoke tests passed**.
