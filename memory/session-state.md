@@ -1,6 +1,6 @@
 # Session State
 
-Last update: 2026-07-18T12:14Z
+Last update: 2026-07-18T12:27Z
 
 DoomsdayWatch 12Z morning deep scan is in final deployment verification from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
@@ -12,4 +12,5 @@ DoomsdayWatch 12Z morning deep scan is in final deployment verification from `/h
 - OilPriceAPI: Brent **$88.26**, WTI **$82.49**. Gamma sanity: U.S.-Iran invasion **27.5%**, NATO Article 5 **8.0%**, China-Taiwan clash **5.3%**, Iran device **5.15%**; no market value set a tracker probability.
 - All **19 Tavily searches** and **5 extracts** failed HTTP 432. Fallback coverage completed via explicit Google News RSS for all 15 trackers, Bing RSS, direct UN/NATO/EIA, browser, terminal HTTP, OilPriceAPI and Gamma. IAEA remains Cloudflare/403; OPEC 403; configured OCHA/UN Sudan paths 404.
 - Evidence artifacts: `data/morning_deep_scan_sources_20260718T120219Z.json` and `data/deep_scan_supplement_20260718T120321Z.json`.
-- Pre-deploy JSON/canonical checks pass. `bash scripts/deploy.sh`, post-pipeline false-positive review, tests, marker verification and push verification remain pending in this same run.
+- Deploy/push succeeded as `0ad8aef0`; HEAD equals `origin/main`, worktree is clean, post-pipeline JSON/canonical checks and the three required Command Deck markers pass.
+- Regression status: **31/31 non-smoke tests passed**. The repository smoke fixture’s hard-coded 60-second ceiling expires before the copied pipeline finishes; the same **11/11 smoke assertions passed in 68.31 seconds** from an isolated temporary copy with only that ceiling extended to 120 seconds. The exact copied pipeline also exited 0 in 66.76 seconds. No repository test or application code was changed.
