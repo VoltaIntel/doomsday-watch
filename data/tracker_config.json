@@ -14,7 +14,8 @@
     "israel_palestine",
     "south_sudan_abyei",
     "eastern_drc",
-    "yemen_red_sea"
+    "yemen_red_sea",
+    "mali_sahel"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -347,6 +348,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "mali_sahel": {
+      "name": "Mali / Central Sahel",
+      "base_rate": 20,
+      "description": "Mali / central Sahel insurgent-government escalation and regional spillover",
+      "signals": {
+        "military_buildup": {
+          "weight": 6,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -419,9 +447,10 @@
     "israel_palestine": 0.05,
     "south_sudan_abyei": 0.02,
     "eastern_drc": 0.02,
-    "yemen_red_sea": 0.02
+    "yemen_red_sea": 0.02,
+    "mali_sahel": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-13T18:07:27Z",
+  "last_updated": "2026-07-18T21:20:20Z",
   "dashboard_path": "dashboard.html"
 }
