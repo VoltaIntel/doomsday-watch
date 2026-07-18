@@ -1,16 +1,16 @@
 # Session State
 
-Last update: 2026-07-18T12:27Z
+Last update: 2026-07-18T15:18:46Z
 
-DoomsdayWatch 12Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
+DoomsdayWatch 15Z morning deep scan completed from `/home/openclaw/.openclaw/workspace/nuke-watch`.
 
-- Atomic pre-deploy state is complete at **74% / imminent**; weighted coupled score **73.60%**. No tracker probability, global value or canonical signal changed versus 09Z.
-- New evidence: multiple Indian outlets report roughly 90 minutes of small-arms fire across the Rajouri LoC with no casualties. It does not establish India’s configured force-concentration threshold, so India holds **11%**.
-- CNBC reports a seventh consecutive U.S. strike night, competing U.S./Iranian vessel-interdiction claims and further Gulf infrastructure attacks; Iran remains capped at **100%**. President Aoun departed for Washington after a sixth U.S.-sponsored negotiating round; Israel-Lebanon remains **94% coupled** with its existing political-channel signal.
-- Active canonical signals remain `iran_conventional:{ceasefire_violation,hormuz_controlled_not_closed}`, `israel_lebanon:diplomacy_active`, `iran_nuclear:iaea_access_denied`, `south_sudan_abyei:military_buildup`, and `yemen_red_sea:external_backing`.
-- No auto-detected crisis qualified. Myanmar/Kachin produced one current operational report; Ethiopia/Tigray headlines were partisan/political rather than a distinct independently corroborated operation.
-- OilPriceAPI: Brent **$88.26**, WTI **$82.49**. Gamma sanity: U.S.-Iran invasion **27.5%**, NATO Article 5 **8.0%**, China-Taiwan clash **5.3%**, Iran device **5.15%**; no market value set a tracker probability.
-- All **19 Tavily searches** and **5 extracts** failed HTTP 432. Fallback coverage completed via explicit Google News RSS for all 15 trackers, Bing RSS, direct UN/NATO/EIA, browser, terminal HTTP, OilPriceAPI and Gamma. IAEA remains Cloudflare/403; OPEC 403; configured OCHA/UN Sudan paths 404.
-- Evidence artifacts: `data/morning_deep_scan_sources_20260718T120219Z.json` and `data/deep_scan_supplement_20260718T120321Z.json`.
-- Deploy/push succeeded as `0ad8aef0`; HEAD equals `origin/main`, worktree is clean, post-pipeline JSON/canonical checks and the three required Command Deck markers pass.
-- Regression status: **31/31 non-smoke tests passed**. The repository smoke fixture’s hard-coded 60-second ceiling expires before the copied pipeline finishes; the same **11/11 smoke assertions passed in 68.31 seconds** from an isolated temporary copy with only that ceiling extended to 120 seconds. The exact copied pipeline also exited 0 in 66.76 seconds. No repository test or application code was changed.
+- Global remains **74% / imminent**; weighted coupled score **73.60%**. No numeric tracker moved.
+- Canonical `iran_conventional:oil_infrastructure_threat` activated after Kuwait Petroleum Corporation reported repeated Iranian attacks caused injuries and significant damage at a vital oil facility. The realized-war lane remains capped at **100%**.
+- AP reports Tehran stopped implementing last month’s interim commitments; DW carried an official warning of full-scale offensive operations if U.S. attacks continue. No other canonical signal changed.
+- Active canonical signals are `iran_conventional:{ceasefire_violation,hormuz_controlled_not_closed,oil_infrastructure_threat}`, `iran_nuclear:iaea_access_denied`, `israel_lebanon:diplomacy_active`, `south_sudan_abyei:military_buildup`, and `yemen_red_sea:external_backing`.
+- No auto-detected crisis qualified. Myanmar/Kachin still has one current operational report; Ethiopia/Tigray and all other reviewed emerging lanes lacked one distinct independently corroborated operation meeting the configured gate.
+- OilPriceAPI: Brent **$88.10**, WTI **$82.49**. Gamma exact-slug sanity: U.S.-Iran invasion **28.5%**, NATO Article 5 **8.0%**, China-Taiwan clash **5.3%**, Iran device **5.15%**; no market value set a tracker probability.
+- All **19 Tavily searches** failed HTTP 432. Fallback completed through Google News RSS, targeted deep/emerging queries, direct UN/NATO/EIA sources, browser, terminal HTTP, Jina Reader, OilPriceAPI and Gamma. IAEA remains Cloudflare/403; OPEC 403; configured OCHA/UN Sudan paths 404. A Google-indexed AsiaNews Kashmir item was verified as a 2013 page and excluded.
+- Evidence artifacts: `data/morning_deep_scan_sources_20260718T150145Z.json` and `data/deep_scan_supplement_20260718T150558Z.json`.
+- `bash scripts/deploy.sh` succeeded. Automated commit `5eafdbe7` and explicit source-metadata restoration commit `46d3b93d` are pushed; HEAD equals `origin/main`, worktree is clean, post-pipeline JSON/canonical checks and all three required Command Deck markers pass.
+- Regression status: **31/31 non-smoke tests passed**.
