@@ -311,8 +311,8 @@
     "last_scan": "morning_deep_scan_06z",
     "scan_time_utc": "2026-07-19T06:32:45Z",
     "analysis_window": "Explicit past-24-hour review for every configured tracker and required sector, with 7/14/30-day context for low-frequency and emerging lanes",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_20x_http_432_and_web_extract_1x_http_432_then_google_news_rss_18_core_49_targeted_plus_exact_event_browser_direct_un_nato_eia_terminal_http_jina_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 20 required Tavily searches returned HTTP 432, and the one Tavily extraction attempt also returned HTTP 432. Fallback coverage completed through fresh Google News RSS (18 core lanes, 49 targeted lanes and exact-event audits), browser redirect decoding and direct article inspection, direct UN/NATO/EIA pages and feeds, terminal HTTP, Jina Reader, OilPriceAPI and public Gamma exact-slug reads. Direct IAEA and OPEC pages returned HTTP 403/Cloudflare; configured OCHA and UN Sudan feed paths returned HTTP 404. Reuters direct pages were access-restricted, so AP/ABC and accessible Reuters syndication were used. False-recency pages from 2013 and March 2026 were inspected and excluded; repeated single-claim chains were not promoted.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260719T061334Z.json",
       "supplement": "data/deep_scan_supplement_20260719T061435Z.json"
@@ -480,23 +480,28 @@
       "africa": "The UN continues to flag severe eastern Congo and Sudan conditions. Mali's convoy ambush remains active, but casualty/prisoner claims are unverified and no new foreign-partner role was established."
     },
     "energy_oil": {
-      "checked_at": "2026-07-19T06:20:06Z",
-      "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
-      "brent_usd": 88.26,
-      "brent_change_24h_pct": 0.18,
-      "brent_vs_pre_conflict_pct": 30.9,
-      "wti_usd": 82.49,
-      "wti_change_24h_pct": 0.02,
-      "wti_vs_pre_conflict_pct": 29.3,
-      "diesel_usd": 4.08,
-      "gasoline_usd": 3.39,
-      "heating_oil_usd": 4.06,
-      "natural_gas_usd": 2.91,
+      "checked_at": "2026-07-19T06:39:57Z",
+      "final_deploy_source": "Yahoo Finance via scripts/fetch_oil_prices.py",
+      "brent_usd": 88.1,
+      "brent_vs_pre_conflict_pct": 30.7,
+      "wti_usd": 81.78,
+      "wti_vs_pre_conflict_pct": 28.2,
+      "natural_gas_usd": 2.911,
       "gold_usd": 4018.8,
-      "caveat": "Crude, heating-oil and gold quotes were current near scan time; diesel and gasoline source timestamps remained on 17 July. Market values did not set tracker probabilities."
+      "oilpriceapi_reference_checked_at": "2026-07-19T06:20:06Z",
+      "oilpriceapi_reference": {
+        "brent_usd": 88.26,
+        "brent_change_24h_pct": 0.18,
+        "wti_usd": 82.49,
+        "wti_change_24h_pct": 0.02,
+        "diesel_usd": 4.08,
+        "gasoline_usd": 3.39,
+        "heating_oil_usd": 4.06
+      },
+      "caveat": "Final Yahoo weekend quotes report zero 24-hour change, so OilPriceAPI's earlier same-run reference is retained for the 24-hour sanity check. Market values did not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "checked_at": "2026-07-19T06:22:38Z",
+      "checked_at": "2026-07-19T06:41:19Z",
       "source": "Public Gamma exact-slug GET reads; sanity check only",
       "markets_pct": {
         "will-the-us-invade-iran-before-2027": 30.5,
@@ -625,7 +630,8 @@
       "iraq_1d": 10,
       "global_emerging_1d": 10
     },
-    "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py."
+    "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
+    "post_deploy_metadata_restored_at": "2026-07-19T06:42:47Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -916,8 +922,8 @@
       "headline": "U.S. targets IRGC as Tehran suspends interim-deal commitments",
       "text": "AP reports the latest U.S. wave struck IRGC structures for the first time, as well as coastal surveillance, air-defence, maritime and missile/drone sites. The same report says an Iranian envoy suspended interim-deal commitments; Reuters reports Khamenei called the U.S. signature worthless. diplomacy_refused is activated, while the tracker remains capped at 100%.",
       "sources": [
-        "Associated Press via ABC News, published 2026-07-19 \u2014 https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
-        "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 \u2014 https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
+        "Associated Press via ABC News, published 2026-07-19 — https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
+        "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 — https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
       ]
     },
     {
@@ -928,9 +934,9 @@
       "headline": "Police open criminal probe after West Bank mosque fire",
       "text": "Palestinian reports attribute the Tuwani mosque and vehicle fire to settlers and report a Star of David sprayed on the mosque. Israeli police now confirm the mosque fire is under criminal investigation. holy_site_tension is reactivated; the near-ceiling lane remains 88% without further inflation.",
       "sources": [
-        "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z \u2014 https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
-        "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z \u2014 https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
-        "Haaretz via Jewish Rhode Island, posted 2026-07-18 \u2014 https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
+        "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z — https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
+        "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z — https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
+        "Haaretz via Jewish Rhode Island, posted 2026-07-18 — https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
       ]
     },
     {
@@ -941,8 +947,8 @@
       "headline": "Aoun seeks U.S. pressure for Israeli withdrawal",
       "text": "Reuters says President Aoun is meeting President Trump hoping to generate pressure on Israel. The active diplomatic channel offsets continuing violation evidence; the coupled score holds at 94%.",
       "sources": [
-        "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
-        "Al Jazeera, published 2026-07-18 17:56Z \u2014 https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
+        "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+        "Al Jazeera, published 2026-07-18 17:56Z — https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
       ]
     },
     {
@@ -953,8 +959,8 @@
       "headline": "Latvia asks for more allied troops; no direct Russia-NATO event",
       "text": "Latvia's prime minister called for more allied troops on NATO's eastern flank but said there is no imminent conventional attack while Russia remains tied down in Ukraine. NATO's official feed shows no direct-entry or Article 5 decision; the coupled score stays 52%.",
       "sources": [
-        "The Observer, published 2026-07-19 \u2014 https://observer.co.uk/news/international/article/latvia-calls-for-more-troops-on-natos-exposed-eastern-front",
-        "NATO official latest-news page inspected 2026-07-19 \u2014 https://www.nato.int/en/news-and-events/articles/news"
+        "The Observer, published 2026-07-19 — https://observer.co.uk/news/international/article/latvia-calls-for-more-troops-on-natos-exposed-eastern-front",
+        "NATO official latest-news page inspected 2026-07-19 — https://www.nato.int/en/news-and-events/articles/news"
       ]
     },
     {
@@ -965,8 +971,8 @@
       "headline": "LoC exchanges remain corroborated; no fresh force concentration",
       "text": "Multiple Rajouri-Poonch exchanges over three days remain the governing evidence. No official statement, casualty or verified buildup appeared after 03Z; India-Pakistan holds at 15% with no configured signal active.",
       "sources": [
-        "Greater Kashmir, published 2026-07-19 00:00Z \u2014 https://www.greaterkashmir.com/security/india-pakistan-exchange-gunfire-on-loc-12177562",
-        "The Daily Pioneer, published 2026-07-19 \u2014 https://dailypioneer.com/news/slug-lite/1st-loc-firing-since-operation-sindoor-as-pakistan-targets-rajouri-posts?year=2026",
+        "Greater Kashmir, published 2026-07-19 00:00Z — https://www.greaterkashmir.com/security/india-pakistan-exchange-gunfire-on-loc-12177562",
+        "The Daily Pioneer, published 2026-07-19 — https://dailypioneer.com/news/slug-lite/1st-loc-firing-since-operation-sindoor-as-pakistan-targets-rajouri-posts?year=2026",
         "Google News RSS exact-event review checked 2026-07-19T06:32:45Z"
       ]
     },
@@ -978,8 +984,8 @@
       "headline": "Kyiv casualty update remains latest; no direct NATO entry",
       "text": "Reuters' update of one killed and nine injured in Kyiv, plus two deaths in Odesa, remains the latest material battlefield evidence. No later event justifies moving the 99% ceiling.",
       "sources": [
-        "Reuters via The Canberra Times, published 2026-07-19 02:48Z \u2014 https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
-        "The Kyiv Independent, updated 2026-07-19 \u2014 https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
+        "Reuters via The Canberra Times, published 2026-07-19 02:48Z — https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
+        "The Kyiv Independent, updated 2026-07-19 — https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
       ]
     },
     {
@@ -990,8 +996,8 @@
       "headline": "No new Iran nuclear threshold; 2013 IAEA story excluded again",
       "text": "The apparently fresh AsiaNews enrichment headline is explicitly dated 23 May 2013. Direct IAEA pages remain blocked from this node, so iaea_access_denied is carried without adding a higher technical trigger; the coupled score stays 54%.",
       "sources": [
-        "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 \u2014 https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
-        "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z \u2014 https://www.iaea.org/newscenter/news"
+        "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 — https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
+        "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z — https://www.iaea.org/newscenter/news"
       ]
     },
     {
@@ -1002,7 +1008,7 @@
       "headline": "July-indexed Turkey missile interception story is from March",
       "text": "The only Turkey-specific result claimed NATO intercepted a third Iranian missile, but the article itself is dated 13 March 2026. It is excluded as false recency; no current configured threshold was found and the lane stays at 5%.",
       "sources": [
-        "To Vima page inspected 2026-07-19; actual publication date 2026-03-13 \u2014 https://www.tovima.com/world/turkey-says-nato-intercepts-third-missile-from-iran/",
+        "To Vima page inspected 2026-07-19; actual publication date 2026-03-13 — https://www.tovima.com/world/turkey-says-nato-intercepts-third-missile-from-iran/",
         "Google News RSS one-day and 14-day reviews checked 2026-07-19T06:32:45Z"
       ]
     },
@@ -1025,7 +1031,7 @@
       "headline": "No current China-Taiwan operation",
       "text": "The one-day lane returned no new PLA exercise, blockade or verified force concentration around Taiwan. Routine presence and policy commentary leave the coupled score at 28%.",
       "sources": [
-        "Taiwan Ministry of National Defense activity page remains the official reference \u2014 https://www.mnd.gov.tw/en/news/plaact/87053",
+        "Taiwan Ministry of National Defense activity page remains the official reference — https://www.mnd.gov.tw/en/news/plaact/87053",
         "Google News RSS one-day and seven-day reviews checked 2026-07-19T06:32:45Z"
       ]
     },
@@ -1038,7 +1044,7 @@
       "text": "A newly indexed DD News item is retrospective analysis, while the Bagram strike result is dated 1 March 2026. No fresh cross-border operation was verified; the lane remains 46%.",
       "sources": [
         "DD News analysis indexed 2026-07-19 04:11Z",
-        "The Canberra Times page inspected 2026-07-19; actual publication date 2026-03-01 \u2014 https://www.canberratimes.com.au/story/9186369/afghan-thwarts-pakistan-strike-on-bagram-air-base/"
+        "The Canberra Times page inspected 2026-07-19; actual publication date 2026-03-01 — https://www.canberratimes.com.au/story/9186369/afghan-thwarts-pakistan-strike-on-bagram-air-base/"
       ]
     },
     {
@@ -1049,8 +1055,8 @@
       "headline": "El Obeid emergency persists; no distinct new operation",
       "text": "UN/WFP and regional reporting continue to show severe displacement and hunger around El Obeid. No newly corroborated configured event appeared, so the realized-war lane holds at 90%.",
       "sources": [
-        "UN News, published 2026-07-17 \u2014 https://news.un.org/en/story/2026/07/1167967",
-        "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448"
+        "UN News, published 2026-07-17 — https://news.un.org/en/story/2026/07/1167967",
+        "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448"
       ]
     },
     {
@@ -1075,7 +1081,7 @@
       "text": "The one-day lane returned no new M23-Rwanda operation. June security-tracker data and UN warnings remain severe but unchanged; the lane stays 52%.",
       "sources": [
         "Critical Threats Congo War Security Review, published 2026-07-17",
-        "UN noon briefing, published 2026-07-17 \u2014 https://press.un.org/en/2026/260717.doc.htm",
+        "UN noon briefing, published 2026-07-17 — https://press.un.org/en/2026/260717.doc.htm",
         "Google News RSS focused review checked 2026-07-19T06:32:45Z"
       ]
     },
@@ -1087,7 +1093,7 @@
       "headline": "Bab el-Mandeb threat persists; no attack or closure verified",
       "text": "Reports continue to carry an Iranian request that the Houthis threaten Bab el-Mandeb if U.S. strikes hit power infrastructure. No independently verified new attack or closure attempt appeared; external_backing and 38% are held.",
       "sources": [
-        "Marine Insight, published 2026-07-18 08:30Z \u2014 https://www.marineinsight.com/shipping-news/iran-tells-houthis-to-close-bab-el-mandeb-strait-if-us-strikes-power-plants/",
+        "Marine Insight, published 2026-07-18 08:30Z — https://www.marineinsight.com/shipping-news/iran-tells-houthis-to-close-bab-el-mandeb-strait-if-us-strikes-power-plants/",
         "Google News RSS Yemen/Red Sea review checked 2026-07-19T06:32:45Z"
       ]
     },
@@ -1099,8 +1105,8 @@
       "headline": "Mali convoy ambush evidence unchanged",
       "text": "AP and Al Jazeera still provide the governing account of the Anefis-Gao ambush. Rebel casualty, prisoner and video claims remain unverified; military_buildup stays active and the lane remains 32%.",
       "sources": [
-        "Associated Press via ABC News, updated 2026-07-18 \u2014 https://abcnews.com/International/wireStory/mali-rebels-ambush-army-convoy-killing-capturing-scores-134873385",
-        "Al Jazeera, published 2026-07-18 16:29Z \u2014 https://www.aljazeera.com/news/2026/7/18/armed-groups-attack-malian-military-convoy-in-gao-region"
+        "Associated Press via ABC News, updated 2026-07-18 — https://abcnews.com/International/wireStory/mali-rebels-ambush-army-convoy-killing-capturing-scores-134873385",
+        "Al Jazeera, published 2026-07-18 16:29Z — https://www.aljazeera.com/news/2026/7/18/armed-groups-attack-malian-military-convoy-in-gao-region"
       ]
     }
   ],
@@ -1399,7 +1405,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1461,7 +1467,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1553,7 +1559,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "rising",
@@ -1625,7 +1631,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1671,7 +1677,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
@@ -1712,7 +1718,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1753,7 +1759,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1799,7 +1805,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -1839,7 +1845,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -1884,7 +1890,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -1924,7 +1930,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -1975,7 +1981,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2047,7 +2053,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "rising",
@@ -2109,7 +2115,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2160,7 +2166,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
@@ -2222,7 +2228,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 32,
       "zone": "critical",
       "trend": "rising",
@@ -2442,8 +2448,8 @@
         "raw_probability_pct": 46.0,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Associated Press via ABC News, published 2026-07-19 \u2014 https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
-          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 \u2014 https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
+          "Associated Press via ABC News, published 2026-07-19 — https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
+          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 — https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
         ]
       },
       "confidence_score": 100,
@@ -2491,8 +2497,8 @@
         "raw_probability_pct": 61.6,
         "final_probability_pct": 62,
         "matched_sources": [
-          "Associated Press via ABC News, published 2026-07-19 \u2014 https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
-          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 \u2014 https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
+          "Associated Press via ABC News, published 2026-07-19 — https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
+          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 — https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
         ]
       },
       "confidence_score": 100,
@@ -2540,8 +2546,8 @@
         "raw_probability_pct": 78.4,
         "final_probability_pct": 78,
         "matched_sources": [
-          "Associated Press via ABC News, published 2026-07-19 \u2014 https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
-          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 \u2014 https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
+          "Associated Press via ABC News, published 2026-07-19 — https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
+          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 — https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
         ]
       },
       "confidence_score": 100,
@@ -2589,8 +2595,8 @@
         "raw_probability_pct": 106.0,
         "final_probability_pct": 100,
         "matched_sources": [
-          "Associated Press via ABC News, published 2026-07-19 \u2014 https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
-          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 \u2014 https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
+          "Associated Press via ABC News, published 2026-07-19 — https://abcnews.com/US/wireStory/us-strikes-irans-revolutionary-guard-attack-killed-troops-134886540",
+          "Reuters via The Business Standard, statement dated 2026-07-18 and published 2026-07-19 — https://www.tbsnews.net/worldbiz/middle-east/irans-supreme-leader-says-us-breaches-show-trumps-signature-worthless-1491871"
         ]
       },
       "confidence_score": 100,
@@ -2638,8 +2644,8 @@
         "raw_probability_pct": 34.82,
         "final_probability_pct": 35,
         "matched_sources": [
-          "Reuters via The Canberra Times, published 2026-07-19 02:48Z \u2014 https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
-          "The Kyiv Independent, updated 2026-07-19 \u2014 https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
+          "Reuters via The Canberra Times, published 2026-07-19 02:48Z — https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
+          "The Kyiv Independent, updated 2026-07-19 — https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
         ]
       },
       "confidence_score": 57,
@@ -2682,8 +2688,8 @@
         "raw_probability_pct": 45.56,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Reuters via The Canberra Times, published 2026-07-19 02:48Z \u2014 https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
-          "The Kyiv Independent, updated 2026-07-19 \u2014 https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
+          "Reuters via The Canberra Times, published 2026-07-19 02:48Z — https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
+          "The Kyiv Independent, updated 2026-07-19 — https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
         ]
       },
       "confidence_score": 57,
@@ -2726,8 +2732,8 @@
         "raw_probability_pct": 56.9,
         "final_probability_pct": 57,
         "matched_sources": [
-          "Reuters via The Canberra Times, published 2026-07-19 02:48Z \u2014 https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
-          "The Kyiv Independent, updated 2026-07-19 \u2014 https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
+          "Reuters via The Canberra Times, published 2026-07-19 02:48Z — https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
+          "The Kyiv Independent, updated 2026-07-19 — https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
         ]
       },
       "confidence_score": 57,
@@ -2770,8 +2776,8 @@
         "raw_probability_pct": 73.64,
         "final_probability_pct": 74,
         "matched_sources": [
-          "Reuters via The Canberra Times, published 2026-07-19 02:48Z \u2014 https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
-          "The Kyiv Independent, updated 2026-07-19 \u2014 https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
+          "Reuters via The Canberra Times, published 2026-07-19 02:48Z — https://www.canberratimes.com.au/story/9313188/russian-ballistic-missiles-rock-kyiv-again/",
+          "The Kyiv Independent, updated 2026-07-19 — https://kyivindependent.com/russian-overnight-attack-rocks-kyiv-with-ballistic-missile-explosions/"
         ]
       },
       "confidence_score": 57,
@@ -2814,8 +2820,8 @@
         "raw_probability_pct": 31.67,
         "final_probability_pct": 32,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
-          "Al Jazeera, published 2026-07-18 17:56Z \u2014 https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Al Jazeera, published 2026-07-18 17:56Z — https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
         ]
       },
       "confidence_score": 73,
@@ -2860,8 +2866,8 @@
         "raw_probability_pct": 51.71,
         "final_probability_pct": 52,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
-          "Al Jazeera, published 2026-07-18 17:56Z \u2014 https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Al Jazeera, published 2026-07-18 17:56Z — https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
         ]
       },
       "confidence_score": 73,
@@ -2906,8 +2912,8 @@
         "raw_probability_pct": 73.55,
         "final_probability_pct": 74,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
-          "Al Jazeera, published 2026-07-18 17:56Z \u2014 https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Al Jazeera, published 2026-07-18 17:56Z — https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
         ]
       },
       "confidence_score": 73,
@@ -2952,8 +2958,8 @@
         "raw_probability_pct": 90.59,
         "final_probability_pct": 91,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
-          "Al Jazeera, published 2026-07-18 17:56Z \u2014 https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Al Jazeera, published 2026-07-18 17:56Z — https://www.aljazeera.com/news/2026/7/18/lebanons-aoun-to-meet-trump-in-washington-to-discuss-israel-talks"
         ]
       },
       "confidence_score": 73,
@@ -2998,8 +3004,8 @@
         "raw_probability_pct": 37.2,
         "final_probability_pct": 37,
         "matched_sources": [
-          "UN News, published 2026-07-17 \u2014 https://news.un.org/en/story/2026/07/1167967",
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448"
+          "UN News, published 2026-07-17 — https://news.un.org/en/story/2026/07/1167967",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448"
         ]
       },
       "confidence_score": 57,
@@ -3042,8 +3048,8 @@
         "raw_probability_pct": 50.6,
         "final_probability_pct": 51,
         "matched_sources": [
-          "UN News, published 2026-07-17 \u2014 https://news.un.org/en/story/2026/07/1167967",
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448"
+          "UN News, published 2026-07-17 — https://news.un.org/en/story/2026/07/1167967",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448"
         ]
       },
       "confidence_score": 57,
@@ -3086,8 +3092,8 @@
         "raw_probability_pct": 65.0,
         "final_probability_pct": 65,
         "matched_sources": [
-          "UN News, published 2026-07-17 \u2014 https://news.un.org/en/story/2026/07/1167967",
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448"
+          "UN News, published 2026-07-17 — https://news.un.org/en/story/2026/07/1167967",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448"
         ]
       },
       "confidence_score": 57,
@@ -3130,8 +3136,8 @@
         "raw_probability_pct": 88.4,
         "final_probability_pct": 88,
         "matched_sources": [
-          "UN News, published 2026-07-17 \u2014 https://news.un.org/en/story/2026/07/1167967",
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448"
+          "UN News, published 2026-07-17 — https://news.un.org/en/story/2026/07/1167967",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448"
         ]
       },
       "confidence_score": 57,
@@ -3174,9 +3180,9 @@
         "raw_probability_pct": 41.49,
         "final_probability_pct": 41,
         "matched_sources": [
-          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z \u2014 https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
-          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z \u2014 https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
-          "Haaretz via Jewish Rhode Island, posted 2026-07-18 \u2014 https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
+          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z — https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
+          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z — https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
+          "Haaretz via Jewish Rhode Island, posted 2026-07-18 — https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
         ]
       },
       "confidence_score": 100,
@@ -3221,9 +3227,9 @@
         "raw_probability_pct": 54.77,
         "final_probability_pct": 55,
         "matched_sources": [
-          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z \u2014 https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
-          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z \u2014 https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
-          "Haaretz via Jewish Rhode Island, posted 2026-07-18 \u2014 https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
+          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z — https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
+          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z — https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
+          "Haaretz via Jewish Rhode Island, posted 2026-07-18 — https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
         ]
       },
       "confidence_score": 100,
@@ -3268,9 +3274,9 @@
         "raw_probability_pct": 69.05,
         "final_probability_pct": 69,
         "matched_sources": [
-          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z \u2014 https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
-          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z \u2014 https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
-          "Haaretz via Jewish Rhode Island, posted 2026-07-18 \u2014 https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
+          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z — https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
+          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z — https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
+          "Haaretz via Jewish Rhode Island, posted 2026-07-18 — https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
         ]
       },
       "confidence_score": 100,
@@ -3315,9 +3321,9 @@
         "raw_probability_pct": 92.33,
         "final_probability_pct": 92,
         "matched_sources": [
-          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z \u2014 https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
-          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z \u2014 https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
-          "Haaretz via Jewish Rhode Island, posted 2026-07-18 \u2014 https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
+          "Times of Israel live blog, police confirmation indexed 2026-07-19 06:16Z — https://www.timesofisrael.com/liveblog_entry/police-confirm-mosque-fire-being-investigated-as-criminal-matter/",
+          "Middle East Eye, published 2026-07-19 02:41 BST / 01:41Z — https://www.middleeasteye.net/live-blog/live-blog-update/west-bank-attacks-settlers-set-mosque-fire-israeli-forces-olive-trees",
+          "Haaretz via Jewish Rhode Island, posted 2026-07-18 — https://www.jewishrhody.com/stories/settlers-set-fire-to-west-bank-mosque-agricultural-land-in-overnight-attacks,165282"
         ]
       },
       "confidence_score": 100,
@@ -3362,8 +3368,8 @@
         "raw_probability_pct": 30.52,
         "final_probability_pct": 31,
         "matched_sources": [
-          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 \u2014 https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z \u2014 https://www.iaea.org/newscenter/news"
+          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 — https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 77,
@@ -3407,8 +3413,8 @@
         "raw_probability_pct": 36.96,
         "final_probability_pct": 37,
         "matched_sources": [
-          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 \u2014 https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z \u2014 https://www.iaea.org/newscenter/news"
+          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 — https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 77,
@@ -3452,8 +3458,8 @@
         "raw_probability_pct": 43.8,
         "final_probability_pct": 44,
         "matched_sources": [
-          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 \u2014 https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z \u2014 https://www.iaea.org/newscenter/news"
+          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 — https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 77,
@@ -3497,8 +3503,8 @@
         "raw_probability_pct": 54.24,
         "final_probability_pct": 54,
         "matched_sources": [
-          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 \u2014 https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z \u2014 https://www.iaea.org/newscenter/news"
+          "AsiaNews page inspected 2026-07-19; actual publication date 2013-05-23 — https://www.asianews.it/en/middle-east/iran/iaea-reports-significant-progress-in-iran-s-uranium-enrichment-programme",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T06:32:45Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 77,
