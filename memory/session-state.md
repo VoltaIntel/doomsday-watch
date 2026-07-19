@@ -1,26 +1,26 @@
 # Session State
 
-> Last updated: 2026-07-19T00:15:37Z
-> Session: Discord Umbraxis Development Progress Check
+> Last updated: 2026-07-19T15:28:15Z
+> Session: DoomsdayWatch 15Z morning deep-scan refresh
 
 ## Active Projects
-- Umbraxis Group — explicitly paused by Kenan at 6/38 accepted.
+- DoomsdayWatch / nuke-watch — scheduled 15Z deep-scan refresh completed, deployed and pushed.
+- Umbraxis Group — preserved paused state from the prior session; this cron did not touch its worktree or processes.
 
 ## Current Task
-- **What:** Task 6A retention amendment.
-- **Status:** Paused; no implementation/review process is active.
-- **Next step:** On explicit resume, first restore the forged-manifest regression test using non-Serena editing, rerun it, then continue the bounded ten-finding Task 6A amendment. Do not restart generalized controller work.
+- **What:** Deepest past-24-hour nuclear-escalation scan across all 16 canonical trackers, required sectors and emerging crises.
+- **Status:** Complete.
+- **Result:** Global remains **75% / imminent**, raw coupled **74.596%**; no tracker probability or canonical signal changed.
+- **Deployment:** `bash scripts/deploy.sh` pushed `341d49c7`; exact post-deploy fallback metadata was restored atomically and pushed as `7a1f97cd`. Local HEAD equals `origin/main`; worktree clean.
+- **Next step:** Next scheduled scan should start from `data/tracker_config.json`, re-check the watch triggers below, then repeat atomic state write, deploy and marker verification.
 
-## Paused State
-- Accepted product master: `/home/openclaw/umbraxis` at `265c819b3b39cec85a2359ff96471406d371ebdd`, 6/38 accepted.
-- Task 6A worktree: `/home/openclaw/.hermes/worktrees/umbraxis-task6a`, branch `task/6a-retention`, HEAD `620fed2fa18620a5c559e77db926d98f962928d7`.
-- Worktree has exactly one tracked modification: `src/umbraxis/retention.py` (`7 insertions, 3 deletions`). It moves `BEGIN IMMEDIATE` before blob staging and rejects a supplied manifest unless transactional recomputation at its `as_of` matches exact manifest bytes.
-- The forged-unexpired-record RED test reproduced the deletion flaw, then passed after the fix; the full retention suite passed 23 tests. A Serena editor fault subsequently deleted the test file twice, so it was restored byte-for-byte to candidate HEAD (`bee606a89cc3f3263729549df9406061207625927411a2b340f0e30d9835621d`). The new regression test is therefore not currently saved and must be re-added on resume.
-- Untracked `.serena/` was removed. No product commit or merge occurred.
-- Autonomous controller remains paused. Its latest local aggregate reached 165/165 including live Docker containment, but downstream deterministic acceptance transitions remain unfinished and premature GPT/Claude controller reviews were cancelled. Manual serialized orchestration was selected to avoid further controller overengineering.
-- Process check showed only the two intentionally killed reviewer jobs, both exited with SIGTERM; no active implementation process remains.
+## DoomsdayWatch Watch State
+- New evidence: AFP/Dawn reports 10 killed in Saturday Gaza attacks; AP/1News separately reports seven killed and 22 wounded at a funeral in the preceding cycle. `israel_palestine` holds at 88% without inflation.
+- New analysis: wider Bushehr complex shows satellite-image impact scars between 7 and 12 July; reactor reportedly normal, no radiological emergency or weapons-development trigger. `iran_nuclear` holds 47% raw / 54% coupled.
+- Iran/Gulf: renewed Kuwaiti/Bahraini attacks and two more stopped Hormuz ships corroborated; no mining or zero-traffic condition. `iran_conventional` stays capped at 100%.
+- Auto-detection: Somalia's government claimed 25 al-Shabab killed without independent toll verification; a separate Asana piracy hijacking was corroborated. No new configured zone qualified.
+- Source path: 22 Tavily `web_search` attempts failed HTTP 432; fallback used 18 core + 39 targeted + 5 exact-event Google News RSS lanes, direct browser bodies, UN/NATO/EIA, terminal HTTP, OilPriceAPI and Gamma. IAEA/OPEC stayed 403.
 
-## Decisions Made This Session
-- Freeze controller expansion; retain existing hardening but orchestrate product work directly and serially.
-- Implement only Task 6A's explicit plan and ten proven review blockers; no new service, daemon, database table, or generic framework.
-- Honor Kenan's pause immediately and preserve the exact uncommitted state.
+## Preserved Umbraxis Pause State
+- Accepted product master was clean at `265c819b3b39cec85a2359ff96471406d371ebdd`, 6/38 accepted, when last recorded locally.
+- Prior Task 6A worktree/candidate details remain in today's memory and vault; no Umbraxis action occurred in this cron.
