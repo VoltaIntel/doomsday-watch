@@ -87,7 +87,7 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielv\u0101rde remain defensive posture, not direct confrontation; the coupled score stays 52%",
+      "notes": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielvārde remain defensive posture, not direct confrontation; the coupled score stays 52%",
       "last_updated": "2026-07-19T15:23:54Z",
       "signal_timestamps": {},
       "name": "RUSSIA-NATO"
@@ -306,8 +306,8 @@
     "last_scan": "morning_deep_scan_15z_refresh",
     "scan_time_utc": "2026-07-19T15:23:54Z",
     "analysis_window": "Explicit past-24-hour review for every configured tracker and required sector, with 7/14/30-day context for low-frequency and emerging lanes; direct body recency checks for material RSS hits",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_22x_http_432_then_google_news_rss_18_core_39_targeted_5_exact_event_plus_browser_direct_publisher_un_nato_eia_terminal_http_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily web_search attempts returned HTTP 432. Fallback coverage completed through fresh Google News RSS (18 core lanes, 39 targeted lanes and 5 exact-event probes), browser redirect decoding and direct publisher-body inspection, direct UN/NATO/EIA feeds, terminal HTTP, OilPriceAPI and public Gamma exact-slug reads. Direct IAEA and OPEC pages returned HTTP 403; the current NATO /media-advisories path returned HTTP 404 while NATO news and legacy media-advisory pages remained reachable. UN News RSS returned HTTP 200 but the core parser yielded no items. Google RSS produced multiple false-recency returns; direct article dates were used where checked.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260719T150308Z.json",
       "supplement": "data/deep_scan_supplement_20260719T150329Z.json",
@@ -485,7 +485,7 @@
       "africa": "Mali ambush losses remain corroborated; Sudan and eastern Congo remain severe but unchanged. Somalia watch evidence lacks an independently verified casualty toll."
     },
     "energy_oil": {
-      "checked_at": "2026-07-19T15:23:54Z",
+      "checked_at": "2026-07-19T15:25:43Z",
       "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
       "brent_usd": 88.26,
       "brent_change_24h_pct": 0.0,
@@ -497,14 +497,14 @@
       "gold_usd": 4010.56,
       "diesel_usd": 4.08,
       "gasoline_usd": 3.39,
-      "heating_oil_usd": 4.06,
+      "heating_oil_usd": 4.08,
       "caveat": "Sunday/reference timestamps vary by instrument; Brent, diesel and gasoline were flat/stale references while WTI and heating oil updated. Values are sanity-only and did not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "checked_at": "2026-07-19T15:19:44Z",
+      "checked_at": "2026-07-19T15:26:52Z",
       "source": "Public Gamma exact-slug GET reads; sanity check only",
       "markets_pct": {
-        "china-x-taiwan-military-clash-before-2027": 5.65,
+        "china-x-taiwan-military-clash-before-2027": 5.25,
         "iran-nuclear-test-before-2027": 4.5,
         "iran-nuke-before-2027": 5.25,
         "israel-and-lebanon-normalize-relations-before-2027": 17.0,
@@ -521,7 +521,7 @@
           "status": "ok",
           "pm_implied_raw_pct": 30.5,
           "pm_implied_24h_pct": 0.145,
-          "total_volume_24h": 397683.7,
+          "total_volume_24h": 397313.86,
           "liquidity_warn": false
         },
         "iran_nuclear": {
@@ -547,9 +547,9 @@
         },
         "china": {
           "status": "ok",
-          "pm_implied_raw_pct": 4.6,
-          "pm_implied_24h_pct": 0.019,
-          "total_volume_24h": 86234.34,
+          "pm_implied_raw_pct": 4.45,
+          "pm_implied_24h_pct": 0.018,
+          "total_volume_24h": 86218.77,
           "liquidity_warn": true
         },
         "north_korea": {
@@ -563,7 +563,7 @@
           "status": "ok",
           "pm_implied_raw_pct": 83.0,
           "pm_implied_24h_pct": 0.706,
-          "total_volume_24h": 214.84,
+          "total_volume_24h": 156.19,
           "liquidity_warn": true
         },
         "india": {
@@ -676,7 +676,7 @@
       "emerging_global_1d": 10
     },
     "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "post_deploy_metadata_restored_at": "2026-07-19T12:19:16Z"
+    "post_deploy_metadata_restored_at": "2026-07-19T15:28:15Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -765,7 +765,7 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielv\u0101rde remain defensive posture, not direct confrontation; the coupled score stays 52%",
+      "notes": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielvārde remain defensive posture, not direct confrontation; the coupled score stays 52%",
       "last_updated": "2026-07-19T15:23:54Z",
       "signal_timestamps": {},
       "name": "RUSSIA-NATO"
@@ -963,8 +963,8 @@
       "headline": "Kuwaiti power-and-water plant burns as Iran renews Gulf attacks",
       "text": "Al Jazeera's 19 July update confirms renewed Iranian missile and drone attacks on Kuwait and Bahrain, a fire at a Kuwaiti power-and-water plant, and an IRGC claim that two ships using an 'unsafe route' were stopped in Hormuz and involved in unspecified accidents. Traffic remains severely constrained, but this scan found no verified mining or zero-traffic condition. The realized-war lane remains capped at 100%.",
       "sources": [
-        "Al Jazeera/AFP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-        "Associated Press cumulative casualty review, published 2026-07-19 \u2014 https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
+        "Al Jazeera/AFP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+        "Associated Press cumulative casualty review, published 2026-07-19 — https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
       ]
     },
     {
@@ -975,7 +975,7 @@
       "headline": "Aoun diplomacy persists; three alarming RSS returns fail recency check",
       "text": "Aoun's Washington channel and reported Hezbollah-disarmament/Israeli-withdrawal proposal remain active. Three alarming News On AIR headlines resurfaced in Google RSS, but direct inspection dated their bodies 24 March, 8 April and 2 May; they are not fresh evidence. No independently verified post-prior-scan strike crossed a new threshold, so the coupled score holds at 94%.",
       "sources": [
-        "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+        "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
         "News On AIR direct body checks: 2026-03-24, 2026-04-08 and 2026-05-02; excluded as false recency"
       ]
     },
@@ -998,8 +998,8 @@
       "headline": "Line of Control exchanges remain contained",
       "text": "The corroborated Rajouri-Poonch Line of Control exchanges remain the governing evidence. No new casualty statement, verified force concentration or cross-border operation appeared after the prior scan, so the lane holds at 15%.",
       "sources": [
-        "Greater Kashmir, published 2026-07-19 \u2014 https://www.greaterkashmir.com/security/india-pakistan-exchange-gunfire-on-loc-12177562",
-        "Daily Pioneer, published 2026-07-19 \u2014 https://dailypioneer.com/news/slug-lite/1st-loc-firing-since-operation-sindoor-as-pakistan-targets-rajouri-posts?year=2026",
+        "Greater Kashmir, published 2026-07-19 — https://www.greaterkashmir.com/security/india-pakistan-exchange-gunfire-on-loc-12177562",
+        "Daily Pioneer, published 2026-07-19 — https://dailypioneer.com/news/slug-lite/1st-loc-firing-since-operation-sindoor-as-pakistan-targets-rajouri-posts?year=2026",
         "Exact-event RSS review checked 2026-07-19T15:23:54Z"
       ]
     },
@@ -1009,10 +1009,10 @@
       "time": "15:23",
       "impact": "watch",
       "headline": "NATO remains defensive despite Baltic warnings",
-      "text": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielv\u0101rde remain defensive posture, not direct confrontation; the coupled score stays 52%.",
+      "text": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielvārde remain defensive posture, not direct confrontation; the coupled score stays 52%.",
       "sources": [
-        "LSM, published 2026-07-19 09:44Z \u2014 Google News RSS targeted lane",
-        "NATO official news pages inspected 2026-07-19T15:23:54Z \u2014 https://www.nato.int/en/news-and-events/articles/news"
+        "LSM, published 2026-07-19 09:44Z — Google News RSS targeted lane",
+        "NATO official news pages inspected 2026-07-19T15:23:54Z — https://www.nato.int/en/news-and-events/articles/news"
       ]
     },
     {
@@ -1023,7 +1023,7 @@
       "headline": "No fresh PLA operation around Taiwan",
       "text": "No fresh PLA exercise, blockade or verified force concentration around Taiwan appeared in the past-24-hour lane. Commentary and Taiwan defensive posture do not establish a configured trigger; the coupled score stays 28%.",
       "sources": [
-        "Taiwan Ministry of National Defense activity page \u2014 https://www.mnd.gov.tw/en/news/plaact/87053",
+        "Taiwan Ministry of National Defense activity page — https://www.mnd.gov.tw/en/news/plaact/87053",
         "Google News RSS one-day and seven-day reviews checked 2026-07-19T15:23:54Z"
       ]
     },
@@ -1047,8 +1047,8 @@
       "headline": "Major ballistic wave remains the governing escalation evidence",
       "text": "BBC and follow-on reports continue to put the latest ballistic wave at four killed and at least 36 wounded across Kyiv and Kharkiv, while Ukraine says it struck three Russian-linked Black Sea tankers and fuel facilities. No direct NATO or nuclear threshold emerged; the realized-war lane remains 99%.",
       "sources": [
-        "BBC, published 2026-07-19 \u2014 https://www.bbc.com/news/articles/c2el7xpnzrpo",
-        "Al Jazeera with AFP/AP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
+        "BBC, published 2026-07-19 — https://www.bbc.com/news/articles/c2el7xpnzrpo",
+        "Al Jazeera with AFP/AP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
       ]
     },
     {
@@ -1070,9 +1070,9 @@
       "headline": "Bushehr imagery shows wider-complex scars; reactor reported normal",
       "text": "A current National Security Journal review of Al Jazeera's 17 July Sentinel-2 analysis reports impact scars that appeared inside the wider Bushehr civil nuclear complex between 7 and 12 July. Iran says the reactor remains operating normally; imagery does not establish damage to the reactor, a radiological emergency or weapons-development progress. Direct IAEA pages remained HTTP 403 and no independent IAEA emergency notice was found. The coupled score stays 54%.",
       "sources": [
-        "Al Jazeera satellite-image analysis, published 2026-07-17 \u2014 Google News exact-event RSS lane",
-        "National Security Journal review, published 2026-07-19 \u2014 https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
-        "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z \u2014 https://www.iaea.org/newscenter/news"
+        "Al Jazeera satellite-image analysis, published 2026-07-17 — Google News exact-event RSS lane",
+        "National Security Journal review, published 2026-07-19 — https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
+        "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z — https://www.iaea.org/newscenter/news"
       ]
     },
     {
@@ -1083,7 +1083,7 @@
       "headline": "El Obeid emergency persists without a distinct new operation",
       "text": "Fresh results still centre on El Obeid siege, hunger and displacement risk. No distinct newly corroborated SAF-RSF operation crossed a configured trigger after the prior scan; the realized-war lane remains 90%.",
       "sources": [
-        "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
+        "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
         "Google News RSS focused review checked 2026-07-19T15:23:54Z"
       ]
     },
@@ -1095,8 +1095,8 @@
       "headline": "Ten reported killed in Saturday Gaza attacks; prior funeral strike killed seven",
       "text": "AFP via Dawn reports Israeli attacks on Saturday killed 10 people across Gaza, including a family of five, three people in Zeitoun and two elsewhere; Israel said the family strike targeted a Hamas member and was assessing the result. AP via 1News separately reported seven killed and 22 wounded at a funeral in Nuseirat during the preceding attack cycle. This strengthens the ongoing truce-breach evidence, but the near-ceiling lane remains 88% without inflation.",
       "sources": [
-        "AFP via Dawn, published 2026-07-19 \u2014 https://www.dawn.com/news/2016591",
-        "Associated Press via 1News, published 2026-07-18 \u2014 https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
+        "AFP via Dawn, published 2026-07-19 — https://www.dawn.com/news/2016591",
+        "Associated Press via 1News, published 2026-07-18 — https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
       ]
     },
     {
@@ -1119,7 +1119,7 @@
       "headline": "No fresh eastern Congo operation",
       "text": "No fresh eastern Congo operation appeared in the focused one-day lane. June civilian-death and clash totals remain retrospective, while UN and security-review warnings remain severe but unchanged; the score stays 52%.",
       "sources": [
-        "UN noon briefing, published 2026-07-17 \u2014 https://press.un.org/en/2026/260717.doc.htm",
+        "UN noon briefing, published 2026-07-17 — https://press.un.org/en/2026/260717.doc.htm",
         "Google News RSS focused one-day review checked 2026-07-19T15:23:54Z"
       ]
     },
@@ -1131,7 +1131,7 @@
       "headline": "Houthi threat remains watch-only; no new attack verified",
       "text": "The Houthi threat of reciprocal siege and reported Iranian direction remain material watch evidence after the earlier Saudi missile exchange, but no new Houthi attack or Bab el-Mandeb closure attempt was verified. The existing outside-support indicator remains and the lane holds at 38%.",
       "sources": [
-        "Qatar Tribune/DPA, published 2026-07-19 \u2014 https://www.qatar-tribune.com/article/244794/world/yemens-houthis-warn-saudi-arabia-of-siege/amp",
+        "Qatar Tribune/DPA, published 2026-07-19 — https://www.qatar-tribune.com/article/244794/world/yemens-houthis-warn-saudi-arabia-of-siege/amp",
         "Google News RSS Red Sea review checked 2026-07-19T15:23:54Z"
       ]
     },
@@ -1143,9 +1143,9 @@
       "headline": "Mali convoy losses corroborated; no follow-on operation",
       "text": "AFP, AP and Al Jazeera corroboration of the Anefis-Gao convoy ambush remains the governing evidence: more than 50 soldiers reportedly killed and at least 24 captured, while the army acknowledged the ambush without a toll. No distinct follow-on operation appeared after the prior scan; the force-concentration indicator is carried and the lane holds at 36%.",
       "sources": [
-        "AFP via Ahram Online, published 2026-07-19 \u2014 https://english.ahram.org.eg/News/573099.aspx",
-        "Associated Press via ABC News, updated 2026-07-18 \u2014 https://abcnews.com/International/wireStory/mali-rebels-ambush-army-convoy-killing-capturing-scores-134873385",
-        "Al Jazeera, published 2026-07-18 \u2014 https://www.aljazeera.com/news/2026/7/18/armed-groups-attack-malian-military-convoy-in-gao-region"
+        "AFP via Ahram Online, published 2026-07-19 — https://english.ahram.org.eg/News/573099.aspx",
+        "Associated Press via ABC News, updated 2026-07-18 — https://abcnews.com/International/wireStory/mali-rebels-ambush-army-convoy-killing-capturing-scores-134873385",
+        "Al Jazeera, published 2026-07-18 — https://www.aljazeera.com/news/2026/7/18/armed-groups-attack-malian-military-convoy-in-gao-region"
       ]
     }
   ],
@@ -1444,7 +1444,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1495,7 +1495,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1587,7 +1587,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "rising",
@@ -1659,7 +1659,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1705,7 +1705,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
@@ -1746,7 +1746,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1787,7 +1787,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1833,14 +1833,14 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 4,
-      "notes": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielv\u0101rde remain defensive posture, not direct confrontation; the coupled score stays 52%",
+      "notes": "Official NATO pages remained reachable and showed no Article 5 action or allied combat-entry decision. Latvia's warning about Russian drone narratives and France's Rafale presence at Lielvārde remain defensive posture, not direct confrontation; the coupled score stays 52%",
       "attribution": {
         "base_rate": 4.0,
         "raw_probability": 42.0,
@@ -1873,7 +1873,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -1918,7 +1918,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -1958,7 +1958,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2009,7 +2009,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2081,7 +2081,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "rising",
@@ -2143,7 +2143,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2194,7 +2194,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
@@ -2256,7 +2256,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "rising",
@@ -2454,8 +2454,8 @@
         "raw_probability_pct": 53.0,
         "final_probability_pct": 53,
         "matched_sources": [
-          "Al Jazeera/AFP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Associated Press cumulative casualty review, published 2026-07-19 \u2014 https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
+          "Al Jazeera/AFP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Associated Press cumulative casualty review, published 2026-07-19 — https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
         ]
       },
       "confidence_score": 100,
@@ -2501,8 +2501,8 @@
         "raw_probability_pct": 68.6,
         "final_probability_pct": 69,
         "matched_sources": [
-          "Al Jazeera/AFP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Associated Press cumulative casualty review, published 2026-07-19 \u2014 https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
+          "Al Jazeera/AFP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Associated Press cumulative casualty review, published 2026-07-19 — https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
         ]
       },
       "confidence_score": 100,
@@ -2548,8 +2548,8 @@
         "raw_probability_pct": 85.4,
         "final_probability_pct": 85,
         "matched_sources": [
-          "Al Jazeera/AFP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Associated Press cumulative casualty review, published 2026-07-19 \u2014 https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
+          "Al Jazeera/AFP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Associated Press cumulative casualty review, published 2026-07-19 — https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
         ]
       },
       "confidence_score": 100,
@@ -2595,8 +2595,8 @@
         "raw_probability_pct": 113.0,
         "final_probability_pct": 100,
         "matched_sources": [
-          "Al Jazeera/AFP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Associated Press cumulative casualty review, published 2026-07-19 \u2014 https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
+          "Al Jazeera/AFP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Associated Press cumulative casualty review, published 2026-07-19 — https://abc7ny.com/post/16-us-service-members-have-died-iran-war-reflecting-conflict-fought-largely-air/19537509/"
         ]
       },
       "confidence_score": 100,
@@ -2642,8 +2642,8 @@
         "raw_probability_pct": 37.32,
         "final_probability_pct": 37,
         "matched_sources": [
-          "BBC, published 2026-07-19 \u2014 https://www.bbc.com/news/articles/c2el7xpnzrpo",
-          "Al Jazeera with AFP/AP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
+          "BBC, published 2026-07-19 — https://www.bbc.com/news/articles/c2el7xpnzrpo",
+          "Al Jazeera with AFP/AP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
         ]
       },
       "confidence_score": 57,
@@ -2686,8 +2686,8 @@
         "raw_probability_pct": 48.06,
         "final_probability_pct": 48,
         "matched_sources": [
-          "BBC, published 2026-07-19 \u2014 https://www.bbc.com/news/articles/c2el7xpnzrpo",
-          "Al Jazeera with AFP/AP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
+          "BBC, published 2026-07-19 — https://www.bbc.com/news/articles/c2el7xpnzrpo",
+          "Al Jazeera with AFP/AP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
         ]
       },
       "confidence_score": 57,
@@ -2730,8 +2730,8 @@
         "raw_probability_pct": 59.4,
         "final_probability_pct": 59,
         "matched_sources": [
-          "BBC, published 2026-07-19 \u2014 https://www.bbc.com/news/articles/c2el7xpnzrpo",
-          "Al Jazeera with AFP/AP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
+          "BBC, published 2026-07-19 — https://www.bbc.com/news/articles/c2el7xpnzrpo",
+          "Al Jazeera with AFP/AP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
         ]
       },
       "confidence_score": 57,
@@ -2774,8 +2774,8 @@
         "raw_probability_pct": 76.14,
         "final_probability_pct": 76,
         "matched_sources": [
-          "BBC, published 2026-07-19 \u2014 https://www.bbc.com/news/articles/c2el7xpnzrpo",
-          "Al Jazeera with AFP/AP, published 2026-07-19 \u2014 https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
+          "BBC, published 2026-07-19 — https://www.bbc.com/news/articles/c2el7xpnzrpo",
+          "Al Jazeera with AFP/AP, published 2026-07-19 — https://www.aljazeera.com/news/2026/7/19/russia-launches-largest-ballistic-missile-attack-on-kyiv-since-start-of-war"
         ]
       },
       "confidence_score": 57,
@@ -2818,7 +2818,7 @@
         "raw_probability_pct": 29.17,
         "final_probability_pct": 29,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
           "News On AIR direct body checks: 2026-03-24, 2026-04-08 and 2026-05-02; excluded as false recency"
         ]
       },
@@ -2864,7 +2864,7 @@
         "raw_probability_pct": 49.21,
         "final_probability_pct": 49,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
           "News On AIR direct body checks: 2026-03-24, 2026-04-08 and 2026-05-02; excluded as false recency"
         ]
       },
@@ -2910,7 +2910,7 @@
         "raw_probability_pct": 71.05,
         "final_probability_pct": 71,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
           "News On AIR direct body checks: 2026-03-24, 2026-04-08 and 2026-05-02; excluded as false recency"
         ]
       },
@@ -2956,7 +2956,7 @@
         "raw_probability_pct": 88.09,
         "final_probability_pct": 88,
         "matched_sources": [
-          "Reuters, published 2026-07-19 06:03Z \u2014 https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
+          "Reuters, published 2026-07-19 06:03Z — https://www.reuters.com/world/middle-east/lebanons-aoun-meet-trump-white-house-hoping-generate-pressure-israel-2026-07-19/",
           "News On AIR direct body checks: 2026-03-24, 2026-04-08 and 2026-05-02; excluded as false recency"
         ]
       },
@@ -3002,7 +3002,7 @@
         "raw_probability_pct": 34.7,
         "final_probability_pct": 35,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
           "Google News RSS focused review checked 2026-07-19T15:23:54Z"
         ]
       },
@@ -3046,7 +3046,7 @@
         "raw_probability_pct": 48.1,
         "final_probability_pct": 48,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
           "Google News RSS focused review checked 2026-07-19T15:23:54Z"
         ]
       },
@@ -3090,7 +3090,7 @@
         "raw_probability_pct": 62.5,
         "final_probability_pct": 62,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
           "Google News RSS focused review checked 2026-07-19T15:23:54Z"
         ]
       },
@@ -3134,7 +3134,7 @@
         "raw_probability_pct": 85.9,
         "final_probability_pct": 86,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
           "Google News RSS focused review checked 2026-07-19T15:23:54Z"
         ]
       },
@@ -3178,8 +3178,8 @@
         "raw_probability_pct": 45.99,
         "final_probability_pct": 46,
         "matched_sources": [
-          "AFP via Dawn, published 2026-07-19 \u2014 https://www.dawn.com/news/2016591",
-          "Associated Press via 1News, published 2026-07-18 \u2014 https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
+          "AFP via Dawn, published 2026-07-19 — https://www.dawn.com/news/2016591",
+          "Associated Press via 1News, published 2026-07-18 — https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
         ]
       },
       "confidence_score": 97,
@@ -3224,8 +3224,8 @@
         "raw_probability_pct": 59.27,
         "final_probability_pct": 59,
         "matched_sources": [
-          "AFP via Dawn, published 2026-07-19 \u2014 https://www.dawn.com/news/2016591",
-          "Associated Press via 1News, published 2026-07-18 \u2014 https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
+          "AFP via Dawn, published 2026-07-19 — https://www.dawn.com/news/2016591",
+          "Associated Press via 1News, published 2026-07-18 — https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
         ]
       },
       "confidence_score": 97,
@@ -3270,8 +3270,8 @@
         "raw_probability_pct": 73.55,
         "final_probability_pct": 74,
         "matched_sources": [
-          "AFP via Dawn, published 2026-07-19 \u2014 https://www.dawn.com/news/2016591",
-          "Associated Press via 1News, published 2026-07-18 \u2014 https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
+          "AFP via Dawn, published 2026-07-19 — https://www.dawn.com/news/2016591",
+          "Associated Press via 1News, published 2026-07-18 — https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
         ]
       },
       "confidence_score": 97,
@@ -3316,8 +3316,8 @@
         "raw_probability_pct": 96.83,
         "final_probability_pct": 97,
         "matched_sources": [
-          "AFP via Dawn, published 2026-07-19 \u2014 https://www.dawn.com/news/2016591",
-          "Associated Press via 1News, published 2026-07-18 \u2014 https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
+          "AFP via Dawn, published 2026-07-19 — https://www.dawn.com/news/2016591",
+          "Associated Press via 1News, published 2026-07-18 — https://www.1news.co.nz/2026/07/18/israeli-strike-on-funeral-in-gaza-kills-7-wounds-22-hospital-says/"
         ]
       },
       "confidence_score": 97,
@@ -3362,9 +3362,9 @@
         "raw_probability_pct": 23.72,
         "final_probability_pct": 24,
         "matched_sources": [
-          "Al Jazeera satellite-image analysis, published 2026-07-17 \u2014 Google News exact-event RSS lane",
-          "National Security Journal review, published 2026-07-19 \u2014 https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z \u2014 https://www.iaea.org/newscenter/news"
+          "Al Jazeera satellite-image analysis, published 2026-07-17 — Google News exact-event RSS lane",
+          "National Security Journal review, published 2026-07-19 — https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 69,
@@ -3407,9 +3407,9 @@
         "raw_probability_pct": 30.16,
         "final_probability_pct": 30,
         "matched_sources": [
-          "Al Jazeera satellite-image analysis, published 2026-07-17 \u2014 Google News exact-event RSS lane",
-          "National Security Journal review, published 2026-07-19 \u2014 https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z \u2014 https://www.iaea.org/newscenter/news"
+          "Al Jazeera satellite-image analysis, published 2026-07-17 — Google News exact-event RSS lane",
+          "National Security Journal review, published 2026-07-19 — https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 69,
@@ -3452,9 +3452,9 @@
         "raw_probability_pct": 37.0,
         "final_probability_pct": 37,
         "matched_sources": [
-          "Al Jazeera satellite-image analysis, published 2026-07-17 \u2014 Google News exact-event RSS lane",
-          "National Security Journal review, published 2026-07-19 \u2014 https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z \u2014 https://www.iaea.org/newscenter/news"
+          "Al Jazeera satellite-image analysis, published 2026-07-17 — Google News exact-event RSS lane",
+          "National Security Journal review, published 2026-07-19 — https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 69,
@@ -3497,9 +3497,9 @@
         "raw_probability_pct": 47.44,
         "final_probability_pct": 47,
         "matched_sources": [
-          "Al Jazeera satellite-image analysis, published 2026-07-17 \u2014 Google News exact-event RSS lane",
-          "National Security Journal review, published 2026-07-19 \u2014 https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z \u2014 https://www.iaea.org/newscenter/news"
+          "Al Jazeera satellite-image analysis, published 2026-07-17 — Google News exact-event RSS lane",
+          "National Security Journal review, published 2026-07-19 — https://nationalsecurityjournal.org/iran-says-its-only-operating-nuclear-power-reactor-is-running-normally-satellite-images-show-fresh-impact-scars-inside-the-complex/",
+          "IAEA news and press pages returned HTTP 403 on 2026-07-19T15:23:54Z — https://www.iaea.org/newscenter/news"
         ]
       },
       "confidence_score": 69,
