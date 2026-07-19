@@ -298,8 +298,8 @@
     "last_scan": "morning_deep_scan_21z",
     "scan_time_utc": "2026-07-19T21:10:30Z",
     "analysis_window": "Deepest past-24-hour review for every configured tracker and required sector, with 7/14/30-day context for low-frequency and emerging lanes; post-18Z delta review and exact-event/body-date checks for material RSS hits",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_22x_http_432_then_google_news_rss_18_core_40_targeted_12_exact_event_plus_browser_direct_publisher_un_nato_eia_terminal_http_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily web_search attempts returned HTTP 432; five web_extract attempts also returned HTTP 432. Fallback coverage completed through fresh Google News RSS (18 core lanes, 40 targeted lanes and 12 exact-event probes), browser direct publisher-body inspection, direct UN/NATO/EIA feeds, terminal HTTP, OilPriceAPI and exact-slug Gamma reads. Direct IAEA and OPEC pages remained HTTP 403; configured OCHA and UN Sudan paths remained HTTP 404. Google RSS again produced false-recency and single-source results, including March Pakistan-Afghanistan material and unverified Somali government casualty claims.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260719T210250Z.json",
       "supplement": "data/deep_scan_supplement_20260719T210357Z.json",
@@ -402,9 +402,9 @@
     "raw_global_probability": 74.596,
     "morning_deep_scan_movers": [
       "No tracker probability changed; global displayed risk holds at 75% / imminent (pre-rounding coupled score 74.596). No canonical signal activated or cleared in the evidence review.",
-      "Russia-Ukraine: multiple established outlets describe the latest Kyiv wave as the war\u2019s largest ballistic barrage, with six deaths reported across affected cities; the realised-war lane remains 99%.",
+      "Russia-Ukraine: multiple established outlets describe the latest Kyiv wave as the war’s largest ballistic barrage, with six deaths reported across affected cities; the realised-war lane remains 99%.",
       "Yemen/Red Sea: a new Alhurra publication repeats the earlier report that Iran urged Houthi preparations around Bab el-Mandeb, but no new attack, closure attempt or independently verified operational order appeared; 38%.",
-      "Auto-detection: Somalia\u2019s defence ministry claimed 25 al-Shabab deaths in a combined air/ground operation, but Hiiraan Online explicitly says the toll could not be independently verified; no zone was added.",
+      "Auto-detection: Somalia’s defence ministry claimed 25 al-Shabab deaths in a combined air/ground operation, but Hiiraan Online explicitly says the toll could not be independently verified; no zone was added.",
       "Exact-slug market sanity: U.S.-Iran invasion 29.5%, NATO Article 5 8.0%, Iran NPT withdrawal 14.95%, China-Taiwan clash 5.2%; markets did not set tracker probabilities."
     ],
     "signals_changed": {
@@ -460,11 +460,11 @@
       "The Bushehr imagery was first reported 2026-07-17 and depicts changes between 7 and 12 July; it is not a new 19 July strike."
     ],
     "allied_positions": {
-      "middle_east": "The United States and Iran continue direct strikes. Aoun\u2019s Washington visit keeps the Israel-Lebanon withdrawal/disarmament channel open; Hezbollah still rejects disarmament. No NATO Iran-war entry appeared.",
+      "middle_east": "The United States and Iran continue direct strikes. Aoun’s Washington visit keeps the Israel-Lebanon withdrawal/disarmament channel open; Hezbollah still rejects disarmament. No NATO Iran-war entry appeared.",
       "nato": "Official NATO pages showed no Article 5 or direct-entry decision. The latest official item condemned Russian malicious cyber activity; sensational Belarus nuclear-drill clips were not corroborated as a configured trigger.",
       "ukraine": "Allied support remains focused on air defence and longer-term Patriot capacity after the record ballistic wave. No allied combat-entry decision appeared.",
       "indo_pacific": "No current PLA Taiwan operation or fresh DPRK missile/nuclear test was found. Japan-ROK-U.S. cooperation and routine defensive posture remain the main allied signals.",
-      "africa": "Mali ambush losses remain corroborated; Sudan and eastern Congo remain severe but unchanged. Somalia\u2019s new casualty figure is an unverified government claim."
+      "africa": "Mali ambush losses remain corroborated; Sudan and eastern Congo remain severe but unchanged. Somalia’s new casualty figure is an unverified government claim."
     },
     "energy_oil": {
       "checked_at": "2026-07-19T21:03:09Z",
@@ -483,7 +483,7 @@
       "caveat": "Sunday/reference timestamps vary by instrument; diesel and gasoline remained stale while crude and heating oil refreshed. Values are sanity-only and did not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "checked_at": "2026-07-19T21:07:11Z",
+      "checked_at": "2026-07-19T21:12:08Z",
       "source": "Public Gamma exact-slug GET reads; sanity check only",
       "markets_pct": {
         "will-the-us-invade-iran-before-2027": 29.5,
@@ -492,7 +492,7 @@
         "will-iran-withdraw-from-the-npt-before-2027": 14.95,
         "ukraine-signs-peace-deal-with-russia-before-2027": 18.5,
         "nato-article-5-before-2027": 8.0,
-        "will-china-invade-taiwan-before-2027": 3.95,
+        "will-china-invade-taiwan-before-2027": 4.05,
         "china-x-taiwan-military-clash-before-2027": 5.2,
         "will-north-korea-invade-south-korea-before-2027": 2.75,
         "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027": 3.05,
@@ -503,7 +503,7 @@
           "status": "ok",
           "pm_implied_raw_pct": 29.5,
           "pm_implied_24h_pct": 0.14,
-          "total_volume_24h": 350668.5,
+          "total_volume_24h": 351030.27,
           "liquidity_warn": false
         },
         "iran_nuclear": {
@@ -529,9 +529,9 @@
         },
         "china": {
           "status": "ok",
-          "pm_implied_raw_pct": 4.43,
+          "pm_implied_raw_pct": 4.49,
           "pm_implied_24h_pct": 0.018,
-          "total_volume_24h": 82056.34,
+          "total_volume_24h": 93946.18,
           "liquidity_warn": true
         },
         "north_korea": {
@@ -676,7 +676,8 @@
       "lebanon_aoun_trump_exact": 10,
       "darkhovin_exact": 2
     },
-    "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py."
+    "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
+    "post_deploy_metadata_restored_at": "2026-07-19T21:13:21Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -957,9 +958,9 @@
       "headline": "Iran strike cycle persists; no new Hormuz closure condition",
       "text": "The continuing United States-Iran strike cycle and attacks affecting Gulf bases, power and water infrastructure remain the governing evidence. Shipping through Hormuz is heavily constrained but nonzero, and exact-event review found no independently verified mining or zero-traffic condition. The realised-war lane remains capped at 100%.",
       "sources": [
-        "BBC, published 2026-07-19 17:22Z \u2014 Google News RSS targeted lane",
-        "Al Jazeera, updated 2026-07-19 16:15Z \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-        "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "BBC, published 2026-07-19 17:22Z — Google News RSS targeted lane",
+        "Al Jazeera, updated 2026-07-19 16:15Z — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+        "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -970,9 +971,9 @@
       "headline": "Aoun Washington channel continues amid strikes and Hezbollah rejection",
       "text": "President Joseph Aoun's Washington visit keeps the U.S.-backed withdrawal, deployment and Hezbollah-disarmament channel open, while Hezbollah rejects disarmament and sporadic Israeli attacks continue. The existing offsetting escalation and diplomatic indicators remain; the coupled score stays 94%.",
       "sources": [
-        "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-        "Reuters Aoun visit coverage, published 2026-07-19 06:03Z \u2014 Google News RSS exact-event lane",
-        "Focused review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+        "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+        "Reuters Aoun visit coverage, published 2026-07-19 06:03Z — Google News RSS exact-event lane",
+        "Focused review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
       ]
     },
     {
@@ -983,7 +984,7 @@
       "headline": "No current Turkey-specific escalation trigger",
       "text": "The past-24-hour lane returned no Turkey-specific combat action, official nuclear statement or qualifying missile-range event. Regional Iran-war and NATO coverage dominated the results; the lane remains 5%.",
       "sources": [
-        "Google News RSS one-day and 14-day Turkey reviews checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+        "Google News RSS one-day and 14-day Turkey reviews checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
       ]
     },
     {
@@ -994,9 +995,9 @@
       "headline": "Fresh-indexed Kashmir firing item lacks new independent corroboration",
       "text": "A current Saba item reports Indian-Pakistani firing in Kashmir, but exact-event search produced only that publisher after the already corroborated Rajouri-Poonch exchanges. No fresh casualty statement, verified force concentration or cross-border operation appeared, so the lane holds at 15%.",
       "sources": [
-        "Saba News, published 2026-07-19 09:55Z \u2014 Google News RSS exact-event lane",
-        "Greater Kashmir, published 2026-07-19 \u2014 https://www.greaterkashmir.com/security/india-pakistan-exchange-gunfire-on-loc-12177562",
-        "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "Saba News, published 2026-07-19 09:55Z — Google News RSS exact-event lane",
+        "Greater Kashmir, published 2026-07-19 — https://www.greaterkashmir.com/security/india-pakistan-exchange-gunfire-on-loc-12177562",
+        "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -1007,8 +1008,8 @@
       "headline": "No Article 5 action; Belarus nuclear-drill clips remain uncorroborated",
       "text": "Official NATO pages showed no Article 5 action or direct allied combat-entry decision. Sensational clips alleging Russian nuclear drills or warhead movement in Belarus produced no corroborating exact-event result and do not establish an official configured trigger; the coupled score stays 52%.",
       "sources": [
-        "NATO official news and press pages inspected 2026-07-19T21:02:50Z \u2014 https://www.nato.int/en/news-and-events/articles/news",
-        "Belarus nuclear exact-event search returned zero items at 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "NATO official news and press pages inspected 2026-07-19T21:02:50Z — https://www.nato.int/en/news-and-events/articles/news",
+        "Belarus nuclear exact-event search returned zero items at 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -1019,8 +1020,8 @@
       "headline": "No fresh PLA operation around Taiwan",
       "text": "No fresh PLA exercise, blockade or verified force concentration around Taiwan appeared in the past-24-hour lane. Current results were analysis or standing defensive posture rather than a new operational event; the coupled score stays 28%.",
       "sources": [
-        "Taiwan Ministry of National Defense PLA activity page \u2014 https://www.mnd.gov.tw/en/news/plaact/87053",
-        "Google News RSS one-day and seven-day reviews checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+        "Taiwan Ministry of National Defense PLA activity page — https://www.mnd.gov.tw/en/news/plaact/87053",
+        "Google News RSS one-day and seven-day reviews checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
       ]
     },
     {
@@ -1031,7 +1032,7 @@
       "headline": "No fresh DPRK missile launch or nuclear test",
       "text": "No fresh DPRK missile launch or nuclear test was verified. Current results concern rhetoric about allied maritime exercises, unrelated missile-defence procurement or older reporting; the lane remains 18%.",
       "sources": [
-        "Google News RSS one-day and seven-day DPRK reviews checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+        "Google News RSS one-day and seven-day DPRK reviews checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
       ]
     },
     {
@@ -1042,9 +1043,9 @@
       "headline": "Record ballistic barrage remains governing evidence",
       "text": "Multiple established outlets continue to describe the latest Kyiv wave as the war's largest ballistic barrage, with six deaths reported across affected Ukrainian cities and persistent interceptor shortages. No direct NATO combat-entry decision or new official nuclear threshold emerged; the realised-war lane remains 99%.",
       "sources": [
-        "Al Jazeera, published 2026-07-19 15:20Z \u2014 Google News RSS exact-event lane",
-        "CBS News, published 2026-07-19 10:21Z \u2014 Google News RSS exact-event lane",
-        "Politico Europe, published 2026-07-19 12:28Z \u2014 Google News RSS exact-event lane"
+        "Al Jazeera, published 2026-07-19 15:20Z — Google News RSS exact-event lane",
+        "CBS News, published 2026-07-19 10:21Z — Google News RSS exact-event lane",
+        "Politico Europe, published 2026-07-19 12:28Z — Google News RSS exact-event lane"
       ]
     },
     {
@@ -1055,8 +1056,8 @@
       "headline": "Captured-outpost headline traces to the March clash cycle",
       "text": "A fresh-indexed News On AIR headline about a captured Pakistani outpost again resolves to the March clash cycle rather than a new 19 July event. Exact-event search produced no independent current corroboration, fresh interstate strike or force concentration; the lane remains 46%.",
       "sources": [
-        "News On AIR direct body/search check: article dated 2026-03-06 \u2014 https://www.newsonair.gov.in/?s=Taliban+says+Pakistani+outpost+captured",
-        "Google News RSS exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "News On AIR direct body/search check: article dated 2026-03-06 — https://www.newsonair.gov.in/?s=Taliban+says+Pakistani+outpost+captured",
+        "Google News RSS exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -1067,9 +1068,9 @@
       "headline": "Darkhovin report still does not establish a nuclear emergency",
       "text": "Iran says the United States attacked the unfinished Darkhovin nuclear-power project. The IAEA account carried by AFP says it was at a very early stage, held no nuclear material when last visited and is not believed to pose radiological risk. No verified enrichment progress, safeguards-access loss or emergency was established; the lane stays 47% raw / 54% coupled.",
       "sources": [
-        "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS targeted lane",
-        "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z \u2014 https://www.iaea.org/newscenter/news",
-        "Darkhovin exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS targeted lane",
+        "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z — https://www.iaea.org/newscenter/news",
+        "Darkhovin exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -1080,8 +1081,8 @@
       "headline": "El Obeid emergency persists without a distinct new operation",
       "text": "Fresh results still centre on the El Obeid siege, hunger and displacement risk. No distinct newly corroborated SAF-RSF operation crossed a configured trigger after the prior scan; the realised-war lane remains 90%.",
       "sources": [
-        "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
-        "Google News RSS one-day review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+        "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
+        "Google News RSS one-day review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
       ]
     },
     {
@@ -1092,9 +1093,9 @@
       "headline": "Gaza and West Bank evidence persists without a new score move",
       "text": "The Gaza strike toll and independently reported arson and vandalism at a West Bank mosque remain the governing evidence. Later items were follow-on republications rather than a distinct new attack cluster, so the near-ceiling lane remains 88% without inflation.",
       "sources": [
-        "The Times of Israel, published 2026-07-19 12:11Z \u2014 Google News RSS exact-event lane",
-        "Haaretz, published 2026-07-19 08:25Z \u2014 Google News RSS exact-event lane",
-        "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "The Times of Israel, published 2026-07-19 12:11Z — Google News RSS exact-event lane",
+        "Haaretz, published 2026-07-19 08:25Z — Google News RSS exact-event lane",
+        "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -1105,7 +1106,7 @@
       "headline": "Kajo-Keji evidence carried; no new Abyei operation",
       "text": "The corroborated Kajo-Keji border skirmish, reinforcements and displacement above 10,000 remain the governing evidence. No fresh operation, Ugandan official account or Abyei kinetic event appeared, so the existing indicator and 17% score are carried.",
       "sources": [
-        "Google News RSS one-day and 30-day reviews checked 2026-07-19T21:02:50Z \u2014 data/morning_deep_scan_sources_20260719T210250Z.json"
+        "Google News RSS one-day and 30-day reviews checked 2026-07-19T21:02:50Z — data/morning_deep_scan_sources_20260719T210250Z.json"
       ]
     },
     {
@@ -1116,8 +1117,8 @@
       "headline": "No fresh eastern Congo combat operation",
       "text": "The focused one-day lane returned an Ebola-response security item but no fresh M23, FARDC or Rwanda-linked combat operation. Retrospective civilian-death totals and UN warnings remain severe but unchanged; the score stays 52%.",
       "sources": [
-        "Google News RSS focused one-day review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json",
-        "UN noon briefing, published 2026-07-17 \u2014 https://press.un.org/en/2026/260717.doc.htm"
+        "Google News RSS focused one-day review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json",
+        "UN noon briefing, published 2026-07-17 — https://press.un.org/en/2026/260717.doc.htm"
       ]
     },
     {
@@ -1128,9 +1129,9 @@
       "headline": "Red Sea direction report republished; no new attack verified",
       "text": "A new Alhurra publication repeats reporting that Iran urged Houthi preparations to disrupt Bab el-Mandeb if U.S. strikes hit power infrastructure. The underlying report dates to the earlier cycle, and no new Houthi attack, closure attempt or independently verified operational order appeared; the lane holds at 38%.",
       "sources": [
-        "Alhurra, published 2026-07-19 18:01Z \u2014 Google News RSS exact-event lane",
-        "T\u00fcrkiye Today, published 2026-07-17 08:14Z \u2014 Google News RSS exact-event lane",
-        "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+        "Alhurra, published 2026-07-19 18:01Z — Google News RSS exact-event lane",
+        "Türkiye Today, published 2026-07-17 08:14Z — Google News RSS exact-event lane",
+        "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
       ]
     },
     {
@@ -1141,9 +1142,9 @@
       "headline": "Mali convoy losses remain corroborated; no follow-on operation",
       "text": "AP and AFP/Al Jazeera corroboration of the Anefis-Gao convoy ambush remains the governing evidence: more than 50 soldiers were reportedly killed and at least 24 captured, while the army acknowledged the ambush without a toll. No distinct follow-on operation appeared; the existing indicator is carried and the lane holds at 36%.",
       "sources": [
-        "Associated Press via ABC News, updated 2026-07-18 \u2014 https://abcnews.com/International/wireStory/mali-rebels-ambush-army-convoy-killing-capturing-scores-134873385",
-        "AFP via Ahram Online, published 2026-07-19 \u2014 https://english.ahram.org.eg/News/573099.aspx",
-        "Focused review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+        "Associated Press via ABC News, updated 2026-07-18 — https://abcnews.com/International/wireStory/mali-rebels-ambush-army-convoy-killing-capturing-scores-134873385",
+        "AFP via Ahram Online, published 2026-07-19 — https://english.ahram.org.eg/News/573099.aspx",
+        "Focused review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
       ]
     }
   ],
@@ -1442,7 +1443,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1493,7 +1494,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1575,7 +1576,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "rising",
@@ -1647,7 +1648,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1693,7 +1694,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
@@ -1734,7 +1735,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1775,7 +1776,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1821,7 +1822,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -1861,7 +1862,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -1906,7 +1907,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -1946,7 +1947,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -1997,7 +1998,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2069,7 +2070,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "rising",
@@ -2131,7 +2132,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2182,7 +2183,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
@@ -2233,7 +2234,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "rising",
@@ -2431,9 +2432,9 @@
         "raw_probability_pct": 53.6,
         "final_probability_pct": 54,
         "matched_sources": [
-          "BBC, published 2026-07-19 17:22Z \u2014 Google News RSS targeted lane",
-          "Al Jazeera, updated 2026-07-19 16:15Z \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "BBC, published 2026-07-19 17:22Z — Google News RSS targeted lane",
+          "Al Jazeera, updated 2026-07-19 16:15Z — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2478,9 +2479,9 @@
         "raw_probability_pct": 69.2,
         "final_probability_pct": 69,
         "matched_sources": [
-          "BBC, published 2026-07-19 17:22Z \u2014 Google News RSS targeted lane",
-          "Al Jazeera, updated 2026-07-19 16:15Z \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "BBC, published 2026-07-19 17:22Z — Google News RSS targeted lane",
+          "Al Jazeera, updated 2026-07-19 16:15Z — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2525,9 +2526,9 @@
         "raw_probability_pct": 86.0,
         "final_probability_pct": 86,
         "matched_sources": [
-          "BBC, published 2026-07-19 17:22Z \u2014 Google News RSS targeted lane",
-          "Al Jazeera, updated 2026-07-19 16:15Z \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "BBC, published 2026-07-19 17:22Z — Google News RSS targeted lane",
+          "Al Jazeera, updated 2026-07-19 16:15Z — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2572,9 +2573,9 @@
         "raw_probability_pct": 113.6,
         "final_probability_pct": 100,
         "matched_sources": [
-          "BBC, published 2026-07-19 17:22Z \u2014 Google News RSS targeted lane",
-          "Al Jazeera, updated 2026-07-19 16:15Z \u2014 https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
-          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "BBC, published 2026-07-19 17:22Z — Google News RSS targeted lane",
+          "Al Jazeera, updated 2026-07-19 16:15Z — https://www.aljazeera.com/news/2026/7/19/kuwaiti-power-plant-ablaze-as-iran-hits-us-gulf-allies",
+          "Hormuz exact-event Google News RSS checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2619,9 +2620,9 @@
         "raw_probability_pct": 34.82,
         "final_probability_pct": 35,
         "matched_sources": [
-          "Al Jazeera, published 2026-07-19 15:20Z \u2014 Google News RSS exact-event lane",
-          "CBS News, published 2026-07-19 10:21Z \u2014 Google News RSS exact-event lane",
-          "Politico Europe, published 2026-07-19 12:28Z \u2014 Google News RSS exact-event lane"
+          "Al Jazeera, published 2026-07-19 15:20Z — Google News RSS exact-event lane",
+          "CBS News, published 2026-07-19 10:21Z — Google News RSS exact-event lane",
+          "Politico Europe, published 2026-07-19 12:28Z — Google News RSS exact-event lane"
         ]
       },
       "confidence_score": 69,
@@ -2664,9 +2665,9 @@
         "raw_probability_pct": 45.56,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Al Jazeera, published 2026-07-19 15:20Z \u2014 Google News RSS exact-event lane",
-          "CBS News, published 2026-07-19 10:21Z \u2014 Google News RSS exact-event lane",
-          "Politico Europe, published 2026-07-19 12:28Z \u2014 Google News RSS exact-event lane"
+          "Al Jazeera, published 2026-07-19 15:20Z — Google News RSS exact-event lane",
+          "CBS News, published 2026-07-19 10:21Z — Google News RSS exact-event lane",
+          "Politico Europe, published 2026-07-19 12:28Z — Google News RSS exact-event lane"
         ]
       },
       "confidence_score": 69,
@@ -2709,9 +2710,9 @@
         "raw_probability_pct": 56.9,
         "final_probability_pct": 57,
         "matched_sources": [
-          "Al Jazeera, published 2026-07-19 15:20Z \u2014 Google News RSS exact-event lane",
-          "CBS News, published 2026-07-19 10:21Z \u2014 Google News RSS exact-event lane",
-          "Politico Europe, published 2026-07-19 12:28Z \u2014 Google News RSS exact-event lane"
+          "Al Jazeera, published 2026-07-19 15:20Z — Google News RSS exact-event lane",
+          "CBS News, published 2026-07-19 10:21Z — Google News RSS exact-event lane",
+          "Politico Europe, published 2026-07-19 12:28Z — Google News RSS exact-event lane"
         ]
       },
       "confidence_score": 69,
@@ -2754,9 +2755,9 @@
         "raw_probability_pct": 73.64,
         "final_probability_pct": 74,
         "matched_sources": [
-          "Al Jazeera, published 2026-07-19 15:20Z \u2014 Google News RSS exact-event lane",
-          "CBS News, published 2026-07-19 10:21Z \u2014 Google News RSS exact-event lane",
-          "Politico Europe, published 2026-07-19 12:28Z \u2014 Google News RSS exact-event lane"
+          "Al Jazeera, published 2026-07-19 15:20Z — Google News RSS exact-event lane",
+          "CBS News, published 2026-07-19 10:21Z — Google News RSS exact-event lane",
+          "Politico Europe, published 2026-07-19 12:28Z — Google News RSS exact-event lane"
         ]
       },
       "confidence_score": 69,
@@ -2799,9 +2800,9 @@
         "raw_probability_pct": 33.42,
         "final_probability_pct": 33,
         "matched_sources": [
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z \u2014 Google News RSS exact-event lane",
-          "Focused review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z — Google News RSS exact-event lane",
+          "Focused review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2847,9 +2848,9 @@
         "raw_probability_pct": 53.46,
         "final_probability_pct": 53,
         "matched_sources": [
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z \u2014 Google News RSS exact-event lane",
-          "Focused review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z — Google News RSS exact-event lane",
+          "Focused review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2895,9 +2896,9 @@
         "raw_probability_pct": 75.3,
         "final_probability_pct": 75,
         "matched_sources": [
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z \u2014 Google News RSS exact-event lane",
-          "Focused review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z — Google News RSS exact-event lane",
+          "Focused review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2943,9 +2944,9 @@
         "raw_probability_pct": 92.34,
         "final_probability_pct": 92,
         "matched_sources": [
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z \u2014 Google News RSS exact-event lane",
-          "Focused review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Reuters Aoun visit coverage, published 2026-07-19 06:03Z — Google News RSS exact-event lane",
+          "Focused review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2991,8 +2992,8 @@
         "raw_probability_pct": 34.7,
         "final_probability_pct": 35,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
-          "Google News RSS one-day review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
+          "Google News RSS one-day review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3035,8 +3036,8 @@
         "raw_probability_pct": 48.1,
         "final_probability_pct": 48,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
-          "Google News RSS one-day review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
+          "Google News RSS one-day review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3079,8 +3080,8 @@
         "raw_probability_pct": 62.5,
         "final_probability_pct": 62,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
-          "Google News RSS one-day review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
+          "Google News RSS one-day review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3123,8 +3124,8 @@
         "raw_probability_pct": 85.9,
         "final_probability_pct": 86,
         "matched_sources": [
-          "Arab News, published 2026-07-18 \u2014 https://www.arabnews.com/node/2651448",
-          "Google News RSS one-day review checked 2026-07-19T21:03:57Z \u2014 data/deep_scan_supplement_20260719T210357Z.json"
+          "Arab News, published 2026-07-18 — https://www.arabnews.com/node/2651448",
+          "Google News RSS one-day review checked 2026-07-19T21:03:57Z — data/deep_scan_supplement_20260719T210357Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3167,9 +3168,9 @@
         "raw_probability_pct": 41.49,
         "final_probability_pct": 41,
         "matched_sources": [
-          "The Times of Israel, published 2026-07-19 12:11Z \u2014 Google News RSS exact-event lane",
-          "Haaretz, published 2026-07-19 08:25Z \u2014 Google News RSS exact-event lane",
-          "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "The Times of Israel, published 2026-07-19 12:11Z — Google News RSS exact-event lane",
+          "Haaretz, published 2026-07-19 08:25Z — Google News RSS exact-event lane",
+          "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3214,9 +3215,9 @@
         "raw_probability_pct": 54.77,
         "final_probability_pct": 55,
         "matched_sources": [
-          "The Times of Israel, published 2026-07-19 12:11Z \u2014 Google News RSS exact-event lane",
-          "Haaretz, published 2026-07-19 08:25Z \u2014 Google News RSS exact-event lane",
-          "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "The Times of Israel, published 2026-07-19 12:11Z — Google News RSS exact-event lane",
+          "Haaretz, published 2026-07-19 08:25Z — Google News RSS exact-event lane",
+          "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3261,9 +3262,9 @@
         "raw_probability_pct": 69.05,
         "final_probability_pct": 69,
         "matched_sources": [
-          "The Times of Israel, published 2026-07-19 12:11Z \u2014 Google News RSS exact-event lane",
-          "Haaretz, published 2026-07-19 08:25Z \u2014 Google News RSS exact-event lane",
-          "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "The Times of Israel, published 2026-07-19 12:11Z — Google News RSS exact-event lane",
+          "Haaretz, published 2026-07-19 08:25Z — Google News RSS exact-event lane",
+          "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3308,9 +3309,9 @@
         "raw_probability_pct": 92.33,
         "final_probability_pct": 92,
         "matched_sources": [
-          "The Times of Israel, published 2026-07-19 12:11Z \u2014 Google News RSS exact-event lane",
-          "Haaretz, published 2026-07-19 08:25Z \u2014 Google News RSS exact-event lane",
-          "Exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "The Times of Israel, published 2026-07-19 12:11Z — Google News RSS exact-event lane",
+          "Haaretz, published 2026-07-19 08:25Z — Google News RSS exact-event lane",
+          "Exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3355,9 +3356,9 @@
         "raw_probability_pct": 22.72,
         "final_probability_pct": 23,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS targeted lane",
-          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z \u2014 https://www.iaea.org/newscenter/news",
-          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS targeted lane",
+          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z — https://www.iaea.org/newscenter/news",
+          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3400,9 +3401,9 @@
         "raw_probability_pct": 29.16,
         "final_probability_pct": 29,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS targeted lane",
-          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z \u2014 https://www.iaea.org/newscenter/news",
-          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS targeted lane",
+          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z — https://www.iaea.org/newscenter/news",
+          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3445,9 +3446,9 @@
         "raw_probability_pct": 36.0,
         "final_probability_pct": 36,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS targeted lane",
-          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z \u2014 https://www.iaea.org/newscenter/news",
-          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS targeted lane",
+          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z — https://www.iaea.org/newscenter/news",
+          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3490,9 +3491,9 @@
         "raw_probability_pct": 46.44,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS targeted lane",
-          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z \u2014 https://www.iaea.org/newscenter/news",
-          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z \u2014 data/deep_scan_exact_20260719T210437Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS targeted lane",
+          "IAEA direct news and press pages returned HTTP 403 on 2026-07-19T21:02:50Z — https://www.iaea.org/newscenter/news",
+          "Darkhovin exact-event review checked 2026-07-19T21:04:37Z — data/deep_scan_exact_20260719T210437Z.json"
         ]
       },
       "confidence_score": 69,
