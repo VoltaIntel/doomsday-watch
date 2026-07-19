@@ -311,12 +311,12 @@
     "last_scan": "morning_deep_scan_12z",
     "scan_time_utc": "2026-07-19T12:13:35Z",
     "analysis_window": "Explicit past-24-hour review for every configured tracker and required sector, with 7/14/30-day context for low-frequency and emerging lanes",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_22x_http_432_and_web_extract_5x_http_432_then_google_news_rss_18_core_57_targeted_plus_browser_direct_un_nato_eia_terminal_http_jina_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily searches returned HTTP 432, and all five requested Tavily extraction URLs returned HTTP 432. Fallback coverage completed through fresh Google News RSS (18 core lanes and 57 targeted/exact-event lanes), browser redirect decoding and direct article inspection, direct UN/NATO/EIA pages and feeds, terminal HTTP, Jina Reader, OilPriceAPI and public Gamma exact-slug reads. Direct IAEA and OPEC pages returned HTTP 403; configured OCHA and UN Sudan paths returned HTTP 404. UN News RSS returned HTTP 200 but the core parser produced no items; UN Press RSS and site-specific Google News supplied the official lane. The AFP Mali body is dated 19 July despite inconsistent upstream extraction metadata; multiple same-day syndications and the article body corroborate the date.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260719T120332Z.json",
       "supplement": "data/deep_scan_supplement_20260719T120433Z.json",
-      "polymarket_exact": "data/polymarket_exact_snapshot_latest.json"
+      "polymarket_exact": "data/polymarket_cache.json"
     },
     "source_fallback_detail": {
       "tavily_search_attempts": 22,
@@ -418,17 +418,20 @@
       "Iran conventional: cumulative U.S. military deaths reached 16; Kuwait reported a second power/desalination strike in two days; Iran said it stopped four warned Hormuz vessels and two suffered unspecified accidents. The realized-war lane remains capped at 100%",
       "Russia-Ukraine: BBC updated the latest wave to four killed and at least 36 wounded across Kyiv and Kharkiv; Ukraine says three Black Sea tankers were hit. The realized-war lane remains 99%",
       "Iran nuclear: Tehran says U.S. strikes hit the unfinished, safeguarded Darkhovin civil nuclear plant but gave no damage details; this does not establish a weapons-development trigger and the score remains 54% coupled",
-      "Global pre-rounding coupled score rises 74.516 to 74.596; displayed risk stays 75% / imminent"
+      "Global pre-rounding coupled score rises 74.516 to 74.596; displayed risk stays 75% / imminent",
+      "Iran nuclear monitoring-access indicator expired under the configured timeline decay and was cleared; the raw score stays 47% and coupled score 54% pending new access evidence.",
+      "Deploy-time market sanity: U.S.-Iran invasion 29.5%, NATO Article 5 8.0%, Iran NPT withdrawal 14.85%, and China-Taiwan clash 5.9%; no market value set a tracker probability."
     ],
     "signals_changed": {
       "activated": [],
-      "cleared": [],
+      "cleared": [
+        "iran_nuclear:iaea_access_denied"
+      ],
       "carried": [
         "iran_conventional:ceasefire_violation",
         "iran_conventional:diplomacy_refused",
         "iran_conventional:hormuz_controlled_not_closed",
         "iran_conventional:oil_infrastructure_threat",
-        "iran_nuclear:iaea_access_denied",
         "israel_lebanon:ceasefire_violation",
         "israel_lebanon:diplomacy_active",
         "israel_palestine:ceasefire_violation",
@@ -442,7 +445,6 @@
         "iran_conventional:diplomacy_refused",
         "iran_conventional:hormuz_controlled_not_closed",
         "iran_conventional:oil_infrastructure_threat",
-        "iran_nuclear:iaea_access_denied",
         "israel_lebanon:ceasefire_violation",
         "israel_lebanon:diplomacy_active",
         "israel_palestine:ceasefire_violation",
@@ -492,10 +494,10 @@
       "africa": "AFP sources now corroborate more than 50 Malian soldiers killed and at least 24 captured in the Anefis-Gao ambush. Sudan and eastern Congo remain severe, but no distinct new post-scan operation was corroborated."
     },
     "energy_oil": {
-      "checked_at": "2026-07-19T10:11:36Z",
+      "checked_at": "2026-07-19T12:13:44Z",
       "final_deploy_source": "OilPriceAPI via scripts/fetch_oil_prices.py",
       "brent_usd": 88.26,
-      "brent_change_24h_pct": 0.0,
+      "brent_change_24h_pct": -0.18,
       "brent_vs_pre_conflict_pct": 30.9,
       "wti_usd": 81.78,
       "wti_change_24h_pct": -0.86,
@@ -504,67 +506,77 @@
       "gold_usd": 4010.56,
       "diesel_usd": 4.08,
       "gasoline_usd": 3.39,
-      "heating_oil_usd": 4.06,
-      "caveat": "Sunday market/reference timestamps vary by instrument and several changes are flat or stale; these values are sanity-only and did not set tracker probabilities."
+      "heating_oil_usd": 4.08,
+      "caveat": "Sunday market/reference timestamps vary by instrument; diesel and gasoline are Friday references and several changes are flat. These values are sanity-only and did not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "checked_at": "2026-07-19T10:12:45Z",
+      "checked_at": "2026-07-19T12:15:01Z",
       "source": "Public Gamma exact-slug GET reads through the final deploy; sanity check only",
       "markets_pct": {
-        "will-the-us-invade-iran-before-2027": 29.5,
-        "iran-nuke-before-2027": 5.35,
+        "china-x-taiwan-military-clash-before-2027": 5.9,
         "iran-nuclear-test-before-2027": 4.5,
-        "will-iran-withdraw-from-the-npt-before-2027": 14.8,
-        "ukraine-signs-peace-deal-with-russia-before-2027": 18.5,
-        "nato-article-5-before-2027": 8.0,
-        "will-china-invade-taiwan-before-2027": 4.05,
-        "china-x-taiwan-military-clash-before-2027": 4.05,
-        "will-north-korea-invade-south-korea-before-2027": 2.75,
+        "iran-nuke-before-2027": 5.25,
+        "israel-and-lebanon-normalize-relations-before-2027": 17.0,
         "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027": 3.05,
-        "israel-and-lebanon-normalize-relations-before-2027": 17.0
+        "nato-article-5-before-2027": 8.0,
+        "ukraine-signs-peace-deal-with-russia-before-2027": 18.5,
+        "will-china-invade-taiwan-before-2027": 3.95,
+        "will-iran-withdraw-from-the-npt-before-2027": 14.85,
+        "will-north-korea-invade-south-korea-before-2027": 2.75,
+        "will-the-us-invade-iran-before-2027": 29.5
       },
       "caveat": "Different event definitions, horizons and liquidity; market values did not set DoomsdayWatch probabilities."
     },
     "official_source_probe": {
       "un_news_rss": {
         "ok": true,
-        "source": "https://news.un.org/feed/subscribe/en/news/all/rss.xml"
+        "status": 200,
+        "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml"
       },
       "un_press_rss": {
         "ok": true,
-        "source": "https://press.un.org/en/rss.xml"
+        "status": 200,
+        "url": "https://press.un.org/en/rss.xml"
       },
       "nato_news": {
         "ok": true,
-        "source": "https://www.nato.int/cps/en/natohq/news.htm"
+        "status": 200,
+        "url": "https://www.nato.int/cps/en/natohq/news.htm"
       },
       "nato_press": {
         "ok": true,
-        "source": "https://www.nato.int/cps/en/natohq/press_releases.htm"
+        "status": 200,
+        "url": "https://www.nato.int/cps/en/natohq/press_releases.htm"
       },
       "iaea_news": {
         "ok": false,
-        "source": "https://www.iaea.org/newscenter/news"
+        "status": 403,
+        "url": "https://www.iaea.org/newscenter/news"
       },
       "iaea_press": {
         "ok": false,
-        "source": "https://www.iaea.org/newscenter/pressreleases"
+        "status": 403,
+        "url": "https://www.iaea.org/newscenter/pressreleases"
       },
       "eia_rss": {
         "ok": true,
-        "source": "https://www.eia.gov/rss/todayinenergy.xml"
+        "status": 200,
+        "url": "https://www.eia.gov/rss/todayinenergy.xml"
       },
       "opec_news": {
         "ok": false,
-        "source": "https://www.opec.org/opec_web/en/press_room/news.xml"
+        "status": 403,
+        "url": "https://www.opec.org/opec_web/en/press_room/news.xml"
       },
       "ocha_opt": {
         "ok": false,
-        "source": "https://www.ochaopt.org/updates/feed"
+        "status": 404,
+        "url": "https://www.ochaopt.org/updates/feed"
       },
       "un_sudan": {
         "ok": false,
-        "source": "https://news.un.org/en/tags/sudan/feed"
+        "status": 404,
+        "url": "https://news.un.org/en/tags/sudan/feed"
       }
     },
     "rss_headline_counts": {
@@ -647,7 +659,7 @@
       "emerging_global_1d": 10
     },
     "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "post_deploy_metadata_restored_at": "2026-07-19T10:13:51Z"
+    "post_deploy_metadata_restored_at": "2026-07-19T12:19:16Z"
   },
   "trackers": {
     "iran_conventional": {
