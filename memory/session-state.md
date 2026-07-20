@@ -1,36 +1,37 @@
 # Session State
 
-> Last updated: 2026-07-19T21:15:30Z
-> Session: DoomsdayWatch 21Z morning deep scan
+> Last updated: 2026-07-20T00:24:59Z
+> Session: DoomsdayWatch 00Z morning deep scan
 
 ## Active Projects
-- DoomsdayWatch / nuke-watch — scheduled 21Z deepest-scan refresh completed, deployed, pushed and live-verified.
+- DoomsdayWatch / nuke-watch — scheduled 00Z deepest-scan refresh completed, committed and pushed; GitHub Pages deployment is blocked by a confirmed GitHub Actions/API outage.
 - Umbraxis Group — preserved paused state from the prior session; this cron did not touch its worktree or processes.
 
 ## Current Task
 - **What:** Deepest past-24-hour nuclear-escalation scan across all 16 canonical trackers, required sectors and emerging crises.
-- **Status:** Complete.
+- **Status:** Data/deploy pipeline complete; live Pages publication blocked externally.
 - **Result:** Global remains **75% / imminent**, raw coupled **74.596%**; no tracker probability changed.
 - **Signals:** No activation or clearance; the 9 pre-existing canonical signals remain aligned across trackers, zones and timeline.
-- **Deployment:** Pipeline commit `de1fc573`; exact provenance/market snapshot commit `ccd05234`. Local HEAD, upstream and remote main match; Pages run `29703974159` succeeded.
-- **Verification:** Live root has all three command-deck markers; live state exposes `morning_deep_scan_21z`, exact fallback metadata and **75% / imminent**. JSON/canonical/timeline checks pass; 42 non-smoke tests passed.
-- **Next step:** Next scheduled scan should start from `data/tracker_config.json`, re-check the watch triggers below, then repeat atomic state write, deploy and marker verification.
+- **Repository:** HEAD/upstream/remote match at retry commit `bb88213b`; tree clean. Pipeline commit `7fbe32f1`, provenance commits through `24592428`.
+- **Verification:** Local root has all three command-deck markers; JSON/canonical/timeline checks pass. 31 fast tests passed; all 11 pipeline-smoke assertions passed in an isolated copy with only the fixture timeout extended (42 non-smoke checks total).
+- **Pages blocker:** Runs `29709244810`, `29709312151`, `29709357342`, and retry `29709412415` failed during the active GitHub Actions/API outage. Latest run built far enough to query Pages but received HTTP 503 from `GET /repos/VoltaIntel/doomsday-watch/pages`; deploy was skipped. Live site therefore still exposes the 21Z scan.
 
 ## DoomsdayWatch Watch State
-- Russia-Ukraine: established outlets describe the latest Kyiv wave as the war's largest ballistic barrage, with six deaths reported across affected cities; the realised-war lane remains 99%.
-- Yemen/Red Sea: Alhurra republished the earlier Iran-to-Houthi Bab el-Mandeb direction report, but no new attack, closure attempt or independently verified operational order appeared; 38%.
-- Auto-detection: Somalia's defence ministry claimed 25 al-Shabab deaths in a combined air/ground operation. Hiiraan Online explicitly says the toll could not be independently verified; no zone qualified.
-- False recency: News On AIR Pakistan-Afghanistan items again resolved to the March clash cycle. Belarus nuclear-drill clips had no exact-event corroboration.
-- Source path: 22 Tavily searches and 5 extracts failed HTTP 432; fallback used 18 core + 40 targeted + 12 exact-event Google News RSS lanes, direct browser bodies, UN/NATO/EIA, terminal HTTP, OilPriceAPI and exact-slug Gamma. IAEA/OPEC remained 403.
-- Energy: Brent $88.26; WTI $81.78. Market sanity: U.S.-Iran invasion 29.5%, NATO Article 5 8.0%, Iran NPT withdrawal 14.95%, China-Taiwan clash 5.2%; not probability inputs.
+- Iran war: The Washington Post reports the United States is again nearing all-out war after additional troop deaths. The lane is already capped at 100%; Hormuz remains constrained but nonzero, with no verified mining or zero traffic.
+- Israel-Palestine: a late Haaretz live update says Israeli fire killed two Palestinians during a settler raid. No independent corroboration was found before cutoff; existing signals are carried and the lane stays 88%.
+- Russia-Ukraine: the record ballistic wave remains governing evidence; reports also describe a foreign cargo ship strike near Odesa killing at least five. The realised-war lane stays 99%.
+- False recency: July 13 Oman-talks/Yemen-airport stories and March Pakistan-Afghanistan clash headlines were excluded. The Belarus nuclear-drill clip remained uncorroborated.
+- Auto-detection: no new zone qualified. Somalia remains an independently unverified government casualty claim; Thailand-Cambodia is allegation/dialogue rather than a fresh corroborated kinetic cluster.
+- Source path: 22 Tavily searches and 5 URL extracts failed HTTP 432. Fallback used 18 core + 50 targeted + 10 exact-event Google News RSS lanes, browser/direct source attempts, UN/NATO/EIA, terminal HTTP, OilPriceAPI and exact-slug Gamma. IAEA/OPEC remained 403; OCHA/UN Sudan paths remained 404.
+- Energy: Brent $90.74 (+2.90%/24h); WTI $83.71 (+1.77%). Market sanity: U.S.-Iran invasion 30.0%, NATO Article 5 8.0%, Iran NPT withdrawal 15.2%, China-Taiwan clash 6.0%; not probability inputs.
 
 ## Next-Watch Triggers
 - Iran nuclear: verified `enrichment_90`, `fordow_activation`, `iaea_access_denied`, `iaea_emergency` or `nuclear_test` evidence.
 - Iran war/Hormuz: independently verified `hormuz_mining`, `hormuz_zero_traffic` or `hormuz_closed`; a new ceasefire or widened Gulf infrastructure campaign.
-- Russia/NATO and Ukraine: official nuclear threshold language, Article 5 movement, allied combat entry or another materially larger ballistic wave.
-- Israel-Lebanon/Gaza: collapse of the Washington framework, a distinct mass-casualty strike cluster or broader holy-site mobilisation.
+- Russia/NATO and Ukraine: official nuclear threshold language, Article 5 movement, allied combat entry or another materially larger ballistic/Black Sea strike cluster.
+- Israel-Lebanon/Gaza: collapse of the Washington framework, independent confirmation of the late West Bank deaths, a distinct mass-casualty strike cluster or broader holy-site mobilisation.
 - Emerging: independent corroboration of Somalia's operation/toll; fresh kinetic Thailand-Cambodia evidence; an Iraq spillover cluster distinct from the Iran-war lane.
+- Deployment: re-run Pages after GitHub reports Actions/API recovery; latest data is already on remote `main`.
 
 ## Preserved Umbraxis Pause State
-- Accepted product master was clean at `265c819b3b39cec85a2359ff96471406d371ebdd`, 6/38 accepted, when last recorded locally.
-- Prior Task 6A worktree/candidate details remain in today's memory and vault; no Umbraxis action occurred in this cron.
+- Prior Umbraxis state remains in today's vault entry; no Umbraxis action occurred in this cron.
