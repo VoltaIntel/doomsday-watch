@@ -316,8 +316,8 @@
     "last_scan": "morning_deep_scan_12z",
     "scan_time_utc": "2026-07-20T12:18:34Z",
     "analysis_window": "Deepest past-24-hour review for all 16 pre-existing configured trackers and required sectors, followed by threshold review and addition of one newly qualified crisis lane; included allied positions, energy/market sanity, exact-body date audits and direct AP/Reuters verification.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_22x_http_432_and_web_extract_5_urls_http_432_then_google_news_rss_18_core_42_supplemental_plus_browser_direct_ap_reuters_interaksyon_stars_and_stripes_nato_dw_date_audits_terminal_official_feeds_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily web_search attempts returned HTTP 432, and web_extract returned HTTP 432 for all five requested URLs. Fallback coverage completed through Google News RSS (18 core and 42 supplemental/exact/emerging lanes), direct browser inspection of AP, Reuters syndication, Stars and Stripes, NATO and DW body dates, official/feed probes, terminal HTTP, OilPriceAPI and Gamma exact-slug reads. Direct IAEA and OPEC pages remained HTTP 403; configured OCHA and UN Sudan paths remained HTTP 404. Google RSS false-recency remained material: the Lebanon framework and Sudan El Obeid DW stories are body-dated 26 June, Pakistan-Afghanistan claims trace to March, and a Yemen missile item traces to 13 July. South China Sea reporting was verified directly through AP and Reuters and an official Philippine military video/statement.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260720T120217Z.json",
       "supplement": "data/deep_scan_supplement_20260720T120521Z.json",
@@ -422,7 +422,7 @@
       "Auto-detection: south_china_sea opened at 18% / elevated after AP and Reuters independently verified the 20 July baton assault and serious injury at Second Thomas Shoal; the configured three-mention/two-source gate was exceeded, but the score remains conservative because no firearms, deaths or fleet concentration were reported.",
       "Iran war: mediated diplomatic exchanges are now confirmed from Tehran and canonical diplomacy_active was activated, while the ninth strike night and severely constrained but nonzero Hormuz traffic continue. The realised-war lane remains capped at 100%.",
       "Global displayed risk remains 75% / imminent; the additive weighted coupled score rises from 74.560 to 74.920 solely because the new qualified lane entered the index. No pre-existing tracker probability changed.",
-      "Energy/markets: Brent $87.11 (-2.32%/24h), WTI $80.33 (-1.77%/24h); exact-slug U.S.-Iran invasion fell to 22.5%, NATO Article 5 to 7.5%, and China-Taiwan clash to 4.75%. Sanity only; not score inputs."
+      "Energy/markets at final deploy: Brent $88.34 (+0.00%/24h), WTI $81.44 (-0.27%/24h); exact-slug U.S.-Iran invasion is 22.5%, NATO Article 5 7.5%, and China-Taiwan clash 5.9%. Sanity only; not score inputs."
     ],
     "signals_changed": {
       "activated": [
@@ -513,23 +513,23 @@
       "africa": "No fresh distinct Sudan, eastern Congo or South Sudan operation was verified; Mali losses remain corroborated. Somalia claims remain independently under-corroborated."
     },
     "energy_oil": {
-      "checked_at": "2026-07-20T12:18:34Z",
+      "checked_at": "2026-07-20T12:25:46Z",
       "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
-      "brent_usd": 87.11,
-      "brent_change_24h_pct": -2.32,
-      "brent_vs_pre_conflict_pct": 29.2,
-      "wti_usd": 80.33,
-      "wti_change_24h_pct": -1.77,
-      "wti_vs_pre_conflict_pct": 25.9,
-      "natural_gas_usd": 2.85,
-      "gold_usd": 4025.45,
-      "diesel_usd": 4.01,
-      "gasoline_usd": 3.34,
-      "heating_oil_usd": 4.04,
+      "brent_usd": 88.34,
+      "brent_change_24h_pct": 0.0,
+      "brent_vs_pre_conflict_pct": 31.1,
+      "wti_usd": 81.44,
+      "wti_change_24h_pct": -0.27,
+      "wti_vs_pre_conflict_pct": 27.6,
+      "natural_gas_usd": 2.88,
+      "gold_usd": 4014.57,
+      "diesel_usd": 4.04,
+      "gasoline_usd": 3.35,
+      "heating_oil_usd": 4.08,
       "caveat": "Instrument timestamps vary slightly by contract; vendor-reported 24-hour changes are used. Values are sanity-only and did not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "checked_at": "2026-07-20T12:06:46Z",
+      "checked_at": "2026-07-20T12:24:18Z",
       "source": "Public Gamma exact-slug GET reads; sanity only",
       "markets_pct": {
         "will-the-us-invade-iran-before-2027": 22.5,
@@ -539,7 +539,7 @@
         "ukraine-signs-peace-deal-with-russia-before-2027": 19.5,
         "nato-article-5-before-2027": 7.5,
         "will-china-invade-taiwan-before-2027": 4.05,
-        "china-x-taiwan-military-clash-before-2027": 4.75,
+        "china-x-taiwan-military-clash-before-2027": 5.9,
         "will-north-korea-invade-south-korea-before-2027": 2.75,
         "kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027": 3.05,
         "israel-and-lebanon-normalize-relations-before-2027": 15.5,
@@ -556,7 +556,7 @@
         },
         "china_taiwan_military_clash_pct": {
           "from": 5.8,
-          "to": 4.75
+          "to": 5.9
         },
         "iran_nuke_pct": {
           "from": 5.35,
@@ -569,7 +569,7 @@
           "status": "ok",
           "pm_implied_raw_pct": 22.5,
           "pm_implied_24h_pct": 0.102,
-          "total_volume_24h": 606813.57
+          "total_volume_24h": 613281.87
         },
         "iran_nuclear": {
           "status": "ok",
@@ -581,7 +581,7 @@
           "status": "ok",
           "pm_implied_raw_pct": 80.5,
           "pm_implied_24h_pct": 0.652,
-          "total_volume_24h": 10394.83
+          "total_volume_24h": 6597.64
         },
         "russia": {
           "status": "ok",
@@ -591,9 +591,9 @@
         },
         "china": {
           "status": "ok",
-          "pm_implied_raw_pct": 4.32,
-          "pm_implied_24h_pct": 0.018,
-          "total_volume_24h": 53708.17
+          "pm_implied_raw_pct": 4.76,
+          "pm_implied_24h_pct": 0.02,
+          "total_volume_24h": 56358.29
         },
         "north_korea": {
           "status": "ok",
@@ -730,7 +730,8 @@
       }
     },
     "dashboard_note": "data/current_state.json and data/tracker_config.json were updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "pipeline_false_positive_correction": "The first 12Z deploy keyword-matched the contextual phrase describing the already active truce-breach indicator to israel_palestine:diplomacy_active. The false activation was removed from tracker, zone and timeline data, and the prose was neutralized before the mandated corrective deploy."
+    "pipeline_false_positive_correction": "The first 12Z deploy keyword-matched the contextual phrase describing the already active truce-breach indicator to israel_palestine:diplomacy_active. The false activation was removed from tracker, zone and timeline data, and the prose was neutralized before the mandated corrective deploy.",
+    "post_deploy_metadata_restored_at": "2026-07-20T12:25:46Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -1028,9 +1029,9 @@
       "headline": "Mediated exchanges resume while ninth strike night continues",
       "text": "AP's 20 July account still has U.S. strikes in their ninth night, 17 U.S. military deaths and severely constrained but nonzero Hormuz traffic. Iran's Foreign Ministry now says diplomatic exchanges with Washington continue through mediators and that de-escalation proposals were received; canonical diplomacy_active is therefore added, but no ceasefire has been accepted and combat continues. The realised-war lane remains capped at 100%",
       "sources": [
-        "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-        "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z \u2014 diplomatic exchanges ongoing through mediators",
-        "Anadolu, published 2026-07-20 08:38Z \u2014 Iran says it received de-escalation proposals"
+        "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+        "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z — diplomatic exchanges ongoing through mediators",
+        "Anadolu, published 2026-07-20 08:38Z — Iran says it received de-escalation proposals"
       ]
     },
     {
@@ -1041,9 +1042,9 @@
       "headline": "Tunnel confrontation reported; June framework story excluded as fresh",
       "text": "A fresh Israeli account says forces surrounded Hezbollah personnel in a southern tunnel network, reinforcing the existing ceasefire-violation evidence while the Aoun-Washington channel remains active. A Google-fresh DW framework story was body-dated 26 June and excluded as a new event; the lane holds at 84% raw / 94% coupled",
       "sources": [
-        "i24NEWS, published 2026-07-20 09:52Z \u2014 Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
-        "DW framework article body date 2026-06-26 \u2014 https://p.dw.com/p/5G8xa",
-        "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "i24NEWS, published 2026-07-20 09:52Z — Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
+        "DW framework article body date 2026-06-26 — https://p.dw.com/p/5G8xa",
+        "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1054,7 +1055,7 @@
       "headline": "No Turkey-specific escalation threshold",
       "text": "No past-day Turkey-specific military action, qualifying official nuclear statement or current missile-range event was verified. The lane remains 5%",
       "sources": [
-        "Past-day and 14-day RSS lanes checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T120217Z.json"
+        "Past-day and 14-day RSS lanes checked 2026-07-20 — data/morning_deep_scan_sources_20260720T120217Z.json"
       ]
     },
     {
@@ -1065,8 +1066,8 @@
       "headline": "Rajouri allegation remains uncorroborated",
       "text": "No new official or independent major-outlet corroboration emerged for the Rajouri border-fire allegation. No casualties or force concentration were verified and no canonical indicator is activated; the lane holds at 15%",
       "sources": [
-        "Daily Pioneer, published 2026-07-19 01:14Z \u2014 allegation only",
-        "Exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Daily Pioneer, published 2026-07-19 01:14Z — allegation only",
+        "Exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1077,8 +1078,8 @@
       "headline": "No new Article 5 or official nuclear threshold",
       "text": "NATO's official latest-news page still has no post-18 July Article 5 or direct-entry decision. A 20 July Baltic headline repeats warnings first reported on 15 July, without a new incident or official nuclear threshold; the coupled lane remains 52%",
       "sources": [
-        "NATO latest-news page checked 2026-07-20 12Z; newest item dated 2026-07-18 \u2014 https://www.nato.int/en/news-and-events/articles/news",
-        "LSM, published 2026-07-20 08:45Z \u2014 repeat of 15 July Baltic warning"
+        "NATO latest-news page checked 2026-07-20 12Z; newest item dated 2026-07-18 — https://www.nato.int/en/news-and-events/articles/news",
+        "LSM, published 2026-07-20 08:45Z — repeat of 15 July Baltic warning"
       ]
     },
     {
@@ -1089,8 +1090,8 @@
       "headline": "Taiwan maritime surge remains retrospective; shoal event split to new lane",
       "text": "Taiwan's reported June rise to 55 Chinese government-vessel sightings remains credible grey-zone evidence but not a fresh PLA blockade or force concentration. The separate 20 July Second Thomas Shoal assault is tracked in the newly qualified south_china_sea lane; China-Taiwan holds at 24% raw / 28% coupled",
       "sources": [
-        "Reuters via Free Malaysia Today, published 2026-07-20 03:18Z \u2014 https://www.freemalaysiatoday.com/category/world/2026/07/20/taiwan-reports-surge-in-chinese-vessel-activity-raising-pacific-blockade-fears",
-        "Focused PLA/blockade review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Reuters via Free Malaysia Today, published 2026-07-20 03:18Z — https://www.freemalaysiatoday.com/category/world/2026/07/20/taiwan-reports-surge-in-chinese-vessel-activity-raising-pacific-blockade-fears",
+        "Focused PLA/blockade review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1101,7 +1102,7 @@
       "headline": "KCNA threatens countermeasures but specifies no missile or nuclear event",
       "text": "KCNA threatened unspecified proportional countermeasures over RIMPAC, but Stars and Stripes confirms no measure was specified. No fresh missile-range test or nuclear detonation occurred; the lane remains 18%",
       "sources": [
-        "Stars and Stripes, published 2026-07-20 \u2014 direct body review",
+        "Stars and Stripes, published 2026-07-20 — direct body review",
         "https://www.stripes.com/branches/navy/2026-07-20/north-korea-naval-drills-countermeasures-18520537.html"
       ]
     },
@@ -1113,9 +1114,9 @@
       "headline": "Ballistic campaign continues; no allied combat-entry decision",
       "text": "The record Kyiv ballistic wave, continuing casualties and the corroborated Golden Leo cargo-ship strike remain governing evidence. New reporting says ten people were wounded by a Ukrainian drone attack in the Moscow region, but no direct NATO combat-entry decision or official nuclear threshold appeared; the realised-war lane remains 99%",
       "sources": [
-        "UN News, published 2026-07-19 12:00Z \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-        "ABS-CBN, published 2026-07-20 08:55Z \u2014 Kyiv ballistic follow-on; Google News RSS",
-        "Exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "UN News, published 2026-07-19 12:00Z — https://news.un.org/feed/view/en/story/2026/07/1167975",
+        "ABS-CBN, published 2026-07-20 08:55Z — Kyiv ballistic follow-on; Google News RSS",
+        "Exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1127,7 +1128,7 @@
       "text": "Fresh-indexed 30-soldier and captured-outpost claims still trace to the March clash cycle. No newly corroborated interstate operation, airstrike or force concentration appeared in the focused past-day lane; the tracker remains 46%",
       "sources": [
         "News On AIR direct-body dates audited against March 2026 cycle",
-        "Focused past-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Focused past-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1139,8 +1140,8 @@
       "text": "The IAEA is still examining reports around unfinished Darkhovin/Darquwin, previously described as holding no nuclear material when last visited. No new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold was established; the lane stays 47% raw / 54% coupled",
       "sources": [
         "Dawn/AFP quoting IAEA, published 2026-07-19 16:26Z",
-        "IAEA news and press pages returned HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-        "Past-day nuclear review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "IAEA news and press pages returned HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+        "Past-day nuclear review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1151,9 +1152,9 @@
       "headline": "Fresh-indexed El Obeid analysis body-dates to 26 June",
       "text": "CNN's drone-threat investigation remains the freshest substantive report. A newly indexed DW article about RSF forces around El Obeid is body-dated 26 June and was excluded as a new event; no distinct post-cutoff offensive was verified and the near-ceiling lane remains 90%",
       "sources": [
-        "CNN, published 2026-07-20 04:01Z \u2014 drone-threat investigation; Google News RSS",
-        "DW El Obeid article body date 2026-06-26 \u2014 https://p.dw.com/p/5G3l3",
-        "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "CNN, published 2026-07-20 04:01Z — drone-threat investigation; Google News RSS",
+        "DW El Obeid article body date 2026-06-26 — https://p.dw.com/p/5G3l3",
+        "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1164,9 +1165,9 @@
       "headline": "Deir Jarir deaths receive additional follow-on corroboration",
       "text": "AP-linked and regional follow-ons continue to corroborate two Palestinians killed during the Deir Jarir settler confrontation, while Gaza strike reporting remains active. Existing truce-breach and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
       "sources": [
-        "AP-linked Arab News, published 2026-07-20 09:16Z \u2014 two Palestinian deaths",
-        "Middle East Monitor, published 2026-07-20 09:52Z \u2014 follow-on account",
-        "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "AP-linked Arab News, published 2026-07-20 09:16Z — two Palestinian deaths",
+        "Middle East Monitor, published 2026-07-20 09:52Z — follow-on account",
+        "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1179,7 +1180,7 @@
       "sources": [
         "Radio Tamazuj, published 2026-07-15 16:01Z",
         "Eye Radio, published 2026-07-15 15:35Z",
-        "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1190,7 +1191,7 @@
       "headline": "No fresh eastern Congo combat operation",
       "text": "The focused past-day M23/FARDC/Rwanda lane returned no fresh combat operation. Current evidence remains older security-review material, so the lane stays 52%",
       "sources": [
-        "Past-day M23/FARDC/Rwanda lane returned zero current items \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Past-day M23/FARDC/Rwanda lane returned zero current items — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1201,9 +1202,9 @@
       "headline": "Red Sea threat remains prospective, not operational",
       "text": "Analysis warns that the Houthis are positioned to threaten Red Sea shipping if the Iran war expands, but no new Houthi attack, closure attempt or independently verified operational order appeared. A fresh-indexed missile headline belongs to the 13 July cycle; the lane remains 38%",
       "sources": [
-        "Soufan Center, published 2026-07-20 05:00Z \u2014 regional spillover analysis",
-        "Safety4Sea, published 2026-07-20 09:01Z \u2014 conditional shipping-risk analysis",
-        "Exact-date review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Soufan Center, published 2026-07-20 05:00Z — regional spillover analysis",
+        "Safety4Sea, published 2026-07-20 09:01Z — conditional shipping-risk analysis",
+        "Exact-date review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1216,7 +1217,7 @@
       "sources": [
         "Ahram Online, published 2026-07-19 14:50Z",
         "Daily Trust, published 2026-07-20 03:23Z",
-        "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+        "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
       ]
     },
     {
@@ -1227,8 +1228,8 @@
       "headline": "China Coast Guard baton assault injures Philippine sailor at Second Thomas Shoal",
       "text": "AP and Reuters independently report that China Coast Guard personnel repeatedly struck a Philippine Navy sailor with a wooden baton at Second Thomas Shoal on 20 July, seriously injuring him and damaging a rubber boat; the Armed Forces of the Philippines released video. The event crosses the configured three-mention/two-source auto-detection gate, but it involved no firearms, deaths or fleet concentration, so the new lane opens conservatively at 18% / elevated with no buildup indicator",
       "sources": [
-        "AP, updated 2026-07-20 11:32Z \u2014 https://apnews.com/article/philippines-south-china-sea-second-thomas-shoal-16650e191aaf373471720dbcba88b819",
-        "Reuters via Interaksyon, published 2026-07-20 10:29Z \u2014 https://interaksyon.philstar.com/politics-issues/2026/07/20/299482/chinese-coast-guard-struck-navy-sailor-south-china-sea-encounter/",
+        "AP, updated 2026-07-20 11:32Z — https://apnews.com/article/philippines-south-china-sea-second-thomas-shoal-16650e191aaf373471720dbcba88b819",
+        "Reuters via Interaksyon, published 2026-07-20 10:29Z — https://interaksyon.philstar.com/politics-issues/2026/07/20/299482/chinese-coast-guard-struck-navy-sailor-south-china-sea-encounter/",
         "Armed Forces of the Philippines video and statement, event dated 2026-07-20, quoted by AP and Reuters"
       ]
     }
@@ -1528,7 +1529,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1579,7 +1580,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1671,7 +1672,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "rising",
@@ -1743,7 +1744,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1789,7 +1790,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
@@ -1830,7 +1831,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1871,7 +1872,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1917,7 +1918,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -1957,7 +1958,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -2002,7 +2003,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2042,7 +2043,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2093,7 +2094,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2165,7 +2166,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "rising",
@@ -2227,7 +2228,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2278,7 +2279,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
@@ -2329,7 +2330,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "rising",
@@ -2391,7 +2392,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 18,
       "zone": "elevated",
       "trend": "rising",
@@ -2600,9 +2601,9 @@
         "raw_probability_pct": 38.35,
         "final_probability_pct": 38,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z \u2014 diplomatic exchanges ongoing through mediators",
-          "Anadolu, published 2026-07-20 08:38Z \u2014 Iran says it received de-escalation proposals"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z — diplomatic exchanges ongoing through mediators",
+          "Anadolu, published 2026-07-20 08:38Z — Iran says it received de-escalation proposals"
         ]
       },
       "confidence_score": 100,
@@ -2650,9 +2651,9 @@
         "raw_probability_pct": 53.95,
         "final_probability_pct": 54,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z \u2014 diplomatic exchanges ongoing through mediators",
-          "Anadolu, published 2026-07-20 08:38Z \u2014 Iran says it received de-escalation proposals"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z — diplomatic exchanges ongoing through mediators",
+          "Anadolu, published 2026-07-20 08:38Z — Iran says it received de-escalation proposals"
         ]
       },
       "confidence_score": 100,
@@ -2700,9 +2701,9 @@
         "raw_probability_pct": 70.75,
         "final_probability_pct": 71,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z \u2014 diplomatic exchanges ongoing through mediators",
-          "Anadolu, published 2026-07-20 08:38Z \u2014 Iran says it received de-escalation proposals"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z — diplomatic exchanges ongoing through mediators",
+          "Anadolu, published 2026-07-20 08:38Z — Iran says it received de-escalation proposals"
         ]
       },
       "confidence_score": 100,
@@ -2750,9 +2751,9 @@
         "raw_probability_pct": 98.35,
         "final_probability_pct": 98,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z \u2014 diplomatic exchanges ongoing through mediators",
-          "Anadolu, published 2026-07-20 08:38Z \u2014 Iran says it received de-escalation proposals"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Iran Foreign Ministry statement via Arab News, published 2026-07-20 08:08Z — diplomatic exchanges ongoing through mediators",
+          "Anadolu, published 2026-07-20 08:38Z — Iran says it received de-escalation proposals"
         ]
       },
       "confidence_score": 100,
@@ -2800,9 +2801,9 @@
         "raw_probability_pct": 35.32,
         "final_probability_pct": 35,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "ABS-CBN, published 2026-07-20 08:55Z \u2014 Kyiv ballistic follow-on; Google News RSS",
-          "Exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "UN News, published 2026-07-19 12:00Z — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "ABS-CBN, published 2026-07-20 08:55Z — Kyiv ballistic follow-on; Google News RSS",
+          "Exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2845,9 +2846,9 @@
         "raw_probability_pct": 46.06,
         "final_probability_pct": 46,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "ABS-CBN, published 2026-07-20 08:55Z \u2014 Kyiv ballistic follow-on; Google News RSS",
-          "Exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "UN News, published 2026-07-19 12:00Z — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "ABS-CBN, published 2026-07-20 08:55Z — Kyiv ballistic follow-on; Google News RSS",
+          "Exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2890,9 +2891,9 @@
         "raw_probability_pct": 57.4,
         "final_probability_pct": 57,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "ABS-CBN, published 2026-07-20 08:55Z \u2014 Kyiv ballistic follow-on; Google News RSS",
-          "Exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "UN News, published 2026-07-19 12:00Z — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "ABS-CBN, published 2026-07-20 08:55Z — Kyiv ballistic follow-on; Google News RSS",
+          "Exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2935,9 +2936,9 @@
         "raw_probability_pct": 74.14,
         "final_probability_pct": 74,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "ABS-CBN, published 2026-07-20 08:55Z \u2014 Kyiv ballistic follow-on; Google News RSS",
-          "Exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "UN News, published 2026-07-19 12:00Z — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "ABS-CBN, published 2026-07-20 08:55Z — Kyiv ballistic follow-on; Google News RSS",
+          "Exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2980,9 +2981,9 @@
         "raw_probability_pct": 31.92,
         "final_probability_pct": 32,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 09:52Z \u2014 Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
-          "DW framework article body date 2026-06-26 \u2014 https://p.dw.com/p/5G8xa",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "i24NEWS, published 2026-07-20 09:52Z — Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
+          "DW framework article body date 2026-06-26 — https://p.dw.com/p/5G8xa",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 88,
@@ -3028,9 +3029,9 @@
         "raw_probability_pct": 51.96,
         "final_probability_pct": 52,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 09:52Z \u2014 Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
-          "DW framework article body date 2026-06-26 \u2014 https://p.dw.com/p/5G8xa",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "i24NEWS, published 2026-07-20 09:52Z — Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
+          "DW framework article body date 2026-06-26 — https://p.dw.com/p/5G8xa",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 88,
@@ -3076,9 +3077,9 @@
         "raw_probability_pct": 73.8,
         "final_probability_pct": 74,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 09:52Z \u2014 Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
-          "DW framework article body date 2026-06-26 \u2014 https://p.dw.com/p/5G8xa",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "i24NEWS, published 2026-07-20 09:52Z — Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
+          "DW framework article body date 2026-06-26 — https://p.dw.com/p/5G8xa",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 88,
@@ -3124,9 +3125,9 @@
         "raw_probability_pct": 90.84,
         "final_probability_pct": 91,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 09:52Z \u2014 Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
-          "DW framework article body date 2026-06-26 \u2014 https://p.dw.com/p/5G8xa",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "i24NEWS, published 2026-07-20 09:52Z — Israeli account of Hezbollah personnel in a tunnel network; Google News RSS",
+          "DW framework article body date 2026-06-26 — https://p.dw.com/p/5G8xa",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 88,
@@ -3172,9 +3173,9 @@
         "raw_probability_pct": 37.2,
         "final_probability_pct": 37,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 drone-threat investigation; Google News RSS",
-          "DW El Obeid article body date 2026-06-26 \u2014 https://p.dw.com/p/5G3l3",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "CNN, published 2026-07-20 04:01Z — drone-threat investigation; Google News RSS",
+          "DW El Obeid article body date 2026-06-26 — https://p.dw.com/p/5G3l3",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3217,9 +3218,9 @@
         "raw_probability_pct": 50.6,
         "final_probability_pct": 51,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 drone-threat investigation; Google News RSS",
-          "DW El Obeid article body date 2026-06-26 \u2014 https://p.dw.com/p/5G3l3",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "CNN, published 2026-07-20 04:01Z — drone-threat investigation; Google News RSS",
+          "DW El Obeid article body date 2026-06-26 — https://p.dw.com/p/5G3l3",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3262,9 +3263,9 @@
         "raw_probability_pct": 65.0,
         "final_probability_pct": 65,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 drone-threat investigation; Google News RSS",
-          "DW El Obeid article body date 2026-06-26 \u2014 https://p.dw.com/p/5G3l3",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "CNN, published 2026-07-20 04:01Z — drone-threat investigation; Google News RSS",
+          "DW El Obeid article body date 2026-06-26 — https://p.dw.com/p/5G3l3",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3307,9 +3308,9 @@
         "raw_probability_pct": 88.4,
         "final_probability_pct": 88,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 drone-threat investigation; Google News RSS",
-          "DW El Obeid article body date 2026-06-26 \u2014 https://p.dw.com/p/5G3l3",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "CNN, published 2026-07-20 04:01Z — drone-threat investigation; Google News RSS",
+          "DW El Obeid article body date 2026-06-26 — https://p.dw.com/p/5G3l3",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3352,9 +3353,9 @@
         "raw_probability_pct": 46.49,
         "final_probability_pct": 46,
         "matched_sources": [
-          "AP-linked Arab News, published 2026-07-20 09:16Z \u2014 two Palestinian deaths",
-          "Middle East Monitor, published 2026-07-20 09:52Z \u2014 follow-on account",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "AP-linked Arab News, published 2026-07-20 09:16Z — two Palestinian deaths",
+          "Middle East Monitor, published 2026-07-20 09:52Z — follow-on account",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3399,9 +3400,9 @@
         "raw_probability_pct": 59.77,
         "final_probability_pct": 60,
         "matched_sources": [
-          "AP-linked Arab News, published 2026-07-20 09:16Z \u2014 two Palestinian deaths",
-          "Middle East Monitor, published 2026-07-20 09:52Z \u2014 follow-on account",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "AP-linked Arab News, published 2026-07-20 09:16Z — two Palestinian deaths",
+          "Middle East Monitor, published 2026-07-20 09:52Z — follow-on account",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3446,9 +3447,9 @@
         "raw_probability_pct": 74.05,
         "final_probability_pct": 74,
         "matched_sources": [
-          "AP-linked Arab News, published 2026-07-20 09:16Z \u2014 two Palestinian deaths",
-          "Middle East Monitor, published 2026-07-20 09:52Z \u2014 follow-on account",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "AP-linked Arab News, published 2026-07-20 09:16Z — two Palestinian deaths",
+          "Middle East Monitor, published 2026-07-20 09:52Z — follow-on account",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3493,9 +3494,9 @@
         "raw_probability_pct": 97.33,
         "final_probability_pct": 97,
         "matched_sources": [
-          "AP-linked Arab News, published 2026-07-20 09:16Z \u2014 two Palestinian deaths",
-          "Middle East Monitor, published 2026-07-20 09:52Z \u2014 follow-on account",
-          "Focused review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "AP-linked Arab News, published 2026-07-20 09:16Z — two Palestinian deaths",
+          "Middle East Monitor, published 2026-07-20 09:52Z — follow-on account",
+          "Focused review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 100,
@@ -3541,8 +3542,8 @@
         "final_probability_pct": 23,
         "matched_sources": [
           "Dawn/AFP quoting IAEA, published 2026-07-19 16:26Z",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Past-day nuclear review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "IAEA news and press pages returned HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Past-day nuclear review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3586,8 +3587,8 @@
         "final_probability_pct": 29,
         "matched_sources": [
           "Dawn/AFP quoting IAEA, published 2026-07-19 16:26Z",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Past-day nuclear review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "IAEA news and press pages returned HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Past-day nuclear review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3631,8 +3632,8 @@
         "final_probability_pct": 36,
         "matched_sources": [
           "Dawn/AFP quoting IAEA, published 2026-07-19 16:26Z",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Past-day nuclear review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "IAEA news and press pages returned HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Past-day nuclear review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3676,8 +3677,8 @@
         "final_probability_pct": 46,
         "matched_sources": [
           "Dawn/AFP quoting IAEA, published 2026-07-19 16:26Z",
-          "IAEA news and press pages returned HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Past-day nuclear review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T120521Z.json"
+          "IAEA news and press pages returned HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Past-day nuclear review checked 2026-07-20 — data/deep_scan_supplement_20260720T120521Z.json"
         ]
       },
       "confidence_score": 69,
