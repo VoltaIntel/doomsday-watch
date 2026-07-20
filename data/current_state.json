@@ -70,7 +70,7 @@
       "zone": "elevated",
       "trend": "rising",
       "active_signals": [],
-      "notes": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri ceasefire violation. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
+      "notes": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri border-truce breach. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {},
       "name": "INDIA-PAKISTAN"
@@ -160,7 +160,7 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [],
-      "notes": "No one-day report established a new enrichment advance, safeguards-access loss, IAEA emergency or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
+      "notes": "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {},
       "name": "IRAN NUCLEAR"
@@ -193,7 +193,7 @@
         "ceasefire_violation",
         "holy_site_tension"
       ],
-      "notes": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
+      "notes": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing truce-breach and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-07-19T00:19:41Z",
@@ -272,7 +272,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-07-20T06:14:21Z",
+  "last_updated": "2026-07-20T06:23:20Z",
   "signal_timestamps": {
     "israel_lebanon:diplomacy_active": "2026-07-17T18:27:01Z",
     "south_sudan_abyei:military_buildup": "2026-07-18T09:23:59Z",
@@ -282,17 +282,16 @@
     "mali_sahel:military_buildup": "2026-07-18T21:24:27Z",
     "israel_palestine:ceasefire_violation": "2026-07-19T00:19:41Z",
     "iran_conventional:diplomacy_refused": "2026-07-19T06:33:21Z",
-    "israel_palestine:holy_site_tension": "2026-07-19T06:33:21Z",
-    "iran_nuclear:iaea_emergency": "2026-07-20T06:14:21Z"
+    "israel_palestine:holy_site_tension": "2026-07-19T06:33:21Z"
   },
   "global_war_probability": 75,
   "global_zone": "imminent",
   "global_probability": 75,
   "eval_stats": {
-    "total": 2135795,
-    "correct": 1604055,
+    "total": 2140496,
+    "correct": 1607946,
     "accuracy": 75,
-    "mean_brier": 0.4954
+    "mean_brier": 0.4952
   },
   "_meta": {
     "last_writer": "cron_morning_deep_scan",
@@ -438,7 +437,10 @@
         "iran_nuclear:iaea_access_denied",
         "north_korea:missile_range_test",
         "pakistan_afghanistan:military_buildup",
-        "yemen_red_sea:external_backing"
+        "yemen_red_sea:external_backing",
+        "iran_nuclear:iaea_emergency",
+        "india:diplomacy_active",
+        "israel_palestine:diplomacy_active"
       ]
     },
     "auto_detection": {
@@ -653,7 +655,8 @@
       "hormuz_guard_tankers_exact": 10
     },
     "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "post_deploy_metadata_restored_at": "2026-07-20T03:13:44Z"
+    "post_deploy_metadata_restored_at": "2026-07-20T03:13:44Z",
+    "pipeline_false_positive_correction": "Deploy at 2026-07-20T06:14:21Z negation-matched iaea_emergency from an explicit no-event sentence; false activation removed before final redeploy. The same deploy also keyword-matched ceasefire prose to diplomacy_active for India and Israel-Palestine; both false activations were removed and the prose was hardened before final redeploy."
   },
   "trackers": {
     "iran_conventional": {
@@ -724,10 +727,8 @@
       "coupling_boost": 0,
       "zone": "elevated",
       "trend": "rising",
-      "active_signals": [
-        "diplomacy_active"
-      ],
-      "notes": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri ceasefire violation. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
+      "active_signals": [],
+      "notes": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri border-truce breach. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {},
       "name": "INDIA-PAKISTAN"
@@ -816,14 +817,10 @@
       "coupling_boost": 7,
       "zone": "imminent",
       "trend": "stable",
-      "active_signals": [
-        "iaea_emergency"
-      ],
-      "notes": "No one-day report established a new enrichment advance, safeguards-access loss, IAEA emergency or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
+      "active_signals": [],
+      "notes": "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
       "last_updated": "2026-07-20T06:13:24Z",
-      "signal_timestamps": {
-        "iaea_emergency": "2026-07-20T06:14:21Z"
-      },
+      "signal_timestamps": {},
       "name": "IRAN NUCLEAR"
     },
     "sudan": {
@@ -852,10 +849,9 @@
       "trend": "rising",
       "active_signals": [
         "ceasefire_violation",
-        "diplomacy_active",
         "holy_site_tension"
       ],
-      "notes": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
+      "notes": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing truce-breach and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-07-19T00:19:41Z",
@@ -977,7 +973,7 @@
       "time": "06:13",
       "impact": "stable",
       "headline": "Border-fire allegations still lack independent or official corroboration",
-      "text": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri ceasefire violation. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
+      "text": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri border-truce breach. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
       "sources": [
         "Atlas News Agency, published 2026-07-19 07:15Z, and Zamon, published 06:49Z \u2014 low-credibility Google News RSS allegations",
         "Daily Pioneer, published 2026-07-19 01:14Z \u2014 Rajouri ceasefire claim; Google News RSS",
@@ -1051,7 +1047,7 @@
       "time": "06:13",
       "impact": "watch",
       "headline": "No new IAEA, enrichment or weapons threshold",
-      "text": "No one-day report established a new enrichment advance, safeguards-access loss, IAEA emergency or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
+      "text": "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
       "sources": [
         "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
         "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
@@ -1076,7 +1072,7 @@
       "time": "06:13",
       "impact": "watch",
       "headline": "Additional report corroborates two Deir Jarir deaths",
-      "text": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
+      "text": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing truce-breach and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
       "sources": [
         "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
         "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
@@ -1134,8 +1130,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-07-20T06:15:31Z",
-    "fetched_at": "2026-07-20T06:15:31Z",
+    "generated_at": "2026-07-20T06:24:24Z",
+    "fetched_at": "2026-07-20T06:24:24Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -1150,7 +1146,7 @@
         "used_slugs": [
           "will-the-us-invade-iran-before-2027"
         ],
-        "total_volume_24h": 253511.18,
+        "total_volume_24h": 252059.56,
         "liquidity_warn": false,
         "markets": [
           {
@@ -1160,7 +1156,7 @@
             "invert": false,
             "yes_price": 0.305,
             "contribution": 0.305,
-            "volume_24h": 253511.1761659999,
+            "volume_24h": 252059.56326399988,
             "question": "Will the U.S. invade Iran before 2027?"
           }
         ],
@@ -1286,14 +1282,14 @@
         "tracker_id": "china",
         "status": "ok",
         "dw_prob_pct": 28.0,
-        "pm_implied_raw_pct": 4.72,
-        "pm_implied_24h_pct": 0.019,
+        "pm_implied_raw_pct": 4.8,
+        "pm_implied_24h_pct": 0.02,
         "horizon_days_avg": 250.0,
         "used_slugs": [
           "will-china-invade-taiwan-before-2027",
           "china-x-taiwan-military-clash-before-2027"
         ],
-        "total_volume_24h": 96656.37,
+        "total_volume_24h": 96643.89,
         "liquidity_warn": true,
         "markets": [
           {
@@ -1303,7 +1299,7 @@
             "invert": false,
             "yes_price": 0.0405,
             "contribution": 0.0405,
-            "volume_24h": 47311.21938899971,
+            "volume_24h": 47298.74151099972,
             "question": "Will China invade Taiwan by end of 2026?"
           },
           {
@@ -1311,8 +1307,8 @@
             "weight": 0.5,
             "horizon_days": 250.0,
             "invert": false,
-            "yes_price": 0.058,
-            "contribution": 0.058,
+            "yes_price": 0.06,
+            "contribution": 0.06,
             "volume_24h": 49345.14774099998,
             "question": "China x Taiwan military clash before 2027?"
           }
@@ -1432,21 +1428,10 @@
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
-      "signals": [
-        {
-          "name": "iaea_emergency",
-          "positive": false,
-          "activated_at": "2026-07-20T06:14:21Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
-          "original_weight": 8,
-          "decayed_weight": 8.0,
-          "expired": false,
-          "is_deescalatory": false
-        }
-      ],
-      "confidence": "MEDIUM",
+      "signals": [],
+      "confidence": "LOW",
       "base_rate": 8,
-      "notes": "No one-day report established a new enrichment advance, safeguards-access loss, IAEA emergency or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
+      "notes": "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
       "attribution": {
         "base_rate": 8.0,
         "raw_probability": 47.0,
@@ -1457,8 +1442,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 3,
-        "signal_count": 1,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 0,
+        "newest_signal_age_hours": null
       },
       "watch_triggers": {
         "up": [
@@ -1499,7 +1484,7 @@
           "name": "diplomacy_refused",
           "positive": false,
           "activated_at": "2026-07-19T06:33:21Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 4,
           "decayed_weight": 2.0,
           "expired": false,
@@ -1509,7 +1494,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-07-18T18:31:16Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 4,
           "decayed_weight": 1.4,
           "expired": false,
@@ -1519,7 +1504,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-07-18T15:14:29Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 6,
           "decayed_weight": 1.9,
           "expired": false,
@@ -1540,7 +1525,7 @@
         "label": "HIGH",
         "source_count": 3,
         "signal_count": 3,
-        "newest_signal_age_hours": 23.7
+        "newest_signal_age_hours": 23.8
       },
       "watch_triggers": {
         "up": [
@@ -1581,7 +1566,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-18T18:25:22Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 6,
           "decayed_weight": 2.1,
           "expired": false,
@@ -1591,7 +1576,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-17T18:27:01Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 4,
           "decayed_weight": 0.7,
           "expired": false,
@@ -1612,7 +1597,7 @@
         "label": "MEDIUM",
         "source_count": 3,
         "signal_count": 2,
-        "newest_signal_age_hours": 35.8
+        "newest_signal_age_hours": 36.0
       },
       "watch_triggers": {
         "up": [
@@ -1694,21 +1679,10 @@
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
-      "signals": [
-        {
-          "name": "diplomacy_active",
-          "positive": true,
-          "activated_at": "2026-07-20T06:14:21Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
-          "original_weight": 3,
-          "decayed_weight": 3.0,
-          "expired": false,
-          "is_deescalatory": true
-        }
-      ],
-      "confidence": "MEDIUM",
+      "signals": [],
+      "confidence": "LOW",
       "base_rate": 6,
-      "notes": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri ceasefire violation. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
+      "notes": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri border-truce breach. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
       "attribution": {
         "base_rate": 6.0,
         "raw_probability": 15.0,
@@ -1719,8 +1693,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 3,
-        "signal_count": 1,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 0,
+        "newest_signal_age_hours": null
       },
       "watch_triggers": {
         "up": [
@@ -2011,20 +1985,10 @@
       "trend": "rising",
       "signals": [
         {
-          "name": "diplomacy_active",
-          "positive": true,
-          "activated_at": "2026-07-20T06:14:21Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
-          "original_weight": 4,
-          "decayed_weight": 4.0,
-          "expired": false,
-          "is_deescalatory": true
-        },
-        {
           "name": "holy_site_tension",
           "positive": false,
           "activated_at": "2026-07-19T06:33:21Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 5,
           "decayed_weight": 2.5,
           "expired": false,
@@ -2034,16 +1998,16 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-07-19T00:19:41Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 6,
           "decayed_weight": 2.5,
           "expired": false,
           "is_deescalatory": false
         }
       ],
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "base_rate": 18,
-      "notes": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
+      "notes": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing truce-breach and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
       "attribution": {
         "base_rate": 18.0,
         "raw_probability": 88.0,
@@ -2054,8 +2018,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 0,
-        "signal_count": 3,
-        "newest_signal_age_hours": 0.0
+        "signal_count": 2,
+        "newest_signal_age_hours": 23.8
       },
       "watch_triggers": {
         "up": [
@@ -2096,7 +2060,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-18T09:23:59Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 5,
           "decayed_weight": 1.4,
           "expired": false,
@@ -2117,7 +2081,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 44.8
+        "newest_signal_age_hours": 45.0
       },
       "watch_triggers": {
         "up": [
@@ -2260,7 +2224,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-18T21:24:27Z",
-          "last_confirmed": "2026-07-20T06:14:21Z",
+          "last_confirmed": "2026-07-20T06:23:20Z",
           "original_weight": 6,
           "decayed_weight": 2.3,
           "expired": false,
@@ -2281,7 +2245,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 32.8
+        "newest_signal_age_hours": 33.0
       },
       "watch_triggers": {
         "up": [
@@ -2319,7 +2283,7 @@
       "value": 100,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -2330,7 +2294,7 @@
       "value": 46,
       "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
       "confidence": 65,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 36
     },
@@ -2341,7 +2305,7 @@
       "value": 94,
       "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
       "confidence": 55,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 84
     },
@@ -2352,7 +2316,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -2363,7 +2327,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 80
     },
@@ -2374,7 +2338,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 78
     },
@@ -2385,7 +2349,7 @@
       "value": 54,
       "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 39
     },
@@ -2396,7 +2360,7 @@
       "value": 44,
       "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 28
     },
@@ -2407,7 +2371,7 @@
       "value": 41,
       "description": "Current escalation indicators suggest MALI SAHEL will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 26
     },
@@ -2418,7 +2382,7 @@
       "value": 20,
       "description": "Current escalation indicators suggest SOUTH SUDAN ABYEI will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 7
     },
@@ -2429,7 +2393,7 @@
       "value": 17,
       "description": "Current escalation indicators suggest INDIA-PAKISTAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-07-21T06:15:29Z",
+      "expires_at": "2026-07-21T06:24:22Z",
       "eval_type": "probability_above",
       "eval_value": 5
     }
@@ -2437,8 +2401,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-21T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-21T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2471,7 +2435,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-21T06:14:21Z",
+      "expires_at": "2026-07-21T06:23:20Z",
       "evidence_for": [
         "diplomacy_refused (+4 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2484,8 +2448,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-23T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-23T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2518,7 +2482,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-23T06:14:21Z",
+      "expires_at": "2026-07-23T06:23:20Z",
       "evidence_for": [
         "diplomacy_refused (+4 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2531,8 +2495,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-27T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-27T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2565,7 +2529,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-27T06:14:21Z",
+      "expires_at": "2026-07-27T06:23:20Z",
       "evidence_for": [
         "diplomacy_refused (+4 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2578,8 +2542,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-19T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-19T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2612,7 +2576,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-19T06:14:21Z",
+      "expires_at": "2026-08-19T06:23:20Z",
       "evidence_for": [
         "diplomacy_refused (+4 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2625,8 +2589,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-21T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-21T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2658,7 +2622,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-21T06:14:21Z",
+      "expires_at": "2026-07-21T06:23:20Z",
       "evidence_for": [
         "UN condemns Kyiv attack; no allied combat-entry decision",
         "The UN condemned the latest overnight attack on Kyiv, while the record ballistic wave and the corroborated Golden Leo cargo-ship strike remain governing evidence. No direct NATO co"
@@ -2669,8 +2633,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-23T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-23T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2702,7 +2666,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-23T06:14:21Z",
+      "expires_at": "2026-07-23T06:23:20Z",
       "evidence_for": [
         "UN condemns Kyiv attack; no allied combat-entry decision",
         "The UN condemned the latest overnight attack on Kyiv, while the record ballistic wave and the corroborated Golden Leo cargo-ship strike remain governing evidence. No direct NATO co"
@@ -2713,8 +2677,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-27T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-27T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2746,7 +2710,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-27T06:14:21Z",
+      "expires_at": "2026-07-27T06:23:20Z",
       "evidence_for": [
         "UN condemns Kyiv attack; no allied combat-entry decision",
         "The UN condemned the latest overnight attack on Kyiv, while the record ballistic wave and the corroborated Golden Leo cargo-ship strike remain governing evidence. No direct NATO co"
@@ -2757,8 +2721,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-19T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-19T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2790,7 +2754,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-19T06:14:21Z",
+      "expires_at": "2026-08-19T06:23:20Z",
       "evidence_for": [
         "UN condemns Kyiv attack; no allied combat-entry decision",
         "The UN condemned the latest overnight attack on Kyiv, while the record ballistic wave and the corroborated Golden Leo cargo-ship strike remain governing evidence. No direct NATO co"
@@ -2801,8 +2765,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-21T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-21T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2835,7 +2799,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-21T06:14:21Z",
+      "expires_at": "2026-07-21T06:23:20Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2848,8 +2812,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-23T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-23T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2882,7 +2846,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-23T06:14:21Z",
+      "expires_at": "2026-07-23T06:23:20Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2895,8 +2859,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-27T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-27T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2929,7 +2893,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-27T06:14:21Z",
+      "expires_at": "2026-07-27T06:23:20Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2942,8 +2906,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-19T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-19T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2976,7 +2940,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-19T06:14:21Z",
+      "expires_at": "2026-08-19T06:23:20Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2989,8 +2953,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-07-21T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-07-21T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -3022,7 +2986,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-21T06:14:21Z",
+      "expires_at": "2026-07-21T06:23:20Z",
       "evidence_for": [
         "CNN documents expanding drone threat; no distinct new offensive verified",
         "A new CNN investigation documents civilians living under pervasive drone threat in Sudan, reinforcing the severity of the realised war. It does not establish a distinct post-cutoff"
@@ -3033,8 +2997,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-07-23T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-07-23T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -3066,7 +3030,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-23T06:14:21Z",
+      "expires_at": "2026-07-23T06:23:20Z",
       "evidence_for": [
         "CNN documents expanding drone threat; no distinct new offensive verified",
         "A new CNN investigation documents civilians living under pervasive drone threat in Sudan, reinforcing the severity of the realised war. It does not establish a distinct post-cutoff"
@@ -3077,8 +3041,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-07-27T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-07-27T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -3110,7 +3074,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-27T06:14:21Z",
+      "expires_at": "2026-07-27T06:23:20Z",
       "evidence_for": [
         "CNN documents expanding drone threat; no distinct new offensive verified",
         "A new CNN investigation documents civilians living under pervasive drone threat in Sudan, reinforcing the severity of the realised war. It does not establish a distinct post-cutoff"
@@ -3121,8 +3085,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-08-19T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-08-19T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -3154,7 +3118,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-19T06:14:21Z",
+      "expires_at": "2026-08-19T06:23:20Z",
       "evidence_for": [
         "CNN documents expanding drone threat; no distinct new offensive verified",
         "A new CNN investigation documents civilians living under pervasive drone threat in Sudan, reinforcing the severity of the realised war. It does not establish a distinct post-cutoff"
@@ -3165,14 +3129,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-21T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-21T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 30,
+      "probability": 44,
       "base_rate_pct": 10.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3181,12 +3145,12 @@
         "base_rate_pct": 10.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 15.84,
-        "signal_delta_pp": 3.25,
+        "signal_delta_pp": 11.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 4.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 30.09,
-        "final_probability_pct": 30,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 43.99,
+        "final_probability_pct": 44,
         "matched_sources": [
           "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
           "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
@@ -3195,11 +3159,11 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 30%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 44%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-21T06:14:21Z",
+      "expires_at": "2026-07-21T06:23:20Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "ceasefire_violation (+6 signal weight)",
@@ -3207,22 +3171,19 @@
         "Additional report corroborates two Deir Jarir deaths"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and h"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-23T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-23T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 43,
+      "probability": 57,
       "base_rate_pct": 18.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3231,12 +3192,12 @@
         "base_rate_pct": 18.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 21.12,
-        "signal_delta_pp": 3.25,
+        "signal_delta_pp": 11.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 4.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 43.37,
-        "final_probability_pct": 43,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 57.27,
+        "final_probability_pct": 57,
         "matched_sources": [
           "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
           "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
@@ -3245,11 +3206,11 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 43%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 57%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-23T06:14:21Z",
+      "expires_at": "2026-07-23T06:23:20Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "ceasefire_violation (+6 signal weight)",
@@ -3257,22 +3218,19 @@
         "Additional report corroborates two Deir Jarir deaths"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and h"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-27T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-27T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 58,
+      "probability": 72,
       "base_rate_pct": 27.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3281,12 +3239,12 @@
         "base_rate_pct": 27.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 26.4,
-        "signal_delta_pp": 3.25,
+        "signal_delta_pp": 11.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 4.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 57.65,
-        "final_probability_pct": 58,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 71.55,
+        "final_probability_pct": 72,
         "matched_sources": [
           "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
           "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
@@ -3295,11 +3253,11 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 58%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 72%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-27T06:14:21Z",
+      "expires_at": "2026-07-27T06:23:20Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "ceasefire_violation (+6 signal weight)",
@@ -3307,22 +3265,19 @@
         "Additional report corroborates two Deir Jarir deaths"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and h"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-19T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-19T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "30d",
       "horizon_hours": 720,
-      "probability": 81,
+      "probability": 95,
       "base_rate_pct": 45.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3331,12 +3286,12 @@
         "base_rate_pct": 45.0,
         "threat_score_pct": 88.0,
         "threat_component_pp": 31.68,
-        "signal_delta_pp": 3.25,
+        "signal_delta_pp": 11.15,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 4.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 80.93,
-        "final_probability_pct": 81,
+        "contradiction_delta_pp": -2.0,
+        "raw_probability_pct": 94.83,
+        "final_probability_pct": 95,
         "matched_sources": [
           "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
           "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
@@ -3345,11 +3300,11 @@
       },
       "confidence_score": 100,
       "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 81%.",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 95%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-19T06:14:21Z",
+      "expires_at": "2026-08-19T06:23:20Z",
       "evidence_for": [
         "holy_site_tension (+5 signal weight)",
         "ceasefire_violation (+6 signal weight)",
@@ -3357,22 +3312,19 @@
         "Additional report corroborates two Deir Jarir deaths"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
-        "ceasefire violation",
-        "diplomacy active",
-        "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing ceasefire-violation and h"
+        "ceasefire violation"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-07-21T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-07-21T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 32,
+      "probability": 23,
       "base_rate_pct": 4.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3381,29 +3333,28 @@
         "base_rate_pct": 4.0,
         "threat_score_pct": 54.0,
         "threat_component_pp": 9.72,
-        "signal_delta_pp": 11.45,
+        "signal_delta_pp": 2.5,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 6.5,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 31.67,
-        "final_probability_pct": 32,
+        "raw_probability_pct": 22.72,
+        "final_probability_pct": 23,
         "matched_sources": [
           "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
           "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
           "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
-      "confidence_score": 89,
-      "confidence_label": "HIGH",
-      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 24h is estimated at 32%.",
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 24h is estimated at 23%.",
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-21T06:14:21Z",
+      "expires_at": "2026-07-21T06:23:20Z",
       "evidence_for": [
-        "iaea_emergency (+8 signal weight)",
-        "iaea emergency",
-        "No new IAEA, enrichment or weapons threshold"
+        "No new IAEA, enrichment or weapons threshold",
+        "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account r"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -3411,14 +3362,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:72h:2026-07-23T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:72h:2026-07-23T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 38,
+      "probability": 29,
       "base_rate_pct": 7.2,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3427,29 +3378,28 @@
         "base_rate_pct": 7.2,
         "threat_score_pct": 54.0,
         "threat_component_pp": 12.96,
-        "signal_delta_pp": 11.45,
+        "signal_delta_pp": 2.5,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 6.5,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 38.11,
-        "final_probability_pct": 38,
+        "raw_probability_pct": 29.16,
+        "final_probability_pct": 29,
         "matched_sources": [
           "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
           "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
           "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
-      "confidence_score": 89,
-      "confidence_label": "HIGH",
-      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 72h is estimated at 38%.",
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 72h is estimated at 29%.",
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-23T06:14:21Z",
+      "expires_at": "2026-07-23T06:23:20Z",
       "evidence_for": [
-        "iaea_emergency (+8 signal weight)",
-        "iaea emergency",
-        "No new IAEA, enrichment or weapons threshold"
+        "No new IAEA, enrichment or weapons threshold",
+        "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account r"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -3457,14 +3407,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:7d:2026-07-27T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:7d:2026-07-27T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 45,
+      "probability": 36,
       "base_rate_pct": 10.8,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3473,29 +3423,28 @@
         "base_rate_pct": 10.8,
         "threat_score_pct": 54.0,
         "threat_component_pp": 16.2,
-        "signal_delta_pp": 11.45,
+        "signal_delta_pp": 2.5,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 6.5,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 44.95,
-        "final_probability_pct": 45,
+        "raw_probability_pct": 36.0,
+        "final_probability_pct": 36,
         "matched_sources": [
           "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
           "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
           "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
-      "confidence_score": 89,
-      "confidence_label": "HIGH",
-      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 7d is estimated at 45%.",
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 7d is estimated at 36%.",
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-07-27T06:14:21Z",
+      "expires_at": "2026-07-27T06:23:20Z",
       "evidence_for": [
-        "iaea_emergency (+8 signal weight)",
-        "iaea emergency",
-        "No new IAEA, enrichment or weapons threshold"
+        "No new IAEA, enrichment or weapons threshold",
+        "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account r"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -3503,14 +3452,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_nuclear:nuclear_threshold:30d:2026-08-19T06:14:21Z",
-      "generated_at": "2026-07-20T06:14:21Z",
+      "forecast_id": "iran_nuclear:nuclear_threshold:30d:2026-08-19T06:23:20Z",
+      "generated_at": "2026-07-20T06:23:20Z",
       "tracker_id": "iran_nuclear",
       "tracker_name": "IRAN NUCLEAR",
       "event_type": "nuclear_threshold",
       "horizon_label": "30d",
       "horizon_hours": 720,
-      "probability": 55,
+      "probability": 46,
       "base_rate_pct": 18.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -3519,29 +3468,28 @@
         "base_rate_pct": 18.0,
         "threat_score_pct": 54.0,
         "threat_component_pp": 19.44,
-        "signal_delta_pp": 11.45,
+        "signal_delta_pp": 2.5,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 6.5,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 55.39,
-        "final_probability_pct": 55,
+        "raw_probability_pct": 46.44,
+        "final_probability_pct": 46,
         "matched_sources": [
           "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
           "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
           "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
-      "confidence_score": 89,
-      "confidence_label": "HIGH",
-      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 30d is estimated at 55%.",
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "IRAN NUCLEAR: nuclear threshold risk over the next 30d is estimated at 46%.",
       "resolution_criteria": "Resolved true if a verified IAEA, official government, Reuters/AP/AFP/BBC-level report confirms a new nuclear threshold event, enrichment/access escalation, strike, or sanctions/snapback trigger before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-19T06:14:21Z",
+      "expires_at": "2026-08-19T06:23:20Z",
       "evidence_for": [
-        "iaea_emergency (+8 signal weight)",
-        "iaea emergency",
-        "No new IAEA, enrichment or weapons threshold"
+        "No new IAEA, enrichment or weapons threshold",
+        "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account r"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -3564,7 +3512,7 @@
     "version": "forecast_review_status_v1",
     "expired_unresolved": 50,
     "review_queue_version": "forecast_review_queue_v1",
-    "oldest_age_hours": 809.2,
+    "oldest_age_hours": 809.4,
     "next_forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
     "evidence_required": true,
     "auto_resolution": false
