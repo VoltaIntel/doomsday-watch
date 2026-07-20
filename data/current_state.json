@@ -298,8 +298,8 @@
     "last_scan": "morning_deep_scan_03z",
     "scan_time_utc": "2026-07-20T03:10:47Z",
     "analysis_window": "Deepest past-24-hour review for every configured tracker and required sector, with 7/14/30-day context for low-frequency lanes; focused delta review after the prior 00:14Z scan, exact-event/body-date checks, allied-position review, and emerging-crisis gate review.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_22x_http_432_and_web_extract_5_urls_http_432_then_google_news_rss_18_core_50_targeted_5_exact_event_plus_browser_direct_ap_nato_iaea_terminal_http_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily web_search attempts returned HTTP 432, and web_extract returned HTTP 432 for all five requested URLs. Fallback coverage completed through fresh Google News RSS (18 core lanes, 50 targeted lanes and five exact-event probes), direct browser inspection of AP/NATO/IAEA pages, direct official/feed probes, terminal HTTP, OilPriceAPI and Gamma exact-slug reads. Direct IAEA and OPEC pages remained HTTP 403; configured OCHA and UN Sudan paths remained HTTP 404. Google RSS again produced false-recency, including a 5 July DPRK warship event and March Pakistan-Afghanistan clash material. The cause of the Hormuz vessel fire remains undetermined, and IRGC tanker claims are not independently verified.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260720T030203Z.json",
       "supplement": "data/deep_scan_supplement_20260720T030318Z.json",
@@ -479,7 +479,7 @@
       "africa": "Mali convoy losses remain corroborated; Sudan and eastern Congo remain severe but unchanged. Somalia's casualty claim remains independently unverified."
     },
     "energy_oil": {
-      "checked_at": "2026-07-20T03:02:20Z",
+      "checked_at": "2026-07-20T03:11:34Z",
       "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
       "brent_usd": 90.02,
       "brent_change_24h_pct": 2.31,
@@ -488,9 +488,9 @@
       "wti_change_24h_pct": 1.15,
       "wti_vs_pre_conflict_pct": 30.8,
       "natural_gas_usd": 2.89,
-      "gold_usd": 4027.92,
+      "gold_usd": 4022.89,
       "diesel_usd": 4.16,
-      "gasoline_usd": 3.43,
+      "gasoline_usd": 3.42,
       "heating_oil_usd": 4.17,
       "caveat": "Instrument timestamps vary slightly by contract; vendor-reported 24-hour changes are used. Values are sanity-only and did not set tracker probabilities."
     },
@@ -688,7 +688,7 @@
       "hormuz_guard_tankers_exact": 10
     },
     "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "post_deploy_metadata_restored_at": "2026-07-20T00:20:18Z"
+    "post_deploy_metadata_restored_at": "2026-07-20T03:13:44Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -969,9 +969,9 @@
       "headline": "Ninth U.S. strike night; Strait vessel burns as sparse traffic continues",
       "text": "AP reports a ninth consecutive night of U.S. strikes, says 17 U.S. service members have now died since the war began, and describes Strait traffic as largely stalled. A vessel burned off Oman for an undetermined reason while the IRGC claimed it had targeted or halted two tankers; Reuters still observed a few tankers entering to load, so traffic is sparse but nonzero and there is no independently verified mine event. The realised-war lane remains capped at 100%",
       "sources": [
-        "AP, updated 2026-07-20 02:19Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-        "Reuters, published 2026-07-19 23:16Z \u2014 few tankers entered Hormuz to load; Google News RSS exact-event lane",
-        "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "AP, updated 2026-07-20 02:19Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+        "Reuters, published 2026-07-19 23:16Z — few tankers entered Hormuz to load; Google News RSS exact-event lane",
+        "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -982,9 +982,9 @@
       "headline": "Rubio reinforces Aoun channel; operational risk persists",
       "text": "Rubio's public support for Aoun's withdrawal-and-disarmament framework reinforces the live Washington channel, while continuing Israeli operations and Hezbollah's rejection of disarmament preserve the offsetting risk. No distinct post-cutoff combat operation was independently established; the coupled score holds at 94%",
       "sources": [
-        "Israel National News, published 2026-07-20 01:53Z \u2014 Rubio backs Lebanon move toward peace; Google News RSS",
-        "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-        "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "Israel National News, published 2026-07-20 01:53Z — Rubio backs Lebanon move toward peace; Google News RSS",
+        "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+        "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -995,8 +995,8 @@
       "headline": "No current Turkey-specific escalation trigger",
       "text": "The deepest one-day lane produced no Turkey-specific combat action, qualifying official nuclear statement or current range-test event. Returned missile coverage concerned other countries; the lane remains 5%",
       "sources": [
-        "Google News RSS one-day and 14-day Turkey reviews checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json",
-        "Targeted one-day review returned zero current items \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "Google News RSS one-day and 14-day Turkey reviews checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json",
+        "Targeted one-day review returned zero current items — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1007,8 +1007,8 @@
       "headline": "Border-shootout allegation remains uncorroborated",
       "text": "One low-credibility single-source item alleges a two-hour India-Pakistan border shootout, but an exact-event review found no independent corroboration, casualty report, force concentration or official account. The lane holds at 15%",
       "sources": [
-        "Zamin.uz, published 2026-07-19 11:28Z \u2014 single-source Google News RSS item",
-        "Exact-event review found no independent corroboration, checked 2026-07-20 \u2014 data/deep_scan_exact_20260720T030752Z.json"
+        "Zamin.uz, published 2026-07-19 11:28Z — single-source Google News RSS item",
+        "Exact-event review found no independent corroboration, checked 2026-07-20 — data/deep_scan_exact_20260720T030752Z.json"
       ]
     },
     {
@@ -1019,8 +1019,8 @@
       "headline": "No Article 5 action or new official nuclear threshold",
       "text": "The NATO official news page has no item after 18 July and shows no Article 5 action or allied direct-combat decision. The focused one-day lane returned no new official nuclear threshold; the coupled score stays 52%",
       "sources": [
-        "NATO official latest-news page checked 2026-07-20 03Z; newest item dated 2026-07-18 \u2014 https://www.nato.int/en/news-and-events/articles/news",
-        "Google News RSS Russia-NATO one-day review returned zero current items \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "NATO official latest-news page checked 2026-07-20 03Z; newest item dated 2026-07-18 — https://www.nato.int/en/news-and-events/articles/news",
+        "Google News RSS Russia-NATO one-day review returned zero current items — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1031,8 +1031,8 @@
       "headline": "No fresh PLA operation around Taiwan",
       "text": "No fresh PLA exercise, blockade or verified force concentration around Taiwan appeared in the one-day review. Current results remain commentary or standing defensive posture; the coupled score stays 28%",
       "sources": [
-        "Google News RSS China-Taiwan one-day review returned zero current items \u2014 data/deep_scan_supplement_20260720T030318Z.json",
-        "Taiwan Ministry of National Defense PLA activity page checked as standing official source \u2014 https://www.mnd.gov.tw/en/news/plaact/87053"
+        "Google News RSS China-Taiwan one-day review returned zero current items — data/deep_scan_supplement_20260720T030318Z.json",
+        "Taiwan Ministry of National Defense PLA activity page checked as standing official source — https://www.mnd.gov.tw/en/news/plaact/87053"
       ]
     },
     {
@@ -1043,8 +1043,8 @@
       "headline": "Newly indexed warship report resolves to 5 July",
       "text": "No fresh DPRK range event or nuclear detonation was verified. The newly indexed report about a 5,000-tonne warship weapons demonstration resolves to the 5 July cycle, while other returns concern allied procurement and exercises; the lane remains 18%",
       "sources": [
-        "Yonhap News Agency, published 2026-07-05 04:36Z \u2014 warship event date established by exact-event review",
-        "Google News RSS one-day and exact-event review checked 2026-07-20 \u2014 data/deep_scan_exact_20260720T030752Z.json"
+        "Yonhap News Agency, published 2026-07-05 04:36Z — warship event date established by exact-event review",
+        "Google News RSS one-day and exact-event review checked 2026-07-20 — data/deep_scan_exact_20260720T030752Z.json"
       ]
     },
     {
@@ -1055,9 +1055,9 @@
       "headline": "Foreign grain-carrier strike now broadly corroborated",
       "text": "The record ballistic wave remains governing evidence. Multiple reports now corroborate a Russian strike on the foreign grain carrier Golden Leo near Odesa that killed at least five, but no direct NATO combat-entry decision or new official nuclear threshold emerged; the realised-war lane remains 99%",
       "sources": [
-        "Marine News Magazine, published 2026-07-19 23:15Z \u2014 five killed near Odesa; Google News RSS",
-        "UNN, published 2026-07-19 18:10Z \u2014 Ukrainian Navy account; Google News RSS",
-        "Multi-source exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "Marine News Magazine, published 2026-07-19 23:15Z — five killed near Odesa; Google News RSS",
+        "UNN, published 2026-07-19 18:10Z — Ukrainian Navy account; Google News RSS",
+        "Multi-source exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1068,8 +1068,8 @@
       "headline": "Fresh-indexed clash headlines still trace to March",
       "text": "Fresh-indexed News On AIR outpost and 30-soldier headlines still resolve to the March clash cycle, while newer commentary adds no fresh independently corroborated interstate operation or force concentration. The lane remains 46%",
       "sources": [
-        "News On AIR direct-body date for captured-outpost item: 2026-03-06 \u2014 prior exact inspection",
-        "One-day and false-recency review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "News On AIR direct-body date for captured-outpost item: 2026-03-06 — prior exact inspection",
+        "One-day and false-recency review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1080,9 +1080,9 @@
       "headline": "Darkhovin review still yields no radiological or weapons trigger",
       "text": "The IAEA account on the unfinished Darkhovin/Darquwin facility remains the latest governing evidence: it held no nuclear material when last visited and is not believed to pose radiological risk. No verified enrichment advance, new safeguards-access loss, emergency declaration or weapons-development threshold was established; the lane stays 47% raw / 54% coupled",
       "sources": [
-        "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS",
-        "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-        "Focused one-day and exact-event review checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json"
+        "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS",
+        "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+        "Focused one-day and exact-event review checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json"
       ]
     },
     {
@@ -1093,8 +1093,8 @@
       "headline": "El Obeid emergency persists without a distinct new operation",
       "text": "El Obeid's siege, hunger and displacement emergency remain severe, but the focused one-day lane produced no distinct newly corroborated SAF-RSF operation after the prior review. The realised-war lane remains 90%",
       "sources": [
-        "Arab News, published 2026-07-18 21:18Z \u2014 Google News RSS",
-        "Google News RSS one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "Arab News, published 2026-07-18 21:18Z — Google News RSS",
+        "Google News RSS one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1105,9 +1105,9 @@
       "headline": "Second local report corroborates two Deir Jarir deaths",
       "text": "A second local report says settlers and soldiers killed two Palestinians in Deir Jarir, broadly corroborating Haaretz's late account of two deaths during a settler raid; AFP-backed reporting also confirms the separate mosque and factory arson. These reinforce the existing West Bank/Gaza indicators but do not justify moving the near-ceiling lane above 88%",
       "sources": [
-        "IMEMC News, published 2026-07-20 02:14Z \u2014 two Palestinians killed in Deir Jarir; Google News RSS",
-        "Haaretz live update, published 2026-07-19 23:40Z \u2014 two killed during settler raid; Google News RSS prior exact lane",
-        "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque and factory arson; Google News RSS"
+        "IMEMC News, published 2026-07-20 02:14Z — two Palestinians killed in Deir Jarir; Google News RSS",
+        "Haaretz live update, published 2026-07-19 23:40Z — two killed during settler raid; Google News RSS prior exact lane",
+        "France 24/AFP, published 2026-07-19 09:55Z — mosque and factory arson; Google News RSS"
       ]
     },
     {
@@ -1118,8 +1118,8 @@
       "headline": "Kajo-Keji evidence carried; no new Abyei operation",
       "text": "The corroborated Kajo-Keji border skirmish, reinforcements and displacement above 10,000 remain governing evidence. No fresh operation, Ugandan official account or Abyei kinetic event appeared, so the existing indicator and 17% score are carried",
       "sources": [
-        "Google News RSS one-day and 30-day reviews checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json",
-        "Targeted one-day review returned zero current items \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "Google News RSS one-day and 30-day reviews checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json",
+        "Targeted one-day review returned zero current items — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1130,8 +1130,8 @@
       "headline": "No fresh eastern Congo combat operation",
       "text": "The focused one-day eastern Congo lane returned no fresh M23, FARDC or Rwanda-linked combat operation. Results remained retrospective or older security-review material; the score stays 52%",
       "sources": [
-        "Google News RSS one-day M23/FARDC/Rwanda review returned zero current items \u2014 data/deep_scan_supplement_20260720T030318Z.json",
-        "Critical Threats Congo War Security Review, published 2026-07-17 18:53Z \u2014 prior exact-event lane"
+        "Google News RSS one-day M23/FARDC/Rwanda review returned zero current items — data/deep_scan_supplement_20260720T030318Z.json",
+        "Critical Threats Congo War Security Review, published 2026-07-17 18:53Z — prior exact-event lane"
       ]
     },
     {
@@ -1142,9 +1142,9 @@
       "headline": "No verified new Houthi or Red Sea operation",
       "text": "Reports that Iran directed the Houthis toward Bab el-Mandeb remain unverified as an operational order, and the Sanaa-airport plane cycle still dates to 13 July. No new Houthi attack, closure attempt or independently verified operation appeared; the lane holds at 38%",
       "sources": [
-        "Alhurra, published 2026-07-19 18:01Z \u2014 report of Iranian direction, not independently verified as an operational order; Google News RSS",
+        "Alhurra, published 2026-07-19 18:01Z — report of Iranian direction, not independently verified as an operational order; Google News RSS",
         "Middle East Monitor, published 2026-07-19 11:49Z but describing the 2026-07-13 Sanaa-airport cycle",
-        "Focused one-day and false-recency review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "Focused one-day and false-recency review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     },
     {
@@ -1155,9 +1155,9 @@
       "headline": "Mali convoy losses remain corroborated; no follow-on operation",
       "text": "Established reporting continues to corroborate at least 50 soldiers killed in the Anefis-Gao convoy ambush. Newer items are follow-on publication rather than a distinct operation, so the existing indicator is carried and the lane holds at 36%",
       "sources": [
-        "The Hindu/AFP, published 2026-07-19 17:41Z \u2014 follow-on report on the Anefis-Gao ambush; Google News RSS",
-        "AfricaNews, published 2026-07-19 05:16Z \u2014 casualties after convoy ambush; Google News RSS",
-        "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+        "The Hindu/AFP, published 2026-07-19 17:41Z — follow-on report on the Anefis-Gao ambush; Google News RSS",
+        "AfricaNews, published 2026-07-19 05:16Z — casualties after convoy ambush; Google News RSS",
+        "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
       ]
     }
   ],
@@ -1456,7 +1456,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1507,7 +1507,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1589,7 +1589,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "rising",
@@ -1661,7 +1661,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1707,7 +1707,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
@@ -1748,7 +1748,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1789,7 +1789,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1835,7 +1835,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -1875,7 +1875,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -1920,7 +1920,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -1960,7 +1960,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2011,7 +2011,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2083,7 +2083,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "rising",
@@ -2145,7 +2145,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2196,7 +2196,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
@@ -2247,7 +2247,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "rising",
@@ -2445,9 +2445,9 @@
         "raw_probability_pct": 57.6,
         "final_probability_pct": 58,
         "matched_sources": [
-          "AP, updated 2026-07-20 02:19Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters, published 2026-07-19 23:16Z \u2014 few tankers entered Hormuz to load; Google News RSS exact-event lane",
-          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "AP, updated 2026-07-20 02:19Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters, published 2026-07-19 23:16Z — few tankers entered Hormuz to load; Google News RSS exact-event lane",
+          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2492,9 +2492,9 @@
         "raw_probability_pct": 73.2,
         "final_probability_pct": 73,
         "matched_sources": [
-          "AP, updated 2026-07-20 02:19Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters, published 2026-07-19 23:16Z \u2014 few tankers entered Hormuz to load; Google News RSS exact-event lane",
-          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "AP, updated 2026-07-20 02:19Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters, published 2026-07-19 23:16Z — few tankers entered Hormuz to load; Google News RSS exact-event lane",
+          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2539,9 +2539,9 @@
         "raw_probability_pct": 90.0,
         "final_probability_pct": 90,
         "matched_sources": [
-          "AP, updated 2026-07-20 02:19Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters, published 2026-07-19 23:16Z \u2014 few tankers entered Hormuz to load; Google News RSS exact-event lane",
-          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "AP, updated 2026-07-20 02:19Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters, published 2026-07-19 23:16Z — few tankers entered Hormuz to load; Google News RSS exact-event lane",
+          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2586,9 +2586,9 @@
         "raw_probability_pct": 117.6,
         "final_probability_pct": 100,
         "matched_sources": [
-          "AP, updated 2026-07-20 02:19Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters, published 2026-07-19 23:16Z \u2014 few tankers entered Hormuz to load; Google News RSS exact-event lane",
-          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "AP, updated 2026-07-20 02:19Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters, published 2026-07-19 23:16Z — few tankers entered Hormuz to load; Google News RSS exact-event lane",
+          "AP/UKMTO and IRGC-claim comparison checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 100,
@@ -2633,9 +2633,9 @@
         "raw_probability_pct": 35.32,
         "final_probability_pct": 35,
         "matched_sources": [
-          "Marine News Magazine, published 2026-07-19 23:15Z \u2014 five killed near Odesa; Google News RSS",
-          "UNN, published 2026-07-19 18:10Z \u2014 Ukrainian Navy account; Google News RSS",
-          "Multi-source exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Marine News Magazine, published 2026-07-19 23:15Z — five killed near Odesa; Google News RSS",
+          "UNN, published 2026-07-19 18:10Z — Ukrainian Navy account; Google News RSS",
+          "Multi-source exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2678,9 +2678,9 @@
         "raw_probability_pct": 46.06,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Marine News Magazine, published 2026-07-19 23:15Z \u2014 five killed near Odesa; Google News RSS",
-          "UNN, published 2026-07-19 18:10Z \u2014 Ukrainian Navy account; Google News RSS",
-          "Multi-source exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Marine News Magazine, published 2026-07-19 23:15Z — five killed near Odesa; Google News RSS",
+          "UNN, published 2026-07-19 18:10Z — Ukrainian Navy account; Google News RSS",
+          "Multi-source exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2723,9 +2723,9 @@
         "raw_probability_pct": 57.4,
         "final_probability_pct": 57,
         "matched_sources": [
-          "Marine News Magazine, published 2026-07-19 23:15Z \u2014 five killed near Odesa; Google News RSS",
-          "UNN, published 2026-07-19 18:10Z \u2014 Ukrainian Navy account; Google News RSS",
-          "Multi-source exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Marine News Magazine, published 2026-07-19 23:15Z — five killed near Odesa; Google News RSS",
+          "UNN, published 2026-07-19 18:10Z — Ukrainian Navy account; Google News RSS",
+          "Multi-source exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2768,9 +2768,9 @@
         "raw_probability_pct": 74.14,
         "final_probability_pct": 74,
         "matched_sources": [
-          "Marine News Magazine, published 2026-07-19 23:15Z \u2014 five killed near Odesa; Google News RSS",
-          "UNN, published 2026-07-19 18:10Z \u2014 Ukrainian Navy account; Google News RSS",
-          "Multi-source exact-event review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Marine News Magazine, published 2026-07-19 23:15Z — five killed near Odesa; Google News RSS",
+          "UNN, published 2026-07-19 18:10Z — Ukrainian Navy account; Google News RSS",
+          "Multi-source exact-event review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 69,
@@ -2813,9 +2813,9 @@
         "raw_probability_pct": 30.92,
         "final_probability_pct": 31,
         "matched_sources": [
-          "Israel National News, published 2026-07-20 01:53Z \u2014 Rubio backs Lebanon move toward peace; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Israel National News, published 2026-07-20 01:53Z — Rubio backs Lebanon move toward peace; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2861,9 +2861,9 @@
         "raw_probability_pct": 50.96,
         "final_probability_pct": 51,
         "matched_sources": [
-          "Israel National News, published 2026-07-20 01:53Z \u2014 Rubio backs Lebanon move toward peace; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Israel National News, published 2026-07-20 01:53Z — Rubio backs Lebanon move toward peace; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2909,9 +2909,9 @@
         "raw_probability_pct": 72.8,
         "final_probability_pct": 73,
         "matched_sources": [
-          "Israel National News, published 2026-07-20 01:53Z \u2014 Rubio backs Lebanon move toward peace; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Israel National News, published 2026-07-20 01:53Z — Rubio backs Lebanon move toward peace; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 88,
@@ -2957,9 +2957,9 @@
         "raw_probability_pct": 89.84,
         "final_probability_pct": 90,
         "matched_sources": [
-          "Israel National News, published 2026-07-20 01:53Z \u2014 Rubio backs Lebanon move toward peace; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Israel National News, published 2026-07-20 01:53Z — Rubio backs Lebanon move toward peace; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — https://www.newindianexpress.com/world/2026/Jul/19/rubio-hails-lebanon-for-peace-efforts-after-meeting-president",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 88,
@@ -3005,8 +3005,8 @@
         "raw_probability_pct": 34.7,
         "final_probability_pct": 35,
         "matched_sources": [
-          "Arab News, published 2026-07-18 21:18Z \u2014 Google News RSS",
-          "Google News RSS one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Arab News, published 2026-07-18 21:18Z — Google News RSS",
+          "Google News RSS one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3049,8 +3049,8 @@
         "raw_probability_pct": 48.1,
         "final_probability_pct": 48,
         "matched_sources": [
-          "Arab News, published 2026-07-18 21:18Z \u2014 Google News RSS",
-          "Google News RSS one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Arab News, published 2026-07-18 21:18Z — Google News RSS",
+          "Google News RSS one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3093,8 +3093,8 @@
         "raw_probability_pct": 62.5,
         "final_probability_pct": 62,
         "matched_sources": [
-          "Arab News, published 2026-07-18 21:18Z \u2014 Google News RSS",
-          "Google News RSS one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Arab News, published 2026-07-18 21:18Z — Google News RSS",
+          "Google News RSS one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3137,8 +3137,8 @@
         "raw_probability_pct": 85.9,
         "final_probability_pct": 86,
         "matched_sources": [
-          "Arab News, published 2026-07-18 21:18Z \u2014 Google News RSS",
-          "Google News RSS one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T030318Z.json"
+          "Arab News, published 2026-07-18 21:18Z — Google News RSS",
+          "Google News RSS one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T030318Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3181,9 +3181,9 @@
         "raw_probability_pct": 43.99,
         "final_probability_pct": 44,
         "matched_sources": [
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 two Palestinians killed in Deir Jarir; Google News RSS",
-          "Haaretz live update, published 2026-07-19 23:40Z \u2014 two killed during settler raid; Google News RSS prior exact lane",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque and factory arson; Google News RSS"
+          "IMEMC News, published 2026-07-20 02:14Z — two Palestinians killed in Deir Jarir; Google News RSS",
+          "Haaretz live update, published 2026-07-19 23:40Z — two killed during settler raid; Google News RSS prior exact lane",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque and factory arson; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -3228,9 +3228,9 @@
         "raw_probability_pct": 57.27,
         "final_probability_pct": 57,
         "matched_sources": [
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 two Palestinians killed in Deir Jarir; Google News RSS",
-          "Haaretz live update, published 2026-07-19 23:40Z \u2014 two killed during settler raid; Google News RSS prior exact lane",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque and factory arson; Google News RSS"
+          "IMEMC News, published 2026-07-20 02:14Z — two Palestinians killed in Deir Jarir; Google News RSS",
+          "Haaretz live update, published 2026-07-19 23:40Z — two killed during settler raid; Google News RSS prior exact lane",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque and factory arson; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -3275,9 +3275,9 @@
         "raw_probability_pct": 71.55,
         "final_probability_pct": 72,
         "matched_sources": [
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 two Palestinians killed in Deir Jarir; Google News RSS",
-          "Haaretz live update, published 2026-07-19 23:40Z \u2014 two killed during settler raid; Google News RSS prior exact lane",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque and factory arson; Google News RSS"
+          "IMEMC News, published 2026-07-20 02:14Z — two Palestinians killed in Deir Jarir; Google News RSS",
+          "Haaretz live update, published 2026-07-19 23:40Z — two killed during settler raid; Google News RSS prior exact lane",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque and factory arson; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -3322,9 +3322,9 @@
         "raw_probability_pct": 94.83,
         "final_probability_pct": 95,
         "matched_sources": [
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 two Palestinians killed in Deir Jarir; Google News RSS",
-          "Haaretz live update, published 2026-07-19 23:40Z \u2014 two killed during settler raid; Google News RSS prior exact lane",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque and factory arson; Google News RSS"
+          "IMEMC News, published 2026-07-20 02:14Z — two Palestinians killed in Deir Jarir; Google News RSS",
+          "Haaretz live update, published 2026-07-19 23:40Z — two killed during settler raid; Google News RSS prior exact lane",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque and factory arson; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -3369,9 +3369,9 @@
         "raw_probability_pct": 22.72,
         "final_probability_pct": 23,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS",
-          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day and exact-event review checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS",
+          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day and exact-event review checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3414,9 +3414,9 @@
         "raw_probability_pct": 29.16,
         "final_probability_pct": 29,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS",
-          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day and exact-event review checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS",
+          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day and exact-event review checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3459,9 +3459,9 @@
         "raw_probability_pct": 36.0,
         "final_probability_pct": 36,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS",
-          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day and exact-event review checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS",
+          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day and exact-event review checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3504,9 +3504,9 @@
         "raw_probability_pct": 46.44,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Google News RSS",
-          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day and exact-event review checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T030203Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Google News RSS",
+          "IAEA news page direct browser/HTTP probe returned Cloudflare/HTTP 403 on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day and exact-event review checked 2026-07-20 — data/morning_deep_scan_sources_20260720T030203Z.json"
         ]
       },
       "confidence_score": 69,
