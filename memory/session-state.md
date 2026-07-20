@@ -9,7 +9,7 @@
 - **Result:** Global remains **75% / imminent**; unrounded additive coupled score is **74.52%**.
 - **Movers:** No numeric tracker moved.
 - **Signals:** No canonical active-set change. All **10** active signals remain aligned; fresh southern-Lebanon joint implementation reset the evidence origin for `israel_lebanon:diplomacy_active` at its decay boundary.
-- **Repository:** Final data/source-metadata commit `b309c9f1` is pushed; memory-only summary commit will follow.
+- **Repository:** Final data/source-metadata commit `b309c9f1` is pushed; the required memory summary is committed separately after the data deploy.
 - **Deployment:** GitHub Pages run `29779698598` succeeded for `b309c9f1`; local and live roots expose all three required command-deck markers and live state timestamp `2026-07-20T21:16:08Z`.
 - **Tests:** 31 core tests passed. The stock smoke fixture hit its hard-coded 60-second setup ceiling, but an identical final-state isolated copy passed all 11 smoke assertions in **55.78s**.
 
