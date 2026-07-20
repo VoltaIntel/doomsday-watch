@@ -12,7 +12,7 @@
 - **Status:** Complete.
 - **Result:** Global remains **75% / imminent**, raw coupled **74.596%**; no tracker probability changed.
 - **Signals:** No activation or clearance; the 9 pre-existing canonical signals remain aligned across trackers, zones and timeline.
-- **Repository:** HEAD/upstream/remote match at `c71fcd2d`; tree clean. Pipeline commit `7fbe32f1`, exact provenance through `24592428`, outage retry `bb88213b`.
+- **Repository:** HEAD/upstream/remote match after final memory-only synchronization; tree clean. Pipeline commit `7fbe32f1`, exact provenance through `24592428`, outage retry `bb88213b`, successful Pages deployment commit `c71fcd2d`.
 - **Verification:** Local and live roots have all three command-deck markers; live state exposes `morning_deep_scan_00z`, exact fallback metadata and **75% / imminent**. JSON/canonical/timeline checks pass. 31 fast tests passed; all 11 pipeline-smoke assertions passed in an isolated copy with only the fixture timeout extended (42 non-smoke checks total).
 - **Deployment:** Initial runs `29709244810`, `29709312151`, `29709357342`, and retry `29709412415` failed during GitHub's confirmed Actions/API outage. Final Pages run `29709501126` succeeded after service recovery; live publication is current.
 
