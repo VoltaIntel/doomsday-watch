@@ -298,8 +298,8 @@
     "last_scan": "morning_deep_scan_00z",
     "scan_time_utc": "2026-07-20T00:14:28Z",
     "analysis_window": "Deepest past-24-hour review for every configured tracker and required sector, with 7/14/30-day context for low-frequency and emerging lanes; post-21Z delta review and exact-event/body-date checks for material RSS hits.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_22x_http_432_and_web_extract_5_urls_http_432_then_google_news_rss_18_core_50_targeted_10_exact_event_plus_browser_direct_publisher_un_nato_eia_terminal_http_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily web_search attempts returned HTTP 432; web_extract for five URLs also returned HTTP 432. Fallback coverage completed through fresh Google News RSS (18 core lanes, 50 targeted lanes and 10 exact-event probes), direct browser/terminal attempts, direct UN/NATO/EIA feeds, OilPriceAPI and exact-slug Gamma reads. Direct IAEA and OPEC pages remained HTTP 403; configured OCHA and UN Sudan paths remained HTTP 404. Washington Post body retrieval failed with browser ERR_HTTP2_PROTOCOL_ERROR and terminal timeout, although Google RSS and NZ Herald independently carried its headline. Google RSS again produced false-recency, including July 13 Oman-talks/Yemen-airport material and March Pakistan-Afghanistan clashes.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260720T000135Z.json",
       "supplement": "data/deep_scan_supplement_20260720T000449Z.json",
@@ -687,7 +687,7 @@
       "mali_50_exact": 2
     },
     "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "post_deploy_metadata_restored_at": "2026-07-20T00:18:18Z"
+    "post_deploy_metadata_restored_at": "2026-07-20T00:20:18Z"
   },
   "trackers": {
     "iran_conventional": {
