@@ -100,7 +100,7 @@
       "zone": "critical",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data\u2014not a fresh PLA exercise, blockade or verified force concentration\u2014so no canonical indicator is activated and the coupled score stays 28%",
+      "notes": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data—not a fresh PLA exercise, blockade or verified force concentration—so no canonical indicator is activated and the coupled score stays 28%",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {},
       "name": "CHINA-TAIWAN"
@@ -298,8 +298,8 @@
     "last_scan": "morning_deep_scan_06z",
     "scan_time_utc": "2026-07-20T06:13:24Z",
     "analysis_window": "Deepest past-24-hour review for all 16 configured trackers and required sectors, with focused delta review after the prior 03:10Z scan, exact-event/body-date checks, allied-position review, energy/market sanity and emerging-crisis gate review.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_22x_http_432_and_web_extract_5_urls_http_432_then_google_news_rss_18_core_40_targeted_plus_browser_direct_ap_nato_iaea_reuters_taiwan_mnd_terminal_official_feeds_oilpriceapi_gamma_exact_slug",
+    "source_limitation": "All 22 required Tavily web_search attempts returned HTTP 432, and web_extract returned HTTP 432 for all five requested URLs. Fallback coverage completed through fresh Google News RSS (18 core lanes and 40 targeted/exact/emerging lanes), direct browser inspection of AP, NATO, IAEA, Reuters/FMT and Taiwan MND pages, direct official/feed probes, terminal HTTP, OilPriceAPI and Gamma exact-slug reads. Direct IAEA and OPEC pages remained HTTP 403; configured OCHA and UN Sudan paths remained HTTP 404. Google RSS retained false-recency and source-quality hazards: the DPRK warship event dates to 5 July, Pakistan-Afghanistan clash headlines trace to March, India border-fire claims lack independent/official corroboration, and Iranian tanker claims remain unverified. CNN body access was unavailable although its dated RSS record was captured.",
     "source_artifacts": {
       "primary": "data/morning_deep_scan_sources_20260720T060135Z.json",
       "supplement": "data/deep_scan_supplement_20260720T060338Z.json",
@@ -404,7 +404,7 @@
       "China: Reuters reports 55 Chinese government-vessel sightings around Taiwan in June versus 30 in May. The credible grey-zone trend is newly surfaced, but retrospective coast-guard/research-vessel data is not a fresh PLA blockade or force concentration; 28% coupled is held.",
       "Iran war: AP confirms the ninth U.S. strike night and a 17th U.S. military death; the realised-war lane is already capped at 100%. Iranian claims that two tankers were immobilised remain unverified and traffic is sparse but nonzero.",
       "Israel-Lebanon: a new report of Israeli destruction of Hezbollah underground infrastructure reinforces the existing ceasefire-violation indicator while Aoun-Rubio/Trump diplomacy remains active; 94% coupled is held.",
-      "Energy/markets: Brent $90.61 (+2.50%/24h), WTI $83.80 (+1.59%/24h); exact-slug U.S.-Iran invasion remains 30.5%, Ukraine peace-deal Yes falls to 19.5% (risk inverse 80.5%), and China-Taiwan clash eases to 5.8%. Sanity only; not probability inputs."
+      "Energy/markets: Brent $90.84 (+2.80%/24h), WTI $84.01 (+1.84%/24h); exact-slug U.S.-Iran invasion remains 30.5%, Ukraine peace-deal Yes is 19.5% (risk inverse 80.5%), and China-Taiwan clash is 5.8%. Sanity only; not probability inputs."
     ],
     "signals_changed": {
       "activated": [],
@@ -477,29 +477,29 @@
     "allied_positions": {
       "middle_east": "The United States and Iran remain in direct combat; AP confirms a ninth strike night and 17 U.S. military deaths since the war began. Gulf shipping is severely constrained but nonzero. No NATO entry decision appeared.",
       "nato": "NATO official latest news remains dated 18 July, with no Article 5 or direct-entry decision. Current headlines about arms deals and European posture do not change the threshold.",
-      "lebanon": "Rubio-Aoun talks and Aoun\u2019s planned Trump meeting keep the U.S.-Lebanon withdrawal/disarmament channel active while Israeli operations continue.",
+      "lebanon": "Rubio-Aoun talks and Aoun’s planned Trump meeting keep the U.S.-Lebanon withdrawal/disarmament channel active while Israeli operations continue.",
       "ukraine": "The UN condemned the overnight Kyiv attack; allied support remains equipment/air-defence focused, with no direct allied combat-entry decision or official nuclear-threshold change.",
       "indo_pacific": "Reuters documents a sharp June increase in Chinese coast-guard/research-vessel activity around Taiwan. It is a grey-zone warning rather than a fresh PLA blockade. No qualifying DPRK event appeared.",
-      "africa": "Sudan\u2019s drone threat remains severe; Mali convoy losses remain corroborated; eastern Congo and South Sudan/Abyei show no fresh operation. Somalia claims remain independently under-corroborated."
+      "africa": "Sudan’s drone threat remains severe; Mali convoy losses remain corroborated; eastern Congo and South Sudan/Abyei show no fresh operation. Somalia claims remain independently under-corroborated."
     },
     "energy_oil": {
-      "checked_at": "2026-07-20T06:06:06Z",
+      "checked_at": "2026-07-20T06:23:19Z",
       "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
-      "brent_usd": 90.61,
-      "brent_change_24h_pct": 2.5,
-      "brent_vs_pre_conflict_pct": 34.4,
-      "wti_usd": 83.8,
-      "wti_change_24h_pct": 1.59,
-      "wti_vs_pre_conflict_pct": 31.3,
+      "brent_usd": 90.84,
+      "brent_change_24h_pct": 2.8,
+      "brent_vs_pre_conflict_pct": 34.8,
+      "wti_usd": 84.01,
+      "wti_change_24h_pct": 1.84,
+      "wti_vs_pre_conflict_pct": 31.7,
       "natural_gas_usd": 2.88,
-      "gold_usd": 4007.02,
+      "gold_usd": 4010.96,
       "diesel_usd": 4.14,
-      "gasoline_usd": 3.42,
+      "gasoline_usd": 3.43,
       "heating_oil_usd": 4.14,
       "caveat": "Instrument timestamps vary slightly by contract; vendor-reported 24-hour changes are used. Values are sanity-only and did not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "checked_at": "2026-07-20T06:07:47Z",
+      "checked_at": "2026-07-20T06:24:24Z",
       "source": "Public Gamma exact-slug GET reads; sanity only",
       "markets_pct": {
         "will-the-us-invade-iran-before-2027": 30.5,
@@ -533,7 +533,57 @@
           "to": 30.5
         }
       },
-      "caveat": "Different event definitions, horizons and liquidity; market values did not set DoomsdayWatch probabilities."
+      "caveat": "Different event definitions, horizons and liquidity; market values did not set DoomsdayWatch probabilities.",
+      "pipeline_comparison_summary": {
+        "iran_conventional": {
+          "status": "ok",
+          "pm_implied_raw_pct": 30.5,
+          "pm_implied_24h_pct": 0.145,
+          "total_volume_24h": 252059.56
+        },
+        "iran_nuclear": {
+          "status": "ok",
+          "pm_implied_raw_pct": 6.37,
+          "pm_implied_24h_pct": 0.026,
+          "total_volume_24h": 1356.3
+        },
+        "russia_ukraine": {
+          "status": "ok",
+          "pm_implied_raw_pct": 80.5,
+          "pm_implied_24h_pct": 0.652,
+          "total_volume_24h": 9649.51
+        },
+        "russia": {
+          "status": "ok",
+          "pm_implied_raw_pct": 8.0,
+          "pm_implied_24h_pct": 0.033,
+          "total_volume_24h": 1381.72
+        },
+        "china": {
+          "status": "ok",
+          "pm_implied_raw_pct": 4.8,
+          "pm_implied_24h_pct": 0.02,
+          "total_volume_24h": 96643.89
+        },
+        "north_korea": {
+          "status": "ok",
+          "pm_implied_raw_pct": 2.83,
+          "pm_implied_24h_pct": 0.011,
+          "total_volume_24h": 81.99
+        },
+        "israel_lebanon": {
+          "status": "ok",
+          "pm_implied_raw_pct": 84.0,
+          "pm_implied_24h_pct": 0.73,
+          "total_volume_24h": 230.08
+        },
+        "india": {
+          "status": "no_market",
+          "pm_implied_raw_pct": null,
+          "pm_implied_24h_pct": null,
+          "total_volume_24h": null
+        }
+      }
     },
     "official_source_probe": {
       "un_news_rss": {
@@ -655,7 +705,7 @@
       "hormuz_guard_tankers_exact": 10
     },
     "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
-    "post_deploy_metadata_restored_at": "2026-07-20T03:13:44Z",
+    "post_deploy_metadata_restored_at": "2026-07-20T06:26:02Z",
     "pipeline_false_positive_correction": "Deploy at 2026-07-20T06:14:21Z negation-matched iaea_emergency from an explicit no-event sentence; false activation removed before final redeploy. The same deploy also keyword-matched ceasefire prose to diplomacy_active for India and Israel-Palestine; both false activations were removed and the prose was hardened before final redeploy."
   },
   "trackers": {
@@ -758,7 +808,7 @@
       "zone": "critical",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data\u2014not a fresh PLA exercise, blockade or verified force concentration\u2014so no canonical indicator is activated and the coupled score stays 28%",
+      "notes": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data—not a fresh PLA exercise, blockade or verified force concentration—so no canonical indicator is activated and the coupled score stays 28%",
       "last_updated": "2026-07-20T06:13:24Z",
       "signal_timestamps": {},
       "name": "CHINA-TAIWAN"
@@ -937,9 +987,9 @@
       "headline": "Ninth strike night continues; Hormuz traffic sparse but nonzero",
       "text": "AP's 20 July update confirms a ninth consecutive night of U.S. strikes, a 17th U.S. military death since the war began and largely stalled Strait traffic. Follow-on reports repeat Iranian claims that two tankers were immobilised, but Reuters reporting still has a few tankers entering to load and no mine event or zero-traffic condition is independently verified. The realised-war lane remains capped at 100%",
       "sources": [
-        "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-        "Reuters via BusinessLine, published 2026-07-20 02:38Z \u2014 few tankers entered Hormuz to load; Google News RSS",
-        "Al-Monitor, published 2026-07-20 04:50Z \u2014 Iranian tanker claims; Google News RSS"
+        "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+        "Reuters via BusinessLine, published 2026-07-20 02:38Z — few tankers entered Hormuz to load; Google News RSS",
+        "Al-Monitor, published 2026-07-20 04:50Z — Iranian tanker claims; Google News RSS"
       ]
     },
     {
@@ -950,9 +1000,9 @@
       "headline": "Israel reports tunnel strike as Aoun diplomacy remains active",
       "text": "A 19/20 July report says Israel destroyed Hezbollah underground infrastructure in southern Lebanon, reinforcing the existing ceasefire-violation indicator. Rubio's meeting with President Aoun and Aoun's planned Trump talks keep the Washington withdrawal-and-disarmament channel active; the opposing indicators remain balanced at 84% raw / 94% coupled",
       "sources": [
-        "DD News, published 2026-07-19 23:55Z \u2014 Israel reports underground-infrastructure strike; Google News RSS",
-        "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 Rubio-Aoun meeting",
-        "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "DD News, published 2026-07-19 23:55Z — Israel reports underground-infrastructure strike; Google News RSS",
+        "AFP via The New Indian Express, updated 2026-07-19 17:09Z — Rubio-Aoun meeting",
+        "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -963,8 +1013,8 @@
       "headline": "No current Turkey-specific escalation trigger",
       "text": "The focused past-24-hour lane returned no Turkey-specific combat action, qualifying official nuclear statement or current missile-range event. Broader missile headlines concern other countries, so the lane remains 5%",
       "sources": [
-        "Google News RSS one-day review returned zero current Turkey-specific items \u2014 data/deep_scan_supplement_20260720T060338Z.json",
-        "Fourteen-day context checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T060135Z.json"
+        "Google News RSS one-day review returned zero current Turkey-specific items — data/deep_scan_supplement_20260720T060338Z.json",
+        "Fourteen-day context checked 2026-07-20 — data/morning_deep_scan_sources_20260720T060135Z.json"
       ]
     },
     {
@@ -975,9 +1025,9 @@
       "headline": "Border-fire allegations still lack independent or official corroboration",
       "text": "Two low-credibility regional publications repeat an allegation of a two-hour India-Pakistan exchange, while a separate Daily Pioneer headline alleges a Rajouri border-truce breach. Exact-event searches found no independent major-outlet or official corroboration, casualties or force concentration; no canonical indicator is activated and the lane holds at 15%",
       "sources": [
-        "Atlas News Agency, published 2026-07-19 07:15Z, and Zamon, published 06:49Z \u2014 low-credibility Google News RSS allegations",
-        "Daily Pioneer, published 2026-07-19 01:14Z \u2014 Rajouri ceasefire claim; Google News RSS",
-        "Exact-event review returned no independent major-outlet or official corroboration \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "Atlas News Agency, published 2026-07-19 07:15Z, and Zamon, published 06:49Z — low-credibility Google News RSS allegations",
+        "Daily Pioneer, published 2026-07-19 01:14Z — Rajouri ceasefire claim; Google News RSS",
+        "Exact-event review returned no independent major-outlet or official corroboration — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -988,8 +1038,8 @@
       "headline": "No Article 5 action or new official nuclear threshold",
       "text": "NATO's official latest-news page still has no item after 18 July and no Article 5 action or direct allied combat decision. Fresh one-day searches returned no official nuclear-threshold event; the coupled score remains 52%",
       "sources": [
-        "NATO official latest-news page checked 2026-07-20 06Z; newest item dated 2026-07-18 \u2014 https://www.nato.int/en/news-and-events/articles/news",
-        "Google News RSS one-day Russia-NATO review returned zero current items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "NATO official latest-news page checked 2026-07-20 06Z; newest item dated 2026-07-18 — https://www.nato.int/en/news-and-events/articles/news",
+        "Google News RSS one-day Russia-NATO review returned zero current items — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -998,11 +1048,11 @@
       "time": "06:13",
       "impact": "watch",
       "headline": "Reuters documents June coast-guard surge around Taiwan",
-      "text": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data\u2014not a fresh PLA exercise, blockade or verified force concentration\u2014so no canonical indicator is activated and the coupled score stays 28%",
+      "text": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data—not a fresh PLA exercise, blockade or verified force concentration—so no canonical indicator is activated and the coupled score stays 28%",
       "sources": [
-        "Reuters via Free Malaysia Today, published 2026-07-20 03:18Z \u2014 https://www.freemalaysiatoday.com/category/world/2026/07/20/taiwan-reports-surge-in-chinese-vessel-activity-raising-pacific-blockade-fears",
-        "Taiwan MND PLA-activity page checked 2026-07-20; accessible referenced page dated 2026-07-16 \u2014 https://www.mnd.gov.tw/en/news/plaact/87053",
-        "Focused one-day PLA/blockade review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "Reuters via Free Malaysia Today, published 2026-07-20 03:18Z — https://www.freemalaysiatoday.com/category/world/2026/07/20/taiwan-reports-surge-in-chinese-vessel-activity-raising-pacific-blockade-fears",
+        "Taiwan MND PLA-activity page checked 2026-07-20; accessible referenced page dated 2026-07-16 — https://www.mnd.gov.tw/en/news/plaact/87053",
+        "Focused one-day PLA/blockade review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -1013,8 +1063,8 @@
       "headline": "No fresh DPRK missile or nuclear event",
       "text": "No fresh DPRK missile-range event or nuclear detonation was verified. One-day returns concern Japan's nuclear-policy debate, allied procurement and recirculated coverage of the 5 July warship weapons demonstration; the lane remains 18%",
       "sources": [
-        "Google News RSS one-day DPRK review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json",
-        "Yonhap exact-event date for the recirculated warship demonstration: 2026-07-05 \u2014 prior exact review"
+        "Google News RSS one-day DPRK review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json",
+        "Yonhap exact-event date for the recirculated warship demonstration: 2026-07-05 — prior exact review"
       ]
     },
     {
@@ -1025,8 +1075,8 @@
       "headline": "UN condemns Kyiv attack; no allied combat-entry decision",
       "text": "The UN condemned the latest overnight attack on Kyiv, while the record ballistic wave and the corroborated Golden Leo cargo-ship strike remain governing evidence. No direct NATO combat-entry decision or new official nuclear threshold appeared; the realised-war lane remains 99%",
       "sources": [
-        "UN News, published 2026-07-19 12:00Z \u2014 Ukraine: UN condemns overnight attack on Kyiv \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-        "Golden Leo exact-event follow-up checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "UN News, published 2026-07-19 12:00Z — Ukraine: UN condemns overnight attack on Kyiv — https://news.un.org/feed/view/en/story/2026/07/1167975",
+        "Golden Leo exact-event follow-up checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -1037,8 +1087,8 @@
       "headline": "Fresh-indexed clash claims still trace to older cycle",
       "text": "Fresh-indexed News On AIR claims about a captured outpost and 30 Pakistani soldiers still resolve to the March clash cycle. The focused one-day lane adds commentary but no newly corroborated interstate operation or force concentration; the lane remains 46%",
       "sources": [
-        "News On AIR direct-body dates for captured-outpost/30-soldier items resolve to March 2026 \u2014 prior exact inspection",
-        "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "News On AIR direct-body dates for captured-outpost/30-soldier items resolve to March 2026 — prior exact inspection",
+        "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -1049,9 +1099,9 @@
       "headline": "No new IAEA, enrichment or weapons threshold",
       "text": "No one-day report established a new enrichment advance, safeguards-access loss, watchdog emergency declaration or weapons-development threshold. The latest governing IAEA account remains that unfinished Darkhovin/Darquwin held no nuclear material when last visited and was not believed to pose radiological risk; the lane stays 47% raw / 54% coupled",
       "sources": [
-        "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
-        "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-        "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Darkhovin/Darquwin account; Google News RSS",
+        "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 — https://www.iaea.org/newscenter/news",
+        "Focused one-day review returned zero new nuclear-threshold items — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -1062,8 +1112,8 @@
       "headline": "CNN documents expanding drone threat; no distinct new offensive verified",
       "text": "A new CNN investigation documents civilians living under pervasive drone threat in Sudan, reinforcing the severity of the realised war. It does not establish a distinct post-cutoff SAF-RSF offensive or independently quantified new strike cluster, so the near-ceiling lane remains 90%",
       "sources": [
-        "CNN, published 2026-07-20 04:01Z \u2014 \u2018You cannot hide from a drone strike\u2019: The terror falling from the sky in Sudan; Google News RSS",
-        "Focused one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "CNN, published 2026-07-20 04:01Z — ‘You cannot hide from a drone strike’: The terror falling from the sky in Sudan; Google News RSS",
+        "Focused one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -1074,9 +1124,9 @@
       "headline": "Additional report corroborates two Deir Jarir deaths",
       "text": "i24NEWS now adds another report of two Palestinian deaths during clashes in Deir Jarir, further corroborating the Haaretz and IMEMC accounts. The existing truce-breach and holy-site indicators are reinforced, but the near-ceiling lane remains 88% without inflation",
       "sources": [
-        "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
-        "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
-        "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque/factory arson"
+        "i24NEWS, published 2026-07-20 04:51Z — two Palestinians killed during clashes in Deir Jarir; Google News RSS",
+        "IMEMC News, published 2026-07-20 02:14Z — prior corroborating report",
+        "France 24/AFP, published 2026-07-19 09:55Z — mosque/factory arson"
       ]
     },
     {
@@ -1087,8 +1137,8 @@
       "headline": "Kajo-Keji evidence carried; no new Abyei operation",
       "text": "The corroborated Kajo-Keji border skirmish, reinforcements and displacement above 10,000 remain governing evidence. No fresh South Sudan, Ugandan or Abyei kinetic event appeared in the one-day lane; the existing indicator and 17% score are carried",
       "sources": [
-        "Google News RSS one-day lane returned zero current items \u2014 data/deep_scan_supplement_20260720T060338Z.json",
-        "Thirty-day context checked 2026-07-20 \u2014 data/morning_deep_scan_sources_20260720T060135Z.json"
+        "Google News RSS one-day lane returned zero current items — data/deep_scan_supplement_20260720T060338Z.json",
+        "Thirty-day context checked 2026-07-20 — data/morning_deep_scan_sources_20260720T060135Z.json"
       ]
     },
     {
@@ -1099,8 +1149,8 @@
       "headline": "No fresh eastern Congo combat operation",
       "text": "The focused past-24-hour M23/FARDC/Rwanda lane returned no fresh combat operation. Current results remain older security-review material, so the lane stays 52%",
       "sources": [
-        "Google News RSS one-day M23/FARDC/Rwanda review returned zero current items \u2014 data/deep_scan_supplement_20260720T060338Z.json",
-        "Critical Threats Congo War Security Review, published 2026-07-17 18:53Z \u2014 prior exact-event lane"
+        "Google News RSS one-day M23/FARDC/Rwanda review returned zero current items — data/deep_scan_supplement_20260720T060338Z.json",
+        "Critical Threats Congo War Security Review, published 2026-07-17 18:53Z — prior exact-event lane"
       ]
     },
     {
@@ -1111,8 +1161,8 @@
       "headline": "No verified new Houthi or Red Sea operation",
       "text": "Reports that Iran directed the Houthis toward Bab el-Mandeb remain unverified as an operational order, and no new Houthi attack, closure attempt or independently verified Red Sea operation appeared. The lane remains 38%",
       "sources": [
-        "Alhurra, published 2026-07-19 18:01Z \u2014 claim of Iranian direction, not independently verified as an operational order; Google News RSS",
-        "Focused one-day Red Sea review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "Alhurra, published 2026-07-19 18:01Z — claim of Iranian direction, not independently verified as an operational order; Google News RSS",
+        "Focused one-day Red Sea review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     },
     {
@@ -1123,9 +1173,9 @@
       "headline": "Mali convoy losses remain corroborated; no follow-on operation",
       "text": "Multiple follow-on publications continue to corroborate at least 50 Malian soldiers killed in the Anefis-Gao convoy ambush, but no distinct follow-on operation appeared. The existing indicator is carried and the lane holds at 36%",
       "sources": [
-        "Ahram Online, published 2026-07-19 14:50Z \u2014 follow-on report on the Anefis-Gao ambush; Google News RSS",
-        "DT Next, published 2026-07-19 08:14Z \u2014 follow-on convoy report; Google News RSS",
-        "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+        "Ahram Online, published 2026-07-19 14:50Z — follow-on report on the Anefis-Gao ambush; Google News RSS",
+        "DT Next, published 2026-07-19 08:14Z — follow-on convoy report; Google News RSS",
+        "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
       ]
     }
   ],
@@ -1424,7 +1474,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1475,7 +1525,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1557,7 +1607,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 94,
       "zone": "imminent",
       "trend": "rising",
@@ -1629,7 +1679,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1675,7 +1725,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "rising",
@@ -1716,7 +1766,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1757,7 +1807,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1803,7 +1853,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -1843,14 +1893,14 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 3,
-      "notes": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data\u2014not a fresh PLA exercise, blockade or verified force concentration\u2014so no canonical indicator is activated and the coupled score stays 28%",
+      "notes": "Reuters reports Taiwan counted 55 Chinese coast-guard and research-vessel sightings around the island in June, up from 30 in May, and is planning blockade-response drills. This is credible evidence of sustained grey-zone coercion, but retrospective monthly data—not a fresh PLA exercise, blockade or verified force concentration—so no canonical indicator is activated and the coupled score stays 28%",
       "attribution": {
         "base_rate": 3.0,
         "raw_probability": 24.0,
@@ -1888,7 +1938,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -1928,7 +1978,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -1979,7 +2029,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2051,7 +2101,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "rising",
@@ -2113,7 +2163,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2164,7 +2214,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 38,
       "zone": "critical",
       "trend": "rising",
@@ -2215,7 +2265,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "rising",
@@ -2424,9 +2474,9 @@
         "raw_probability_pct": 55.1,
         "final_probability_pct": 55,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters via BusinessLine, published 2026-07-20 02:38Z \u2014 few tankers entered Hormuz to load; Google News RSS",
-          "Al-Monitor, published 2026-07-20 04:50Z \u2014 Iranian tanker claims; Google News RSS"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters via BusinessLine, published 2026-07-20 02:38Z — few tankers entered Hormuz to load; Google News RSS",
+          "Al-Monitor, published 2026-07-20 04:50Z — Iranian tanker claims; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -2471,9 +2521,9 @@
         "raw_probability_pct": 70.7,
         "final_probability_pct": 71,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters via BusinessLine, published 2026-07-20 02:38Z \u2014 few tankers entered Hormuz to load; Google News RSS",
-          "Al-Monitor, published 2026-07-20 04:50Z \u2014 Iranian tanker claims; Google News RSS"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters via BusinessLine, published 2026-07-20 02:38Z — few tankers entered Hormuz to load; Google News RSS",
+          "Al-Monitor, published 2026-07-20 04:50Z — Iranian tanker claims; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -2518,9 +2568,9 @@
         "raw_probability_pct": 87.5,
         "final_probability_pct": 88,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters via BusinessLine, published 2026-07-20 02:38Z \u2014 few tankers entered Hormuz to load; Google News RSS",
-          "Al-Monitor, published 2026-07-20 04:50Z \u2014 Iranian tanker claims; Google News RSS"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters via BusinessLine, published 2026-07-20 02:38Z — few tankers entered Hormuz to load; Google News RSS",
+          "Al-Monitor, published 2026-07-20 04:50Z — Iranian tanker claims; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -2565,9 +2615,9 @@
         "raw_probability_pct": 115.1,
         "final_probability_pct": 100,
         "matched_sources": [
-          "AP, updated 2026-07-20 03:10Z \u2014 https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
-          "Reuters via BusinessLine, published 2026-07-20 02:38Z \u2014 few tankers entered Hormuz to load; Google News RSS",
-          "Al-Monitor, published 2026-07-20 04:50Z \u2014 Iranian tanker claims; Google News RSS"
+          "AP, updated 2026-07-20 03:10Z — https://apnews.com/article/iran-us-hormuz-strait-war-july-19-2026-63996576847424ab5f22887f38037ce8",
+          "Reuters via BusinessLine, published 2026-07-20 02:38Z — few tankers entered Hormuz to load; Google News RSS",
+          "Al-Monitor, published 2026-07-20 04:50Z — Iranian tanker claims; Google News RSS"
         ]
       },
       "confidence_score": 100,
@@ -2612,8 +2662,8 @@
         "raw_probability_pct": 34.82,
         "final_probability_pct": 35,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 Ukraine: UN condemns overnight attack on Kyiv \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "Golden Leo exact-event follow-up checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "UN News, published 2026-07-19 12:00Z — Ukraine: UN condemns overnight attack on Kyiv — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "Golden Leo exact-event follow-up checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -2656,8 +2706,8 @@
         "raw_probability_pct": 45.56,
         "final_probability_pct": 46,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 Ukraine: UN condemns overnight attack on Kyiv \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "Golden Leo exact-event follow-up checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "UN News, published 2026-07-19 12:00Z — Ukraine: UN condemns overnight attack on Kyiv — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "Golden Leo exact-event follow-up checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -2700,8 +2750,8 @@
         "raw_probability_pct": 56.9,
         "final_probability_pct": 57,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 Ukraine: UN condemns overnight attack on Kyiv \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "Golden Leo exact-event follow-up checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "UN News, published 2026-07-19 12:00Z — Ukraine: UN condemns overnight attack on Kyiv — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "Golden Leo exact-event follow-up checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -2744,8 +2794,8 @@
         "raw_probability_pct": 73.64,
         "final_probability_pct": 74,
         "matched_sources": [
-          "UN News, published 2026-07-19 12:00Z \u2014 Ukraine: UN condemns overnight attack on Kyiv \u2014 https://news.un.org/feed/view/en/story/2026/07/1167975",
-          "Golden Leo exact-event follow-up checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "UN News, published 2026-07-19 12:00Z — Ukraine: UN condemns overnight attack on Kyiv — https://news.un.org/feed/view/en/story/2026/07/1167975",
+          "Golden Leo exact-event follow-up checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -2788,9 +2838,9 @@
         "raw_probability_pct": 32.17,
         "final_probability_pct": 32,
         "matched_sources": [
-          "DD News, published 2026-07-19 23:55Z \u2014 Israel reports underground-infrastructure strike; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 Rubio-Aoun meeting",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "DD News, published 2026-07-19 23:55Z — Israel reports underground-infrastructure strike; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — Rubio-Aoun meeting",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 85,
@@ -2835,9 +2885,9 @@
         "raw_probability_pct": 52.21,
         "final_probability_pct": 52,
         "matched_sources": [
-          "DD News, published 2026-07-19 23:55Z \u2014 Israel reports underground-infrastructure strike; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 Rubio-Aoun meeting",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "DD News, published 2026-07-19 23:55Z — Israel reports underground-infrastructure strike; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — Rubio-Aoun meeting",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 85,
@@ -2882,9 +2932,9 @@
         "raw_probability_pct": 74.05,
         "final_probability_pct": 74,
         "matched_sources": [
-          "DD News, published 2026-07-19 23:55Z \u2014 Israel reports underground-infrastructure strike; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 Rubio-Aoun meeting",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "DD News, published 2026-07-19 23:55Z — Israel reports underground-infrastructure strike; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — Rubio-Aoun meeting",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 85,
@@ -2929,9 +2979,9 @@
         "raw_probability_pct": 91.09,
         "final_probability_pct": 91,
         "matched_sources": [
-          "DD News, published 2026-07-19 23:55Z \u2014 Israel reports underground-infrastructure strike; Google News RSS",
-          "AFP via The New Indian Express, updated 2026-07-19 17:09Z \u2014 Rubio-Aoun meeting",
-          "Focused one-day review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "DD News, published 2026-07-19 23:55Z — Israel reports underground-infrastructure strike; Google News RSS",
+          "AFP via The New Indian Express, updated 2026-07-19 17:09Z — Rubio-Aoun meeting",
+          "Focused one-day review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 85,
@@ -2976,8 +3026,8 @@
         "raw_probability_pct": 35.7,
         "final_probability_pct": 36,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 \u2018You cannot hide from a drone strike\u2019: The terror falling from the sky in Sudan; Google News RSS",
-          "Focused one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "CNN, published 2026-07-20 04:01Z — ‘You cannot hide from a drone strike’: The terror falling from the sky in Sudan; Google News RSS",
+          "Focused one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3020,8 +3070,8 @@
         "raw_probability_pct": 49.1,
         "final_probability_pct": 49,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 \u2018You cannot hide from a drone strike\u2019: The terror falling from the sky in Sudan; Google News RSS",
-          "Focused one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "CNN, published 2026-07-20 04:01Z — ‘You cannot hide from a drone strike’: The terror falling from the sky in Sudan; Google News RSS",
+          "Focused one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3064,8 +3114,8 @@
         "raw_probability_pct": 63.5,
         "final_probability_pct": 64,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 \u2018You cannot hide from a drone strike\u2019: The terror falling from the sky in Sudan; Google News RSS",
-          "Focused one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "CNN, published 2026-07-20 04:01Z — ‘You cannot hide from a drone strike’: The terror falling from the sky in Sudan; Google News RSS",
+          "Focused one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3108,8 +3158,8 @@
         "raw_probability_pct": 86.9,
         "final_probability_pct": 87,
         "matched_sources": [
-          "CNN, published 2026-07-20 04:01Z \u2014 \u2018You cannot hide from a drone strike\u2019: The terror falling from the sky in Sudan; Google News RSS",
-          "Focused one-day Sudan review checked 2026-07-20 \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "CNN, published 2026-07-20 04:01Z — ‘You cannot hide from a drone strike’: The terror falling from the sky in Sudan; Google News RSS",
+          "Focused one-day Sudan review checked 2026-07-20 — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 57,
@@ -3152,9 +3202,9 @@
         "raw_probability_pct": 43.99,
         "final_probability_pct": 44,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque/factory arson"
+          "i24NEWS, published 2026-07-20 04:51Z — two Palestinians killed during clashes in Deir Jarir; Google News RSS",
+          "IMEMC News, published 2026-07-20 02:14Z — prior corroborating report",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque/factory arson"
         ]
       },
       "confidence_score": 100,
@@ -3199,9 +3249,9 @@
         "raw_probability_pct": 57.27,
         "final_probability_pct": 57,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque/factory arson"
+          "i24NEWS, published 2026-07-20 04:51Z — two Palestinians killed during clashes in Deir Jarir; Google News RSS",
+          "IMEMC News, published 2026-07-20 02:14Z — prior corroborating report",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque/factory arson"
         ]
       },
       "confidence_score": 100,
@@ -3246,9 +3296,9 @@
         "raw_probability_pct": 71.55,
         "final_probability_pct": 72,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque/factory arson"
+          "i24NEWS, published 2026-07-20 04:51Z — two Palestinians killed during clashes in Deir Jarir; Google News RSS",
+          "IMEMC News, published 2026-07-20 02:14Z — prior corroborating report",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque/factory arson"
         ]
       },
       "confidence_score": 100,
@@ -3293,9 +3343,9 @@
         "raw_probability_pct": 94.83,
         "final_probability_pct": 95,
         "matched_sources": [
-          "i24NEWS, published 2026-07-20 04:51Z \u2014 two Palestinians killed during clashes in Deir Jarir; Google News RSS",
-          "IMEMC News, published 2026-07-20 02:14Z \u2014 prior corroborating report",
-          "France 24/AFP, published 2026-07-19 09:55Z \u2014 mosque/factory arson"
+          "i24NEWS, published 2026-07-20 04:51Z — two Palestinians killed during clashes in Deir Jarir; Google News RSS",
+          "IMEMC News, published 2026-07-20 02:14Z — prior corroborating report",
+          "France 24/AFP, published 2026-07-19 09:55Z — mosque/factory arson"
         ]
       },
       "confidence_score": 100,
@@ -3340,9 +3390,9 @@
         "raw_probability_pct": 22.72,
         "final_probability_pct": 23,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
-          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Darkhovin/Darquwin account; Google News RSS",
+          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day review returned zero new nuclear-threshold items — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3385,9 +3435,9 @@
         "raw_probability_pct": 29.16,
         "final_probability_pct": 29,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
-          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Darkhovin/Darquwin account; Google News RSS",
+          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day review returned zero new nuclear-threshold items — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3430,9 +3480,9 @@
         "raw_probability_pct": 36.0,
         "final_probability_pct": 36,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
-          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Darkhovin/Darquwin account; Google News RSS",
+          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day review returned zero new nuclear-threshold items — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 69,
@@ -3475,9 +3525,9 @@
         "raw_probability_pct": 46.44,
         "final_probability_pct": 46,
         "matched_sources": [
-          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z \u2014 Darkhovin/Darquwin account; Google News RSS",
-          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 \u2014 https://www.iaea.org/newscenter/news",
-          "Focused one-day review returned zero new nuclear-threshold items \u2014 data/deep_scan_supplement_20260720T060338Z.json"
+          "Dawn/AFP quoting the IAEA, published 2026-07-19 16:26Z — Darkhovin/Darquwin account; Google News RSS",
+          "IAEA news and press pages returned HTTP 403/Cloudflare on 2026-07-20 — https://www.iaea.org/newscenter/news",
+          "Focused one-day review returned zero new nuclear-threshold items — data/deep_scan_supplement_20260720T060338Z.json"
         ]
       },
       "confidence_score": 69,
