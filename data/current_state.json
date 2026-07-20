@@ -317,8 +317,8 @@
     "scan_time_utc": "2026-07-20T21:15:58Z",
     "scan_time": "2026-07-20T21:15:58Z",
     "analysis_window": "Deepest past-24h review of all 17 configured trackers plus oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity, and 15 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "Tavily web_search attempted for all 22 required zone/sector/emerging queries; all failed HTTP 432. Completed with Google News RSS, browser/direct-source inspection, official feeds, terminal HTTP, OilPriceAPI and Polymarket Gamma exact-slug requests.",
+    "source_limitation": "All 22 Tavily searches and all 5 Tavily extraction URLs failed HTTP 432. Direct IAEA and OPEC pages returned HTTP 403; configured OCHA and UN Sudan feed paths returned HTTP 404; Reuters and NYT direct browser access was restricted by DataDome. Claims were cross-checked through accessible official UN/NATO/EIA pages, Google News RSS metadata, Reuters syndication on Al-Monitor, Bloomberg syndication, direct publisher pages and exact public APIs; one-sided claims remain explicitly qualified.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260720T210330Z.json",
       "data/deep_scan_supplement_20260720T210515Z.json",
@@ -518,37 +518,37 @@
       "South_China_Sea": "No treaty invocation, alliance consultation or new allied combat deployment followed the already-scored Second Thomas Shoal assault."
     },
     "energy_oil": {
-      "checked_at": "2026-07-20T21:02:15Z",
+      "checked_at": "2026-07-20T21:14:11Z",
       "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
-      "brent_usd": 88.96,
-      "brent_change_24h_pct": 0.78,
+      "brent_usd": 88.94,
+      "brent_change_24h_pct": 0.77,
       "brent_vs_pre_conflict_pct": 32.0,
       "wti_usd": 82.42,
       "wti_change_24h_pct": 0.78,
       "wti_vs_pre_conflict_pct": 29.2,
-      "natural_gas_usd": 2.84,
-      "gold_usd": 4010.3,
-      "diesel_usd": 4.11,
+      "natural_gas_usd": 2.83,
+      "gold_usd": 4009.01,
+      "diesel_usd": 4.1,
       "gasoline_usd": 3.39,
       "heating_oil_usd": 4.11,
       "interpretation": "Brent and WTI were each up about 0.78% over 24 hours, but below intraday $90 headlines. The move confirms stress, not a proven chokepoint shutdown or enforced Red Sea blockade.",
       "caveat": "Vendor timestamps vary by instrument; market data are sanity-only and did not set tracker probabilities."
     },
     "energy_sanity": {
-      "as_of": "2026-07-20T21:15:58Z",
+      "as_of": "2026-07-20T21:16:07Z",
       "source": "OilPriceAPI pre-deploy refresh",
-      "brent_usd": 88.96,
-      "brent_change_24h_pct": 0.78,
+      "brent_usd": 88.94,
+      "brent_change_24h_pct": 0.77,
       "wti_usd": 82.42,
       "wti_change_24h_pct": 0.78,
-      "natural_gas_usd": 2.84,
-      "natural_gas_change_24h_pct": -2.41,
-      "gold_usd": 4010.3,
-      "gold_change_24h_pct": -0.01,
+      "natural_gas_usd": 2.83,
+      "natural_gas_change_24h_pct": -2.08,
+      "gold_usd": 4009.01,
+      "gold_change_24h_pct": -0.04,
       "interpretation": "Oil remained elevated but showed no discontinuity proving literal zero Hormuz passage or Houthi enforcement."
     },
     "polymarket_sanity": {
-      "as_of": "2026-07-20T21:06:14Z",
+      "as_of": "2026-07-20T21:17:06Z",
       "source": "Polymarket public Gamma API exact-slug requests",
       "mapped_markets_fetched": 11,
       "mapped_slugs_missing": 12,
@@ -556,10 +556,10 @@
         "us_invades_iran_before_2027": 26.5,
         "iran_nuke_before_2027": 5.5,
         "iran_nuclear_test_before_2027": 4.5,
-        "iran_withdraws_npt_before_2027": 14.9,
+        "iran_withdraws_npt_before_2027": 14.899999999999999,
         "nato_article_5_before_2027": 6.5,
         "china_invades_taiwan_before_2027": 4.35,
-        "china_taiwan_clash_before_2027": 7.15
+        "china_taiwan_clash_before_2027": 7.1
       },
       "since_18z_exact_snapshot_pp": {
         "us_invades_iran_before_2027": 0.0,
@@ -706,7 +706,8 @@
       "mali_sahel",
       "south_china_sea"
     ],
-    "configured_tracker_count": 17
+    "configured_tracker_count": 17,
+    "post_deploy_metadata_restored_at": "2026-07-20T21:18:45Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -1000,7 +1001,7 @@
       "source": "UN News / Bloomberg via Transport Topics / Reuters via Al-Monitor",
       "source_date": "2026-07-20",
       "sources": [
-        "UN News: Middle East \u2014 civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
+        "UN News: Middle East — civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
         "Bloomberg via Transport Topics: Hormuz traffic near standstill as Dynacom ships targeted (2026-07-20)",
         "Reuters via Al-Monitor: Mediators propose a 10-day pause to revive the interim deal (2026-07-20)"
       ],
@@ -1035,7 +1036,7 @@
       "source": "UN News / OCHA / WFP / WHO / UNICEF",
       "source_date": "2026-07-20",
       "sources": [
-        "UN News: Ukraine \u2014 deadly Russian attacks severely damage aid warehouses (2026-07-20)",
+        "UN News: Ukraine — deadly Russian attacks severely damage aid warehouses (2026-07-20)",
         "UN OCHA/WFP/WHO/UNICEF reporting carried by UN News (2026-07-20)"
       ],
       "notes": "UN News reports Russian attacks killed at least two children, injured dozens and damaged WFP, WHO and UNICEF-linked aid warehouses. Ukraine also reported further strikes on Russian logistics and Black Sea targets; the already-realized war remains at 99%",
@@ -1054,7 +1055,7 @@
       "sources": [
         "Reuters: Yemen's Houthis declare naval blockade against Saudi Arabia (2026-07-20)",
         "UN News: renewed threat out of Yemen risks wider escalation (2026-07-20)",
-        "Al Jazeera: Yemen's Houthis declare naval blockade of Saudi Arabia \u2014 what to know (2026-07-20)"
+        "Al Jazeera: Yemen's Houthis declare naval blockade of Saudi Arabia — what to know (2026-07-20)"
       ],
       "notes": "Reuters confirms the Houthi declaration against Saudi shipping, and the UN formally warned about the threat to navigation. No attributable vessel attack, interdiction, broad rerouting, or Saudi military response tied to the declaration was verified, so risk holds at 46%",
       "tracker": "yemen_red_sea",
@@ -1580,7 +1581,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1631,7 +1632,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1723,7 +1724,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 90,
       "zone": "imminent",
       "trend": "falling",
@@ -1795,7 +1796,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1841,7 +1842,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -1882,7 +1883,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1923,7 +1924,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1969,7 +1970,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2009,7 +2010,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2054,7 +2055,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2094,7 +2095,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2145,7 +2146,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2217,7 +2218,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -2279,7 +2280,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2330,7 +2331,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 46,
       "zone": "critical",
       "trend": "rising",
@@ -2381,7 +2382,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "stable",
@@ -2443,7 +2444,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2619,7 +2620,7 @@
         "raw_probability_pct": 44.35,
         "final_probability_pct": 44,
         "matched_sources": [
-          "UN News: Middle East \u2014 civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
+          "UN News: Middle East — civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
           "Bloomberg via Transport Topics: Hormuz traffic near standstill as Dynacom ships targeted (2026-07-20)",
           "Reuters via Al-Monitor: Mediators propose a 10-day pause to revive the interim deal (2026-07-20)"
         ]
@@ -2668,7 +2669,7 @@
         "raw_probability_pct": 59.95,
         "final_probability_pct": 60,
         "matched_sources": [
-          "UN News: Middle East \u2014 civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
+          "UN News: Middle East — civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
           "Bloomberg via Transport Topics: Hormuz traffic near standstill as Dynacom ships targeted (2026-07-20)",
           "Reuters via Al-Monitor: Mediators propose a 10-day pause to revive the interim deal (2026-07-20)"
         ]
@@ -2717,7 +2718,7 @@
         "raw_probability_pct": 76.75,
         "final_probability_pct": 77,
         "matched_sources": [
-          "UN News: Middle East \u2014 civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
+          "UN News: Middle East — civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
           "Bloomberg via Transport Topics: Hormuz traffic near standstill as Dynacom ships targeted (2026-07-20)",
           "Reuters via Al-Monitor: Mediators propose a 10-day pause to revive the interim deal (2026-07-20)"
         ]
@@ -2766,7 +2767,7 @@
         "raw_probability_pct": 104.35,
         "final_probability_pct": 100,
         "matched_sources": [
-          "UN News: Middle East \u2014 civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
+          "UN News: Middle East — civilians again under fire as U.S.-Iran strikes continue (2026-07-20)",
           "Bloomberg via Transport Topics: Hormuz traffic near standstill as Dynacom ships targeted (2026-07-20)",
           "Reuters via Al-Monitor: Mediators propose a 10-day pause to revive the interim deal (2026-07-20)"
         ]
@@ -2815,7 +2816,7 @@
         "raw_probability_pct": 37.32,
         "final_probability_pct": 37,
         "matched_sources": [
-          "UN News: Ukraine \u2014 deadly Russian attacks severely damage aid warehouses (2026-07-20)",
+          "UN News: Ukraine — deadly Russian attacks severely damage aid warehouses (2026-07-20)",
           "UN OCHA/WFP/WHO/UNICEF reporting carried by UN News (2026-07-20)"
         ]
       },
@@ -2859,7 +2860,7 @@
         "raw_probability_pct": 48.06,
         "final_probability_pct": 48,
         "matched_sources": [
-          "UN News: Ukraine \u2014 deadly Russian attacks severely damage aid warehouses (2026-07-20)",
+          "UN News: Ukraine — deadly Russian attacks severely damage aid warehouses (2026-07-20)",
           "UN OCHA/WFP/WHO/UNICEF reporting carried by UN News (2026-07-20)"
         ]
       },
@@ -2903,7 +2904,7 @@
         "raw_probability_pct": 59.4,
         "final_probability_pct": 59,
         "matched_sources": [
-          "UN News: Ukraine \u2014 deadly Russian attacks severely damage aid warehouses (2026-07-20)",
+          "UN News: Ukraine — deadly Russian attacks severely damage aid warehouses (2026-07-20)",
           "UN OCHA/WFP/WHO/UNICEF reporting carried by UN News (2026-07-20)"
         ]
       },
@@ -2947,7 +2948,7 @@
         "raw_probability_pct": 76.14,
         "final_probability_pct": 76,
         "matched_sources": [
-          "UN News: Ukraine \u2014 deadly Russian attacks severely damage aid warehouses (2026-07-20)",
+          "UN News: Ukraine — deadly Russian attacks severely damage aid warehouses (2026-07-20)",
           "UN OCHA/WFP/WHO/UNICEF reporting carried by UN News (2026-07-20)"
         ]
       },
