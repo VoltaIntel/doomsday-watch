@@ -15,7 +15,8 @@
     "south_sudan_abyei",
     "eastern_drc",
     "yemen_red_sea",
-    "mali_sahel"
+    "mali_sahel",
+    "south_china_sea"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -375,6 +376,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "south_china_sea": {
+      "name": "South China Sea / Philippines-China",
+      "base_rate": 10,
+      "description": "Philippines-China maritime confrontation and wider South China Sea escalation",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 4,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 3,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -448,9 +476,10 @@
     "south_sudan_abyei": 0.02,
     "eastern_drc": 0.02,
     "yemen_red_sea": 0.02,
-    "mali_sahel": 0.02
+    "mali_sahel": 0.02,
+    "south_china_sea": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-18T21:20:20Z",
+  "last_updated": "2026-07-20T12:18:34Z",
   "dashboard_path": "dashboard.html"
 }
