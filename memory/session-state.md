@@ -4,17 +4,17 @@
 > Session: DoomsdayWatch 00Z morning deep scan
 
 ## Active Projects
-- DoomsdayWatch / nuke-watch — scheduled 00Z deepest-scan refresh completed, committed and pushed; GitHub Pages deployment is blocked by a confirmed GitHub Actions/API outage.
+- DoomsdayWatch / nuke-watch — scheduled 00Z deepest-scan refresh completed, committed, pushed and live-verified after GitHub recovered from an Actions/API outage.
 - Umbraxis Group — preserved paused state from the prior session; this cron did not touch its worktree or processes.
 
 ## Current Task
 - **What:** Deepest past-24-hour nuclear-escalation scan across all 16 canonical trackers, required sectors and emerging crises.
-- **Status:** Data/deploy pipeline complete; live Pages publication blocked externally.
+- **Status:** Complete.
 - **Result:** Global remains **75% / imminent**, raw coupled **74.596%**; no tracker probability changed.
 - **Signals:** No activation or clearance; the 9 pre-existing canonical signals remain aligned across trackers, zones and timeline.
-- **Repository:** HEAD/upstream/remote match at retry commit `bb88213b`; tree clean. Pipeline commit `7fbe32f1`, provenance commits through `24592428`.
-- **Verification:** Local root has all three command-deck markers; JSON/canonical/timeline checks pass. 31 fast tests passed; all 11 pipeline-smoke assertions passed in an isolated copy with only the fixture timeout extended (42 non-smoke checks total).
-- **Pages blocker:** Runs `29709244810`, `29709312151`, `29709357342`, and retry `29709412415` failed during the active GitHub Actions/API outage. Latest run built far enough to query Pages but received HTTP 503 from `GET /repos/VoltaIntel/doomsday-watch/pages`; deploy was skipped. Live site therefore still exposes the 21Z scan.
+- **Repository:** HEAD/upstream/remote match at `c71fcd2d`; tree clean. Pipeline commit `7fbe32f1`, exact provenance through `24592428`, outage retry `bb88213b`.
+- **Verification:** Local and live roots have all three command-deck markers; live state exposes `morning_deep_scan_00z`, exact fallback metadata and **75% / imminent**. JSON/canonical/timeline checks pass. 31 fast tests passed; all 11 pipeline-smoke assertions passed in an isolated copy with only the fixture timeout extended (42 non-smoke checks total).
+- **Deployment:** Initial runs `29709244810`, `29709312151`, `29709357342`, and retry `29709412415` failed during GitHub's confirmed Actions/API outage. Final Pages run `29709501126` succeeded after service recovery; live publication is current.
 
 ## DoomsdayWatch Watch State
 - Iran war: The Washington Post reports the United States is again nearing all-out war after additional troop deaths. The lane is already capped at 100%; Hormuz remains constrained but nonzero, with no verified mining or zero traffic.
@@ -31,7 +31,7 @@
 - Russia/NATO and Ukraine: official nuclear threshold language, Article 5 movement, allied combat entry or another materially larger ballistic/Black Sea strike cluster.
 - Israel-Lebanon/Gaza: collapse of the Washington framework, independent confirmation of the late West Bank deaths, a distinct mass-casualty strike cluster or broader holy-site mobilisation.
 - Emerging: independent corroboration of Somalia's operation/toll; fresh kinetic Thailand-Cambodia evidence; an Iraq spillover cluster distinct from the Iran-war lane.
-- Deployment: re-run Pages after GitHub reports Actions/API recovery; latest data is already on remote `main`.
+- Deployment: monitor normal next-run health; the final recovery run is live.
 
 ## Preserved Umbraxis Pause State
 - Prior Umbraxis state remains in today's vault entry; no Umbraxis action occurred in this cron.
