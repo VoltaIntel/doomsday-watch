@@ -16,7 +16,7 @@
         "hormuz_controlled_not_closed",
         "oil_infrastructure_threat"
       ],
-      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump\u2019s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%",
+      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump’s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%",
       "last_updated": "2026-07-21T21:10:46Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-07-20T12:18:34Z",
@@ -331,8 +331,8 @@
     "scan_time_utc": "2026-07-21T21:10:46Z",
     "scan_time": "2026-07-21T21:10:46Z",
     "analysis_window": "Deepest rolling past-24h review of all 18 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity, direct-publisher inspection and 18 emerging-crisis candidates; focused update from the completed 18Z scan through the 21Z cutoff.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "Tavily web_search attempted for 22 required tracker/sector/emerging queries; all failed HTTP 432. Three Tavily web_extract targets also failed HTTP 432. Completed with 18 core and 42 targeted/exact/emerging Google News RSS groups, 10 Bing News RSS checks, browser-direct Guardian, IMEMC, Tehran Times, UN News, NATO and IAEA inspection, official feeds, terminal HTTP, OilPriceAPI and Polymarket Gamma exact-slug requests.",
+    "source_limitation": "All 22 Tavily searches and three extraction targets failed HTTP 432. Direct IAEA and OPEC terminal probes returned HTTP 403; the browser IAEA path was Cloudflare-blocked. Configured OCHA and UN Sudan paths returned HTTP 404, and UN Press RSS returned HTTP 200 but parsed no items. The Darkhovin account is an Iranian source describing a weekend strike and Monday UN letter; the Houthi six-reroute figure remains a militia claim; Gaza casualty detail came from IMEMC and OHCHR/UN and was treated as reported rather than independently geolocated.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260721T210202Z.json",
       "data/deep_scan_supplement_20260721T210234Z.json",
@@ -532,7 +532,7 @@
       "South China Sea results concern the already-scored shoal clash and diplomatic fallout, not a second encounter."
     ],
     "allied_positions": {
-      "NATO": "Direct NATO inspection still lists Ukraine\u2019s civilian emergency-assistance request as the latest relevant operational item; no collective-defence or allied-combat step appeared.",
+      "NATO": "Direct NATO inspection still lists Ukraine’s civilian emergency-assistance request as the latest relevant operational item; no collective-defence or allied-combat step appeared.",
       "UN": "The Secretary-General called for stepped-up mediation, restraint and an immediate end to attacks on vital civilian infrastructure; UN News says the renewed Iran conflict affects ten countries.",
       "IAEA": "No newer verified enrichment, access, reprocessing, operational-site or detonation threshold surfaced. Direct IAEA access remained blocked; UN and an Iranian account describe the weekend strike on the safeguarded but unfinished Darkhovin power plant.",
       "Lebanon": "Aoun and Trump discussed Hezbollah disarmament and U.S. support. The Zawtar withdrawal and army deployment remain in force; no broader implementation or reversal appeared.",
@@ -540,11 +540,11 @@
       "South_China_Sea": "Envoy summons and allied diplomatic pressure continued after the shoal clash; no deployment, treaty consultation or combat entry followed."
     },
     "energy_oil": {
-      "checked_at": "2026-07-21T21:10:46Z",
+      "checked_at": "2026-07-21T21:16:45Z",
       "source": "OilPriceAPI plus Guardian/Reuters shipping evidence",
-      "brent_usd": 91.41,
+      "brent_usd": 91.51,
       "brent_change_24h_pct": 2.62,
-      "brent_vs_pre_conflict_pct": 35.6,
+      "brent_vs_pre_conflict_pct": 35.8,
       "wti_usd": 84.42,
       "wti_change_24h_pct": 2.43,
       "wti_vs_pre_conflict_pct": 32.3,
@@ -552,16 +552,16 @@
       "natural_gas_change_24h_pct": 2.12,
       "gold_usd": 4077.95,
       "gold_change_24h_pct": 1.78,
-      "diesel_usd": 4.13,
+      "diesel_usd": 4.14,
       "gasoline_usd": 3.4,
       "heating_oil_usd": 4.13,
       "interpretation": "Brent remains above $91 and WTI above $84 as Hormuz traffic risk and the Houthi Saudi-port threat persist. Direct reporting confirms two Red Sea tanker U-turns but neither Hormuz nor Bab el-Mandeb is independently proven formally and totally closed.",
       "caveat": "Vendor timestamps vary by instrument. Market data are sanity-only and did not mechanically set probabilities."
     },
     "energy_sanity": {
-      "as_of": "2026-07-21T21:10:46Z",
+      "as_of": "2026-07-21T21:16:45Z",
       "source": "OilPriceAPI",
-      "brent_usd": 91.41,
+      "brent_usd": 91.51,
       "brent_change_24h_pct": 2.62,
       "wti_usd": 84.42,
       "wti_change_24h_pct": 2.43,
@@ -708,7 +708,7 @@
       "bangladesh_myanmar": 1,
       "serbia_bosnia": 0
     },
-    "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files may change only through scripts/deploy.sh and scripts/pipeline.py.",
+    "dashboard_note": "data/current_state.json was updated atomically; dashboard/index files changed only through scripts/deploy.sh and scripts/pipeline.py.",
     "configured_trackers_reviewed": [
       "iran_conventional",
       "israel_lebanon",
@@ -730,7 +730,8 @@
       "somalia_gulf_of_aden"
     ],
     "configured_tracker_count": 18,
-    "mover_note": "No numeric tracker moved. New direct inspection confirmed 17 Tuesday Gaza deaths, the weekend Darkhovin strike and the Houthi tanker warning/two U-turns; all are within already-scored high-risk lanes and did not justify probability inflation."
+    "mover_note": "No numeric tracker moved. Direct inspection confirmed 17 Tuesday Gaza deaths, the weekend Darkhovin strike and the Houthi tanker warning/two U-turns; all remain within already-scored high-risk lanes. One stale Hormuz-control signal expired without changing the capped Iran score.",
+    "post_deploy_metadata_restored_at": "2026-07-21T21:16:45Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -747,7 +748,7 @@
         "diplomacy_refused",
         "oil_infrastructure_threat"
       ],
-      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump\u2019s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%",
+      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump’s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%",
       "last_updated": "2026-07-21T21:10:46Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-07-20T12:18:34Z",
@@ -1041,13 +1042,13 @@
         "UN News direct: conflict affects ten countries and the Secretary-General called for an end to attacks on vital civilian infrastructure (2026-07-21)",
         "Google News RSS: post-cutoff reporting repeated the tenth strike day and Tehran attacks; no implemented truce appeared by 21Z"
       ],
-      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump\u2019s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%.",
+      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump’s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%.",
       "tracker": "iran_conventional",
       "timestamp": "2026-07-21T21:10:46Z",
       "severity": "critical",
       "zone": "iran_conventional",
       "headline": "Tenth strike day and Gulf attacks continue; neither maritime chokepoint is formally shut",
-      "text": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump\u2019s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%.",
+      "text": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump’s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%.",
       "impact": "neutral",
       "time": "21 JUL 21:10Z"
     },
@@ -1640,7 +1641,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1691,7 +1692,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1729,7 +1730,7 @@
       ],
       "confidence": "HIGH",
       "base_rate": 22,
-      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump\u2019s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%",
+      "notes": "Direct Guardian and UN reporting confirms a tenth day of U.S. strikes and continued Iranian attacks across the Gulf. Trump’s refusal of a near-term meeting and UN-backed mediation remain simultaneous. The Houthis have not formally shut Bab el-Mandeb, and no new proof of a formal or total Hormuz shutdown appeared. The realized-war lane remains capped at 100%",
       "attribution": {
         "base_rate": 22.0,
         "raw_probability": 100.0,
@@ -1773,7 +1774,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 86,
       "zone": "imminent",
       "trend": "falling",
@@ -1845,7 +1846,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1891,7 +1892,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -1932,7 +1933,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1973,7 +1974,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -2019,7 +2020,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2059,7 +2060,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2104,7 +2105,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2144,7 +2145,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2195,7 +2196,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2267,7 +2268,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -2318,7 +2319,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2369,7 +2370,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 49,
       "zone": "critical",
       "trend": "rising",
@@ -2420,7 +2421,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "stable",
@@ -2482,7 +2483,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 21,
       "zone": "elevated",
       "trend": "rising",
@@ -2544,7 +2545,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
