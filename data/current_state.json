@@ -317,8 +317,8 @@
     "scan_time_utc": "2026-07-21T00:11:03Z",
     "scan_time": "2026-07-21T00:11:03Z",
     "analysis_window": "Deepest past-24h review of all 17 configured trackers plus oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity, direct-publisher inspection, and 15 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "Tavily web_search attempted for all 22 required zone/sector/emerging queries; all failed HTTP 432. Tavily web_extract also failed for 10 direct-source URLs. Completed with Google News RSS, browser/direct-source inspection, official UN/NATO/EIA pages and feeds, terminal HTTP, OilPriceAPI and Polymarket Gamma exact-slug requests.",
+    "source_limitation": "All 22 Tavily searches failed HTTP 432 and all 10 Tavily extraction URLs in five batches failed HTTP 432. Direct IAEA and OPEC pages returned HTTP 403; configured OCHA and UN Sudan feed paths returned HTTP 404; UKMTO direct inspection was Cloudflare-blocked; Google News did not render the direct Reuters target. Claims were cross-checked through accessible official UN/NATO/EIA pages, Google News RSS metadata, direct publisher inspection, OilPriceAPI and exact public market APIs. One-source or attribution-uncertain items remain watch evidence only.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260721T000217Z.json",
       "data/deep_scan_supplement_20260721T000335Z.json",
@@ -512,11 +512,11 @@
       "South_China_Sea": "No treaty invocation, alliance consultation or new allied combat deployment followed the already-scored Second Thomas Shoal assault."
     },
     "energy_oil": {
-      "checked_at": "2026-07-21T00:11:03Z",
+      "checked_at": "2026-07-21T00:15:32Z",
       "source": "OilPriceAPI via scripts/fetch_oil_prices.py",
-      "brent_usd": 88.81,
+      "brent_usd": 88.89,
       "brent_change_24h_pct": -2.21,
-      "brent_vs_pre_conflict_pct": 31.8,
+      "brent_vs_pre_conflict_pct": 31.9,
       "wti_usd": 82.54,
       "wti_change_24h_pct": -1.4,
       "wti_vs_pre_conflict_pct": 29.4,
@@ -524,14 +524,14 @@
       "gold_usd": 4007.17,
       "diesel_usd": 4.11,
       "gasoline_usd": 3.4,
-      "heating_oil_usd": 4.12,
+      "heating_oil_usd": 4.1,
       "interpretation": "Brent and WTI remained elevated versus the pre-conflict baseline but were down over 24 hours. That is consistent with severe stress without a fresh market discontinuity proving literal zero Hormuz passage or Houthi enforcement.",
       "caveat": "Vendor timestamps vary by instrument; market data are sanity-only and did not set tracker probabilities."
     },
     "energy_sanity": {
-      "as_of": "2026-07-21T00:11:03Z",
+      "as_of": "2026-07-21T00:15:32Z",
       "source": "OilPriceAPI pre-deploy refresh",
-      "brent_usd": 88.81,
+      "brent_usd": 88.89,
       "brent_change_24h_pct": -2.21,
       "wti_usd": 82.54,
       "wti_change_24h_pct": -1.4,
@@ -570,43 +570,107 @@
     "official_source_probe": {
       "un_news_rss": {
         "ok": true,
-        "source": "un_news_rss"
+        "status": 200,
+        "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+        "error": null,
+        "content_type": "application/rss+xml; charset=utf-8",
+        "items": [],
+        "title": "un_news_rss"
       },
       "un_press_rss": {
         "ok": true,
-        "source": "un_press_rss"
+        "status": 200,
+        "url": "https://press.un.org/en/rss.xml",
+        "error": null,
+        "content_type": "application/rss+xml; charset=utf-8",
+        "items": [],
+        "title": "un_press_rss"
       },
       "nato_news": {
         "ok": true,
-        "source": "nato_news"
+        "status": 200,
+        "url": "https://www.nato.int/cps/en/natohq/news.htm",
+        "error": null,
+        "content_type": "text/html;charset=utf-8",
+        "title": "News"
       },
       "nato_press": {
         "ok": true,
-        "source": "nato_press"
+        "status": 200,
+        "url": "https://www.nato.int/cps/en/natohq/press_releases.htm",
+        "error": null,
+        "content_type": "text/html;charset=utf-8",
+        "title": "Media advisories"
       },
       "iaea_news": {
         "ok": false,
-        "source": "iaea_news"
+        "status": null,
+        "url": "https://www.iaea.org/newscenter/news",
+        "error": "<HTTPError 403: 'Forbidden'>",
+        "content_type": null
       },
       "iaea_press": {
         "ok": false,
-        "source": "iaea_press"
+        "status": null,
+        "url": "https://www.iaea.org/newscenter/pressreleases",
+        "error": "<HTTPError 403: 'Forbidden'>",
+        "content_type": null
       },
       "eia_rss": {
         "ok": true,
-        "source": "eia_rss"
+        "status": 200,
+        "url": "https://www.eia.gov/rss/todayinenergy.xml",
+        "error": null,
+        "content_type": "text/xml",
+        "items": [
+          {
+            "title": "New York imports more electricity from Canada after high-voltage transmission line opens",
+            "published": "2026-07-20T14:00:00Z",
+            "link": "https://www.eia.gov/todayinenergy/detail.php?id=67867"
+          },
+          {
+            "title": "What are tank bottoms?",
+            "published": "2026-07-16T14:00:00Z",
+            "link": "https://www.eia.gov/todayinenergy/detail.php?id=67866"
+          },
+          {
+            "title": "Petroleum markets responded to disruptions in the Middle East in the second quarter",
+            "published": "2026-07-15T14:00:00Z",
+            "link": "https://www.eia.gov/todayinenergy/detail.php?id=67865"
+          },
+          {
+            "title": "Global liquefied natural gas trade volumes reached record high in 2025",
+            "published": "2026-07-14T14:00:00Z",
+            "link": "https://www.eia.gov/todayinenergy/detail.php?id=67864"
+          },
+          {
+            "title": "The United States produced more crude oil than any other country in 2025",
+            "published": "2026-07-09T14:00:00Z",
+            "link": "https://www.eia.gov/todayinenergy/detail.php?id=67844"
+          }
+        ],
+        "title": "New York imports more electricity from Canada after high-voltage transmission line opens"
       },
       "opec_news": {
         "ok": false,
-        "source": "opec_news"
+        "status": null,
+        "url": "https://www.opec.org/opec_web/en/press_room/news.xml",
+        "error": "<HTTPError 403: 'Forbidden'>",
+        "content_type": null
       },
       "ocha_opt": {
         "ok": false,
-        "source": "ocha_opt"
+        "status": null,
+        "url": "https://www.ochaopt.org/updates/feed",
+        "error": "<HTTPError 404: 'Not Found'>",
+        "content_type": null
       },
       "un_sudan": {
         "ok": false,
-        "source": "un_sudan"
+        "status": null,
+        "url": "https://news.un.org/en/tags/sudan/feed",
+        "error": "<HTTPError 404: 'Not Found'>",
+        "content_type": null
       }
     },
     "rss_headline_counts": {
@@ -704,7 +768,8 @@
       "mali_sahel",
       "south_china_sea"
     ],
-    "configured_tracker_count": 17
+    "configured_tracker_count": 17,
+    "post_deploy_metadata_restored_at": "2026-07-21T00:15:32Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -1582,7 +1647,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1633,7 +1698,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1725,7 +1790,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 90,
       "zone": "imminent",
       "trend": "falling",
@@ -1797,7 +1862,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1843,7 +1908,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -1884,7 +1949,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1925,7 +1990,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -1971,7 +2036,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2011,7 +2076,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2056,7 +2121,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2096,7 +2161,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2147,7 +2212,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2219,7 +2284,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -2281,7 +2346,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2332,7 +2397,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 46,
       "zone": "critical",
       "trend": "rising",
@@ -2383,7 +2448,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "stable",
@@ -2445,7 +2510,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
