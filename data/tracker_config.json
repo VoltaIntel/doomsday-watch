@@ -16,7 +16,8 @@
     "eastern_drc",
     "yemen_red_sea",
     "mali_sahel",
-    "south_china_sea"
+    "south_china_sea",
+    "somalia_gulf_of_aden"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -403,6 +404,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "somalia_gulf_of_aden": {
+      "name": "Somalia / Gulf of Aden piracy",
+      "base_rate": 12,
+      "description": "Somalia-linked piracy and Gulf of Aden maritime security escalation",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -477,9 +505,10 @@
     "eastern_drc": 0.02,
     "yemen_red_sea": 0.02,
     "mali_sahel": 0.02,
-    "south_china_sea": 0.02
+    "south_china_sea": 0.02,
+    "somalia_gulf_of_aden": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-20T12:18:34Z",
+  "last_updated": "2026-07-21T03:15:22Z",
   "dashboard_path": "dashboard.html"
 }
