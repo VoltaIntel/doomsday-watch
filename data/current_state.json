@@ -337,8 +337,8 @@
     "scan_time_utc": "2026-07-21T12:12:43Z",
     "scan_time": "2026-07-21T12:12:43Z",
     "analysis_window": "Deepest rolling past-24h review of all 18 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity, direct-publisher inspection and 18 emerging-crisis candidates; focused update from the completed 09Z scan through the 12Z cutoff.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "Tavily web_search attempted for 22 required tracker/sector/emerging queries; all failed HTTP 432. Two Tavily web_extract URLs also failed HTTP 432. Completed with Google News RSS, browser/direct CNBC, BBC, Jerusalem Post and NATO inspection, official UN/NATO pages and feeds, terminal HTTP, OilPriceAPI and Polymarket Gamma exact-slug requests.",
+    "source_limitation": "All 22 Tavily searches and both Tavily extraction targets failed HTTP 432. Direct IAEA and OPEC pages returned HTTP 403; EIA RSS timed out; configured OCHA and UN Sudan paths returned HTTP 404. Reuters direct pages were DataDome-restricted, so Reuters items were checked through Google News metadata and publisher syndications. Publication/index timestamps were audited: Pickaxe Mountain reporting describes a transfer last fall, Taiwan reports largely describe June activity, and Mali, South China Sea and Asana waves are follow-ons.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260721T120128Z.json",
       "data/deep_scan_supplement_20260721T120425Z.json",
@@ -493,7 +493,7 @@
       "israel_lebanon": {
         "raw_pp": -4,
         "coupled_pp": -4,
-        "reason": "Reuters and BBC confirm Israeli withdrawal from Zawtar and Lebanese army entry, satisfying the pilot\u2019s first meaningful operational test while the wider security zone and disarmament remain unresolved."
+        "reason": "Reuters and BBC confirm Israeli withdrawal from Zawtar and Lebanese army entry, satisfying the pilot’s first meaningful operational test while the wider security zone and disarmament remain unresolved."
       }
     },
     "signals_changed": {
@@ -529,7 +529,7 @@
       ],
       "qualified": [],
       "added": [],
-      "decision": "No new lane qualified. Myanmar\u2019s Sittwe/Rakhine offensive had two independent current publishers plus one unrelated Iran-polluted result, below the three-mention gate. Bangladesh-Myanmar personnel crossings had multiple retellings but no violent escalation. Western Niger is covered by mali_sahel and remained largely one state-media-origin syndication chain rather than a distinct new tracker."
+      "decision": "No new lane qualified. Myanmar’s Sittwe/Rakhine offensive had two independent current publishers plus one unrelated Iran-polluted result, below the three-mention gate. Bangladesh-Myanmar personnel crossings had multiple retellings but no violent escalation. Western Niger is covered by mali_sahel and remained largely one state-media-origin syndication chain rather than a distinct new tracker."
     },
     "false_recency_exclusions": [
       "Pickaxe Mountain reports published 21 July say the centrifuge transfer occurred last fall after the June 2025 war.",
@@ -539,7 +539,7 @@
       "Somalia piracy reports still concern the same Asana hijack and diversion."
     ],
     "allied_positions": {
-      "NATO": "Direct NATO inspection still shows Ukraine\u2019s civilian emergency-response request through the EADRCC as the latest relevant operational item; no collective-defence or allied-combat step appeared.",
+      "NATO": "Direct NATO inspection still shows Ukraine’s civilian emergency-response request through the EADRCC as the latest relevant operational item; no collective-defence or allied-combat step appeared.",
       "UN": "The UN feed still carries civilian-risk reporting on Iran and aid/health reporting; no new UN-authorized combat action appeared.",
       "IAEA": "No newer verified enrichment, access, Fordow, reprocessing or detonation threshold surfaced. Pickaxe Mountain reporting is about a transfer last fall; direct IAEA pages remained HTTP 403.",
       "Lebanon": "Reuters and BBC confirm Israeli withdrawal from Zawtar and Lebanese army entry. Israel says it will retain the wider security zone, and Hezbollah disarmament remains unresolved.",
@@ -547,44 +547,44 @@
       "South_China_Sea": "U.S. condemnation and reassurance remain in force after the shoal clash; no deployment, treaty consultation or combat entry followed."
     },
     "energy_oil": {
-      "checked_at": "2026-07-21T12:02:23Z",
+      "checked_at": "2026-07-21T12:16:31Z",
       "source": "OilPriceAPI plus CNBC direct inspection",
-      "brent_usd": 90.81,
-      "brent_change_24h_pct": 4.06,
+      "brent_usd": 90.35,
+      "brent_change_24h_pct": 2.37,
       "brent_vs_pre_conflict_pct": 34.7,
-      "wti_usd": 83.24,
-      "wti_change_24h_pct": 3.62,
+      "wti_usd": 83.52,
+      "wti_change_24h_pct": 2.4,
       "wti_vs_pre_conflict_pct": 30.5,
-      "natural_gas_usd": 2.88,
-      "natural_gas_change_24h_pct": 0.7,
-      "gold_usd": 4056.51,
-      "gold_change_24h_pct": 0.94,
-      "diesel_usd": 4.08,
+      "natural_gas_usd": 2.87,
+      "natural_gas_change_24h_pct": -0.35,
+      "gold_usd": 4065.0,
+      "gold_change_24h_pct": 1.27,
+      "diesel_usd": 4.1,
       "gasoline_usd": 3.41,
       "heating_oil_usd": 4.09,
-      "interpretation": "Brent moved above $90 and both crude benchmarks gained more than 3.5% over 24 hours as Iran/Gulf and Red Sea risk intensified. Lloyd\u2019s/Kpler still show sharply reduced but nonzero Hormuz passage, so the move corroborates high chokepoint stress rather than literal closure.",
+      "interpretation": "Brent remained above $90 and both crude benchmarks were more than 2% higher over 24 hours as Iran/Gulf and Red Sea risk stayed elevated. Lloyd’s/Kpler still show sharply reduced but nonzero Hormuz passage, so the move corroborates high chokepoint stress rather than literal closure.",
       "caveat": "Vendor timestamps vary by instrument. Market data are sanity-only and did not mechanically set probabilities."
     },
     "energy_sanity": {
-      "as_of": "2026-07-21T12:02:23Z",
+      "as_of": "2026-07-21T12:16:31Z",
       "source": "OilPriceAPI pre-deploy refresh",
-      "brent_usd": 90.81,
-      "brent_change_24h_pct": 4.06,
-      "wti_usd": 83.24,
-      "wti_change_24h_pct": 3.62,
-      "natural_gas_usd": 2.88,
-      "natural_gas_change_24h_pct": 0.7,
-      "gold_usd": 4056.51,
-      "gold_change_24h_pct": 0.94,
-      "interpretation": "Oil\u2019s renewed rise corroborates severe shipping risk, but nonzero Hormuz traffic prevents treating the market move as proof of closure."
+      "brent_usd": 90.35,
+      "brent_change_24h_pct": 2.37,
+      "wti_usd": 83.52,
+      "wti_change_24h_pct": 2.4,
+      "natural_gas_usd": 2.87,
+      "natural_gas_change_24h_pct": -0.35,
+      "gold_usd": 4065.0,
+      "gold_change_24h_pct": 1.27,
+      "interpretation": "Oil’s renewed rise corroborates severe shipping risk, but nonzero Hormuz traffic prevents treating the market move as proof of closure."
     },
     "polymarket_sanity": {
-      "as_of": "2026-07-21T12:07:31Z",
+      "as_of": "2026-07-21T12:17:40Z",
       "source": "Polymarket public Gamma API exact-slug requests",
       "mapped_markets_fetched": 11,
       "mapped_slugs_missing": 12,
       "headline_markets_pct": {
-        "us_invades_iran_before_2027": 25.5,
+        "us_invades_iran_before_2027": 26.5,
         "iran_nuke_before_2027": 5.55,
         "iran_nuclear_test_before_2027": 4.5,
         "iran_withdraws_npt_before_2027": 14.65,
@@ -593,10 +593,10 @@
         "china_taiwan_clash_before_2027": 6.85,
         "north_korea_invades_before_2027": 2.05,
         "ukraine_peace_deal_before_2027": 21.5,
-        "israel_lebanon_normalize_before_2027": 16.0
+        "israel_lebanon_normalize_before_2027": 15.5
       },
       "since_prior_snapshot_pp": {
-        "us_invades_iran_before_2027": 0.0,
+        "us_invades_iran_before_2027": 1.0,
         "iran_nuke_before_2027": 0.0,
         "iran_nuclear_test_before_2027": 0.0,
         "iran_withdraws_npt_before_2027": -0.3,
@@ -605,9 +605,9 @@
         "china_taiwan_clash_before_2027": 0.1,
         "north_korea_invades_before_2027": -0.65,
         "ukraine_peace_deal_before_2027": 0.0,
-        "israel_lebanon_normalize_before_2027": 0.5
+        "israel_lebanon_normalize_before_2027": 0.0
       },
-      "interpretation": "Exact markets were mostly flat. Israel-Lebanon normalization rose 0.5 point to 16%, the China-Taiwan clash contract rose 0.1 point and the thin DPRK-invasion contract fell 0.65 point. Differing horizons and liquidity mean no market value mechanically set a tracker score."
+      "interpretation": "Exact markets were mostly stable. The U.S.-Iran invasion contract rose 1 point to 26.5%; Iran NPT withdrawal fell 0.3 point, the China-Taiwan clash contract rose 0.1 point and the thin DPRK-invasion contract fell 0.65 point. Differing horizons and liquidity mean no market value mechanically set a tracker score."
     },
     "official_source_probe": {
       "un_news_rss": {
@@ -738,7 +738,8 @@
     ],
     "configured_tracker_count": 18,
     "mover_note": "Israel-Lebanon fell 4 points raw and coupled after Reuters/BBC confirmed the Zawtar withdrawal and Lebanese deployment. No other tracker moved.",
-    "false_signal_guard": "A negated narrative phrase caused a pipeline false activation; it was removed before the final deployment and the final state contains no such signal."
+    "false_signal_guard": "A negated narrative phrase caused a pipeline false activation on the first deployment pass. The phrase and false signal were removed, the deploy was rerun, and the final state/timeline contain only the 11 pre-existing canonical signals.",
+    "post_deploy_metadata_restored_at": "2026-07-21T12:19:09Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -1048,12 +1049,12 @@
   },
   "latest_news": [
     {
-      "source": "Reuters / CNBC / Lloyd\u2019s List-Kpler / OilPriceAPI",
+      "source": "Reuters / CNBC / Lloyd’s List-Kpler / OilPriceAPI",
       "source_date": "2026-07-21",
       "sources": [
         "Reuters: Iranian forces target Bahrain and Kuwait after U.S. strikes hit southern Iran (2026-07-21 11:31Z)",
         "CNBC: IRGC claims Amazon Bahrain infrastructure strike; damage not independently verified (2026-07-21)",
-        "CNBC citing Lloyd\u2019s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
+        "CNBC citing Lloyd’s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
         "OilPriceAPI: Brent $90.81, +4.06%/24h (2026-07-21 12:01Z)"
       ],
       "notes": "Reuters reports Iranian forces targeted Bahrain and Kuwait while U.S. strikes hit southern Iran. CNBC verified only that the IRGC claimed a cruise-missile hit on Amazon infrastructure in Bahrain; CNBC could not independently confirm damage. Lloyd's/Kpler data still show sharply reduced but nonzero Hormuz traffic, and Brent moved above $90. The realized-war lane remains capped at 100%.",
@@ -1653,7 +1654,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1704,7 +1705,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1796,7 +1797,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 86,
       "zone": "imminent",
       "trend": "falling",
@@ -1868,7 +1869,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -1914,7 +1915,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -1955,7 +1956,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -1996,7 +1997,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -2042,7 +2043,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2082,7 +2083,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2127,7 +2128,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2167,7 +2168,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2218,7 +2219,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 88,
       "zone": "imminent",
       "trend": "rising",
@@ -2290,7 +2291,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -2352,7 +2353,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2403,7 +2404,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 46,
       "zone": "critical",
       "trend": "rising",
@@ -2454,7 +2455,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "stable",
@@ -2516,7 +2517,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 21,
       "zone": "elevated",
       "trend": "rising",
@@ -2578,7 +2579,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2767,7 +2768,7 @@
         "matched_sources": [
           "Reuters: Iranian forces target Bahrain and Kuwait after U.S. strikes hit southern Iran (2026-07-21 11:31Z)",
           "CNBC: IRGC claims Amazon Bahrain infrastructure strike; damage not independently verified (2026-07-21)",
-          "CNBC citing Lloyd\u2019s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
+          "CNBC citing Lloyd’s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
           "OilPriceAPI: Brent $90.81, +4.06%/24h (2026-07-21 12:01Z)"
         ]
       },
@@ -2817,7 +2818,7 @@
         "matched_sources": [
           "Reuters: Iranian forces target Bahrain and Kuwait after U.S. strikes hit southern Iran (2026-07-21 11:31Z)",
           "CNBC: IRGC claims Amazon Bahrain infrastructure strike; damage not independently verified (2026-07-21)",
-          "CNBC citing Lloyd\u2019s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
+          "CNBC citing Lloyd’s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
           "OilPriceAPI: Brent $90.81, +4.06%/24h (2026-07-21 12:01Z)"
         ]
       },
@@ -2867,7 +2868,7 @@
         "matched_sources": [
           "Reuters: Iranian forces target Bahrain and Kuwait after U.S. strikes hit southern Iran (2026-07-21 11:31Z)",
           "CNBC: IRGC claims Amazon Bahrain infrastructure strike; damage not independently verified (2026-07-21)",
-          "CNBC citing Lloyd\u2019s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
+          "CNBC citing Lloyd’s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
           "OilPriceAPI: Brent $90.81, +4.06%/24h (2026-07-21 12:01Z)"
         ]
       },
@@ -2917,7 +2918,7 @@
         "matched_sources": [
           "Reuters: Iranian forces target Bahrain and Kuwait after U.S. strikes hit southern Iran (2026-07-21 11:31Z)",
           "CNBC: IRGC claims Amazon Bahrain infrastructure strike; damage not independently verified (2026-07-21)",
-          "CNBC citing Lloyd\u2019s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
+          "CNBC citing Lloyd’s/Kpler: weekend Hormuz transits about 30 versus more than 100 daily before the war (2026-07-21)",
           "OilPriceAPI: Brent $90.81, +4.06%/24h (2026-07-21 12:01Z)"
         ]
       },
