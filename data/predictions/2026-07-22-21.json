@@ -1,0 +1,1267 @@
+{
+  "generated_at": "2026-07-22T21:12:29Z",
+  "date": "2026-07-22",
+  "hour": "21",
+  "predictions": [
+    {
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "type": "military_operation",
+      "value": 100,
+      "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
+      "confidence": 75,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 90
+    },
+    {
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "type": "military_operation",
+      "value": 88,
+      "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
+      "confidence": 55,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 78
+    },
+    {
+      "tracker_id": "pakistan_afghanistan",
+      "tracker_name": "PAKISTAN-AFGHANISTAN",
+      "type": "border_conflict",
+      "value": 46,
+      "description": "Afghan-Pakistan border tensions likely to persist. Additional clashes probable based on recent trajectory.",
+      "confidence": 50,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 36
+    },
+    {
+      "tracker_id": "russia",
+      "tracker_name": "RUSSIA-NATO",
+      "type": "diplomatic",
+      "value": 52,
+      "description": "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain.",
+      "confidence": 45,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 37
+    },
+    {
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "type": "escalation",
+      "value": 100,
+      "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 89
+    },
+    {
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "type": "escalation",
+      "value": 100,
+      "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 82
+    },
+    {
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "type": "escalation",
+      "value": 100,
+      "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 78
+    },
+    {
+      "tracker_id": "yemen_red_sea",
+      "tracker_name": "YEMEN RED SEA",
+      "type": "escalation",
+      "value": 66,
+      "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 47
+    },
+    {
+      "tracker_id": "china",
+      "tracker_name": "CHINA-TAIWAN",
+      "type": "escalation",
+      "value": 32,
+      "description": "Current escalation indicators suggest CHINA-TAIWAN will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 18
+    },
+    {
+      "tracker_id": "somalia_gulf_of_aden",
+      "tracker_name": "SOMALIA GULF OF ADEN",
+      "type": "escalation",
+      "value": 32,
+      "description": "Current escalation indicators suggest SOMALIA GULF OF ADEN will remain on upward trajectory. Monitor for trigger events.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_above",
+      "eval_value": 18
+    },
+    {
+      "tracker_id": "south_china_sea",
+      "tracker_name": "SOUTH CHINA SEA",
+      "type": "de_escalation",
+      "value": 15,
+      "description": "SOUTH CHINA SEA showing de-escalation signals. Probability expected to decline gradually.",
+      "confidence": 40,
+      "expires_at": "2026-07-23T21:13:18Z",
+      "eval_type": "probability_below",
+      "eval_value": 18
+    }
+  ],
+  "forecast_engine": {
+    "version": "forecast_v2",
+    "model_version": "base_rate_evidence_v1",
+    "calibration_version": "forecast_calibration_v1",
+    "resolution_status_version": "forecast_resolution_status_v1",
+    "review_status_version": "forecast_review_status_v1",
+    "resolution_method": "manual_or_source_verified",
+    "horizons": [
+      "24h",
+      "72h",
+      "7d",
+      "30d"
+    ]
+  },
+  "forecast_ladder": [
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-07-23T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 60,
+      "base_rate_pct": 12.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 12.0,
+        "threat_score_pct": 100.0,
+        "threat_component_pp": 18.0,
+        "signal_delta_pp": 20.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 60.0,
+        "final_probability_pct": 60,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: JMIC counted three Tuesday commercial transits; large international merchant traffic had stopped while local trade continued",
+          "Financial Times, 2026-07-22 17:38Z; Forbes, 19:37Z: satellite analysis indicated damaged Kavomaleas was probably towed into Iranian waters",
+          "Exact Google/Bing/direct review through cutoff: no new mine deployment or cessation of every local transit verified"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 24h is estimated at 60%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-23T21:12:29Z",
+      "evidence_for": [
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "military_buildup (+5 signal weight)",
+        "oil_infrastructure_threat (+6 signal weight)",
+        "hormuz controlled not closed"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-07-25T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 76,
+      "base_rate_pct": 21.6,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 21.6,
+        "threat_score_pct": 100.0,
+        "threat_component_pp": 24.0,
+        "signal_delta_pp": 20.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 75.6,
+        "final_probability_pct": 76,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: JMIC counted three Tuesday commercial transits; large international merchant traffic had stopped while local trade continued",
+          "Financial Times, 2026-07-22 17:38Z; Forbes, 19:37Z: satellite analysis indicated damaged Kavomaleas was probably towed into Iranian waters",
+          "Exact Google/Bing/direct review through cutoff: no new mine deployment or cessation of every local transit verified"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 72h is estimated at 76%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-25T21:12:29Z",
+      "evidence_for": [
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "military_buildup (+5 signal weight)",
+        "oil_infrastructure_threat (+6 signal weight)",
+        "hormuz controlled not closed"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-07-29T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 92,
+      "base_rate_pct": 32.4,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 32.4,
+        "threat_score_pct": 100.0,
+        "threat_component_pp": 30.0,
+        "signal_delta_pp": 20.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 92.4,
+        "final_probability_pct": 92,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: JMIC counted three Tuesday commercial transits; large international merchant traffic had stopped while local trade continued",
+          "Financial Times, 2026-07-22 17:38Z; Forbes, 19:37Z: satellite analysis indicated damaged Kavomaleas was probably towed into Iranian waters",
+          "Exact Google/Bing/direct review through cutoff: no new mine deployment or cessation of every local transit verified"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 7d is estimated at 92%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-29T21:12:29Z",
+      "evidence_for": [
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "military_buildup (+5 signal weight)",
+        "oil_infrastructure_threat (+6 signal weight)",
+        "hormuz controlled not closed"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-08-21T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "iran_conventional",
+      "tracker_name": "IRAN WAR",
+      "event_type": "gulf_conventional_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 100,
+      "base_rate_pct": 54.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 54.0,
+        "threat_score_pct": 100.0,
+        "threat_component_pp": 36.0,
+        "signal_delta_pp": 20.0,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 5.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 120.0,
+        "final_probability_pct": 100,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: JMIC counted three Tuesday commercial transits; large international merchant traffic had stopped while local trade continued",
+          "Financial Times, 2026-07-22 17:38Z; Forbes, 19:37Z: satellite analysis indicated damaged Kavomaleas was probably towed into Iranian waters",
+          "Exact Google/Bing/direct review through cutoff: no new mine deployment or cessation of every local transit verified"
+        ]
+      },
+      "confidence_score": 100,
+      "confidence_label": "HIGH",
+      "description": "IRAN WAR: gulf conventional escalation risk over the next 30d is estimated at 100%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-21T21:12:29Z",
+      "evidence_for": [
+        "hormuz_controlled_not_closed (+4 signal weight)",
+        "military_buildup (+5 signal weight)",
+        "oil_infrastructure_threat (+6 signal weight)",
+        "hormuz controlled not closed"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-07-23T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 35,
+      "base_rate_pct": 6.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 6.0,
+        "threat_score_pct": 99.0,
+        "threat_component_pp": 17.82,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 3.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 34.82,
+        "final_probability_pct": 35,
+        "matched_sources": [
+          "Kyiv Post, 2026-07-22 20:42Z: UK warned OSCE that Russian attacks risk wider European escalation",
+          "Direct NATO review found no allied combat entry or treaty activation"
+        ]
+      },
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 24h is estimated at 35%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-23T21:12:29Z",
+      "evidence_for": [
+        "UK warns of spillover risk; no NATO or nuclear threshold",
+        "The United Kingdom warned the OSCE that continuing Russian attacks risk wider European escalation, but no new nuclear-use step, Belarusian combat entry or NATO intervention surface"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-07-25T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 46,
+      "base_rate_pct": 10.8,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.8,
+        "threat_score_pct": 99.0,
+        "threat_component_pp": 23.76,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 3.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 45.56,
+        "final_probability_pct": 46,
+        "matched_sources": [
+          "Kyiv Post, 2026-07-22 20:42Z: UK warned OSCE that Russian attacks risk wider European escalation",
+          "Direct NATO review found no allied combat entry or treaty activation"
+        ]
+      },
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 72h is estimated at 46%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-25T21:12:29Z",
+      "evidence_for": [
+        "UK warns of spillover risk; no NATO or nuclear threshold",
+        "The United Kingdom warned the OSCE that continuing Russian attacks risk wider European escalation, but no new nuclear-use step, Belarusian combat entry or NATO intervention surface"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-07-29T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 57,
+      "base_rate_pct": 16.2,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 16.2,
+        "threat_score_pct": 99.0,
+        "threat_component_pp": 29.7,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 3.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 56.9,
+        "final_probability_pct": 57,
+        "matched_sources": [
+          "Kyiv Post, 2026-07-22 20:42Z: UK warned OSCE that Russian attacks risk wider European escalation",
+          "Direct NATO review found no allied combat entry or treaty activation"
+        ]
+      },
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 7d is estimated at 57%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-29T21:12:29Z",
+      "evidence_for": [
+        "UK warns of spillover risk; no NATO or nuclear threshold",
+        "The United Kingdom warned the OSCE that continuing Russian attacks risk wider European escalation, but no new nuclear-use step, Belarusian combat entry or NATO intervention surface"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-08-21T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "russia_ukraine",
+      "tracker_name": "RUSSIA-UKRAINE",
+      "event_type": "nato_war_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 74,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 99.0,
+        "threat_component_pp": 35.64,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 3.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 73.64,
+        "final_probability_pct": 74,
+        "matched_sources": [
+          "Kyiv Post, 2026-07-22 20:42Z: UK warned OSCE that Russian attacks risk wider European escalation",
+          "Direct NATO review found no allied combat entry or treaty activation"
+        ]
+      },
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "RUSSIA-UKRAINE: nato war escalation risk over the next 30d is estimated at 74%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-21T21:12:29Z",
+      "evidence_for": [
+        "UK warns of spillover risk; no NATO or nuclear threshold",
+        "The United Kingdom warned the OSCE that continuing Russian attacks risk wider European escalation, but no new nuclear-use step, Belarusian combat entry or NATO intervention surface"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:24h:2026-07-23T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 50,
+      "base_rate_pct": 10.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.0,
+        "threat_score_pct": 92.0,
+        "threat_component_pp": 16.56,
+        "signal_delta_pp": 9.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 50.06,
+        "final_probability_pct": 50,
+        "matched_sources": [
+          "UN News, 2026-07-22 19:12:58Z: two likely RSF drone attacks killed at least 27 civilians and injured dozens",
+          "UNICEF, cited by UN News, 2026-07-22: Ar Rahad market and Tina-area water source were hit",
+          "UN direct article inspection supersedes the prior single-chain North Darfur uncertainty"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 24h is estimated at 50%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-23T21:12:29Z",
+      "evidence_for": [
+        "infrastructure_strike (+5 signal weight)",
+        "infrastructure strike",
+        "UN confirms two drone attacks killed at least 27 civilians in Sudan"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:72h:2026-07-25T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 64,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 92.0,
+        "threat_component_pp": 22.08,
+        "signal_delta_pp": 9.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 63.58,
+        "final_probability_pct": 64,
+        "matched_sources": [
+          "UN News, 2026-07-22 19:12:58Z: two likely RSF drone attacks killed at least 27 civilians and injured dozens",
+          "UNICEF, cited by UN News, 2026-07-22: Ar Rahad market and Tina-area water source were hit",
+          "UN direct article inspection supersedes the prior single-chain North Darfur uncertainty"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 72h is estimated at 64%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-25T21:12:29Z",
+      "evidence_for": [
+        "infrastructure_strike (+5 signal weight)",
+        "infrastructure strike",
+        "UN confirms two drone attacks killed at least 27 civilians in Sudan"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:7d:2026-07-29T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 78,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 92.0,
+        "threat_component_pp": 27.6,
+        "signal_delta_pp": 9.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 78.1,
+        "final_probability_pct": 78,
+        "matched_sources": [
+          "UN News, 2026-07-22 19:12:58Z: two likely RSF drone attacks killed at least 27 civilians and injured dozens",
+          "UNICEF, cited by UN News, 2026-07-22: Ar Rahad market and Tina-area water source were hit",
+          "UN direct article inspection supersedes the prior single-chain North Darfur uncertainty"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 7d is estimated at 78%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-29T21:12:29Z",
+      "evidence_for": [
+        "infrastructure_strike (+5 signal weight)",
+        "infrastructure strike",
+        "UN confirms two drone attacks killed at least 27 civilians in Sudan"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "sudan:escalation_watch:30d:2026-08-21T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "sudan",
+      "tracker_name": "SUDAN",
+      "event_type": "escalation_watch",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 100,
+      "base_rate_pct": 45.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 45.0,
+        "threat_score_pct": 92.0,
+        "threat_component_pp": 33.12,
+        "signal_delta_pp": 9.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 101.62,
+        "final_probability_pct": 100,
+        "matched_sources": [
+          "UN News, 2026-07-22 19:12:58Z: two likely RSF drone attacks killed at least 27 civilians and injured dozens",
+          "UNICEF, cited by UN News, 2026-07-22: Ar Rahad market and Tina-area water source were hit",
+          "UN direct article inspection supersedes the prior single-chain North Darfur uncertainty"
+        ]
+      },
+      "confidence_score": 89,
+      "confidence_label": "HIGH",
+      "description": "SUDAN: escalation watch risk over the next 30d is estimated at 100%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-21T21:12:29Z",
+      "evidence_for": [
+        "infrastructure_strike (+5 signal weight)",
+        "infrastructure strike",
+        "UN confirms two drone attacks killed at least 27 civilians in Sudan"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-07-23T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 31,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 15.84,
+        "signal_delta_pp": -6.25,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 6.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 31.09,
+        "final_probability_pct": 31,
+        "matched_sources": [
+          "NNA/Anadolu, 2026-07-22 17:53Z: artillery, drone strike, ground incursions and explosions reported in southern Lebanon",
+          "Reuters via Al-Monitor, 2026-07-22 14:31Z: first pilot withdrawal implemented; next talks scheduled for 4 August; controlled demolitions continued",
+          "CBC, 2026-07-22 16:35Z: Lebanese prime minister visited the first phased-withdrawal town"
+        ]
+      },
+      "confidence_score": 85,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 24h is estimated at 31%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-23T21:12:29Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "Fresh southern-Lebanon fire complicates the first pilot withdrawal"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-07-25T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 51,
+      "base_rate_pct": 32.4,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 32.4,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 21.12,
+        "signal_delta_pp": -6.25,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 6.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 50.77,
+        "final_probability_pct": 51,
+        "matched_sources": [
+          "NNA/Anadolu, 2026-07-22 17:53Z: artillery, drone strike, ground incursions and explosions reported in southern Lebanon",
+          "Reuters via Al-Monitor, 2026-07-22 14:31Z: first pilot withdrawal implemented; next talks scheduled for 4 August; controlled demolitions continued",
+          "CBC, 2026-07-22 16:35Z: Lebanese prime minister visited the first phased-withdrawal town"
+        ]
+      },
+      "confidence_score": 85,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 72h is estimated at 51%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-25T21:12:29Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "Fresh southern-Lebanon fire complicates the first pilot withdrawal"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-07-29T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 72,
+      "base_rate_pct": 48.6,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 48.6,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 26.4,
+        "signal_delta_pp": -6.25,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 6.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 72.25,
+        "final_probability_pct": 72,
+        "matched_sources": [
+          "NNA/Anadolu, 2026-07-22 17:53Z: artillery, drone strike, ground incursions and explosions reported in southern Lebanon",
+          "Reuters via Al-Monitor, 2026-07-22 14:31Z: first pilot withdrawal implemented; next talks scheduled for 4 August; controlled demolitions continued",
+          "CBC, 2026-07-22 16:35Z: Lebanese prime minister visited the first phased-withdrawal town"
+        ]
+      },
+      "confidence_score": 85,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 7d is estimated at 72%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-29T21:12:29Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "Fresh southern-Lebanon fire complicates the first pilot withdrawal"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-08-21T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_lebanon",
+      "tracker_name": "ISRAEL-LEBANON",
+      "event_type": "border_war_escalation",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 89,
+      "base_rate_pct": 60.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 60.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 31.68,
+        "signal_delta_pp": -6.25,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 6.5,
+        "contradiction_delta_pp": -8.0,
+        "raw_probability_pct": 88.93,
+        "final_probability_pct": 89,
+        "matched_sources": [
+          "NNA/Anadolu, 2026-07-22 17:53Z: artillery, drone strike, ground incursions and explosions reported in southern Lebanon",
+          "Reuters via Al-Monitor, 2026-07-22 14:31Z: first pilot withdrawal implemented; next talks scheduled for 4 August; controlled demolitions continued",
+          "CBC, 2026-07-22 16:35Z: Lebanese prime minister visited the first phased-withdrawal town"
+        ]
+      },
+      "confidence_score": 85,
+      "confidence_label": "HIGH",
+      "description": "ISRAEL-LEBANON: border war escalation risk over the next 30d is estimated at 89%.",
+      "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-21T21:12:29Z",
+      "evidence_for": [
+        "ceasefire_violation (+6 signal weight)"
+      ],
+      "evidence_against": [
+        "diplomacy_active (+4 signal weight)",
+        "ceasefire violation",
+        "diplomacy active",
+        "Fresh southern-Lebanon fire complicates the first pilot withdrawal"
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-07-23T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 35,
+      "base_rate_pct": 10.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 15.84,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 34.84,
+        "final_probability_pct": 35,
+        "matched_sources": [
+          "Times of Israel, 2026-07-22 19:05Z: settlers attacked two West Bank villages",
+          "Anadolu, 09:22Z; IMEMC, 17:40Z: Gaza health ministry reported 12 killed over 24 hours",
+          "No distinct regional-entry event surfaced by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 35%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-23T21:12:29Z",
+      "evidence_for": [
+        "Gaza and West Bank harm continues without a new regional threshold",
+        "Fresh reporting added attacks on two West Bank villages and a Gaza health-ministry account of 12 people killed over the prior day. These extend the existing severe harm pattern but"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-07-25T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 48,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 21.12,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 48.12,
+        "final_probability_pct": 48,
+        "matched_sources": [
+          "Times of Israel, 2026-07-22 19:05Z: settlers attacked two West Bank villages",
+          "Anadolu, 09:22Z; IMEMC, 17:40Z: Gaza health ministry reported 12 killed over 24 hours",
+          "No distinct regional-entry event surfaced by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 48%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-25T21:12:29Z",
+      "evidence_for": [
+        "Gaza and West Bank harm continues without a new regional threshold",
+        "Fresh reporting added attacks on two West Bank villages and a Gaza health-ministry account of 12 people killed over the prior day. These extend the existing severe harm pattern but"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-07-29T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 62,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 26.4,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 62.4,
+        "final_probability_pct": 62,
+        "matched_sources": [
+          "Times of Israel, 2026-07-22 19:05Z: settlers attacked two West Bank villages",
+          "Anadolu, 09:22Z; IMEMC, 17:40Z: Gaza health ministry reported 12 killed over 24 hours",
+          "No distinct regional-entry event surfaced by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 62%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-29T21:12:29Z",
+      "evidence_for": [
+        "Gaza and West Bank harm continues without a new regional threshold",
+        "Fresh reporting added attacks on two West Bank villages and a Gaza health-ministry account of 12 people killed over the prior day. These extend the existing severe harm pattern but"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-08-21T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "israel_palestine",
+      "tracker_name": "ISRAEL PALESTINE",
+      "event_type": "escalation_watch",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 86,
+      "base_rate_pct": 45.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 45.0,
+        "threat_score_pct": 88.0,
+        "threat_component_pp": 31.68,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 1.5,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 85.68,
+        "final_probability_pct": 86,
+        "matched_sources": [
+          "Times of Israel, 2026-07-22 19:05Z: settlers attacked two West Bank villages",
+          "Anadolu, 09:22Z; IMEMC, 17:40Z: Gaza health ministry reported 12 killed over 24 hours",
+          "No distinct regional-entry event surfaced by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 86%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-21T21:12:29Z",
+      "evidence_for": [
+        "Gaza and West Bank harm continues without a new regional threshold",
+        "Fresh reporting added attacks on two West Bank villages and a Gaza health-ministry account of 12 people killed over the prior day. These extend the existing severe harm pattern but"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-07-23T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "yemen_red_sea",
+      "tracker_name": "YEMEN RED SEA",
+      "event_type": "escalation_watch",
+      "horizon_label": "24h",
+      "horizon_hours": 24,
+      "probability": 37,
+      "base_rate_pct": 10.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 10.0,
+        "threat_score_pct": 57.0,
+        "threat_component_pp": 10.26,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 36.76,
+        "final_probability_pct": 37,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: at least five vessels turned around near Bab el-Mandeb Tuesday",
+          "Reuters/BBC/Washington Post, 2026-07-22: previously scored rerouting evidence remained corroborated",
+          "No attributable enforcement attack or formal closure found by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 24h is estimated at 37%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-23T21:12:29Z",
+      "evidence_for": [
+        "CBS corroborates Tuesday rerouting but not a formal Red Sea closure",
+        "CBS counted at least five Tuesday turnarounds near Bab el-Mandeb, consistent with the previously scored BBC, Reuters and Washington Post rerouting evidence. Traffic continued and n"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-07-25T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "yemen_red_sea",
+      "tracker_name": "YEMEN RED SEA",
+      "event_type": "escalation_watch",
+      "horizon_label": "72h",
+      "horizon_hours": 72,
+      "probability": 48,
+      "base_rate_pct": 18.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 18.0,
+        "threat_score_pct": 57.0,
+        "threat_component_pp": 13.68,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 48.18,
+        "final_probability_pct": 48,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: at least five vessels turned around near Bab el-Mandeb Tuesday",
+          "Reuters/BBC/Washington Post, 2026-07-22: previously scored rerouting evidence remained corroborated",
+          "No attributable enforcement attack or formal closure found by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 72h is estimated at 48%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-25T21:12:29Z",
+      "evidence_for": [
+        "CBS corroborates Tuesday rerouting but not a formal Red Sea closure",
+        "CBS counted at least five Tuesday turnarounds near Bab el-Mandeb, consistent with the previously scored BBC, Reuters and Washington Post rerouting evidence. Traffic continued and n"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-07-29T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "yemen_red_sea",
+      "tracker_name": "YEMEN RED SEA",
+      "event_type": "escalation_watch",
+      "horizon_label": "7d",
+      "horizon_hours": 168,
+      "probability": 61,
+      "base_rate_pct": 27.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 27.0,
+        "threat_score_pct": 57.0,
+        "threat_component_pp": 17.1,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 60.6,
+        "final_probability_pct": 61,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: at least five vessels turned around near Bab el-Mandeb Tuesday",
+          "Reuters/BBC/Washington Post, 2026-07-22: previously scored rerouting evidence remained corroborated",
+          "No attributable enforcement attack or formal closure found by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 7d is estimated at 61%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-07-29T21:12:29Z",
+      "evidence_for": [
+        "CBS corroborates Tuesday rerouting but not a formal Red Sea closure",
+        "CBS counted at least five Tuesday turnarounds near Bab el-Mandeb, consistent with the previously scored BBC, Reuters and Washington Post rerouting evidence. Traffic continued and n"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    },
+    {
+      "schema_version": "forecast_v2",
+      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-08-21T21:12:29Z",
+      "generated_at": "2026-07-22T21:12:29Z",
+      "tracker_id": "yemen_red_sea",
+      "tracker_name": "YEMEN RED SEA",
+      "event_type": "escalation_watch",
+      "horizon_label": "30d",
+      "horizon_hours": 720,
+      "probability": 82,
+      "base_rate_pct": 45.0,
+      "model_version": "base_rate_evidence_v1",
+      "probability_model": {
+        "version": "base_rate_evidence_v1",
+        "formula": "base_rate + threat_component + signal_delta + trend_delta + source_delta + contradiction_delta",
+        "base_rate_pct": 45.0,
+        "threat_score_pct": 57.0,
+        "threat_component_pp": 20.52,
+        "signal_delta_pp": 2.5,
+        "trend_delta_pp": 5.0,
+        "source_delta_pp": 9.0,
+        "contradiction_delta_pp": 0.0,
+        "raw_probability_pct": 82.02,
+        "final_probability_pct": 82,
+        "matched_sources": [
+          "CBS News, updated 2026-07-22 18:37Z: at least five vessels turned around near Bab el-Mandeb Tuesday",
+          "Reuters/BBC/Washington Post, 2026-07-22: previously scored rerouting evidence remained corroborated",
+          "No attributable enforcement attack or formal closure found by cutoff"
+        ]
+      },
+      "confidence_score": 69,
+      "confidence_label": "MEDIUM",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 30d is estimated at 82%.",
+      "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
+      "resolution_method": "manual_or_source_verified",
+      "evaluation_status": "pending",
+      "expires_at": "2026-08-21T21:12:29Z",
+      "evidence_for": [
+        "CBS corroborates Tuesday rerouting but not a formal Red Sea closure",
+        "CBS counted at least five Tuesday turnarounds near Bab el-Mandeb, consistent with the previously scored BBC, Reuters and Washington Post rerouting evidence. Traffic continued and n"
+      ],
+      "evidence_against": [
+        "No clear de-escalation or contradiction signal isolated."
+      ]
+    }
+  ],
+  "forecast_calibration": {
+    "version": "forecast_calibration_v1",
+    "horizons": {}
+  },
+  "forecast_resolution_status": {
+    "version": "forecast_resolution_status_v1",
+    "total_resolved": 0,
+    "current_resolved": 0,
+    "current_pending": 24,
+    "last_resolved_at": null,
+    "by_horizon": {}
+  },
+  "forecast_review_status": {
+    "version": "forecast_review_status_v1",
+    "expired_unresolved": 50,
+    "review_queue_version": "forecast_review_queue_v1",
+    "oldest_age_hours": 872.2,
+    "next_forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
+    "evidence_required": true,
+    "auto_resolution": false
+  },
+  "accuracy": {
+    "total_evaluated": 2264900,
+    "correct": 1709867,
+    "accuracy_pct": 75,
+    "mean_brier": 0.4926
+  }
+}
