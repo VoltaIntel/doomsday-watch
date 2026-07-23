@@ -1,42 +1,40 @@
 # Session State
 
-> Last updated: 2026-07-23T15:20:50Z
-> Session: DoomsdayWatch 15Z morning deep scan
+> Last updated: 2026-07-23T18:24:31Z
+> Session: DoomsdayWatch 18Z morning deep scan
 
 ## Current Task
 - **What:** Deep rolling past-24-hour review of all configured trackers, required sectors, allied posture, market/energy sanity and emerging-crisis lanes.
 - **Status:** Complete, deployed, pushed and live-verified.
-- **Result:** Global remains **76% / imminent**; unrounded additive coupled score rose **75.62% → 75.70%**.
-- **Numeric movers:** `yemen_red_sea` rose **62% → 66% / imminent**. The other 18 configured tracker scores held.
-- **Signals:** Canonical `iran_conventional:diplomacy_active` and `yemen_red_sea:external_backing` activated. Trackers, zones and timeline align at **11 canonical signals**.
-- **Auto-detection:** Reviewed 23 untracked lanes; none met the configured three-mention/two-source gate. No tracker was added.
-- **Repository:** Deploy commit `4f1ae1b0`; exact source-fallback metadata commit `51fda4ed`; pushed to `origin/main`.
-- **Deployment:** GitHub Pages run `30020079573` succeeded for exact commit `51fda4ed`. Live root/state returned HTTP 200 and expose all command-deck markers, `morning_deep_scan_15z`, **76% / imminent**, raw **75.70**, 19 trackers/news items and the aligned 11-signal set.
-- **Tests:** JSON/canonical/timeline and local/live checks passed. **31/31 non-smoke tests passed**. The stock smoke fixture hit its fixed 60-second copied-pipeline ceiling; the identical **11/11 assertions passed in 62.37s** from an isolated copy with only that harness timeout extended.
+- **Result:** Global remains **76% / imminent**; unrounded additive coupled score rose **75.70% → 76.35%**.
+- **Numeric movers:** `israel_palestine` rose **88% → 93% / imminent**; `southern_thailand` rose **18% → 20% / elevated**; auto-detection added `kuwait_iraq_border` at **18% / elevated**. The other 17 pre-existing scores held.
+- **Signals:** Canonical `israel_palestine:holy_site_tension` and `kuwait_iraq_border:infrastructure_strike` activated. Trackers, zones and timeline align at **13 canonical signals**.
+- **Auto-detection:** Reviewed 24 untracked lanes. Repeated Kuwait-confirmed hostile-drone attacks on the Abdali crossing cleared the configured three-mention/two-source gate and became the 20th canonical tracker.
+- **Repository:** Corrected deploy commit `dc3d672b`; exact source-fallback metadata commit `c1682a3b`; pushed to `origin/main`.
+- **Deployment:** GitHub Pages run `30033469516` succeeded for exact commit `c1682a3b`. Live root/state returned HTTP 200 and expose all command-deck markers, `morning_deep_scan_18z`, exact fallback metadata, **76% / imminent**, raw **76.35**, 20 trackers/news items and the aligned 13-signal set.
+- **Tests:** JSON/model/canonical/timeline and local/live checks passed. **31/31 non-smoke tests passed**.
 
 ## Evidence Decisions
-- **Yemen/Red Sea:** Reuters reported at 14:23Z that Iran flew IRGC commanders and missile equipment to the Houthis. This activated canonical `external_backing` at its configured +4 weight. It remains one wire source chain despite broad syndication. Saudi authorities still confirm only `Encelia` hit with crew safe; `Layla` remains unverified.
-- **Iran/Hormuz:** The IMO told UN News that traffic is almost completely halted, with very few ships if any transiting and about 6,000 seafarers stranded aboard roughly 500 ships. The report says the parties are talking and last month’s memorandum remains a basis for negotiations, supporting canonical `diplomacy_active`. It does not establish literal zero traffic, formal closure, verified mining or a ceasefire. Risk stays capped at 100%.
-- **Energy:** OilPriceAPI reached Brent **$100.60** and WTI **$92.08** during final deploy. Energy remains sanity-only.
-- **Russia-Ukraine:** Reuters says shipowners halted some Ukrainian Black Sea port calls over Russian strike risk. No NATO-entry, Belarus-entry or nuclear-use threshold followed; risk holds 99%.
-- **South China Sea:** Fresh international headlines resolve to the already-scored Bajo and Ayungin incidents; no third distinct encounter or treaty consultation surfaced. Risk holds 22%.
-- **Southern Thailand:** Follow-ons concern the suspect hunt after the configured Narathiwat assault; no second attack, emergency decree or Malaysia spillover surfaced. Risk holds 18%.
-- **Iran nuclear:** No independent enrichment, inspector-access, reprocessing or detonation threshold surfaced. IAEA remained security-gated. Risk holds 47% raw / 54% coupled.
-- **Saudi nuclear:** The signed civil-nuclear agreement remains the leading untracked proliferation watch; no operating or authorized enrichment/reprocessing plant, fissile production or weaponization step exists.
+- **Israel-Palestine:** Al Jazeera and regional reporting tracked a Ben-Gvir-led Al-Aqsa entry through the day, with the latest count above 4,200; Egypt separately condemned it. Canonical `holy_site_tension` activated at +5. No compound mass-casualty clash was reported.
+- **Kuwait/Iraq border:** Kuwait's Defence Ministry confirmed two hostile-drone attacks on the Abdali crossing. Material damage/fire occurred without casualties. A renewed attack later in the day cleared auto-detection. Attribution and sustained closure remain unverified.
+- **Southern Thailand:** Thai PBS World/API reported police confirmation that suspected militants killed a road-work foreman in Yala, distinct from the Narathiwat checkpoint assault and prior car-bomb episode. Risk rose two points without a second signal.
+- **Yemen/Red Sea:** Trump threatened major punishment for further Houthi shipping attacks, but no U.S./Saudi retaliatory operation followed. `Encelia` remains confirmed with crew safe; `Layla` remains uncorroborated. Risk holds 66%.
+- **DPRK:** One AsiaNews missile headline had no Yonhap, Japanese Defence Ministry, Reuters, AP or second operational confirmation; no signal or score change.
+- **Iran nuclear:** No independent enrichment, inspector-access, reprocessing or detonation threshold surfaced. IAEA remained security-gated. A pipeline-generated `fuel_reprocessing` false positive from negated review prose was caught, removed and absent from the corrected deploy.
+- **Saudi nuclear:** The signed civil-nuclear agreement remains the leading untracked proliferation watch; no operating/authorized enrichment plant, fissile production or weaponization step exists.
 
 ## Sources and Sanity
-- All **24 Tavily searches** and **10 extraction targets** failed HTTP 432. Fallback used **64 Google News RSS coverage queries plus nine exact-event follow-ups**, direct UN/NATO browser inspection, official UN/NATO/EIA pages and feeds, terminal HTTP, OilPriceAPI and exact Gamma.
-- IAEA, UKMTO, CENTCOM and OPEC returned HTTP 403; OCHA/UN Sudan paths returned 404; Reuters direct was DataDome/403 and was checked through RSS/syndication.
-- Final deploy energy: Brent **$100.60**, WTI **$92.08**, natural gas **$2.95**, gold **$4,059.74**.
-- Exact market sanity: U.S.-Iran invasion **29.5%**, Iran nuke **5.75%**, Iran test **5.5%**, NPT withdrawal **16.9%**, NATO Article 5 **7.0%**, China invasion **3.85%**, China-Taiwan clash **6.85%**, DPRK invasion **2.9%** on thin volume and Israel-Lebanon normalization **15.0%**. Markets were not score inputs.
+- All **24 Tavily searches** and **5 extraction targets** failed HTTP 432. Fallback used **64 Google News RSS coverage queries plus 19 exact-event follow-ups**, direct UN/NATO browser inspection, official UN/NATO/EIA pages and feeds, Thai PBS World source API, terminal HTTP, OilPriceAPI and exact Gamma.
+- IAEA and UKMTO remained security-gated/403; OPEC returned 403; configured OCHA/UN feed paths returned 404 although the OCHA updates page loaded. AsiaNews direct was security-gated. Reuters items were checked through RSS/syndication.
+- Final deploy energy: Brent **$101.13**, WTI **$92.73**, natural gas **$2.95**, gold **$4,043.18**.
+- Exact market sanity: U.S.-Iran invasion **30.5%** (+1.0pp since 15Z), Iran nuke **5.55%**, Iran test **5.5%**, NPT withdrawal **17.85%** (+0.95pp), NATO Article 5 **7.5%** (+0.5pp on thin volume), China invasion **3.85%**, China-Taiwan clash **6.85%**, DPRK invasion **2.9%** and Israel-Lebanon normalization **15.0%**. Markets were not score inputs.
 
 ## Next-Watch Triggers
-- **Yemen/Red Sea:** independent confirmation or operational detail for the Iranian transfer; confirmation of `Layla`; crew harm/pollution; another verified attack; Saudi/U.S. retaliation; formal closure or naval escort.
-- **Iran/Hormuz:** thirteenth numbered strike night or new target class; literal zero traffic or formal closure; independently verified mine deployment; implemented ceasefire or detailed negotiating round; bridge/power-plant strike.
-- **Russia-Ukraine:** wider Black Sea port shutdown, vessel casualty, nuclear-use step, Belarusian entry or NATO combat entry.
-- **South China Sea:** third distinct coercive encounter, injury/major damage, firearm use/death/seizure, treaty consultation or implemented confidence-building measure.
-- **Southern Thailand:** second coordinated attack or additional security-force deaths; responsibility claim; large force sweep/emergency decree; Malaysia spillover; government-BRN talks resume or break down.
-- **Iran nuclear:** IAEA/satellite confirmation of current underground operations, new enrichment result, inspector exclusion or detonation.
-- **Saudi nuclear:** congressional action, safeguards text, enrichment/reprocessing authorization or construction, Additional Protocol decision or weapons rhetoric.
-- **Russia/NATO:** attributed armed attack on alliance territory or Article 4/5 consultation.
-- **Mali/Sahel:** official U.S. order/deployment, mass-casualty JNIM attack or external-state strike.
+- **Kuwait/Iraq border:** drone attribution; casualties/prolonged crossing closure; a third strike or another Kuwaiti target; Kuwaiti/Iraqi/U.S. deployment or retaliation; implemented de-escalation.
+- **Israel-Palestine:** compound clash/casualties/access restriction; repeat senior-minister entry or organized mobilization; implemented Gaza/West Bank ceasefire; regional state entry.
+- **Southern Thailand:** another coordinated attack; responsibility claim; large force sweep/emergency decree; Malaysia spillover; government-BRN talks resume or break down.
+- **Yemen/Red Sea:** U.S./Saudi retaliation; confirmation of `Layla`; crew harm/pollution; another verified attack; formal closure/naval escort.
+- **Iran/Hormuz:** thirteenth numbered strike night; formal closure/literal zero traffic; independently verified mining; implemented ceasefire or detailed negotiating round; bridge/power-plant strike.
+- **DPRK:** official/second-source missile confirmation, detonation, Russian strategic-system transfer or negotiating round.
+- **Russia-Ukraine/NATO:** wider port shutdown, vessel casualty, nuclear-use step, Belarusian entry, NATO combat entry or Article 4/5 consultation.
+- **Iran/Saudi nuclear:** IAEA technical threshold; safeguards text; congressional action; enrichment/reprocessing authorization or construction; weapons rhetoric.
