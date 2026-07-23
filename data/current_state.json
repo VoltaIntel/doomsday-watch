@@ -372,8 +372,8 @@
     "scan_time_utc": "2026-07-23T21:14:32Z",
     "scan_time": "2026-07-23T21:14:32Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-23 21Z of all 20 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity and 23 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_google_news_rss_browser_direct_official_terminal_and_source_api_fallback",
+    "source_limitation": "All 25 Tavily web searches and all five Tavily extraction targets failed HTTP 432. Coverage continued through 65 Google News RSS coverage queries plus 19 exact-event follow-ups, direct Guardian/UN/NATO browser inspection, official UN/NATO/EIA pages and feeds, terminal HTTP/Jina access, OilPriceAPI and Polymarket Gamma. IAEA, UKMTO and OPEC remained HTTP 403/security-gated; configured OCHA and UN Sudan feed paths returned 404. Reuters items were checked through accessible syndication and RSS; single-chain claims remain identified.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260723T210144Z.json",
       "data/deep_scan_supplement_20260723T210314Z.json",
@@ -679,47 +679,47 @@
     "official_source_probe": {
       "un_news_rss": {
         "ok": true,
-        "source": "un_news_rss"
+        "source": "UN News RSS/direct"
       },
       "un_press_rss": {
         "ok": true,
-        "source": "un_press_rss"
+        "source": "UN press RSS/direct daily briefing"
       },
       "nato_news_browser": {
         "ok": true,
-        "source": "nato_news_browser"
+        "source": "NATO latest news direct browser"
       },
       "nato_press": {
         "ok": true,
-        "source": "nato_press"
+        "source": "NATO media advisories"
       },
       "iaea_news": {
         "ok": false,
-        "source": "iaea_news"
+        "source": "IAEA security verification"
       },
       "iaea_press": {
         "ok": false,
-        "source": "iaea_press"
+        "source": "IAEA HTTP 403"
       },
       "eia_rss": {
         "ok": true,
-        "source": "eia_rss"
+        "source": "EIA RSS/direct July 22 inventory note"
       },
       "ukmto_terminal": {
         "ok": false,
-        "source": "ukmto_terminal"
+        "source": "UKMTO HTTP 403/security gate"
       },
       "opec_terminal": {
         "ok": false,
-        "source": "opec_terminal"
+        "source": "OPEC HTTP 403"
       },
       "guardian_browser": {
         "ok": true,
-        "source": "guardian_browser"
+        "source": "Guardian direct browser"
       },
       "un_daily_briefing": {
         "ok": true,
-        "source": "un_daily_briefing"
+        "source": "UN press direct/Jina"
       }
     },
     "rss_headline_counts": {
