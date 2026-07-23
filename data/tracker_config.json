@@ -18,7 +18,8 @@
     "mali_sahel",
     "south_china_sea",
     "somalia_gulf_of_aden",
-    "southern_thailand"
+    "southern_thailand",
+    "kuwait_iraq_border"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -459,6 +460,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "kuwait_iraq_border": {
+      "name": "Kuwait / Iraq border spillover",
+      "base_rate": 10,
+      "description": "Hostile-drone attacks and regional-war spillover at the Kuwait-Iraq border",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -535,9 +563,10 @@
     "mali_sahel": 0.02,
     "south_china_sea": 0.02,
     "somalia_gulf_of_aden": 0.02,
-    "southern_thailand": 0.02
+    "southern_thailand": 0.02,
+    "kuwait_iraq_border": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-23T12:10:03Z",
+  "last_updated": "2026-07-23T18:18:27Z",
   "dashboard_path": "dashboard.html"
 }
