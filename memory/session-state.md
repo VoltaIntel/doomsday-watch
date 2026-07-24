@@ -1,38 +1,36 @@
 # Session State
 
-> Last updated: 2026-07-24T12:19:20Z
-> Session: DoomsdayWatch 12Z morning deep scan
+> Last updated: 2026-07-24T15:19:58Z
+> Session: DoomsdayWatch 15Z morning deep scan
 
 ## Current Task
 - **What:** Deep rolling past-24-hour review of all configured trackers, required sectors, allied posture, energy/market sanity and emerging-crisis lanes.
 - **Status:** Complete, deployed, pushed and live-verified.
-- **Result:** Global display held **77% / imminent**; unrounded additive coupled score held **76.92%**.
-- **Movers:** None. All 20 coupled tracker probabilities held.
-- **Signals:** No canonical signal activated or cleared. Trackers, zones and timeline align at **12 canonical signals**. Existing `iran_conventional:hormuz_controlled_not_closed`, `iran_conventional:military_buildup` and `sudan:infrastructure_strike` evidence was refreshed.
-- **Auto-detection:** Reviewed 23 untracked lanes. Iraq remains the leading watch after the Irbil base-area explosions, but attribution, casualties and damage remain unknown; no tracker was added. Saudi civil-nuclear safeguards remain the leading proliferation watch.
-- **Repository:** Automated deploy commit `89925763` plus exact-source-metadata commit `80b0deab` are synchronized with `origin/main`.
-- **Deployment:** GitHub Pages run `30092371102` succeeded for `80b0deab`. Live root/state returned HTTP 200 and expose all command-deck markers, `morning_deep_scan_12z`, **77% / imminent**, raw **76.92**, 20 trackers/news items and exact source-fallback metadata.
-- **Tests:** JSON/canonical/timeline/local/live checks passed; **31/31 non-smoke tests passed**. The stock smoke fixture hit its hard 60-second copied-pipeline ceiling; the identical **11/11 assertions passed in 109.50s** in an isolated copy with only that timeout raised to 180 seconds.
+- **Result:** Global display held **77% / imminent**; unrounded additive coupled score rose **76.92% → 76.97%**.
+- **Mover:** `israel_palestine` rose **94% → 95% raw/coupled** after BBC/CNN confirmed a second Israeli fatality and the IDF said it was preparing a major West Bank operation, cancelled soldiers' leave and sent reinforcements.
+- **Signals:** Activated canonical `israel_palestine:military_buildup`. Trackers, zones and timeline align at **13 canonical signals**.
+- **Auto-detection:** Reviewed 23 untracked lanes. No tracker was added. Iraq now has confirmed Erbil drone-interception detail but remains inside `kuwait_iraq_border`; attribution, casualties and damage remain unknown. Saudi enrichment remains proliferation watch-only.
+- **Repository:** Automated deploy commit `8c8af229`; exact source-metadata commit `0153b7a9`; HEAD, `origin/main` and remote are synchronized.
+- **Deployment:** GitHub Pages run `30104715898` succeeded for `0153b7a9`. Live root/state returned HTTP 200 and expose all command-deck markers, `morning_deep_scan_15z`, **77% / imminent**, raw **76.97**, 20 trackers/news items, Israel-Palestine **95%**, the new canonical signal and exact source-fallback metadata.
+- **Tests:** JSON/canonical/timeline/local/live checks passed; **31/31 non-smoke tests passed**.
 
 ## Evidence Decisions
-- **Iran/Hormuz:** Direct CBS review confirms the latest U.S. operation remained the thirteenth consecutive strike night. Iran claimed drone attacks on U.S. facilities in Bahrain and Jordan; AFP heard an unexplained Bahrain blast, while Jordan reported no new strike. CBS reported more refuelling aircraft in Israel, B-1 departures from Britain and extra medics for Germany. Hormuz traffic remains nonzero. No fourteenth night, executed larger attack, verified mining, formal closure or implemented ceasefire; the lane remains capped at 100%.
-- **Russia-Ukraine:** Reuters reported Russia claimed strikes on Odesa, Izmail and Mykolaiv ports, fuel stores and a cargo vessel; Reuters could not independently verify the claims. Allseeds became the third company to halt Odesa-region operations. No new NATO-entry, Belarus-entry or nuclear-use threshold; risk holds at 99%.
-- **Sudan:** Reuters reported U.N. Women says drone strikes on al-Obeid water sources force women and girls to collect water after dark, increasing sexual-violence exposure. This refreshes the existing infrastructure-strike evidence without a new battlefield or external-state threshold; risk holds at 92%.
-- **Somalia/Gulf of Aden:** Marine Insight reported suspected pirates were seen taking food to the MT Asana crew, supporting that the group remains aboard and the crew is provisioned. No crew harm, ransom, rescue, interdiction or second hijack; risk holds at 28%.
-- **South China Sea / Israel-Palestine:** Post-09Z video and eyewitness reports described already-counted events—the third Scarborough confrontation and Nablus/Tell shooting—not new incidents. Both scores hold.
-- **NATO/IAEA/allies:** NATO posted no Article 4/5 action. IAEA remained HTTP 403-gated and fallback checks found no new Iranian technical threshold. Threatened U.S. punishment of the Houthis remained unexecuted.
+- **Israel-Palestine:** BBC updated the Tal-area toll to four Palestinians and two Israelis killed after the IDF identified a soldier as a second Israeli fatality. BBC/CNN reported a major-operation posture, cancelled leave and reinforcements; Netanyahu held an emergency security meeting. Attribution and the soldier's cause of death remain unclear. Risk rose one point to 95% and `military_buildup` activated.
+- **Iran/Hormuz:** The thirteenth U.S. strike night remains the latest completed operation; the threatened larger attack remains under consideration. NATO condemned ongoing Iranian attacks and reaffirmed Gulf solidarity; Britain said it was ready to defend against threats to bases. Kurdistan authorities reported five drones intercepted over Erbil, but attribution, casualties and damage remain unknown. No fourteenth night, formal Hormuz closure, literal-zero traffic or verified mine deployment; the lane remains capped at 100%.
+- **NATO/allies:** NATO's direct 24 July Qatar statement contained solidarity and condemnation, not Article 4/5 action or allied combat entry. The latest U.S. congressional votes remain the House rebuke and Senate rejection. Lebanon's Aoun is due at the White House and 4 August talks remain scheduled.
+- **Yemen/Red Sea:** A new U.N. Secretary-General statement expressed deep alarm over resumed Houthi vessel attacks but referred to already-counted incidents. No executed U.S./Saudi retaliation, additional independently verified hit, crew harm or formal Bab el-Mandeb closure.
+- **Other lanes:** No new independent Ukraine-port effects assessment; no new China-Taiwan force threshold; no DPRK launch/detonation; no new South China Sea incident; the expanded southern-Thailand manhunt follows the already-scored five-soldier checkpoint attack.
 
 ## Sources and Sanity
-- All **24 Tavily searches** and **5 extraction targets** failed HTTP 432. Fallback used **18 baseline RSS queries (130 headlines) + 56 tracker/emerging/exact queries (339)**, direct CBS/NATO/Reuters-syndication browser inspection, official UN/NATO/EIA feeds, terminal HTTP, OilPriceAPI and exact Gamma.
-- IAEA/OPEC remained HTTP 403; OCHA OPT and UN Sudan feed paths returned HTTP 404. Single-source claims were not promoted without corroboration.
-- Final deploy energy: Brent **$97.86**, WTI **$89.93**, natural gas **$2.91**, gold **$4,052.88**.
-- Exact market sanity: U.S.-Iran invasion **29.5%**, Iran nuke **5.65%**, Iran test **5.5%**, NPT withdrawal **20.6%**, NATO Article 5 **8.0%**, China invasion **3.75%**, China-Taiwan clash **6.85%**, DPRK invasion **1.65%**, Israel-Lebanon normalization **16.0%**. Markets were not score inputs.
+- All **24 Tavily searches** and **3 extraction targets** failed HTTP 432. Fallback used **81 Google News RSS queries / 385 returned headlines**, direct BBC/NATO browser review, official UN/NATO/EIA feeds, terminal HTTP, OilPriceAPI and exact Gamma.
+- IAEA/OPEC remained HTTP 403; OCHA OPT and UN Sudan paths returned HTTP 404. Google direct search hit bot/consent controls. Single-source claims were not promoted without corroboration.
+- Final energy: Brent **$97.25**, WTI **$89.70**, natural gas **$2.94**, gold **$4,061.91**. Reuters separately reported some physical oil grades approaching $110. Market data remained sanity-only.
+- Exact markets: U.S.-Iran invasion **29.5%**, Iran nuke **5.65%**, Iran test **5.5%**, NPT withdrawal **20.6%**, NATO Article 5 **8.0%**, China invasion **3.85%**, China-Taiwan clash **6.85%**, DPRK invasion **3.25%**, Israel-Lebanon normalization **16.0%**. DPRK invasion rose **1.6 points** since 12Z on about $1.1k 24-hour volume without operational corroboration; no quote set a score.
 
 ## Next-Watch Triggers
-- **Iran/Hormuz:** fourteenth-night target set/effects; execution of the threatened larger attack; official confirmation of Bahrain/Jordan base-strike claims; formal closure/literal zero traffic; verified mining; implemented ceasefire.
-- **Russia-Ukraine:** independent assessment of the three port strikes; wider Black Sea shutdown or vessel casualty; nuclear-use step; Belarusian/NATO combat entry.
-- **Sudan:** casualties or verified water-system damage at al-Obeid; RSF entry/SAF breakthrough; external-state combat entry; restoration of safe water access.
-- **Iraq:** attribution, casualties or damage from the Irbil explosions; corroborated Iranian/militia claim; U.S. retaliation or force-protection shift.
-- **Israel-Lebanon / West Bank / South China Sea:** new casualty-bearing strike, 4 August talks change, Nablus/Tell retaliation, fourth Scarborough confrontation, injury/damage, seizure or treaty consultation.
-- **Yemen/Red Sea / MT Asana / Kuwait-Iraq:** executed retaliation, another verified tanker attack, crew harm/release, rescue/interdiction, third Abdali strike or wider posture shift.
-- **Nuclear/NATO:** IAEA technical threshold, binding Saudi safeguards/enrichment terms, DPRK launch/detonation/strategic transfer, or NATO Article 4/5 consultation.
+- **West Bank:** scope/duration/casualties of the announced major operation; clarification of the soldier death; further reinforcements, mass arrests, prolonged closures or organized retaliation.
+- **Iran/Hormuz/Gulf:** fourteenth-night target set/effects; execution of the threatened larger attack; official Gulf-base attribution/damage; formal closure/literal-zero traffic; verified mining; implemented ceasefire.
+- **Iraq/Kuwait:** attribution, casualties or damage from the Erbil drones; corroborated Iranian/militia claim; U.S. retaliation or force-protection shift; third Abdali strike.
+- **Yemen/Red Sea:** executed retaliation, another verified tanker attack, crew harm/pollution, or formal closure/naval escort.
+- **Nuclear/NATO/Asia:** IAEA technical threshold; binding Saudi safeguards/enrichment terms; DPRK operational corroboration; Taiwan drill-zone expansion/quarantine; NATO Article 4/5 consultation.
+- **Other conflicts:** fourth Scarborough confrontation, new Lebanon casualty/talks change, independent Ukraine-port effects, MT Asana crew status, large southern-Thailand sweep or new attack, al-Obeid battlefield change.
