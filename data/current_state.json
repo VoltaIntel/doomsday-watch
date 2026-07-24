@@ -372,8 +372,8 @@
     "scan_time_utc": "2026-07-24T03:14:27Z",
     "scan_time": "2026-07-24T03:14:27Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-24 03Z of all 20 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity and 23 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_sequential_google_news_rss_bing_browser_direct_official_terminal_and_source_api_fallback",
+    "source_limitation": "All 25 Tavily web searches and all 5 Tavily extraction targets failed HTTP 432. Coverage continued through 48 sequential Google News RSS tracker/sector/emerging queries returning 215 headlines, 18 exact-event RSS follow-ups returning 161, six direct Bing query groups, direct browser inspection of NATO, Bloomberg syndication via LiveMint, Xinhua/Global Times reporting of the China Coast Guard statement, official UN/NATO/EIA pages and feeds, terminal HTTP, OilPriceAPI/Yahoo and Polymarket Gamma. IAEA, UKMTO and OPEC remained HTTP 403/security-gated. Single-source or party-claim details remain watch items until independently confirmed.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260724T030516Z.json",
       "data/deep_scan_exact_followups_20260724T030617Z.json",
@@ -614,28 +614,28 @@
       "IAEA": "Direct pages remained HTTP 403/security-gated; exact RSS and public reporting produced no new independently verified Iranian technical threshold."
     },
     "energy_oil": {
-      "checked_at": "2026-07-24T03:05:13Z",
+      "checked_at": "2026-07-24T03:14:17Z",
       "source": "OilPriceAPI plus UN/EIA and maritime reporting",
-      "brent_usd": 100.5,
+      "brent_usd": 100.79,
       "brent_change_24h_pct": 4.32,
       "wti_usd": 91.87,
       "wti_change_24h_pct": 4.3,
       "natural_gas_usd": 2.92,
       "natural_gas_change_24h_pct": -1.35,
-      "gold_usd": 4025.26,
+      "gold_usd": 4046.6,
       "gold_change_24h_pct": -2.15,
       "diesel_usd": 4.34,
       "gasoline_usd": 3.47,
-      "heating_oil_usd": 4.35,
-      "interpretation": "Brent remained near $100.50 and WTI near $91.87 while Hormuz shipping disruption and Red Sea tanker risk persisted.",
+      "heating_oil_usd": 4.34,
+      "interpretation": "Brent remained near $100.79 and WTI near $91.87 while Hormuz shipping disruption and Red Sea tanker risk persisted.",
       "caveat": "Vendor timestamps vary by instrument. Market data are sanity-only and did not set probabilities."
     },
     "energy_sanity": {
-      "as_of": "2026-07-24T03:05:13Z",
-      "brent_usd": 100.5,
+      "as_of": "2026-07-24T03:14:17Z",
+      "brent_usd": 100.79,
       "wti_usd": 91.87,
       "natural_gas_usd": 2.92,
-      "gold_usd": 4025.26,
+      "gold_usd": 4046.6,
       "probability_input": false
     },
     "polymarket_sanity": {
@@ -1507,7 +1507,7 @@
       "sources": [
         "Kuwait Defence Ministry reports carried 2026-07-23",
         "RFE/RL and Al Jazeera, 2026-07-23: Iranian claims against U.S. sites",
-        "Yeni Safak and T\u00fcrkiye Today, 2026-07-23 20Z: reported interceptions",
+        "Yeni Safak and Türkiye Today, 2026-07-23 20Z: reported interceptions",
         "Exact follow-up through 2026-07-24 00Z",
         "48-query rolling past-24h Google News RSS fallback review through 2026-07-24 03:05Z",
         "Sharjah24, 2026-07-23 20:26Z: Kuwaiti defences intercepting attacks",
@@ -1819,7 +1819,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1870,7 +1870,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -1962,7 +1962,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 90,
       "zone": "imminent",
       "trend": "rising",
@@ -2034,7 +2034,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -2080,7 +2080,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -2121,7 +2121,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -2162,7 +2162,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -2208,7 +2208,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2248,7 +2248,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2293,7 +2293,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2333,7 +2333,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 92,
       "zone": "imminent",
       "trend": "rising",
@@ -2395,7 +2395,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 93,
       "zone": "imminent",
       "trend": "rising",
@@ -2457,7 +2457,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -2508,7 +2508,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2559,7 +2559,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 66,
       "zone": "imminent",
       "trend": "rising",
@@ -2631,7 +2631,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "stable",
@@ -2682,7 +2682,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -2733,7 +2733,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2784,7 +2784,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
@@ -2846,7 +2846,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 18,
       "zone": "elevated",
       "trend": "rising",
