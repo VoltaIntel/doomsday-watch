@@ -1,44 +1,48 @@
-# Session state — DoomsdayWatch 18Z morning deep scan
+# Session state — DoomsdayWatch 21Z morning deep scan
 
-- **As of:** 2026-07-25T18:14:50Z
+- **As of:** 2026-07-25T21:20Z / 2026-07-26 local run date
 - **Repository:** `/home/openclaw/.openclaw/workspace/nuke-watch`
 - **Branch:** `main`
-- **Automated deploy commit:** `80013144545fc954edac33cea81ba42255949c58`
-- **Exact-metadata commit:** `6a645c53e400bc229f442d4af354ee9007e787aa`
-- **Pages run:** `30169245393` completed successfully for the exact-metadata commit
+- **Automated deploy commit:** `8ba20e5ca4dc9c05e97bdb79a5efbea53d9ad09c`
+- **Exact-metadata/alignment commit:** `559fb21824ef6ac31ffc29957741952c6aedef7b`
+- **Pages run:** `30175360128` completed successfully for the exact commit
 - **Live URL:** `https://voltaintel.github.io/doomsday-watch/`
 
 ## Final risk state
 - Global display: **78% / imminent**.
-- Exact current weighted coupled score: **78.460%**. This normalizes inherited metadata from 78.496 to the reproducible sum of current coupled tracker values times configured weights; no tracker probability moved.
+- Exact weighted coupled score: **78.460%**.
 - Canonical tracker set: **20 IDs** from `data/tracker_config.json`.
-- No canonical signal activated or cleared. Tracker/zone/timeline state aligns at **18 canonical signals**.
-- Evidence-only updates:
-  - `iran_conventional`: UKMTO Advisory 096-26 reports a tanker-military-forces incident in the Gulf of Oman, but gives no attack, damage, casualty or attribution. Score remains capped at **100**.
-  - `russia_ukraine`: Ukraine reported deep strikes on the Tyumen refinery, a Russian warship and vessels it says support Iran-linked military cargoes. Score remains **99** without direct NATO entry or a nuclear-posture change.
-- No emerging tracker qualified. Kenya-Somalia reporting resolved to two current source chains, below the configured three-mention/two-source gate; Syria material was a UN visit or wider Gulf-war spillover.
+- No tracker probability moved. Fresh Iran-nuclear syndication repeats the preliminary Mojtaba intent assessment already counted in the 06Z increase to 49 raw / 56 coupled.
+- Deploy temporal decay cleared `iran_conventional:hormuz_controlled_not_closed` and `iran_conventional:military_buildup`.
+- Pipeline falsely matched `north_korea:missile_range_test` from a launcher-transfer claim; the synthetic signal was removed and the text rewritten. Final tracker/zone/timeline alignment is **16 canonical signals**.
+- No emerging tracker qualified. Kenya-Somalia reports describe the same repelled/foiled event; Saudi civil-nuclear coverage does not establish weaponization or unsafeguarded operation.
 
-## Sanity checks
-- Latest energy after deploy: Brent **$98.70 (+0.47%/24h)**, WTI **$85.15 (-4.16%)**, natural gas **$2.87 (flat)**, gold **$4,055.93 (-0.20%)**. Markets did not set probabilities.
-- Exact Polymarket vs 15Z: U.S.-Iran invasion **25.5% (+1.0pp)**, NATO Article 5 **7.5% (flat)**, Iran NPT withdrawal **20.45% (+0.05pp)**, Iran nuclear test **8.5% (flat)**, Taiwan invasion **3.85% (-0.1pp)**. Sanity-only.
+## Evidence updates
+- `iran_conventional`: PBS/USNI reported another tanker disabled during U.S. blockade enforcement; Iranian-media claims of two crew deaths remain independently unverified. Score remains capped at 100.
+- `yemen_red_sea`: Reuters verified smoke toward Jizan and cited trading sources reporting some damage; Yanbu-bound missiles were reportedly intercepted and no official refinery outage was announced. Score holds 84.
+- `sudan`: local/regional reports claim army/allied recaptures in North Kordofan; independent confirmation is absent. Score holds 92.
+- `russia_ukraine`: additional reciprocal strikes caused deaths, without direct NATO entry or nuclear-posture change. Score holds 99.
 
 ## Source coverage
-- `web_search`: **25/25 HTTP 432**; `web_extract`: **3/3 targets HTTP 432**.
-- Fallback: **68 Google News RSS lanes / 361 returned items**, exact-event Google/Bing RSS, browser, direct pages, Jina-assisted UKMTO/Al Arabiya extraction, official NATO/UN/EIA pages and feeds, terminal HTTP, OilPriceAPI and exact Gamma.
-- IAEA, OPEC and CENTCOM direct probes returned 403. UKMTO did not identify the forces; Saudi facility damage remains unquantified; several Yemen battlefield claims are belligerent/aligned-source reporting.
-- Artifacts: `data/morning_deep_scan_sources_20260725T180318Z.json`, `data/deep_scan_full_rss_20260725T180338Z.json`, `data/direct_source_checks_20260725T180351Z.json`, `data/polymarket_exact_snapshot_20260725T180551Z.json`.
+- `web_search`: **25/25 HTTP 432**; `web_extract`: **5/5 HTTP 432**.
+- Fallback: **88 Google News RSS lanes / 353 returned items**, Bing News RSS, browser/direct/Jina checks, official NATO/UN/EIA pages and feeds, terminal HTTP, OilPriceAPI and exact Gamma.
+- Direct IAEA/OPEC/CENTCOM probes returned 403. Google browser search hit a bot challenge. Several claims remain belligerent, secondary, stale-indexed or unquantified.
+- Artifacts: `data/morning_deep_scan_sources_20260725T210146Z.json`, `data/deep_scan_full_rss_20260725T210302Z.json`, `data/direct_source_checks_20260725T210557Z.json`, `data/polymarket_exact_snapshot_20260725T210722Z.json`.
+
+## Sanity checks
+- Energy: Brent **$96.78 (-1.51%/24h)**; WTI **$85.15 (-5.91%)**; natural gas **$2.87 (-0.69%)**; gold **$4,055.93 (flat)**.
+- Exact Polymarket vs 18Z: U.S.-Iran invasion **26.5% (+1.0pp)**; Iran nuke **5.25% (flat)**; Iran test **8.0% (-0.5pp)**; NPT withdrawal **19.75% (-0.7pp)**; NATO Article 5 **7.5% (flat)**; Taiwan invasion **3.85% (flat)**. Markets were sanity-only.
 
 ## Deployment and verification
-- `bash scripts/deploy.sh` succeeded and pushed `80013144`; exact source-fallback metadata was restored atomically and pushed as `6a645c53`.
-- Pages run `30169245393` succeeded. Live root/state returned HTTP 200 and exposed **78 / imminent**, raw **78.46**, 20 trackers/news records and exact fallback metadata.
+- `bash scripts/deploy.sh` succeeded and pushed `8ba20e5c`; exact source metadata and signal alignment were restored atomically and pushed as `559fb218`.
+- Pages run `30175360128` succeeded. Live root/state/timeline returned HTTP 200 and exposed 78/imminent, raw 78.46, 20 trackers/news records, 16 aligned canonical signals and detailed fallback metadata.
 - Local/live `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`.
-- JSON, canonical IDs/signals, tracker-zone-timeline alignment, weighted arithmetic and **31/31 non-smoke tests** passed.
+- JSON/canonical/timeline/arithmetic checks passed. **31/31 non-smoke tests passed**. The stock smoke fixture hit its fixed 60-second copied-pipeline timeout; an isolated copy with only that timeout extended passed **11/11 in 79.13s**.
 
 ## Next watch
-- UKMTO identification/update: attack, damage, casualties, boarding, diversion or a verified transit interruption.
-- Attribution of Romania's second drone, third NATO-airspace incursion, casualty, Russian response or Article 4/5 consultation.
-- Further Ukrainian deep-refinery/maritime strikes; the warned large Russian strike; direct NATO entry or nuclear-posture change.
-- More Yemen front-line strikes; Saudi Jizan/Yanbu damage/casualty confirmation or verified refinery outage.
-- Abdali reopening/repair completion or another Kuwait/Iraq-border attack.
-- IAEA access, weapons-grade activity, weaponization, breakout hardware, detonation or NPT withdrawal.
-- Wider West Bank escalation; third independent Kenya-Somalia report; strategic M23 capture/direct Rwanda-DRC clash; new Mali drones; M/T Asana rescue/naval engagement; fourth Scarborough encounter.
+- Iran policy/weaponization order, verified Pickaxe operations or inspector-access change, weapons-grade activity, detonation or NPT withdrawal.
+- Another tanker enforcement action, verified casualties/boarding/diversion or material Hormuz traffic interruption.
+- Official Jizan damage/outage confirmation, another Yanbu/Jizan attack or Saudi retaliation.
+- Attribution/third Romanian incursion, casualties or NATO Article 4/5 consultation.
+- Independent Sudan recapture confirmation, El Obeid shift, strategic M23 capture or direct Rwanda-DRC clash.
+- Fourth Scarborough encounter; M/T Asana rescue/naval action; Abdali reopening or another border attack; corroborated DPRK transfer or actual launch/test.
