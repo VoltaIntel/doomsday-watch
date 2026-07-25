@@ -99,7 +99,7 @@
       "zone": "imminent",
       "trend": "rising",
       "active_signals": [],
-      "notes": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania\u2019s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42\u219247); Russia-Ukraine coupling +10 => 57",
+      "notes": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania’s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42→47); Russia-Ukraine coupling +10 => 57",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "RUSSIA",
@@ -163,7 +163,7 @@
       "zone": "critical",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Pakistan\u2019s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46",
+      "notes": "Pakistan’s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "PAKISTAN AFGHANISTAN",
@@ -242,7 +242,7 @@
       "zone": "elevated",
       "trend": "rising",
       "active_signals": [],
-      "notes": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17\u219219); no configured signal changed",
+      "notes": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17→19); no configured signal changed",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "SOUTH SUDAN / ABYEI",
@@ -277,7 +277,7 @@
         "external_backing",
         "infrastructure_strike"
       ],
-      "notes": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70\u219273); external_backing and infrastructure_strike remain active",
+      "notes": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70→73); external_backing and infrastructure_strike remain active",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {
         "external_backing": "2026-07-23T15:13:39Z",
@@ -299,7 +299,7 @@
       "zone": "critical",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Mali\u2019s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36",
+      "notes": "Mali’s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "MALI / CENTRAL SAHEL",
@@ -349,7 +349,7 @@
       "active_signals": [
         "infrastructure_strike"
       ],
-      "notes": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20\u219225), crossing into CRITICAL",
+      "notes": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20→25), crossing into CRITICAL",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {
         "infrastructure_strike": "2026-07-23T12:10:46Z"
@@ -418,8 +418,8 @@
     "scan_time_utc": "2026-07-24T21:19:21Z",
     "scan_time": "2026-07-24T21:19:21Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-24 21Z of all 20 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity and 23 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "web_search attempted 24 zone/special queries and web_extract attempted 5 direct pages; all returned HTTP 432. Continued with Google News RSS (110 query lanes), browser/direct source pages, official feeds/indexes, terminal HTTP, OilPriceAPI, and Polymarket Gamma exact-slug API.",
+    "source_limitation": "Primary search/extract backend was quota-blocked (HTTP 432). Fallback corpus returned 629 RSS items. IAEA and NATO Allied Air Command direct retrieval returned 403, some UN/OCHA paths failed, and Reuters direct was inaccessible; official index/feed, browser, syndicated-wire, and direct-source fallbacks were used. Google indexing timestamps were treated cautiously; disputed casualty/damage/attribution claims were labeled and did not inflate scores.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260725T000209Z.json",
       "data/deep_scan_exact_followups_20260725T000551Z.json",
@@ -718,27 +718,33 @@
     "official_source_probe": {
       "ap_iran_hub": {
         "ok": true,
-        "source": "ap_iran_hub"
+        "url": "https://apnews.com/hub/iran",
+        "title": "AP Iran hub/live article"
       },
       "un_news_rss": {
         "ok": true,
-        "source": "un_news_rss"
+        "url": "https://news.un.org/feed/subscribe/en/news/all/rss.xml",
+        "title": "UN News RSS"
       },
       "nato_main_news": {
         "ok": true,
-        "source": "nato_main_news"
+        "url": "https://www.nato.int/cps/en/natohq/news.htm",
+        "title": "NATO news index"
       },
       "nato_allied_air_command": {
         "ok": false,
-        "source": "nato_allied_air_command"
+        "url": "https://ac.nato.int/archive/2026/-nato-fighter-jets-scramble--shot-down-drone-after-it-enters-romania-airspace",
+        "title": "NATO Allied Air Command (403 direct; Google-indexed official headline)"
       },
       "iaea_news": {
         "ok": false,
-        "source": "iaea_news"
+        "url": "https://www.iaea.org/newscenter",
+        "title": "IAEA News Centre (403 direct)"
       },
       "eia_feed": {
         "ok": false,
-        "source": "eia_feed"
+        "url": "https://www.eia.gov/rss/todayinenergy.xml",
+        "title": "EIA feed (403 direct)"
       }
     },
     "rss_headline_counts": {
@@ -992,7 +998,7 @@
       "zone": "imminent",
       "trend": "rising",
       "active_signals": [],
-      "notes": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania\u2019s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42\u219247); Russia-Ukraine coupling +10 => 57",
+      "notes": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania’s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42→47); Russia-Ukraine coupling +10 => 57",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "RUSSIA"
@@ -1052,7 +1058,7 @@
       "zone": "critical",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Pakistan\u2019s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46",
+      "notes": "Pakistan’s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "PAKISTAN AFGHANISTAN"
@@ -1126,7 +1132,7 @@
       "zone": "elevated",
       "trend": "rising",
       "active_signals": [],
-      "notes": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17\u219219); no configured signal changed",
+      "notes": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17→19); no configured signal changed",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "SOUTH SUDAN / ABYEI"
@@ -1159,7 +1165,7 @@
         "external_backing",
         "infrastructure_strike"
       ],
-      "notes": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70\u219273); external_backing and infrastructure_strike remain active",
+      "notes": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70→73); external_backing and infrastructure_strike remain active",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {
         "external_backing": "2026-07-23T15:13:39Z",
@@ -1177,7 +1183,7 @@
       "zone": "critical",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Mali\u2019s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36",
+      "notes": "Mali’s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {},
       "name": "MALI / CENTRAL SAHEL"
@@ -1225,7 +1231,7 @@
         "infrastructure_strike",
         "military_buildup"
       ],
-      "notes": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20\u219225), crossing into CRITICAL",
+      "notes": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20→25), crossing into CRITICAL",
       "last_updated": "2026-07-25T00:20:10Z",
       "signal_timestamps": {
         "infrastructure_strike": "2026-07-23T12:10:46Z",
@@ -1322,7 +1328,7 @@
       "zone": "russia",
       "tracker": "russia",
       "headline": "Romanian F-16 shoots down suspected Russian drone in NATO airspace",
-      "text": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania\u2019s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42\u219247); Russia-Ukraine coupling +10 => 57.",
+      "text": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania’s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42→47); Russia-Ukraine coupling +10 => 57.",
       "source": "Romanian President and Defence Ministry statements via Al Jazeera/Reuters/AFP, 2026-07-24; NATO Allied Air Command indexed statement, 2026-07-24",
       "sources": [
         "Romanian President and Defence Ministry statements via Al Jazeera/Reuters/AFP, 2026-07-24",
@@ -1383,7 +1389,7 @@
       "zone": "pakistan_afghanistan",
       "tracker": "pakistan_afghanistan",
       "headline": "Tank operation remains a Pakistan counter-insurgency event",
-      "text": "Pakistan\u2019s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46.",
+      "text": "Pakistan’s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46.",
       "source": "Pakistan military statement via Anadolu/Arab News, 2026-07-24",
       "sources": [
         "Pakistan military statement via Anadolu/Arab News, 2026-07-24"
@@ -1443,7 +1449,7 @@
       "zone": "south_sudan_abyei",
       "tracker": "south_sudan_abyei",
       "headline": "Kiir signs transition amendment that opposition says guts 2018 arrangement",
-      "text": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17\u219219); no configured signal changed.",
+      "text": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17→19); no configured signal changed.",
       "source": "The EastAfrican, 2026-07-24; Radio Tamazuj/Eye Radio background review, 2026-07-24",
       "sources": [
         "The EastAfrican, 2026-07-24",
@@ -1474,7 +1480,7 @@
       "zone": "yemen_red_sea",
       "tracker": "yemen_red_sea",
       "headline": "Saudi-led coalition confirms Hodeida strikes; Houthis vow retaliation",
-      "text": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70\u219273); external_backing and infrastructure_strike remain active.",
+      "text": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70→73); external_backing and infrastructure_strike remain active.",
       "source": "AP updated 2026-07-25 00:01Z; Saudi-led coalition statement via Anadolu/Reuters, 2026-07-24/25",
       "sources": [
         "AP updated 2026-07-25 00:01Z",
@@ -1490,7 +1496,7 @@
       "zone": "mali_sahel",
       "tracker": "mali_sahel",
       "headline": "Mali open to U.S. intervention, but no deployment order exists",
-      "text": "Mali\u2019s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36.",
+      "text": "Mali’s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36.",
       "source": "Washington Post/Google News RSS, 2026-07-24",
       "sources": [
         "Washington Post/Google News RSS, 2026-07-24"
@@ -1535,7 +1541,7 @@
       "zone": "southern_thailand",
       "tracker": "southern_thailand",
       "headline": "Narathiwat invokes martial-law powers after deadly ranger attack",
-      "text": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20\u219225), crossing into CRITICAL.",
+      "text": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20→25), crossing into CRITICAL.",
       "source": "Nation Thailand/Thai PBS World/Anadolu/Bangkok Post/Khaosod, 2026-07-24",
       "sources": [
         "Nation Thailand/Thai PBS World/Anadolu/Bangkok Post/Khaosod, 2026-07-24"
@@ -1855,7 +1861,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 54,
       "zone": "imminent",
       "trend": "stable",
@@ -1917,7 +1923,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -2009,7 +2015,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 91,
       "zone": "imminent",
       "trend": "rising",
@@ -2081,7 +2087,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -2127,7 +2133,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -2168,14 +2174,14 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 5,
-      "notes": "Pakistan\u2019s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46",
+      "notes": "Pakistan’s military said its Tank operation followed a TTP ambush; no Afghan-state role, fresh cross-border strike, or sustained border clash was verified. The available reporting remains a Pakistan counter-insurgency event. Raw/coupled held 46",
       "attribution": {
         "base_rate": 5.0,
         "raw_probability": 46.0,
@@ -2209,7 +2215,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -2255,14 +2261,14 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 57,
       "zone": "imminent",
       "trend": "rising",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 4,
-      "notes": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania\u2019s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42\u219247); Russia-Ukraine coupling +10 => 57",
+      "notes": "Romanian President Nicusor Dan and the Romanian Defence Ministry reported that a Romanian F-16 shot down a suspected Russian drone after it entered NATO-member Romania; Italian Eurofighters joined the response. It was Romania’s first successful wartime interception, over uninhabited ground, with no casualties. Russian origin remains suspected rather than conclusively attributed; no Article 4/5 action surfaced. Raw +5 (42→47); Russia-Ukraine coupling +10 => 57",
       "attribution": {
         "base_rate": 4.0,
         "raw_probability": 47.0,
@@ -2295,7 +2301,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2340,7 +2346,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -2380,7 +2386,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 92,
       "zone": "imminent",
       "trend": "rising",
@@ -2442,7 +2448,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 95,
       "zone": "imminent",
       "trend": "rising",
@@ -2514,14 +2520,14 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "rising",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 12,
-      "notes": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17\u219219); no configured signal changed",
+      "notes": "The EastAfrican reported on 2026-07-24 that President Kiir signed an amendment extending the transition and clearing December elections, which it framed as effectively cancelling the 2018 coalition arrangement; the government says the change advances implementation, while opposition figures object. No fresh military clash was verified. Raw +2 (17→19); no configured signal changed",
       "attribution": {
         "base_rate": 12.0,
         "raw_probability": 19.0,
@@ -2565,7 +2571,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 52,
       "zone": "imminent",
       "trend": "stable",
@@ -2616,7 +2622,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 73,
       "zone": "imminent",
       "trend": "rising",
@@ -2644,7 +2650,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 18,
-      "notes": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70\u219273); external_backing and infrastructure_strike remain active",
+      "notes": "The Saudi-led coalition officially confirmed 2026-07-24/25 strikes on Houthi military sites in Hodeida after attacks on ships. Houthi media reported telecom/Kamaran damage and two injuries; the Houthis vowed retaliation. State combat entry is now confirmed rather than Houthi-only reporting. Raw +3 (70→73); external_backing and infrastructure_strike remain active",
       "attribution": {
         "base_rate": 18.0,
         "raw_probability": 73.0,
@@ -2688,14 +2694,14 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 36,
       "zone": "critical",
       "trend": "stable",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 20,
-      "notes": "Mali\u2019s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36",
+      "notes": "Mali’s government said it would not rule out U.S. military intervention, but no U.S. order, deployment, basing decision, or new JNIM strategic seizure was verified. Raw/coupled held 36",
       "attribution": {
         "base_rate": 20.0,
         "raw_probability": 36.0,
@@ -2739,7 +2745,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 27,
       "zone": "critical",
       "trend": "rising",
@@ -2790,7 +2796,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -2841,7 +2847,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -2869,7 +2875,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 10,
-      "notes": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20\u219225), crossing into CRITICAL",
+      "notes": "Multiple sources (Thai PBS World, Nation Thailand, Anadolu, Bangkok Post, Khaosod) confirmed martial-law powers across Narathiwat after the checkpoint assault that killed five rangers and injured six civilians. Troops received expanded search, detention, checkpoint, command, and proportionate lethal-force authorities. military_buildup activated. Raw +5 (20→25), crossing into CRITICAL",
       "attribution": {
         "base_rate": 10.0,
         "raw_probability": 25.0,
@@ -2913,7 +2919,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 21,
       "zone": "elevated",
       "trend": "rising",
