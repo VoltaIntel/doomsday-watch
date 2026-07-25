@@ -440,8 +440,8 @@
     "scan_completed_at": "2026-07-25T12:14:44Z",
     "scan_window": "rolling 24 hours ending 2026-07-25T12:14:44Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-25T12:14:44Z of all 20 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity, and 20 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "web_search attempted 25 zone/special queries and all returned HTTP 432; web_extract attempted 5 direct targets and all returned HTTP 432. Continued with 45 Google News RSS lanes / 333 returned items (297 unique), targeted exact-event RSS, direct Reuters syndication, ABC, Al Jazeera, Euronews, Gulf News, Daily Sabah, publisher pages, official UN/SPA/energy-source checks, terminal HTTP extraction, OilPriceAPI, and Polymarket Gamma exact-slug API.",
+    "source_limitation": "Primary Tavily search/extract was quota-blocked (HTTP 432). IAEA and OPEC returned 403; Allied Air Command, CENTCOM and U.S. Defense pages returned 403; Al Arabiya required a security check; the EU NAVFOR newsroom path returned 404; SPA pages were reachable but yielded no extractable body. Google News times may reflect indexing rather than event time. Saturday Romania-drone origin remains under analysis, Saudi Arabia has not officially quantified Jizan refinery damage, and the reported resumption of DPRK missile shipments relies on an OSINT account plus anonymous Ukrainian intelligence-linked sources.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260725T120443Z.json",
       "data/deep_scan_exact_followups_20260725T120703Z.json",
@@ -767,7 +767,8 @@
       "Independent confirmation of M23 recruit totals, a strategic position capture, or direct Rwanda-DRC clash.",
       "Additional Mali Shahed-type strikes, confirmed Russian operator/manufacture, or JNIM strategic seizure.",
       "Official M/T Asana rescue/naval-engagement update or a distinct fourth Scarborough encounter."
-    ]
+    ],
+    "exact_metadata_restored_at": "2026-07-25T12:19:23Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -2765,7 +2766,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 56,
       "zone": "imminent",
       "trend": "rising",
@@ -2816,7 +2817,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "stable",
@@ -2908,7 +2909,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 91,
       "zone": "imminent",
       "trend": "rising",
@@ -2980,7 +2981,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3026,7 +3027,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3067,7 +3068,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3108,7 +3109,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "rising",
@@ -3154,7 +3155,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 61,
       "zone": "imminent",
       "trend": "rising",
@@ -3194,7 +3195,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -3239,7 +3240,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3279,7 +3280,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 92,
       "zone": "imminent",
       "trend": "rising",
@@ -3341,7 +3342,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 96,
       "zone": "imminent",
       "trend": "rising",
@@ -3413,7 +3414,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "rising",
@@ -3464,7 +3465,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "rising",
@@ -3526,7 +3527,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 80,
       "zone": "imminent",
       "trend": "rising",
@@ -3608,7 +3609,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "rising",
@@ -3670,7 +3671,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 27,
       "zone": "critical",
       "trend": "rising",
@@ -3721,7 +3722,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "rising",
@@ -3772,7 +3773,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -3844,7 +3845,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 21,
       "zone": "elevated",
       "trend": "rising",
