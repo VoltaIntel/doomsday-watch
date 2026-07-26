@@ -450,8 +450,8 @@
     "scan_completed_at": "2026-07-26T21:19:34Z",
     "scan_window": "rolling 24 hours ending 2026-07-26T21:19:34Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-26T21:19:34Z of all 20 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity, and 22 emerging-crisis candidates; post-18Z returns were isolated and false-recency body dates were audited.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "28_tavily_searches_and_4_extracts_http_432_then_88_google_rss_20_bing_rss_browser_direct_official_oilpriceapi_yahoo_and_gamma_fallback",
+    "source_limitation": "All 28 Tavily searches and four extraction targets failed with HTTP 432. Fallback completed through 88 Google News RSS lanes (377 items), 20 Bing News RSS lanes (58 items), browser/direct BBC, NATO, UN, AVA, Sudan Horizon and The National checks, terminal HTTP, OilPriceAPI, Yahoo and exact Gamma reads. IAEA and OPEC returned 403. RSS publication times can be syndication/index times: one apparent current Torkham closure was opened and excluded because the body is dated 25 February 2025. Sudan export-highway gains remain an unverified SAF claim. The primary oil feed oscillated from Brent $98.70 at 21:02Z to $91.68 at 21:19Z, while Yahoo showed $96.78, so market point estimates are treated as a range.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260726T210205Z.json",
       "data/deep_scan_full_rss_20260726T210400Z.json",
@@ -626,14 +626,18 @@
     "mover_note": "No configured tracker moved. The exact weighted score remains 79.516% and displays 80%; the global zone remains imminent. New SAF territorial claims are not independently verified, and the renewed U.S.-Iran pause does not yet remove the blockade or secure a formal ceasefire.",
     "signals_changed": {
       "activated": [],
-      "cleared": [],
+      "cleared": [
+        "israel_lebanon:diplomacy_active",
+        "southern_thailand:infrastructure_strike",
+        "kuwait_iraq_border:infrastructure_strike"
+      ],
       "evidence_refreshed": [
         "iran_conventional:diplomacy_active",
         "iran_conventional:hormuz_controlled_not_closed",
         "israel_lebanon:ceasefire_violation",
         "yemen_red_sea:ceasefire_violation"
       ],
-      "note": "No canonical signal changed. Existing diplomatic and ceasefire-violation evidence was refreshed; no stale or false-recency item was promoted."
+      "note": "No signal was activated. Deploy-time TTL pruning cleared three expired canonical signals; the remaining state and timeline align at 15 active signals."
     },
     "auto_detection_review": {
       "added_trackers": [],
@@ -676,19 +680,19 @@
     "energy_oil": {
       "checked_at": "2026-07-26T21:19:34Z",
       "source": "OilPriceAPI primary plus Yahoo Finance cross-check and Kpler shipping reporting",
-      "brent_usd": 98.7,
-      "brent_change_24h_pct": -5.27,
-      "brent_change_vs_18z_usd": 7.02,
-      "brent_change_vs_18z_pct": 7.66,
+      "brent_usd": 91.68,
+      "brent_change_24h_pct": -7.11,
+      "brent_change_vs_18z_usd": 0.0,
+      "brent_change_vs_18z_pct": 0.0,
       "brent_yahoo_usd": 96.78,
       "wti_usd": 85.15,
       "wti_change_vs_18z_usd": 0.0,
       "wti_yahoo_usd": 89.31,
       "natural_gas_usd": 2.87,
       "gold_usd": 4055.93,
-      "heating_oil_usd": 4.23,
-      "interpretation": "The primary feed repriced Brent to $98.70 while Yahoo showed $96.78; both keep crude near but below $100. Kpler confirms a costly Saudi Suez reroute as Bab Al Mandeb west-coast loading stops.",
-      "caveat": "OilPriceAPI and Yahoo diverged materially, especially on WTI; weekend/benchmark timing differs. Market data are sanity-only and did not set tracker probabilities."
+      "heating_oil_usd": 4.27,
+      "interpretation": "The final deployment fetch put Brent at $91.68 and WTI at $85.15; an earlier same-run primary read was $98.70 and Yahoo showed Brent $96.78. Kpler confirms a costly Saudi Suez reroute as Bab Al Mandeb west-coast loading stops.",
+      "caveat": "The primary feed oscillated by $7.02 during the run, and Yahoo differed on both benchmarks; weekend/benchmark timing differs. Treat $91.68-$98.70 as a sanity range, not a precise live quote. Market data did not set tracker probabilities."
     },
     "polymarket_sanity": {
       "artifact": "data/polymarket_exact_snapshot_20260726T210544Z.json",
@@ -740,7 +744,7 @@
     "configured_tracker_count": 20,
     "search_query_count": 136,
     "search_result_count": 435,
-    "dashboard_note": "21Z deep scan: global 80% / imminent (79.516 exact), with no tracker or canonical signal change. The reciprocal U.S.-Iran pause holds but remains reversible; SAF newly claimed the Omdurman-El Obeid export highway without independent verification.",
+    "dashboard_note": "21Z deep scan: global 80% / imminent (79.516 exact), with no tracker probability change. Deploy-time TTL pruning cleared three expired signals; SAF newly claimed the Omdurman-El Obeid export highway without independent verification.",
     "next_watch_triggers": [
       "A signed U.S.-Iran ceasefire, verified vessel-flow recovery or blockade relief; alternatively, renewed strikes, a boarded/disabled vessel or zero Hormuz traffic.",
       "Named-vessel or independent confirmation of the Hormuz mine report and any mine-clearance operation.",
@@ -764,7 +768,8 @@
         "reason": "Kpler confirms a costly Saudi Suez diversion, but no new independently confirmed vessel loss or oil-facility damage supports another rise."
       }
     ],
-    "final_active_signal_count": 18
+    "final_active_signal_count": 15,
+    "post_deploy_alignment_restored_at": "2026-07-26T21:19:56Z"
   },
   "trackers": {
     "iran_conventional": {
