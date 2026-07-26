@@ -1,54 +1,48 @@
-# Session state — DoomsdayWatch 06Z morning deep scan
+# DoomsdayWatch Session State
 
-- **As of:** 2026-07-26T06:25Z
-- **Repository:** `/home/openclaw/.openclaw/workspace/nuke-watch`
-- **Branch:** `main`
-- **Automated deploy commit:** `41b61e2fe2b09951c188f6c20ac15df07df9896a`
-- **Exact alignment/source commit:** `70983152a736bff8c336cea7fcb27fd653a8b1d9`
-- **Pages run:** `30190957033` completed successfully for the exact commit
-- **Live URL:** `https://voltaintel.github.io/doomsday-watch/`
+## Last completed scan
+- **Run:** 2026-07-26 09Z morning deep scan, completed and live-verified at 09:20Z.
+- **Canonical scope:** all 20 tracker IDs from `data/tracker_config.json`, plus oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity and 22 emerging-crisis candidates.
+- **Global:** **79% / imminent**, exact pipeline score **78.516%**, up **0.020pp** from 78.496%. The display crossed 78→79 solely because the exact fractional-coupling score passed the rounding boundary.
 
-## Final risk state
-- Global display: **78% / imminent**.
-- Exact additive weighted coupled score: **78.460%**.
-- Canonical tracker set: **20 IDs** from `data/tracker_config.json`.
-- No tracker probability moved.
-- Deploy temporal decay cleared `sudan:infrastructure_strike`; no signal activated.
-- Tracker/zone/timeline state aligns at **14 canonical signals**.
+## Probability changes
+- `south_china_sea`: **27→30** raw/coupled. Reuters reported U.S., Japanese and Philippine ships, coast guard units, surveillance aircraft and fighters completed five days of South China Sea exercises amid the Second Thomas and Scarborough confrontations.
+- `kuwait_iraq_border`: **19→17** raw/coupled. Reuters, citing Iraq's border authority, confirmed Abdali reopened to passenger and commercial traffic after the drone strike caused material damage but no casualties.
+- All other tracker probabilities held. `iran_conventional` remains 100/100; `russia_ukraine` 99/99; `israel_palestine` 96/96; `sudan` 92/92; `israel_lebanon` 81/91; `yemen_red_sea` 84/84.
 
-## Evidence updates
-- `iran_conventional`: a July 26 report quoting CENTCOM confirms a verification boarding of M/T Charminar. The published aggregate remains 12 ships turned back, two disabled and two verification boardings. Score remains capped at 100; no mining or zero-traffic condition was verified.
-- U.S.-Iran: Al Jazeera/AP/Reuters report two nights without new U.S. strikes and continued mediated messages, but no agreement. Existing `diplomacy_active` evidence was refreshed.
-- `russia_ukraine`: Iran blamed Ukraine for a Caspian vessel strike that killed one and wounded another; Zelensky claimed hits on military-cargo vessels. Score holds 99 near ceiling; no matching canonical signal, direct NATO entry or nuclear-posture shift.
-- `yemen_red_sea`: follow-up corroborated the counted Jizan/Yanbu episode and two Greek-operated Patriot interceptions. Saudi damage remains unquantified and Aramco published no outage notice; score holds 84.
-- `israel_lebanon`: Reuters confirmed resident return after Israeli withdrawal and Lebanese army deployment in Zawtar al-Gharbiyeh, reinforcing the existing diplomatic pilot without a new combat threshold.
-- North Korea: Kyiv cited Ukrainian intelligence claiming preparations for 30,000 more DPRK troops and new launchers in Russia; no independent confirmation or DPRK launch/test was found.
-- No emerging tracker qualified. Kenya-Somalia strengthened with a second distinct episode: two sources reported a Garissa mast attack and missing teacher after the Mandera attack. It remains below the three-distinct-event quality gate used with the configured three-mention/two-source minimum.
+## Signals
+- Activated canonical `south_china_sea:external_backing`.
+- Deploy temporal decay cleared `israel_lebanon:ceasefire_violation` and `yemen_red_sea:infrastructure_strike`.
+- Refreshed `iran_conventional:diplomacy_active`: Iran said Oman talks made progress on Hormuz safe-passage mechanisms while explicitly saying traffic had not changed.
+- Final tracker/zone/top-level/timeline projections align at **13 canonical signals**.
 
-## Source coverage
-- `web_search`: **25/25 HTTP 432**; `web_extract`: **5/5 HTTP 432**.
-- Fallback: **91 Google News RSS lanes / 413 items** plus **20 Bing lanes / 162 items**, browser inspection, direct/Jina-backed pages, official NATO/UN/EIA checks, terminal HTTP, OilPriceAPI and exact Gamma.
-- 35 Google lane results (27 unique) indexed after 03Z; no Bing result did. Publication times can be indexing/syndication times.
-- Direct IAEA remained blocked by HTTP 403/Cloudflare and Jina exposed only verification; OPEC returned 403; OCHA OPT and the UN Sudan feed returned 404. The latest CENTCOM social post was not exposed on the release page, so Charminar details rely on a secondary report carrying a direct CENTCOM quotation.
-- Artifacts: `data/morning_deep_scan_sources_20260726T060254Z.json`, `data/deep_scan_full_rss_20260726T060428Z.json`, `data/direct_source_checks_20260726T061037Z.json`, `data/polymarket_exact_snapshot_20260726T061249.json`.
+## Evidence review
+- Iran/Oman: AA directly exposed the Foreign Ministry statement on productive safe-passage consultations; no formal truce, mining, zero traffic or new boarding was verified.
+- NATO/allied: official NATO latest-news still led with the 24 July Qatar solidarity visit; no new Article 4/5 or Romania collective-response step. The trilateral South China Sea exercise supplied concrete allied backing.
+- IAEA/UN: IAEA direct access remained Cloudflare-blocked and exact RSS lanes produced no fresh technical/safeguards threshold. UN feeds contained no newer operational measure.
+- DPRK: the alleged 30,000 additional troop transfer gained syndication but no independent confirmation; no launch/test signal activated.
+- Auto-detection: all 22 candidates reviewed; none added. Fresh Syria-lane items were misclassified Iran stories; Saudi-nuclear items concerned a civil pact; one Myanmar soldier plus two police crossing into Bangladesh was below the sustained-crisis threshold. Kenya-Somalia remains at two distinct episodes, below the three-event quality gate.
 
-## Sanity checks
-- Energy: Brent **$98.70** and WTI **$85.15**, both unchanged from 03Z; natural gas **$2.87**; gold **$4,055.93**. Weekend refined-product values remain stale/thin.
-- Exact Polymarket vs 03Z: U.S.-Iran invasion **23.5%**, Iran nuke **5.2%**, Iran test **8.0%**, NPT withdrawal **19.6%**, NATO Article 5 **7.5%**, Taiwan invasion **3.65%** — all flat. The thin DPRK invasion contract eased **0.05pp to 3.25%**. Markets were sanity-only.
+## Sources and markets
+- Tavily/web_search: **25/25 HTTP 432**. Tavily extraction: **5/5 HTTP 432**.
+- Fallback: **91 Google News RSS lanes / 404 items**, **20 Bing lanes / 163 items**, browser/direct/Jina pages, official NATO/UN/EIA checks, terminal HTTP, OilPriceAPI and Polymarket Gamma exact slugs.
+- Limitations: IAEA Cloudflare; OPEC 403; OCHA OPT and UN Sudan feed 404; Reuters direct DataDome (syndications used); CENTCOM release page did not expose latest social posts. Google dates may be index/syndication times.
+- Oil: Brent **$98.70**, WTI **$85.15**, both flat vs 06Z; no newly verified sustained physical supply loss.
+- Exact markets vs 06Z: key Iran, NATO and Taiwan contracts flat; thin DPRK invasion **3.30% (+0.05pp)**. Markets remained sanity-only.
+- Artifacts: `data/morning_deep_scan_sources_20260726T090240Z.json`, `data/deep_scan_full_rss_20260726T090421Z.json`, `data/direct_source_checks_20260726T091017Z.json`, `data/polymarket_exact_snapshot_20260726T090902Z.json`.
 
-## Deployment and verification
-- `bash scripts/deploy.sh` succeeded, committing and pushing `41b61e2f`.
-- Post-deploy inspection caught a real duplicated-state defect: decay removed `sudan:infrastructure_strike` from timeline/trackers but left it in `zones`. The exact atomic repair also restored contract-required fallback metadata and was pushed as `70983152`.
-- Pages run `30190957033` succeeded. Cache-busted live root/state/timeline returned HTTP 200 and exposed 78/imminent, raw 78.46, 20 trackers/news records, 14 aligned canonical signals and exact fallback metadata.
-- Local/live `index.html` contains `DoomsdayWatch // Command Deck`, `const state = {`, and `// ===== RENDER`.
-- JSON, canonical-ID/signal, timeline-alignment and additive-weight arithmetic checks passed. **31/31 non-smoke tests passed**.
-- The stock smoke fixture timed out at its fixed 60-second copied-pipeline ceiling, producing 11 setup errors; an isolated copy with only that ceiling extended to 180 seconds passed **11/11 in 73.07s**.
-- HEAD, upstream and remote main matched at the exact deployment commit before session logging.
+## Deploy and verification
+- `bash scripts/deploy.sh` succeeded; automated commit `8d52860b` pushed.
+- Post-deploy duplicate-signal/global-score alignment commit `21edc987` pushed and equals `origin/main` at verification.
+- GitHub Pages run `30196225476` succeeded for `21edc987`.
+- Cache-busted live root/state/timeline returned HTTP 200 and exposed **79 / imminent**, raw **78.516**, 20 trackers, 20 news records, 13 aligned signals and exact fallback metadata.
+- Required local and live command-deck markers present: `DoomsdayWatch // Command Deck`, `const state = {`, `// ===== RENDER`.
+- JSON, canonical-ID/signal, tracker-zone-timeline and arithmetic checks passed. **31/31 non-smoke tests passed**.
 
 ## Next watch
-- Iran policy/weaponization order, safeguards exclusion, verified Pickaxe operation, weapons-grade activity, detonation or NPT withdrawal.
-- Another tanker disable/boarding with casualties or diversion; measured Hormuz interruption, mining or zero traffic; or a formal U.S.-Iran truce.
-- Official Jizan outage/damage confirmation, another Yanbu/Jizan attack, Saudi retaliation or a Bab al-Mandeb closure attempt.
-- Attribution/third Romanian incursion, casualties or NATO Article 4/5 consultation.
-- Independent confirmation of the 30,000 DPRK troop deployment; a strategic M23 capture/direct Rwanda-DRC clash; or a new Sudan territorial shift.
-- Confirmed Abdali reopening/another border attack; a third distinct Kenya-Somalia episode; M/T Asana rescue/naval action; actual DPRK launch/detonation.
+1. Formal U.S.-Iran truce or published Hormuz transit mechanism; alternatively, a boarding/disable, mining or zero traffic.
+2. New South China Sea confrontation after the allied exercise, casualty/vessel loss, Chinese counter-exercise or treaty consultation.
+3. Iranian safeguards exclusion, weapons-grade production, weaponization order, detonation or NPT withdrawal.
+4. Official Jizan damage/outage, another Yanbu/Jizan attack, Saudi retaliation or Bab al-Mandeb closure attempt.
+5. Romania attribution, third NATO-airspace incursion, casualty or Article 4/5 consultation.
+6. Independent DPRK troop confirmation; strategic M23/direct Rwanda-DRC shift; Sudan territorial shift; another Abdali strike; or a third Kenya-Somalia episode.
