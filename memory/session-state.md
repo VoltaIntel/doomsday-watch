@@ -1,20 +1,22 @@
 # DoomsdayWatch Session State
 
 ## Last completed scan
-- **Run:** 2026-07-27 12Z morning deep scan, completed and live-verified at 12:17Z.
+- **Run:** 2026-07-27 15Z morning deep scan, completed and live-verified at 15:21Z.
 - **Canonical scope:** all 20 tracker IDs from `data/tracker_config.json`, plus oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity and 22 emerging-crisis candidates.
-- **Global:** **80% / imminent**; exact fractional-coupling score **79.576%**, unchanged from 09Z.
+- **Global:** **80% / imminent**; exact fractional-coupling score **79.696%**, up **0.120pp** from 12Z.
 
 ## Probability and evidence result
-- **No numeric tracker moved.** AP now reports three strike-free days and significant intermediary progress toward restoring an interim arrangement. Iran says intermediaries are relaying messages and Iran-Oman work is focused on a vessel-transit mechanism, but there are no direct U.S.-Iran talks, Hormuz remains closed and the U.S. blockade remains in force.
-- `sudan` remains **94%**. Saudi Gazette and Türkiye Today syndicated the army's highway-control claim, but no independent field confirmation or RSF counterattack appeared; a current humanitarian report says roughly half a million people around el-Obeid remain at risk.
-- `north_korea` remains **18%**. South Korea is monitoring the reported 30,000-troop plan, while the Kremlin rejected Zelensky's account; no actual movement was verified.
-- `russia` remains **56% raw / 66% coupled**. Fresh Romania coverage still resolves to the third drone shootdown, not a fourth; NATO announced no Article 4/5 action.
+- **Top mover:** `russia` **56→58 raw / 66→68 coupled**. Romania's defence ministry reported a drone briefly entered Romanian airspace on a fourth consecutive day; two F-16s scrambled, but it returned toward Ukraine and was not shot down. Romania then summoned Russia's ambassador, expelled an embassy employee and recalled its own ambassador after Russian-origin debris attribution. NATO announced no Article 4/5 action.
+- `iran_conventional` remains capped at **100**. Reuters reported Saudi Arabia, Jordan and Iraq recorded drone attacks during the direct U.S.-Iran pause; Saudi Arabia attributed some petroleum-targeting drones to an Iran-backed Iraqi militia. Iranian state media claimed six unauthorized ships were turned back in Hormuz. A third strike-free night and Oman mediation continue, but no direct U.S.-Iran talks are underway.
+- `yemen_red_sea` remains **87**. Houthis claimed a fresh attempt against Yanbu-linked transit sites and Reuters reported reduced Bab el-Mandeb traffic, but no new damage or vessel loss was verified.
+- `southern_thailand` remains **25**. Four gunmen wounded an off-duty police sergeant in Pattani; the expanded security dragnet confirms persistence, not a strategic shift.
 - All 22 emerging candidates were reviewed. Myanmar remains one Reuters/ACLED reporting chain; no candidate crossed the configured three-mention/two-independent-source gate.
 
 ## Signals
-- No canonical signal activated or cleared. Evidence refreshed for `iran_conventional:diplomacy_active` and `iran_conventional:hormuz_controlled_not_closed`.
-- Tracker, zone, top-level and timeline projections align at **16 canonical signals**.
+- No evidence-backed canonical signal activated or cleared.
+- Evidence refreshed for `iran_conventional:ceasefire_violation`, `iran_conventional:hormuz_controlled_not_closed`, `yemen_red_sea:ceasefire_violation` and `southern_thailand:military_buildup`.
+- Deploy briefly introduced the contextual false match `north_korea:nuclear_test`; it was removed atomically from tracker, zone, top-level and timeline projections and the triggering wording was corrected.
+- Final tracker, zone, top-level and timeline projections align at **16 canonical signals**.
 
 ## Per-tracker table
 | Tracker | Raw | Coupled | Zone | Active signals |
@@ -23,7 +25,7 @@
 | `israel_lebanon` | 87 | 97 | imminent | `ceasefire_violation` |
 | `turkey` | 5 | 5 | deterrent | — |
 | `india` | 15 | 15 | elevated | — |
-| `russia` | 56 | 66 | imminent | — |
+| `russia` | 58 | 68 | imminent | — |
 | `china` | 24 | 28 | critical | — |
 | `north_korea` | 18 | 18 | elevated | — |
 | `russia_ukraine` | 99 | 99 | imminent | — |
@@ -41,26 +43,27 @@
 | `kuwait_iraq_border` | 17 | 17 | elevated | — |
 
 ## Sources and markets
-- Tavily failed **24/24 searches + 7/7 extracts** with HTTP 432.
-- Fallback: **96 Google News RSS queries / 1,049 items**, **24 Bing lanes / 128 items** with one lane failure, browser/direct AP/NATO/UN checks, terminal HTTP, OilPriceAPI and exact Gamma.
-- Limits: IAEA/OPEC 403; EIA direct retry 406 although the first feed fetch succeeded; OCHA/configured UN Sudan paths 404; RSS dates can be indexing/syndication times.
-- Final deploy OilPriceAPI: Brent **$88.35** (-9.45%/24h), WTI **$83.72** (-2.14%).
-- Exact markets: U.S.-Iran invasion **21.5%** (+1.00pp vs 09Z), Iran event **5.15%**, Iran test **5.5%**, NPT withdrawal **15.8%**, NATO Article 5 **7.5%**, Taiwan invasion **3.65%**, China-Taiwan clash **6.20%** (-0.05pp), DPRK invasion **2.90%** (+0.45pp), Israel-Lebanon normalization **12.5%**. Markets did not set scores.
-- Artifacts: `data/morning_deep_scan_sources_20260727T120316Z.json`, `data/deep_scan_full_rss_20260727T120314Z.json`, `data/bing_deep_scan_20260727T120314Z.json`, `data/deep_scan_summary_20260727T120314Z.json`, `data/polymarket_exact_snapshot_20260727T120526Z.json`, `data/direct_source_checks_20260727T120538Z.json`.
+- Tavily failed **25/25 searches + 5/5 extracts** with HTTP 432.
+- Fallback: **78 Google News RSS queries / 778 items**, **24 Bing lanes / 137 items**, browser/direct Reuters syndication, Romanian defence/foreign-ministry reporting, NATO/UN checks, terminal HTTP/text extraction, OilPriceAPI and exact Gamma.
+- Limits: IAEA/OPEC 403; OCHA/configured UN Sudan paths 404; Google browser search hit CAPTCHA and Bing browser search a Cloudflare challenge; RSS dates can be indexing/syndication times.
+- Final deploy OilPriceAPI: Brent **$89.70** (-1.64%/24h; +$1.35 vs 12Z), WTI **$83.67** (-1.74%; -$0.05).
+- Exact markets: U.S.-Iran invasion **21.5%**, Iran event **5.15%**, Iran test **5.5%**, NPT withdrawal **15.85%** (+0.05pp), NATO Article 5 **7.5%**, Taiwan invasion **3.65%**, China-Taiwan clash **6.30%** (+0.10pp), DPRK invasion **3.05%** (+0.15pp), Israel-Lebanon normalization **12.5%**. Markets did not set scores.
+- Artifacts: `data/deep_scan_full_rss_20260727T150241Z.json`, `data/bing_deep_scan_20260727T150241Z.json`, `data/deep_scan_summary_20260727T150241Z.json`, `data/direct_source_checks_20260727T150241Z.json`, `data/polymarket_exact_snapshot_20260727T150704Z.json`.
 
 ## Deploy and verification
-- Required `bash scripts/deploy.sh` succeeded. Initial deploy commit: `c2e15118`; exact energy correction/pipeline commit: `91f8ae73`.
-- GitHub Pages run `30265134910` succeeded for final HEAD `91f8ae73`.
-- Cache-busted live root/state/timeline returned HTTP 200 and expose **80 / imminent**, exact **79.576**, 20 trackers/news records and 16 aligned signals.
+- Required `bash scripts/deploy.sh` succeeded twice; final exact energy correction/pipeline commit: `6ab1c50b`.
+- GitHub Pages run `30279475126` succeeded for `6ab1c50b`.
+- Cache-busted live root/state/timeline returned HTTP 200 and expose **80 / imminent**, exact **79.696**, Russia **58/68**, 20 trackers/news records and 16 aligned signals.
 - Required local/live markers are present: `DoomsdayWatch // Command Deck`, `const state = {`, `// ===== RENDER`.
-- JSON/canonical/timeline/fractional checks pass. **31/31 non-smoke assertions** passed; the stock fixture hit its known fixed 60-second subprocess ceiling, while identical isolated **11/11 smoke assertions passed in 86.07 seconds** with only the harness ceiling extended. No command-deck HTML was hand-edited.
-- Local HEAD equals `origin/main`; repository tree is clean.
+- JSON/canonical/timeline/fractional checks pass; **31/31 non-smoke assertions** passed. No command-deck HTML was hand-edited.
+- Data HEAD matched `origin/main` and the repository tree was clean before this session-summary update.
 
 ## Next watch
-1. A fourth strike-free U.S.-Iran day, direct talks, a signed arrangement or verified Hormuz vessel-flow recovery; alternatively resumed strikes or an operational order tied to moving U.S. assets.
-2. Implementation of an Iran-Oman transit mechanism, blockade relief, mine-clearance activity or verified zero commercial traffic.
-3. Independent field confirmation of Sudan army control along the Khartoum-el-Obeid route, an RSF counterattack or sustained humanitarian access.
-4. Verified movement of additional North Korean troops or launchers, a DPRK missile/nuclear test or an allied countermeasure.
-5. A fourth Romanian incursion, casualties, recovered-drone attribution or NATO Article 4/5 consultation.
-6. Confirmed new Houthi damage to Saudi oil infrastructure, another damaged/sunk vessel or a verified change in Bab el-Mandeb traffic.
-7. A verified Iranian safeguards/weapons threshold, direct retaliation against Ukraine or an emerging lane crossing the configured gate.
+1. A fifth Romanian incursion, casualties, recovered-drone attribution, Russian retaliation to the diplomatic expulsion or NATO Article 4/5 consultation.
+2. Direct U.S.-Iran talks, a signed arrangement or verified Hormuz vessel-flow recovery; alternatively resumed direct strikes or an operational order tied to moving U.S. assets.
+3. Further Saudi/Jordan/Iraq drone attacks, verified attribution to Iran or its proxies, Saudi retaliation or confirmed petroleum-infrastructure damage.
+4. Implementation of an Iran-Oman transit mechanism, blockade relief, mine-clearance activity or verified zero commercial traffic.
+5. Independent confirmation of Sudan highway control, an RSF counterattack or sustained humanitarian access.
+6. Verified movement of additional North Korean troops or launchers, a DPRK missile/device event or an allied countermeasure.
+7. Another damaged/sunk Red Sea vessel, verified Saudi oil damage or a material Bab el-Mandeb traffic shift.
+8. An emerging crisis crossing the configured three-mention/two-independent-source gate.
