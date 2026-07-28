@@ -432,11 +432,11 @@
     "scan_completed_at": "2026-07-28T03:08:46Z",
     "scan_window": "rolling 24 hours ending 2026-07-28T03:08:46Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-28T03:08:46Z of all 20 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, exact-slug Polymarket sanity and 22 emerging-crisis candidates; post-2026-07-28T00:22:38Z items were separately audited for event date, duplicate chains, corroboration and threshold relevance.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_google_bing_official_direct_fallback",
+    "source_limitation": "Tavily failed 26/26 required web_search attempts with HTTP 432. Fallbacks completed through 47 Google News RSS lanes (294 items), 47 Bing News RSS lanes (242 items), direct official pages/feeds, terminal HTTP, OilPriceAPI and exact Polymarket Gamma queries. IAEA news/press and OPEC returned HTTP 403; RSS timestamps can reflect indexing rather than event dates, so late rewrites were treated as non-new unless the underlying event changed.",
     "source_artifacts": [
       "data/deep_scan_full_fallback_20260728T030319Z.json",
-      "data/polymarket_exact_snapshot_20260728T030846Z.json"
+      "data/polymarket_exact_snapshot_20260728T031453Z.json"
     ],
     "source_fallback_detail": {
       "tavily_search_attempts": 26,
@@ -605,7 +605,7 @@
       "cleared": [],
       "ttl_reactivated": [],
       "evidence_refreshed": [],
-      "note": "No evidence-backed canonical signal activated or cleared. A negated phrase that briefly overmatched during deploy was removed before final publication."
+      "note": "No evidence-backed canonical signal activated or cleared. A negated DPRK phrase that briefly overmatched during the first deploy was removed from all projections before the final corrected deploy."
     },
     "auto_detection_review": {
       "added_trackers": [],
@@ -646,24 +646,24 @@
       "iaea_un": "IAEA public pages remained HTTP 403. Reachable UN feeds added no Iranian nuclear threshold."
     },
     "energy_oil": {
-      "checked_at": "2026-07-28T03:08:46Z",
-      "source": "OilPriceAPI plus rolling-day shipping and energy reporting",
-      "brent_usd": 86.54,
-      "brent_change_vs_00z_usd": -1.19,
-      "brent_change_vs_00z_pct": -1.356,
-      "brent_change_24h_pct": -9.0,
-      "wti_usd": 81.08,
-      "wti_change_vs_00z_usd": -1.02,
-      "wti_change_vs_00z_pct": -1.242,
-      "wti_change_24h_pct": -5.19,
+      "checked_at": "2026-07-28T03:14:53Z",
+      "source": "OilPriceAPI final deploy snapshot plus rolling-day shipping and energy reporting",
+      "brent_usd": 86.52,
+      "brent_change_vs_00z_usd": -1.21,
+      "brent_change_vs_00z_pct": -1.379,
+      "brent_change_24h_pct": -7.11,
+      "wti_usd": 80.81,
+      "wti_change_vs_00z_usd": -1.29,
+      "wti_change_vs_00z_pct": -1.571,
+      "wti_change_24h_pct": -4.99,
       "natural_gas_usd": 2.74,
-      "gold_usd": 4046.92,
+      "gold_usd": 4044.79,
       "heating_oil_usd": 4.05,
       "interpretation": "Brent and WTI extended their decline as the direct U.S.-Iran strike pause held. The move supports de-escalation sanity but does not by itself clear conflict signals or set tracker scores.",
       "caveat": "Energy prices do not set tracker probabilities."
     },
     "polymarket_sanity": {
-      "artifact": "data/polymarket_exact_snapshot_20260728T030846Z.json",
+      "artifact": "data/polymarket_exact_snapshot_20260728T031453Z.json",
       "requested_slugs": 9,
       "fetched_markets": 9,
       "missing_slugs": 0,
@@ -744,7 +744,7 @@
       }
     ],
     "final_active_signal_count": 13,
-    "post_deploy_alignment_restored_at": null
+    "post_deploy_alignment_restored_at": "2026-07-28T03:14:53Z"
   },
   "trackers": {
     "iran_conventional": {
