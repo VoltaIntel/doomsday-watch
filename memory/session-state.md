@@ -1,25 +1,25 @@
 # DoomsdayWatch Session State
 
 ## Last completed scan
-- **Run:** 2026-07-28 15Z morning deep scan; corrected data/UI deploy `ff1fec3a`, final exact-state correction `22baa8ee`, and Pages run `30373565159` succeeded.
+- **Run:** 2026-07-28 18Z morning deep scan; data/UI deploy `d5c4393c`, exact source/deploy metadata `c60b1fdd`, and Pages run `30386923768` succeeded.
 - **Canonical scope:** all 20 tracker IDs from `data/tracker_config.json`, oil/energy, IAEA/UN, NATO/allied positions, nine exact Polymarket contracts and 22 emerging-crisis candidates.
-- **Global:** **80% / imminent**; exact additive coupled score **79.760%**. No tracker probability moved.
+- **Global:** **80% / imminent**; exact additive coupled score **79.860%**, up 0.100 point from 15Z.
 
 ## Evidence result
-- Israeli Defence Minister Katz confirmed U.S. aircraft operated from Israeli bases against Iran in recent weeks and reiterated conditional readiness. Multiple reports on the same interview say Washington is still withholding approval for Iranian energy/power-site strikes. This is retrospective/conditional; the direct U.S.-Iran strike pause held at the 15Z cutoff.
-- Senior U.S. officials said the IDF began pilot redeployment in Zawtar al-Gharbiyeh and Washington will pursue implementation, but full withdrawal remains conditional on Hezbollah disarmament and restored Lebanese sovereignty. Same-day strikes prevent a numeric de-escalation.
-- Reuters reports the Kremlin now calls Ukraine's Caspian strike on the Iranian vessel Anna an assault on Iran itself and accuses Kyiv of widening the geography of attacks. No Russian retaliation was announced.
-- Marine Insight newly covered the Houthi claim, first carried by Reuters on 27 July, against Yanbu/east-west oil infrastructure. Saudi Arabia and Aramco still have not confirmed a hit or production loss; the event was already scored.
-- No emerging tracker qualified. A Myanmar soldier and two police officers crossing into Bangladesh produced one current source, below the configured gate.
+- `israel_palestine` rose **92 → 94 raw/coupled** after Haaretz and The Jerusalem Post reported that Defence Minister Katz ordered the IDF to prepare a West Bank refugee-camp takeover and expulsion. Reporting had not established execution or identified the camp, so the increase was limited to two points.
+- Reuters reports China opened direct Houthi talks for individual oil-tanker passage through the southern Red Sea. This is a selective commercial-security channel, not a general end to the 20 July blockade.
+- Reuters also reports Oman presented Iran with a Gulf-backed Hormuz management proposal involving voluntary usage fees. Core Iran-U.S. disagreements remain and no signed arrangement, normalized traffic or mine clearance was announced.
+- Sudan army gains, a Goma third-term protest and continued Iran/Lebanon/Yemen reporting reinforced existing lanes without meeting a second numeric threshold.
+- No emerging tracker qualified. The apparent Thailand-Cambodia item concerned scam-centre trafficking, and Myanmar-Bangladesh remained below the configured three-mention/two-independent-source gate.
 
 ## Signals
-- No canonical signal activated or cleared.
-- Refreshed evidence for `iran_conventional:diplomacy_active`, `israel_lebanon:diplomacy_active`, and `yemen_red_sea:infrastructure_strike`.
-- The first deploy overmatched retrospective source wording into `iran_conventional:bomber_redeployment`; that false projection was removed before the corrected final deploy.
-- Tracker, zone, top-level and timeline projections align at **14 canonical signals**.
+- Activated `israel_palestine:military_buildup` on the explicit IDF preparation order.
+- Activated `yemen_red_sea:diplomacy_active` on direct China-Houthi tanker negotiations.
+- Refreshed `iran_conventional:diplomacy_active` on the Oman proposal.
+- No canonical signal cleared. Tracker, zone, top-level and timeline projections align at **16 canonical signals**.
 
 ## Per-tracker table
-| Tracker | Raw | Coupled | Δ vs 12Z | Zone | Active signals |
+| Tracker | Raw | Coupled | Δ vs 15Z | Zone | Active signals |
 |---|---:|---:|---:|---|---|
 | `iran_conventional` | 100 | 100 | 0 | imminent | `ceasefire_violation`, `diplomacy_active`, `hormuz_controlled_not_closed`, `hormuz_mining`, `military_buildup`, `oil_infrastructure_threat` |
 | `israel_lebanon` | 87 | 97 | 0 | imminent | `ceasefire_violation`, `diplomacy_active` |
@@ -32,10 +32,10 @@
 | `pakistan_afghanistan` | 46 | 46 | 0 | critical | — |
 | `iran_nuclear` | 49 | 56 | 0 | imminent | — |
 | `sudan` | 94 | 94 | 0 | imminent | `military_buildup` |
-| `israel_palestine` | 92 | 92 | 0 | imminent | `diplomacy_active`, `holy_site_tension` |
+| `israel_palestine` | 94 | 94 | **+2** | imminent | `diplomacy_active`, `holy_site_tension`, `military_buildup` |
 | `south_sudan_abyei` | 19 | 19 | 0 | elevated | — |
 | `eastern_drc` | 56 | 56 | 0 | imminent | — |
-| `yemen_red_sea` | 92 | 92 | 0 | imminent | `ceasefire_violation`, `infrastructure_strike`, `military_buildup` |
+| `yemen_red_sea` | 92 | 92 | 0 | imminent | `ceasefire_violation`, `diplomacy_active`, `infrastructure_strike`, `military_buildup` |
 | `mali_sahel` | 39 | 39 | 0 | critical | — |
 | `south_china_sea` | 30 | 30 | 0 | critical | — |
 | `somalia_gulf_of_aden` | 28 | 28 | 0 | critical | — |
@@ -43,29 +43,29 @@
 | `kuwait_iraq_border` | 17 | 17 | 0 | elevated | — |
 
 ## Sources, energy and markets
-- Tavily failed **27/27 searches** and **5/5 extract URLs** with HTTP 432.
-- Fallback completed through 47 Google lanes / 155 items, 47 Bing lanes / 245 items, 16 exact-event lanes / 83 raw items, two direct JPost RSS feeds, browser/direct pages, terminal HTTP, ten official/direct targets, OilPriceAPI and exact Gamma.
-- IAEA news/press and OPEC returned HTTP 403; the IAEA browser path presented a verification challenge. RSS recency and source-chain caveats were audited.
-- Final energy: Brent **$86.62 (-3.58%/24h)** and WTI **$81.37 (-2.28%/24h)**. Energy remained sanity-only.
-- Exact markets: U.S.-Iran invasion **21.5%**; Iran event/test/NPT **5.2% / 5.5% / 15.9%**; NATO Article 5 **7.5%**; Taiwan invasion/clash **3.75% / 6.65%**; DPRK invasion **3.10%**; Israel-Lebanon normalization **15.0%**. The DPRK move was +0.65pp on only $52 reported 24h volume and did not affect scores.
-- Artifacts: `data/deep_scan_15z_fallback_20260728T150248Z.json`, `data/targeted_followups_20260728T150411Z.json`, and `data/polymarket_exact_snapshot_20260728T150821Z.json`.
+- Tavily failed **25/25 searches** and **5/5 extract URLs** with HTTP 432.
+- Fallback used 25 Google primary lanes / 150 items, 25 Bing primary lanes / 158 items, 22 emerging lanes per engine / 28 Google + 92 Bing items, 25 targeted lanes per engine / 411 Google + 71 Bing items, direct/browser pages, terminal HTTP, official feeds/pages, OilPriceAPI and exact Gamma.
+- IAEA news/press and OPEC returned HTTP 403; IAEA browser access remained on a verification challenge. Reuters direct access was DataDome-blocked, so Reuters claims were checked through headline indexes and accessible agency syndication.
+- Final energy: Brent **$84.27 (-5.07%/24h)** and WTI **$79.55 (-3.90%)**; versus 15Z they fell **$2.35 / $1.82**. Price relief does not prove restored physical chokepoint flows.
+- Exact markets: U.S.-Iran invasion **21.5%**; Iran event/test/NPT **5.2% / 5.5% / 15.5%**; NATO Article 5 **7.5%**; Taiwan invasion/clash **3.75% / 6.55%**; DPRK invasion **3.0%** on $52 daily volume; Israel-Lebanon normalization **13.5%**. Markets remained sanity-only.
+- Artifacts: `data/deep_scan_18z_fallback_20260728T180333Z.json`, `data/targeted_followups_18z_20260728T180456Z.json`, `data/polymarket_exact_snapshot_20260728T180836Z.json`.
 
 ## Deployment and verification
-- Required `bash scripts/deploy.sh` succeeded. Initial commit `875191fa` contained the retrospective phrase overmatch; corrected deploy `ff1fec3a` removed it and is pushed.
-- Pages run `30372860739` succeeded for corrected commit `ff1fec3a39b832d7a8678e2baf98ba441a968e2c`.
-- Cache-busted live root/state/timeline return HTTP 200 and expose **80 / imminent**, raw **79.76**, `morning_deep_scan_15z`, 20 tracker/news records and 14 aligned signals; the false bomber signal is absent.
-- Local/live command-deck markers pass: `DoomsdayWatch // Command Deck`, `const state = {`, `// ===== RENDER`.
-- JSON/canonical/timeline checks pass. **31/31 non-smoke tests passed.** The stock smoke fixture hit its known 60-second copied-pipeline ceiling; the identical **11/11 smoke assertions passed in 74.81 seconds** in an isolated copy with only that harness timeout raised to 180 seconds.
+- Required `bash scripts/deploy.sh` succeeded and pushed data/UI commit `d5c4393c19488c7cd64723d41ad858fad848993f`.
+- Exact source/deploy metadata commit `c60b1fdda7921e0240a6a91f65f09ee1d4637461`; Pages run `30386923768` succeeded.
+- Cache-busted live root/state/timeline return HTTP 200 and expose **80 / imminent**, raw **79.86**, `morning_deep_scan_18z`, 20 tracker/news records, Israel-Palestine 94 and 16 aligned signals.
+- Required markers pass locally and live: `DoomsdayWatch // Command Deck`, `const state = {`, `// ===== RENDER`.
+- JSON/canonical/history/timeline checks pass. **31/31 non-smoke tests passed.** The stock copied-pipeline fixture hit its known 60-second ceiling; the identical **11/11 smoke assertions passed in 82.75 seconds** in an isolated copy with only that timeout raised to 180 seconds.
 - No command-deck HTML was hand-edited.
 
 ## Next watch
-1. Any fresh U.S., Israeli or Iranian strike, change in U.S. approval for Iranian energy targets, or a verified Iranian-backed drone impact.
-2. Signed U.S.-Iran terms, sustained Hormuz recovery, mine clearance or collapse of the direct-strike pause.
-3. Verified Lebanon pilot withdrawals, Hezbollah disarmament steps, framework collapse or widened field strikes.
-4. Russian or Iranian retaliation for the Anna strike or formal Russia-Iran operational coordination.
-5. Saudi/Aramco damage or production confirmation, another Houthi/Saudi strike or announced Pakistani involvement.
-6. Another Romanian incursion, casualties or NATO Article 4/5 consultation.
-7. A fresh China-Philippines encounter, casualty, seizure or treaty consultation.
-8. Fresh DPRK deployment, launcher movement, operational firing or prohibited detonation; ignore low-volume market noise absent evidence.
-9. A second Gulf of Aden hijacking or material Asana status change.
-10. A second independent Myanmar-Bangladesh border stream or another emerging crisis crossing the configured gate.
+1. Execution, named location, force movement, displacement or resistance after Katz’s camp order; or cancellation/clarification.
+2. Whether China-Houthi clearances broaden, fail or are followed by another tanker attack.
+3. Acceptance/rejection of Oman’s Hormuz plan; signed terms, sustained traffic recovery or mine clearance.
+4. Any fresh U.S., Israeli or Iranian strike or U.S. approval shift on energy targets.
+5. Verified Lebanon pilot withdrawals/disarmament, framework collapse or wider strikes.
+6. Saudi/Aramco damage confirmation, production loss or another Houthi/Saudi strike.
+7. Another Romanian incursion, casualties or NATO Article 4/5 consultation.
+8. Russia/Iran retaliation for the Anna strike or formal operational coordination.
+9. A new China-Philippines encounter or DPRK operational firing/deployment.
+10. Any emerging crisis crossing the configured three-mention/two-independent-source gate.
