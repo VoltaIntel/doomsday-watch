@@ -1,27 +1,27 @@
 # DoomsdayWatch Session State
 
 ## Last completed scan
-- **Run:** 2026-07-28 03Z morning deep scan; corrected deploy commit `6763e4c1` and exact provenance/energy commit `e35aa4b4` pushed.
-- **Canonical scope:** all 20 tracker IDs from `data/tracker_config.json`, plus oil/energy, IAEA/UN, NATO/allied positions, nine exact Polymarket contracts and 22 emerging-crisis candidates.
+- **Run:** 2026-07-28 06Z morning deep scan; automated data/UI deploy `80f93ab5` and exact source/final-energy metadata commit `75a4eded` pushed.
+- **Canonical scope:** all 20 tracker IDs from `data/tracker_config.json`, oil/energy, IAEA/UN, NATO/allied positions, nine exact Polymarket contracts and 22 emerging-crisis candidates.
 - **Global:** **80% / imminent**; exact additive coupled score **79.760%**. No tracker probability moved.
 
 ## Evidence result
-- U.S.-Iran direct strikes remain paused. Fresh AFP syndication repeated Trump's view that talks have a “good chance,” while Tehran disputes that direct talks are under way. No signed terms, verified Hormuz reopening, mine-clearance activity or resumed strike appeared.
-- Fresh DPRK coverage was analysis of the existing missile-supply pipeline to Russia, not a new shipment, launch, troop movement or prohibited detonation.
-- Fresh Yemen reports repeated the already-scored Houthi Saudi energy-site claim and government readiness rhetoric; no independently verified new launch, deployment or merchant-vessel loss appeared.
-- India's MV Ruen piracy convictions concern a historical case. The M/T Asana hostage situation remains unchanged; no second hijacking occurred.
-- No emerging tracker qualified. Post-00Z candidates were analysis, economic-corridor or force-structure commentary; Myanmar remains one monitor chain plus rewrites, Kaduna remains one attack event, and Saudi nuclear reporting concerns the civil program.
+- MarineTraffic counted **29 verified Hormuz crossings from 24-26 July**: 21 outbound and eight inbound. Passage remains severely constrained, but traffic is neither zero nor physically closed. The U.S.-Iran direct-strike pause held; Iran's foreign minister discussed strait security with Saudi Arabia and Oman. No signed settlement or normalized flow appeared.
+- A U.S. State Department official told AFP that the next Israel-Lebanon session is set for **4-6 August in Rome**, covering framework implementation, pilot zones and border issues. Lebanon's NNA simultaneously reported Israeli bombing/demolition operations in Majdal Zoun, Mansouri and Bint Jbeil on 28 July.
+- BBC confirmed Ukraine's 25 July Caspian strike on the Iranian vessel **Anna**. Ukraine says the cargo was military; Iran and Russia say civilian. Iran reports one sailor killed and several injured and threatened a response. The incident directly links the Ukraine and Iran wars but adds no configured threshold to a lane already at 99%.
+- Jordan reported downing an unidentified drone in its eastern desert. No new Kuwait-specific event was verified.
+- No emerging tracker qualified. Reuters' ACLED-based Myanmar report records more than a dozen mass killings and over 450 civilian deaths in the first half of 2026, but the current publication cluster remains one Reuters/ACLED evidence chain rather than two independent current streams.
 
 ## Signals
-- No evidence-backed canonical signal activated or cleared.
-- The first deploy briefly overmatched a negated DPRK phrase into canonical `north_korea:nuclear_test`; the phrase and false projection were removed atomically, and the corrected deploy contains no DPRK signal.
-- Tracker, zone, top-level and timeline projections align at **13 canonical signals**.
+- Reactivated canonical `israel_lebanon:diplomacy_active` on the dated Rome session and pilot-zone implementation work.
+- Refreshed evidence for `iran_conventional:diplomacy_active`, `iran_conventional:hormuz_controlled_not_closed`, and `israel_lebanon:ceasefire_violation`.
+- Tracker, zone and timeline projections align at **14 canonical signals**. No signal was cleared and no numeric score moved because southern Lebanon field violations continue alongside the channel.
 
 ## Per-tracker table
-| Tracker | Raw | Coupled | Δ vs 00Z | Zone | Active signals |
+| Tracker | Raw | Coupled | Δ vs 03Z | Zone | Active signals |
 |---|---:|---:|---:|---|---|
 | `iran_conventional` | 100 | 100 | 0 | imminent | `ceasefire_violation`, `diplomacy_active`, `hormuz_controlled_not_closed`, `hormuz_mining`, `military_buildup`, `oil_infrastructure_threat` |
-| `israel_lebanon` | 87 | 97 | 0 | imminent | `ceasefire_violation` |
+| `israel_lebanon` | 87 | 97 | 0 | imminent | `ceasefire_violation`, `diplomacy_active` |
 | `turkey` | 5 | 5 | 0 | deterrent | — |
 | `india` | 15 | 15 | 0 | elevated | — |
 | `russia` | 58 | 68 | 0 | imminent | — |
@@ -42,26 +42,27 @@
 | `kuwait_iraq_border` | 17 | 17 | 0 | elevated | — |
 
 ## Sources, energy and markets
-- Tavily failed **26/26 required searches** with HTTP 432.
-- Fallback completed through **47 Google News RSS lanes / 294 items**, **47 Bing News RSS lanes / 242 items**, nine official/direct targets, terminal HTTP, OilPriceAPI and exact Gamma. IAEA/OPEC returned HTTP 403; RSS timestamps were treated as indexing dates unless the underlying event changed.
-- Final deploy energy: Brent **$86.52 (-7.11%/24h)** and WTI **$80.81 (-4.99%/24h)**. Both extended the pause-driven decline; energy remained sanity-only.
-- Exact markets: U.S.-Iran invasion **21.5%**, Iran event/test/NPT **5.1% / 5.5% / 15.9%**, NATO Article 5 **7.5%**, Taiwan invasion/clash **3.85% / 6.60%**, DPRK invasion **2.45%**, Israel-Lebanon normalization **14.5%**. Markets did not set tracker scores.
-- Artifacts: `data/deep_scan_full_fallback_20260728T030319Z.json` and `data/polymarket_exact_snapshot_20260728T031453Z.json`.
+- Tavily failed **10/10 attempted searches** and **5/5 extraction attempts** with HTTP 432 before the repeated backend failure was diagnosed.
+- Fallback completed through **47 Google News RSS lanes / 185 items**, **47 Bing News RSS lanes / 240 items**, 15 exact-event follow-ups, browser/direct publisher pages, Jina, nine official/direct targets, OilPriceAPI and exact Gamma. IAEA/OPEC returned HTTP 403.
+- A March South Pars article with a fresh RSS timestamp and an uncorroborated resumption-of-strikes headline were inspected and excluded.
+- Final energy: Brent **$87.85 (-6.80%/24h)** and WTI **$82.25 (-2.59%/24h)**. Energy remained sanity-only.
+- Exact markets: U.S.-Iran invasion **21.5%**, Iran event/test/NPT **5.1% / 5.5% / 15.9%**, NATO Article 5 **7.5%**, Taiwan invasion/clash **3.85% / 6.55%**, DPRK invasion **2.45%**, Israel-Lebanon normalization **15.0%**. Markets did not set tracker scores.
+- Artifacts: `data/deep_scan_full_fallback_20260728T060405Z.json`, `data/direct_followups_20260728T060903Z.json`, and `data/polymarket_exact_snapshot_20260728T061137Z.json`.
 
 ## Deployment and verification
-- Required `bash scripts/deploy.sh` ran twice: initial commit `a9bbeff5`; corrected final data/UI commit `6763e4c1`. Exact source/final-energy metadata commit `e35aa4b4` is pushed.
-- GitHub Pages run `30325426700` succeeded. Cache-busted live root/state/timeline returned HTTP 200 and expose **80 / imminent**, raw **79.76**, 20 trackers/news records, exact fallback metadata and 13 aligned signals; the false DPRK signal is absent.
+- Required `bash scripts/deploy.sh` succeeded and pushed `80f93ab5`; exact source and final-energy metadata commit `75a4eded` is pushed.
+- Pages run `30334525799` succeeded for the data/UI deploy. Cache-busted live root/state/timeline return HTTP 200 and expose **80 / imminent**, raw **79.76**, `morning_deep_scan_06z`, 20 tracker/news records, exact source metadata and 14 aligned signals.
 - Local/live command-deck markers pass: `DoomsdayWatch // Command Deck`, `const state = {`, `// ===== RENDER`.
-- JSON/canonical/timeline checks pass. **31/31 non-smoke tests passed.** The stock combined run hit the known smoke fixture's 60-second pipeline ceiling (31 passed, 11 setup errors); the identical **11/11 smoke assertions passed in 87.90s** from an isolated copy with only that harness timeout raised to 180 seconds.
-- HEAD/upstream/remote match at `e35aa4b4`; tree was clean before final memory logging. No command-deck HTML was hand-edited.
+- JSON/canonical/timeline checks pass. **31/31 non-smoke tests passed.** The stock smoke fixture hit its known 60-second copied-pipeline ceiling; the identical **11/11 smoke assertions passed in 83.27 seconds** in an isolated copy with only that harness timeout raised to 180 seconds.
+- No command-deck HTML was hand-edited.
 
 ## Next watch
-1. Signed/directly acknowledged U.S.-Iran terms, Hormuz traffic recovery, mine clearance or resumed direct strikes.
-2. Official Saudi/Aramco damage or production confirmation, Baghdad investigation findings or retaliation.
-3. Another Romanian incursion, concrete Russian retaliation, casualties or NATO Article 4/5 consultation.
-4. A fresh China-Philippines hostile encounter, casualty, vessel seizure or formal treaty consultation.
-5. Fresh DPRK deployment, launcher movement, operational missile firing, prohibited detonation or allied countermeasure.
-6. Independent Khartoum-El Obeid route-control confirmation, an RSF reversal or verified drone-attack casualties.
-7. A second Gulf of Aden hijacking, change in Asana hostage status or material Bab el-Mandeb/Hormuz traffic shift.
-8. A fresh southern Thailand attack or verified deployment sufficient to reactivate a canonical marker.
-9. Any emerging crisis crossing the configured three-mention/two-independent-source gate.
+1. Implementation or collapse of the 4-6 August Rome session, verified pilot-zone withdrawals, or a broader Israel-Hezbollah strike sequence.
+2. Signed/directly acknowledged U.S.-Iran terms, sustained Hormuz recovery, mine clearance or resumed direct strikes.
+3. Iranian retaliation for the Anna strike, another Ukrainian strike on Iranian-linked shipping or convoy changes.
+4. Official Saudi/Aramco damage or production confirmation, Baghdad findings or retaliation.
+5. Another Romanian incursion, casualties or NATO Article 4/5 consultation.
+6. A fresh China-Philippines hostile encounter, casualty, seizure or treaty consultation.
+7. Fresh DPRK deployment, launcher movement, operational firing or prohibited detonation.
+8. A second Gulf of Aden hijacking, Asana hostage-status change or material maritime-flow shift.
+9. Two independent current Myanmar streams or another emerging crisis crossing the configured gate.
