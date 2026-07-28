@@ -1,7 +1,7 @@
 # DoomsdayWatch Session State
 
 ## Last completed scan
-- **Run:** 2026-07-28 15Z morning deep scan; corrected data/UI deploy `ff1fec3a`, final metadata commit `df71666c`, and metadata-head Pages run `30373274880` succeeded.
+- **Run:** 2026-07-28 15Z morning deep scan; corrected data/UI deploy `ff1fec3a`, final exact-state correction `22baa8ee`, and Pages run `30373565159` succeeded.
 - **Canonical scope:** all 20 tracker IDs from `data/tracker_config.json`, oil/energy, IAEA/UN, NATO/allied positions, nine exact Polymarket contracts and 22 emerging-crisis candidates.
 - **Global:** **80% / imminent**; exact additive coupled score **79.760%**. No tracker probability moved.
 
