@@ -46,7 +46,7 @@
 - Tavily failed **27/27 searches** and **5/5 extract URLs** with HTTP 432.
 - Fallback completed through 47 Google lanes / 155 items, 47 Bing lanes / 245 items, 16 exact-event lanes / 83 raw items, two direct JPost RSS feeds, browser/direct pages, terminal HTTP, ten official/direct targets, OilPriceAPI and exact Gamma.
 - IAEA news/press and OPEC returned HTTP 403; the IAEA browser path presented a verification challenge. RSS recency and source-chain caveats were audited.
-- Final energy: Brent **$86.62 (-3.69%/24h)** and WTI **$81.37 (-2.28%/24h)**. Energy remained sanity-only.
+- Final energy: Brent **$86.62 (-3.58%/24h)** and WTI **$81.37 (-2.28%/24h)**. Energy remained sanity-only.
 - Exact markets: U.S.-Iran invasion **21.5%**; Iran event/test/NPT **5.2% / 5.5% / 15.9%**; NATO Article 5 **7.5%**; Taiwan invasion/clash **3.75% / 6.65%**; DPRK invasion **3.10%**; Israel-Lebanon normalization **15.0%**. The DPRK move was +0.65pp on only $52 reported 24h volume and did not affect scores.
 - Artifacts: `data/deep_scan_15z_fallback_20260728T150248Z.json`, `data/targeted_followups_20260728T150411Z.json`, and `data/polymarket_exact_snapshot_20260728T150821Z.json`.
 
