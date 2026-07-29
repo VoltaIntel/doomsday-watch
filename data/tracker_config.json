@@ -21,7 +21,8 @@
     "southern_thailand",
     "kuwait_iraq_border",
     "iraq_internal_conflict",
-    "kenya_somalia_border"
+    "kenya_somalia_border",
+    "egypt_mediterranean"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -543,6 +544,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "egypt_mediterranean": {
+      "name": "Egypt / Mediterranean port spillover",
+      "base_rate": 15,
+      "description": "Hostile-drone or regional-war spillover affecting Egypt and Mediterranean energy/shipping infrastructure",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -622,9 +650,10 @@
     "southern_thailand": 0.02,
     "kuwait_iraq_border": 0.02,
     "iraq_internal_conflict": 0.02,
-    "kenya_somalia_border": 0.02
+    "kenya_somalia_border": 0.02,
+    "egypt_mediterranean": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-29T06:14:26Z",
+  "last_updated": "2026-07-29T21:12:15Z",
   "dashboard_path": "dashboard.html"
 }
