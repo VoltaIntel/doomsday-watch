@@ -1062,9 +1062,21 @@ if os.environ.get("NUKE_WATCH_AUTO_GIT") == "1":
     import subprocess
     subprocess.run(["git", "config", "user.name", "VoltaIntel"], check=True)
     subprocess.run(["git", "config", "user.email", "cryptocybrog1337@proton.me"], check=True)
-    # Force-add data files (gitignored but needed on GitHub Pages)
-    subprocess.run(["git", "add", "-f", "data/current_state.json", "data/signal_timeline.json", "data/polymarket_cache.json", "data/polymarket_mapping.json", "data/predictions/", "data/energy_prices.json", "data/flight_tracking.json"], check=False)
-    subprocess.run(["git", "add", "-A"], check=True)
+    # Force-add only the generated/data files needed on GitHub Pages. Never use
+    # `git add -A` here: the workspace can contain unrelated private artifacts,
+    # and a deploy must not sweep them into the public dashboard repository.
+    subprocess.run([
+        "git", "add", "-f",
+        "data/current_state.json",
+        "data/signal_timeline.json",
+        "data/polymarket_cache.json",
+        "data/polymarket_mapping.json",
+        "data/predictions/",
+        "data/energy_prices.json",
+        "data/flight_tracking.json",
+        "data/tracker_config.json",
+        "index.html",
+    ], check=True)
     r = subprocess.run(["git", "commit", "-m", "Update " + state.get("last_updated", "") + " — automated"], capture_output=True, text=True)
     print("Committed" if r.returncode == 0 else "No changes to commit")
     r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True)
