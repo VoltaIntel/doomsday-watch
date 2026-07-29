@@ -453,7 +453,7 @@
         "infrastructure_strike",
         "military_buildup"
       ],
-      "notes": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit\u2019s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25",
+      "notes": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit’s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25",
       "last_updated": "2026-07-29T06:14:26Z",
       "signal_timestamps": {
         "infrastructure_strike": "2026-07-29T06:14:26Z",
@@ -511,8 +511,8 @@
     "scan_completed_at": "2026-07-29T06:14:26Z",
     "scan_window": "rolling 24 hours ending 2026-07-29T06:14:26Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-29T06:14:26Z of all 21 previously configured trackers, oil/energy, IAEA/UN, NATO/allied positions, nine exact prediction-market sanity contracts and 21 emerging-crisis candidates; the Kenya-Somalia border attack cluster crossed auto-detection and produced a 22nd canonical tracker.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_web_search_http_432_25_attempts_then_google_bing_rss_browser_direct_official_fallback",
+    "source_limitation": "All 25 required Tavily web_search calls failed HTTP 432; three Tavily extraction URLs also failed HTTP 432 and one PDF extraction was blocked. Fallback completed through 18 collector Google News RSS lanes (120 items), 46 deep Google News RSS lanes (190 items), 46 Bing News RSS lanes (107 items), browser/direct BBC and Kenyan publisher pages, terminal HTTP/RSS, official UN/NATO/EIA pages and feeds, OilPriceAPI and nine exact Gamma reads. IAEA news/press and OPEC returned HTTP 403; the IAEA browser page remained behind a verification challenge; OCHA and the UN Sudan tag feed returned HTTP 404. Counts are raw and overlapping, not unique evidence chains.",
     "source_artifacts": [
       "data/morning_deep_scan_sources_20260729T060321Z.json",
       "data/deep_scan_06z_fallback_20260729T060428Z.json",
@@ -706,7 +706,7 @@
         "reason": "Auto-detection added a separate Kenya-Somalia border lane after direct Kenyan police-sourced reports established a fatal IED ambush, destruction of a responding armoured vehicle and two additional recent Al-Shabaab attacks."
       }
     ],
-    "mover_note": "The new kenya_somalia_border lane enters at 25% / critical; all 21 pre-existing tracker scores hold. Exact additive global risk rises 81.780%\u219282.280% and displays 82% / imminent.",
+    "mover_note": "The new kenya_somalia_border lane enters at 25% / critical; all 21 pre-existing tracker scores hold. Exact additive global risk rises 81.780%→82.280% and displays 82% / imminent.",
     "signals_changed": {
       "activated": [
         "kenya_somalia_border:infrastructure_strike",
@@ -754,28 +754,28 @@
     "allied_positions": {
       "united_states_iran": "CENTCOM says all Iranian ballistic missiles aimed at U.S. forces were intercepted; BBC reports Iran said the target was a U.S. base in Jordan. The U.S. warns further attacks will draw a military response.",
       "united_states_saudi_iraq": "BBC and DW corroborate coordinated U.S.-Saudi strikes on militia logistics and weapons sites in eastern Iraq; no fresh strike or verified retaliation appeared after the 03Z report.",
-      "iraq_iran_aligned_groups": "Iraq\u2019s investigation and the militias\u2019 denial remain the latest positions; no casualty total or executed retaliation was verified by 06Z.",
+      "iraq_iran_aligned_groups": "Iraq’s investigation and the militias’ denial remain the latest positions; no casualty total or executed retaliation was verified by 06Z.",
       "kenya_somalia": "Kenyan police deployed reinforcements and a pursuit operation after five officers were killed near the border; the attackers were identified by police as suspected Al-Shabaab militants.",
       "israel_lebanon": "U.S.-backed implementation talks remain pending and a UN rights warning over Israeli strikes/displacement remains current; no withdrawal, disarmament step or framework collapse was verified.",
-      "romania_nato": "NATO\u2019s official latest-news page still starts with 24 July. No Article 4/5 consultation or collective-force decision appeared.",
+      "romania_nato": "NATO’s official latest-news page still starts with 24 July. No Article 4/5 consultation or collective-force decision appeared.",
       "russia_ukraine": "Trump-Zelensky diplomacy and Senate sanctions movement remain the latest allied-policy items; no direct NATO combat commitment followed.",
       "china_taiwan_philippines": "Taiwan blockade-resilience drills and U.S.-Taiwan coast-guard cooperation are posture signals; no new blockade, collision or treaty consultation was verified.",
       "iaea_un": "IAEA public pages remained inaccessible and no agency correction to the reported Iranian access suspension was retrievable; UN Security Council coverage continues to centre Gaza and regional diplomacy."
     },
     "energy_oil": {
-      "checked_at": "2026-07-29T06:08:21Z",
+      "checked_at": "2026-07-29T06:15:09Z",
       "source": "OilPriceAPI plus energy-news and maritime follow-up",
-      "brent_usd": 87.07,
-      "brent_change_vs_03z_usd": -0.42,
-      "brent_change_vs_03z_pct": -0.48,
-      "wti_usd": 82.18,
-      "wti_change_vs_03z_usd": -0.06,
-      "wti_change_vs_03z_pct": -0.073,
+      "brent_usd": 87.31,
+      "brent_change_vs_03z_usd": -0.18,
+      "brent_change_vs_03z_pct": -0.206,
+      "wti_usd": 82.25,
+      "wti_change_vs_03z_usd": 0.01,
+      "wti_change_vs_03z_pct": 0.012,
       "natural_gas_usd": 2.65,
       "gold_usd": 4034.76,
-      "heating_oil_usd": 4.23,
+      "heating_oil_usd": 4.24,
       "shipping_sanity": "Hormuz and Red Sea traffic remain disrupted but nonzero; IRGC and Houthi tanker-hit claims lacked independent damage confirmation in this cutoff.",
-      "interpretation": "Brent and WTI eased slightly from the 03Z snapshot despite renewed missile reporting; that move does not establish restored physical chokepoint flows.",
+      "interpretation": "The required deploy refreshed Brent to $87.31 and WTI to $82.25. Both remain close to 03Z levels despite renewed missile reporting; price action does not establish restored physical chokepoint flows.",
       "caveat": "OilPriceAPI points are vendor-volatile. Energy and prediction-market prices are sanity checks, not model inputs."
     },
     "polymarket_sanity": {
@@ -847,7 +847,56 @@
       }
     ],
     "final_active_signal_count": 22,
-    "pre_deploy_state_written_at": "2026-07-29T06:14:26Z"
+    "pre_deploy_state_written_at": "2026-07-29T06:14:26Z",
+    "deploy_energy_snapshot": {
+      "checked_at": "2026-07-29T06:15:09Z",
+      "brent_usd": 87.31,
+      "wti_usd": 82.25,
+      "natural_gas_usd": 2.65,
+      "gold_usd": 4034.76,
+      "heating_oil_usd": 4.24,
+      "source": "OilPriceAPI refresh executed inside required scripts/deploy.sh run",
+      "caveat": "Energy points are vendor snapshots and remain sanity checks rather than model inputs."
+    },
+    "post_deploy_verification": {
+      "deploy_command": "bash scripts/deploy.sh",
+      "deploy_result": "success: OilPriceAPI and Polymarket refreshes completed, pipeline regenerated index.html, the 22-tracker state was validated, and the automated commit was pushed",
+      "deployment_commit": "07d4dd29fd39498c6ba03ea56dce30f690a37b8f",
+      "pages_run_id": 30427695877,
+      "pages_conclusion": "success",
+      "pages_url": "https://github.com/VoltaIntel/doomsday-watch/actions/runs/30427695877",
+      "index_markers": {
+        "DoomsdayWatch // Command Deck": true,
+        "const state = {": true,
+        "// ===== RENDER": true
+      },
+      "history_timestamp": "2026-07-29T06:15:13Z",
+      "history_global": 82,
+      "history_zone": "imminent",
+      "history_tracker_count": 22,
+      "history_kenya_somalia_border": 25,
+      "active_signal_count": 22,
+      "canonical_validation": "passed; tracker, zone, top-level and timeline projections align at 22 canonical signals across 22 configured tracker IDs",
+      "live_verification": {
+        "checked_at": "2026-07-29T06:18:50Z",
+        "root_http": 200,
+        "state_http": 200,
+        "timeline_http": 200,
+        "global": 82,
+        "raw_global": 82.28,
+        "zone": "imminent",
+        "trackers": 22,
+        "latest_news": 22,
+        "signals": 22,
+        "kenya_somalia_border": 25,
+        "required_markers": true
+      },
+      "tests": {
+        "non_smoke": "31 passed in 1.02s",
+        "smoke": "not run; excluded because the stock fixture has a known hard-coded copied-pipeline runtime ceiling"
+      }
+    },
+    "finalized_at": "2026-07-29T06:19:22Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -1302,7 +1351,7 @@
         "infrastructure_strike",
         "military_buildup"
       ],
-      "notes": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit\u2019s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25",
+      "notes": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit’s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25",
       "last_updated": "2026-07-29T06:14:26Z",
       "signal_timestamps": {
         "infrastructure_strike": "2026-07-29T06:15:13Z",
@@ -1322,7 +1371,7 @@
       "zone": "kenya_somalia_border",
       "tracker": "kenya_somalia_border",
       "headline": "Auto-detected: five Kenyan officers killed in Kenya-Somalia border ambush",
-      "text": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit\u2019s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25.",
+      "text": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit’s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25.",
       "source": "The Star direct report citing Kenyan police, published 2026-07-29; The Eastleigh Voice direct report citing police, published 2026-07-29; AFP report carried by Business Recorder, published 2026-07-29",
       "sources": [
         "The Star direct report citing Kenyan police, published 2026-07-29",
@@ -2961,7 +3010,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3023,7 +3072,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3135,7 +3184,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 97,
       "zone": "imminent",
       "trend": "stable",
@@ -3207,7 +3256,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3253,7 +3302,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3294,7 +3343,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3335,7 +3384,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3381,7 +3430,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 68,
       "zone": "imminent",
       "trend": "stable",
@@ -3421,7 +3470,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3466,7 +3515,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3506,7 +3555,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3568,7 +3617,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3660,7 +3709,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3711,7 +3760,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3762,7 +3811,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 95,
       "zone": "imminent",
       "trend": "stable",
@@ -3844,7 +3893,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -3895,7 +3944,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -3946,7 +3995,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3997,7 +4046,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "stable",
@@ -4048,7 +4097,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -4099,7 +4148,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "rising",
@@ -4181,7 +4230,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4209,7 +4258,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 15,
-      "notes": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit\u2019s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25",
+      "notes": "Two direct Kenyan reports citing police confirm five security officers were killed on 28 July when a patrol was hit and ambushed near the Kenya-Somalia border; an IED also destroyed the responding unit’s armoured vehicle without additional casualties. The same police account records a telecom-mast attack on 26 July and an RPG assault on Arabia Police Station on 24 July, while reinforcements and a pursuit operation were deployed. The configured three-mention/two-source gate is met. Raw 25; coupled 25",
       "attribution": {
         "base_rate": 15.0,
         "raw_probability": 25.0,
