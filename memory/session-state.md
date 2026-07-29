@@ -1,22 +1,20 @@
 # DoomsdayWatch Session State
 
 ## Last completed scan
-- **Run:** 2026-07-29 03Z morning deep scan; data/UI deploy `fa0d3346`, exact source/deploy metadata `8890f6e0`, and Pages runs `30419224667` / `30419312551` succeeded.
-- **Canonical scope:** 21 tracker IDs after one evidence-gated auto-detection, oil/energy, IAEA/UN, NATO/allied positions, nine exact Polymarket contracts and 22 emerging-crisis candidates.
-- **Global:** **82% / imminent**; exact additive coupled score **81.780%**, up 0.600 point from 81.180%.
+- **Run:** 2026-07-29 06Z morning deep refresh; required deploy `07d4dd29`, exact-source/final metadata `75ac3c1e`, and Pages runs `30427695877` / `30427797498` succeeded.
+- **Canonical scope:** 22 tracker IDs after one evidence-gated auto-detection, oil/energy, IAEA/UN, NATO/allied positions, nine exact Polymarket contracts and 21 emerging-crisis candidates.
+- **Global:** **82% / imminent**; exact additive coupled score **82.280%**, up 0.500 point from 81.780%.
 
 ## Evidence result
-- Auto-detection added canonical `iraq_internal_conflict` at **30 raw / 30 coupled / critical**. AP, Al Jazeera/Reuters and directly accessible official CENTCOM and Saudi Defense Ministry statements confirm coordinated U.S.-Saudi strikes on multiple militia logistics/weapons sites in eastern Iraq after more than 30 IRGC-directed drone attacks in 72 hours.
-- Iraq ordered an investigation and said its territory must not be used to attack partners. The Islamic Resistance in Iraq denied responsibility and threatened a response; no casualty total was available.
-- Iran's surprise missile barrage against U.S. forces preceded and was unrelated to the Iraq strikes, according to CENTCOM; all missiles were intercepted. `iran_conventional` remains capped at 100.
-- Al Jazeera/Reuters reinforced the 28 July Gaza attack cycle: at least one Palestinian killed, more than 20 wounded, a mosque destroyed and displaced-person tents hit. `israel_palestine` remains capped at 100.
-- A U.S.-Taiwan coast-guard cooperation image after Beijing patrols was a posture item, not a blockade or kinetic threshold. Other existing tracker scores held.
-- The other 21 emerging candidates did not cross the configured gate after stale hits, analysis, false matches, rewrites and already-covered spillover were removed.
+- Auto-detection added canonical `kenya_somalia_border` at **25 raw / 25 coupled / critical**. Direct police-sourced reporting by The Star and The Eastleigh Voice confirms five Kenyan security officers were killed in a 28 July IED ambush near the Somalia border and a responding armoured vehicle was destroyed without further casualties. The same police account documents a telecom-mast attack on 26 July and an RPG attack on Arabia Police Station on 24 July. AFP supplied a third publisher chain.
+- BBC directly corroborated Iran's multiple-ballistic-missile attack on U.S. forces. CENTCOM said all missiles were intercepted; Iran said it targeted a U.S. base in Jordan. The IRGC separately claimed three tanker hits in Hormuz, but no independent damage confirmation was found. `iran_conventional` remains capped at 100.
+- BBC/DW broadened corroboration of the coordinated U.S.-Saudi Iraq strike cluster. No independently verified militia retaliation, casualty total or new strike cycle appeared by cutoff; `iraq_internal_conflict` holds at 30.
+- All other pre-existing tracker scores held. Other emerging candidates were stale, analysis, false matches, de-escalatory monitoring, rewrites or below the configured gate.
 
 ## Signals
-- Activated `iraq_internal_conflict:external_backing`, `iraq_internal_conflict:infrastructure_strike` and `iraq_internal_conflict:military_buildup`.
-- Refreshed existing Iran conventional, Israel-Palestine and Yemen/Red Sea evidence. No canonical signal cleared.
-- Tracker, zone, top-level and timeline projections align at **20 canonical signals**.
+- Activated `kenya_somalia_border:infrastructure_strike` and `kenya_somalia_border:military_buildup`.
+- Refreshed canonical Iran conventional and Iraq internal-conflict evidence. No existing signal cleared.
+- Tracker, zone, top-level and timeline projections align at **22 canonical signals**.
 
 ## Per-tracker table
 | Tracker | Raw | Coupled | Δ raw | Zone | Active signals |
@@ -41,31 +39,32 @@
 | `somalia_gulf_of_aden` | 28 | 28 | 0 | critical | — |
 | `southern_thailand` | 25 | 25 | 0 | critical | — |
 | `kuwait_iraq_border` | 17 | 17 | 0 | elevated | — |
-| `iraq_internal_conflict` | 30 | 30 | **new** | critical | `external_backing`, `infrastructure_strike`, `military_buildup` |
+| `iraq_internal_conflict` | 30 | 30 | 0 | critical | `external_backing`, `infrastructure_strike`, `military_buildup` |
+| `kenya_somalia_border` | 25 | 25 | **new** | critical | `infrastructure_strike`, `military_buildup` |
 
 ## Sources, energy and markets
-- Tavily failed **25/25 searches** and **5/5 extraction URLs** with HTTP 432.
-- Fallback used 18 collector Google lanes / 121 items, 69 deep Google lanes / 623, 69 deep Bing lanes / 220, browser/direct publisher pages, terminal HTTP/RSS, UN/NATO/EIA official pages and feeds, official CENTCOM/Saudi statements, OilPriceAPI and nine exact Gamma reads.
-- IAEA news/press and OPEC returned HTTP 403; UKMTO was Cloudflare-blocked; the CENTCOM website denied access while its official X statement loaded; Reuters direct access remained DataDome-blocked. Counts are raw and overlapping.
-- Final deploy energy: Brent **$87.49**, WTI **$82.24**, gas **$2.65**, gold **$4,033.77**, heating oil **$4.26**. Price checks are vendor-volatile and outside the model.
-- Exact markets: U.S.-Iran invasion **23.5%** (-1 point from 00Z); Iran event/test/NPT **5.15% / 5.5% / 15.55%**; NATO Article 5 **7.5%**; Taiwan invasion/clash **3.75% / 6.6%**; DPRK invasion **3%**; Israel-Lebanon normalization **13.5%**. Markets remained sanity-only.
-- Artifacts: `data/morning_deep_scan_sources_20260729T030158Z.json`, `data/deep_scan_03z_fallback_20260729T030345Z.json`, `data/polymarket_exact_snapshot_20260729T030854Z.json`.
+- Tavily failed **25/25 searches** with HTTP 432. Three extraction URLs also returned 432; one PDF extraction was URL-safety blocked.
+- Fallback used 18 collector Google lanes / 120 items, 46 deep Google lanes / 190, 46 deep Bing lanes / 107, browser/direct BBC and Kenyan pages, terminal HTTP/RSS, official UN/NATO/EIA pages and feeds, OilPriceAPI and nine exact Gamma reads.
+- IAEA news/press and OPEC returned HTTP 403; the IAEA browser remained challenge-blocked; OCHA and the UN Sudan tag feed returned 404. Counts are raw and overlapping.
+- Final deploy energy: Brent **$87.31**, WTI **$82.25**, gas **$2.65**, gold **$4,034.76**, heating oil **$4.24**. Price checks are vendor-volatile and outside the model.
+- Exact markets: U.S.-Iran invasion **23.5%**; Iran event/test/NPT **5.15% / 5.5% / 14.2%**; NATO Article 5 **7.5%**; Taiwan invasion/clash **3.95% / 7.0%**; DPRK invasion **3%**; Israel-Lebanon normalization **14%**. Since 03Z, NPT withdrawal fell 1.35 points; the other moves were 0.5 point or less. Markets remained sanity-only.
+- Artifacts: `data/morning_deep_scan_sources_20260729T060321Z.json`, `data/deep_scan_06z_fallback_20260729T060428Z.json`, `data/polymarket_exact_snapshot_20260729T060837Z.json`.
 
 ## Deployment and verification
-- Required `bash scripts/deploy.sh` succeeded, regenerated `index.html`, committed/pushed `fa0d334640a1ef91f439ddee6a71e442aeb51d70`.
-- Exact metadata commit `8890f6e06506d3460afb00f866ae442d3e5f0d52`; Pages runs `30419224667` and `30419312551` succeeded.
-- Cache-busted live root/state/timeline HTTP 200 expose **82 / imminent**, raw **81.78**, 21 tracker/news records, `iraq_internal_conflict` 30, 20 signals and exact fallback metadata.
+- Required `bash scripts/deploy.sh` succeeded, regenerated `index.html`, committed/pushed `07d4dd29fd39498c6ba03ea56dce30f690a37b8f`.
+- Exact fallback/deploy metadata commit `75ac3c1eeba4dbb19cd5558e69762c86a9cf9650`; Pages runs `30427695877` and `30427797498` succeeded.
+- Cache-busted live root/state/timeline HTTP 200 expose **82 / imminent**, raw **82.28**, 22 tracker/news records, `kenya_somalia_border` 25, 22 signals and exact fallback metadata.
 - Required local/live markers pass: `DoomsdayWatch // Command Deck`, `const state = {`, `// ===== RENDER`.
 - JSON/canonical/history/timeline checks pass; **31/31 non-smoke tests passed**. No command-deck HTML was hand-edited.
 
 ## Next watch
-1. Iraqi government/PMF casualty or damage findings, a sovereignty response, militia retaliation or another U.S./Saudi strike.
-2. Another Iranian missile barrage, casualties, a U.S. strike response against Iran or an operational ceasefire.
-3. Acceptance, rejection or revised terms for the Oman Hormuz mechanism; sustained traffic recovery, mine clearance or new tanker damage.
-4. Further Gaza attacks, execution/cancellation of the West Bank camp order or second-phase talks.
-5. Saudi Aramco/Jazan confirmation, attribution of UKMTO 098-26 or verified NCC Ghazal damage.
-6. Lebanon pilot withdrawals/disarmament, failure of the 4 August Rome talks or widened strikes.
+1. Kenyan casualty/investigation updates, another Mandera/Garissa attack, a confirmed cross-border pursuit or KDF posture change.
+2. Another Iranian missile barrage, casualties, independently verified tanker damage, a U.S. strike response against Iran or an operational ceasefire.
+3. Militia retaliation, Iraqi government/PMF casualty findings, a sovereignty response or another U.S./Saudi strike in Iraq.
+4. Acceptance, rejection or revised terms for the Oman Hormuz mechanism; sustained traffic recovery or verified mine clearance.
+5. Further Gaza attacks, implementation of second-phase talks, or a Lebanon withdrawal/disarmament step or talks failure.
+6. Saudi Aramco/Jazan restart confirmation, attribution of UKMTO 098-26 or verified NCC Ghazal damage.
 7. Iranian/Russian retaliation for Anna, another Romanian incursion or NATO Article 4/5 consultation.
 8. A kinetic China-Taiwan/China-Philippines encounter or DPRK operational firing/deployment.
-9. Release or harm of the eight Egyptian sailors or another Gulf of Aden hijacking.
+9. Release or harm of the eight reported Egyptian sailors or another Gulf of Aden hijacking.
 10. Any other emerging crisis crossing the configured three-mention/two-source gate.
