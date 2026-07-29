@@ -747,7 +747,7 @@
       "united_states_iran": "BBC quotes President Trump saying U.S. forces will hit Iran hard after the intercepted missile attack; no follow-on U.S. strike had been verified by cutoff.",
       "united_states_saudi_iraq": "BBC confirms the joint strike scope, at least 20 PMF deaths and the U.S./Saudi self-defence rationale; Iraq called an urgent security meeting.",
       "iraq_iran_aligned_groups": "Iraqi institutions and the PMF condemn the strikes; threats persist, but no executed militia retaliation was verified.",
-      "israel_lebanon": "Multiple outlets now call the bulldozer incident Hezbollah\u2019s first drone strike since the June 19 truce; Israel says it will respond, with no verified response or casualty by cutoff.",
+      "israel_lebanon": "Multiple outlets now call the bulldozer incident Hezbollah’s first drone strike since the June 19 truce; Israel says it will respond, with no verified response or casualty by cutoff.",
       "nato_russia": "NATO official news still lists 24 July as its latest item; no new Article 4/5 consultation or collective-force decision appeared.",
       "russia_ukraine": "No fresh direct NATO combat commitment, nuclear threshold or strategic retaliation appeared in the rolling-day review.",
       "china_taiwan_philippines": "Taiwan blockade-resilience drills, U.S.-Taiwan coast-guard cooperation and U.S.-Japan-Philippines maritime exercises remain posture signals; no new kinetic encounter was verified.",
@@ -815,9 +815,9 @@
     "search_query_count_artifacted": 66,
     "search_result_count_raw_artifacted": 410,
     "search_count_caveat": "Collector plus deep fallback counts include overlaps; targeted browser/direct follow-ups are additional and counts are not unique articles.",
-    "dashboard_note": "15Z deep refresh: no score or signal change. Trump vowed a hard response after Iran\u2019s intercepted attack, Iraq called an urgent security meeting, Lebanon drone reporting broadened, and Brent reached $90.50. Global holds at 83% / imminent (82.900 exact).",
+    "dashboard_note": "15Z deep refresh: no score or signal change. Trump vowed a hard response after Iran’s intercepted attack, Iraq called an urgent security meeting, Lebanon drone reporting broadened, and Brent reached $90.50. Global holds at 83% / imminent (82.900 exact).",
     "next_watch_triggers": [
-      "Execution, target set and casualty outcome of Trump\u2019s threatened U.S. response, or another Iranian missile/drone barrage.",
+      "Execution, target set and casualty outcome of Trump’s threatened U.S. response, or another Iranian missile/drone barrage.",
       "The announced Israeli response, Hezbollah attribution or denial, casualties, another drone/rocket incident, or a 4 August talks breakdown.",
       "Executed Iraqi militia retaliation, sovereignty measures after the urgent security meeting, casualty reconciliation, or another U.S./Saudi strike.",
       "Acceptance, rejection or revised terms for the Oman Hormuz mechanism; independently verified tanker damage, sustained traffic recovery or mine clearance.",
@@ -830,7 +830,7 @@
     "evidence_only_movers": [
       {
         "tracker": "iran_conventional",
-        "reason": "Trump\u2019s explicit hard-response threat and Brent at $90.50 harden the already capped lane without a new canonical signal or verified tanker damage."
+        "reason": "Trump’s explicit hard-response threat and Brent at $90.50 harden the already capped lane without a new canonical signal or verified tanker damage."
       },
       {
         "tracker": "israel_lebanon",
@@ -844,15 +844,66 @@
     "final_active_signal_count": 22,
     "pre_deploy_state_written_at": "2026-07-29T15:09:52Z",
     "deploy_energy_snapshot": {
-      "checked_at": "2026-07-29T12:11:04Z",
-      "brent_usd": 88.0,
-      "wti_usd": 82.91,
-      "natural_gas_usd": 2.65,
-      "gold_usd": 4032.26,
-      "heating_oil_usd": 4.14,
-      "source": "OilPriceAPI refresh executed inside required scripts/deploy.sh run",
+      "checked_at": "2026-07-29T15:14:53Z",
+      "brent_usd": 88.72,
+      "wti_usd": 85.15,
+      "natural_gas_usd": 2.68,
+      "gold_usd": 3999.96,
+      "heating_oil_usd": 4.34,
+      "source": "OilPriceAPI refresh executed inside final required scripts/deploy.sh run",
       "caveat": "Energy points are vendor snapshots and remain sanity checks rather than model inputs."
-    }
+    },
+    "post_deploy_verification": {
+      "deploy_command": "bash scripts/deploy.sh",
+      "deploy_result": "success: OilPriceAPI and Polymarket refreshes completed, pipeline regenerated index.html, the false-positive South China Sea signal was removed, the 22-tracker state was validated, and the automated commit was pushed",
+      "deployment_commit": "cbb5761bc688c4768d7f91bbaf78f50c003d51a9",
+      "pages_run_id": 30465061747,
+      "pages_conclusion": "success",
+      "pages_url": "https://github.com/VoltaIntel/doomsday-watch/actions/runs/30465061747",
+      "index_markers": {
+        "DoomsdayWatch // Command Deck": true,
+        "const state = {": true,
+        "// ===== RENDER": true
+      },
+      "history_timestamp": "2026-07-29T15:14:54Z",
+      "history_global": 83,
+      "history_zone": "imminent",
+      "history_tracker_count": 22,
+      "active_signal_count": 22,
+      "canonical_validation": "passed; tracker, zone, top-level and timeline projections align at 22 canonical signals across 22 configured tracker IDs",
+      "repository_sync": {
+        "local_head": "cbb5761bc688c4768d7f91bbaf78f50c003d51a9",
+        "origin_main": "cbb5761bc688c4768d7f91bbaf78f50c003d51a9",
+        "remote_main": "cbb5761bc688c4768d7f91bbaf78f50c003d51a9"
+      },
+      "tests": {
+        "non_smoke": "31 passed in 0.45s with tests/test_pipeline_smoke.py excluded",
+        "smoke": "11 setup errors when included because the copied-pipeline fixture hit its hard-coded 60-second timeout; required deploy itself succeeded twice"
+      },
+      "local_verification": {
+        "global": 83,
+        "raw_global": 82.9,
+        "zone": "imminent",
+        "trackers": 22,
+        "latest_news": 22,
+        "signals": 22,
+        "required_markers": true
+      },
+      "live_verification": {
+        "url": "https://voltaintel.github.io/doomsday-watch/",
+        "root_http": 200,
+        "state_http": 200,
+        "timeline_http": 200,
+        "global": 83,
+        "raw_global": 82.9,
+        "zone": "imminent",
+        "trackers": 22,
+        "latest_news": 22,
+        "signals": 22,
+        "required_markers": true
+      }
+    },
+    "finalized_at": "2026-07-29T15:18:43Z"
   },
   "trackers": {
     "iran_conventional": {
@@ -2964,7 +3015,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3026,7 +3077,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3138,7 +3189,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3210,7 +3261,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3256,7 +3307,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3297,7 +3348,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3338,7 +3389,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3384,7 +3435,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 68,
       "zone": "imminent",
       "trend": "stable",
@@ -3424,7 +3475,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3469,7 +3520,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3509,7 +3560,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3571,7 +3622,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3663,7 +3714,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3714,7 +3765,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3765,7 +3816,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 95,
       "zone": "imminent",
       "trend": "stable",
@@ -3847,7 +3898,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -3898,7 +3949,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -3949,7 +4000,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4000,7 +4051,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "stable",
@@ -4051,7 +4102,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 17,
       "zone": "elevated",
       "trend": "stable",
@@ -4102,7 +4153,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4184,7 +4235,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
