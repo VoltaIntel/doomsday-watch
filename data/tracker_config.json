@@ -19,7 +19,8 @@
     "south_china_sea",
     "somalia_gulf_of_aden",
     "southern_thailand",
-    "kuwait_iraq_border"
+    "kuwait_iraq_border",
+    "iraq_internal_conflict"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -487,6 +488,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "iraq_internal_conflict": {
+      "name": "Iraq militia / external-strike escalation",
+      "base_rate": 10,
+      "description": "Iraq militia drone warfare and external military strikes involving Iran-aligned groups",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -564,9 +592,10 @@
     "south_china_sea": 0.02,
     "somalia_gulf_of_aden": 0.02,
     "southern_thailand": 0.02,
-    "kuwait_iraq_border": 0.02
+    "kuwait_iraq_border": 0.02,
+    "iraq_internal_conflict": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-23T18:18:27Z",
+  "last_updated": "2026-07-29T03:15:53Z",
   "dashboard_path": "dashboard.html"
 }
