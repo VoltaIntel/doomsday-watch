@@ -20,7 +20,8 @@
     "somalia_gulf_of_aden",
     "southern_thailand",
     "kuwait_iraq_border",
-    "iraq_internal_conflict"
+    "iraq_internal_conflict",
+    "kenya_somalia_border"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -515,6 +516,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "kenya_somalia_border": {
+      "name": "Kenya / Somalia border",
+      "base_rate": 15,
+      "description": "Al-Shabaab attacks and security-force escalation along the Kenya-Somalia border",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -593,9 +621,10 @@
     "somalia_gulf_of_aden": 0.02,
     "southern_thailand": 0.02,
     "kuwait_iraq_border": 0.02,
-    "iraq_internal_conflict": 0.02
+    "iraq_internal_conflict": 0.02,
+    "kenya_somalia_border": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-07-29T03:15:53Z",
+  "last_updated": "2026-07-29T06:14:26Z",
   "dashboard_path": "dashboard.html"
 }
