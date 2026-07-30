@@ -482,7 +482,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-07-30T15:23:35Z",
+  "last_updated": "2026-07-30T15:25:35Z",
   "signal_timestamps": {
     "yemen_red_sea:ceasefire_violation": "2026-07-27T21:20:16Z",
     "iran_conventional:hormuz_mining": "2026-07-26T15:12:15Z",
@@ -523,8 +523,8 @@
     "scan_completed_at": "2026-07-30T15:13:10Z",
     "scan_window": "rolling 24 hours ending 2026-07-30T15:13:10Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-30T15:13:10Z of all 23 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, nine exact prediction-market sanity contracts and emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_google_bing_browser_direct_fallback",
+    "source_limitation": "Tavily returned HTTP 432 on all 29 requested searches and all three extract probes. Fallback coverage used Google News RSS, Bing News RSS, browser-verified AP/DW/NATO pages, direct UN/NATO/EIA feeds, terminal HTTP, OilPriceAPI and Polymarket Gamma. IAEA, OPEC and CENTCOM direct pages remained HTTP 403/challenge-blocked; syndication counts overlap and single-chain claims were not treated as independent corroboration.",
     "source_artifacts": [
       "data/deep_scan_15z_fallback_20260730T150321Z.json",
       "data/morning_deep_scan_sources_20260730T150334Z.json",
@@ -783,19 +783,19 @@
       "iaea_un": "IAEA pages remained blocked and no correction to the Iranian access suspension was retrieved. Direct UN feeds carried no new nuclear or collective-defense threshold."
     },
     "energy_oil": {
-      "checked_at": "2026-07-30T15:13:20Z",
+      "checked_at": "2026-07-30T15:23:35Z",
       "source": "OilPriceAPI plus AP/Google/Bing energy lanes and direct EIA review",
-      "brent_usd": 89.98,
-      "brent_change_24h_pct": -0.62,
-      "brent_change_vs_12z_usd": 0.04,
-      "wti_usd": 84.25,
+      "brent_usd": 87.42,
+      "brent_change_24h_pct": -3.47,
+      "brent_change_vs_12z_usd": -2.52,
+      "wti_usd": 84.57,
       "wti_change_24h_pct": -1.06,
-      "wti_change_vs_12z_usd": 0.7,
-      "gold_usd": 4095.46,
+      "wti_change_vs_12z_usd": 1.02,
+      "gold_usd": 4083.6,
       "heating_oil_usd": 4.26,
       "natural_gas_usd": 2.74,
       "shipping_sanity": "AP called Hormuz effectively closed while limited Japanese, French and Omani vessel transits were separately reported; no zero-traffic condition or formal closure was verified.",
-      "interpretation": "Brent $89.98 and WTI $84.25; both remain elevated but are sanity checks, not model inputs.",
+      "interpretation": "Brent $87.42 and WTI $84.57; vendor points were volatile during deploy and remain sanity checks, not model inputs.",
       "caveat": "OilPriceAPI points are vendor-volatile. Energy and prediction-market prices are sanity checks, not model inputs."
     },
     "polymarket_sanity": {
@@ -873,7 +873,7 @@
     "search_query_count_artifacted": 51,
     "search_result_count_raw_artifacted": 377,
     "search_count_caveat": "Google/Bing lanes and engines overlap; counts are not unique articles.",
-    "dashboard_note": "15Z deep refresh: 84% / imminent (83.820 exact). Kuwait rose 17\u219222 after AP verified a fatal Iranian strike on a building; Russia rose 63\u219265 raw / 73\u219275 coupled after NATO confirmed a Russian missile entered and crashed in Poland and activated defenses. Iran diplomacy_active and Kuwait infrastructure_strike activated; no new tracker qualified.",
+    "dashboard_note": "15Z deep refresh: 84% / imminent (83.820 exact). Kuwait rose 17→22 after AP verified a fatal Iranian strike on a building; Russia rose 63→65 raw / 73→75 coupled after NATO confirmed a Russian missile entered and crashed in Poland and activated defenses. Iran diplomacy_active and Kuwait infrastructure_strike activated; no new tracker qualified.",
     "next_watch_triggers": [
       "Final Polish forensic identification, Russian response, any NATO Article 4/5 consultation, allied reinforcement or another projectile on allied territory.",
       "Iranian/U.S. follow-on strikes, verified battle damage, casualty revisions, attacks on bases or additional third-country spillover.",
@@ -936,9 +936,9 @@
         "source": "centcom"
       }
     },
-    "post_deploy_energy_sync_at": "2026-07-30T15:13:20Z",
-    "finalized_at": "2026-07-30T15:17:37Z",
-    "finalization_note": "Final reconciled state after required deploy: 23 canonical trackers, 20 canonical signals, 84/imminent (83.820 exact), final energy synchronized, and explicit search fallback restored in the required metadata fields."
+    "post_deploy_energy_sync_at": "2026-07-30T15:23:35Z",
+    "finalized_at": "2026-07-30T15:25:35Z",
+    "finalization_note": "Final reconciled state after required redeploy: corrected and verified DW source URL, 23 canonical trackers, 20 canonical signals, 84/imminent (83.820 exact), final deploy energy synchronized, and explicit fallback restored in required metadata fields."
   },
   "trackers": {
     "iran_conventional": {
@@ -1487,7 +1487,7 @@
       "headline": "NATO confirms Russian missile entered and crashed in Poland",
       "text": "NATO spokesperson Martin O'Donnell said a Russian missile entered Polish airspace and crashed on Polish territory, and that NATO and Poland activated air and ground defenses. Poland still says the missile was most likely a Kh-101 and the investigation continues; there were no casualties, Article 4/5 step or announced reinforcement. The direct NATO confirmation and defensive activation lift raw risk two points. Raw 65; coupled 75.",
       "sources": [
-        "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O\u2019Donnell",
+        "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O’Donnell",
         "Google News RSS and Bing News RSS rolling-24h review, checked 2026-07-30T15:03Z"
       ],
       "impact": "up",
@@ -1497,7 +1497,7 @@
       "zone": "russia",
       "tracker": "russia",
       "source_date": "2026-07-30",
-      "source": "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O\u2019Donnell; Google News RSS and Bing News RSS rolling-24h review, checked 2026-07-30T15:03Z",
+      "source": "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O’Donnell; Google News RSS and Bing News RSS rolling-24h review, checked 2026-07-30T15:03Z",
       "url": "https://www.dw.com/en/poland-says-russian-ballistic-missile-violated-airspace/a-78172288"
     },
     {
@@ -3015,7 +3015,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3077,7 +3077,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3189,7 +3189,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3261,7 +3261,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3307,7 +3307,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3348,7 +3348,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3389,7 +3389,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3435,7 +3435,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 75,
       "zone": "imminent",
       "trend": "rising",
@@ -3475,7 +3475,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3520,7 +3520,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3560,7 +3560,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3611,7 +3611,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3683,7 +3683,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3734,7 +3734,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3785,7 +3785,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 95,
       "zone": "imminent",
       "trend": "stable",
@@ -3857,7 +3857,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -3908,7 +3908,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -3959,7 +3959,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4010,7 +4010,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "stable",
@@ -4061,7 +4061,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 22,
       "zone": "elevated",
       "trend": "rising",
@@ -4123,7 +4123,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4205,7 +4205,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4277,7 +4277,7 @@
     {
       "id": "egypt_mediterranean",
       "name": "EGYPT MEDITERRANEAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
