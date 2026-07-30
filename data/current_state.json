@@ -16,7 +16,6 @@
         "diplomacy_refused",
         "hormuz_controlled_not_closed",
         "hormuz_mining",
-        "military_buildup",
         "oil_infrastructure_threat"
       ],
       "notes": "AP reports that U.S. and Iranian missile barrages resumed across the region. Pakistan's foreign-ministry spokesperson said diplomacy remains under way, particularly over Hormuz, while AP described the strait as effectively closed despite limited verified transits. The live war keeps this lane capped; the fresh backchannel evidence activates diplomacy_active without erasing the continuing refusal/escalation evidence. Raw 100; coupled 100",
@@ -26,7 +25,6 @@
         "diplomacy_refused": "2026-07-29T18:11:54Z",
         "hormuz_controlled_not_closed": "2026-07-29T18:31:42Z",
         "hormuz_mining": "2026-07-26T15:12:15Z",
-        "military_buildup": "2026-07-27T09:14:51Z",
         "oil_infrastructure_threat": "2026-07-27T21:20:16Z"
       },
       "base_probability": 100,
@@ -304,7 +302,7 @@
       "signal_timestamps": {
         "ceasefire_violation": "2026-07-27T21:20:16Z",
         "infrastructure_strike": "2026-07-27T21:20:16Z",
-        "military_buildup": "2026-07-30T18:12:05Z"
+        "military_buildup": "2026-07-30T18:12:26Z"
       },
       "base_probability": 100,
       "signals": {
@@ -487,27 +485,26 @@
   "doomsday_clock_minutes": 3.0,
   "last_updated": "2026-07-30T18:12:26Z",
   "signal_timestamps": {
-    "yemen_red_sea:ceasefire_violation": "2026-07-27T21:20:16Z",
-    "iran_conventional:hormuz_mining": "2026-07-26T15:12:15Z",
-    "iran_conventional:military_buildup": "2026-07-27T09:14:51Z",
-    "iran_conventional:oil_infrastructure_threat": "2026-07-27T21:20:16Z",
-    "yemen_red_sea:infrastructure_strike": "2026-07-27T21:20:16Z",
-    "israel_lebanon:diplomacy_active": "2026-07-28T06:18:18Z",
-    "israel_palestine:military_buildup": "2026-07-28T18:13:25Z",
-    "iran_nuclear:iaea_access_denied": "2026-07-29T00:15:24Z",
-    "israel_palestine:ceasefire_violation": "2026-07-29T00:15:24Z",
-    "iraq_internal_conflict:external_backing": "2026-07-29T03:16:40Z",
-    "iraq_internal_conflict:military_buildup": "2026-07-29T03:16:40Z",
-    "iraq_internal_conflict:infrastructure_strike": "2026-07-29T03:16:40Z",
-    "kenya_somalia_border:infrastructure_strike": "2026-07-29T06:15:13Z",
-    "kenya_somalia_border:military_buildup": "2026-07-29T06:15:13Z",
+    "iran_conventional:diplomacy_active": "2026-07-30T15:13:10Z",
     "iran_conventional:diplomacy_refused": "2026-07-29T18:11:54Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-07-29T18:31:42Z",
-    "egypt_mediterranean:infrastructure_strike": "2026-07-29T21:12:15Z",
+    "iran_conventional:hormuz_mining": "2026-07-26T15:12:15Z",
+    "iran_conventional:oil_infrastructure_threat": "2026-07-27T21:20:16Z",
     "israel_lebanon:ceasefire_violation": "2026-07-30T03:16:28Z",
-    "iran_conventional:diplomacy_active": "2026-07-30T15:13:10Z",
+    "israel_lebanon:diplomacy_active": "2026-07-28T06:18:18Z",
+    "iran_nuclear:iaea_access_denied": "2026-07-29T00:15:24Z",
+    "israel_palestine:ceasefire_violation": "2026-07-29T00:15:24Z",
+    "israel_palestine:military_buildup": "2026-07-28T18:13:25Z",
+    "yemen_red_sea:ceasefire_violation": "2026-07-27T21:20:16Z",
+    "yemen_red_sea:infrastructure_strike": "2026-07-27T21:20:16Z",
+    "yemen_red_sea:military_buildup": "2026-07-30T18:12:26Z",
     "kuwait_iraq_border:infrastructure_strike": "2026-07-30T15:13:10Z",
-    "yemen_red_sea:military_buildup": "2026-07-30T18:12:26Z"
+    "iraq_internal_conflict:external_backing": "2026-07-29T03:16:40Z",
+    "iraq_internal_conflict:infrastructure_strike": "2026-07-29T03:16:40Z",
+    "iraq_internal_conflict:military_buildup": "2026-07-29T03:16:40Z",
+    "kenya_somalia_border:infrastructure_strike": "2026-07-29T06:15:13Z",
+    "kenya_somalia_border:military_buildup": "2026-07-29T06:15:13Z",
+    "egypt_mediterranean:infrastructure_strike": "2026-07-29T21:12:15Z"
   },
   "global_war_probability": 84,
   "global_zone": "imminent",
@@ -527,8 +524,8 @@
     "scan_completed_at": "2026-07-30T18:12:05Z",
     "scan_window": "rolling 24 hours ending 2026-07-30T18:12:05Z",
     "analysis_window": "Deep rolling past-24h review through 2026-07-30T18:12:05Z of all 23 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, nine exact prediction-market sanity contracts and 22 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_google_bing_browser_direct_fallback",
+    "source_limitation": "Tavily returned HTTP 432 on all 28 web searches and all 10 extract targets. Fallback coverage used 48 Google News RSS and Bing News RSS lanes, browser-verified AP and Guardian pages, direct UN/NATO/EIA probes, terminal HTTP, OilPriceAPI and Polymarket Gamma. IAEA and OPEC remained HTTP 403/challenge-blocked; OCHA/UN Sudan feed URLs returned 404, and Reuters/NYT browser pages were robot-challenged. RSS counts overlap and single-chain claims were not treated as independent corroboration.",
     "source_artifacts": [
       "data/deep_scan_18z_fallback_20260730T180328Z.json",
       "data/morning_deep_scan_sources_20260730T180647Z.json",
@@ -736,7 +733,9 @@
       "activated": [
         "yemen_red_sea:military_buildup"
       ],
-      "cleared": [],
+      "cleared": [
+        "iran_conventional:military_buildup"
+      ],
       "evidence_refreshed": [
         "iran_conventional:diplomacy_active",
         "yemen_red_sea:ceasefire_violation",
@@ -744,7 +743,7 @@
       ],
       "pipeline_false_matches_removed": [],
       "ttl_reactivated": [],
-      "note": "Direct Guardian reporting on Saudi troop concentration activates military_buildup. AP later-update reporting refreshes active Iran diplomacy; Guardian recaps the active Saudi-Houthi fighting and infrastructure-strike chain."
+      "note": "Direct Guardian reporting activated yemen_red_sea:military_buildup. The required deploy TTL-cleared expired iran_conventional:military_buildup; AP’s later update refreshed active Iran diplomacy, and Guardian refreshed the active Saudi-Houthi strike chain."
     },
     "auto_detection_review": {
       "added_trackers": [],
@@ -782,23 +781,23 @@
       "israel_palestine": "The rolling-day review retained four killed in Gaza, including two children; no implemented truce or new force-position threshold appeared.",
       "china_taiwan_philippines": "Posture, resilience and ASEAN coverage continued without a new kinetic encounter, blockade or treaty consultation.",
       "saudi_gcc_yemen": "Guardian reports Saudi force concentration for a possible al-Bayda offensive and cites a Saudi ministry statement that 14 states support a maritime-defence coalition; Reuters separately indexed the formal coalition plan. No participating foreign naval operation was verified.",
-      "egypt_mediterranean": "AP retained Egypt\u2019s finding that drones caused the Damietta fires; the port remained operational, responsibility stayed unassigned and the Houthis denied involvement.",
+      "egypt_mediterranean": "AP retained Egypt’s finding that drones caused the Damietta fires; the port remained operational, responsibility stayed unassigned and the Houthis denied involvement.",
       "iaea_un": "IAEA direct pages remained blocked and no correction to the Iranian access suspension was retrieved. UN/NATO feeds carried no new nuclear or collective-defence threshold."
     },
     "energy_oil": {
-      "checked_at": "2026-07-30T18:04:00Z",
+      "checked_at": "2026-07-30T18:12:24Z",
       "source": "OilPriceAPI plus Google/Bing energy lanes and direct AP/EIA review",
-      "brent_usd": 89.24,
-      "brent_change_24h_pct": -1.13,
-      "brent_change_vs_15z_usd": 1.82,
-      "wti_usd": 84.02,
-      "wti_change_24h_pct": -0.7,
-      "wti_change_vs_15z_usd": -0.55,
-      "gold_usd": 4103.69,
+      "brent_usd": 87.01,
+      "brent_change_24h_pct": -1.45,
+      "brent_change_vs_15z_usd": -0.41,
+      "wti_usd": 83.97,
+      "wti_change_24h_pct": -0.91,
+      "wti_change_vs_15z_usd": -0.6,
+      "gold_usd": 4103.8,
       "heating_oil_usd": 4.25,
       "natural_gas_usd": 2.76,
       "shipping_sanity": "AP says Hormuz traffic fell from 82 ships in July 13-19 to 39 in July 20-26 and describes energy shipments as near a halt, but not zero. Some Saudi exports continue through Bab el-Mandab despite the Houthi blockade.",
-      "interpretation": "Brent $89.24 and WTI $84.02. The new formal Saudi maritime-coalition plan coincided with oil easing, but vendor points remain volatile sanity checks.",
+      "interpretation": "Final deploy fetch: Brent $87.01 and WTI $83.97. Vendor points remain volatile sanity checks, not model inputs.",
       "caveat": "OilPriceAPI points are vendor-volatile. Energy and prediction-market prices are sanity checks, not model inputs."
     },
     "polymarket_sanity": {
@@ -889,7 +888,7 @@
     "evidence_only_movers": [
       {
         "tracker": "iran_conventional",
-        "reason": "AP\u2019s 16:03Z update retained active Hormuz-focused diplomacy while barrages continued; the lane remains capped at 100."
+        "reason": "AP’s 16:03Z update retained active Hormuz-focused diplomacy while barrages continued; the lane remains capped at 100."
       },
       {
         "tracker": "israel_lebanon",
@@ -900,7 +899,7 @@
         "reason": "Later indexing repeated the already scored Damietta drone fires and Houthi denial; raw remains 20."
       }
     ],
-    "final_active_signal_count": 21,
+    "final_active_signal_count": 20,
     "pre_deploy_state_written_at": "2026-07-30T18:12:05Z",
     "deploy_security_remediation": {
       "status": "allowlist_hardened_and_unrelated_assets_removed_from_tracked_HEAD",
@@ -941,7 +940,10 @@
         "ok": false,
         "source": "opec"
       }
-    }
+    },
+    "post_deploy_energy_sync_at": "2026-07-30T18:16:07Z",
+    "finalized_at": "2026-07-30T18:16:07Z",
+    "finalization_note": "Final reconciled state after required deploy: 23 canonical trackers/news records, 20 aligned canonical signals after the Iran military_buildup TTL clear and Yemen military_buildup activation, 84/imminent (83.920 exact), final deploy energy synchronized, and explicit fallback restored in the contract-required metadata fields."
   },
   "trackers": {
     "iran_conventional": {
@@ -1495,7 +1497,7 @@
       "headline": "NATO confirms Russian missile entered and crashed in Poland",
       "text": "NATO spokesperson Martin O'Donnell said a Russian missile entered Polish airspace and crashed on Polish territory, and that NATO and Poland activated air and ground defenses. Poland still says the missile was most likely a Kh-101 and the investigation continues; there were no casualties, Article 4/5 step or announced reinforcement. The direct NATO confirmation and defensive activation lift raw risk two points. Raw 65; coupled 75.",
       "sources": [
-        "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O\u2019Donnell",
+        "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O’Donnell",
         "Google News RSS and Bing News RSS rolling-24h review, checked 2026-07-30T15:03Z",
         "Google News RSS and Bing News RSS 48-lane rolling-24h review, checked 2026-07-30T18:03Z"
       ],
@@ -1506,7 +1508,7 @@
       "zone": "russia",
       "tracker": "russia",
       "source_date": "2026-07-30",
-      "source": "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O\u2019Donnell; Google News RSS and Bing News RSS rolling-24h review, checked 2026-07-30T15:03Z; Google News RSS and Bing News RSS 48-lane rolling-24h review, checked 2026-07-30T18:03Z",
+      "source": "DW direct report checked 2026-07-30T15:06Z, carrying Polish official statements and NATO spokesperson Martin O’Donnell; Google News RSS and Bing News RSS rolling-24h review, checked 2026-07-30T15:03Z; Google News RSS and Bing News RSS 48-lane rolling-24h review, checked 2026-07-30T18:03Z",
       "url": "https://www.dw.com/en/poland-says-russian-ballistic-missile-violated-airspace/a-78172288"
     },
     {
@@ -3080,7 +3082,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3142,7 +3144,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3244,7 +3246,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3316,7 +3318,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3362,7 +3364,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3403,7 +3405,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3444,7 +3446,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3490,7 +3492,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 75,
       "zone": "imminent",
       "trend": "rising",
@@ -3530,7 +3532,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3575,7 +3577,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3615,7 +3617,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3666,7 +3668,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3738,7 +3740,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3789,7 +3791,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3840,7 +3842,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3922,7 +3924,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -3973,7 +3975,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -4024,7 +4026,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4075,7 +4077,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "stable",
@@ -4126,7 +4128,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 22,
       "zone": "elevated",
       "trend": "rising",
@@ -4188,7 +4190,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4270,7 +4272,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4342,7 +4344,7 @@
     {
       "id": "egypt_mediterranean",
       "name": "EGYPT MEDITERRANEAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
