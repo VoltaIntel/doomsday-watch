@@ -401,7 +401,7 @@
       "active_signals": [
         "infrastructure_strike"
       ],
-      "notes": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm\u2019s building. No second event, new toll or border force shift was verified; raw/coupled 22",
+      "notes": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm’s building. No second event, new toll or border force shift was verified; raw/coupled 22",
       "last_updated": "2026-07-30T21:11:03Z",
       "signal_timestamps": {
         "infrastructure_strike": "2026-07-30T15:13:10Z"
@@ -536,8 +536,8 @@
     "scan_completed_at": "2026-07-30T21:11:03Z",
     "scan_window": "rolling 24 hours ending 2026-07-30T21:11:03Z",
     "analysis_window": "Deep rolling past-24h review from 2026-07-29T21:11:03Z through 2026-07-30T21:11:03Z of all 23 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, nine exact prediction-market sanity contracts and 22 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_google_bing_browser_direct_fallback",
+    "source_limitation": "Tavily returned HTTP 432 on all 27 web searches and both web_extract targets. Fallback coverage used 48 Google News RSS and Bing News RSS tracker/sector/emerging lanes, 18 additional core Google lanes, browser/direct Al Jazeera and Reuters syndication, Dabanga WordPress data, direct UN/NATO/EIA probes, terminal HTTP, OilPriceAPI and Polymarket Gamma. IAEA and OPEC remained HTTP 403/challenge-blocked; OCHA/UN Sudan feed paths returned 404; Reuters direct pages remained device-check blocked. RSS counts overlap and single-chain claims were not treated as independent corroboration.",
     "source_artifacts": [
       "data/deep_scan_21z_fallback_20260730T210345Z.json",
       "data/morning_deep_scan_sources_20260730T210247Z.json",
@@ -785,27 +785,27 @@
       "united_states_iran": "The U.S.-Iran strike cycle continues. Omani/Gulf and Pakistani channels exist, but Iran was reported to reject the proposed Hormuz management plan and no halt was implemented.",
       "nato_russia": "NATO confirmation of the Russian missile violation in Poland remains the latest threshold; no Article 4/5 step, casualty, new reinforcement or second projectile was found.",
       "russia_ukraine": "No authoritative post-cutoff casualty or strategic-target revision changed the 99 lane.",
-      "israel_lebanon": "Late indexing repeated Israel\u2019s response threat after the Hezbollah drone breach; no retaliatory strike was verified by cutoff.",
+      "israel_lebanon": "Late indexing repeated Israel’s response threat after the Hezbollah drone breach; no retaliatory strike was verified by cutoff.",
       "israel_palestine": "Reuters says Cairo talks made rare progress and Hamas discussed storing heavy weapons, while an Israeli official rejected the proposal; strikes still killed at least six.",
       "china_taiwan_philippines": "Posture, resilience and maritime-patrol coverage continued without a new kinetic encounter, blockade or treaty consultation.",
       "saudi_gcc_yemen": "Saudi Arabia and 13 other states formally established a defensive maritime alliance after 43-country participation; intelligence, planning, exercises and operations are in scope, but no assets or first operation were named.",
       "egypt_mediterranean": "Reuters flagged Suez-export security concern after Damietta, but the port remained operational and no second event or attribution appeared.",
-      "iaea_un": "IAEA direct pages remained blocked and no correction to Iran\u2019s access suspension was retrieved. UN/NATO feeds carried no new nuclear or collective-defence threshold."
+      "iaea_un": "IAEA direct pages remained blocked and no correction to Iran’s access suspension was retrieved. UN/NATO feeds carried no new nuclear or collective-defence threshold."
     },
     "energy_oil": {
-      "checked_at": "2026-07-30T21:11:03Z",
+      "checked_at": "2026-07-30T21:05:57Z",
       "source": "OilPriceAPI plus Google/Bing energy lanes and direct EIA review",
-      "brent_usd": 89.43,
-      "brent_change_24h_pct": -1.58,
-      "brent_change_vs_18z_usd": 2.42,
-      "wti_usd": 83.92,
-      "wti_change_24h_pct": -0.59,
-      "wti_change_vs_18z_usd": -0.05,
-      "gold_usd": 4101.66,
-      "heating_oil_usd": 4.22,
+      "brent_usd": 89.42,
+      "brent_change_24h_pct": -1.16,
+      "brent_change_vs_18z_usd": 2.41,
+      "wti_usd": 83.93,
+      "wti_change_24h_pct": -0.85,
+      "wti_change_vs_18z_usd": -0.04,
+      "gold_usd": 4101.18,
+      "heating_oil_usd": 4.2,
       "natural_gas_usd": 2.75,
       "shipping_sanity": "Traffic through Hormuz remains constrained but nonzero. The Omani fee-management proposal is not implemented; the new Saudi-led alliance targets Bab al-Mandeb, Red Sea and Gulf of Aden security.",
-      "interpretation": "Pre-deploy fetch: Brent $89.43 and WTI $83.92. Vendor points remain volatile sanity checks, not model inputs.",
+      "interpretation": "Final deploy fetch: Brent $89.42 and WTI $83.93. Vendor points remain volatile sanity checks, not model inputs.",
       "caveat": "OilPriceAPI points are vendor-volatile. Energy and prediction-market prices are sanity checks, not model inputs."
     },
     "polymarket_sanity": {
@@ -949,7 +949,10 @@
         "source": "opec"
       }
     },
-    "source_date_correction": "Reuters coalition headline index time corrected to Bing RSS pubDate 2026-07-30T10:38Z; Guardian direct report remains 17:46Z."
+    "source_date_correction": "Reuters coalition headline index time corrected to Bing RSS pubDate 2026-07-30T10:38Z; Guardian direct report remains 17:46Z.",
+    "post_deploy_energy_sync_at": "2026-07-30T21:14:23Z",
+    "finalized_at": "2026-07-30T21:14:23Z",
+    "finalization_note": "Final reconciled state after required deploy: 23 canonical tracker/news records, 23 aligned canonical signals, 84/imminent (83.920 exact), deploy-time energy synchronized, and explicit HTTP-432 fallback restored in the contract-required metadata fields."
   },
   "trackers": {
     "iran_conventional": {
@@ -1352,7 +1355,7 @@
       "active_signals": [
         "infrastructure_strike"
       ],
-      "notes": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm\u2019s building. No second event, new toll or border force shift was verified; raw/coupled 22",
+      "notes": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm’s building. No second event, new toll or border force shift was verified; raw/coupled 22",
       "last_updated": "2026-07-30T21:11:03Z",
       "signal_timestamps": {
         "infrastructure_strike": "2026-07-30T15:13:10Z"
@@ -1741,7 +1744,7 @@
     },
     {
       "headline": "No second Kuwait strike after the verified northern-Kuwait hit",
-      "text": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm\u2019s building. No second event, new toll or border force shift was verified; raw/coupled 22.",
+      "text": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm’s building. No second event, new toll or border force shift was verified; raw/coupled 22.",
       "sources": [
         "Google News RSS and Bing News RSS 48-lane rolling-24h review checked 2026-07-30T21:11:03Z"
       ],
@@ -3070,7 +3073,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3132,7 +3135,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3234,7 +3237,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3306,7 +3309,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3352,7 +3355,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3393,7 +3396,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3434,7 +3437,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3480,7 +3483,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 75,
       "zone": "imminent",
       "trend": "rising",
@@ -3520,7 +3523,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3565,7 +3568,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3605,7 +3608,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3656,7 +3659,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3748,7 +3751,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3799,7 +3802,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3850,7 +3853,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3942,7 +3945,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -3993,7 +3996,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -4044,7 +4047,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4095,7 +4098,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "stable",
@@ -4146,7 +4149,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 22,
       "zone": "elevated",
       "trend": "rising",
@@ -4164,7 +4167,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 10,
-      "notes": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm\u2019s building. No second event, new toll or border force shift was verified; raw/coupled 22",
+      "notes": "Late opinion and AP-syndication results repeated the previously scored Iranian strike that killed one worker and damaged a Chinese firm’s building. No second event, new toll or border force shift was verified; raw/coupled 22",
       "attribution": {
         "base_rate": 10.0,
         "raw_probability": 22.0,
@@ -4208,7 +4211,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4290,7 +4293,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4362,7 +4365,7 @@
     {
       "id": "egypt_mediterranean",
       "name": "EGYPT MEDITERRANEAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
