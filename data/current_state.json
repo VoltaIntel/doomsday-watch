@@ -535,8 +535,8 @@
     "scan_completed_at": "2026-07-31T03:12:07Z",
     "scan_window": "rolling 24 hours ending 2026-07-31T03:12:07Z",
     "analysis_window": "Deep rolling past-24h review from 2026-07-30T03:08:00Z through 2026-07-31T03:12:07Z of all 23 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, nine exact prediction-market sanity contracts and 22 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_browser_google_news_rss_bing_news_rss_direct_official_fallback",
+    "source_limitation": "Tavily returned HTTP 432 on all 30 web_search attempts and all 5 web_extract targets. Fallback coverage used browser/direct pages, 49 Google News RSS lanes and 49 Bing News RSS lanes (414 and 315 raw items), an 18-lane core Google collector, direct Anadolu pages, official UN/NATO/EIA probes, terminal HTTP, OilPriceAPI and Polymarket Gamma exact slugs. IAEA and OPEC remained HTTP 403/challenge-blocked; OCHA and UN Sudan feed paths returned 404. The fresh northern-Iraq drone report remained a single regional-source account citing local media. RSS times can reflect updates and raw counts overlap syndication.",
     "source_artifacts": [
       "data/deep_scan_03z_fallback_20260731T030429Z.json",
       "data/morning_deep_scan_sources_20260731T030312Z.json",
@@ -798,17 +798,17 @@
       "iaea_un": "Direct IAEA pages remained blocked; no fresh Iranian enrichment/access threshold or new UN nuclear action surfaced."
     },
     "energy_oil": {
-      "checked_at": "2026-07-31T03:07:45Z",
+      "checked_at": "2026-07-31T03:12:14Z",
       "source": "OilPriceAPI plus expanded Google/Bing fallback and direct EIA review",
-      "brent_usd": 85.87,
-      "brent_change_vs_prior_scan_usd": -3.92,
-      "wti_usd": 82.31,
-      "wti_change_vs_prior_scan_usd": -1.74,
-      "gold_usd": 4073.25,
+      "brent_usd": 85.73,
+      "brent_change_vs_prior_scan_usd": -4.06,
+      "wti_usd": 82.14,
+      "wti_change_vs_prior_scan_usd": -1.91,
+      "gold_usd": 4074.81,
       "heating_oil_usd": 4.17,
       "natural_gas_usd": 2.77,
       "shipping_sanity": "Rolling reporting still shows constrained but nonzero Hormuz traffic; no verified closure or zero-traffic threshold emerged.",
-      "interpretation": "The vendor refresh moved Brent to $85.87 and WTI to $82.31, both lower than 00Z despite continuing conflict. The move argues against escalation inflation and does not set model scores.",
+      "interpretation": "Final deploy fetch moved Brent to $85.73 and WTI to $82.14, both below 00Z despite continuing conflict. The move argues against escalation inflation and does not set model scores.",
       "caveat": "OilPriceAPI points are vendor-volatile. Energy and prediction-market prices are sanity checks, not model inputs."
     },
     "polymarket_sanity": {
@@ -953,7 +953,22 @@
       }
     },
     "source_date_correction": "Reuters coalition headline index time corrected to Bing RSS pubDate 2026-07-30T10:38Z; Guardian direct report remains 17:46Z.",
-    "post_deploy_energy_sync_at": "2026-07-31T00:21:35Z"
+    "post_deploy_energy_sync_at": "2026-07-31T03:15:39Z",
+    "finalized_at": "2026-07-31T03:15:39Z",
+    "finalization_note": "Final reconciled state after the required deploy: 23 canonical tracker/news records and 23 aligned canonical signals; Israel-Lebanon 95 raw / 100 coupled; global 84 / imminent at exact 83.920; final deploy-time energy synchronized; and explicit HTTP-432 fallback restored in the contract-required metadata.",
+    "deploy_verification": {
+      "required_script": "bash scripts/deploy.sh",
+      "final_pipeline_commit": "025c862836953eeaa7da4db16dbec57f0c5db6aa",
+      "pages_run": 30601044129,
+      "pages_conclusion": "success",
+      "local_index_markers": {
+        "DoomsdayWatch // Command Deck": true,
+        "const state = {": true,
+        "// ===== RENDER": true
+      },
+      "canonical_projection_check": "23 tracker/zone/timeline signals aligned",
+      "non_smoke_tests": "31 passed"
+    }
   },
   "trackers": {
     "iran_conventional": {
@@ -3123,7 +3138,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3185,7 +3200,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3287,7 +3302,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3359,7 +3374,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3405,7 +3420,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3446,7 +3461,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3487,7 +3502,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3533,7 +3548,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 75,
       "zone": "imminent",
       "trend": "rising",
@@ -3573,7 +3588,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3618,7 +3633,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3658,7 +3673,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3709,7 +3724,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3801,7 +3816,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3852,7 +3867,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3903,7 +3918,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3995,7 +4010,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -4046,7 +4061,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -4097,7 +4112,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4148,7 +4163,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "stable",
@@ -4199,7 +4214,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 22,
       "zone": "elevated",
       "trend": "rising",
@@ -4261,7 +4276,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4343,7 +4358,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4415,7 +4430,7 @@
     {
       "id": "egypt_mediterranean",
       "name": "EGYPT MEDITERRANEAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
