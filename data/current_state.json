@@ -557,8 +557,8 @@
     "scan_time": "2026-08-01T00:09:12Z",
     "scan_window": "rolling 24 hours ending 2026-08-01T00:09:12Z",
     "analysis_window": "Deep rolling past-24h review ending 2026-08-01T00:09:12Z of all 24 configured trackers, oil/energy, IAEA/UN, NATO/allied positions, nine exact prediction-market sanity contracts and 23 emerging-crisis candidates.",
-    "search_engine": "public_safe_multi_source_fallback",
-    "source_limitation": "Source mix: official releases, reputable public reporting, public-news headline indexes, market data, and energy feeds. Upstream source coverage was degraded in this run, so the assessment uses corroborated fallback sources and treats single-source claims as watch items until confirmed.",
+    "search_engine": "tavily_http_432_then_google_bing_rss_browser_direct_official_feeds_terminal_http",
+    "source_limitation": "Tavily web_search failed 28/28 required searches and web_extract failed 5/5 targets with HTTP 432. Fallback completed 51 Google/Bing lanes (239 + 233 raw items), 18 core Google lanes, browser/direct pages, official NATO/UN/EIA probes, terminal HTTP, OilPriceAPI and nine exact Polymarket Gamma reads. Direct IAEA and OPEC pages returned HTTP 403; FDD was Cloudflare-blocked; NYT/Reuters direct pages remained DataDome-limited. Counts overlap rewrites, stale matches and syndication; material late claims were date-checked where accessible.",
     "source_artifacts": [
       "data/deep_scan_00z_fallback_20260801T000233Z.json",
       "data/morning_deep_scan_sources_20260801T000124Z.json",
@@ -819,12 +819,12 @@
       "iaea_un": "IAEA pages remained HTTP 403; fallback produced no fresh Iran access, enrichment, safeguards or emergency threshold."
     },
     "energy_oil": {
-      "checked_at": "2026-08-01T00:01:45Z",
+      "checked_at": "2026-08-01T00:11:51Z",
       "source": "OilPriceAPI plus EIA and Google/Bing shipping coverage",
       "brent_usd": 91.04,
       "wti_usd": 86.8,
       "natural_gas_usd": 2.75,
-      "gold_usd": 4042.68,
+      "gold_usd": 4098.6,
       "heating_oil_usd": 4.09,
       "brent_change_vs_21z_usd": 0.95,
       "wti_change_vs_21z_usd": 0.47,
@@ -974,15 +974,15 @@
       }
     },
     "source_date_correction": "Human Rights Watch release dated 2026-07-31 documents an Africa Corps strike that occurred on 2026-06-15; it was treated as retrospective verification, not a current-window event.",
-    "scan_completed_at": "2026-08-01T00:09:12Z",
+    "scan_completed_at": "2026-08-01T00:14:26Z",
     "post_deploy_energy_sync_at": "2026-07-31T18:13:03Z",
-    "finalized_at": "2026-08-01T00:09:12Z",
-    "finalization_note": "Final reconciled 18Z state: 84%/imminent at exact 84.480; no numeric tracker or canonical-signal change; Reuters raised the Ceuta toll to 57 while returns and bilateral containment continued; all 24 canonical tracker/zone/news records and 23 canonical signals aligned; explicit HTTP-432 fallback detail retained; deploy-time energy synchronized; 31 non-smoke tests, Git push, Pages build and cache-busted live endpoints verified.",
+    "finalized_at": "2026-08-01T00:14:26Z",
+    "finalization_note": "Final reconciled 00Z state: 84%/imminent at exact 84.480; no numeric tracker mover; Trump vowed continued heavy strikes while CENTCOM rejected Iran’s Hormuz-closure claim; no distinct post-21Z kinetic event was verified; all 24 canonical tracker/zone/news records and 23 canonical signals align; explicit HTTP-432 fallback detail retained; 31 non-smoke tests and Pages deployment passed.",
     "deploy_verification": {
       "required_script": "bash scripts/deploy.sh",
       "status": "success",
-      "pipeline_commit": "4b268a77a68021c042fd69c2fac2a23007a6e7e3",
-      "pages_run": 30654395080,
+      "pipeline_commit": "04e6293dfc4f8b95bbfbbd81b62b4c1e09bb3900",
+      "pages_run": 30674982410,
       "pages_conclusion": "success",
       "local_index_markers": {
         "DoomsdayWatch // Command Deck": true,
@@ -991,9 +991,9 @@
       },
       "canonical_projection_check": "24 tracker/zone/news records and 23 canonical signals aligned across tracker, zone, top-level and timeline projections",
       "non_smoke_tests": "31 passed",
-      "live_verification": "Cache-busted root/current_state/signal_timeline HTTP 200; all markers present; 84/imminent; exact 84.48; 24 trackers/zones/news records; 23 aligned timeline signals; Ceuta 18 with Reuters 57-death update."
+      "protected_html_guard": "dashboard.html and index-redesign.html hashes unchanged; index.html changed only through scripts/deploy.sh/pipeline.py"
     },
-    "pipeline_reconciliation": "No unexpected signal activation or TTL expiry; 23 canonical signals remained aligned across tracker, zone, top-level and timeline projections.",
+    "pipeline_reconciliation": "A notes-only israel_lebanon:diplomacy_active false match was removed, its trigger wording was neutralized, and the required pipeline was rerun; final projections contain 23 aligned canonical signals.",
     "post_initial_deploy_reconciled_at": "2026-07-31T12:21:51Z"
   },
   "trackers": {
@@ -1802,11 +1802,11 @@
       "source": "Expanded Google/Bing review through 2026-07-31T09:07Z; Past-24h Google/Bing RSS fallback review through 2026-08-01T00:09:12Z"
     },
     {
-      "headline": "DGMA aggregates 16 Indian hostages across April\u2013July incidents",
+      "headline": "DGMA aggregates 16 Indian hostages across April–July incidents",
       "text": "A late Directorate General of Maritime Affairs summary said 16 Indian seafarers were taken hostage across piracy incidents from April through July. It reinforces the existing MT Asana exposure but is not a new post-18Z hijacking, casualty or rescue failure; raw/coupled remain 28.",
       "sources": [
         "Reuters correction indexed 2026-07-31T10:35Z; underlying report dated 2026-07-23",
-        "Telangana Today / DGMA report published 2026-07-31; incidents span April\u2013July",
+        "Telangana Today / DGMA report published 2026-07-31; incidents span April–July",
         "Past-24h Google/Bing RSS fallback review through 2026-08-01T00:09:12Z"
       ],
       "impact": "stable",
@@ -1816,7 +1816,7 @@
       "zone": "somalia_gulf_of_aden",
       "tracker": "somalia_gulf_of_aden",
       "source_date": "2026-08-01",
-      "source": "Reuters correction indexed 2026-07-31T10:35Z; underlying report dated 2026-07-23; Telangana Today / DGMA report published 2026-07-31; incidents span April\u2013July; Past-24h Google/Bing RSS fallback review through 2026-08-01T00:09:12Z",
+      "source": "Reuters correction indexed 2026-07-31T10:35Z; underlying report dated 2026-07-23; Telangana Today / DGMA report published 2026-07-31; incidents span April–July; Past-24h Google/Bing RSS fallback review through 2026-08-01T00:09:12Z",
       "url": "https://www.msn.com/en-gb/news/world/merchant-ship-hijacked-off-yemen-now-held-by-somali-pirates-residents-say/ar-AA2983UP"
     },
     {
@@ -3253,7 +3253,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3315,7 +3315,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3407,7 +3407,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3469,7 +3469,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3515,7 +3515,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3556,7 +3556,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3597,7 +3597,7 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
@@ -3643,7 +3643,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 75,
       "zone": "imminent",
       "trend": "rising",
@@ -3683,7 +3683,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3728,7 +3728,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3768,7 +3768,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3819,7 +3819,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3911,7 +3911,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3962,7 +3962,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -4013,7 +4013,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -4095,7 +4095,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -4146,7 +4146,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "stable",
@@ -4197,7 +4197,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4248,7 +4248,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "rising",
@@ -4310,7 +4310,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 27,
       "zone": "critical",
       "trend": "rising",
@@ -4372,7 +4372,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4454,7 +4454,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4526,7 +4526,7 @@
     {
       "id": "egypt_mediterranean",
       "name": "EGYPT MEDITERRANEAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
@@ -4588,7 +4588,7 @@
     {
       "id": "spain_morocco_ceuta",
       "name": "SPAIN MOROCCO CEUTA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 18,
       "zone": "elevated",
       "trend": "rising",
