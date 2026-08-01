@@ -14,7 +14,6 @@
       "active_signals": [
         "ceasefire_violation",
         "diplomacy_active",
-        "diplomacy_refused",
         "hormuz_controlled_not_closed",
         "hormuz_mining"
       ],
@@ -23,7 +22,6 @@
       "signal_timestamps": {
         "ceasefire_violation": "2026-08-01T15:11:41Z",
         "diplomacy_active": "2026-07-30T15:13:10Z",
-        "diplomacy_refused": "2026-07-29T18:11:54Z",
         "hormuz_controlled_not_closed": "2026-07-29T18:31:42Z",
         "hormuz_mining": "2026-07-26T15:12:15Z"
       },
@@ -31,7 +29,6 @@
       "signals": {
         "ceasefire_violation": "active",
         "diplomacy_active": "active",
-        "diplomacy_refused": "active",
         "hormuz_controlled_not_closed": "active",
         "hormuz_mining": "active"
       }
@@ -155,7 +152,7 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014more than twice June\u2014and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
+      "notes": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—more than twice June—and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
       "last_updated": "2026-08-01T18:08:11Z",
       "signal_timestamps": {},
       "base_probability": 99,
@@ -489,7 +486,7 @@
       "active_signals": [
         "military_buildup"
       ],
-      "notes": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority\u2014described by the foreign minister as virtually all\u2014of roughly 50,000\u201360,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25\u219222 easing; the death toll and continuing security posture prevent a larger drop",
+      "notes": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority—described by the foreign minister as virtually all—of roughly 50,000–60,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25→22 easing; the death toll and continuing security posture prevent a larger drop",
       "last_updated": "2026-08-01T18:08:11Z",
       "signal_timestamps": {
         "military_buildup": "2026-07-31T09:15:47Z"
@@ -507,7 +504,6 @@
     "egypt_mediterranean:infrastructure_strike": "2026-07-29T21:12:15Z",
     "iran_conventional:ceasefire_violation": "2026-08-01T15:11:41Z",
     "iran_conventional:diplomacy_active": "2026-07-30T15:13:10Z",
-    "iran_conventional:diplomacy_refused": "2026-07-29T18:11:54Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-07-29T18:31:42Z",
     "iran_conventional:hormuz_mining": "2026-07-26T15:12:15Z",
     "iran_nuclear:iaea_access_denied": "2026-07-29T00:15:24Z",
@@ -746,14 +742,15 @@
         "reason": "The confirmed toll rose to 67, but the mass return flow restored most border control and Spain began installing a containment barrier."
       }
     ],
-    "mover_note": "spain_morocco_ceuta eased 25\u219222 as virtually all entrants returned and border control improved; continuing military deployment and the 67-death toll prevent a larger drop.",
+    "mover_note": "spain_morocco_ceuta eased 25→22 as virtually all entrants returned and border control improved; continuing military deployment and the 67-death toll prevent a larger drop.",
     "signals_changed": {
       "activated": [
         "israel_palestine:ceasefire_violation"
       ],
       "deactivated": [
         "iran_nuclear:enrichment_90",
-        "spain_morocco_ceuta:diplomacy_active"
+        "spain_morocco_ceuta:diplomacy_active",
+        "iran_conventional:diplomacy_refused"
       ]
     },
     "auto_detection_review": "Completed across untracked nuclear, interstate, alliance and chokepoint candidates. No new crisis met the configured 3-mention/2-source threshold with a fresh strategic trigger. Ethiopia-Eritrea remains a background candidate without a corroborated new 24-hour threshold.",
@@ -796,7 +793,7 @@
     "search_query_count_artifacted": 42,
     "search_result_count_raw_artifacted": 122,
     "search_count_caveat": "RSS and web-search results overlap, include syndication and can carry stale/future-dated index metadata; counts are not unique verified articles.",
-    "dashboard_note": "18Z deep scan: 85% / imminent (84.620 exact). Ceuta eased 25\u219222 as mass returns restored control; fresh Gaza deaths reactivated the configured violation signal; a negation-driven Iran nuclear false positive was removed.",
+    "dashboard_note": "18Z deep scan: 85% / imminent (84.620 exact). Ceuta eased 25→22 as mass returns restored control; fresh Gaza deaths reactivated the configured violation signal; a negation-driven Iran nuclear false positive was removed.",
     "next_watch_triggers": [
       "A verified new U.S./Israeli/Iranian strike, tanker casualty, sustained Hormuz throughput collapse, or evidence of complete closure/mining expansion.",
       "A further Iranian wave on Kuwait/Gulf critical infrastructure, successful penetration, casualties, or allied retaliation.",
@@ -820,7 +817,7 @@
         "reason": "Record July missile volume reinforces extreme conventional risk; score remains capped at 99."
       }
     ],
-    "final_active_signal_count": 19,
+    "final_active_signal_count": 18,
     "pre_deploy_state_written_at": "2026-08-01T18:08:11Z",
     "deploy_security_remediation": {
       "status": "allowlist_hardened_and_unrelated_assets_removed_from_tracked_HEAD",
@@ -866,7 +863,7 @@
     "scan_completed_at": "2026-08-01T00:14:26Z",
     "post_deploy_energy_sync_at": "2026-08-01T09:12:13Z",
     "finalized_at": "2026-08-01T00:14:26Z",
-    "finalization_note": "Final reconciled 00Z state: 84%/imminent at exact 84.480; no numeric tracker mover; Trump vowed continued heavy strikes while CENTCOM rejected Iran\u2019s Hormuz-closure claim; no distinct post-21Z kinetic event was verified; all 24 canonical tracker/zone/news records and 23 canonical signals align; explicit HTTP-432 fallback detail retained; 31 non-smoke tests and Pages deployment passed.",
+    "finalization_note": "Final reconciled 00Z state: 84%/imminent at exact 84.480; no numeric tracker mover; Trump vowed continued heavy strikes while CENTCOM rejected Iran’s Hormuz-closure claim; no distinct post-21Z kinetic event was verified; all 24 canonical tracker/zone/news records and 23 canonical signals align; explicit HTTP-432 fallback detail retained; 31 non-smoke tests and Pages deployment passed.",
     "deploy_verification": {
       "required_script": "bash scripts/deploy.sh",
       "status": "success",
@@ -878,7 +875,7 @@
         "const state = {": true,
         "// ===== RENDER": true
       },
-      "canonical_projection_check": "24 tracker/zone/news records and 19 canonical signals aligned across current_state and timeline projections",
+      "canonical_projection_check": "24 tracker/zone/news records and 18 canonical signals aligned across current_state and timeline projections",
       "non_smoke_tests": "31 passed",
       "protected_html_guard": "dashboard.html and index-redesign.html hashes unchanged; index.html changed only through scripts/deploy.sh/pipeline.py"
     },
@@ -1048,7 +1045,7 @@
       "markets_fetched": 11,
       "errors": 12
     },
-    "pipeline_ttl_reconciliation": "Required deploy expired spain_morocco_ceuta:diplomacy_active; tracker, zone, top-level and timeline projections were reconciled before the final deploy."
+    "pipeline_ttl_reconciliation": "Required deploy expired spain_morocco_ceuta:diplomacy_active and iran_conventional:diplomacy_refused. Tracker, zone, top-level and timeline projections were reconciled in a final data-only sync; no protected HTML was hand-edited."
   },
   "trackers": {
     "iran_conventional": {
@@ -1079,7 +1076,6 @@
       "signals": {
         "ceasefire_violation": "active",
         "diplomacy_active": "active",
-        "diplomacy_refused": "active",
         "hormuz_controlled_not_closed": "active",
         "hormuz_mining": "active"
       }
@@ -1203,7 +1199,7 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [],
-      "notes": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014more than twice June\u2014and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
+      "notes": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—more than twice June—and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
       "last_updated": "2026-08-01T18:08:11Z",
       "signal_timestamps": {},
       "base_probability": 99,
@@ -1537,7 +1533,7 @@
       "active_signals": [
         "military_buildup"
       ],
-      "notes": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority\u2014described by the foreign minister as virtually all\u2014of roughly 50,000\u201360,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25\u219222 easing; the death toll and continuing security posture prevent a larger drop",
+      "notes": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority—described by the foreign minister as virtually all—of roughly 50,000–60,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25→22 easing; the death toll and continuing security posture prevent a larger drop",
       "last_updated": "2026-08-01T18:08:11Z",
       "signal_timestamps": {
         "military_buildup": "2026-07-31T09:15:47Z"
@@ -1583,7 +1579,7 @@
       "timestamp": "2026-08-01T18:08:11Z",
       "source_date": "2026-08-01",
       "headline": "Record July missile tempo compounds deadly Kyiv strike",
-      "text": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014more than twice June\u2014and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
+      "text": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—more than twice June—and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
       "impact": "up",
       "sources": [
         "AFP analysis via The Moscow Times (1 Aug 2026)",
@@ -1845,7 +1841,7 @@
       "timestamp": "2026-08-01T18:08:11Z",
       "source_date": "2026-08-01",
       "headline": "Ceuta toll reaches 67 as mass return flow restores control",
-      "text": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority\u2014described by the foreign minister as virtually all\u2014of roughly 50,000\u201360,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25\u219222 easing; the death toll and continuing security posture prevent a larger drop",
+      "text": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority—described by the foreign minister as virtually all—of roughly 50,000–60,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25→22 easing; the death toll and continuing security posture prevent a larger drop",
       "impact": "down",
       "sources": [
         "AP (1 Aug 2026)",
@@ -2600,7 +2596,7 @@
       "expires_at": "2026-08-02T18:14:54Z",
       "evidence_for": [
         "Record July missile tempo compounds deadly Kyiv strike",
-        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014mo"
+        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—mo"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2645,7 +2641,7 @@
       "expires_at": "2026-08-04T18:14:54Z",
       "evidence_for": [
         "Record July missile tempo compounds deadly Kyiv strike",
-        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014mo"
+        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—mo"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2690,7 +2686,7 @@
       "expires_at": "2026-08-08T18:14:54Z",
       "evidence_for": [
         "Record July missile tempo compounds deadly Kyiv strike",
-        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014mo"
+        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—mo"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2735,7 +2731,7 @@
       "expires_at": "2026-08-31T18:14:54Z",
       "evidence_for": [
         "Record July missile tempo compounds deadly Kyiv strike",
-        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014mo"
+        "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—mo"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -3141,7 +3137,7 @@
     {
       "id": "iran_nuclear",
       "name": "IRAN NUCLEAR",
-      "emoji": "\ud83c\uddee\ud83c\uddf7",
+      "emoji": "🇮🇷",
       "prob": 64,
       "zone": "imminent",
       "trend": "rising",
@@ -3203,7 +3199,7 @@
     {
       "id": "iran_conventional",
       "name": "IRAN WAR",
-      "emoji": "\u2694\ufe0f",
+      "emoji": "⚔️",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3295,7 +3291,7 @@
     {
       "id": "israel_lebanon",
       "name": "ISRAEL-LEBANON",
-      "emoji": "\ud83c\uddf1\ud83c\udde7",
+      "emoji": "🇱🇧",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3357,7 +3353,7 @@
     {
       "id": "turkey",
       "name": "TURKEY-NATO",
-      "emoji": "\ud83c\uddf9\ud83c\uddf7",
+      "emoji": "🇹🇷",
       "prob": 5,
       "zone": "deterrent",
       "trend": "stable",
@@ -3403,7 +3399,7 @@
     {
       "id": "india",
       "name": "INDIA-PAKISTAN",
-      "emoji": "\ud83c\uddee\ud83c\uddf3",
+      "emoji": "🇮🇳",
       "prob": 15,
       "zone": "elevated",
       "trend": "stable",
@@ -3444,7 +3440,7 @@
     {
       "id": "pakistan_afghanistan",
       "name": "PAKISTAN-AFGHANISTAN",
-      "emoji": "\ud83c\uddf5\ud83c\uddf0",
+      "emoji": "🇵🇰",
       "prob": 46,
       "zone": "critical",
       "trend": "stable",
@@ -3496,14 +3492,14 @@
     {
       "id": "russia_ukraine",
       "name": "RUSSIA-UKRAINE",
-      "emoji": "\ud83c\uddfa\ud83c\udde6",
+      "emoji": "🇺🇦",
       "prob": 99,
       "zone": "imminent",
       "trend": "stable",
       "signals": [],
       "confidence": "LOW",
       "base_rate": 30,
-      "notes": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July\u2014more than twice June\u2014and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
+      "notes": "Kyiv's overnight ballistic and drone strike killed at least nine people. AFP's 1 August analysis of Ukrainian air-force data found a record 376 Russian missiles launched in July—more than twice June—and 4,956 long-range drones. Ukraine also sank the Russian container ship Yanina; Rosatom said all 17 crew survived. The conventional-war lane remains capped at 99 without a verified nuclear or direct-NATO threshold",
       "attribution": {
         "base_rate": 30.0,
         "raw_probability": 99.0,
@@ -3542,7 +3538,7 @@
     {
       "id": "russia",
       "name": "RUSSIA-NATO",
-      "emoji": "\ud83c\uddf7\ud83c\uddfa",
+      "emoji": "🇷🇺",
       "prob": 75,
       "zone": "imminent",
       "trend": "rising",
@@ -3582,7 +3578,7 @@
     {
       "id": "china",
       "name": "CHINA-TAIWAN",
-      "emoji": "\ud83c\udde8\ud83c\uddf3",
+      "emoji": "🇨🇳",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -3627,7 +3623,7 @@
     {
       "id": "north_korea",
       "name": "DPRK",
-      "emoji": "\ud83c\uddf0\ud83c\uddf5",
+      "emoji": "🇰🇵",
       "prob": 18,
       "zone": "elevated",
       "trend": "stable",
@@ -3667,7 +3663,7 @@
     {
       "id": "sudan",
       "name": "SUDAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 94,
       "zone": "imminent",
       "trend": "stable",
@@ -3718,7 +3714,7 @@
     {
       "id": "israel_palestine",
       "name": "ISRAEL PALESTINE",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 98,
       "zone": "imminent",
       "trend": "stable",
@@ -3800,7 +3796,7 @@
     {
       "id": "south_sudan_abyei",
       "name": "SOUTH SUDAN ABYEI",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 19,
       "zone": "elevated",
       "trend": "stable",
@@ -3851,7 +3847,7 @@
     {
       "id": "eastern_drc",
       "name": "EASTERN DRC",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 56,
       "zone": "imminent",
       "trend": "stable",
@@ -3902,7 +3898,7 @@
     {
       "id": "yemen_red_sea",
       "name": "YEMEN RED SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 100,
       "zone": "imminent",
       "trend": "rising",
@@ -3984,7 +3980,7 @@
     {
       "id": "mali_sahel",
       "name": "MALI SAHEL",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 39,
       "zone": "critical",
       "trend": "stable",
@@ -4035,7 +4031,7 @@
     {
       "id": "south_china_sea",
       "name": "SOUTH CHINA SEA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 35,
       "zone": "critical",
       "trend": "rising",
@@ -4097,7 +4093,7 @@
     {
       "id": "somalia_gulf_of_aden",
       "name": "SOMALIA GULF OF ADEN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 28,
       "zone": "critical",
       "trend": "stable",
@@ -4148,7 +4144,7 @@
     {
       "id": "southern_thailand",
       "name": "SOUTHERN THAILAND",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "rising",
@@ -4210,7 +4206,7 @@
     {
       "id": "kuwait_iraq_border",
       "name": "KUWAIT IRAQ BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 30,
       "zone": "critical",
       "trend": "rising",
@@ -4272,7 +4268,7 @@
     {
       "id": "iraq_internal_conflict",
       "name": "IRAQ INTERNAL CONFLICT",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 40,
       "zone": "critical",
       "trend": "rising",
@@ -4323,7 +4319,7 @@
     {
       "id": "kenya_somalia_border",
       "name": "KENYA SOMALIA BORDER",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 25,
       "zone": "critical",
       "trend": "rising",
@@ -4374,7 +4370,7 @@
     {
       "id": "egypt_mediterranean",
       "name": "EGYPT MEDITERRANEAN",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 20,
       "zone": "elevated",
       "trend": "rising",
@@ -4436,7 +4432,7 @@
     {
       "id": "spain_morocco_ceuta",
       "name": "SPAIN MOROCCO CEUTA",
-      "emoji": "\ud83c\udf0d",
+      "emoji": "🌍",
       "prob": 22,
       "zone": "elevated",
       "trend": "falling",
@@ -4454,7 +4450,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 10,
-      "notes": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority\u2014described by the foreign minister as virtually all\u2014of roughly 50,000\u201360,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25\u219222 easing; the death toll and continuing security posture prevent a larger drop",
+      "notes": "Spain raised the Ceuta crisis toll to 67, but AP, Reuters and Spanish officials reported that the majority—described by the foreign minister as virtually all—of roughly 50,000–60,000 entrants had returned to Morocco by 1 August. Soldiers remain deployed and a 500-metre containment barrier is being installed. The return flow and restored border control justify a measured 25→22 easing; the death toll and continuing security posture prevent a larger drop",
       "attribution": {
         "base_rate": 10.0,
         "raw_probability": 22.0,
@@ -4778,7 +4774,6 @@
     "egypt_mediterranean:infrastructure_strike",
     "iran_conventional:ceasefire_violation",
     "iran_conventional:diplomacy_active",
-    "iran_conventional:diplomacy_refused",
     "iran_conventional:hormuz_controlled_not_closed",
     "iran_conventional:hormuz_mining",
     "iran_nuclear:iaea_access_denied",
