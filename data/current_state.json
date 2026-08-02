@@ -47,16 +47,19 @@
       "zone": "imminent",
       "trend": "rising",
       "active_signals": [
+        "ceasefire_violation",
         "diplomacy_active"
       ],
       "notes": "Israel-Hezbollah ceasefire violations continue. A 2 Aug report said five Lebanese soldiers were wounded in an explosion in the south, but the IDF denied responsibility and attribution remained disputed; no distinct score threshold is added, raw/coupled risk holds 95/100",
-      "last_updated": "2026-08-02T21:11:13Z",
+      "last_updated": "2026-08-02T21:14:30Z",
       "signal_timestamps": {
-        "diplomacy_active": "2026-08-02T00:10:53Z"
+        "diplomacy_active": "2026-08-02T00:10:53Z",
+        "ceasefire_violation": "2026-08-02T21:11:18Z"
       },
       "base_probability": 95.0,
       "signals": {
-        "diplomacy_active": "active"
+        "diplomacy_active": "active",
+        "ceasefire_violation": "active"
       }
     },
     "turkey": {
@@ -506,7 +509,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-08-02T21:11:18Z",
+  "last_updated": "2026-08-02T21:14:31Z",
   "signal_timestamps": {
     "iran_conventional:ceasefire_violation": "2026-08-01T15:11:41Z",
     "iran_conventional:diplomacy_active": "2026-07-30T15:13:10Z",
@@ -524,16 +527,17 @@
     "yemen_red_sea:military_buildup": "2026-07-30T18:12:26Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-08-02T00:11:16Z",
     "israel_lebanon:diplomacy_active": "2026-08-02T00:11:16Z",
-    "iran_conventional:oil_infrastructure_threat": "2026-08-02T09:09:41Z"
+    "iran_conventional:oil_infrastructure_threat": "2026-08-02T09:09:41Z",
+    "israel_lebanon:ceasefire_violation": "2026-08-02T21:11:18Z"
   },
   "global_war_probability": 85,
   "global_zone": "imminent",
   "global_probability": 85,
   "eval_stats": {
-    "total": 2997958,
-    "correct": 2321810,
+    "total": 3003590,
+    "correct": 2326564,
     "accuracy": 77,
-    "mean_brier": 0.4784
+    "mean_brier": 0.4783
   },
   "_meta": {
     "last_writer": "cron_morning_deep_scan_21z",
@@ -748,9 +752,7 @@
     "mover_note": "No numeric tracker mover in the past 24 hours. New Gaza and Russia-Ukraine kinetic evidence occurred inside trackers already at 98 and 99; neither justifies probability inflation beyond the existing near-ceiling estimates.",
     "signals_changed": {
       "activated": [],
-      "deactivated": [
-        "israel_lebanon:ceasefire_violation"
-      ]
+      "deactivated": []
     },
     "auto_detection_review": "No new zone added. The emerging-crisis review found no untracked crisis meeting the configured minimum of three mentions across two sources plus an operational escalation threshold.",
     "allied_positions": {
@@ -796,7 +798,7 @@
     "search_query_count_artifacted": 28,
     "search_result_count_raw_artifacted": 0,
     "search_count_caveat": "RSS and web-search results overlap, include syndication and may carry stale index metadata; counts are not unique verified articles.",
-    "dashboard_note": "21Z morning deep scan: global holds 85% / imminent (84.920 exact). Gaza and Russia-Ukraine worsened inside near-ceiling trackers. The stale israel_lebanon:ceasefire_violation signal expired, leaving 17 canonical active signals.",
+    "dashboard_note": "21Z morning deep scan: global holds 85% / imminent (84.920 exact). Gaza and Russia-Ukraine worsened inside near-ceiling trackers; no net canonical-signal or numeric score changed. Final projections contain 18 active signals.",
     "next_watch_triggers": [
       "Public Iranian acceptance or rejection of the outlined deal; signed terms, verified strike stand-down or renewed U.S./Israeli/Iranian attacks.",
       "Verified full Hormuz reopening and throughput recovery versus another tanker hit, expanded mining or complete closure.",
@@ -817,7 +819,7 @@
         "reason": "AP/AFP reported at least eight killed in Ukrainian deep strikes and attacks on refinery/bomber infrastructure; score held at 99 because conventional war is already fully realized."
       }
     ],
-    "final_active_signal_count": 17,
+    "final_active_signal_count": 18,
     "pre_deploy_state_written_at": "2026-08-02T21:05:49Z",
     "deploy_security_remediation": {
       "status": "allowlist_hardened_and_unrelated_assets_removed_from_tracked_HEAD",
@@ -881,7 +883,7 @@
       "protected_html_guard": "dashboard.html and index-redesign.html were not edited; index.html changed only through scripts/deploy.sh/pipeline.py"
     },
     "pipeline_reconciliation": "A notes-only israel_lebanon:diplomacy_active false match was removed, its trigger wording was neutralized, and the required pipeline was rerun; final projections contain 23 aligned canonical signals.",
-    "post_initial_deploy_reconciled_at": "2026-08-02T21:11:13Z",
+    "post_initial_deploy_reconciled_at": "2026-08-02T21:14:30Z",
     "run_id": "20260802T210549Z-cron-morning-deep-scan",
     "old_probabilities": {
       "iran_conventional": 100,
@@ -1028,7 +1030,7 @@
       "added": [],
       "reason": "No corroborated new direct-combat, force-deployment, nuclear or chokepoint threshold outside the 24 configured trackers."
     },
-    "signal_expiry_note": "Reconciled after deploy: israel_lebanon:ceasefire_violation expired from signal_timeline and was removed from tracker, zone and top-level projections. Current disputed-attribution evidence was insufficient to reactivate it.",
+    "signal_expiry_note": "No net signal change. The first deploy pruned israel_lebanon:ceasefire_violation as stale, but the reconciled deploy immediately re-detected it from the current AP tunnel-destruction evidence and reactivated it at 2026-08-02T21:11:18Z. All final projections retain it.",
     "allied_positions_reviewed": true,
     "iaea_un_reviewed": true,
     "energy_reviewed": true,
@@ -1046,18 +1048,19 @@
       "markets_fetched": 11,
       "errors": 12
     },
-    "pipeline_ttl_reconciliation": "Required deploy expired egypt_mediterranean:infrastructure_strike; tracker, zone and top-level projections were reconciled data-only before the final deploy.",
+    "pipeline_ttl_reconciliation": {
+      "signal": "israel_lebanon:ceasefire_violation",
+      "first_pass": "expired",
+      "second_pass": "redetected from current canonical-zone evidence",
+      "net_change": "none",
+      "final_status": "active",
+      "reactivated_at": "2026-08-02T21:11:18Z"
+    },
     "last_updated": "2026-08-01T21:11:27Z",
     "global_probability_exact": 84.92,
     "deep_scan_cutoff": "2026-08-02T03:07:41Z",
     "allied_positions_review": "NATO/Poland activated air and ground defences after the 30 Jul Russian missile crash; NATO said it would take necessary measures to defend allied territory. Warsaw said there was no reason to believe Poland was the intended target. No Article 5 invocation located.",
-    "signals_changed_this_run": [
-      {
-        "signal": "israel_lebanon:ceasefire_violation",
-        "change": "deactivated",
-        "reason": "Pipeline TTL expired the signal and no fresh, corroborated, attributed Israel-Lebanon strike was verified. The 2 Aug explosion that wounded five Lebanese soldiers remained disputed and the IDF denied responsibility."
-      }
-    ],
+    "signals_changed_this_run": [],
     "new_probabilities_coupled": {
       "iran_conventional": 100.0,
       "israel_lebanon": 100.0,
@@ -1137,13 +1140,15 @@
         "diplomacy_active"
       ],
       "notes": "Israel-Hezbollah ceasefire violations continue. A 2 Aug report said five Lebanese soldiers were wounded in an explosion in the south, but the IDF denied responsibility and attribution remained disputed; no distinct score threshold is added, raw/coupled risk holds 95/100",
-      "last_updated": "2026-08-02T21:11:13Z",
+      "last_updated": "2026-08-02T21:14:30Z",
       "signal_timestamps": {
+        "ceasefire_violation": "2026-08-02T21:11:18Z",
         "diplomacy_active": "2026-08-02T00:11:16Z"
       },
       "base_probability": 95.0,
       "signals": {
-        "diplomacy_active": "active"
+        "diplomacy_active": "active",
+        "ceasefire_violation": "active"
       }
     },
     "turkey": {
@@ -1324,15 +1329,12 @@
       "trend": "stable",
       "active_signals": [
         "ceasefire_violation",
-        "diplomacy_active",
-        "diplomacy_refused"
+        "diplomacy_active"
       ],
       "notes": "AP/PBS (2 Aug) reports Israeli strikes killed at least 17 people, including children, while Israel raised serious concerns over the Hamas disarmament framework and said it would not withdraw before verified disarmament. Existing ceasefire_violation, diplomacy_active and diplomacy_refused signals are reinforced; risk stays near ceiling at 98",
       "last_updated": "2026-08-02T21:05:49Z",
       "signal_timestamps": {
-        "ceasefire_violation": "2026-08-01T18:08:11Z",
-        "diplomacy_active": "2026-07-30T21:11:36Z",
-        "diplomacy_refused": "2026-07-30T21:11:36Z"
+        "ceasefire_violation": "2026-08-01T18:08:11Z"
       },
       "base_probability": 98.0,
       "signals": {
@@ -1386,14 +1388,12 @@
       "zone": "imminent",
       "trend": "rising",
       "active_signals": [
-        "external_backing",
         "infrastructure_strike",
         "military_buildup"
       ],
       "notes": "UN and AP (31 Jul-1 Aug) report the Houthi blockade of Saudi-linked shipping and that eight Saudi ships rerouted; attacks on Saudi tankers keep Red Sea/Bab al-Mandab risk at 100",
       "last_updated": "2026-08-02T21:05:49Z",
       "signal_timestamps": {
-        "external_backing": "2026-07-30T21:11:36Z",
         "infrastructure_strike": "2026-07-31T09:15:47Z",
         "military_buildup": "2026-07-30T18:12:26Z"
       },
@@ -1729,7 +1729,7 @@
       "value": 100,
       "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
       "confidence": 55,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -1740,7 +1740,7 @@
       "value": 46,
       "description": "Afghan-Pakistan border tensions likely to persist. Additional clashes probable based on recent trajectory.",
       "confidence": 50,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 36
     },
@@ -1751,7 +1751,7 @@
       "value": 80,
       "description": "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain.",
       "confidence": 45,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 65
     },
@@ -1762,7 +1762,7 @@
       "value": 85,
       "description": "IRAN WAR showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_below",
       "eval_value": 100
     },
@@ -1773,7 +1773,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -1784,7 +1784,7 @@
       "value": 46,
       "description": "Current escalation indicators suggest IRAQ INTERNAL CONFLICT will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 30
     },
@@ -1795,7 +1795,7 @@
       "value": 40,
       "description": "Current escalation indicators suggest SOUTH CHINA SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 25
     },
@@ -1806,7 +1806,7 @@
       "value": 34,
       "description": "Current escalation indicators suggest SOUTHERN THAILAND will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 20
     },
@@ -1817,7 +1817,7 @@
       "value": 34,
       "description": "Current escalation indicators suggest KUWAIT IRAQ BORDER will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 20
     },
@@ -1828,7 +1828,7 @@
       "value": 29,
       "description": "Current escalation indicators suggest KENYA SOMALIA BORDER will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 15
     },
@@ -1839,7 +1839,7 @@
       "value": 19,
       "description": "SPAIN MOROCCO CEUTA showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_below",
       "eval_value": 22
     },
@@ -1850,7 +1850,7 @@
       "value": 23,
       "description": "Current escalation indicators suggest EGYPT MEDITERRANEAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-03T21:12:42Z",
+      "expires_at": "2026-08-03T21:15:54Z",
       "eval_type": "probability_above",
       "eval_value": 10
     }
@@ -1858,8 +1858,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-03T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-03T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -1890,7 +1890,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-03T21:11:18Z",
+      "expires_at": "2026-08-03T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -1903,8 +1903,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-05T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-05T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -1935,7 +1935,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-05T21:11:18Z",
+      "expires_at": "2026-08-05T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -1948,8 +1948,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-09T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-09T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -1980,7 +1980,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T21:11:18Z",
+      "expires_at": "2026-08-09T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -1993,8 +1993,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-01T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-01T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2025,7 +2025,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-01T21:11:18Z",
+      "expires_at": "2026-09-01T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2038,14 +2038,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-03T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-03T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 59,
+      "probability": 56,
       "base_rate_pct": 10.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2054,29 +2054,29 @@
         "base_rate_pct": 10.0,
         "threat_score_pct": 100.0,
         "threat_component_pp": 18.0,
-        "signal_delta_pp": 20.0,
+        "signal_delta_pp": 16.5,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 6.0,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 59.0,
-        "final_probability_pct": 59,
+        "raw_probability_pct": 55.5,
+        "final_probability_pct": 56,
         "matched_sources": [
           "Associated Press (2026-08-01)",
           "UN News (2026-07-31)"
         ]
       },
-      "confidence_score": 100,
+      "confidence_score": 97,
       "confidence_label": "HIGH",
-      "description": "YEMEN RED SEA: escalation watch risk over the next 24h is estimated at 59%.",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 24h is estimated at 56%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-03T21:11:18Z",
+      "expires_at": "2026-08-03T21:14:31Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
-        "external_backing (+4 signal weight)",
         "military_buildup (+5 signal weight)",
-        "external backing"
+        "infrastructure strike",
+        "military buildup"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2084,14 +2084,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-05T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-05T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 73,
+      "probability": 70,
       "base_rate_pct": 18.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2100,29 +2100,29 @@
         "base_rate_pct": 18.0,
         "threat_score_pct": 100.0,
         "threat_component_pp": 24.0,
-        "signal_delta_pp": 20.0,
+        "signal_delta_pp": 16.5,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 6.0,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 73.0,
-        "final_probability_pct": 73,
+        "raw_probability_pct": 69.5,
+        "final_probability_pct": 70,
         "matched_sources": [
           "Associated Press (2026-08-01)",
           "UN News (2026-07-31)"
         ]
       },
-      "confidence_score": 100,
+      "confidence_score": 97,
       "confidence_label": "HIGH",
-      "description": "YEMEN RED SEA: escalation watch risk over the next 72h is estimated at 73%.",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 72h is estimated at 70%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-05T21:11:18Z",
+      "expires_at": "2026-08-05T21:14:31Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
-        "external_backing (+4 signal weight)",
         "military_buildup (+5 signal weight)",
-        "external backing"
+        "infrastructure strike",
+        "military buildup"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2130,14 +2130,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-09T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-09T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 88,
+      "probability": 84,
       "base_rate_pct": 27.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2146,29 +2146,29 @@
         "base_rate_pct": 27.0,
         "threat_score_pct": 100.0,
         "threat_component_pp": 30.0,
-        "signal_delta_pp": 20.0,
+        "signal_delta_pp": 16.5,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 6.0,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 88.0,
-        "final_probability_pct": 88,
+        "raw_probability_pct": 84.5,
+        "final_probability_pct": 84,
         "matched_sources": [
           "Associated Press (2026-08-01)",
           "UN News (2026-07-31)"
         ]
       },
-      "confidence_score": 100,
+      "confidence_score": 97,
       "confidence_label": "HIGH",
-      "description": "YEMEN RED SEA: escalation watch risk over the next 7d is estimated at 88%.",
+      "description": "YEMEN RED SEA: escalation watch risk over the next 7d is estimated at 84%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T21:11:18Z",
+      "expires_at": "2026-08-09T21:14:31Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
-        "external_backing (+4 signal weight)",
         "military_buildup (+5 signal weight)",
-        "external backing"
+        "infrastructure strike",
+        "military buildup"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2176,8 +2176,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-01T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-01T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -2192,29 +2192,29 @@
         "base_rate_pct": 45.0,
         "threat_score_pct": 100.0,
         "threat_component_pp": 36.0,
-        "signal_delta_pp": 20.0,
+        "signal_delta_pp": 16.5,
         "trend_delta_pp": 5.0,
         "source_delta_pp": 6.0,
         "contradiction_delta_pp": 0.0,
-        "raw_probability_pct": 112.0,
+        "raw_probability_pct": 108.5,
         "final_probability_pct": 100,
         "matched_sources": [
           "Associated Press (2026-08-01)",
           "UN News (2026-07-31)"
         ]
       },
-      "confidence_score": 100,
+      "confidence_score": 97,
       "confidence_label": "HIGH",
       "description": "YEMEN RED SEA: escalation watch risk over the next 30d is estimated at 100%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-01T21:11:18Z",
+      "expires_at": "2026-09-01T21:14:31Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
-        "external_backing (+4 signal weight)",
         "military_buildup (+5 signal weight)",
-        "external backing"
+        "infrastructure strike",
+        "military buildup"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2222,8 +2222,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-03T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-03T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2255,7 +2255,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-03T21:11:18Z",
+      "expires_at": "2026-08-03T21:14:31Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2271,8 +2271,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-05T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-05T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2304,7 +2304,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-05T21:11:18Z",
+      "expires_at": "2026-08-05T21:14:31Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2320,8 +2320,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-09T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-09T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2353,7 +2353,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T21:11:18Z",
+      "expires_at": "2026-08-09T21:14:31Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2369,8 +2369,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-01T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-01T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2402,7 +2402,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-01T21:11:18Z",
+      "expires_at": "2026-09-01T21:14:31Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "hormuz_controlled_not_closed (+4 signal weight)",
@@ -2418,8 +2418,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-03T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-03T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2450,7 +2450,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-03T21:11:18Z",
+      "expires_at": "2026-08-03T21:14:31Z",
       "evidence_for": [
         "Ukrainian deep-strike drones kill at least eight and hit Russian oil and bomber targets",
         "AP/AFP reporting on 2 Aug says Ukrainian long-range drones killed at least eight people across Russian regions and struck the Saratov refinery, Engels bomber base and a Kaluga oil "
@@ -2461,8 +2461,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-05T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-05T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2493,7 +2493,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-05T21:11:18Z",
+      "expires_at": "2026-08-05T21:14:31Z",
       "evidence_for": [
         "Ukrainian deep-strike drones kill at least eight and hit Russian oil and bomber targets",
         "AP/AFP reporting on 2 Aug says Ukrainian long-range drones killed at least eight people across Russian regions and struck the Saratov refinery, Engels bomber base and a Kaluga oil "
@@ -2504,8 +2504,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-09T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-09T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2536,7 +2536,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T21:11:18Z",
+      "expires_at": "2026-08-09T21:14:31Z",
       "evidence_for": [
         "Ukrainian deep-strike drones kill at least eight and hit Russian oil and bomber targets",
         "AP/AFP reporting on 2 Aug says Ukrainian long-range drones killed at least eight people across Russian regions and struck the Saratov refinery, Engels bomber base and a Kaluga oil "
@@ -2547,8 +2547,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-01T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-01T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2579,7 +2579,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-01T21:11:18Z",
+      "expires_at": "2026-09-01T21:14:31Z",
       "evidence_for": [
         "Ukrainian deep-strike drones kill at least eight and hit Russian oil and bomber targets",
         "AP/AFP reporting on 2 Aug says Ukrainian long-range drones killed at least eight people across Russian regions and struck the Saratov refinery, Engels bomber base and a Kaluga oil "
@@ -2590,14 +2590,14 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-03T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-03T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "24h",
       "horizon_hours": 24,
-      "probability": 19,
+      "probability": 23,
       "base_rate_pct": 10.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2606,45 +2606,43 @@
         "base_rate_pct": 10.0,
         "threat_score_pct": 98.0,
         "threat_component_pp": 17.64,
-        "signal_delta_pp": -3.15,
+        "signal_delta_pp": -2.1,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 3.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 19.49,
-        "final_probability_pct": 19,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 22.54,
+        "final_probability_pct": 23,
         "matched_sources": [
           "Associated Press / PBS NewsHour (2026-08-02)"
         ]
       },
-      "confidence_score": 85,
-      "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 19%.",
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 24h is estimated at 23%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-03T21:11:18Z",
+      "expires_at": "2026-08-03T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
-        "diplomacy_refused (+4 signal weight)",
         "Israeli strikes kill at least 17 as Israel raises concerns over Hamas disarmament plan"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
         "ceasefire violation",
         "diplomacy active",
-        "diplomacy refused"
+        "AP/PBS (2 Aug) reports Israeli strikes killed at least 17 people, including children, while Israel raised serious concerns over the Hamas disarmament framework and said it would no"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-05T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-05T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "72h",
       "horizon_hours": 72,
-      "probability": 33,
+      "probability": 36,
       "base_rate_pct": 18.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2653,45 +2651,43 @@
         "base_rate_pct": 18.0,
         "threat_score_pct": 98.0,
         "threat_component_pp": 23.52,
-        "signal_delta_pp": -3.15,
+        "signal_delta_pp": -2.1,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 3.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 33.37,
-        "final_probability_pct": 33,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 36.42,
+        "final_probability_pct": 36,
         "matched_sources": [
           "Associated Press / PBS NewsHour (2026-08-02)"
         ]
       },
-      "confidence_score": 85,
-      "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 33%.",
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 72h is estimated at 36%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-05T21:11:18Z",
+      "expires_at": "2026-08-05T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
-        "diplomacy_refused (+4 signal weight)",
         "Israeli strikes kill at least 17 as Israel raises concerns over Hamas disarmament plan"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
         "ceasefire violation",
         "diplomacy active",
-        "diplomacy refused"
+        "AP/PBS (2 Aug) reports Israeli strikes killed at least 17 people, including children, while Israel raised serious concerns over the Hamas disarmament framework and said it would no"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-09T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-09T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "7d",
       "horizon_hours": 168,
-      "probability": 48,
+      "probability": 51,
       "base_rate_pct": 27.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2700,45 +2696,43 @@
         "base_rate_pct": 27.0,
         "threat_score_pct": 98.0,
         "threat_component_pp": 29.4,
-        "signal_delta_pp": -3.15,
+        "signal_delta_pp": -2.1,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 3.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 48.25,
-        "final_probability_pct": 48,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 51.3,
+        "final_probability_pct": 51,
         "matched_sources": [
           "Associated Press / PBS NewsHour (2026-08-02)"
         ]
       },
-      "confidence_score": 85,
-      "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 48%.",
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 7d is estimated at 51%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T21:11:18Z",
+      "expires_at": "2026-08-09T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
-        "diplomacy_refused (+4 signal weight)",
         "Israeli strikes kill at least 17 as Israel raises concerns over Hamas disarmament plan"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
         "ceasefire violation",
         "diplomacy active",
-        "diplomacy refused"
+        "AP/PBS (2 Aug) reports Israeli strikes killed at least 17 people, including children, while Israel raised serious concerns over the Hamas disarmament framework and said it would no"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-01T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-01T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
       "horizon_label": "30d",
       "horizon_hours": 720,
-      "probability": 72,
+      "probability": 75,
       "base_rate_pct": 45.0,
       "model_version": "base_rate_evidence_v1",
       "probability_model": {
@@ -2747,39 +2741,37 @@
         "base_rate_pct": 45.0,
         "threat_score_pct": 98.0,
         "threat_component_pp": 35.28,
-        "signal_delta_pp": -3.15,
+        "signal_delta_pp": -2.1,
         "trend_delta_pp": 0.0,
         "source_delta_pp": 3.0,
-        "contradiction_delta_pp": -8.0,
-        "raw_probability_pct": 72.13,
-        "final_probability_pct": 72,
+        "contradiction_delta_pp": -6.0,
+        "raw_probability_pct": 75.18,
+        "final_probability_pct": 75,
         "matched_sources": [
           "Associated Press / PBS NewsHour (2026-08-02)"
         ]
       },
-      "confidence_score": 85,
-      "confidence_label": "HIGH",
-      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 72%.",
+      "confidence_score": 57,
+      "confidence_label": "MEDIUM",
+      "description": "ISRAEL PALESTINE: escalation watch risk over the next 30d is estimated at 75%.",
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-01T21:11:18Z",
+      "expires_at": "2026-09-01T21:14:31Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
-        "diplomacy_refused (+4 signal weight)",
         "Israeli strikes kill at least 17 as Israel raises concerns over Hamas disarmament plan"
       ],
       "evidence_against": [
-        "diplomacy_active (+4 signal weight)",
         "ceasefire violation",
         "diplomacy active",
-        "diplomacy refused"
+        "AP/PBS (2 Aug) reports Israeli strikes killed at least 17 people, including children, while Israel raised serious concerns over the Hamas disarmament framework and said it would no"
       ]
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-08-03T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-08-03T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2808,7 +2800,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-03T21:11:18Z",
+      "expires_at": "2026-08-03T21:14:31Z",
       "evidence_for": [
         "No discrete escalation signal isolated; forecast is driven by current threat score."
       ],
@@ -2818,8 +2810,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-08-05T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-08-05T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2848,7 +2840,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-05T21:11:18Z",
+      "expires_at": "2026-08-05T21:14:31Z",
       "evidence_for": [
         "No discrete escalation signal isolated; forecast is driven by current threat score."
       ],
@@ -2858,8 +2850,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-08-09T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-08-09T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2888,7 +2880,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T21:11:18Z",
+      "expires_at": "2026-08-09T21:14:31Z",
       "evidence_for": [
         "No discrete escalation signal isolated; forecast is driven by current threat score."
       ],
@@ -2898,8 +2890,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-09-01T21:11:18Z",
-      "generated_at": "2026-08-02T21:11:18Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-09-01T21:14:31Z",
+      "generated_at": "2026-08-02T21:14:31Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2928,7 +2920,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-01T21:11:18Z",
+      "expires_at": "2026-09-01T21:14:31Z",
       "evidence_for": [
         "No discrete escalation signal isolated; forecast is driven by current threat score."
       ],
@@ -3024,7 +3016,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-08-02T09:09:41Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 6,
           "decayed_weight": 4.2,
           "expired": false,
@@ -3034,7 +3026,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-08-02T00:11:16Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 4,
           "decayed_weight": 2.2,
           "expired": false,
@@ -3044,7 +3036,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-01T15:11:41Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 6,
           "decayed_weight": 2.5,
           "expired": false,
@@ -3054,7 +3046,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-07-30T15:13:10Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 0.5,
           "expired": false,
@@ -3064,7 +3056,7 @@
           "name": "hormuz_mining",
           "positive": false,
           "activated_at": "2026-07-26T15:12:15Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 10,
           "decayed_weight": 1.9,
           "expired": false,
@@ -3085,7 +3077,7 @@
         "label": "MEDIUM",
         "source_count": 2,
         "signal_count": 5,
-        "newest_signal_age_hours": 12.0
+        "newest_signal_age_hours": 12.1
       },
       "watch_triggers": {
         "up": [
@@ -3126,7 +3118,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-02T21:11:18Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 6,
           "decayed_weight": 6.0,
           "expired": false,
@@ -3136,7 +3128,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-02T00:11:16Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 4,
           "decayed_weight": 2.2,
           "expired": false,
@@ -3157,7 +3149,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 2,
-        "newest_signal_age_hours": 0.0
+        "newest_signal_age_hours": 0.1
       },
       "watch_triggers": {
         "up": [
@@ -3285,7 +3277,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-01T15:11:41Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 3,
           "decayed_weight": 0.5,
           "expired": false,
@@ -3559,34 +3551,14 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-01T18:08:11Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 6,
           "decayed_weight": 2.7,
           "expired": false,
           "is_deescalatory": false
-        },
-        {
-          "name": "diplomacy_active",
-          "positive": true,
-          "activated_at": "2026-07-30T21:11:36Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
-          "original_weight": 4,
-          "decayed_weight": 0.5,
-          "expired": false,
-          "is_deescalatory": true
-        },
-        {
-          "name": "diplomacy_refused",
-          "positive": false,
-          "activated_at": "2026-07-30T21:11:36Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
-          "original_weight": 4,
-          "decayed_weight": 0.5,
-          "expired": false,
-          "is_deescalatory": false
         }
       ],
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "base_rate": 18,
       "notes": "AP/PBS (2 Aug) reports Israeli strikes killed at least 17 people, including children, while Israel raised serious concerns over the Hamas disarmament framework and said it would not withdraw before verified disarmament. Existing ceasefire_violation, diplomacy_active and diplomacy_refused signals are reinforced; risk stays near ceiling at 98",
       "attribution": {
@@ -3599,7 +3571,7 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 1,
-        "signal_count": 3,
+        "signal_count": 1,
         "newest_signal_age_hours": 27.1
       },
       "watch_triggers": {
@@ -3743,19 +3715,9 @@
           "name": "infrastructure_strike",
           "positive": false,
           "activated_at": "2026-07-31T09:15:47Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 0.9,
-          "expired": false,
-          "is_deescalatory": false
-        },
-        {
-          "name": "external_backing",
-          "positive": false,
-          "activated_at": "2026-07-30T21:11:36Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
-          "original_weight": 4,
-          "decayed_weight": 0.5,
           "expired": false,
           "is_deescalatory": false
         },
@@ -3763,14 +3725,14 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-30T18:12:26Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 0.6,
           "expired": false,
           "is_deescalatory": false
         }
       ],
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "base_rate": 18,
       "notes": "UN and AP (31 Jul-1 Aug) report the Houthi blockade of Saudi-linked shipping and that eight Saudi ships rerouted; attacks on Saudi tankers keep Red Sea/Bab al-Mandab risk at 100",
       "attribution": {
@@ -3783,8 +3745,8 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 1,
-        "signal_count": 3,
-        "newest_signal_age_hours": 59.9
+        "signal_count": 2,
+        "newest_signal_age_hours": 60.0
       },
       "watch_triggers": {
         "up": [
@@ -3876,7 +3838,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-01T03:10:58Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 1.5,
           "expired": false,
@@ -3897,7 +3859,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 1,
-        "newest_signal_age_hours": 42.0
+        "newest_signal_age_hours": 42.1
       },
       "watch_triggers": {
         "up": [
@@ -3989,7 +3951,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-31T15:12:21Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 1.1,
           "expired": false,
@@ -4051,7 +4013,7 @@
           "name": "infrastructure_strike",
           "positive": false,
           "activated_at": "2026-07-30T15:13:10Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 0.5,
           "expired": false,
@@ -4266,7 +4228,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-07-31T09:15:47Z",
-          "last_confirmed": "2026-08-02T21:11:18Z",
+          "last_confirmed": "2026-08-02T21:14:31Z",
           "original_weight": 5,
           "decayed_weight": 0.9,
           "expired": false,
@@ -4287,7 +4249,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 1,
-        "newest_signal_age_hours": 59.9
+        "newest_signal_age_hours": 60.0
       },
       "watch_triggers": {
         "up": [
@@ -4318,8 +4280,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-08-02T21:12:44Z",
-    "fetched_at": "2026-08-02T21:12:44Z",
+    "generated_at": "2026-08-02T21:16:01Z",
+    "fetched_at": "2026-08-02T21:16:01Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -4601,18 +4563,19 @@
     "iran_conventional:hormuz_controlled_not_closed",
     "iran_conventional:hormuz_mining",
     "iran_conventional:oil_infrastructure_threat",
+    "israel_lebanon:ceasefire_violation",
     "israel_lebanon:diplomacy_active",
-    "pakistan_afghanistan:diplomacy_active",
     "israel_palestine:ceasefire_violation",
     "israel_palestine:diplomacy_active",
     "israel_palestine:diplomacy_refused",
-    "yemen_red_sea:external_backing",
-    "yemen_red_sea:infrastructure_strike",
-    "yemen_red_sea:military_buildup",
+    "kuwait_iraq_border:infrastructure_strike",
+    "pakistan_afghanistan:diplomacy_active",
     "south_china_sea:military_buildup",
     "southern_thailand:military_buildup",
-    "kuwait_iraq_border:infrastructure_strike",
-    "spain_morocco_ceuta:military_buildup"
+    "spain_morocco_ceuta:military_buildup",
+    "yemen_red_sea:external_backing",
+    "yemen_red_sea:infrastructure_strike",
+    "yemen_red_sea:military_buildup"
   ],
   "global_probability_exact": 84.92,
   "allied_positions": {
