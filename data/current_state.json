@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-08T09:06:30Z",
+  "timestamp": "2026-08-08T09:10:11Z",
   "zones": {
     "iran_conventional": {
       "name": "IRAN CONVENTIONAL",
@@ -217,8 +217,8 @@
       "active_signals": [
         "military_buildup"
       ],
-      "notes": "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voronezh and could eventually field up to 120 ballistic missiles and six launchers; Reuters could not independently verify the claim. The canonical military_buildup signal is active, but the 99% cap prevents a probability increase",
-      "last_updated": "2026-08-08T09:06:30Z",
+      "notes": "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean missile unit deploying to Voronezh was not freshly corroborated inside this scan window. The signal cleanup changes state, not the 99/imminent probability",
+      "last_updated": "2026-08-08T09:10:11Z",
       "signal_timestamps": {
         "military_buildup": "2026-08-05T04:02:00Z"
       },
@@ -228,7 +228,7 @@
         "diplomacy_active": "inactive",
         "military_buildup": "active"
       },
-      "assessment": "Reuters reports six people killed in Aug. 6 Russian attacks on Balakliia and Sumy, after the UN described July as a deadly month for Ukrainian civilians. Active conventional war remains at 99; the fresh strikes do not match a new configured nuclear-rhetoric, diplomacy or buildup signal, and no direct NATO combat entry was found."
+      "assessment": "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean missile unit deploying to Voronezh was not freshly corroborated inside this scan window. The signal cleanup changes state, not the 99/imminent probability."
     },
     "pakistan_afghanistan": {
       "name": "PAKISTAN AFGHANISTAN",
@@ -372,8 +372,8 @@
       "active_signals": [
         "diplomacy_active"
       ],
-      "notes": "Reuters and the ICRC reported on Aug. 7 that Congolese authorities released 15 prisoners to AFC/M23, the first known prisoner transfer under last year's Qatar agreement and one of its first concrete implementation steps. This reinforces the already-active diplomacy_active signal but does not justify double-counting or a second probability cut; raw/coupled risk holds 53/imminent because fighting, territorial control and Rwanda-support allegations remain unresolved",
-      "last_updated": "2026-08-08T09:06:30Z",
+      "notes": "The Aug. 7 Congo-AFC/M23 prisoner transfer remains a constructive data point, but eastern_drc:diplomacy_active expired under its configured TTL during the 09Z deploy because no fresh implementation step crossed the renewal rule in this run. Raw/coupled risk holds 53/imminent amid unresolved fighting, territorial control and Rwanda-support allegations",
+      "last_updated": "2026-08-08T09:10:11Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-08-07T00:09:08Z"
       },
@@ -385,7 +385,7 @@
         "diplomacy_active": "active",
         "diplomacy_refused": "inactive"
       },
-      "assessment": "Reuters and the ICRC reported on Aug. 7 that Congolese authorities released 15 prisoners to AFC/M23, the first known prisoner transfer under last year's Qatar agreement and one of its first concrete implementation steps. This reinforces the already-active diplomacy_active signal but does not justify double-counting or a second probability cut; raw/coupled risk holds 53/imminent because fighting, territorial control and Rwanda-support allegations remain unresolved."
+      "assessment": "The Aug. 7 Congo-AFC/M23 prisoner transfer remains a constructive data point, but eastern_drc:diplomacy_active expired under its configured TTL during the 09Z deploy because no fresh implementation step crossed the renewal rule in this run. Raw/coupled risk holds 53/imminent amid unresolved fighting, territorial control and Rwanda-support allegations."
     },
     "yemen_red_sea": {
       "name": "YEMEN / RED SEA",
@@ -400,8 +400,8 @@
       "active_signals": [
         "ceasefire_violation"
       ],
-      "notes": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce. ceasefire_violation is renewed, but no separate infrastructure_strike or independently verified military_buildup threshold is met; raw/coupled risk holds 85/85",
-      "last_updated": "2026-08-08T09:06:30Z",
+      "notes": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce and urged UN-led negotiations. ceasefire_violation remains active and diplomacy_active activated as a de-escalatory counter-signal; no separate infrastructure_strike or independently verified military_buildup threshold was met. Raw/coupled risk holds 85/85",
+      "last_updated": "2026-08-08T09:10:11Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-08-07T21:14:00Z"
       },
@@ -414,7 +414,7 @@
         "diplomacy_active": "inactive",
         "external_backing": "inactive"
       },
-      "assessment": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce. ceasefire_violation is renewed, but no separate infrastructure_strike or independently verified military_buildup threshold is met; raw/coupled risk holds 85/85.",
+      "assessment": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce and urged UN-led negotiations. ceasefire_violation remains active and diplomacy_active activated as a de-escalatory counter-signal; no separate infrastructure_strike or independently verified military_buildup threshold was met. Raw/coupled risk holds 85/85.",
       "previous_prob": 100,
       "status": "imminent"
     },
@@ -670,7 +670,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-08-08T09:07:06Z",
+  "last_updated": "2026-08-08T09:10:12Z",
   "signal_timestamps": {
     "iran_conventional:hormuz_mining": "2026-07-26T15:12:15Z",
     "ethiopia_tigray:force_mobilization": "2026-08-03T12:06:56Z",
@@ -681,23 +681,22 @@
     "yemen_red_sea:ceasefire_violation": "2026-08-06T15:07:38Z",
     "israel_palestine:ceasefire_violation": "2026-08-06T18:07:30Z",
     "israel_palestine:diplomacy_active": "2026-08-06T18:07:30Z",
-    "eastern_drc:diplomacy_active": "2026-08-07T00:09:08Z",
-    "russia_ukraine:military_buildup": "2026-08-05T04:02:00Z",
     "iraq_internal_conflict:military_buildup": "2026-08-07T09:12:49Z",
     "iran_conventional:hormuz_controlled_not_closed": "2026-08-07T12:09:01Z",
-    "israel_lebanon:diplomacy_active": "2026-08-07T16:59:33Z"
+    "israel_lebanon:diplomacy_active": "2026-08-07T16:59:33Z",
+    "yemen_red_sea:diplomacy_active": "2026-08-08T09:07:06Z"
   },
   "global_war_probability": 86,
   "global_zone": "imminent",
   "global_probability": 86,
   "eval_stats": {
-    "total": 3413580,
-    "correct": 2672372,
+    "total": 3419658,
+    "correct": 2677476,
     "accuracy": 78,
     "mean_brier": 0.4725
   },
   "_meta": {
-    "updated_at": "2026-08-08T09:06:30Z",
+    "updated_at": "2026-08-08T09:10:11Z",
     "update_mode": "morning_deep_scan_09z_refresh",
     "canonical_tracker_count": 25,
     "config_version": null,
@@ -711,6 +710,27 @@
     ],
     "source_window": "2026-08-07T09:06:30Z/2026-08-08T09:06:30Z",
     "signals_changed": [
+      {
+        "tracker": "russia_ukraine",
+        "signal": "military_buildup",
+        "status": "deactivated_ttl",
+        "event_time": "2026-08-08T09:10:11Z",
+        "source": "scripts/pipeline.py TTL reconciliation"
+      },
+      {
+        "tracker": "eastern_drc",
+        "signal": "diplomacy_active",
+        "status": "deactivated_ttl",
+        "event_time": "2026-08-08T09:10:11Z",
+        "source": "scripts/pipeline.py TTL reconciliation"
+      },
+      {
+        "tracker": "yemen_red_sea",
+        "signal": "diplomacy_active",
+        "status": "activated",
+        "event_time": "2026-08-08T09:10:11Z",
+        "source": "Reuters / UN Special Envoy urging UN-led negotiations after fresh Marib attacks"
+      },
       {
         "tracker": "yemen_red_sea",
         "signal": "ceasefire_violation",
@@ -757,13 +777,16 @@
     "scan_delta": {
       "probability_changes": [],
       "signal_changes": [
-        "yemen_red_sea:ceasefire_violation renewed from fresh Aug. 7 Marib attack (no net state change)"
+        "russia_ukraine:military_buildup deactivated by TTL",
+        "eastern_drc:diplomacy_active deactivated by TTL",
+        "yemen_red_sea:diplomacy_active activated",
+        "yemen_red_sea:ceasefire_violation renewed (no net state change)"
       ],
       "news_only_updates": [
         "iran_conventional: U.S. official expects Hormuz deal soon; no signed/implemented agreement or sustained recovery"
       ]
     },
-    "last_updated": "2026-08-08T09:06:30Z",
+    "last_updated": "2026-08-08T09:10:11Z",
     "scan_type": "morning_deep_scan",
     "emerging_crisis_review": "Myanmar, Syria, Libya, Haiti, Armenia-Azerbaijan, Kosovo, German hybrid incidents and broad conflict feeds were reviewed; no new tracker was added.",
     "iaea_un_review": "The official IAEA index still lists GOV/2026/33 dated 4 June as the newest Iran safeguards report. No fresh 90% enrichment, nuclear test, Fordow activation, NPT withdrawal or new access/material-accountancy ruling was found.",
@@ -867,6 +890,27 @@
     "configured_tracker_count": 25,
     "scan_signals_changed": [
       {
+        "tracker": "russia_ukraine",
+        "signal": "military_buildup",
+        "status": "deactivated_ttl",
+        "event_time": "2026-08-08T09:10:11Z",
+        "source": "scripts/pipeline.py TTL reconciliation"
+      },
+      {
+        "tracker": "eastern_drc",
+        "signal": "diplomacy_active",
+        "status": "deactivated_ttl",
+        "event_time": "2026-08-08T09:10:11Z",
+        "source": "scripts/pipeline.py TTL reconciliation"
+      },
+      {
+        "tracker": "yemen_red_sea",
+        "signal": "diplomacy_active",
+        "status": "activated",
+        "event_time": "2026-08-08T09:10:11Z",
+        "source": "Reuters / UN Special Envoy urging UN-led negotiations after fresh Marib attacks"
+      },
+      {
         "tracker": "yemen_red_sea",
         "signal": "ceasefire_violation",
         "status": "renewed_from_fresh_reuters_evidence_no_net_state_change",
@@ -917,7 +961,7 @@
         "source": "polymarket_gamma"
       }
     },
-    "run_signal_delta": "No net signal state changed. yemen_red_sea:ceasefire_violation was renewed from the fresh Marib attack; probabilities are unchanged.",
+    "run_signal_delta": "Three net signal transitions: russia_ukraine:military_buildup and eastern_drc:diplomacy_active deactivated by TTL; yemen_red_sea:diplomacy_active activated. yemen_red_sea:ceasefire_violation was renewed without a state change.",
     "morning_window_movers": {
       "yemen_red_sea": {
         "from": 74,
@@ -1158,8 +1202,8 @@
       "zone": "imminent",
       "trend": "stable",
       "active_signals": [],
-      "notes": "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voronezh and could eventually field up to 120 ballistic missiles and six launchers; Reuters could not independently verify the claim. The canonical military_buildup signal is active, but the 99% cap prevents a probability increase",
-      "last_updated": "2026-08-08T09:06:30Z",
+      "notes": "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean missile unit deploying to Voronezh was not freshly corroborated inside this scan window. The signal cleanup changes state, not the 99/imminent probability",
+      "last_updated": "2026-08-08T09:10:11Z",
       "signal_timestamps": {},
       "base_probability": 99,
       "signals": {
@@ -1167,7 +1211,7 @@
         "diplomacy_active": "inactive",
         "military_buildup": "active"
       },
-      "assessment": "Reuters reports six people killed in Aug. 6 Russian attacks on Balakliia and Sumy, after the UN described July as a deadly month for Ukrainian civilians. Active conventional war remains at 99; the fresh strikes do not match a new configured nuclear-rhetoric, diplomacy or buildup signal, and no direct NATO combat entry was found."
+      "assessment": "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean missile unit deploying to Voronezh was not freshly corroborated inside this scan window. The signal cleanup changes state, not the 99/imminent probability."
     },
     "pakistan_afghanistan": {
       "name": "PAKISTAN AFGHANISTAN",
@@ -1309,8 +1353,8 @@
       "zone": "imminent",
       "trend": "falling",
       "active_signals": [],
-      "notes": "Reuters and the ICRC reported on Aug. 7 that Congolese authorities released 15 prisoners to AFC/M23, the first known prisoner transfer under last year's Qatar agreement and one of its first concrete implementation steps. This reinforces the already-active diplomacy_active signal but does not justify double-counting or a second probability cut; raw/coupled risk holds 53/imminent because fighting, territorial control and Rwanda-support allegations remain unresolved",
-      "last_updated": "2026-08-08T09:06:30Z",
+      "notes": "The Aug. 7 Congo-AFC/M23 prisoner transfer remains a constructive data point, but eastern_drc:diplomacy_active expired under its configured TTL during the 09Z deploy because no fresh implementation step crossed the renewal rule in this run. Raw/coupled risk holds 53/imminent amid unresolved fighting, territorial control and Rwanda-support allegations",
+      "last_updated": "2026-08-08T09:10:11Z",
       "signal_timestamps": {},
       "base_probability": 53.0,
       "signals": {
@@ -1320,7 +1364,7 @@
         "diplomacy_active": "active",
         "diplomacy_refused": "inactive"
       },
-      "assessment": "Reuters and the ICRC reported on Aug. 7 that Congolese authorities released 15 prisoners to AFC/M23, the first known prisoner transfer under last year's Qatar agreement and one of its first concrete implementation steps. This reinforces the already-active diplomacy_active signal but does not justify double-counting or a second probability cut; raw/coupled risk holds 53/imminent because fighting, territorial control and Rwanda-support allegations remain unresolved."
+      "assessment": "The Aug. 7 Congo-AFC/M23 prisoner transfer remains a constructive data point, but eastern_drc:diplomacy_active expired under its configured TTL during the 09Z deploy because no fresh implementation step crossed the renewal rule in this run. Raw/coupled risk holds 53/imminent amid unresolved fighting, territorial control and Rwanda-support allegations."
     },
     "yemen_red_sea": {
       "name": "YEMEN / RED SEA",
@@ -1336,10 +1380,11 @@
         "ceasefire_violation",
         "diplomacy_active"
       ],
-      "notes": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce. ceasefire_violation is renewed, but no separate infrastructure_strike or independently verified military_buildup threshold is met; raw/coupled risk holds 85/85",
-      "last_updated": "2026-08-08T09:06:30Z",
+      "notes": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce and urged UN-led negotiations. ceasefire_violation remains active and diplomacy_active activated as a de-escalatory counter-signal; no separate infrastructure_strike or independently verified military_buildup threshold was met. Raw/coupled risk holds 85/85",
+      "last_updated": "2026-08-08T09:10:11Z",
       "signal_timestamps": {
-        "ceasefire_violation": "2026-08-06T15:07:38Z"
+        "ceasefire_violation": "2026-08-06T15:07:38Z",
+        "diplomacy_active": "2026-08-08T09:07:06Z"
       },
       "base_probability": 85,
       "signals": {
@@ -1350,7 +1395,7 @@
         "diplomacy_active": "inactive",
         "diplomacy_refused": "inactive"
       },
-      "assessment": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce. ceasefire_violation is renewed, but no separate infrastructure_strike or independently verified military_buildup threshold is met; raw/coupled risk holds 85/85."
+      "assessment": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce and urged UN-led negotiations. ceasefire_violation remains active and diplomacy_active activated as a de-escalatory counter-signal; no separate infrastructure_strike or independently verified military_buildup threshold was met. Raw/coupled risk holds 85/85."
     },
     "mali_sahel": {
       "name": "MALI / CENTRAL SAHEL",
@@ -1821,7 +1866,7 @@
       "value": 100,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -1832,7 +1877,7 @@
       "value": 100,
       "description": "Continued escalation in Lebanon with increased Israeli operations and Hezbollah retaliatory strikes expected.",
       "confidence": 55,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -1843,7 +1888,7 @@
       "value": 46,
       "description": "Afghan-Pakistan border tensions likely to persist. Additional clashes probable based on recent trajectory.",
       "confidence": 50,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 36
     },
@@ -1854,7 +1899,7 @@
       "value": 80,
       "description": "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain.",
       "confidence": 45,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 65
     },
@@ -1865,7 +1910,7 @@
       "value": 98,
       "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 75
     },
@@ -1876,7 +1921,7 @@
       "value": 45,
       "description": "EASTERN DRC showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_below",
       "eval_value": 53
     },
@@ -1887,7 +1932,7 @@
       "value": 52,
       "description": "Current escalation indicators suggest IRAQ INTERNAL CONFLICT will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 35
     },
@@ -1898,7 +1943,7 @@
       "value": 49,
       "description": "Current escalation indicators suggest MALI SAHEL will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 33
     },
@@ -1909,7 +1954,7 @@
       "value": 40,
       "description": "Current escalation indicators suggest SOUTH CHINA SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 25
     },
@@ -1920,7 +1965,7 @@
       "value": 37,
       "description": "Current escalation indicators suggest ETHIOPIA TIGRAY will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 22
     },
@@ -1931,7 +1976,7 @@
       "value": 34,
       "description": "Current escalation indicators suggest SOUTHERN THAILAND will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 20
     },
@@ -1942,7 +1987,7 @@
       "value": 34,
       "description": "Current escalation indicators suggest KUWAIT IRAQ BORDER will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 20
     },
@@ -1953,7 +1998,7 @@
       "value": 29,
       "description": "Current escalation indicators suggest KENYA SOMALIA BORDER will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 15
     },
@@ -1964,7 +2009,7 @@
       "value": 28,
       "description": "Current escalation indicators suggest DPRK will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_above",
       "eval_value": 14
     },
@@ -1975,7 +2020,7 @@
       "value": 19,
       "description": "SPAIN MOROCCO CEUTA showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-09T09:09:05Z",
+      "expires_at": "2026-08-09T09:12:12Z",
       "eval_type": "probability_below",
       "eval_value": 22
     }
@@ -1983,8 +2028,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-09T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-09T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2020,7 +2065,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T09:07:06Z",
+      "expires_at": "2026-08-09T09:10:12Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -2036,8 +2081,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-11T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-11T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2073,7 +2118,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-11T09:07:06Z",
+      "expires_at": "2026-08-11T09:10:12Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -2089,8 +2134,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-15T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-15T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2126,7 +2171,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-15T09:07:06Z",
+      "expires_at": "2026-08-15T09:10:12Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -2142,8 +2187,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-07T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-07T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -2179,7 +2224,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-07T09:07:06Z",
+      "expires_at": "2026-09-07T09:10:12Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "oil_infrastructure_threat (+6 signal weight)",
@@ -2195,8 +2240,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-09T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-09T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2232,7 +2277,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T09:07:06Z",
+      "expires_at": "2026-08-09T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Lebanon and Israel agree shortlist for possible disarmament-verification force",
@@ -2247,8 +2292,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-11T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-11T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2284,7 +2329,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-11T09:07:06Z",
+      "expires_at": "2026-08-11T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Lebanon and Israel agree shortlist for possible disarmament-verification force",
@@ -2299,8 +2344,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-15T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-15T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2336,7 +2381,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-15T09:07:06Z",
+      "expires_at": "2026-08-15T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Lebanon and Israel agree shortlist for possible disarmament-verification force",
@@ -2351,8 +2396,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-07T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-07T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -2388,7 +2433,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-07T09:07:06Z",
+      "expires_at": "2026-09-07T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Lebanon and Israel agree shortlist for possible disarmament-verification force",
@@ -2403,8 +2448,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-09T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-09T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2433,9 +2478,9 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T09:07:06Z",
+      "expires_at": "2026-08-09T09:10:12Z",
       "evidence_for": [
-        "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voro"
+        "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean m"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2443,8 +2488,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-11T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-11T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2473,9 +2518,9 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-11T09:07:06Z",
+      "expires_at": "2026-08-11T09:10:12Z",
       "evidence_for": [
-        "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voro"
+        "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean m"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2483,8 +2528,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-15T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-15T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2513,9 +2558,9 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-15T09:07:06Z",
+      "expires_at": "2026-08-15T09:10:12Z",
       "evidence_for": [
-        "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voro"
+        "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean m"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2523,8 +2568,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-07T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-07T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -2553,9 +2598,9 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-07T09:07:06Z",
+      "expires_at": "2026-09-07T09:10:12Z",
       "evidence_for": [
-        "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voro"
+        "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean m"
       ],
       "evidence_against": [
         "No clear de-escalation or contradiction signal isolated."
@@ -2563,8 +2608,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-09T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-09T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2593,7 +2638,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T09:07:06Z",
+      "expires_at": "2026-08-09T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2606,8 +2651,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-11T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-11T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2636,7 +2681,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-11T09:07:06Z",
+      "expires_at": "2026-08-11T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2649,8 +2694,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-15T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-15T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2679,7 +2724,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-15T09:07:06Z",
+      "expires_at": "2026-08-15T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2692,8 +2737,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-07T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-07T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -2722,7 +2767,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-07T09:07:06Z",
+      "expires_at": "2026-09-07T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)"
       ],
@@ -2735,8 +2780,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-08-09T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-08-09T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2768,7 +2813,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T09:07:06Z",
+      "expires_at": "2026-08-09T09:10:12Z",
       "evidence_for": [
         "African rights alliance seeks inquiry into Sudan chemical-weapons allegations",
         "An Aug. 7 alliance of African rights groups called for an independent investigation into older allegations that Sudan's army used chemical weapons. The appeal and July sanctions ar"
@@ -2779,8 +2824,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-08-11T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-08-11T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2812,7 +2857,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-11T09:07:06Z",
+      "expires_at": "2026-08-11T09:10:12Z",
       "evidence_for": [
         "African rights alliance seeks inquiry into Sudan chemical-weapons allegations",
         "An Aug. 7 alliance of African rights groups called for an independent investigation into older allegations that Sudan's army used chemical weapons. The appeal and July sanctions ar"
@@ -2823,8 +2868,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-08-15T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-08-15T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2856,7 +2901,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-15T09:07:06Z",
+      "expires_at": "2026-08-15T09:10:12Z",
       "evidence_for": [
         "African rights alliance seeks inquiry into Sudan chemical-weapons allegations",
         "An Aug. 7 alliance of African rights groups called for an independent investigation into older allegations that Sudan's army used chemical weapons. The appeal and July sanctions ar"
@@ -2867,8 +2912,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-09-07T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-09-07T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -2900,7 +2945,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-07T09:07:06Z",
+      "expires_at": "2026-09-07T09:10:12Z",
       "evidence_for": [
         "African rights alliance seeks inquiry into Sudan chemical-weapons allegations",
         "An Aug. 7 alliance of African rights groups called for an independent investigation into older allegations that Sudan's army used chemical weapons. The appeal and July sanctions ar"
@@ -2911,8 +2956,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-09T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-09T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -2948,7 +2993,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-09T09:07:06Z",
+      "expires_at": "2026-08-09T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Houthis strike Marib again; UN warns Yemen is nearing wider conflict",
@@ -2964,8 +3009,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-11T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-11T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -3001,7 +3046,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-11T09:07:06Z",
+      "expires_at": "2026-08-11T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Houthis strike Marib again; UN warns Yemen is nearing wider conflict",
@@ -3017,8 +3062,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-15T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-15T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -3054,7 +3099,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-15T09:07:06Z",
+      "expires_at": "2026-08-15T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Houthis strike Marib again; UN warns Yemen is nearing wider conflict",
@@ -3070,8 +3115,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-07T09:07:06Z",
-      "generated_at": "2026-08-08T09:07:06Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-07T09:10:12Z",
+      "generated_at": "2026-08-08T09:10:12Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -3107,7 +3152,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-07T09:07:06Z",
+      "expires_at": "2026-09-07T09:10:12Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Houthis strike Marib again; UN warns Yemen is nearing wider conflict",
@@ -3138,7 +3183,7 @@
     "version": "forecast_review_status_v1",
     "expired_unresolved": 50,
     "review_queue_version": "forecast_review_queue_v1",
-    "oldest_age_hours": 1268.1,
+    "oldest_age_hours": 1268.2,
     "next_forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
     "evidence_required": true,
     "auto_resolution": false
@@ -3209,7 +3254,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-08-07T12:09:01Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 4,
           "decayed_weight": 2.2,
           "expired": false,
@@ -3219,7 +3264,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-06T12:12:32Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 5,
           "decayed_weight": 1.4,
           "expired": false,
@@ -3229,7 +3274,7 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-08-06T03:10:06Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 6,
           "decayed_weight": 1.3,
           "expired": false,
@@ -3239,7 +3284,7 @@
           "name": "hormuz_mining",
           "positive": false,
           "activated_at": "2026-07-26T15:12:15Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 10,
           "decayed_weight": 0.5,
           "expired": false,
@@ -3301,7 +3346,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-07T16:59:33Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 4,
           "decayed_weight": 2.5,
           "expired": false,
@@ -3311,7 +3356,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-06T12:12:32Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 6,
           "decayed_weight": 1.6,
           "expired": false,
@@ -3332,7 +3377,7 @@
         "label": "MEDIUM",
         "source_count": 2,
         "signal_count": 2,
-        "newest_signal_age_hours": 16.1
+        "newest_signal_age_hours": 16.2
       },
       "watch_triggers": {
         "up": [
@@ -3499,7 +3544,7 @@
       "signals": [],
       "confidence": "LOW",
       "base_rate": 30,
-      "notes": "War remains at the model ceiling. Reuters reported on Aug. 5, citing Ukrainian military intelligence, that a roughly 90-person North Korean missile unit had begun deploying to Voronezh and could eventually field up to 120 ballistic missiles and six launchers; Reuters could not independently verify the claim. The canonical military_buildup signal is active, but the 99% cap prevents a probability increase",
+      "notes": "War remains at the model ceiling, but russia_ukraine:military_buildup expired under its configured TTL during the 09Z deploy. The prior report of a roughly 90-person North Korean missile unit deploying to Voronezh was not freshly corroborated inside this scan window. The signal cleanup changes state, not the 99/imminent probability",
       "attribution": {
         "base_rate": 30.0,
         "raw_probability": 99.0,
@@ -3632,7 +3677,7 @@
           "name": "missile_range_test",
           "positive": false,
           "activated_at": "2026-08-06T12:09:51Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 6,
           "decayed_weight": 1.6,
           "expired": false,
@@ -3734,7 +3779,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-06T18:07:30Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 6,
           "decayed_weight": 1.9,
           "expired": false,
@@ -3744,7 +3789,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-06T18:07:30Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 4,
           "decayed_weight": 1.3,
           "expired": false,
@@ -3855,7 +3900,7 @@
       "signals": [],
       "confidence": "LOW",
       "base_rate": 20,
-      "notes": "Reuters and the ICRC reported on Aug. 7 that Congolese authorities released 15 prisoners to AFC/M23, the first known prisoner transfer under last year's Qatar agreement and one of its first concrete implementation steps. This reinforces the already-active diplomacy_active signal but does not justify double-counting or a second probability cut; raw/coupled risk holds 53/imminent because fighting, territorial control and Rwanda-support allegations remain unresolved",
+      "notes": "The Aug. 7 Congo-AFC/M23 prisoner transfer remains a constructive data point, but eastern_drc:diplomacy_active expired under its configured TTL during the 09Z deploy because no fresh implementation step crossed the renewal rule in this run. Raw/coupled risk holds 53/imminent amid unresolved fighting, territorial control and Rwanda-support allegations",
       "attribution": {
         "base_rate": 20.0,
         "raw_probability": 53.0,
@@ -3908,7 +3953,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-08T09:07:06Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 3,
           "decayed_weight": 3.0,
           "expired": false,
@@ -3918,7 +3963,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-06T15:07:38Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 6,
           "decayed_weight": 1.8,
           "expired": false,
@@ -3927,7 +3972,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 18,
-      "notes": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce. ceasefire_violation is renewed, but no separate infrastructure_strike or independently verified military_buildup threshold is met; raw/coupled risk holds 85/85",
+      "notes": "Reuters reported a fresh Aug. 7 Houthi missile-and-drone attack on Marib displacement camps and residential neighbourhoods, killing two people and wounding 14 according to local authorities, one day after attacks killed at least 30 government troops. The UN envoy called this Yemen's greatest risk of renewed large-scale conflict since the 2022 truce and urged UN-led negotiations. ceasefire_violation remains active and diplomacy_active activated as a de-escalatory counter-signal; no separate infrastructure_strike or independently verified military_buildup threshold was met. Raw/coupled risk holds 85/85",
       "attribution": {
         "base_rate": 18.0,
         "raw_probability": 85.0,
@@ -3939,7 +3984,7 @@
         "label": "MEDIUM",
         "source_count": 7,
         "signal_count": 2,
-        "newest_signal_age_hours": 0.0
+        "newest_signal_age_hours": 0.1
       },
       "watch_triggers": {
         "up": [
@@ -4235,7 +4280,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-07T09:12:49Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 5,
           "decayed_weight": 2.5,
           "expired": false,
@@ -4256,7 +4301,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 23.9
+        "newest_signal_age_hours": 24.0
       },
       "watch_triggers": {
         "up": [
@@ -4450,7 +4495,7 @@
           "name": "force_mobilization",
           "positive": false,
           "activated_at": "2026-08-03T12:06:56Z",
-          "last_confirmed": "2026-08-08T09:07:06Z",
+          "last_confirmed": "2026-08-08T09:10:12Z",
           "original_weight": 8,
           "decayed_weight": 2.6,
           "expired": false,
@@ -4471,7 +4516,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 117.0
+        "newest_signal_age_hours": 117.1
       },
       "watch_triggers": {
         "up": [
@@ -4502,8 +4547,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-08-08T09:09:08Z",
-    "fetched_at": "2026-08-08T09:09:08Z",
+    "generated_at": "2026-08-08T09:12:14Z",
+    "fetched_at": "2026-08-08T09:12:14Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -4798,8 +4843,8 @@
   "global_probability_exact": 86,
   "allied_positions": "No fresh official NATO Article 4/5 action was found. The T\u00fcrkiye-Saudi Arabia-Pakistan mutual-defence pact remains the main allied realignment. The UN Security Council's reported condemnation of Houthi attacks and the UN envoy's warning reinforce pressure for restraint but do not constitute a separate kinetic event.",
   "threat_zone": "imminent",
-  "updated_at": "2026-08-08T09:06:30Z",
+  "updated_at": "2026-08-08T09:10:11Z",
   "global_trend": "rising",
-  "summary": "09Z morning deep-scan refresh: global coupled probability holds at 86 / imminent across all 25 canonical trackers. Fresh Houthi missile/drone attacks on Marib renew yemen_red_sea:ceasefire_violation without double-counting or a score change. A Hormuz agreement is reportedly closer but remains unsigned and unimplemented.",
+  "summary": "09Z morning deep scan: global coupled probability holds 86/imminent. Fresh Marib attacks renew Yemen ceasefire-violation evidence and activate a parallel diplomacy counter-signal; Russia-Ukraine military-buildup and eastern DRC diplomacy signals expired by TTL. No probability changed.",
   "energy_market": "OilPriceAPI at 09:04Z: Brent $83.55/bbl, WTI $77.08, gasoline $2.98 and heating oil $3.90. Brent rebounded on skepticism that proposed Hormuz terms are immediately workable, while the conflict premium remains large; market prices are a sanity check, not an independent scoring input."
 }
