@@ -493,6 +493,26 @@ def _extract_sources(n):
     return []
 
 
+def normalize_news_item(n):
+    """Return a copy of a news record with canonical dashboard fields filled in.
+
+    Legacy `latest_news` records use title/summary/tracker/timestamp/source;
+    current records use headline/text/zone/time/sources. This is the single
+    place that bridges the two, so `enrich_news()` and the pipeline's state
+    publication path stay in agreement. Original metadata (`url`,
+    `source_date`, `importance`, ...) is preserved and the input is never
+    mutated; records already in the current schema keep their values.
+    """
+    item = dict(n)
+    headline = n.get("headline") or n.get("title") or ""
+    item["headline"] = headline
+    item["text"] = n.get("text") or n.get("summary") or headline
+    item["zone"] = n.get("zone") or n.get("tracker") or ""
+    item["time"] = n.get("time") or n.get("timestamp") or ""
+    item["sources"] = _extract_sources(n)
+    return item
+
+
 def enrich_news(raw_news, *, classify_credibility, classify_category,
                 find_matching_signals_fn, calc_confidence_fn, calc_severity_fn):
     """Add credibility tier, source category, matched signals, and severity
@@ -505,8 +525,9 @@ def enrich_news(raw_news, *, classify_credibility, classify_category,
     enriched = []
     seen_signals = {}
 
-    for n in raw_news[:10]:
-        sources = _extract_sources(n)
+    for raw in raw_news[:10]:
+        n = normalize_news_item(raw)
+        sources = n["sources"]
 
         source_types = []
         max_cred_weight = 0
@@ -518,8 +539,12 @@ def enrich_news(raw_news, *, classify_credibility, classify_category,
                 max_cred_weight = weight
                 primary_tier = tier
 
-        full_text = (n.get("headline", "") + " " + n.get("text", ""))
-        zone = n.get("zone", "")
+        headline = n["headline"]
+        text = n["text"]
+        zone = n["zone"]
+        time_label = n["time"]
+
+        full_text = (headline + " " + text)
         zone_signals = find_matching_signals_fn(full_text, zone, primary_tier) if zone else []
 
         deduped_signals = []
@@ -535,9 +560,9 @@ def enrich_news(raw_news, *, classify_credibility, classify_category,
 
         enriched.append({
             "zone": zone,
-            "time": n.get("time", ""),
-            "text": n.get("text", n.get("headline", "")),
-            "headline": n.get("headline", ""),
+            "time": time_label,
+            "text": text,
+            "headline": headline,
             "impact": n.get("impact", "neutral"),
             "sources": sources,
             "source_types": source_types,

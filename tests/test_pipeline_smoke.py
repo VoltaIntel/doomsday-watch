@@ -45,7 +45,9 @@ def pipeline_run(tmp_path_factory):
         capture_output=True,
         text=True,
         env={"PATH": "/usr/bin:/bin", "NUKE_WATCH_AUTO_GIT": "0"},
-        timeout=60,
+        # A full run takes ~2min on the current data/predictions corpus
+        # (~8k records through the evaluation merge), so 60s times out here.
+        timeout=300,
     )
     assert result.returncode == 0, (
         f"pipeline exited non-zero: stdout={result.stdout[-500:]} "
@@ -104,6 +106,31 @@ def test_pipeline_exposes_forecast_engine_v2_ladder(pipeline_run):
     assert "forecast_calibration" in html
     assert "forecast_review_status" in html
     assert "FORECAST ENGINE V2" in html
+
+
+def test_published_latest_news_is_canonical_and_non_blank(pipeline_run):
+    """The dashboard renders STATE.latest_news straight from the published
+    JSON, so the pipeline must publish canonical fields — not the raw legacy
+    title/summary/tracker records that render as blank cards."""
+    _, html, state = pipeline_run
+    news = state.get("latest_news", [])
+    assert news, "published state should carry a latest_news list"
+
+    for item in news:
+        assert item.get("headline"), f"blank canonical headline: {item}"
+        assert item.get("text"), f"blank canonical text: {item}"
+        assert item.get("zone"), f"blank canonical zone: {item}"
+        assert item.get("sources"), f"blank canonical sources: {item}"
+        if item.get("timestamp"):
+            assert item.get("time"), f"timestamp-backed record has blank time: {item}"
+        # Legacy records keep their original metadata, not a lossy replacement.
+        if item.get("title"):
+            assert item.get("url"), f"legacy record lost its url: {item}"
+            assert item.get("source_date"), f"legacy record lost source_date: {item}"
+
+    # The embedded dashboard payload carries the same canonical headlines.
+    embedded = json.dumps(news[0]["headline"])[1:-1]
+    assert embedded in html, "canonical headline missing from embedded news payload"
 
 
 def test_pipeline_coupling_fires(pipeline_run):

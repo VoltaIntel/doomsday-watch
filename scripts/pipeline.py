@@ -36,6 +36,7 @@ from signals import (  # noqa: E402
     confirm_signal as _signals_confirm_signal,
     build_signal_data as _signals_build_signal_data,
     build_raw_news_fallback,
+    normalize_news_item,
     enrich_news,
     merge_news_signals_into_state,
     extract_signals_from_notes,
@@ -298,7 +299,14 @@ for k in state.get("trackers", {}).keys():
 
 # BRIDGE: When latest_news is absent (zones schema written by cron),
 # synthesise news from zone notes + signals so the feed is populated.
-raw_news = state.get("latest_news") or build_raw_news_fallback(state)
+# Normalise legacy title/summary/tracker records to the canonical schema and
+# publish those copies: the browser renders STATE.latest_news straight from
+# data/current_state.json, so enriching only the embedded payload is not enough.
+raw_news = [
+    normalize_news_item(n)
+    for n in (state.get("latest_news") or build_raw_news_fallback(state))
+]
+state["latest_news"] = raw_news
 
 # Enrich news with credibility scoring + matched signals (deduplicated across
 # items so duplicate sources don't double-count).
