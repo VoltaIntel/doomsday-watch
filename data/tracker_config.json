@@ -24,7 +24,8 @@
     "kenya_somalia_border",
     "egypt_mediterranean",
     "spain_morocco_ceuta",
-    "ethiopia_tigray"
+    "ethiopia_tigray",
+    "syria_idlib"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -627,6 +628,33 @@
           "decay_hours": 168
         }
       }
+    },
+    "syria_idlib": {
+      "name": "Syria / Idlib external-strike escalation",
+      "base_rate": 15,
+      "description": "Air and missile strikes on Syrian military infrastructure around Idlib and associated regional spillover",
+      "signals": {
+        "military_buildup": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -709,9 +737,10 @@
     "kenya_somalia_border": 0.02,
     "egypt_mediterranean": 0.02,
     "spain_morocco_ceuta": 0.02,
-    "ethiopia_tigray": 0.02
+    "ethiopia_tigray": 0.02,
+    "syria_idlib": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-08-03T12:05:12Z",
+  "last_updated": "2026-08-18T06:12:54Z",
   "dashboard_path": "dashboard.html"
 }
