@@ -906,8 +906,8 @@
       "reason": "Deploy note fallback treated the substring ceasefire inside the distinct kinetic-breach signal name as evidence for diplomacy_active. The zone narrative now uses an unambiguous kinetic-breach label; no source metadata was removed."
     },
     "raw_global_probability": 83.6,
-    "post_deploy_normalization": "Duplicate tracker/zone/top-level active-signal fields normalized after pipeline temporal decay.",
-    "reconciled_at": "2026-08-20T00:13:32Z",
+    "post_deploy_normalization": "Removed a false yemen_red_sea:diplomacy_active projection caused by the pipeline treating kinetic-breach narrative text as de-escalation evidence; structured canonical signal state now agrees across trackers, zones, dashboard_trackers and top-level active_signals. Probabilities unchanged.",
+    "reconciled_at": "2026-08-20T00:18:43Z",
     "post_deploy_reconciliation": "Exact fallback metadata restored after the pipeline public-safety sanitizer; probabilities and canonical signals were unchanged."
   },
   "trackers": {
@@ -1334,7 +1334,6 @@
       "trend": "rising",
       "active_signals": [
         "ceasefire_violation",
-        "diplomacy_active",
         "military_buildup"
       ],
       "notes": "The retrospective Houthi claim of 31 operations continues to reconfirm ceasefire_violation and military_buildup, but no fresh independently verified Saudi or Red Sea infrastructure damage renewed the older infrastructure_strike inside its configured window. infrastructure_strike therefore expires on temporal decay; risk remains at the 95/IMMINENT ceiling",
@@ -6564,16 +6563,6 @@
       "trend": "rising",
       "signals": [
         {
-          "name": "diplomacy_active",
-          "positive": true,
-          "activated_at": "2026-08-20T00:10:20Z",
-          "last_confirmed": "2026-08-20T00:10:20Z",
-          "original_weight": 3,
-          "decayed_weight": 3.0,
-          "expired": false,
-          "is_deescalatory": true
-        },
-        {
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-17T12:44:33Z",
@@ -6594,7 +6583,7 @@
           "is_deescalatory": false
         }
       ],
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "base_rate": 18,
       "notes": "The retrospective Houthi claim of 31 operations continues to reconfirm ceasefire_violation and military_buildup, but no fresh independently verified Saudi or Red Sea infrastructure damage renewed the older infrastructure_strike inside its configured window. infrastructure_strike therefore expires on temporal decay; risk remains at the 95/IMMINENT ceiling",
       "attribution": {
@@ -6607,7 +6596,7 @@
       "evidence_quality": {
         "label": "MEDIUM",
         "source_count": 0,
-        "signal_count": 3,
+        "signal_count": 2,
         "newest_signal_age_hours": 0.0
       },
       "watch_triggers": {
