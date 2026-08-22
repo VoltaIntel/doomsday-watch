@@ -26,7 +26,8 @@
     "spain_morocco_ceuta",
     "ethiopia_tigray",
     "syria_idlib",
-    "libya"
+    "libya",
+    "myanmar"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -683,6 +684,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "myanmar": {
+      "name": "Myanmar civil war",
+      "base_rate": 30,
+      "description": "Myanmar civil-war escalation, aerial attack and external-support risk",
+      "signals": {
+        "military_buildup": {
+          "weight": 6,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -767,9 +795,10 @@
     "spain_morocco_ceuta": 0.02,
     "ethiopia_tigray": 0.02,
     "syria_idlib": 0.02,
-    "libya": 0.02
+    "libya": 0.02,
+    "myanmar": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-08-19T06:07:27Z",
+  "last_updated": "2026-08-22T03:07:42Z",
   "dashboard_path": "dashboard.html"
 }
