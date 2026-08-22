@@ -342,7 +342,7 @@
       "active_signals": [
         "ceasefire_violation"
       ],
-      "notes": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable negotiating breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT",
+      "notes": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable mediation breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT",
       "last_updated": "2026-08-19T14:50:52Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-08-19T14:50:52Z"
@@ -356,7 +356,7 @@
         "extremist_mobilization": "inactive",
         "holy_site_tension": "inactive"
       },
-      "assessment": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable negotiating breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT.",
+      "assessment": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable mediation breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT.",
       "reviewed_at": "2026-08-22T15:08:26Z",
       "status": "imminent",
       "previous_prob": 99,
@@ -803,7 +803,7 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-08-22T15:14:52Z",
+  "last_updated": "2026-08-22T15:19:32Z",
   "signal_timestamps": {
     "ethiopia_tigray:force_mobilization": "2026-08-11T07:31:04Z",
     "iran_conventional:hormuz_zero_traffic": "2026-08-17T03:07:47Z",
@@ -824,10 +824,10 @@
   "global_zone": "imminent",
   "global_probability": 89,
   "eval_stats": {
-    "total": 4456668,
-    "correct": 3554626,
+    "total": 4464021,
+    "correct": 3560868,
     "accuracy": 80,
-    "mean_brier": 0.4574
+    "mean_brier": 0.4573
   },
   "_meta": {
     "updated_at": "2026-08-22T15:08:26Z",
@@ -918,7 +918,7 @@
     "raw_global_probability": 84.9,
     "post_deploy_normalization": "Deploy-time temporal decay expired iran_conventional:ceasefire_violation and israel_palestine:diplomacy_active. Both were removed from zone/tracker projections; evidence-based probabilities remain unchanged.",
     "reconciled_at": "2026-08-21T06:18:36Z",
-    "post_deploy_reconciliation": "Removed the stale Israel\u2013Palestine diplomatic projection from the tracker mirror and timeline; zone/tracker signal views now agree. No evidence-based signal or probability changed.",
+    "post_deploy_reconciliation": "Removed a false Israel\u2013Palestine diplomatic projection caused by a keyword substring inside a negated mediation sentence. Zone, tracker and timeline views were reconciled; no evidence-based signal or probability changed.",
     "run_signals_changed": [],
     "post_research_reconciliation": "All 28 configured trackers were re-reviewed. UNAMA-attributed reporting upgraded confidence in the Kabul airstrike casualty report; no configured signal activated and probabilities held.",
     "changes_since_previous_run": {
@@ -958,6 +958,12 @@
       "tracker": "israel_palestine",
       "signal": "diplomacy_active",
       "reason": "Removed a stale timeline-only projection that contradicted both the canonical signal-status map and the evidence review. No evidence-based signal or probability changed."
+    },
+    "projection_integrity_fix_5": {
+      "at": "2026-08-22T15:19:05Z",
+      "tracker": "israel_palestine",
+      "signal": "diplomacy_active",
+      "reason": "Rephrased a negated mediation sentence whose generic substring matched the configured diplomatic keyword fallback, then removed the stale projection. Evidence and probability are unchanged."
     }
   },
   "trackers": {
@@ -1303,7 +1309,7 @@
         "ceasefire_violation",
         "diplomacy_active"
       ],
-      "notes": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable negotiating breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT",
+      "notes": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable mediation breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT",
       "last_updated": "2026-08-19T14:50:52Z",
       "signal_timestamps": {
         "ceasefire_violation": "2026-08-19T14:50:52Z"
@@ -1317,7 +1323,7 @@
         "extremist_mobilization": "inactive",
         "holy_site_tension": "inactive"
       },
-      "assessment": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable negotiating breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT.",
+      "assessment": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable mediation breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT.",
       "reviewed_at": "2026-08-22T15:08:26Z",
       "status": "imminent",
       "previous_prob": 99,
@@ -1821,7 +1827,7 @@
       "source_date": "2026-08-22",
       "zone": "israel_palestine",
       "headline": "Former British and French diplomats urge action over Palestinian territorial erosion",
-      "text": "The Guardian reports that former British and French diplomats urged stronger action over what they described as the erasure of Palestine; GCC and other regional governments separately reiterated opposition to E1 settlement expansion. The pressure is diplomatically significant but does not establish a durable negotiating breakthrough or a new configured kinetic threshold. Risk holds 95/IMMINENT.",
+      "text": "The Guardian reports that former British and French diplomats urged stronger action over what they described as the erasure of Palestine; GCC and other regional governments separately reiterated opposition to E1 settlement expansion. The pressure is diplomatically significant but does not establish a durable mediation breakthrough or a new configured kinetic threshold. Risk holds 95/IMMINENT.",
       "sources": [
         "The Guardian",
         "Gulf Cooperation Council",
@@ -5663,7 +5669,7 @@
       "value": 100,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -5674,7 +5680,7 @@
       "value": 100,
       "description": "Israeli ground operation in southern Lebanon expected to continue beyond Litani River. Further displacement and infrastructure destruction likely.",
       "confidence": 70,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -5685,7 +5691,7 @@
       "value": 43,
       "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
       "confidence": 65,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 33
     },
@@ -5696,7 +5702,7 @@
       "value": 80,
       "description": "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain.",
       "confidence": 45,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 65
     },
@@ -5707,7 +5713,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -5718,7 +5724,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest SUDAN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -5729,7 +5735,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 85
     },
@@ -5740,7 +5746,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 85
     },
@@ -5751,7 +5757,7 @@
       "value": 68,
       "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 53
     },
@@ -5762,7 +5768,7 @@
       "value": 45,
       "description": "EASTERN DRC showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_below",
       "eval_value": 53
     },
@@ -5773,7 +5779,7 @@
       "value": 38,
       "description": "IRAQ INTERNAL CONFLICT showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_below",
       "eval_value": 45
     },
@@ -5784,7 +5790,7 @@
       "value": 51,
       "description": "Current escalation indicators suggest ETHIOPIA TIGRAY will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 34
     },
@@ -5795,7 +5801,7 @@
       "value": 49,
       "description": "Current escalation indicators suggest MALI SAHEL will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 33
     },
@@ -5806,7 +5812,7 @@
       "value": 40,
       "description": "Current escalation indicators suggest SOUTH CHINA SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 25
     },
@@ -5817,7 +5823,7 @@
       "value": 38,
       "description": "Current escalation indicators suggest SOMALIA GULF OF ADEN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-23T15:17:16Z",
+      "expires_at": "2026-08-23T15:21:52Z",
       "eval_type": "probability_above",
       "eval_value": 23
     }
@@ -5825,8 +5831,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-23T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-23T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -5862,7 +5868,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-23T15:14:52Z",
+      "expires_at": "2026-08-23T15:19:32Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "hormuz controlled not closed",
@@ -5878,8 +5884,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-25T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-25T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -5915,7 +5921,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T15:14:52Z",
+      "expires_at": "2026-08-25T15:19:32Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "hormuz controlled not closed",
@@ -5931,8 +5937,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-29T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-29T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -5968,7 +5974,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-29T15:14:52Z",
+      "expires_at": "2026-08-29T15:19:32Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "hormuz controlled not closed",
@@ -5984,8 +5990,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-21T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-21T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -6021,7 +6027,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-21T15:14:52Z",
+      "expires_at": "2026-09-21T15:19:32Z",
       "evidence_for": [
         "hormuz_controlled_not_closed (+4 signal weight)",
         "hormuz controlled not closed",
@@ -6037,8 +6043,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-23T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-23T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -6074,7 +6080,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-23T15:14:52Z",
+      "expires_at": "2026-08-23T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli military says it struck suspects in Israel-held southern Lebanon",
@@ -6090,8 +6096,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-25T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-25T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -6127,7 +6133,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T15:14:52Z",
+      "expires_at": "2026-08-25T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli military says it struck suspects in Israel-held southern Lebanon",
@@ -6143,8 +6149,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-29T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-29T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -6180,7 +6186,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-29T15:14:52Z",
+      "expires_at": "2026-08-29T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli military says it struck suspects in Israel-held southern Lebanon",
@@ -6196,8 +6202,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-21T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-21T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -6233,7 +6239,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-21T15:14:52Z",
+      "expires_at": "2026-09-21T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli military says it struck suspects in Israel-held southern Lebanon",
@@ -6249,8 +6255,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-23T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-23T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -6286,7 +6292,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-23T15:14:52Z",
+      "expires_at": "2026-08-23T15:19:32Z",
       "evidence_for": [
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
         "Russian ballistic missiles attack Kyiv, mayor says",
@@ -6299,8 +6305,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-25T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-25T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -6336,7 +6342,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T15:14:52Z",
+      "expires_at": "2026-08-25T15:19:32Z",
       "evidence_for": [
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
         "Russian ballistic missiles attack Kyiv, mayor says",
@@ -6349,8 +6355,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-29T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-29T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -6386,7 +6392,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-29T15:14:52Z",
+      "expires_at": "2026-08-29T15:19:32Z",
       "evidence_for": [
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
         "Russian ballistic missiles attack Kyiv, mayor says",
@@ -6399,8 +6405,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-21T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-21T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -6436,7 +6442,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-21T15:14:52Z",
+      "expires_at": "2026-09-21T15:19:32Z",
       "evidence_for": [
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
         "Russian ballistic missiles attack Kyiv, mayor says",
@@ -6449,8 +6455,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-08-23T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-08-23T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -6486,7 +6492,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-23T15:14:52Z",
+      "expires_at": "2026-08-23T15:19:32Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
         "infrastructure strike",
@@ -6499,8 +6505,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-08-25T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-08-25T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -6536,7 +6542,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T15:14:52Z",
+      "expires_at": "2026-08-25T15:19:32Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
         "infrastructure strike",
@@ -6549,8 +6555,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-08-29T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-08-29T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -6586,7 +6592,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-29T15:14:52Z",
+      "expires_at": "2026-08-29T15:19:32Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
         "infrastructure strike",
@@ -6599,8 +6605,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-09-21T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-09-21T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -6636,7 +6642,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-21T15:14:52Z",
+      "expires_at": "2026-09-21T15:19:32Z",
       "evidence_for": [
         "infrastructure_strike (+5 signal weight)",
         "infrastructure strike",
@@ -6649,8 +6655,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-23T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-23T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -6686,7 +6692,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-23T15:14:52Z",
+      "expires_at": "2026-08-23T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Former British and French diplomats urge action over Palestinian territorial erosion",
@@ -6702,8 +6708,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-25T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-25T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -6739,7 +6745,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T15:14:52Z",
+      "expires_at": "2026-08-25T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Former British and French diplomats urge action over Palestinian territorial erosion",
@@ -6755,8 +6761,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-29T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-29T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -6792,7 +6798,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-29T15:14:52Z",
+      "expires_at": "2026-08-29T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Former British and French diplomats urge action over Palestinian territorial erosion",
@@ -6808,8 +6814,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-21T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-21T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -6845,7 +6851,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-21T15:14:52Z",
+      "expires_at": "2026-09-21T15:19:32Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Former British and French diplomats urge action over Palestinian territorial erosion",
@@ -6861,8 +6867,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-23T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-23T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -6898,7 +6904,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-23T15:14:52Z",
+      "expires_at": "2026-08-23T15:19:32Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -6911,8 +6917,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-25T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-25T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -6948,7 +6954,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T15:14:52Z",
+      "expires_at": "2026-08-25T15:19:32Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -6961,8 +6967,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-29T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-29T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -6998,7 +7004,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-29T15:14:52Z",
+      "expires_at": "2026-08-29T15:19:32Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -7011,8 +7017,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-21T15:14:52Z",
-      "generated_at": "2026-08-22T15:14:52Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-21T15:19:32Z",
+      "generated_at": "2026-08-22T15:19:32Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -7048,7 +7054,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-21T15:14:52Z",
+      "expires_at": "2026-09-21T15:19:32Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -7100,7 +7106,7 @@
           "name": "nuclear_rhetoric_official",
           "positive": false,
           "activated_at": "2026-08-19T21:12:52Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 5,
           "decayed_weight": 0.7,
           "expired": false,
@@ -7121,7 +7127,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 66.0
+        "newest_signal_age_hours": 66.1
       },
       "watch_triggers": {
         "up": [
@@ -7162,7 +7168,7 @@
           "name": "hormuz_controlled_not_closed",
           "positive": false,
           "activated_at": "2026-08-21T02:43:00Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 4,
           "decayed_weight": 1.4,
           "expired": false,
@@ -7172,7 +7178,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-20T18:04:56Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 5,
           "decayed_weight": 1.4,
           "expired": false,
@@ -7193,7 +7199,7 @@
         "label": "MEDIUM",
         "source_count": 13,
         "signal_count": 2,
-        "newest_signal_age_hours": 36.5
+        "newest_signal_age_hours": 36.6
       },
       "watch_triggers": {
         "up": [
@@ -7234,7 +7240,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-20T18:12:05Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 4,
           "decayed_weight": 1.1,
           "expired": false,
@@ -7244,7 +7250,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-19T21:21:55Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 6,
           "decayed_weight": 0.9,
           "expired": false,
@@ -7265,7 +7271,7 @@
         "label": "MEDIUM",
         "source_count": 4,
         "signal_count": 2,
-        "newest_signal_age_hours": 45.0
+        "newest_signal_age_hours": 45.1
       },
       "watch_triggers": {
         "up": [
@@ -7565,7 +7571,7 @@
           "name": "missile_range_test",
           "positive": false,
           "activated_at": "2026-08-20T08:43:00Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 6,
           "decayed_weight": 1.2,
           "expired": false,
@@ -7586,7 +7592,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 54.5
+        "newest_signal_age_hours": 54.6
       },
       "watch_triggers": {
         "up": [
@@ -7616,7 +7622,7 @@
           "name": "infrastructure_strike",
           "positive": false,
           "activated_at": "2026-08-19T12:00:00Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 5,
           "decayed_weight": 0.6,
           "expired": false,
@@ -7637,7 +7643,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 75.2
+        "newest_signal_age_hours": 75.3
       },
       "watch_triggers": {
         "up": [
@@ -7677,8 +7683,8 @@
         {
           "name": "diplomacy_active",
           "positive": true,
-          "activated_at": "2026-08-22T15:14:52Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "activated_at": "2026-08-22T15:19:32Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 4,
           "decayed_weight": 4.0,
           "expired": false,
@@ -7688,7 +7694,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-19T14:50:52Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 6,
           "decayed_weight": 0.7,
           "expired": false,
@@ -7697,7 +7703,7 @@
       ],
       "confidence": "MEDIUM",
       "base_rate": 18,
-      "notes": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable negotiating breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT",
+      "notes": "Former British and French diplomats urged action over Palestinian territorial erosion, while GCC states repeated opposition to E1 settlement expansion. These are allied-position and diplomatic-pressure indicators, not a durable mediation breakthrough or a fresh configured kinetic threshold. The existing ceasefire_violation remains controlling and risk holds 95/IMMINENT",
       "attribution": {
         "base_rate": 18.0,
         "raw_probability": 95.0,
@@ -7750,7 +7756,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-20T12:00:00Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 4,
           "decayed_weight": 0.9,
           "expired": false,
@@ -7771,7 +7777,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 51.2
+        "newest_signal_age_hours": 51.3
       },
       "watch_triggers": {
         "up": [
@@ -8067,7 +8073,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-22T03:13:09Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 3,
           "decayed_weight": 1.5,
           "expired": false,
@@ -8088,7 +8094,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 12.0
+        "newest_signal_age_hours": 12.1
       },
       "watch_triggers": {
         "up": [
@@ -8384,7 +8390,7 @@
           "name": "renewed_clashes",
           "positive": false,
           "activated_at": "2026-08-20T12:46:17Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 12,
           "decayed_weight": 7.4,
           "expired": false,
@@ -8394,7 +8400,7 @@
           "name": "force_mobilization",
           "positive": false,
           "activated_at": "2026-08-11T07:31:04Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 8,
           "decayed_weight": 0.6,
           "expired": false,
@@ -8415,7 +8421,7 @@
         "label": "MEDIUM",
         "source_count": 0,
         "signal_count": 2,
-        "newest_signal_age_hours": 50.5
+        "newest_signal_age_hours": 50.6
       },
       "watch_triggers": {
         "up": [
@@ -8456,7 +8462,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-19T14:40:53Z",
-          "last_confirmed": "2026-08-22T15:14:52Z",
+          "last_confirmed": "2026-08-22T15:19:32Z",
           "original_weight": 5,
           "decayed_weight": 0.6,
           "expired": false,
@@ -8610,8 +8616,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-08-22T15:17:21Z",
-    "fetched_at": "2026-08-22T15:17:21Z",
+    "generated_at": "2026-08-22T15:21:54Z",
+    "fetched_at": "2026-08-22T15:21:54Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -8626,7 +8632,7 @@
         "used_slugs": [
           "will-the-us-invade-iran-before-2027"
         ],
-        "total_volume_24h": 81438.12,
+        "total_volume_24h": 81372.26,
         "liquidity_warn": true,
         "markets": [
           {
@@ -8636,7 +8642,7 @@
             "invert": false,
             "yes_price": 0.165,
             "contribution": 0.165,
-            "volume_24h": 81438.124822,
+            "volume_24h": 81372.26129400001,
             "question": "Will the U.S. invade Iran before 2027?"
           }
         ],
@@ -8650,8 +8656,8 @@
         "tracker_id": "iran_nuclear",
         "status": "ok",
         "dw_prob_pct": 68.0,
-        "pm_implied_raw_pct": 5.95,
-        "pm_implied_24h_pct": 0.025,
+        "pm_implied_raw_pct": 5.94,
+        "pm_implied_24h_pct": 0.024,
         "horizon_days_avg": 250.0,
         "used_slugs": [
           "iran-nuke-before-2027",
@@ -8686,14 +8692,14 @@
             "weight": 0.2,
             "horizon_days": 250.0,
             "invert": false,
-            "yes_price": 0.146,
-            "contribution": 0.146,
-            "volume_24h": 12281.440080999995,
+            "yes_price": 0.145,
+            "contribution": 0.145,
+            "volume_24h": 12281.440080999999,
             "question": "Will Iran withdraw from the NPT before 2027?"
           }
         ],
-        "delta_pp": 67.97,
-        "abs_delta_pp": 67.97,
+        "delta_pp": 67.98,
+        "abs_delta_pp": 67.98,
         "flag": "divergence",
         "color": "red",
         "arrow": "up"
@@ -8789,7 +8795,7 @@
             "invert": false,
             "yes_price": 0.0735,
             "contribution": 0.0735,
-            "volume_24h": 573.5729319999999,
+            "volume_24h": 573.572932,
             "question": "China x Taiwan military clash before 2027?"
           }
         ],
@@ -8962,7 +8968,7 @@
   "run_type": "scheduled_morning_deep_scan",
   "global_probability_previous": 89,
   "polymarket_sanity": "Direct Polymarket API check at 2026-08-22T15:03Z: U.S. invasion of Iran 16.50%, Iran nuclear test 4.50%, Iran nuke 4.80%, Iran NPT withdrawal 14.60%, NATO Article 5 5.95%, Taiwan invasion 3.80%, China\u2013Taiwan clash 7.35%, DPRK invasion 3.25%, Israel\u2013Lebanon normalization 9.50%, and a 2026 Ukraine peace deal 15.50%. Horizon and definition mismatches remain material; no tracker was mechanically changed.",
-  "post_research_reconciliation": "Removed the stale Israel\u2013Palestine diplomatic projection from the tracker mirror and timeline; zone/tracker signal views now agree. No evidence-based signal or probability changed.",
+  "post_research_reconciliation": "Removed a false Israel\u2013Palestine diplomatic projection caused by a keyword substring inside a negated mediation sentence. Zone, tracker and timeline views were reconciled; no evidence-based signal or probability changed.",
   "changes_since_previous_run": {
     "signals_changed": [],
     "probability_changes": {}
