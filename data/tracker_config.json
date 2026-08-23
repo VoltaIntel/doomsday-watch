@@ -27,7 +27,8 @@
     "ethiopia_tigray",
     "syria_idlib",
     "libya",
-    "myanmar"
+    "myanmar",
+    "nigeria_insurgency"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -711,6 +712,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "nigeria_insurgency": {
+      "name": "Nigeria insurgency / mass attacks",
+      "base_rate": 20,
+      "description": "Jihadist and armed-group attacks, mass abductions and security-force escalation in Nigeria",
+      "signals": {
+        "military_buildup": {
+          "weight": 6,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -796,9 +824,10 @@
     "ethiopia_tigray": 0.02,
     "syria_idlib": 0.02,
     "libya": 0.02,
-    "myanmar": 0.02
+    "myanmar": 0.02,
+    "nigeria_insurgency": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-08-22T03:07:42Z",
+  "last_updated": "2026-08-23T06:13:33Z",
   "dashboard_path": "dashboard.html"
 }
