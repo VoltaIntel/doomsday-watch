@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-24T03:06:08Z",
+  "timestamp": "2026-08-24T03:12:09Z",
   "zones": {
     "iran_conventional": {
       "name": "IRAN CONVENTIONAL",
@@ -16,8 +16,8 @@
         "hormuz_controlled_not_closed",
         "oil_infrastructure_threat"
       ],
-      "notes": "Fresh public reporting says an Iranian parliamentary committee approved transit fees for authorized Hormuz traffic and a separate report describes a vessel blacklist. Together with rising escorted traffic and easing oil futures, this reinforces controlled non-zero passage rather than a change in maritime operating state. Active mediation and threats to alternative Gulf export routes remain controlling; risk holds 100/IMMINENT",
-      "last_updated": "2026-08-23T03:05:00Z",
+      "notes": "Fresh oil and Kpler-attributed traffic headlines indicate uneven but non-zero Hormuz movement, yet neither establishes a broad operating-state threshold. Deployment persistence expired the mediation and selective-passage indicators; the threat to alternative Gulf oil routes remains active. Risk holds 100/IMMINENT",
+      "last_updated": "2026-08-24T03:12:09Z",
       "signal_timestamps": {
         "diplomacy_active": "2026-08-23T14:23:07Z",
         "hormuz_controlled_not_closed": "2026-08-23T11:31:42Z",
@@ -37,8 +37,8 @@
         "diplomacy_active": "active",
         "ceasefire_violation": "inactive"
       },
-      "assessment": "Fresh public reporting says an Iranian parliamentary committee approved transit fees for authorized Hormuz traffic and a separate report describes a vessel blacklist. Together with rising escorted traffic and easing oil futures, this reinforces controlled non-zero passage rather than a change in maritime operating state. Active mediation and threats to alternative Gulf export routes remain controlling; risk holds 100/IMMINENT.",
-      "reviewed_at": "2026-08-24T03:06:08Z",
+      "assessment": "Fresh oil and Kpler-attributed traffic headlines indicate uneven but non-zero Hormuz movement, yet neither establishes a broad operating-state threshold. Deployment persistence expired the mediation and selective-passage indicators; the threat to alternative Gulf oil routes remains active. Risk holds 100/IMMINENT.",
+      "reviewed_at": "2026-08-24T03:12:09Z",
       "last_verified": "2026-08-23T23:22:24Z"
     },
     "israel_lebanon": {
@@ -878,12 +878,10 @@
   },
   "global_uncertainty_index": 49,
   "doomsday_clock_minutes": 3.0,
-  "last_updated": "2026-08-24T03:06:18Z",
+  "last_updated": "2026-08-24T03:12:10Z",
   "signal_timestamps": {
     "iran_conventional:hormuz_zero_traffic": "2026-08-17T03:07:47Z",
-    "iran_conventional:diplomacy_active": "2026-08-20T18:04:56Z",
     "ethiopia_tigray:renewed_clashes": "2026-08-20T12:46:17Z",
-    "iran_conventional:hormuz_controlled_not_closed": "2026-08-21T02:43:00Z",
     "iran_conventional:oil_infrastructure_threat": "2026-08-23T00:11:21Z",
     "southern_thailand:infrastructure_strike": "2026-08-23T00:11:21Z",
     "iran_nuclear:nuclear_rhetoric_official": "2026-08-23T04:43:02Z",
@@ -900,14 +898,14 @@
   "global_zone": "imminent",
   "global_probability": 89,
   "eval_stats": {
-    "total": 4657284,
-    "correct": 3724680,
+    "total": 4664832,
+    "correct": 3731065,
     "accuracy": 80,
-    "mean_brier": 0.4545
+    "mean_brier": 0.4544
   },
   "_meta": {
-    "updated_at": "2026-08-24T03:06:08Z",
-    "last_updated": "2026-08-24T03:06:08Z",
+    "updated_at": "2026-08-24T03:12:09Z",
+    "last_updated": "2026-08-24T03:12:09Z",
     "updated_by": "scheduled_cron_morning_deep_scan",
     "update_mode": "morning_deep_scan_03z_full_tracker_review",
     "scan_type": "morning_deep_scan",
@@ -924,8 +922,26 @@
       "data/polymarket_cache.json",
       "data/polymarket_exact_snapshot_latest.json"
     ],
-    "signals_changed": [],
-    "signal_changes": [],
+    "signals_changed": [
+      "iran_conventional:diplomacy_active active\u2192inactive (deployment persistence expiry)",
+      "iran_conventional:hormuz_controlled_not_closed active\u2192inactive (deployment persistence expiry)"
+    ],
+    "signal_changes": [
+      {
+        "tracker": "iran_conventional",
+        "signal": "diplomacy_active",
+        "from": "active",
+        "to": "inactive",
+        "reason": "deployment persistence expiry"
+      },
+      {
+        "tracker": "iran_conventional",
+        "signal": "hormuz_controlled_not_closed",
+        "from": "active",
+        "to": "inactive",
+        "reason": "deployment persistence expiry; fresh single-index traffic evidence did not establish a broad operating-state threshold"
+      }
+    ],
     "probability_changes": {},
     "global_probability_previous": 89,
     "scan_delta": 0,
@@ -991,13 +1007,19 @@
     "raw_global_probability": 89.01,
     "post_deploy_normalization": "Removed false iran_nuclear:fuel_reprocessing projection caused by negated watch prose; reconciled expired syria_idlib:military_buildup and lowered Syria/Idlib 25\u219220.",
     "reconciled_at": "2026-08-23T21:15:17Z",
-    "post_deploy_reconciliation": "Removed a false eastern_drc:diplomacy_refused projection caused by the generic notes fallback matching the de-escalatory phrase \u201cpeace talks.\u201d The evidence wording was made unambiguous; the intended diplomacy_active signal and 53\u219250 score are unchanged.",
-    "run_signals_changed": [],
+    "post_deploy_reconciliation": "Deployment persistence expired Iran conventional mediation and selective-passage indicators. Fresh headline-only traffic evidence remains a watch item rather than a broad operating-state threshold; the oil-route threat indicator remains active and probability holds 100.",
+    "run_signals_changed": [
+      "iran_conventional:diplomacy_active active\u2192inactive (deployment persistence expiry)",
+      "iran_conventional:hormuz_controlled_not_closed active\u2192inactive (deployment persistence expiry)"
+    ],
     "post_research_reconciliation": "All 29 canonical trackers reviewed. Two fresh energy/Hormuz headlines were logged as watch items; one South China Sea headline was a republication of existing evidence. No canonical signal or probability change.",
     "changes_since_previous_run": {
-      "signals_changed": [],
+      "signals_changed": [
+        "iran_conventional:diplomacy_active active\u2192inactive (deployment persistence expiry)",
+        "iran_conventional:hormuz_controlled_not_closed active\u2192inactive (deployment persistence expiry)"
+      ],
       "probability_changes": {},
-      "note": "No canonical signal or probability change since the 00:19Z deployment."
+      "note": "No probability changed; Iran conventional remains 100/IMMINENT."
     },
     "projection_integrity_fix_2": {
       "at": "2026-08-21T21:23:21Z",
@@ -1065,8 +1087,8 @@
       "active_signals": [
         "oil_infrastructure_threat"
       ],
-      "notes": "Fresh public reporting says an Iranian parliamentary committee approved transit fees for authorized Hormuz traffic and a separate report describes a vessel blacklist. Together with rising escorted traffic and easing oil futures, this reinforces controlled non-zero passage rather than a change in maritime operating state. Active mediation and threats to alternative Gulf export routes remain controlling; risk holds 100/IMMINENT",
-      "last_updated": "2026-08-23T03:05:00Z",
+      "notes": "Fresh oil and Kpler-attributed traffic headlines indicate uneven but non-zero Hormuz movement, yet neither establishes a broad operating-state threshold. Deployment persistence expired the mediation and selective-passage indicators; the threat to alternative Gulf oil routes remains active. Risk holds 100/IMMINENT",
+      "last_updated": "2026-08-24T03:12:09Z",
       "signal_timestamps": {
         "oil_infrastructure_threat": "2026-08-23T00:11:21Z"
       },
@@ -1084,8 +1106,8 @@
         "diplomacy_active": "active",
         "ceasefire_violation": "inactive"
       },
-      "assessment": "Fresh public reporting says an Iranian parliamentary committee approved transit fees for authorized Hormuz traffic and a separate report describes a vessel blacklist. Together with rising escorted traffic and easing oil futures, this reinforces controlled non-zero passage rather than a change in maritime operating state. Active mediation and threats to alternative Gulf export routes remain controlling; risk holds 100/IMMINENT.",
-      "reviewed_at": "2026-08-24T03:06:08Z",
+      "assessment": "Fresh oil and Kpler-attributed traffic headlines indicate uneven but non-zero Hormuz movement, yet neither establishes a broad operating-state threshold. Deployment persistence expired the mediation and selective-passage indicators; the threat to alternative Gulf oil routes remains active. Risk holds 100/IMMINENT.",
+      "reviewed_at": "2026-08-24T03:12:09Z",
       "last_verified": "2026-08-23T23:22:24Z"
     },
     "israel_lebanon": {
@@ -6559,7 +6581,7 @@
       "value": 100,
       "description": "Strait of Hormuz expected to remain under Iranian blockade. Additional shipping attacks probable within 12 hours.",
       "confidence": 75,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -6570,7 +6592,7 @@
       "value": 100,
       "description": "Israeli ground operation in southern Lebanon expected to continue beyond Litani River. Further displacement and infrastructure destruction likely.",
       "confidence": 70,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 90
     },
@@ -6581,7 +6603,7 @@
       "value": 43,
       "description": "Border escalation between Afghanistan and Pakistan likely to intensify. Cross-border strikes expected within 24 hours.",
       "confidence": 65,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 33
     },
@@ -6592,7 +6614,7 @@
       "value": 80,
       "description": "Diplomatic negotiations may produce ceasefire framework within 24-72 hours, though implementation remains uncertain.",
       "confidence": 45,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 65
     },
@@ -6603,7 +6625,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest RUSSIA-UKRAINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -6614,7 +6636,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest ISRAEL PALESTINE will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 89
     },
@@ -6625,7 +6647,7 @@
       "value": 100,
       "description": "Current escalation indicators suggest YEMEN RED SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 85
     },
@@ -6636,7 +6658,7 @@
       "value": 80,
       "description": "SUDAN showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_below",
       "eval_value": 94
     },
@@ -6647,7 +6669,7 @@
       "value": 68,
       "description": "IAEA monitoring likely to produce findings within 72 hours. Iran may announce further enrichment activity.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 53
     },
@@ -6658,7 +6680,7 @@
       "value": 42,
       "description": "EASTERN DRC showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_below",
       "eval_value": 50
     },
@@ -6669,7 +6691,7 @@
       "value": 38,
       "description": "IRAQ INTERNAL CONFLICT showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_below",
       "eval_value": 45
     },
@@ -6680,7 +6702,7 @@
       "value": 49,
       "description": "Current escalation indicators suggest MALI SAHEL will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 33
     },
@@ -6691,7 +6713,7 @@
       "value": 46,
       "description": "Current escalation indicators suggest SOUTH CHINA SEA will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 30
     },
@@ -6702,7 +6724,7 @@
       "value": 44,
       "description": "Current escalation indicators suggest SOMALIA GULF OF ADEN will remain on upward trajectory. Monitor for trigger events.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_above",
       "eval_value": 28
     },
@@ -6713,7 +6735,7 @@
       "value": 31,
       "description": "ETHIOPIA TIGRAY showing de-escalation signals. Probability expected to decline gradually.",
       "confidence": 40,
-      "expires_at": "2026-08-25T03:09:10Z",
+      "expires_at": "2026-08-25T03:14:51Z",
       "eval_type": "probability_below",
       "eval_value": 36
     }
@@ -6721,8 +6743,8 @@
   "forecast_ladder": [
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-25T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:24h:2026-08-25T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -6758,7 +6780,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T03:06:18Z",
+      "expires_at": "2026-08-25T03:12:10Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "oil infrastructure threat",
@@ -6774,8 +6796,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-27T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:72h:2026-08-27T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -6811,7 +6833,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-27T03:06:18Z",
+      "expires_at": "2026-08-27T03:12:10Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "oil infrastructure threat",
@@ -6827,8 +6849,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-31T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:7d:2026-08-31T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -6864,7 +6886,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-31T03:06:18Z",
+      "expires_at": "2026-08-31T03:12:10Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "oil infrastructure threat",
@@ -6880,8 +6902,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-23T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "iran_conventional:gulf_conventional_escalation:30d:2026-09-23T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "iran_conventional",
       "tracker_name": "IRAN WAR",
       "event_type": "gulf_conventional_escalation",
@@ -6917,7 +6939,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms new direct Iranian conventional strike, Gulf shipping attack, Strait closure/disruption, or US/Israeli regional military exchange before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-23T03:06:18Z",
+      "expires_at": "2026-09-23T03:12:10Z",
       "evidence_for": [
         "oil_infrastructure_threat (+6 signal weight)",
         "oil infrastructure threat",
@@ -6933,8 +6955,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-25T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:24h:2026-08-25T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -6970,7 +6992,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T03:06:18Z",
+      "expires_at": "2026-08-25T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli strikes reported across commercial and residential areas of central Beirut",
@@ -6986,8 +7008,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-27T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:72h:2026-08-27T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -7023,7 +7045,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-27T03:06:18Z",
+      "expires_at": "2026-08-27T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli strikes reported across commercial and residential areas of central Beirut",
@@ -7039,8 +7061,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-31T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:7d:2026-08-31T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -7076,7 +7098,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-31T03:06:18Z",
+      "expires_at": "2026-08-31T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli strikes reported across commercial and residential areas of central Beirut",
@@ -7092,8 +7114,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-23T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_lebanon:border_war_escalation:30d:2026-09-23T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_lebanon",
       "tracker_name": "ISRAEL-LEBANON",
       "event_type": "border_war_escalation",
@@ -7129,7 +7151,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms additional Israel-Hezbollah strikes, ground expansion, significant retaliation, or ceasefire collapse before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-23T03:06:18Z",
+      "expires_at": "2026-09-23T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Israeli strikes reported across commercial and residential areas of central Beirut",
@@ -7145,8 +7167,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-25T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:24h:2026-08-25T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -7182,7 +7204,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T03:06:18Z",
+      "expires_at": "2026-08-25T03:12:10Z",
       "evidence_for": [
         "Reported death toll from Russian strike on Ukrainian shopping mall rises to 16",
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
@@ -7195,8 +7217,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-27T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:72h:2026-08-27T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -7232,7 +7254,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-27T03:06:18Z",
+      "expires_at": "2026-08-27T03:12:10Z",
       "evidence_for": [
         "Reported death toll from Russian strike on Ukrainian shopping mall rises to 16",
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
@@ -7245,8 +7267,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-31T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:7d:2026-08-31T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -7282,7 +7304,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-31T03:06:18Z",
+      "expires_at": "2026-08-31T03:12:10Z",
       "evidence_for": [
         "Reported death toll from Russian strike on Ukrainian shopping mall rises to 16",
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
@@ -7295,8 +7317,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-23T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "russia_ukraine:nato_war_escalation:30d:2026-09-23T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "russia_ukraine",
       "tracker_name": "RUSSIA-UKRAINE",
       "event_type": "nato_war_escalation",
@@ -7332,7 +7354,7 @@
       "resolution_criteria": "Resolved true if verified wire/official reporting confirms a material battlefield, strike, sabotage, nuclear-rhetoric, or negotiation-shift event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-23T03:06:18Z",
+      "expires_at": "2026-09-23T03:12:10Z",
       "evidence_for": [
         "Reported death toll from Russian strike on Ukrainian shopping mall rises to 16",
         "Fresh Russian strikes reportedly kill 12 in Kyiv and surrounding region",
@@ -7345,8 +7367,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-25T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:24h:2026-08-25T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -7382,7 +7404,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T03:06:18Z",
+      "expires_at": "2026-08-25T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza strikes kill at least two people, including a child",
@@ -7398,8 +7420,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-27T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:72h:2026-08-27T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -7435,7 +7457,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-27T03:06:18Z",
+      "expires_at": "2026-08-27T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza strikes kill at least two people, including a child",
@@ -7451,8 +7473,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-31T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:7d:2026-08-31T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -7488,7 +7510,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-31T03:06:18Z",
+      "expires_at": "2026-08-31T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza strikes kill at least two people, including a child",
@@ -7504,8 +7526,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-23T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "israel_palestine:escalation_watch:30d:2026-09-23T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "israel_palestine",
       "tracker_name": "ISRAEL PALESTINE",
       "event_type": "escalation_watch",
@@ -7541,7 +7563,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-23T03:06:18Z",
+      "expires_at": "2026-09-23T03:12:10Z",
       "evidence_for": [
         "ceasefire_violation (+6 signal weight)",
         "Fresh Gaza strikes kill at least two people, including a child",
@@ -7557,8 +7579,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-25T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:24h:2026-08-25T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -7594,7 +7616,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T03:06:18Z",
+      "expires_at": "2026-08-25T03:12:10Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -7607,8 +7629,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-27T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:72h:2026-08-27T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -7644,7 +7666,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-27T03:06:18Z",
+      "expires_at": "2026-08-27T03:12:10Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -7657,8 +7679,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-31T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:7d:2026-08-31T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -7694,7 +7716,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-31T03:06:18Z",
+      "expires_at": "2026-08-31T03:12:10Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -7707,8 +7729,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-23T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "yemen_red_sea:escalation_watch:30d:2026-09-23T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "yemen_red_sea",
       "tracker_name": "YEMEN RED SEA",
       "event_type": "escalation_watch",
@@ -7744,7 +7766,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-23T03:06:18Z",
+      "expires_at": "2026-09-23T03:12:10Z",
       "evidence_for": [
         "Houthis claim a third missile attack on Israel",
         "Houthis claim attacks on Najran airport and Aramco facilities in Saudi Arabia",
@@ -7757,8 +7779,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:24h:2026-08-25T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "sudan:escalation_watch:24h:2026-08-25T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -7794,7 +7816,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-25T03:06:18Z",
+      "expires_at": "2026-08-25T03:12:10Z",
       "evidence_for": [
         "Chad places border units on alert after alleging Sudan-origin drone attack on convoy",
         "UN/IOM says more than 200,000 newly displaced across Sudan\u2019s Kordofan",
@@ -7807,8 +7829,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:72h:2026-08-27T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "sudan:escalation_watch:72h:2026-08-27T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -7844,7 +7866,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-27T03:06:18Z",
+      "expires_at": "2026-08-27T03:12:10Z",
       "evidence_for": [
         "Chad places border units on alert after alleging Sudan-origin drone attack on convoy",
         "UN/IOM says more than 200,000 newly displaced across Sudan\u2019s Kordofan",
@@ -7857,8 +7879,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:7d:2026-08-31T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "sudan:escalation_watch:7d:2026-08-31T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -7894,7 +7916,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-08-31T03:06:18Z",
+      "expires_at": "2026-08-31T03:12:10Z",
       "evidence_for": [
         "Chad places border units on alert after alleging Sudan-origin drone attack on convoy",
         "UN/IOM says more than 200,000 newly displaced across Sudan\u2019s Kordofan",
@@ -7907,8 +7929,8 @@
     },
     {
       "schema_version": "forecast_v2",
-      "forecast_id": "sudan:escalation_watch:30d:2026-09-23T03:06:18Z",
-      "generated_at": "2026-08-24T03:06:18Z",
+      "forecast_id": "sudan:escalation_watch:30d:2026-09-23T03:12:10Z",
+      "generated_at": "2026-08-24T03:12:10Z",
       "tracker_id": "sudan",
       "tracker_name": "SUDAN",
       "event_type": "escalation_watch",
@@ -7944,7 +7966,7 @@
       "resolution_criteria": "Resolved true if verified official or Reuters/AP/AFP/BBC-level reporting confirms the forecast event before expiry.",
       "resolution_method": "manual_or_source_verified",
       "evaluation_status": "pending",
-      "expires_at": "2026-09-23T03:06:18Z",
+      "expires_at": "2026-09-23T03:12:10Z",
       "evidence_for": [
         "Chad places border units on alert after alleging Sudan-origin drone attack on convoy",
         "UN/IOM says more than 200,000 newly displaced across Sudan\u2019s Kordofan",
@@ -7972,7 +7994,7 @@
     "version": "forecast_review_status_v1",
     "expired_unresolved": 50,
     "review_queue_version": "forecast_review_queue_v1",
-    "oldest_age_hours": 1646.1,
+    "oldest_age_hours": 1646.2,
     "next_forecast_id": "iran_nuclear:nuclear_threshold:24h:2026-06-16T12:59:40Z",
     "evidence_required": true,
     "auto_resolution": false
@@ -7992,7 +8014,7 @@
           "name": "nuclear_rhetoric_official",
           "positive": false,
           "activated_at": "2026-08-23T04:43:02Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 5,
           "decayed_weight": 2.6,
           "expired": false,
@@ -8013,7 +8035,7 @@
         "label": "MEDIUM",
         "source_count": 3,
         "signal_count": 1,
-        "newest_signal_age_hours": 22.4
+        "newest_signal_age_hours": 22.5
       },
       "watch_triggers": {
         "up": [
@@ -8054,16 +8076,16 @@
           "name": "oil_infrastructure_threat",
           "positive": false,
           "activated_at": "2026-08-23T00:11:21Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 6,
-          "decayed_weight": 2.8,
+          "decayed_weight": 2.7,
           "expired": false,
           "is_deescalatory": false
         }
       ],
       "confidence": "MEDIUM",
       "base_rate": 22,
-      "notes": "Fresh public reporting says an Iranian parliamentary committee approved transit fees for authorized Hormuz traffic and a separate report describes a vessel blacklist. Together with rising escorted traffic and easing oil futures, this reinforces controlled non-zero passage rather than a change in maritime operating state. Active mediation and threats to alternative Gulf export routes remain controlling; risk holds 100/IMMINENT",
+      "notes": "Fresh oil and Kpler-attributed traffic headlines indicate uneven but non-zero Hormuz movement, yet neither establishes a broad operating-state threshold. Deployment persistence expired the mediation and selective-passage indicators; the threat to alternative Gulf oil routes remains active. Risk holds 100/IMMINENT",
       "attribution": {
         "base_rate": 22.0,
         "raw_probability": 100.0,
@@ -8075,7 +8097,7 @@
         "label": "MEDIUM",
         "source_count": 8,
         "signal_count": 1,
-        "newest_signal_age_hours": 26.9
+        "newest_signal_age_hours": 27.0
       },
       "watch_triggers": {
         "up": [
@@ -8116,7 +8138,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-23T08:18:56Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 6,
           "decayed_weight": 3.5,
           "expired": false,
@@ -8126,7 +8148,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-22T22:26:50Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 4,
           "decayed_weight": 1.7,
           "expired": false,
@@ -8147,7 +8169,7 @@
         "label": "MEDIUM",
         "source_count": 1,
         "signal_count": 2,
-        "newest_signal_age_hours": 18.8
+        "newest_signal_age_hours": 18.9
       },
       "watch_triggers": {
         "up": [
@@ -8538,7 +8560,7 @@
           "name": "ceasefire_violation",
           "positive": false,
           "activated_at": "2026-08-22T21:39:26Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 6,
           "decayed_weight": 2.6,
           "expired": false,
@@ -8559,7 +8581,7 @@
         "label": "MEDIUM",
         "source_count": 3,
         "signal_count": 1,
-        "newest_signal_age_hours": 29.4
+        "newest_signal_age_hours": 29.5
       },
       "watch_triggers": {
         "up": [
@@ -8651,7 +8673,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-23T21:09:38Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 3,
           "decayed_weight": 2.1,
           "expired": false,
@@ -8672,7 +8694,7 @@
         "label": "MEDIUM",
         "source_count": 5,
         "signal_count": 1,
-        "newest_signal_age_hours": 5.9
+        "newest_signal_age_hours": 6.0
       },
       "watch_triggers": {
         "up": [
@@ -8815,7 +8837,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-23T15:48:09Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 5,
           "decayed_weight": 3.6,
           "expired": false,
@@ -8836,7 +8858,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 11.3
+        "newest_signal_age_hours": 11.4
       },
       "watch_triggers": {
         "up": [
@@ -8877,7 +8899,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-23T04:30:07Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 5,
           "decayed_weight": 2.6,
           "expired": false,
@@ -8898,7 +8920,7 @@
         "label": "MEDIUM",
         "source_count": 2,
         "signal_count": 1,
-        "newest_signal_age_hours": 22.6
+        "newest_signal_age_hours": 22.7
       },
       "watch_triggers": {
         "up": [
@@ -8939,7 +8961,7 @@
           "name": "infrastructure_strike",
           "positive": false,
           "activated_at": "2026-08-23T00:11:21Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 5,
           "decayed_weight": 2.3,
           "expired": false,
@@ -8960,7 +8982,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 26.9
+        "newest_signal_age_hours": 27.0
       },
       "watch_triggers": {
         "up": [
@@ -9205,7 +9227,7 @@
           "name": "military_buildup",
           "positive": false,
           "activated_at": "2026-08-22T16:06:32Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 5,
           "decayed_weight": 1.8,
           "expired": false,
@@ -9226,7 +9248,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 35.0
+        "newest_signal_age_hours": 35.1
       },
       "watch_triggers": {
         "up": [
@@ -9267,7 +9289,7 @@
           "name": "renewed_clashes",
           "positive": false,
           "activated_at": "2026-08-20T12:46:17Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 12,
           "decayed_weight": 5.2,
           "expired": false,
@@ -9288,7 +9310,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 86.3
+        "newest_signal_age_hours": 86.4
       },
       "watch_triggers": {
         "up": [
@@ -9329,7 +9351,7 @@
           "name": "diplomacy_active",
           "positive": true,
           "activated_at": "2026-08-23T12:12:08Z",
-          "last_confirmed": "2026-08-24T03:06:18Z",
+          "last_confirmed": "2026-08-24T03:12:10Z",
           "original_weight": 3,
           "decayed_weight": 1.3,
           "expired": false,
@@ -9350,7 +9372,7 @@
         "label": "LOW",
         "source_count": 0,
         "signal_count": 1,
-        "newest_signal_age_hours": 14.9
+        "newest_signal_age_hours": 15.0
       },
       "watch_triggers": {
         "up": [
@@ -9534,8 +9556,8 @@
     }
   ],
   "polymarket": {
-    "generated_at": "2026-08-24T03:09:14Z",
-    "fetched_at": "2026-08-24T03:09:14Z",
+    "generated_at": "2026-08-24T03:14:53Z",
+    "fetched_at": "2026-08-24T03:14:53Z",
     "age_hours": 0.0,
     "stale": false,
     "stale_after_hours": 12,
@@ -9656,7 +9678,7 @@
         "tracker_id": "russia",
         "status": "ok",
         "dw_prob_pct": 80.0,
-        "pm_implied_raw_pct": 5.75,
+        "pm_implied_raw_pct": 5.85,
         "pm_implied_24h_pct": 0.024,
         "horizon_days_avg": 250.0,
         "used_slugs": [
@@ -9670,8 +9692,8 @@
             "weight": 0.8,
             "horizon_days": 250.0,
             "invert": false,
-            "yes_price": 0.0575,
-            "contribution": 0.0575,
+            "yes_price": 0.0585,
+            "contribution": 0.0585,
             "volume_24h": 103.362862,
             "question": "NATO article 5 before 2027?"
           }
@@ -9686,7 +9708,7 @@
         "tracker_id": "china",
         "status": "ok",
         "dw_prob_pct": 29.0,
-        "pm_implied_raw_pct": 5.13,
+        "pm_implied_raw_pct": 5.15,
         "pm_implied_24h_pct": 0.021,
         "horizon_days_avg": 250.0,
         "used_slugs": [
@@ -9711,8 +9733,8 @@
             "weight": 0.5,
             "horizon_days": 250.0,
             "invert": false,
-            "yes_price": 0.0735,
-            "contribution": 0.0735,
+            "yes_price": 0.074,
+            "contribution": 0.074,
             "volume_24h": 1076.68171,
             "question": "China x Taiwan military clash before 2027?"
           }
@@ -9840,9 +9862,9 @@
     "energy": "Live feed at 2026-08-24T00:16:40Z: Brent $93.43 (-0.15%/24h) and WTI $86.13 (-0.57%/24h). Fresh public-news headlines report a further oil pullback and, separately, fewer than 20 weekend Hormuz transits attributed to Kpler. The mixed evidence supports constrained, uneven but non-zero passage; markets do not independently prove closure, mining, unrestricted reopening or infrastructure damage."
   },
   "threat_zone": "imminent",
-  "updated_at": "2026-08-24T03:06:08Z",
+  "updated_at": "2026-08-24T03:12:09Z",
   "global_trend": "stable",
-  "summary": "Global risk holds 89/IMMINENT. Fifteen grouped primary-search attempts returned HTTP 432, so the scan continued through 15 Google News RSS lanes, direct official-page probes, live energy data and direct Polymarket markets. Fresh oil and weekend Hormuz traffic headlines reinforce uneven but non-zero passage; no new canonical signal or probability threshold was established.",
+  "summary": "Global risk holds 89/IMMINENT. Fresh energy/Hormuz headlines were logged as watch items. Deployment persistence expired two Iran-conventional indicators without changing its 100% probability; no other canonical signal or probability changed.",
   "energy_market": {
     "updated_at": "2026-08-24T00:16:40Z",
     "brent_usd": 93.43,
@@ -9861,16 +9883,19 @@
     "polymarket": "Direct Gamma API check at approximately 2026-08-24T03:03Z: U.S. invasion of Iran 16.5%, Iran nuclear test 4.5%, Iran nuke 5.0%, NATO Article 5 5.75%, Taiwan invasion 3.75%, China\u2013Taiwan clash 7.35%, DPRK invasion 3.2%, and a 2026 Ukraine peace deal 14.5%; the most recent NPT-withdrawal snapshot was 10.1%. Contract horizons and definitions differ materially from tracker windows, so no tracker was mechanically changed."
   },
   "scan_window_label": "Past 24 hours",
-  "scan_timestamp": "2026-08-24T03:06:08Z",
+  "scan_timestamp": "2026-08-24T03:12:09Z",
   "scan_type": "morning_deep_scan",
   "run_type": "scheduled_cron_morning_deep_scan",
   "global_probability_previous": 89,
   "polymarket_sanity": "Direct Gamma API check at approximately 2026-08-24T03:03Z: U.S. invasion of Iran 16.5%, Iran nuclear test 4.5%, Iran nuke 5.0%, NATO Article 5 5.75%, Taiwan invasion 3.75%, China\u2013Taiwan clash 7.35%, DPRK invasion 3.2%, and a 2026 Ukraine peace deal 14.5%; the most recent NPT-withdrawal snapshot was 10.1%. Contract horizons and definitions differ materially from tracker windows, so no tracker was mechanically changed.",
   "post_research_reconciliation": "All 29 canonical trackers reviewed. Two fresh energy/Hormuz headlines were logged as watch items; one South China Sea headline was a republication of existing evidence. No canonical signal or probability change.",
   "changes_since_previous_run": {
-    "signals_changed": [],
+    "signals_changed": [
+      "iran_conventional:diplomacy_active active\u2192inactive (deployment persistence expiry)",
+      "iran_conventional:hormuz_controlled_not_closed active\u2192inactive (deployment persistence expiry)"
+    ],
     "probability_changes": {},
-    "note": "No canonical signal or probability change since the 00:19Z deployment."
+    "note": "No probability changed; Iran conventional remains 100/IMMINENT."
   },
   "next_watch_triggers": [
     "Independent vessel-level confirmation of a broad Hormuz operating-state change, new interdictions, physical navigation hazards or infrastructure damage",
@@ -9887,7 +9912,7 @@
   "energy_review": "Live feed at 2026-08-24T00:16:40Z: Brent $93.43 (-0.15%/24h) and WTI $86.13 (-0.57%/24h). Fresh public-news headlines report a further oil pullback and, separately, fewer than 20 weekend Hormuz transits attributed to Kpler. The mixed evidence supports constrained, uneven but non-zero passage; markets do not independently prove closure, mining, unrestricted reopening or infrastructure damage.",
   "energy_sanity": "Live feed at 2026-08-24T00:16:40Z: Brent $93.43 (-0.15%/24h) and WTI $86.13 (-0.57%/24h). Fresh public-news headlines report a further oil pullback and, separately, fewer than 20 weekend Hormuz transits attributed to Kpler. The mixed evidence supports constrained, uneven but non-zero passage; markets do not independently prove closure, mining, unrestricted reopening or infrastructure damage.",
   "polymarket_review": "Direct Gamma API check at approximately 2026-08-24T03:03Z: U.S. invasion of Iran 16.5%, Iran nuclear test 4.5%, Iran nuke 5.0%, NATO Article 5 5.75%, Taiwan invasion 3.75%, China\u2013Taiwan clash 7.35%, DPRK invasion 3.2%, and a 2026 Ukraine peace deal 14.5%; the most recent NPT-withdrawal snapshot was 10.1%. Contract horizons and definitions differ materially from tracker windows, so no tracker was mechanically changed.",
-  "post_deploy_reconciliation": "Reset israel_lebanon ceasefire_violation to fresh 23 August strike evidence after the older activation aged out; expired South Sudan ceasefire_violation and reduced 23\u219219; aligned expired southern Thailand diplomacy context. Global remains 89/IMMINENT.",
+  "post_deploy_reconciliation": "Deployment persistence expired Iran conventional mediation and selective-passage indicators. Fresh headline-only traffic evidence remains a watch item rather than a broad operating-state threshold; the oil-route threat indicator remains active and probability holds 100.",
   "iaea_un_review": "No fresh IAEA technical finding, safeguards decision, inspector-access change, treaty action, named-facility activation, reprocessing threshold or detonation surfaced. Direct IAEA pages returned HTTP 403/Cloudflare; NATO and UN pages returned HTTP 200, and no retrieved official item altered a configured threshold.",
   "auto_detection_review": "Grouped emerging-crisis review found no untracked crisis meeting the configured gate of three mentions from at least two source organizations. All material findings mapped to existing canonical trackers; the 02:15Z Chinese-vessel headline was a republication of the already logged South China Sea buildup. No zone added."
 }
