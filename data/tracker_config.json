@@ -28,7 +28,8 @@
     "syria_idlib",
     "libya",
     "myanmar",
-    "nigeria_insurgency"
+    "nigeria_insurgency",
+    "haiti_gang_conflict"
   ],
   "signal_weights": {
     "rhetoric": 0.15,
@@ -739,6 +740,33 @@
           "decay_hours": 72
         }
       }
+    },
+    "haiti_gang_conflict": {
+      "name": "Haiti gang-conflict escalation",
+      "base_rate": 20,
+      "description": "Haiti armed-gang mass attacks, territorial violence, kidnapping and security-force escalation",
+      "signals": {
+        "military_buildup": {
+          "weight": 6,
+          "decay_hours": 72
+        },
+        "infrastructure_strike": {
+          "weight": 5,
+          "decay_hours": 72
+        },
+        "external_backing": {
+          "weight": 4,
+          "decay_hours": 168
+        },
+        "diplomacy_active": {
+          "weight": -3,
+          "decay_hours": 72
+        },
+        "diplomacy_refused": {
+          "weight": 3,
+          "decay_hours": 72
+        }
+      }
     }
   },
   "coupling": {
@@ -825,9 +853,10 @@
     "syria_idlib": 0.02,
     "libya": 0.02,
     "myanmar": 0.02,
-    "nigeria_insurgency": 0.02
+    "nigeria_insurgency": 0.02,
+    "haiti_gang_conflict": 0.02
   },
   "update_interval_hours": 6,
-  "last_updated": "2026-08-23T06:13:33Z",
+  "last_updated": "2026-08-27T12:17:16Z",
   "dashboard_path": "dashboard.html"
 }
