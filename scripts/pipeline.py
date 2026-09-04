@@ -119,6 +119,31 @@ _PUBLIC_SOURCE_CAVEAT = (
 )
 
 
+_PUBLIC_WEB_SEARCH_SUCCESS_CAVEAT = (
+    "Source mix: primary web search succeeded this run and was corroborated "
+    "with official releases, reputable public reporting, public-news headline "
+    "indexes, market data, and energy feeds. Sparse or stale results are not "
+    "treated as calm, and single-source claims remain watch items until "
+    "confirmed."
+)
+
+
+def _web_search_succeeded(meta: dict) -> bool:
+    """True when this run's internal status says primary web search worked.
+
+    Reads `_meta.source_fallback_detail.web_search_status`, which is internal
+    and may carry provider/error detail — so it is only ever inspected here,
+    never echoed into the published caveat.
+    """
+    detail = meta.get("source_fallback_detail")
+    if not isinstance(detail, dict):
+        return False
+    status = detail.get("web_search_status")
+    if not isinstance(status, str):
+        return False
+    return status.strip().lower().startswith("successful")
+
+
 def _public_source_label(raw: str) -> str:
     """Return a public-safe source caveat, without vendor/API error details."""
     text = (raw or "").strip().lower()
@@ -147,10 +172,16 @@ def sanitize_public_meta(state):
     if not isinstance(meta, dict):
         return state
 
-    raw = " ".join(str(meta.get(k, "")) for k in ("source_limitation", "search_engine"))
-    public_label = _public_source_label(raw)
-    meta["source_limitation"] = public_label
-    meta["search_engine"] = "public_safe_multi_source_fallback" if raw.strip() else "public_safe_multi_source"
+    if _web_search_succeeded(meta):
+        # Primary web search worked, so don't publish the degraded-run caveat
+        # (which is sticky in the state file from any earlier failed run).
+        meta["source_limitation"] = _PUBLIC_WEB_SEARCH_SUCCESS_CAVEAT
+        meta["search_engine"] = "web_search_plus_public_safe_multi_source_fallback"
+    else:
+        raw = " ".join(str(meta.get(k, "")) for k in ("source_limitation", "search_engine"))
+        public_label = _public_source_label(raw)
+        meta["source_limitation"] = public_label
+        meta["search_engine"] = "public_safe_multi_source_fallback" if raw.strip() else "public_safe_multi_source"
 
     probe = meta.get("official_source_probe")
     if isinstance(probe, dict):

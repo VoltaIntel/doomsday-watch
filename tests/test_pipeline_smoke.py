@@ -197,11 +197,27 @@ def test_pipeline_sanitizes_tracker_notes_for_dashboard_dossiers(pipeline_run):
 def test_dashboard_public_source_caveat_hides_internal_provider_errors(pipeline_run):
     _, html, state = pipeline_run
     meta = state.get("_meta", {})
-    public_text = " ".join(str(meta.get(k, "")) for k in ("source_limitation", "search_engine"))
+    # search_engine is pinned to an exact allowlist rather than token-scanned:
+    # anything else means a raw provider/status string reached the payload.
+    sanctioned_engines = {
+        "public_safe_multi_source",
+        "public_safe_multi_source_fallback",
+        "web_search_plus_public_safe_multi_source_fallback",
+    }
+    engine = str(meta.get("search_engine", ""))
+    assert engine in sanctioned_engines, f"unsanctioned public search_engine label: {engine!r}"
+    limitation = str(meta.get("source_limitation", ""))
     banned = ["tavily", "web_search", "http 432", "http 401", "http 403", "forbidden", "failed"]
-    assert not any(token in public_text.lower() for token in banned)
-    assert str(meta.get("source_limitation", "")).strip()
-    assert any(token in public_text.lower() for token in ("source", "official", "public reporting", "google news"))
+    assert not any(token in limitation.lower() for token in banned)
+    assert limitation.strip()
+    assert any(token in limitation.lower() for token in ("source", "official", "public reporting", "google news"))
+    # The published engine label must match this run's internal search status.
+    status = (meta.get("source_fallback_detail") or {}).get("web_search_status")
+    if isinstance(status, str) and status.strip().lower().startswith("successful"):
+        assert engine == "web_search_plus_public_safe_multi_source_fallback"
+        assert "degraded" not in limitation.lower()
+    else:
+        assert engine != "web_search_plus_public_safe_multi_source_fallback"
     probe = meta.get("official_source_probe", {})
     if probe:
         assert "HTTPError" not in json.dumps(probe)
