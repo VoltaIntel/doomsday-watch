@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-09T09:04:08Z",
+  "last_updated": "2026-09-09T12:05:42Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -291,9 +291,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 170,
+        "scanned": 171,
         "retained": 0,
-        "rejected": 170,
+        "rejected": 171,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2851,6 +2851,52 @@ const state = {
   "latest_news": [
     {
       "zone": "iran_conventional",
+      "headline": "Jordan reports intercepting 18 of 20 Iranian missiles; no casualties reported",
+      "text": "Petra carries the JAF statement that air defences engaged 20 ballistic missiles from Iranian territory, intercepting 18; two fell in unpopulated areas and no casualties were recorded. Reuters attributes an Al Azraq base attack to the IRGC and reports a US official described strikes as ineffective. Iranian heavy-damage claims are not independently verified. Counts and outcomes remain attributed. This September 9 attack is distinct from earlier Larak-related attacks and the September 8 US tanker strikes.",
+      "sources": [
+        "JAF via Petra",
+        "Reuters citing Jordan, Iran and a US official",
+        "BBC citing JAF; not independent count verification"
+      ],
+      "timestamp": "2026-09-09T12:05:05.734371+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-09-09",
+      "incident_id": "jordan-iranian-missile-attack-2026-09-09",
+      "publication_id": "https://petra.gov.jo/en/news/jordan-armed-forces-intercept-18-iranian-ballistic-missiles-targeting-kingdom",
+      "originating_source": "Jordan Armed Forces statement via Petra",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-09-09T12:05:05.734371Z",
+      "reviewed_at": "2026-09-09T12:05:05.734371Z",
+      "verified_at": null,
+      "evidence_id": "ev_3e9c70b9bf0dbbca6330c252d35a658d130520a2f2b836486b2bc010cfe3103e",
+      "revision_id": "rev_665d0c008eb6d3889d8ec9321aba170cbd19480a2097a33bdb3cf67a9999d709",
+      "revision_ids": [
+        "rev_665d0c008eb6d3889d8ec9321aba170cbd19480a2097a33bdb3cf67a9999d709"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "geographic_relevance_unestablished",
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The reported Iranian missile attack extends the latest US-Iran exchange to Jordan; interception and casualty figures remain attributed to Jordanian authorities.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://petra.gov.jo/en/news/jordan-armed-forces-intercept-18-iranian-ballistic-missiles-targeting-kingdom",
+        "https://www.bbc.com/news/articles/cyvznqypz0yo",
+        "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/"
+      ]
+    },
+    {
+      "zone": "iran_conventional",
       "headline": "CENTCOM reports five Iranian tankers struck on September 8",
       "text": "CENTCOM states it struck Kaviz, Charminar, Horizon 1 and Riesco in the Gulf of Oman and Derya near Kharg Island on September 8, after attempted missile attacks on a US warship. It says crews were ordered to abandon ship and vessels rendered inoperable. Reuters reports the same US statement; this is not independent verification of the damage. This is distinct from the three tankers struck on September 5.",
       "sources": [
@@ -3599,46 +3645,6 @@ const state = {
       ],
       "independent_sources": [],
       "report_status": "unknown"
-    },
-    {
-      "zone": "iran_nuclear",
-      "headline": "Iran referral remains draft; inspection gap persists",
-      "text": "IAEA full September 7 statement confirms no declared-facility information or in-field access during reporting period. September 8 Al Jazeera/Reuters confirms E3/US referral draft is still unsubmitted and wording remains unsettled. No new 90-percent enrichment or nuclear test verified; retain existing access-gap signal.",
-      "sources": [
-        "IAEA",
-        "Al Jazeera / Reuters"
-      ],
-      "time": "SEP 08 \u00b7 06:07Z",
-      "timestamp": "2026-09-08T06:07:38Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-08",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T06:07:38Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_2191710bef225121855526d590c086be0a85d05179aff44c3c41fe8cae6970d6",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://www.aljazeera.com/news/2026/9/8/iaea-warns-over-iran-nuclear-access-as-western-powers-push-un-referral",
-        "https://www.iaea.org/newscenter/statements/iaea-director-generals-introductory-statement-to-the-board-of-governors-7-september-2026"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
     }
   ],
   "zone_alerts": [],
@@ -3655,7 +3661,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-09T09:04:08Z",
+  "build_at": "2026-09-09T12:05:42Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3855,7 +3861,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-09T09:04:08Z",
+      "generated_at": "2026-09-09T12:05:42Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4488,10 +4494,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-09T09:04:08Z",
+    "generated_at": "2026-09-09T12:05:42Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 17.771944444444443,
+    "age_hours": 20.798055555555557,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4573,7 +4579,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4640,7 +4646,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4668,7 +4674,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4696,7 +4702,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4796,7 +4802,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4863,7 +4869,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4961,7 +4967,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 112.62212962962963,
+            "remaining_days": 112.49604166666667,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4989,7 +4995,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5087,7 +5093,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5115,7 +5121,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 112.62212962962963,
+            "remaining_days": 112.49604166666667,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5182,7 +5188,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 113.82976851851852,
+            "remaining_days": 113.70368055555555,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5267,75 +5273,77 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-09T09:04:08Z",
+    "generated_at": "2026-09-09T12:05:42Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "cde9d2bdd002506d8b5fabe022d55ad760c6d1e32c0840dec204d69df134b776",
+    "previous_snapshot_id": "8aef22dba2ab1ac1a7c3ee888648cc36354c9294c12063f6db054eab6b463cdb",
     "changes": [
       {
         "zone": "iran_conventional",
-        "headline": "CENTCOM reports five Iranian tankers struck on September 8",
+        "headline": "Jordan reports intercepting 18 of 20 Iranian missiles; no casualties reported",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_f05e5044eabaf5cd853b5b23584dcee2910a1da7098a590028321f742f8d9f82",
+        "correction_id": "rev_665d0c008eb6d3889d8ec9321aba170cbd19480a2097a33bdb3cf67a9999d709",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.dvidshub.net/news/574128/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship",
+          "https://petra.gov.jo/en/news/jordan-armed-forces-intercept-18-iranian-ballistic-missiles-targeting-kingdom",
+          "https://www.bbc.com/news/articles/cyvznqypz0yo",
           "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/"
         ],
         "next_trigger": "Not supplied by source evidence.",
-        "implication": "The US military reports additional strikes on Iranian oil shipping, distinct from its September 5 operation; damage remains attributed.",
+        "implication": "The reported Iranian missile attack extends the latest US-Iran exchange to Jordan; interception and casualty figures remain attributed to Jordanian authorities.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "centcom-five-iranian-tanker-strikes-2026-09-08",
+        "incident_id": "jordan-iranian-missile-attack-2026-09-09",
         "change": "New incident report"
       }
     ],
     "items": [
       {
         "zone": "iran_conventional",
-        "headline": "CENTCOM reports five Iranian tankers struck on September 8",
+        "headline": "Jordan reports intercepting 18 of 20 Iranian missiles; no casualties reported",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_f05e5044eabaf5cd853b5b23584dcee2910a1da7098a590028321f742f8d9f82",
+        "correction_id": "rev_665d0c008eb6d3889d8ec9321aba170cbd19480a2097a33bdb3cf67a9999d709",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.dvidshub.net/news/574128/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship",
+          "https://petra.gov.jo/en/news/jordan-armed-forces-intercept-18-iranian-ballistic-missiles-targeting-kingdom",
+          "https://www.bbc.com/news/articles/cyvznqypz0yo",
           "https://www.reuters.com/world/middle-east/iran-attacks-us-base-jordan-ships-near-hormuz-after-tankers-sunk-2026-09-09/"
         ],
         "next_trigger": "Not supplied by source evidence.",
-        "implication": "The US military reports additional strikes on Iranian oil shipping, distinct from its September 5 operation; damage remains attributed.",
+        "implication": "The reported Iranian missile attack extends the latest US-Iran exchange to Jordan; interception and casualty figures remain attributed to Jordanian authorities.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "centcom-five-iranian-tanker-strikes-2026-09-08",
+        "incident_id": "jordan-iranian-missile-attack-2026-09-09",
         "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: CENTCOM reports five Iranian tankers struck on September 8\nImplication: The US military reports additional strikes on Iranian oil shipping, distinct from its September 5 operation; damage remains attributed.\nEvidence: verification not established https://www.dvidshub.net/news/574128/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.dvidshub.net/news/574128/us-destroys-5-irgc-tankers-after-iran-targets-another-american-warship",
-    "message_id": "7fc3a5c578022acb4a25f8df0bae00a0f281577fc4a46758592e19e8a2849b58"
+    "message": "New incident report: Jordan reports intercepting 18 of 20 Iranian missiles; no casualties reported\nImplication: The reported Iranian missile attack extends the latest US-Iran exchange to Jordan; interception and casualty figures remain attributed to Jordanian authorities.\nEvidence: verification not established https://petra.gov.jo/en/news/jordan-armed-forces-intercept-18-iranian-ballistic-missiles-targeting-kingdom\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://petra.gov.jo/en/news/jordan-armed-forces-intercept-18-iranian-ballistic-missiles-targeting-kingdom",
+    "message_id": "e94d1caa6c64c8acc5a3ea802fcc64f50fd62a6d9e9069a8db29497019287626"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 642,
-    "current_report_count": 642,
+    "total_count": 643,
+    "current_report_count": 643,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 622,
-    "bytes": 875169,
-    "sha256": "f2dc8e5b7b3d3d3709ba711b85ba9c832f5fb963af828da08227a391a113ea4b",
+    "archive_count": 623,
+    "bytes": 876623,
+    "sha256": "edd76e43bc802773e4f2884a90f35bda542590b46e71ea789ca8b608e63dc8bd",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-09-05T06:41:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-09T09:03:35.453662Z"
+    "reviewed_at": "2026-09-09T12:05:05.734371Z"
   }
 };
 
