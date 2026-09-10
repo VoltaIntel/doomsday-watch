@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-10T09:03:24Z",
+  "last_updated": "2026-09-10T12:04:10Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -1053,9 +1053,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 26,
+        "scanned": 27,
         "retained": 0,
-        "rejected": 26,
+        "rejected": 27,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2851,6 +2851,49 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "north_korea",
+      "headline": "August 28 IAEA report identifies additional Yongbyon enrichment facility; newly reviewed, not a new test",
+      "text": "The August 28 report identifies Yongbyon UEF2 using June visit photographs and satellite imagery, and says the building could accommodate up to 28 depicted cascades. It records indications of Kangson annex operations beginning in January 2026. Paragraph 13 explicitly says the Agency cannot confirm operational status or configuration without access; inspectors have been absent since 2009. Reuters via CNN repeats the same assessment, not independent site verification. Newly reviewed historical capacity evidence, not a September 10 commissioning or nuclear test.",
+      "sources": [
+        "IAEA Director General report dated August 28",
+        "Reuters via CNN citing the same IAEA report"
+      ],
+      "timestamp": "2026-09-10T12:03:43.310001+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-08-28",
+      "incident_id": "iaea-dprk-enrichment-assessment-2026-08-28",
+      "publication_id": "https://www.iaea.org/sites/default/files/gc/gc70-18.pdf",
+      "originating_source": "IAEA",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-09-10T12:03:43.310001Z",
+      "reviewed_at": "2026-09-10T12:03:43.310001Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_b8560c8ffba91bc311e522cc6dcc49ae54913f0422686fa0f8fe10223e47ac94",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "geographic_relevance_unestablished",
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The IAEA assessment indicates expanded enrichment capacity; without on-site access it cannot confirm facility operations or configuration.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.cnn.com/2026/09/10/asia/north-korea-iaea-nuclear-enrichment-hnk-intl",
+        "https://www.iaea.org/sites/default/files/gc/gc70-18.pdf"
+      ]
+    },
+    {
       "zone": "iran_nuclear",
       "headline": "BBC reports IAEA board adopted Iran UN referral, superseding draft-only status",
       "text": "BBC reports the IAEA board passed the UK-France-Germany-US resolution, with 23 votes in favour, eight abstentions and China, Russia and Niger opposed. This updates the September 8 draft-only account; that earlier account is retained as dated history. The IAEA resolutions page retrieved in this scan lists June 10 as its latest 2026 resolution and did not supply the adopted September text. This is attributed reporting, not a fresh enrichment measurement, automatic sanctions or independently verified military escalation.",
@@ -3615,44 +3658,6 @@ const state = {
       ],
       "independent_sources": [],
       "report_status": "unknown"
-    },
-    {
-      "zone": "iran_conventional",
-      "headline": "Iran threatens Gulf energy assets; restricted zone proposed",
-      "text": "Reuters September 7 full extract confirms conditional Gulf energy threats and a proposed restricted zone; neither establishes zero traffic or a freshly verified minefield. Retain historical mining status with explicit verification caveat; no score increase.",
-      "sources": [
-        "Reuters"
-      ],
-      "time": "SEP 08 \u00b7 09:12Z",
-      "timestamp": "2026-09-08T09:12:16Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-07",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T09:12:16Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_427c7c1037706884f74c3a5300d59ad1b8c86ee948a6425d637732f1f7a29c52",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://www.reuters.com/world/middle-east/iran-says-announce-new-restricted-zone-gulf-coming-days-2026-09-07"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
     }
   ],
   "zone_alerts": [],
@@ -3669,7 +3674,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-10T09:03:24Z",
+  "build_at": "2026-09-10T12:04:10Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3869,7 +3874,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-10T09:03:24Z",
+      "generated_at": "2026-09-10T12:04:10Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4502,10 +4507,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-10T09:03:24Z",
+    "generated_at": "2026-09-10T12:04:10Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 41.75972222222222,
+    "age_hours": 44.7725,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4587,7 +4592,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4654,7 +4659,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4682,7 +4687,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4710,7 +4715,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4810,7 +4815,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4877,7 +4882,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4975,7 +4980,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 111.62263888888889,
+            "remaining_days": 111.49710648148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5003,7 +5008,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5101,7 +5106,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5129,7 +5134,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 111.62263888888889,
+            "remaining_days": 111.49710648148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5196,7 +5201,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 112.83027777777778,
+            "remaining_days": 112.70474537037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5281,33 +5286,75 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-10T09:03:24Z",
+    "generated_at": "2026-09-10T12:04:10Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "df526267d3e913a316370db3e517c89077885061169b61dec0d930eac9239923",
-    "changes": [],
-    "items": [],
+    "changes": [
+      {
+        "zone": "north_korea",
+        "headline": "August 28 IAEA report identifies additional Yongbyon enrichment facility; newly reviewed, not a new test",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_b8560c8ffba91bc311e522cc6dcc49ae54913f0422686fa0f8fe10223e47ac94",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.cnn.com/2026/09/10/asia/north-korea-iaea-nuclear-enrichment-hnk-intl",
+          "https://www.iaea.org/sites/default/files/gc/gc70-18.pdf"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The IAEA assessment indicates expanded enrichment capacity; without on-site access it cannot confirm facility operations or configuration.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "iaea-dprk-enrichment-assessment-2026-08-28",
+        "change": "New incident report"
+      }
+    ],
+    "items": [
+      {
+        "zone": "north_korea",
+        "headline": "August 28 IAEA report identifies additional Yongbyon enrichment facility; newly reviewed, not a new test",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_b8560c8ffba91bc311e522cc6dcc49ae54913f0422686fa0f8fe10223e47ac94",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.cnn.com/2026/09/10/asia/north-korea-iaea-nuclear-enrichment-hnk-intl",
+          "https://www.iaea.org/sites/default/files/gc/gc70-18.pdf"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The IAEA assessment indicates expanded enrichment capacity; without on-site access it cannot confirm facility operations or configuration.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "iaea-dprk-enrichment-assessment-2026-08-28",
+        "change": "New incident report"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "30ccbce907f296f904432e0f0d783edaaf977991037553e7aab1740bd692d422"
+    "message": "New incident report: August 28 IAEA report identifies additional Yongbyon enrichment facility; newly reviewed, not a new test\nImplication: The IAEA assessment indicates expanded enrichment capacity; without on-site access it cannot confirm facility operations or configuration.\nEvidence: verification not established https://www.cnn.com/2026/09/10/asia/north-korea-iaea-nuclear-enrichment-hnk-intl\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.cnn.com/2026/09/10/asia/north-korea-iaea-nuclear-enrichment-hnk-intl",
+    "message_id": "b36a5d47994923a6838bfacc701e796b3221fa996582224e5b74a4dff2863a68"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 645,
-    "current_report_count": 645,
+    "total_count": 646,
+    "current_report_count": 646,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 625,
-    "bytes": 879976,
-    "sha256": "3632f2b8d464c73f6b84fb241322470aeb3676d96116624e9676133ed4c23110",
+    "archive_count": 626,
+    "bytes": 881223,
+    "sha256": "ea696e7bd09aa5a438e0beeb3d7badf5ea76ee7faf5ffbf7fc50288ac2b28271",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-09-05T06:41:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-10T03:04:26.436495Z"
+    "reviewed_at": "2026-09-10T12:03:43.310001Z"
   }
 };
 
