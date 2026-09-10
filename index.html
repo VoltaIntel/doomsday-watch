@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-10T18:03:43Z",
+  "last_updated": "2026-09-10T21:03:57Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -775,9 +775,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 50,
+        "scanned": 51,
         "retained": 0,
-        "rejected": 50,
+        "rejected": 51,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2851,6 +2851,45 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "russia_ukraine",
+      "headline": "Zelenskiy says no trilateral peace meeting before Russia\u2019s September 20 elections",
+      "text": "Reuters quotes Zelenskiy on September 10 saying no trilateral meeting on ending the war will occur before Russian elections on September 20. He hopes for progress on energy and grain talks late in September following a meeting with Trump. The anticipated progress is not an agreement or observed ceasefire. No independently retrieved presidential transcript corroborated this scan.",
+      "sources": [
+        "Reuters"
+      ],
+      "timestamp": "2026-09-10T21:03:29.333042+00:00",
+      "timestamp_kind": "review_time",
+      "incident_id": "zelenskiy-trilateral-meeting-timing-2026-09-10",
+      "publication_id": "https://www.reuters.com/world/americas/zelenskiy-says-no-trilateral-peace-talks-before-elections-russia-2026-09-10/",
+      "originating_source": "Volodymyr Zelenskiy quoted by Reuters",
+      "event_at": null,
+      "published_at": "2026-09-10T18:21:00Z",
+      "collected_at": "2026-09-10T21:03:29.333042Z",
+      "reviewed_at": "2026-09-10T21:03:29.333042Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_1610bbeefde1cc0bb76a12137462ba4145a8d1767286a24576aeafb21a55e13a",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The reported timetable rules out a trilateral meeting before September 20; continuing contacts do not establish a ceasefire.",
+      "next_trigger": "Zelenskiy anticipates energy and grain talks late in September; any resulting agreement remains unconfirmed.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.reuters.com/world/americas/zelenskiy-says-no-trilateral-peace-talks-before-elections-russia-2026-09-10/"
+      ]
+    },
+    {
       "zone": "north_korea",
       "headline": "August 28 IAEA report identifies additional Yongbyon enrichment facility; newly reviewed, not a new test",
       "text": "The August 28 report identifies Yongbyon UEF2 using June visit photographs and satellite imagery, and says the building could accommodate up to 28 depicted cascades. It records indications of Kangson annex operations beginning in January 2026. Paragraph 13 explicitly says the Agency cannot confirm operational status or configuration without access; inspectors have been absent since 2009. Reuters via CNN repeats the same assessment, not independent site verification. Newly reviewed historical capacity evidence, not a September 10 commissioning or nuclear test.",
@@ -3618,46 +3657,6 @@ const state = {
       ],
       "independent_sources": [],
       "report_status": "unknown"
-    },
-    {
-      "zone": "iran_nuclear",
-      "headline": "Iran referral still a draft; verification gap persists",
-      "text": "September 8 Al Jazeera/Reuters reiterates Iran material-accounting and on-site verification gaps; the E3/US referral draft is not yet formally submitted in that report. No new technical threshold independently established; keep existing access-gap signal.",
-      "sources": [
-        "Al Jazeera / Reuters",
-        "IAEA official feed"
-      ],
-      "time": "SEP 08 \u00b7 09:12Z",
-      "timestamp": "2026-09-08T09:12:16Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-08",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T09:12:16Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_8421f31a1db7886bef071fd4ef6f14fb2b433ef05fa894652c0bbc6b514a3cf7",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://www.aljazeera.com/news/2026/9/8/iaea-warns-over-iran-nuclear-access-as-western-powers-push-un-referral",
-        "https://www.iaea.org/feeds/topnews"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
     }
   ],
   "zone_alerts": [],
@@ -3674,7 +3673,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-10T18:03:43Z",
+  "build_at": "2026-09-10T21:03:57Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3874,7 +3873,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-10T18:03:43Z",
+      "generated_at": "2026-09-10T21:03:57Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4507,10 +4506,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-10T18:03:43Z",
+    "generated_at": "2026-09-10T21:03:57Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 50.765,
+    "age_hours": 53.76888888888889,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4592,7 +4591,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4659,7 +4658,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4687,7 +4686,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4715,7 +4714,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4815,7 +4814,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4882,7 +4881,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4980,7 +4979,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 111.24741898148149,
+            "remaining_days": 111.12225694444444,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5008,7 +5007,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5106,7 +5105,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5134,7 +5133,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 111.24741898148149,
+            "remaining_days": 111.12225694444444,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5201,7 +5200,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 112.45505787037037,
+            "remaining_days": 112.32989583333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5286,33 +5285,73 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-10T18:03:43Z",
+    "generated_at": "2026-09-10T21:03:57Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "c88db0e319f83bfd3541368d4b3256d870adeb202c248d7fbe85ef175e0b552e",
-    "changes": [],
-    "items": [],
+    "changes": [
+      {
+        "zone": "russia_ukraine",
+        "headline": "Zelenskiy says no trilateral peace meeting before Russia\u2019s September 20 elections",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_1610bbeefde1cc0bb76a12137462ba4145a8d1767286a24576aeafb21a55e13a",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/world/americas/zelenskiy-says-no-trilateral-peace-talks-before-elections-russia-2026-09-10/"
+        ],
+        "next_trigger": "Zelenskiy anticipates energy and grain talks late in September; any resulting agreement remains unconfirmed.",
+        "implication": "The reported timetable rules out a trilateral meeting before September 20; continuing contacts do not establish a ceasefire.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "zelenskiy-trilateral-meeting-timing-2026-09-10",
+        "change": "New incident report"
+      }
+    ],
+    "items": [
+      {
+        "zone": "russia_ukraine",
+        "headline": "Zelenskiy says no trilateral peace meeting before Russia\u2019s September 20 elections",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_1610bbeefde1cc0bb76a12137462ba4145a8d1767286a24576aeafb21a55e13a",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/world/americas/zelenskiy-says-no-trilateral-peace-talks-before-elections-russia-2026-09-10/"
+        ],
+        "next_trigger": "Zelenskiy anticipates energy and grain talks late in September; any resulting agreement remains unconfirmed.",
+        "implication": "The reported timetable rules out a trilateral meeting before September 20; continuing contacts do not establish a ceasefire.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "zelenskiy-trilateral-meeting-timing-2026-09-10",
+        "change": "New incident report"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "f5d81ec594f2ef0ee50d4a27503ded37db2742501165995f5bf466153bfc91ec"
+    "message": "New incident report: Zelenskiy says no trilateral peace meeting before Russia\u2019s September 20 elections\nImplication: The reported timetable rules out a trilateral meeting before September 20; continuing contacts do not establish a ceasefire.\nEvidence: verification not established https://www.reuters.com/world/americas/zelenskiy-says-no-trilateral-peace-talks-before-elections-russia-2026-09-10/\nNext trigger: Zelenskiy anticipates energy and grain talks late in September; any resulting agreement remains unconfirmed.\nDossier: dashboard incident list; source https://www.reuters.com/world/americas/zelenskiy-says-no-trilateral-peace-talks-before-elections-russia-2026-09-10/",
+    "message_id": "6b2c4e72036d3eb093403734e4d228d3f2b2131bb830b6b0f0c075cd10920e86"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 646,
-    "current_report_count": 646,
+    "total_count": 647,
+    "current_report_count": 647,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 626,
-    "bytes": 881223,
-    "sha256": "ea696e7bd09aa5a438e0beeb3d7badf5ea76ee7faf5ffbf7fc50288ac2b28271",
+    "archive_count": 627,
+    "bytes": 882531,
+    "sha256": "1e39e89846aea3b2a56adacaf5bd09df3e9fda1ad0a41c0ce9e41b5717e8cb02",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-09-05T06:41:00Z",
+    "published_at": "2026-09-10T18:21:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-10T12:03:43.310001Z"
+    "reviewed_at": "2026-09-10T21:03:29.333042Z"
   }
 };
 
