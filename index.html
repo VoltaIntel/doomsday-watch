@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-11T09:04:34Z",
+  "last_updated": "2026-09-11T12:04:55Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -292,9 +292,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 172,
+        "scanned": 173,
         "retained": 0,
-        "rejected": 172,
+        "rejected": 173,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2825,9 +2825,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 43,
+        "scanned": 44,
         "retained": 0,
-        "rejected": 43,
+        "rejected": 44,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2850,6 +2850,42 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "iran_conventional",
+      "headline": "Reuters: preliminary tracking counted seven Hormuz transits on September 10",
+      "text": "Reuters reports preliminary Kpler data showed seven transits on September 10 versus 11 the prior day and a 10-day average of 15. Two vessels exited and five entered. Data as of 03:06 GMT on September 11 excludes vessels with AIS transponders off. Direct Kpler dataset was not retrieved; counts remain attributed.",
+      "timestamp": "2026-09-11T12:04:20.593269+00:00",
+      "timestamp_kind": "review_time",
+      "incident_id": "hormuz-kpler-transits-2026-09-10",
+      "publication_id": "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/",
+      "event_at": null,
+      "published_at": "2026-09-11T03:48:00Z",
+      "collected_at": "2026-09-11T12:04:20.593269Z",
+      "reviewed_at": "2026-09-11T12:04:20.593269Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_afc0e31521b04a2521a5948ffad22188f18032d3edf88c4e1c7a1be16dc43aad",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The reported traffic decline is not zero traffic and does not verify the IRGC claim that Hormuz is closed.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/"
+      ]
+    },
     {
       "zone": "iran_conventional",
       "headline": "IRGC says it struck a US unmanned surface vessel at the entrance to Hormuz",
@@ -2974,6 +3010,44 @@ const state = {
       "source_urls": [
         "https://www.cnn.com/2026/09/10/asia/north-korea-iaea-nuclear-enrichment-hnk-intl",
         "https://www.iaea.org/sites/default/files/gc/gc70-18.pdf"
+      ]
+    },
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Houthis reportedly capture Mocha; government sources and residents describe takeover",
+      "text": "Reuters attributes Mocha capture to four Yemeni government military sources. BBC Arabic resident interviews describe Houthi patrols after Wednesday-night fighting. CNN quotes the information minister confirming capture. Newly reviewed September 10 reporting, not established as a new event in this three-hour window. Exact revision time and direct official publication remain unavailable. Hanish and Perim claims are not independently verified here.",
+      "timestamp": "2026-09-11T12:04:20.593269+00:00",
+      "timestamp_kind": "review_time",
+      "incident_id": "houthi-mocha-capture-2026-09-10",
+      "publication_id": "https://www.reuters.com/world/middle-east/saudi-says-no-danger-after-khamis-mushait-alert-amid-clashes-with-houthis-2026-09-10/",
+      "event_at": null,
+      "published_at": "2026-09-10T04:58:00Z",
+      "collected_at": "2026-09-11T12:04:20.593269Z",
+      "reviewed_at": "2026-09-11T12:04:20.593269Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_636c128fe9d6a325217aa69bd0fea37d1783cb0cf0aed9fa3531f62ec5218686",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "Reported control of this Red Sea port strengthens the Houthis\u2019 position near Bab el-Mandeb; it does not establish closure of the strait.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.bbc.co.uk/news/articles/c4g7vr0lngwo",
+        "https://www.cnn.com/2026/09/10/middleeast/houthis-capture-mocha-red-sea-strait-intl",
+        "https://www.reuters.com/world/middle-east/saudi-says-no-danger-after-khamis-mushait-alert-amid-clashes-with-houthis-2026-09-10/"
       ]
     },
     {
@@ -3583,84 +3657,6 @@ const state = {
       ],
       "independent_sources": [],
       "report_status": "unknown"
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Saudi energy disruption keeps oil risk elevated",
-      "text": "Saudi-attributed disruption remains an existing signal, not a new activation. Reuters syndication quotes Brent $99.00 and WTI $94.41 at 08:00 UTC; timestamped intraday prices, not live quotes.",
-      "sources": [
-        "Reuters via Profit Pakistan Today"
-      ],
-      "time": "SEP 08 \u00b7 12:09Z",
-      "timestamp": "2026-09-08T12:09:57Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-08",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T12:09:57Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_5a3bb0246ccc64618804b03e8e102c01ddbd96626971ad834e93c0aa8a42020b",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://profit.pakistantoday.com.pk/2026/09/08/oil-rises-over-2percent-to-multi-week-highs-after-houthi-attacks-on-saudi-energy-facilities"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Saudi energy sites hit; operational stoppages reported",
-      "text": "September 8 Al Jazeera full direct report quotes Saudi energy ministry: energy sites hit early Tuesday, fires and temporary operational halts. Houthis subsequently claim a large missile/drone operation. AP also reports Saudi-attributed 73 wounded; Al Jazeera says the coalition did not date that casualty total. Activate infrastructure_strike; do not imply independently audited damage or confirmed territorial gains. Existing score remains saturated.",
-      "sources": [
-        "Al Jazeera",
-        "AP"
-      ],
-      "time": "SEP 08 \u00b7 09:12Z",
-      "timestamp": "2026-09-08T09:12:16Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-08",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T09:12:16Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_ca48a90571cde951b7382f1950f826ce24daa5f427e94543fe0753f470712512",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://wtop.com/world/2026/09/houthi-attacks-on-saudi-arabia-wound-73-people-officials-say/",
-        "https://www.aljazeera.com/news/2026/9/8/houthi-attacks-on-saudi-arabia-have-wounded-73-civilians-official-says"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
     }
   ],
   "zone_alerts": [],
@@ -3677,7 +3673,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-11T09:04:34Z",
+  "build_at": "2026-09-11T12:04:55Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3877,7 +3873,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-11T09:04:34Z",
+      "generated_at": "2026-09-11T12:04:55Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4510,10 +4506,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-11T09:04:34Z",
+    "generated_at": "2026-09-11T12:04:55Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 65.77916666666667,
+    "age_hours": 68.785,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4595,7 +4591,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4662,7 +4658,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4690,7 +4686,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4718,7 +4714,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4818,7 +4814,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4885,7 +4881,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4983,7 +4979,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 110.6218287037037,
+            "remaining_days": 110.49658564814816,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5011,7 +5007,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5109,7 +5105,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5137,7 +5133,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 110.6218287037037,
+            "remaining_days": 110.49658564814816,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5204,7 +5200,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 111.8294675925926,
+            "remaining_days": 111.70422453703704,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5289,33 +5285,115 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-11T09:04:34Z",
+    "generated_at": "2026-09-11T12:04:55Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "a73b0c4db968adcbc4944484393a4637c3326a4078d09a1f697170662a8652ea",
-    "changes": [],
-    "items": [],
+    "changes": [
+      {
+        "zone": "iran_conventional",
+        "headline": "Reuters: preliminary tracking counted seven Hormuz transits on September 10",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_afc0e31521b04a2521a5948ffad22188f18032d3edf88c4e1c7a1be16dc43aad",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The reported traffic decline is not zero traffic and does not verify the IRGC claim that Hormuz is closed.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "hormuz-kpler-transits-2026-09-10",
+        "change": "New incident report"
+      },
+      {
+        "zone": "yemen_red_sea",
+        "headline": "Houthis reportedly capture Mocha; government sources and residents describe takeover",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_636c128fe9d6a325217aa69bd0fea37d1783cb0cf0aed9fa3531f62ec5218686",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.bbc.co.uk/news/articles/c4g7vr0lngwo",
+          "https://www.cnn.com/2026/09/10/middleeast/houthis-capture-mocha-red-sea-strait-intl",
+          "https://www.reuters.com/world/middle-east/saudi-says-no-danger-after-khamis-mushait-alert-amid-clashes-with-houthis-2026-09-10/"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "Reported control of this Red Sea port strengthens the Houthis\u2019 position near Bab el-Mandeb; it does not establish closure of the strait.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "houthi-mocha-capture-2026-09-10",
+        "change": "New incident report"
+      }
+    ],
+    "items": [
+      {
+        "zone": "iran_conventional",
+        "headline": "Reuters: preliminary tracking counted seven Hormuz transits on September 10",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_afc0e31521b04a2521a5948ffad22188f18032d3edf88c4e1c7a1be16dc43aad",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The reported traffic decline is not zero traffic and does not verify the IRGC claim that Hormuz is closed.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "hormuz-kpler-transits-2026-09-10",
+        "change": "New incident report"
+      },
+      {
+        "zone": "yemen_red_sea",
+        "headline": "Houthis reportedly capture Mocha; government sources and residents describe takeover",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_636c128fe9d6a325217aa69bd0fea37d1783cb0cf0aed9fa3531f62ec5218686",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.bbc.co.uk/news/articles/c4g7vr0lngwo",
+          "https://www.cnn.com/2026/09/10/middleeast/houthis-capture-mocha-red-sea-strait-intl",
+          "https://www.reuters.com/world/middle-east/saudi-says-no-danger-after-khamis-mushait-alert-amid-clashes-with-houthis-2026-09-10/"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "Reported control of this Red Sea port strengthens the Houthis\u2019 position near Bab el-Mandeb; it does not establish closure of the strait.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "houthi-mocha-capture-2026-09-10",
+        "change": "New incident report"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "feab0b98c496a9bca489fa13a27e8055319627a3ff2703cacddc594f8ffddb5d"
+    "message": "New incident report: Reuters: preliminary tracking counted seven Hormuz transits on September 10\nImplication: The reported traffic decline is not zero traffic and does not verify the IRGC claim that Hormuz is closed.\nEvidence: verification not established https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.reuters.com/world/middle-east/hormuz-shipping-traffic-falls-single-digits-data-shows-2026-09-11/\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "9830e1c8da060b4c3d7dbb83d7c12fba40bc440bf3e8af9c2a118420065fc74f"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 648,
-    "current_report_count": 648,
+    "total_count": 650,
+    "current_report_count": 650,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 628,
-    "bytes": 884469,
-    "sha256": "02f950c583345eac491fac1401c0000a2a02c348d71ec2d879c84f449f77df65",
+    "archive_count": 630,
+    "bytes": 887228,
+    "sha256": "bd89c33712f897e496e4fb2b438b8c9aa960c6b35a49988a2b8e312394e186e6",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-09-10T18:21:00Z",
+    "published_at": "2026-09-11T03:48:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-11T03:02:37.604344Z"
+    "reviewed_at": "2026-09-11T12:04:20.593269Z"
   }
 };
 
