@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-11T21:03:50Z",
+  "last_updated": "2026-09-12T00:04:35Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -292,9 +292,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 173,
+        "scanned": 174,
         "retained": 0,
-        "rejected": 173,
+        "rejected": 174,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2852,6 +2852,44 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "iran_conventional",
+      "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
+      "text": "Reuters on September 11 at 20:08 UTC reports, citing Saudi state media and an energy ministry source, that the East-West pipeline was temporarily shut after several attacks in Riyadh and Medina on Thursday. Some people were injured and received treatment. The official SPA page title matches the shutdown claim, but its full statement could not be retrieved. This is newly reviewed reporting, not a newly timed attack in this scan. Responsibility, restart time and independent verification are not established.",
+      "timestamp": "2026-09-12T00:04:05.465538+00:00",
+      "timestamp_kind": "review_time",
+      "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
+      "publication_id": "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+      "event_at": null,
+      "published_at": "2026-09-11T20:08:00Z",
+      "collected_at": "2026-09-12T00:04:05.465538Z",
+      "reviewed_at": "2026-09-12T00:04:05.465538Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+        "https://www.spa.gov.sa/en/N2674017"
+      ]
+    },
+    {
       "zone": "russia_ukraine",
       "headline": "IAEA: restored Zaporizhzhia power eases blackout risk, but diesel reserves need replenishment",
       "text": "September 11 IAEA Update 366, read in full through its ReliefWeb republication, confirms the September 7 evening reconnection already reported. It adds that depleted diesel reserves must be replenished before another external-power cut; resupply remains difficult and off-site fuel storage is reportedly empty. This is a material follow-up to the existing restoration report, not a new blackout. Anadolu reports the same IAEA statement and is not independent verification of fuel stocks.",
@@ -3630,44 +3668,6 @@ const state = {
       ],
       "independent_sources": [],
       "report_status": "unknown"
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Zaporizhzhia grid restoration: stronger sourcing, residual risk",
-      "text": "Hromadske full September 8 report attributes September 7 restoration of Ferosplavna-1 power to Energoatom. This improves verification beyond prior index-only coverage but is not a directly verified new IAEA restoration statement. New Kyiv strikes reported; localized nuclear-safety repairs do not imply general ceasefire.",
-      "sources": [
-        "Hromadske / Energoatom"
-      ],
-      "time": "SEP 08 \u00b7 12:09Z",
-      "timestamp": "2026-09-08T12:09:57Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-08",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T12:09:57Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_155bf9041815f481ae3a1a8175291928c9a66716bbde3f08da0014fb864f8271",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://hromadske.ua/en/ukraine/270654-external-power-restored-to-zaporizhzhia-nuclear-plant-after-more-than-2-weeks-on-diesel-generators"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
     }
   ],
   "zone_alerts": [],
@@ -3684,7 +3684,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-11T21:03:50Z",
+  "build_at": "2026-09-12T00:04:35Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3884,7 +3884,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-11T21:03:50Z",
+      "generated_at": "2026-09-12T00:04:35Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4517,10 +4517,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-11T21:03:50Z",
+    "generated_at": "2026-09-12T00:04:35Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 77.76694444444445,
+    "age_hours": 80.77944444444445,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4602,7 +4602,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4669,7 +4669,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4697,7 +4697,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4725,7 +4725,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4825,7 +4825,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4892,7 +4892,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4990,7 +4990,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 110.12233796296296,
+            "remaining_days": 109.99681712962963,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5018,7 +5018,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5116,7 +5116,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5144,7 +5144,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 110.12233796296296,
+            "remaining_days": 109.99681712962963,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5211,7 +5211,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 111.32997685185185,
+            "remaining_days": 111.20445601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5296,33 +5296,75 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-11T21:03:50Z",
+    "generated_at": "2026-09-12T00:04:35Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "020fe6578e5356336cac03ddab88fd0862c7f7f844785c1684198feecb9819ad",
-    "changes": [],
-    "items": [],
+    "changes": [
+      {
+        "zone": "iran_conventional",
+        "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+          "https://www.spa.gov.sa/en/N2674017"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
+        "change": "New incident report"
+      }
+    ],
+    "items": [
+      {
+        "zone": "iran_conventional",
+        "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+          "https://www.spa.gov.sa/en/N2674017"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
+        "change": "New incident report"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "c819aff03c7c816bb17507ef787a1af043fb400423b56b30024bdfe62e55f50d"
+    "message": "New incident report: Saudi ministry reports temporary East-West pipeline shutdown after attacks\nImplication: The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.\nEvidence: verification not established https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+    "message_id": "b0d81cb9fd0c6e6d94b8fa12f1c7167ca96d384927e812a3139736144e43c602"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 652,
-    "current_report_count": 652,
+    "total_count": 653,
+    "current_report_count": 653,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 632,
-    "bytes": 889670,
-    "sha256": "08418d951c90090f4376ac6fe2ee7f05d321a489eb2ee2b5902a1d1d49efc402",
+    "archive_count": 633,
+    "bytes": 891026,
+    "sha256": "7d141a0e4dd33dd6456cf1336796b4586f999cdb3e9ae7a67ece22d086c1ea18",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-09-11T03:48:00Z",
+    "published_at": "2026-09-11T20:08:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-11T18:06:21.729080Z"
+    "reviewed_at": "2026-09-12T00:04:05.465538Z"
   }
 };
 
