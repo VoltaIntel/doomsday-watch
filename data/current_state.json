@@ -1,6 +1,6 @@
 {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-12T00:04:35Z",
+  "last_updated": "2026-09-12T03:06:11Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -240,12 +240,13 @@
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 174,
+        "scanned": 175,
         "retained": 0,
-        "rejected": 174,
+        "rejected": 175,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
+          "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
           "published_at_invalid_or_future",
@@ -2801,6 +2802,50 @@
   "latest_news": [
     {
       "zone": "iran_conventional",
+      "headline": "Saudi Arabia attributes pipeline drones to Iraq and holds off retaliation",
+      "text": "Reuters reports a September 11 Saudi foreign ministry statement attributing the East-West pipeline drones to launches from Iraq. Riyadh says it will not retaliate for now following the Iraqi prime ministers request, while reserving its right to protect its interests. Al Jazeera/AFP quotes the same Saudi statement and an Iraqi statement ordering an investigation; these are attributed official accounts, not independent verification of the launch origin. This revises the existing September 10 attack report, not a newly timed attack. The pipeline restart time remains unknown.",
+      "timestamp": "2026-09-12T03:03:46.944199+00:00",
+      "timestamp_kind": "review_time",
+      "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
+      "publication_id": "https://www.reuters.com/world/middle-east/saudi-arabia-says-drones-launched-iraq-hit-east-west-pipeline-holds-off-2026-09-11/",
+      "event_at": null,
+      "published_at": "2026-09-11T20:16:00Z",
+      "collected_at": "2026-09-12T03:03:46.944199Z",
+      "reviewed_at": "2026-09-12T03:03:46.944199Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_ccd49d730e19d0daa9363abd5bce50e5562f295f4cd9f15ad4c3b859542eab41",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
+      "report_status": "revision",
+      "implication": "Saudi Arabia links the existing attack to launches from Iraq but says it is withholding retaliation for now; launch origin remains an official attribution.",
+      "next_trigger": "Iraq says an investigation into the attack and those responsible has been ordered.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Saudi attribution of launch territory and announced restraint add material diplomatic context to the existing pipeline attack.",
+      "source_urls": [
+        "https://english.aawsat.com/arab-world/5317348-saudi-arabia-strongly-condemns-drone-attack-east-west-pipeline-drones-launched",
+        "https://www.aljazeera.com/news/2026/9/11/saudi-arabia-says-east-west-pipeline-hit-by-drones-launched-from-iraq",
+        "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+        "https://www.reuters.com/world/middle-east/saudi-arabia-says-drones-launched-iraq-hit-east-west-pipeline-holds-off-2026-09-11/",
+        "https://www.spa.gov.sa/en/N2674017"
+      ]
+    },
+    {
+      "zone": "iran_conventional",
       "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
       "text": "Reuters on September 11 at 20:08 UTC reports, citing Saudi state media and an energy ministry source, that the East-West pipeline was temporarily shut after several attacks in Riyadh and Medina on Thursday. Some people were injured and received treatment. The official SPA page title matches the shutdown claim, but its full statement could not be retrieved. This is newly reviewed reporting, not a newly timed attack in this scan. Responsibility, restart time and independent verification are not established.",
       "timestamp": "2026-09-12T00:04:05.465538+00:00",
@@ -2819,14 +2864,15 @@
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
         "geographic_relevance_unestablished",
+        "headline_only_or_body_unavailable",
+        "inactive_revision_superseded",
+        "missing_safe_origin_or_publication_identity",
+        "originating_source_unknown",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
-      "report_status": "unknown",
+      "report_status": "superseded",
       "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
       "next_trigger": "Not supplied by source evidence.",
       "independent_verification": false,
@@ -3578,44 +3624,6 @@
         "https://en.interfax.com.ua/news/general/1200281.html"
       ],
       "independent_sources": []
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Saudi energy fires corroborated; existing signal retained",
-      "text": "Reuters reports Saudi energy-facility fires and a coalition account of 73 wounded across four southern cities on September 8. Coalition warns of an operational response. Existing facility-attack signal is not counted twice.",
-      "sources": [
-        "Reuters via Al-Monitor"
-      ],
-      "time": "SEP 08 \u00b7 15:08Z",
-      "timestamp": "2026-09-08T15:08:50Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-08",
-      "incident_id": null,
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-09-08T15:08:50Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_4dce1dd2ee20a0cc5f526cbb7ad5128c799e3b7948cbafa13cae6b468f6d930d",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "source_urls": [
-        "https://www.al-monitor.com/originals/2026/09/iran-backed-houthis-attack-saudi-energy-facilities-wounding-dozens-and-sending"
-      ],
-      "independent_sources": [],
-      "report_status": "unknown"
     }
   ],
   "zone_alerts": [],
@@ -3632,7 +3640,7 @@
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-12T00:04:35Z",
+  "build_at": "2026-09-12T03:06:11Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3832,7 +3840,7 @@
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-12T00:04:35Z",
+      "generated_at": "2026-09-12T03:06:11Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4465,10 +4473,10 @@
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-12T00:04:35Z",
+    "generated_at": "2026-09-12T03:06:11Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 80.77944444444445,
+    "age_hours": 83.80611111111111,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4550,7 +4558,7 @@
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4617,7 +4625,7 @@
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4645,7 +4653,7 @@
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4673,7 +4681,7 @@
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4773,7 +4781,7 @@
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4840,7 +4848,7 @@
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4938,7 +4946,7 @@
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 109.99681712962963,
+            "remaining_days": 109.87070601851852,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4966,7 +4974,7 @@
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5064,7 +5072,7 @@
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5092,7 +5100,7 @@
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 109.99681712962963,
+            "remaining_days": 109.87070601851852,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5159,7 +5167,7 @@
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 111.20445601851851,
+            "remaining_days": 111.07834490740741,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5244,74 +5252,84 @@
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-12T00:04:35Z",
+    "generated_at": "2026-09-12T03:06:11Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "020fe6578e5356336cac03ddab88fd0862c7f7f844785c1684198feecb9819ad",
+    "previous_snapshot_id": "2d0f176f7a61c4273ba0d1b87e6d7b22c7f5dde841dea6266551bf81d28ff215",
     "changes": [
       {
         "zone": "iran_conventional",
-        "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
-        "status": "reported",
+        "headline": "Saudi Arabia attributes pipeline drones to Iraq and holds off retaliation",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
+        "correction_id": "rev_ccd49d730e19d0daa9363abd5bce50e5562f295f4cd9f15ad4c3b859542eab41",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://english.aawsat.com/arab-world/5317348-saudi-arabia-strongly-condemns-drone-attack-east-west-pipeline-drones-launched",
+          "https://www.aljazeera.com/news/2026/9/11/saudi-arabia-says-east-west-pipeline-hit-by-drones-launched-from-iraq",
           "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-says-drones-launched-iraq-hit-east-west-pipeline-holds-off-2026-09-11/",
           "https://www.spa.gov.sa/en/N2674017"
         ],
-        "next_trigger": "Not supplied by source evidence.",
-        "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
-        "historical_revision_ids": [],
+        "next_trigger": "Iraq says an investigation into the attack and those responsible has been ordered.",
+        "implication": "Saudi Arabia links the existing attack to launches from Iraq but says it is withholding retaliation for now; launch origin remains an official attribution.",
+        "historical_revision_ids": [
+          "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
-        "change": "New incident report"
+        "change": "Correction / revision"
       }
     ],
     "items": [
       {
         "zone": "iran_conventional",
-        "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
-        "status": "reported",
+        "headline": "Saudi Arabia attributes pipeline drones to Iraq and holds off retaliation",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
+        "correction_id": "rev_ccd49d730e19d0daa9363abd5bce50e5562f295f4cd9f15ad4c3b859542eab41",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://english.aawsat.com/arab-world/5317348-saudi-arabia-strongly-condemns-drone-attack-east-west-pipeline-drones-launched",
+          "https://www.aljazeera.com/news/2026/9/11/saudi-arabia-says-east-west-pipeline-hit-by-drones-launched-from-iraq",
           "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
+          "https://www.reuters.com/world/middle-east/saudi-arabia-says-drones-launched-iraq-hit-east-west-pipeline-holds-off-2026-09-11/",
           "https://www.spa.gov.sa/en/N2674017"
         ],
-        "next_trigger": "Not supplied by source evidence.",
-        "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
-        "historical_revision_ids": [],
+        "next_trigger": "Iraq says an investigation into the attack and those responsible has been ordered.",
+        "implication": "Saudi Arabia links the existing attack to launches from Iraq but says it is withholding retaliation for now; launch origin remains an official attribution.",
+        "historical_revision_ids": [
+          "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
-        "change": "New incident report"
+        "change": "Correction / revision"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Saudi ministry reports temporary East-West pipeline shutdown after attacks\nImplication: The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.\nEvidence: verification not established https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
-    "message_id": "b0d81cb9fd0c6e6d94b8fa12f1c7167ca96d384927e812a3139736144e43c602"
+    "message": "Correction / revision: Saudi Arabia attributes pipeline drones to Iraq and holds off retaliation\nImplication: Saudi Arabia links the existing attack to launches from Iraq but says it is withholding retaliation for now; launch origin remains an official attribution.\nEvidence: verification not established https://english.aawsat.com/arab-world/5317348-saudi-arabia-strongly-condemns-drone-attack-east-west-pipeline-drones-launched\nNext trigger: Iraq says an investigation into the attack and those responsible has been ordered.\nDossier: dashboard incident list; source https://english.aawsat.com/arab-world/5317348-saudi-arabia-strongly-condemns-drone-attack-east-west-pipeline-drones-launched",
+    "message_id": "51fcb993bf652908ddd05a88b729ee453e568e5c88846bce3b792440b5bb90d0"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 653,
-    "current_report_count": 653,
+    "total_count": 654,
+    "current_report_count": 654,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 633,
-    "bytes": 891026,
-    "sha256": "7d141a0e4dd33dd6456cf1336796b4586f999cdb3e9ae7a67ece22d086c1ea18",
+    "archive_count": 634,
+    "bytes": 892263,
+    "sha256": "617241b96aa09321badc5103d98a71783bed9ef36c85d892633bf2ebb854ef69",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-09-11T20:08:00Z",
+    "published_at": "2026-09-11T20:16:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-12T00:04:05.465538Z"
+    "reviewed_at": "2026-09-12T03:03:46.944199Z"
   }
 }
