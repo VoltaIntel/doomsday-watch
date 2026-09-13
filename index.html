@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-13T18:03:54Z",
+  "last_updated": "2026-09-13T21:04:34Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -3494,7 +3494,8 @@ const state = {
       "rejection_reasons": [
         "missing_safe_origin_or_publication_identity",
         "geographic_relevance_unestablished",
-        "verified_at_unknown"
+        "verified_at_unknown",
+        "stale_publication"
       ],
       "status": "insufficient_evidence",
       "report_status": "unknown",
@@ -3690,7 +3691,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-13T18:03:54Z",
+  "build_at": "2026-09-13T21:04:34Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3890,7 +3891,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-13T18:03:54Z",
+      "generated_at": "2026-09-13T21:04:34Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4523,10 +4524,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-13T18:03:54Z",
+    "generated_at": "2026-09-13T21:04:34Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 122.76805555555555,
+    "age_hours": 125.77916666666667,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4608,7 +4609,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4675,7 +4676,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4703,7 +4704,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4731,7 +4732,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4831,7 +4832,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4898,7 +4899,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4996,7 +4997,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 108.24729166666667,
+            "remaining_days": 108.1218287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5024,7 +5025,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5122,7 +5123,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5150,7 +5151,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 108.24729166666667,
+            "remaining_days": 108.1218287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5217,7 +5218,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 109.45493055555555,
+            "remaining_days": 109.3294675925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5302,7 +5303,7 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-13T18:03:54Z",
+    "generated_at": "2026-09-13T21:04:34Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "050a4ec514a20b90a39417eae4a8f175b2f553cd236f191775461203700d0ab5",
