@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-14T09:03:27Z",
+  "last_updated": "2026-09-14T12:05:43Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -292,9 +292,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 179,
+        "scanned": 180,
         "retained": 0,
-        "rejected": 179,
+        "rejected": 180,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2854,6 +2854,44 @@ const state = {
   "latest_news": [
     {
       "zone": "iran_conventional",
+      "headline": "Reuters: Iranian strait authority lists 77 vessels for threatened passage restrictions",
+      "text": "Reuters attributes an updated list of 77 vessels to Iran's Persian Gulf Strait Authority on Monday. The body says listed vessels face future passage restrictions including fines, detention or confiscation; cooperating vessels could be added and insurers/P&I clubs/classification societies are warned against providing services. This is an attributed policy announcement, not verified enforcement, seizure or closure. The original X post and vessel list were not retrieved. No independent confirmation or explicit next trigger established.",
+      "timestamp": "2026-09-14T12:04:51.138510+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-09-14",
+      "incident_id": "pgsa-77-vessel-restrictions-list-2026-09-14",
+      "publication_id": "https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/",
+      "event_at": null,
+      "published_at": "2026-09-14T10:16:00Z",
+      "collected_at": "2026-09-14T12:04:51.138510Z",
+      "reviewed_at": "2026-09-14T12:04:51.138510Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_c862c42bc5758968e332f06129887a050b7427fea93ce1973cdf2d73d445eff6",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The reported list threatens future passage restrictions, fines, detention or confiscation; it does not establish that any listed vessel has been seized or the strait closed.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/"
+      ]
+    },
+    {
+      "zone": "iran_conventional",
       "headline": "Oman postpones Salalah regional meeting to a later date",
       "text": "Oman Foreign Ministry publication dated September 13 says the regional meeting scheduled for Monday in Salalah is postponed to a later date to create conditions for constructive dialogue. The ministry-hosted English text is identified as an unofficial translation of its Arabic report. Reuters also attributes postponement to the foreign minister; this is shared official attribution, not independent verification. No replacement date is supplied. This is newly reviewed reporting, not a new attack during this scan.",
       "timestamp": "2026-09-14T06:04:53.224355+00:00",
@@ -3630,48 +3668,6 @@ const state = {
         "https://www.cnn.com/2026/09/10/middleeast/houthis-capture-mocha-red-sea-strait-intl",
         "https://www.reuters.com/world/middle-east/saudi-says-no-danger-after-khamis-mushait-alert-amid-clashes-with-houthis-2026-09-10/"
       ]
-    },
-    {
-      "zone": "iran_nuclear",
-      "headline": "BBC reports IAEA board adopted Iran UN referral, superseding draft-only status",
-      "text": "BBC reports the IAEA board passed the UK-France-Germany-US resolution, with 23 votes in favour, eight abstentions and China, Russia and Niger opposed. This updates the September 8 draft-only account; that earlier account is retained as dated history. The IAEA resolutions page retrieved in this scan lists June 10 as its latest 2026 resolution and did not supply the adopted September text. This is attributed reporting, not a fresh enrichment measurement, automatic sanctions or independently verified military escalation.",
-      "sources": [
-        "BBC"
-      ],
-      "timestamp": "2026-09-10T03:04:26.436495+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-09",
-      "incident_id": "source_4e153619ef0c3ece95b1ec8d19b45c9d432011a7feffd18218a65eac461f5e04",
-      "publication_id": "https://www.bbc.com/news/articles/ckgwj4kl5lno",
-      "originating_source": "BBC Persian and BBC reporting",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-09-10T03:04:26.436495Z",
-      "reviewed_at": "2026-09-10T03:04:26.436495Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_e692dae30049db3301573c276bcdee3befb41193e99b20e2c3ec9406adb71000",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_d21e2a4d7bf71956daff723aa7d1e9480277bac764188694316b3625ca361ef4",
-      "report_status": "revision",
-      "implication": "The reported decision advances referral beyond a draft; it does not itself establish new sanctions or a nuclear-weapons development.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.bbc.com/news/articles/ckgwj4kl5lno"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3688,7 +3684,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-14T09:03:27Z",
+  "build_at": "2026-09-14T12:05:43Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3888,7 +3884,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-14T09:03:27Z",
+      "generated_at": "2026-09-14T12:05:43Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4521,10 +4517,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-14T09:03:27Z",
+    "generated_at": "2026-09-14T12:05:43Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 137.76055555555556,
+    "age_hours": 140.79833333333335,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4606,7 +4602,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4673,7 +4669,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4701,7 +4697,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4729,7 +4725,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4829,7 +4825,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4896,7 +4892,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4994,7 +4990,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 107.62260416666666,
+            "remaining_days": 107.49603009259259,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5022,7 +5018,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5120,7 +5116,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5148,7 +5144,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 107.62260416666666,
+            "remaining_days": 107.49603009259259,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5215,7 +5211,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 108.83024305555556,
+            "remaining_days": 108.70366898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5300,33 +5296,73 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-14T09:03:27Z",
+    "generated_at": "2026-09-14T12:05:43Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "8cf3f60e30b25daaac7c9c1dec53afd9ef26c42bfb422e1f963cca2753ec0e34",
-    "changes": [],
-    "items": [],
+    "changes": [
+      {
+        "zone": "iran_conventional",
+        "headline": "Reuters: Iranian strait authority lists 77 vessels for threatened passage restrictions",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_c862c42bc5758968e332f06129887a050b7427fea93ce1973cdf2d73d445eff6",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The reported list threatens future passage restrictions, fines, detention or confiscation; it does not establish that any listed vessel has been seized or the strait closed.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "pgsa-77-vessel-restrictions-list-2026-09-14",
+        "change": "New incident report"
+      }
+    ],
+    "items": [
+      {
+        "zone": "iran_conventional",
+        "headline": "Reuters: Iranian strait authority lists 77 vessels for threatened passage restrictions",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_c862c42bc5758968e332f06129887a050b7427fea93ce1973cdf2d73d445eff6",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "The reported list threatens future passage restrictions, fines, detention or confiscation; it does not establish that any listed vessel has been seized or the strait closed.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "pgsa-77-vessel-restrictions-list-2026-09-14",
+        "change": "New incident report"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "1327f6722c214ce48f5156756c73052f9bd318a573333bf50e2f8388db8527eb"
+    "message": "New incident report: Reuters: Iranian strait authority lists 77 vessels for threatened passage restrictions\nImplication: The reported list threatens future passage restrictions, fines, detention or confiscation; it does not establish that any listed vessel has been seized or the strait closed.\nEvidence: verification not established https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.reuters.com/world/middle-east/iranian-strait-authority-issues-updated-list-sanctioned-vessels-2026-09-14/",
+    "message_id": "e00c6b4ae72eed2924cc01f09dbbb44e6c23c7adab663d71235a10dd7a46fa98"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 664,
-    "current_report_count": 664,
+    "total_count": 665,
+    "current_report_count": 665,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 644,
-    "bytes": 909039,
-    "sha256": "7a1cb0882c405f1fbaf411ef4da076169cb792c474422add8a6fe07c575040fb",
+    "archive_count": 645,
+    "bytes": 910982,
+    "sha256": "01a9af0f6e4fcebdb72a564e0523ed2dd4005865a22dd3457fdbc7bf062e2ab5",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-09-12T08:25:59.570000Z",
+    "published_at": "2026-09-14T10:16:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-14T06:04:53.224355Z"
+    "reviewed_at": "2026-09-14T12:04:51.138510Z"
   }
 };
 
