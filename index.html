@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-09-16T03:05:03Z",
+  "last_updated": "2026-09-16T06:04:42Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -1229,10 +1229,16 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 0,
+        "scanned": 1,
         "retained": 0,
-        "rejected": 0,
-        "reasons": [],
+        "rejected": 1,
+        "reasons": [
+          "geographic_relevance_unestablished",
+          "headline_only_or_body_unavailable",
+          "missing_safe_origin_or_publication_identity",
+          "originating_source_unknown",
+          "verified_at_unknown"
+        ],
         "coverage_gaps": [
           "no_qualifying_evidence"
         ]
@@ -2827,9 +2833,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 49,
+        "scanned": 50,
         "retained": 0,
-        "rejected": 49,
+        "rejected": 50,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2852,6 +2858,83 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Saudi coalition reports intercepting drone toward Mecca; Houthis deny threatening holy sites",
+      "text": "Al Jazeera Staff and Reuters reporting published September 16 attributes a Tuesday-evening drone interception to coalition spokesman Turki al-Maliki. It reports short-lived alerts in Mecca, Taif and Jeddah and quotes a Houthi military source through SABA denying threats to Mecca or other holy sites. Exact event and publication times are unknown. Underlying coalition and SABA statements were not retrieved. This is attributed and disputed reporting, not independent confirmation of the drone origin or intended target, and not a newly timed attack within this scan.",
+      "timestamp": "2026-09-16T06:04:09.901641+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-09-16",
+      "incident_id": "mecca-drone-interception-claim-2026-09-15",
+      "publication_id": "https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-09-16T06:04:09.901641Z",
+      "reviewed_at": "2026-09-16T06:04:09.901641Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_de80336007c99673344c6f7ee7fc100bd185be018fa5a8351706c6eb9fd9eef5",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The report juxtaposes a Saudi interception claim with a Houthi denial; intended target and origin are not independently established.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca"
+      ]
+    },
+    {
+      "zone": "egypt_mediterranean",
+      "headline": "AP reports Saudi-Egyptian talks on Red Sea maritime security; no concrete steps announced",
+      "text": "Associated Press reporting republished by NBC, timestamped September 15 at 9:32 PM EDT, reports Mohammed bin Salman met Abdel-Fattah el-Sissi in Cairo on September 15. It quotes statements supporting maritime navigation and Saudi Arabia, but says neither side gave firm details on future steps. The underlying September statements were not retrieved; the presidency homepage returned older material. AP syndication is one reporting origin, not independent corroboration. No Egyptian combat deployment or new defence commitment is established.",
+      "timestamp": "2026-09-16T06:04:09.901641+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-09-16",
+      "incident_id": "saudi-egypt-cairo-maritime-security-talks-2026-09-15",
+      "publication_id": "https://www.nbcnews.com/world/saudi-arabia/saudi-crown-prince-seeks-egypts-backing-houthi-attacks-rattle-red-sea-rcna598054",
+      "event_at": null,
+      "published_at": "2026-09-16T01:32:00Z",
+      "collected_at": "2026-09-16T06:04:09.901641Z",
+      "reviewed_at": "2026-09-16T06:04:09.901641Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_be873d914466244e21b178d3adaf6862e99e205762b04115c05ee628559c152f",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "Reported political support does not establish an Egyptian military commitment; the account supplies no firm operational next steps.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.nbcnews.com/world/saudi-arabia/saudi-crown-prince-seeks-egypts-backing-houthi-attacks-rattle-red-sea-rcna598054"
+      ]
+    },
     {
       "zone": "iran_conventional",
       "headline": "Reuters relays IRNA report of explosion sounds on Qeshm",
@@ -3571,91 +3654,6 @@ const state = {
         "https://english.dvb.no/mandalay-international-airport-closed-for-two-days-following-drone-strike-on-tada-u-air-force-base/",
         "https://english.dvb.no/myanmar-resistance-group-claims-it-struck-a-military-air-base-at-mandalay-airport-with-drones/"
       ]
-    },
-    {
-      "zone": "iran_conventional",
-      "headline": "Saudi Arabia attributes pipeline drones to Iraq and holds off retaliation",
-      "text": "Reuters reports a September 11 Saudi foreign ministry statement attributing the East-West pipeline drones to launches from Iraq. Riyadh says it will not retaliate for now following the Iraqi prime ministers request, while reserving its right to protect its interests. Al Jazeera/AFP quotes the same Saudi statement and an Iraqi statement ordering an investigation; these are attributed official accounts, not independent verification of the launch origin. This revises the existing September 10 attack report, not a newly timed attack. The pipeline restart time remains unknown.",
-      "timestamp": "2026-09-12T03:03:46.944199+00:00",
-      "timestamp_kind": "review_time",
-      "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
-      "publication_id": "https://www.reuters.com/world/middle-east/saudi-arabia-says-drones-launched-iraq-hit-east-west-pipeline-holds-off-2026-09-11/",
-      "event_at": null,
-      "published_at": "2026-09-11T20:16:00Z",
-      "collected_at": "2026-09-12T03:03:46.944199Z",
-      "reviewed_at": "2026-09-12T03:03:46.944199Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_ccd49d730e19d0daa9363abd5bce50e5562f295f4cd9f15ad4c3b859542eab41",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "verified_at_unknown",
-        "stale_publication"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
-      "report_status": "revision",
-      "implication": "Saudi Arabia links the existing attack to launches from Iraq but says it is withholding retaliation for now; launch origin remains an official attribution.",
-      "next_trigger": "Iraq says an investigation into the attack and those responsible has been ordered.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Saudi attribution of launch territory and announced restraint add material diplomatic context to the existing pipeline attack.",
-      "source_urls": [
-        "https://english.aawsat.com/arab-world/5317348-saudi-arabia-strongly-condemns-drone-attack-east-west-pipeline-drones-launched",
-        "https://www.aljazeera.com/news/2026/9/11/saudi-arabia-says-east-west-pipeline-hit-by-drones-launched-from-iraq",
-        "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
-        "https://www.reuters.com/world/middle-east/saudi-arabia-says-drones-launched-iraq-hit-east-west-pipeline-holds-off-2026-09-11/",
-        "https://www.spa.gov.sa/en/N2674017"
-      ]
-    },
-    {
-      "zone": "iran_conventional",
-      "headline": "Saudi ministry reports temporary East-West pipeline shutdown after attacks",
-      "text": "Reuters on September 11 at 20:08 UTC reports, citing Saudi state media and an energy ministry source, that the East-West pipeline was temporarily shut after several attacks in Riyadh and Medina on Thursday. Some people were injured and received treatment. The official SPA page title matches the shutdown claim, but its full statement could not be retrieved. This is newly reviewed reporting, not a newly timed attack in this scan. Responsibility, restart time and independent verification are not established.",
-      "timestamp": "2026-09-12T00:04:05.465538+00:00",
-      "timestamp_kind": "review_time",
-      "incident_id": "saudi-east-west-pipeline-attacks-2026-09-10",
-      "publication_id": "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
-      "event_at": null,
-      "published_at": "2026-09-11T20:08:00Z",
-      "collected_at": "2026-09-12T00:04:05.465538Z",
-      "reviewed_at": "2026-09-12T00:04:05.465538Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_01e1a0c1afa33f9ebfe1aa2db5f4877aebf57dfbca5d16dafafd9f9c742a8617",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "geographic_relevance_unestablished",
-        "headline_only_or_body_unavailable",
-        "inactive_revision_superseded",
-        "missing_safe_origin_or_publication_identity",
-        "originating_source_unknown",
-        "stale_publication",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "superseded",
-      "implication": "The reported shutdown interrupts a Saudi oil transport route; the duration and restart status are not established by the retrieved report.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.reuters.com/business/energy/saudi-east-west-oil-pipeline-was-temporarily-shut-down-after-attacks-state-media-2026-09-11/",
-        "https://www.spa.gov.sa/en/N2674017"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3672,7 +3670,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-09-16T03:05:03Z",
+  "build_at": "2026-09-16T06:04:42Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3872,7 +3870,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-09-16T03:05:03Z",
+      "generated_at": "2026-09-16T06:04:42Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4505,10 +4503,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-09-16T03:05:03Z",
+    "generated_at": "2026-09-16T06:04:42Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 179.78722222222223,
+    "age_hours": 182.7813888888889,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4590,7 +4588,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4657,7 +4655,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4685,7 +4683,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4713,7 +4711,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4813,7 +4811,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4880,7 +4878,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4978,7 +4976,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 105.87149305555556,
+            "remaining_days": 105.7467361111111,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5006,7 +5004,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5104,7 +5102,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5132,7 +5130,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 105.87149305555556,
+            "remaining_days": 105.7467361111111,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5199,7 +5197,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 107.07913194444444,
+            "remaining_days": 106.954375,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5284,75 +5282,111 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-09-16T03:05:03Z",
+    "generated_at": "2026-09-16T06:04:42Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "6e086e1f42a62549a3acda48f607371e7f398e5983b55e52a21af77a2a9d5372",
+    "previous_snapshot_id": "22d0ee85faa0e380f38ba09c31525a3b6bfdbe35a9c44e37f00b7b479ff32c3e",
     "changes": [
       {
-        "zone": "russia_ukraine",
-        "headline": "September 15 energy strikes reported despite proposed Russia-Ukraine pause",
+        "zone": "yemen_red_sea",
+        "headline": "Saudi coalition reports intercepting drone toward Mecca; Houthis deny threatening holy sites",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_36fe03d82e79f84c678ffcf6e9c186458699700fba3e5f60ce1b5afcc2aa22b9",
+        "correction_id": "rev_de80336007c99673344c6f7ee7fc100bd185be018fa5a8351706c6eb9fd9eef5",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.nbcnews.com/world/ukraine/russia-ukraine-new-energy-attacks-trumps-ceasefire-claim-rcna597873",
-          "https://www.pravda.com.ua/eng/news/2026/09/15/8053498/"
+          "https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca"
         ],
         "next_trigger": "Not supplied by source evidence.",
-        "implication": "Reported energy strikes continued after the proposed pause; the reporting does not establish that a mutual halt was implemented.",
+        "implication": "The report juxtaposes a Saudi interception claim with a Houthi denial; intended target and origin are not independently established.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "russia-ukraine-energy-strikes-2026-09-15",
+        "incident_id": "mecca-drone-interception-claim-2026-09-15",
+        "change": "New incident report"
+      },
+      {
+        "zone": "egypt_mediterranean",
+        "headline": "AP reports Saudi-Egyptian talks on Red Sea maritime security; no concrete steps announced",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_be873d914466244e21b178d3adaf6862e99e205762b04115c05ee628559c152f",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.nbcnews.com/world/saudi-arabia/saudi-crown-prince-seeks-egypts-backing-houthi-attacks-rattle-red-sea-rcna598054"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "Reported political support does not establish an Egyptian military commitment; the account supplies no firm operational next steps.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "saudi-egypt-cairo-maritime-security-talks-2026-09-15",
         "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "russia_ukraine",
-        "headline": "September 15 energy strikes reported despite proposed Russia-Ukraine pause",
+        "zone": "yemen_red_sea",
+        "headline": "Saudi coalition reports intercepting drone toward Mecca; Houthis deny threatening holy sites",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_36fe03d82e79f84c678ffcf6e9c186458699700fba3e5f60ce1b5afcc2aa22b9",
+        "correction_id": "rev_de80336007c99673344c6f7ee7fc100bd185be018fa5a8351706c6eb9fd9eef5",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.nbcnews.com/world/ukraine/russia-ukraine-new-energy-attacks-trumps-ceasefire-claim-rcna597873",
-          "https://www.pravda.com.ua/eng/news/2026/09/15/8053498/"
+          "https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca"
         ],
         "next_trigger": "Not supplied by source evidence.",
-        "implication": "Reported energy strikes continued after the proposed pause; the reporting does not establish that a mutual halt was implemented.",
+        "implication": "The report juxtaposes a Saudi interception claim with a Houthi denial; intended target and origin are not independently established.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "russia-ukraine-energy-strikes-2026-09-15",
+        "incident_id": "mecca-drone-interception-claim-2026-09-15",
+        "change": "New incident report"
+      },
+      {
+        "zone": "egypt_mediterranean",
+        "headline": "AP reports Saudi-Egyptian talks on Red Sea maritime security; no concrete steps announced",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_be873d914466244e21b178d3adaf6862e99e205762b04115c05ee628559c152f",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.nbcnews.com/world/saudi-arabia/saudi-crown-prince-seeks-egypts-backing-houthi-attacks-rattle-red-sea-rcna598054"
+        ],
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "Reported political support does not establish an Egyptian military commitment; the account supplies no firm operational next steps.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "saudi-egypt-cairo-maritime-security-talks-2026-09-15",
         "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: September 15 energy strikes reported despite proposed Russia-Ukraine pause\nImplication: Reported energy strikes continued after the proposed pause; the reporting does not establish that a mutual halt was implemented.\nEvidence: verification not established https://www.nbcnews.com/world/ukraine/russia-ukraine-new-energy-attacks-trumps-ceasefire-claim-rcna597873\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.nbcnews.com/world/ukraine/russia-ukraine-new-energy-attacks-trumps-ceasefire-claim-rcna597873",
-    "message_id": "6605930e766981557f41b7d5ae2b5d0056ccf680faaaf7a8f12cdcbf159cd22a"
+    "message": "New incident report: Saudi coalition reports intercepting drone toward Mecca; Houthis deny threatening holy sites\nImplication: The report juxtaposes a Saudi interception claim with a Houthi denial; intended target and origin are not independently established.\nEvidence: verification not established https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.aljazeera.com/news/2026/9/16/saudi-led-coalition-intercepts-drone-headed-for-mecca\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "3abfa88582bcc59f1522f55a48a0749e475ff94ba6663934f6e01d5369496282"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 672,
-    "current_report_count": 672,
+    "total_count": 674,
+    "current_report_count": 674,
     "retained_revision_count": 0,
     "recent_count": 20,
-    "archive_count": 652,
-    "bytes": 925156,
-    "sha256": "3ecb03e4f21dc8f8bff15598d8b354fa90b40ca2f496e158a57c62a4aa22b2fc",
+    "archive_count": 654,
+    "bytes": 929972,
+    "sha256": "a0467e43f521369f02a6726a0cd5adcc0f3b7b3993a6d9603e0530f83c179be9",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-09-15T22:23:00Z",
+    "published_at": "2026-09-16T01:32:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-09-16T03:04:43.202259Z"
+    "reviewed_at": "2026-09-16T06:04:09.901641Z"
   }
 };
 
