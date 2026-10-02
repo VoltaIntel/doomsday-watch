@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-02T15:02:28Z",
+  "last_updated": "2026-10-02T18:02:28Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -293,10 +293,11 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 192,
+        "scanned": 193,
         "retained": 0,
-        "rejected": 192,
+        "rejected": 193,
         "reasons": [
+          "collected_at_invalid_or_future",
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
           "inactive_revision_superseded",
@@ -304,6 +305,7 @@ const state = {
           "originating_source_unknown",
           "published_at_invalid_or_future",
           "published_at_unknown",
+          "reviewed_at_invalid_or_future",
           "stale_publication",
           "verified_at_unknown"
         ],
@@ -777,16 +779,18 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 69,
+        "scanned": 70,
         "retained": 0,
-        "rejected": 69,
+        "rejected": 70,
         "reasons": [
+          "collected_at_invalid_or_future",
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
           "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
           "published_at_unknown",
+          "reviewed_at_invalid_or_future",
           "stale_publication",
           "verified_at_unknown"
         ],
@@ -2861,6 +2865,91 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "iran_conventional",
+      "headline": "UK arrests dual UK-Iranian national over RAF Fairford incident; PM cites 'strong indications' of Iranian role, Tehran denies",
+      "text": "Al Jazeera (Reuters/AFP/AP, Oct 1) reports UK counter-terrorism police arrested a dual UK-Iranian national, 27, in London on suspicion of preparation of terrorist acts in the RAF Fairford investigation; a 26-year-old was questioned under caution. Five men arrested Sept 27 were bailed. PM Burnham said there are strong indications Iran played a part without detail; Iran denies involvement. AP headline corroborates the arrest (article body not fully read). Official attribution to Iran is unestablished.",
+      "timestamp": "2026-10-02T18:08:00Z",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-01",
+      "incident_id": "raf-fairford-airbase-incident-iran-link-2026-09-27",
+      "publication_id": "https://www.aljazeera.com/news/2026/10/1/british-police-arrest-uk-iranian-national-over-airbase-incident",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-02T18:08:00Z",
+      "reviewed_at": "2026-10-02T18:08:00Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_ac453a7c833b9f9a36f62d60114b924f407924c7c91f02f5e1b2225f3d38369a",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "collected_at_invalid_or_future",
+        "reviewed_at_invalid_or_future",
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "UK counter-terrorism police arrested a 27-year-old dual UK-Iranian national on suspicion of preparing terrorist acts after the Sept 27 incident at a US-used air base; the UK prime minister cites 'strong indications' of an Iranian role, no details published, and Iran denies involvement. No explosives were reported found.",
+      "next_trigger": "Police charging decisions or UK evidence publicly linking the suspects to a foreign state.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://apnews.com/article/arrest-raf-fairford-iran-uk-us-700446a74cd3107d2e16e75642431bf9",
+        "https://www.aljazeera.com/news/2026/10/1/british-police-arrest-uk-iranian-national-over-airbase-incident",
+        "https://www.aljazeera.com/news/2026/10/1/uk-says-iran-may-be-linked-to-alleged-airbase-plot-drawing-angry-denial"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
+      "headline": "IAEA Update 369: Zaporizhzhia considers further cut to emergency diesel generators on automatic standby as diesel runs low",
+      "text": "NucNet (Oct 2) relays IAEA Director General Grossi that ZNPP staff are considering reducing the number of EDGs kept in automatic standby; the Update 369 page itself was not retrievable this cycle (only a search snippet). Update 368 (retrieved) described four of 20 EDGs on automatic start and a sole remaining 330 kV line.",
+      "timestamp": "2026-10-02T18:08:00Z",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-02",
+      "incident_id": "iaea-update-369-zaporizhzhia-diesel-2026-10-02",
+      "publication_id": "https://www.nucnet.org/news/zaporizhzhya-considering-reduction-in-number-of-emergency-diesel-generators-on-standby-10-5-2026",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-02T18:08:00Z",
+      "reviewed_at": "2026-10-02T18:08:00Z",
+      "verified_at": null,
+      "evidence_id": null,
+      "revision_id": "rev_da8a80f282c17b39cc25bbe37f782edbb881741409c28273ced439bf958e56e3",
+      "revision_ids": [],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "missing_safe_origin_or_publication_identity",
+        "headline_only_or_body_unavailable",
+        "originating_source_unknown",
+        "geographic_relevance_unestablished",
+        "collected_at_invalid_or_future",
+        "reviewed_at_invalid_or_future",
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "IAEA reports ZNPP diesel reserves remain low after the long off-site power loss and replenishment is hindered by military activity; the plant relies on a single off-site line. This is a nuclear-safety fragility, not a radiological release.",
+      "next_trigger": "Another loss of the single off-site power line or a further EDG standby reduction.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.iaea.org/newscenter/pressreleases/update-369-iaea-director-general-statement-on-situation-in-ukraine",
+        "https://www.nucnet.org/news/zaporizhzhya-considering-reduction-in-number-of-emergency-diesel-generators-on-standby-10-5-2026"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Saudi-led coalition accuses Houthis of drone strike on Medina power station; Houthis deny",
       "text": "Al Jazeera/Reuters (Oct 1) and France 24/AFP (Oct 2) report coalition spokesman Turki al-Maliki saying a drone hit the Taibah electricity distribution station in Medina at 05:11 local on Sept 29, based on wreckage review; one transformer was disabled without wider network impact. The Houthis deny involvement. Attribution is a party claim; no independent verification retrieved.",
@@ -3579,86 +3668,6 @@ const state = {
       "source_urls": [
         "https://www.aljazeera.com/news/2026/9/30/trump-calls-kim-jong-un-a-friend-and-plays-down-n-koreas-nuclear-arsenal"
       ]
-    },
-    {
-      "zone": "north_korea",
-      "headline": "Reuters/USNI: North Korea tests new weapon, appears to be hypersonic glide variant",
-      "text": "Reuters (full report reviewed) says KCNA reported a September 20 test of a new weapon overseen by Kim, with South Korea's military reporting two short-range ballistic missiles off the east coast; KCNA did not specify the type, and NK News assessed it as an upgraded variant with a hypersonic glide vehicle. USNI News (partial read) reports similar. The weapon type is an outside assessment and not officially confirmed. Earlier reporting first reviewed in this cycle.",
-      "timestamp": "2026-10-01T09:03:32+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-20",
-      "incident_id": "north-korea-hwasongpho-11ma-1-test-2026-09-20",
-      "publication_id": "https://www.reuters.com/world/asia-pacific/north-korea-says-it-tests-new-combat-weapon-system-kcna-reports-2026-09-21",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-01T09:03:32Z",
-      "reviewed_at": "2026-10-01T09:03:32Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_de0dbc374b6be931b0c3a41c01eb538d6222bfaa569a1090251d85fe41a76b3c",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "A reported advanced short-range missile test continues North Korea's weapons development; the weapon type is unconfirmed.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://news.usni.org/2026/09/23/north-korea-tests-new-hypersonic-missile",
-        "https://www.reuters.com/world/asia-pacific/north-korea-says-it-tests-new-combat-weapon-system-kcna-reports-2026-09-21"
-      ]
-    },
-    {
-      "zone": "south_china_sea",
-      "headline": "Global Times: PLA and China Coast Guard hold drills around Scarborough Shoal",
-      "text": "Chinese state outlet Global Times (partial read) reports PLA Southern Theater Command naval-air drills and a China Coast Guard law-enforcement drill including boarding and forced towing around Huangyan Dao on September 27. AEI's September 29 commentary (excerpt only) separately describes a September 25 Philippine resupply suspension after a Chinese vessel's dangerous manoeuvres. Chinese-state framing is not independent verification and the Philippine account was seen only in excerpt.",
-      "timestamp": "2026-10-01T09:03:32+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-09-27",
-      "incident_id": "scarborough-pla-ccg-drills-2026-09-27",
-      "publication_id": "https://www.globaltimes.cn/page/202609/1371436.shtml",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-01T09:03:32Z",
-      "reviewed_at": "2026-10-01T09:03:32Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_a8ab01b133b5b32ec2c750b15557b93c2e649e47425684851633066acb494abf",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The drills are a reported pressure signal near a flashpoint; the reporting does not establish a blockade or a lethal incident.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.aei.org/commentary/china-taiwan-update-september-29-2026",
-        "https://www.globaltimes.cn/page/202609/1371436.shtml"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3675,7 +3684,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-02T15:02:28Z",
+  "build_at": "2026-10-02T18:02:28Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3875,7 +3884,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-02T15:02:28Z",
+      "generated_at": "2026-10-02T18:02:28Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4508,10 +4517,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-02T15:02:28Z",
+    "generated_at": "2026-10-02T18:02:28Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 575.7441666666666,
+    "age_hours": 578.7441666666666,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4593,7 +4602,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4660,7 +4669,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4688,7 +4697,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4716,7 +4725,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4816,7 +4825,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4883,7 +4892,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4981,7 +4990,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 89.37328703703703,
+            "remaining_days": 89.24828703703703,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5009,7 +5018,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5107,7 +5116,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5135,7 +5144,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 89.37328703703703,
+            "remaining_days": 89.24828703703703,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5202,7 +5211,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 90.58092592592592,
+            "remaining_days": 90.45592592592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5287,115 +5296,117 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-02T15:02:28Z",
+    "generated_at": "2026-10-02T18:02:28Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "ff0d91a62db25e741aaf68aaca6e1e2631097163a9c61be3acb31a8636116577",
+    "previous_snapshot_id": "21f586ce0fe78fbdc7259f54bd4c97e6010281ab91ec07e0f2f99cb768dc743e",
     "changes": [
       {
-        "zone": "iran_conventional",
-        "headline": "Trump says Iran would be hit 'very hard' if linked to FlyDubai cockpit attack; probe continues",
+        "zone": "russia_ukraine",
+        "headline": "IAEA Update 369: Zaporizhzhia considers further cut to emergency diesel generators on automatic standby as diesel runs low",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_e3bf6fa40bec5b15110c59e88eeb62759c2128ab31fca7b319d3b47c4decde6c",
+        "correction_id": "rev_da8a80f282c17b39cc25bbe37f782edbb881741409c28273ced439bf958e56e3",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://apnews.com/article/israel-saudi-flight-copilot-flydubai-investigation-83cf555e36d5b58b85f5073215841058",
-          "https://www.foxnews.com/live-news/us-iran-war-flydubai-plane-trump-talks-10-02-26"
+          "https://www.iaea.org/newscenter/pressreleases/update-369-iaea-director-general-statement-on-situation-in-ukraine",
+          "https://www.nucnet.org/news/zaporizhzhya-considering-reduction-in-number-of-emergency-diesel-generators-on-standby-10-5-2026"
         ],
-        "next_trigger": "Investigation findings on the suspect's motive and any Iran link.",
-        "implication": "A US conditional threat against Iran follows the diverted FlyDubai flight; officials say all motives are being examined and no Iran link is established in the retrieved reporting.",
+        "next_trigger": "Another loss of the single off-site power line or a further EDG standby reduction.",
+        "implication": "IAEA reports ZNPP diesel reserves remain low after the long off-site power loss and replenishment is hindered by military activity; the plant relies on a single off-site line. This",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "flydubai-tel-aviv-cockpit-incident-trump-warning-2026-09-30",
+        "incident_id": "iaea-update-369-zaporizhzhia-diesel-2026-10-02",
         "change": "New incident report"
       },
       {
-        "zone": "yemen_red_sea",
-        "headline": "Saudi-led coalition accuses Houthis of drone strike on Medina power station; Houthis deny",
+        "zone": "iran_conventional",
+        "headline": "UK arrests dual UK-Iranian national over RAF Fairford incident; PM cites 'strong indications' of Iranian role, Tehran denies",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_08a1d44e99b37adbb9c9e106122a13fa9d38e144e151bc7e818d257ca271d819",
+        "correction_id": "rev_ac453a7c833b9f9a36f62d60114b924f407924c7c91f02f5e1b2225f3d38369a",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.aljazeera.com/news/2026/10/1/saudi-led-coalition-says-power-station-attacked-in-medina-blames-houthis",
-          "https://www.france24.com/en/middle-east/20261002-saudi-led-coalition-houthis-striking-medina-power-station"
+          "https://apnews.com/article/arrest-raf-fairford-iran-uk-us-700446a74cd3107d2e16e75642431bf9",
+          "https://www.aljazeera.com/news/2026/10/1/british-police-arrest-uk-iranian-national-over-airbase-incident",
+          "https://www.aljazeera.com/news/2026/10/1/uk-says-iran-may-be-linked-to-alleged-airbase-plot-drawing-angry-denial"
         ],
-        "next_trigger": "Not supplied by source evidence.",
-        "implication": "A reported drone strike took one transformer out of service at a station supplying the Prophet's Mosque; attribution rests on coalition statements and is denied by the Houthis, wit",
+        "next_trigger": "Police charging decisions or UK evidence publicly linking the suspects to a foreign state.",
+        "implication": "UK counter-terrorism police arrested a 27-year-old dual UK-Iranian national on suspicion of preparing terrorist acts after the Sept 27 incident at a US-used air base; the UK prime ",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "saudi-medina-taibah-power-station-drone-2026-09-29",
+        "incident_id": "raf-fairford-airbase-incident-iran-link-2026-09-27",
         "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "iran_conventional",
-        "headline": "Trump says Iran would be hit 'very hard' if linked to FlyDubai cockpit attack; probe continues",
+        "zone": "russia_ukraine",
+        "headline": "IAEA Update 369: Zaporizhzhia considers further cut to emergency diesel generators on automatic standby as diesel runs low",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_e3bf6fa40bec5b15110c59e88eeb62759c2128ab31fca7b319d3b47c4decde6c",
+        "correction_id": "rev_da8a80f282c17b39cc25bbe37f782edbb881741409c28273ced439bf958e56e3",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://apnews.com/article/israel-saudi-flight-copilot-flydubai-investigation-83cf555e36d5b58b85f5073215841058",
-          "https://www.foxnews.com/live-news/us-iran-war-flydubai-plane-trump-talks-10-02-26"
+          "https://www.iaea.org/newscenter/pressreleases/update-369-iaea-director-general-statement-on-situation-in-ukraine",
+          "https://www.nucnet.org/news/zaporizhzhya-considering-reduction-in-number-of-emergency-diesel-generators-on-standby-10-5-2026"
         ],
-        "next_trigger": "Investigation findings on the suspect's motive and any Iran link.",
-        "implication": "A US conditional threat against Iran follows the diverted FlyDubai flight; officials say all motives are being examined and no Iran link is established in the retrieved reporting.",
+        "next_trigger": "Another loss of the single off-site power line or a further EDG standby reduction.",
+        "implication": "IAEA reports ZNPP diesel reserves remain low after the long off-site power loss and replenishment is hindered by military activity; the plant relies on a single off-site line. This",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "flydubai-tel-aviv-cockpit-incident-trump-warning-2026-09-30",
+        "incident_id": "iaea-update-369-zaporizhzhia-diesel-2026-10-02",
         "change": "New incident report"
       },
       {
-        "zone": "yemen_red_sea",
-        "headline": "Saudi-led coalition accuses Houthis of drone strike on Medina power station; Houthis deny",
+        "zone": "iran_conventional",
+        "headline": "UK arrests dual UK-Iranian national over RAF Fairford incident; PM cites 'strong indications' of Iranian role, Tehran denies",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_08a1d44e99b37adbb9c9e106122a13fa9d38e144e151bc7e818d257ca271d819",
+        "correction_id": "rev_ac453a7c833b9f9a36f62d60114b924f407924c7c91f02f5e1b2225f3d38369a",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.aljazeera.com/news/2026/10/1/saudi-led-coalition-says-power-station-attacked-in-medina-blames-houthis",
-          "https://www.france24.com/en/middle-east/20261002-saudi-led-coalition-houthis-striking-medina-power-station"
+          "https://apnews.com/article/arrest-raf-fairford-iran-uk-us-700446a74cd3107d2e16e75642431bf9",
+          "https://www.aljazeera.com/news/2026/10/1/british-police-arrest-uk-iranian-national-over-airbase-incident",
+          "https://www.aljazeera.com/news/2026/10/1/uk-says-iran-may-be-linked-to-alleged-airbase-plot-drawing-angry-denial"
         ],
-        "next_trigger": "Not supplied by source evidence.",
-        "implication": "A reported drone strike took one transformer out of service at a station supplying the Prophet's Mosque; attribution rests on coalition statements and is denied by the Houthis, wit",
+        "next_trigger": "Police charging decisions or UK evidence publicly linking the suspects to a foreign state.",
+        "implication": "UK counter-terrorism police arrested a 27-year-old dual UK-Iranian national on suspicion of preparing terrorist acts after the Sept 27 incident at a US-used air base; the UK prime ",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "saudi-medina-taibah-power-station-drone-2026-09-29",
+        "incident_id": "raf-fairford-airbase-incident-iran-link-2026-09-27",
         "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Trump says Iran would be hit 'very hard' if linked to FlyDubai cockpit attack; probe continues\nImplication: A US conditional threat against Iran follows the diverted FlyDubai flight; officials say all motives are being examined and no Iran link is established in the retrieved reporting.\nEvidence: verification not established https://apnews.com/article/israel-saudi-flight-copilot-flydubai-investigation-83cf555e36d5b58b85f5073215841058\nNext trigger: Investigation findings on the suspect's motive and any Iran link.\nDossier: dashboard incident list; source https://apnews.com/article/israel-saudi-flight-copilot-flydubai-investigation-83cf555e36d5b58b85f5073215841058\n1 additional incident changes in the dashboard briefing list.",
-    "message_id": "a01c3b712f6f6ca257f0bd191aefc359f310a55162ed223ba1de95e8ff0779be"
+    "message": "New incident report: IAEA Update 369: Zaporizhzhia considers further cut to emergency diesel generators on automatic standby as diesel runs low\nImplication: IAEA reports ZNPP diesel reserves remain low after the long off-site power loss and replenishment is hindered by military activity; the plant relies on a single off-site line. This\nEvidence: verification not established https://www.iaea.org/newscenter/pressreleases/update-369-iaea-director-general-statement-on-situation-in-ukraine\nNext trigger: Another loss of the single off-site power line or a further EDG standby reduction.\nDossier: dashboard incident list; source https://www.iaea.org/newscenter/pressreleases/update-369-iaea-director-general-statement-on-situation-in-ukraine\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "e2279cf3b8284bc2b3a46cfae97bdb1982c8ef152d3fb64d3083d3a3da230035"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 713,
-    "current_report_count": 710,
+    "total_count": 715,
+    "current_report_count": 712,
     "retained_revision_count": 3,
     "recent_count": 20,
-    "archive_count": 693,
-    "bytes": 1012782,
-    "sha256": "dd14c16048ca37933d0679fb3948f878527d22a3868dfbbffcf71b434ae5bb97",
+    "archive_count": 695,
+    "bytes": 1016581,
+    "sha256": "c17f699b8a2814d0f776ccb17536f6b2092093ab1f3fc5bd702c655b9c982bdb",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-09-18T19:22:00Z",
     "verified_at": null,
-    "reviewed_at": "2026-10-02T15:02:07Z"
+    "reviewed_at": "2026-10-02T18:08:00Z"
   }
 };
 
