@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-03T21:12:22Z",
+  "last_updated": "2026-10-04T00:10:36Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -1057,12 +1057,13 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 34,
+        "scanned": 35,
         "retained": 0,
-        "rejected": 34,
+        "rejected": 35,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
+          "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
           "published_at_unknown",
@@ -1317,12 +1318,13 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 10,
+        "scanned": 12,
         "retained": 0,
-        "rejected": 10,
+        "rejected": 12,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
+          "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
           "published_at_unknown",
@@ -2836,9 +2838,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 61,
+        "scanned": 62,
         "retained": 0,
-        "rejected": 61,
+        "rejected": 62,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2862,6 +2864,177 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "ethiopia_tigray",
+      "headline": "AFP: humanitarian source reports Ethiopian federal forces entered Mekelle after TPLF withdrawal; control unverified",
+      "text": "Later full AFP and France 24/AFP page bytes report a humanitarian source, citing ground staff, observed Ethiopian federal and allied forces at various locations in Mekelle after earlier TPLF withdrawal. This explicitly supersedes the earlier no-federal-entry-reported version, not a separate capture incident. AFP says communications are severely disrupted, its earlier journalist could not be reached again, and army and prime-minister spokespeople had not responded. France 24 repeats AFP and is not independent verification. Current control, casualty totals and exact entry time remain unknown. AFP also reports a diplomatic source expects a regional mini-summit in Alamein on Sunday. AFP page publication metadata and display differ; original publication time is left unknown, while France 24 exact publication and modification metadata are separately retained.",
+      "timestamp": "2026-10-04T00:09:45.314196Z",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-03",
+      "incident_id": "mekelle-tplf-withdrawal-afp-2026-10-03",
+      "publication_id": "https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances",
+      "originating_source": "AFP",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-04T00:07:01.623807Z",
+      "reviewed_at": "2026-10-04T00:09:45.314196Z",
+      "verified_at": null,
+      "evidence_id": "ev_c9db38f08aaa82267226df612c4fe2de8075705f123ddf0fab23c0e5cab1f9c4",
+      "revision_id": "rev_90230fd856d4af46360d81dd7f914b2ebc4f5627fe508bb2bdfc587245983e30",
+      "revision_ids": [
+        "rev_2cc45ee937c02f3b239c47ed4122f5cd5b0e0019108e477084ccc880aa80e865",
+        "rev_90230fd856d4af46360d81dd7f914b2ebc4f5627fe508bb2bdfc587245983e30"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_2cc45ee937c02f3b239c47ed4122f5cd5b0e0019108e477084ccc880aa80e865",
+      "report_status": "revision",
+      "implication": "AFP reports federal forces entered Mekelle after TPLF withdrawal; city control remains unverified amid severe communications disruption.",
+      "next_trigger": "AFP\u2019s diplomatic source expects a regional summit in Alamein on Sunday; confirmation and outcome remain pending.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Later AFP ground-staff account adds reported federal entry to the earlier TPLF-withdrawal/no-entry version.",
+      "source_urls": [
+        "https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances",
+        "https://www.france24.com/en/africa/20261003-ethiopia-s-tigray-rebels-abandon-regional-capital-of-mekelle-as-pro-government-forces-advance"
+      ]
+    },
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Riyadh fire revision: Houthis claim an Aramco missile/drone attack; Saudi coalition calls the claim misleading",
+      "text": "Anadolu\u2019s full publication reports Yahya Saree\u2019s televised claim that Houthi missiles and drones targeted Aramco in Riyadh and caused fires, and relays coalition spokesman Turki al-Maliki calling the Riyadh-targeting claims misleading. Xinhua independently publishes reporting of the same al-Masirah statement, not separate evidence of the attack\u2019s cause. Reuters\u2019s previously accepted witness fire account is retained; the newly read claim and denial supersede its earlier no-immediate-claim context, not its observation of a fire. No verified weapon, perpetrator, casualty, damage or production effect is established. Original Houthi and coalition publications were not retrieved. Anadolu metadata contains no timezone, and Xinhua\u2019s displayed time has no explicit offset; publication instants remain unknown.",
+      "timestamp": "2026-10-04T00:09:45.314196Z",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-03",
+      "incident_id": "riyadh-aramco-vicinity-fire-reuters-2026-10-03",
+      "publication_id": "https://www.aa.com.tr/en/world/houthis-claim-missile-drone-attack-on-saudi-aramco-in-riyadh/4077303",
+      "originating_source": "Anadolu Agency; Xinhua relaying Houthi statement",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-04T00:05:07.193728Z",
+      "reviewed_at": "2026-10-04T00:09:45.314196Z",
+      "verified_at": null,
+      "evidence_id": "ev_1f1771b24c5d8bd2f8625c910ad64e9564ca89df2a4cb1feb9c0e3c545530523",
+      "revision_id": "rev_4cbe13e2376b535d5017a5e3823d4ba8ab52031314df8ee5f9d8683df30441d7",
+      "revision_ids": [
+        "rev_4cbe13e2376b535d5017a5e3823d4ba8ab52031314df8ee5f9d8683df30441d7"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_726f723119e26c313131e9a801b174cea6e670654562936d63050a57174515d5",
+      "report_status": "revision",
+      "implication": "A Houthi claim and Saudi coalition denial now accompany the retained Riyadh fire report; cause, damage and responsibility remain unverified.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Adds an explicit Houthi responsibility claim and attributed Saudi coalition denial to the same retained fire; no attribution verification.",
+      "source_urls": [
+        "https://english.news.cn/20261004/0d0108b709094929ba5f0d1f6b261bf5/c.html",
+        "https://www.aa.com.tr/en/world/houthis-claim-missile-drone-attack-on-saudi-aramco-in-riyadh/4077303",
+        "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03",
+        "https://www.straitstimes.com/world/middle-east/fire-smoke-seen-near-aramco-facility-in-riyadh-witness-says"
+      ]
+    },
+    {
+      "zone": "ethiopia_tigray",
+      "headline": "AFP: journalist and residents report TPLF withdrawal from Mekelle; federal entry not yet reported in this early account",
+      "text": "Early full AFP publication and France 24 syndication read through extraction: a local journalist and residents describe TPLF militants and leaders leaving Mekelle, security personnel absent from government offices and police stations, and fears of looting. Federal forces had not yet been seen inside the city in this early version. Restricted media access and communications blackouts limit verification. This early account is retained as history and is superseded by the later full-source entry report; exact original publication and collection instants are unknown.",
+      "timestamp": "2026-10-04T00:09:45.314196Z",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-03",
+      "incident_id": "mekelle-tplf-withdrawal-afp-2026-10-03",
+      "publication_id": "https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances",
+      "originating_source": "AFP",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": null,
+      "reviewed_at": "2026-10-04T00:09:45.314196Z",
+      "verified_at": null,
+      "evidence_id": "ev_c9db38f08aaa82267226df612c4fe2de8075705f123ddf0fab23c0e5cab1f9c4",
+      "revision_id": "rev_2cc45ee937c02f3b239c47ed4122f5cd5b0e0019108e477084ccc880aa80e865",
+      "revision_ids": [
+        "rev_2cc45ee937c02f3b239c47ed4122f5cd5b0e0019108e477084ccc880aa80e865",
+        "rev_90230fd856d4af46360d81dd7f914b2ebc4f5627fe508bb2bdfc587245983e30"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_superseded",
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "superseded",
+      "implication": "Reported TPLF withdrawal raises a local security vacuum concern; city control and federal entry are not established in this early account.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances",
+        "https://www.france24.com/en/africa/20261003-ethiopia-s-tigray-rebels-abandon-regional-capital-of-mekelle-as-pro-government-forces-advance"
+      ]
+    },
+    {
+      "zone": "north_korea",
+      "headline": "North Korea claims the retained October 3 launch used a hypersonic strategic missile and hit a target 1,000 km away",
+      "text": "Reuters via the full Straits Times October 4 publication and Yonhap relay KCNA\u2019s account of the same October 3 launch: an intermediate-range missile, described as part of a hypersonic strategic weapon system, reportedly hit a target 1,000 km away under Kim Jong Un\u2019s observation. Kim Yo Jong earlier claimed a wave-like trajectory and AI-enabled low-altitude manoeuvring. Reuters and AFP explicitly attribute those claims; no technical proof was supplied. This supersedes the retained statement that no North Korean account was available. It does not replace Japan\u2019s roughly 680 km or South Korea\u2019s more-than-700 km detection estimates, establish a new October 4 launch, verify a specific missile model, nuclear loading, AI capability or evasion. Original KCNA access failed; the same official account relayed by several reporters is not independent technical verification.",
+      "timestamp": "2026-10-04T00:09:45.314196Z",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-03",
+      "incident_id": "north-korea-wonsan-ballistic-launch-2026-10-03",
+      "publication_id": "https://www.straitstimes.com/asia/east-asia/north-korea-says-it-conducted-intermediate-range-strategic-missile-drill",
+      "originating_source": "Reuters via The Straits Times; Yonhap relaying KCNA",
+      "event_at": null,
+      "published_at": "2026-10-03T22:13:22Z",
+      "collected_at": "2026-10-04T00:05:06.447825Z",
+      "reviewed_at": "2026-10-04T00:09:45.314196Z",
+      "verified_at": null,
+      "evidence_id": "ev_5312ce622478878309ec4bc9cb9ae6eb9d1f19026d7163e97eb85ef63f134d93",
+      "revision_id": "rev_00195e94e9bff23665c8312d81a13e186ae72dde3d5fbe50922b7142e3ade3a4",
+      "revision_ids": [
+        "rev_00195e94e9bff23665c8312d81a13e186ae72dde3d5fbe50922b7142e3ade3a4"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_ee818cb8e7d8841ac7f5ca9943fb6c9e67a0c5a9fe0292f950abf372ac838ced",
+      "report_status": "revision",
+      "implication": "Pyongyang now claims a hypersonic-system drill for the same launch; range and performance remain unverified and differ from Seoul/Tokyo estimates.",
+      "next_trigger": "Seoul/Washington publish the missile\u2019s exact specifications.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Adds North Korean intermediate-range/hypersonic-system and 1,000 km claims to the same retained launch; detection estimates preserved.",
+      "source_urls": [
+        "https://en.yna.co.kr/view/AEN20261004000351315",
+        "https://www.afp.com/en/north-korea-says-test-intermediate-range-strategic-missile-included-use-ai-0",
+        "https://www.mercedsunstar.com/news/nation-world/world/article317479783.html",
+        "https://www.straitstimes.com/asia/east-asia/north-korea-says-it-conducted-intermediate-range-strategic-missile-drill"
+      ]
+    },
     {
       "zone": "yemen_red_sea",
       "headline": "Yemeni government-aligned forces announce October 3 strikes on Sanaa; damage unverified",
@@ -3284,10 +3457,11 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
-      "report_status": "unknown",
+      "report_status": "superseded",
       "implication": "A fire is reported near Saudi energy infrastructure; cause, damage, production effects and responsibility are not established.",
       "next_trigger": "Public context unavailable; consult the original source.",
       "independent_verification": false,
@@ -3496,173 +3670,6 @@ const state = {
         "https://www.axios.com/2026/10/02/patriot-missiles-iran-war-saudi-arabia-qatar",
         "https://www.thenationalnews.com/news/mena/2026/10/03/iran-gearing-up-for-major-round-of-fighting-with-us-source-says"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Moldova incident revision: police-attributed reports describe debris, vineyard fire and broken windows; no injuries reported",
-      "text": "Editorial revision of the same October 3 Moldova incident: NewsMaker quotes Defence Minister Anatolie Nosatii describing three missiles and two drones and a fire in Crocmaz. Its separate police-attributed report, also relayed by Militarnyi, describes debris in several districts, burning vegetation in a vineyard and broken nearby windows, with no injuries reported. This supersedes the earlier no-damage-reported context, not the historical existence of that early account. Original Defence Ministry monitoring/investigation release remains unchanged. Police original publication was not retrieved; weapon counts, types, Russian responsibility and physical damage remain attributed, not independently verified. No second incursion or new event time is asserted.",
-      "timestamp": "2026-10-03T21:11:18.052418Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-03",
-      "incident_id": "moldova-airspace-incursions-sandu-2026-10-03",
-      "publication_id": "https://newsmaker.md/ru/minoborony-v-moldovu-zaleteli-tri-rakety-i-dva-drona-mid-i-sandu-osudili-narushenie-vozdushnogo-prostranstva-strany",
-      "originating_source": "NewsMaker (Moldovan minister and police accounts)",
-      "event_at": null,
-      "published_at": "2026-10-03T08:57:19Z",
-      "collected_at": "2026-10-03T21:05:16.080208Z",
-      "reviewed_at": "2026-10-03T21:11:18.052418Z",
-      "verified_at": null,
-      "evidence_id": "ev_d5940062d4ce23353428b268fa0f3214c68544cc6b72a7e3d7e60a628b26cf2f",
-      "revision_id": "rev_717b15effdcc4f84b0143d7986119817faf9df88859e90baae64005851a58bba",
-      "revision_ids": [
-        "rev_717b15effdcc4f84b0143d7986119817faf9df88859e90baae64005851a58bba"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_a608071ddb395642ebbb3e62c3c63a2032685cfd0f1d508551b3d11da7787e93",
-      "report_status": "revision",
-      "implication": "Police-attributed reports add physical damage to the same spillover incident; no injuries reported, and weapon attribution remains unverified.",
-      "next_trigger": "Moldova\u2019s Defence Ministry says police and army teams are investigating and further details will follow.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Newly reviewed police-attributed debris, vineyard fire and window damage supersede the earlier no-damage-reported context.",
-      "source_urls": [
-        "https://militarnyi.com/en/news/3-missiles-2-uavs-entered-moldova-exploded",
-        "https://newsmaker.md/ru/minoborony-v-moldovu-zaleteli-tri-rakety-i-dva-drona-mid-i-sandu-osudili-narushenie-vozdushnogo-prostranstva-strany",
-        "https://newsmaker.md/ru/nad-moldovoi-zafiksirovali-prolet-pyati-bespilotnikov-v-neskolkih-raionah-progremeli-vzryvy-chto-izvestno-k-etomu-chasu",
-        "https://www.army.md/ro/comunicate-de-presa/informeaza-24",
-        "https://x.com/sandumaiamd/status/2106288502438801787"
-      ]
-    },
-    {
-      "zone": "north_korea",
-      "headline": "Jiji: Japan's Defense Ministry reports the Wonsan missile flew about 680 km, peaked near 90 km and fell outside its EEZ",
-      "text": "Jiji Press (nippon.com, Oct 3, read in full) reports Japan's Defense Ministry said the ballistic missile launched from around Wonsan traveled about 680 km to a maximum altitude of about 90 km, is believed to have fallen outside Japan's exclusive economic zone, and caused no confirmed damage to aircraft or ships; Japan lodged a protest. Chosun Ilbo (English, read in full) carries the South Korean JCS notice (flight over 700 km, exact specifications under US-ROK analysis), counts it as the 15th ballistic launch this year and the first since September 20, and reports an emergency security meeting at the presidential office. Reuters via GMA News (read) adds Kim Yo Jong's Friday statement rejecting Seoul's apology demand over DMZ mines. The Japanese figures reach this review through Jiji; the ministry's own release and any North Korean state-media account were not retrieved, and independent verification is not established.",
-      "timestamp": "2026-10-03T06:08:49Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-03",
-      "incident_id": "north-korea-wonsan-ballistic-launch-2026-10-03",
-      "publication_id": "https://www.nippon.com/en/news/yjj2026100300158",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-03T06:08:49Z",
-      "reviewed_at": "2026-10-03T06:08:49Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_ee818cb8e7d8841ac7f5ca9943fb6c9e67a0c5a9fe0292f950abf372ac838ced",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "north-korea-wonsan-ballistic-launch-2026-10-03-review-2",
-      "report_status": "revision",
-      "implication": "Japan's reported figures broadly match Seoul's roughly 700 km estimate; missile type and any North Korean account remain unstated while Seoul and Washington analyse specifications.",
-      "next_trigger": "Seoul/Washington publish the missile's exact specifications.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Japan's ministry reports about 680 km range, about 90 km apogee and impact outside its EEZ.",
-      "source_urls": [
-        "https://www.chosun.com/english/national-en/2026/10/03/Q2THOPSEPJHBLDYLF7YQYIONXE",
-        "https://www.gmanetwork.com/news/topstories/world/1004605/north-korea-fires-ballistic-missile-toward-sea-south-korea-and-japan-say/story",
-        "https://www.nippon.com/en/news/yjj2026100300158"
-      ]
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Reuters/Arab News: coalition says it intercepted three Houthi ballistic missiles aimed at Khamis Mushait; projectile hits Najran school",
-      "text": "Reuters (via the Times of Israel live blog, Friday October 2) reports the Saudi-led coalition said it intercepted and destroyed three ballistic missiles launched by the Houthis toward Khamis Mushait. Arab News (Japan edition, read in full) quotes coalition spokesperson Turki Al-Maliki that a missile launched toward the city at about 3 a.m. was intercepted shortly after two others, adds that reports suggested four Houthi drones were also intercepted, and says Saudi Civil Defense reported a Houthi projectile striking a school in Najran with material damage and no casualties. Both accounts rest on coalition and Saudi statements; no Houthi account is cited and independent verification is not established.",
-      "timestamp": "2026-10-03T06:08:49Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-02",
-      "incident_id": "houthi-khamis-mushait-ballistic-missiles-najran-school-2026-10-02",
-      "publication_id": "https://www.timesofisrael.com/liveblog_entry/saudi-coalition-says-it-shot-down-three-ballistic-missiles-launched-by-houthis",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-03T06:08:49Z",
-      "reviewed_at": "2026-10-03T06:08:49Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_b1d0e83b9a961db07cfc58509df9cf657f5cda29794a39274450b16b03a41212",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "Houthi missile fire at a southern Saudi city continues per the coalition; a Najran school was damaged, no casualties reported. Claims rest on coalition and Saudi statements.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.arabnews.jp/en/saudi-arabia/yemen-coalition-forces-intercept-3-houthi-missiles-targeting-saudi-arabia-3000531",
-        "https://www.timesofisrael.com/liveblog_entry/saudi-coalition-says-it-shot-down-three-ballistic-missiles-launched-by-houthis"
-      ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Anadolu: Russian drone strike on Kyiv high-rise kills one; Pivdennyi Bridge closed as both sides report overnight strikes",
-      "text": "Anadolu (Oct 2, read in full) reports Russia and Ukraine exchanged overnight strikes on Friday. Zelenskyy said a Russian drone struck a Kyiv residential high-rise and killed one person, and that strikes hit a kindergarten in Kherson, a grocery store in Kharkiv and apartment buildings in Kramatorsk and Sumy. Kyiv's mayor said the Pivdennyi Bridge was targeted and closed to traffic in both directions; the article does not say whether this is the same bridge attack reported on October 1. Russia's Defense Ministry said it struck a Dnieper road-rail bridge in Kyiv, a substation, a port facility at Izmail and a cargo ship in the Black Sea; Ukraine's air force said Russia launched 108 attack drones, 88 shot down or suppressed. Russia reported 646 Ukrainian drones intercepted, and a Volgograd-region apartment fire with one hospitalisation was reported. Anadolu notes independent verification of both sides' claims is difficult.",
-      "timestamp": "2026-10-03T06:08:49Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-02",
-      "incident_id": "kyiv-highrise-drone-strike-overnight-exchange-2026-10-02",
-      "publication_id": "https://www.aa.com.tr/en/eurasia/1-killed-5-injured-in-overnight-strikes-between-ukraine-and-russia/4075732",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-03T06:08:49Z",
-      "reviewed_at": "2026-10-03T06:08:49Z",
-      "verified_at": null,
-      "evidence_id": null,
-      "revision_id": "rev_ba4fd58b4a0b7619e57c7f1554b33e02f798553cf8b568e4ef0a865f521b1115",
-      "revision_ids": [],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "missing_safe_origin_or_publication_identity",
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "Ukrainian officials report one death in Kyiv and damage in several regions; Russia says it hit energy, port and bridge targets. Claims from both sides are unverified.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.aa.com.tr/en/eurasia/1-killed-5-injured-in-overnight-strikes-between-ukraine-and-russia/4075732"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3679,7 +3686,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-03T21:12:22Z",
+  "build_at": "2026-10-04T00:10:36Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3879,7 +3886,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-03T21:12:22Z",
+      "generated_at": "2026-10-04T00:10:36Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4512,10 +4519,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-03T21:12:22Z",
+    "generated_at": "2026-10-04T00:10:36Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 605.9091666666667,
+    "age_hours": 608.8797222222222,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4597,7 +4604,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4664,7 +4671,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4692,7 +4699,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4720,7 +4727,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4820,7 +4827,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4887,7 +4894,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4985,7 +4992,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 88.11641203703704,
+            "remaining_days": 87.99263888888889,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5013,7 +5020,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5111,7 +5118,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5139,7 +5146,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 88.11641203703704,
+            "remaining_days": 87.99263888888889,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5206,7 +5213,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 89.32405092592593,
+            "remaining_days": 89.20027777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5291,211 +5298,195 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-03T21:12:22Z",
+    "generated_at": "2026-10-04T00:10:36Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "fd5535a2bd60eb9c573b18954e8844e43061340d2b03f838e75483b5b090bdfe",
+    "previous_snapshot_id": "0668b4cc29e06227cd0afe7360d094f0e7c228a9cfe4998acf4355169a83fe42",
     "changes": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Moldova incident revision: police-attributed reports describe debris, vineyard fire and broken windows; no injuries reported",
+        "zone": "ethiopia_tigray",
+        "headline": "AFP: humanitarian source reports Ethiopian federal forces entered Mekelle after TPLF withdrawal; control unverified",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_717b15effdcc4f84b0143d7986119817faf9df88859e90baae64005851a58bba",
+        "correction_id": "rev_90230fd856d4af46360d81dd7f914b2ebc4f5627fe508bb2bdfc587245983e30",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://abcnews.com/International/wireStory/russia-strikes-kyivs-northern-bridge-new-tactic-disrupt-136969028",
-          "https://kyivindependent.com/5-russian-missiles-and-drones-exploded-over-moldovas-airspace-sandu-says",
-          "https://militarnyi.com/en/news/3-missiles-2-uavs-entered-moldova-exploded",
-          "https://newsmaker.md/ru/minoborony-v-moldovu-zaleteli-tri-rakety-i-dva-drona-mid-i-sandu-osudili-narushenie-vozdushnogo-prostranstva-strany",
-          "https://newsmaker.md/ru/nad-moldovoi-zafiksirovali-prolet-pyati-bespilotnikov-v-neskolkih-raionah-progremeli-vzryvy-chto-izvestno-k-etomu-chasu",
-          "https://www.army.md/ro/comunicate-de-presa/informeaza-24",
-          "https://x.com/sandumaiamd/status/2106288502438801787"
+          "https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances",
+          "https://www.france24.com/en/africa/20261003-ethiopia-s-tigray-rebels-abandon-regional-capital-of-mekelle-as-pro-government-forces-advance"
         ],
-        "next_trigger": "Moldova\u2019s Defence Ministry says police and army teams are investigating and further details will follow.",
-        "implication": "Police-attributed reports add physical damage to the same spillover incident; no injuries reported, and weapon attribution remains unverified.",
+        "next_trigger": "AFP\u2019s diplomatic source expects a regional summit in Alamein on Sunday; confirmation and outcome remain pending.",
+        "implication": "AFP reports federal forces entered Mekelle after TPLF withdrawal; city control remains unverified amid severe communications disruption.",
         "historical_revision_ids": [
-          "rev_a608071ddb395642ebbb3e62c3c63a2032685cfd0f1d508551b3d11da7787e93"
+          "rev_2cc45ee937c02f3b239c47ed4122f5cd5b0e0019108e477084ccc880aa80e865"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "moldova-airspace-incursions-sandu-2026-10-03",
+        "incident_id": "mekelle-tplf-withdrawal-afp-2026-10-03",
+        "change": "New incident report"
+      },
+      {
+        "zone": "north_korea",
+        "headline": "North Korea claims the retained October 3 launch used a hypersonic strategic missile and hit a target 1,000 km away",
+        "status": "revision",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_00195e94e9bff23665c8312d81a13e186ae72dde3d5fbe50922b7142e3ade3a4",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://en.yna.co.kr/view/AEN20261004000351315",
+          "https://www.afp.com/en/north-korea-says-test-intermediate-range-strategic-missile-included-use-ai-0",
+          "https://www.chosun.com/english/national-en/2026/10/03/Q2THOPSEPJHBLDYLF7YQYIONXE",
+          "https://www.dw.com/en/north-korea-fires-ballistic-missile-into-sea-seoul-says/a-79526243",
+          "https://www.gmanetwork.com/news/topstories/world/1004605/north-korea-fires-ballistic-missile-toward-sea-south-korea-and-japan-say/story",
+          "https://www.koreaherald.com/article/10892386",
+          "https://www.mercedsunstar.com/news/nation-world/world/article317479783.html",
+          "https://www.nippon.com/en/news/yjj2026100300158",
+          "https://www.nknews.org/2026/10/north-korea-fires-ballistic-missile-toward-east-sea-rok",
+          "https://www.straitstimes.com/asia/east-asia/north-korea-says-it-conducted-intermediate-range-strategic-missile-drill"
+        ],
+        "next_trigger": "Seoul/Washington publish the missile\u2019s exact specifications.",
+        "implication": "Pyongyang now claims a hypersonic-system drill for the same launch; range and performance remain unverified and differ from Seoul/Tokyo estimates.",
+        "historical_revision_ids": [
+          "rev_1d218966f6c465b09d383fe1c7558884994ccb0365bd549a4a184a40a7f228c0",
+          "rev_3506afa471babece82c9356f8d8a172be74b90dcc468089dd10af9764c535979",
+          "rev_4b77d8663ba7c71bf18380dc301e4bbeb9ed9e00876c86f81fe531336e1e72e4",
+          "rev_ee818cb8e7d8841ac7f5ca9943fb6c9e67a0c5a9fe0292f950abf372ac838ced"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "north-korea-wonsan-ballistic-launch-2026-10-03",
         "change": "Correction / revision"
       },
       {
         "zone": "yemen_red_sea",
-        "headline": "Reuters witness reports fire near an Aramco facility in Riyadh; cause and responsibility unknown",
-        "status": "reported",
+        "headline": "Riyadh fire revision: Houthis claim an Aramco missile/drone attack; Saudi coalition calls the claim misleading",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_726f723119e26c313131e9a801b174cea6e670654562936d63050a57174515d5",
+        "correction_id": "rev_4cbe13e2376b535d5017a5e3823d4ba8ab52031314df8ee5f9d8683df30441d7",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://english.news.cn/20261004/0d0108b709094929ba5f0d1f6b261bf5/c.html",
           "https://understandingwar.org/research/middle-east/iran-update-october-3-2026",
+          "https://www.aa.com.tr/en/world/houthis-claim-missile-drone-attack-on-saudi-aramco-in-riyadh/4077303",
           "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03",
           "https://www.straitstimes.com/world/middle-east/fire-smoke-seen-near-aramco-facility-in-riyadh-witness-says"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "A fire is reported near Saudi energy infrastructure; cause, damage, production effects and responsibility are not established.",
-        "historical_revision_ids": [],
+        "implication": "A Houthi claim and Saudi coalition denial now accompany the retained Riyadh fire report; cause, damage and responsibility remain unverified.",
+        "historical_revision_ids": [
+          "rev_726f723119e26c313131e9a801b174cea6e670654562936d63050a57174515d5"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "riyadh-aramco-vicinity-fire-reuters-2026-10-03",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Yemeni government-aligned forces announce October 3 strikes on Sanaa; damage unverified",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_8a5e8f0e91297f28e869b7040ad544e9649d9432c63c72c9f5c69fdc99f1f00a",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://almasdaronline.com/articles/351621",
-          "https://understandingwar.org/research/middle-east/iran-update-october-3-2026",
-          "https://www.sabanew.net/story/ar/153408"
-        ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The spokesman reports attacks on the Houthi-controlled capital; target damage and a wider ground-offensive launch are not established.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "sanaa-government-announced-strike-saba-153408-2026-10-03",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Yemen\u2019s Defence Ministry announces implementation steps for general mobilization and reserves",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_5cd5666821f1c849802317815fece79538e638ca85d259949ed9299f6b4746a5",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.sabanew.net/story/ar/153416"
-        ],
-        "next_trigger": "The announcement directs personnel/resource inventories and organization of call-up and reinforcement procedures.",
-        "implication": "Officials direct reserve and personnel mobilization processes; completed call-ups, troop numbers and new deployments remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "yemen-government-general-mobilization-saba-153416-2026-10-03",
-        "change": "New incident report"
+        "change": "Correction / revision"
       }
     ],
     "items": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Moldova incident revision: police-attributed reports describe debris, vineyard fire and broken windows; no injuries reported",
+        "zone": "ethiopia_tigray",
+        "headline": "AFP: humanitarian source reports Ethiopian federal forces entered Mekelle after TPLF withdrawal; control unverified",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_717b15effdcc4f84b0143d7986119817faf9df88859e90baae64005851a58bba",
+        "correction_id": "rev_90230fd856d4af46360d81dd7f914b2ebc4f5627fe508bb2bdfc587245983e30",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://abcnews.com/International/wireStory/russia-strikes-kyivs-northern-bridge-new-tactic-disrupt-136969028",
-          "https://kyivindependent.com/5-russian-missiles-and-drones-exploded-over-moldovas-airspace-sandu-says",
-          "https://militarnyi.com/en/news/3-missiles-2-uavs-entered-moldova-exploded",
-          "https://newsmaker.md/ru/minoborony-v-moldovu-zaleteli-tri-rakety-i-dva-drona-mid-i-sandu-osudili-narushenie-vozdushnogo-prostranstva-strany",
-          "https://newsmaker.md/ru/nad-moldovoi-zafiksirovali-prolet-pyati-bespilotnikov-v-neskolkih-raionah-progremeli-vzryvy-chto-izvestno-k-etomu-chasu",
-          "https://www.army.md/ro/comunicate-de-presa/informeaza-24",
-          "https://x.com/sandumaiamd/status/2106288502438801787"
+          "https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances",
+          "https://www.france24.com/en/africa/20261003-ethiopia-s-tigray-rebels-abandon-regional-capital-of-mekelle-as-pro-government-forces-advance"
         ],
-        "next_trigger": "Moldova\u2019s Defence Ministry says police and army teams are investigating and further details will follow.",
-        "implication": "Police-attributed reports add physical damage to the same spillover incident; no injuries reported, and weapon attribution remains unverified.",
+        "next_trigger": "AFP\u2019s diplomatic source expects a regional summit in Alamein on Sunday; confirmation and outcome remain pending.",
+        "implication": "AFP reports federal forces entered Mekelle after TPLF withdrawal; city control remains unverified amid severe communications disruption.",
         "historical_revision_ids": [
-          "rev_a608071ddb395642ebbb3e62c3c63a2032685cfd0f1d508551b3d11da7787e93"
+          "rev_2cc45ee937c02f3b239c47ed4122f5cd5b0e0019108e477084ccc880aa80e865"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "moldova-airspace-incursions-sandu-2026-10-03",
+        "incident_id": "mekelle-tplf-withdrawal-afp-2026-10-03",
+        "change": "New incident report"
+      },
+      {
+        "zone": "north_korea",
+        "headline": "North Korea claims the retained October 3 launch used a hypersonic strategic missile and hit a target 1,000 km away",
+        "status": "revision",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_00195e94e9bff23665c8312d81a13e186ae72dde3d5fbe50922b7142e3ade3a4",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://en.yna.co.kr/view/AEN20261004000351315",
+          "https://www.afp.com/en/north-korea-says-test-intermediate-range-strategic-missile-included-use-ai-0",
+          "https://www.chosun.com/english/national-en/2026/10/03/Q2THOPSEPJHBLDYLF7YQYIONXE",
+          "https://www.dw.com/en/north-korea-fires-ballistic-missile-into-sea-seoul-says/a-79526243",
+          "https://www.gmanetwork.com/news/topstories/world/1004605/north-korea-fires-ballistic-missile-toward-sea-south-korea-and-japan-say/story",
+          "https://www.koreaherald.com/article/10892386",
+          "https://www.mercedsunstar.com/news/nation-world/world/article317479783.html",
+          "https://www.nippon.com/en/news/yjj2026100300158",
+          "https://www.nknews.org/2026/10/north-korea-fires-ballistic-missile-toward-east-sea-rok",
+          "https://www.straitstimes.com/asia/east-asia/north-korea-says-it-conducted-intermediate-range-strategic-missile-drill"
+        ],
+        "next_trigger": "Seoul/Washington publish the missile\u2019s exact specifications.",
+        "implication": "Pyongyang now claims a hypersonic-system drill for the same launch; range and performance remain unverified and differ from Seoul/Tokyo estimates.",
+        "historical_revision_ids": [
+          "rev_1d218966f6c465b09d383fe1c7558884994ccb0365bd549a4a184a40a7f228c0",
+          "rev_3506afa471babece82c9356f8d8a172be74b90dcc468089dd10af9764c535979",
+          "rev_4b77d8663ba7c71bf18380dc301e4bbeb9ed9e00876c86f81fe531336e1e72e4",
+          "rev_ee818cb8e7d8841ac7f5ca9943fb6c9e67a0c5a9fe0292f950abf372ac838ced"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "north-korea-wonsan-ballistic-launch-2026-10-03",
         "change": "Correction / revision"
       },
       {
         "zone": "yemen_red_sea",
-        "headline": "Reuters witness reports fire near an Aramco facility in Riyadh; cause and responsibility unknown",
-        "status": "reported",
+        "headline": "Riyadh fire revision: Houthis claim an Aramco missile/drone attack; Saudi coalition calls the claim misleading",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_726f723119e26c313131e9a801b174cea6e670654562936d63050a57174515d5",
+        "correction_id": "rev_4cbe13e2376b535d5017a5e3823d4ba8ab52031314df8ee5f9d8683df30441d7",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://english.news.cn/20261004/0d0108b709094929ba5f0d1f6b261bf5/c.html",
           "https://understandingwar.org/research/middle-east/iran-update-october-3-2026",
+          "https://www.aa.com.tr/en/world/houthis-claim-missile-drone-attack-on-saudi-aramco-in-riyadh/4077303",
           "https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03",
           "https://www.straitstimes.com/world/middle-east/fire-smoke-seen-near-aramco-facility-in-riyadh-witness-says"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "A fire is reported near Saudi energy infrastructure; cause, damage, production effects and responsibility are not established.",
-        "historical_revision_ids": [],
+        "implication": "A Houthi claim and Saudi coalition denial now accompany the retained Riyadh fire report; cause, damage and responsibility remain unverified.",
+        "historical_revision_ids": [
+          "rev_726f723119e26c313131e9a801b174cea6e670654562936d63050a57174515d5"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "riyadh-aramco-vicinity-fire-reuters-2026-10-03",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Yemeni government-aligned forces announce October 3 strikes on Sanaa; damage unverified",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_8a5e8f0e91297f28e869b7040ad544e9649d9432c63c72c9f5c69fdc99f1f00a",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://almasdaronline.com/articles/351621",
-          "https://understandingwar.org/research/middle-east/iran-update-october-3-2026",
-          "https://www.sabanew.net/story/ar/153408"
-        ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The spokesman reports attacks on the Houthi-controlled capital; target damage and a wider ground-offensive launch are not established.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "sanaa-government-announced-strike-saba-153408-2026-10-03",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Yemen\u2019s Defence Ministry announces implementation steps for general mobilization and reserves",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_5cd5666821f1c849802317815fece79538e638ca85d259949ed9299f6b4746a5",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.sabanew.net/story/ar/153416"
-        ],
-        "next_trigger": "The announcement directs personnel/resource inventories and organization of call-up and reinforcement procedures.",
-        "implication": "Officials direct reserve and personnel mobilization processes; completed call-ups, troop numbers and new deployments remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "yemen-government-general-mobilization-saba-153416-2026-10-03",
-        "change": "New incident report"
+        "change": "Correction / revision"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Moldova incident revision: police-attributed reports describe debris, vineyard fire and broken windows; no injuries reported\nImplication: Police-attributed reports add physical damage to the same spillover incident; no injuries reported, and weapon attribution remains unverified.\nEvidence: verification not established https://abcnews.com/International/wireStory/russia-strikes-kyivs-northern-bridge-new-tactic-disrupt-136969028\nNext trigger: Moldova\u2019s Defence Ministry says police and army teams are investigating and further details will follow.\nDossier: dashboard incident list; source https://abcnews.com/International/wireStory/russia-strikes-kyivs-northern-bridge-new-tactic-disrupt-136969028\n3 additional incident changes in the dashboard briefing list.",
-    "message_id": "0b6788dc741f30c287e7f9f38c259537d0e414338f91a0f984807cfd9b21cfa8"
+    "message": "New incident report: AFP: humanitarian source reports Ethiopian federal forces entered Mekelle after TPLF withdrawal; control unverified\nImplication: AFP reports federal forces entered Mekelle after TPLF withdrawal; city control remains unverified amid severe communications disruption.\nEvidence: verification not established https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances\nNext trigger: AFP\u2019s diplomatic source expects a regional summit in Alamein on Sunday; confirmation and outcome remain pending.\nDossier: dashboard incident list; source https://www.afp.com/en/ethiopias-tigray-rebels-abandon-regional-capital-govt-advances\n2 additional incident changes in the dashboard briefing list.",
+    "message_id": "8a530ae4c535404db22d71e0060bd843fdd4705e71d23ff238fc4777006ef175"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 746,
-    "current_report_count": 738,
+    "total_count": 750,
+    "current_report_count": 742,
     "retained_revision_count": 8,
     "recent_count": 20,
-    "archive_count": 726,
-    "bytes": 1082653,
-    "sha256": "0d518475776b39f6c41bd4512415739f6248792a6285d2ebaac6d6862ebfb724",
+    "archive_count": 730,
+    "bytes": 1093270,
+    "sha256": "8b8ed74804ab960f93d338ca9a2d17ac22c2bda8b98478b51e3fd77a5670b651",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-03T11:53:27Z",
+    "published_at": "2026-10-03T22:13:22Z",
     "verified_at": null,
-    "reviewed_at": "2026-10-03T21:11:18.052418Z"
+    "reviewed_at": "2026-10-04T00:09:45.314196Z"
   }
 };
 
