@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-05T12:10:48Z",
+  "last_updated": "2026-10-05T15:11:26Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -2834,9 +2834,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 68,
+        "scanned": 69,
         "retained": 0,
-        "rejected": 68,
+        "rejected": 69,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2945,6 +2945,50 @@ const state = {
         "https://www.sabanew.net/story/ar/153476",
         "https://www.sabanew.net/story/ar/153480",
         "https://www.sabanew.net/story/ar/153488"
+      ]
+    },
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow",
+      "text": "The retained October 4 Houthi statement naming Aramco in Khurais was reread from exact Telegram post 3802. Newly reviewed October 5 CBS/AFP reporting quotes an unnamed Saudi energy-sector source alleging a Sunday strike on a Khurais pumping station, major damage and a renewed East-West pipeline stoppage. The same report records a conflicting Reuters source account that oil remained flowing. A full Dawn Reuters-attributed dispatch says flows have not been interrupted, while available Bloomberg reporting describes normal flow based on unnamed people familiar with the matter. This updates the prior target claim with a contested infrastructure/operational-impact account, not an authenticated strike or confirmed shutdown. The anonymous sources cannot be established as independent of each other or of the parties. Responsibility, exact damage, the event instant and measured throughput remain unverified. The CBS pipeline-entry publication timestamp is 11:28 UTC on October 5, distinct from the underlying October 4 statement and collection/review times. This is the same retained Khurais incident, not another attack; the separate Riyadh-fire incident is unchanged.",
+      "sources": "Exact original Houthi post, full CBS/AFP live entry, full short Dawn Reuters-attributed dispatch and available Bloomberg text read; anonymous and contradictory claims remain unverified.",
+      "timestamp": "2026-10-05T15:10:57.385423+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-05",
+      "incident_id": "houthi-khurais-aramco-strike-claim-2026-10-04",
+      "publication_id": "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-prices-yemen-red-sea-houthis-bab-el-mandeb/#post-update5",
+      "originating_source": "CBS/AFP unnamed Saudi energy-sector source; Reuters and Bloomberg report contrary oil-flow accounts",
+      "event_at": null,
+      "published_at": "2026-10-05T11:28:00Z",
+      "collected_at": "2026-10-05T15:05:47.512519Z",
+      "reviewed_at": "2026-10-05T15:10:57.385423Z",
+      "verified_at": null,
+      "evidence_id": "ev_51689e7b3ea8f306f45e45421fd1e189436e9c8304354c4e05be70cc71be24a9",
+      "revision_id": "rev_e39a676622e3836fcc17e5274b449a97cd635cdb59a33a48cf6c7b59fa4dbf33",
+      "revision_ids": [
+        "rev_e39a676622e3836fcc17e5274b449a97cd635cdb59a33a48cf6c7b59fa4dbf33"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_1aefbe4713ea24f3393d73af99f21617fcad2508a2605a0fdfcbe93f29a19569",
+      "report_status": "revision",
+      "implication": "New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "A new AFP damage/stoppage account is contradicted by Reuters and Bloomberg reports of continuing flow.",
+      "source_urls": [
+        "https://t.me/army21ye/3802",
+        "https://www.bloomberg.com/news/articles/2026-10-05/saudi-east-west-oil-pipeline-is-flowing-as-normal-people-say",
+        "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-prices-yemen-red-sea-houthis-bab-el-mandeb/",
+        "https://www.dawn.com/news/2034915/saudi-east-west-pipeline-oil-flows-uninterrupted-source-says"
       ]
     },
     {
@@ -3311,10 +3355,11 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
-      "report_status": "unknown",
+      "report_status": "superseded",
       "implication": "Khurais is an additional claimed Saudi oil target; strike success, fire causation and operational impact remain unverified.",
       "next_trigger": "Public context unavailable; consult the original source.",
       "independent_verification": false,
@@ -3645,45 +3690,6 @@ const state = {
         "https://www.abc.net.au/news/2026-10-04/ukraine-to-hit-russian-refineries-in-response-to-moscow-strikes/107226904",
         "https://www.reuters.com/video/watch/idRW726903102026RP1"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Sumy officials report one killed in a drone strike and 16 injured across separate morning attacks",
-      "sources": "Exact city and regional official Telegram posts retained with publication timestamps; Pravda and AP report official accounts. The two administrations are not independent confirmation, and the published verification time verifies the attributable source text only.",
-      "time": "2026-10-04T21:11:09.072125Z",
-      "timestamp": "2026-10-04T21:11:09.072125Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-04",
-      "incident_id": "sumy-morning-drone-and-bomb-attacks-2026-10-04",
-      "publication_id": "Sumy city administration serhii_kryvosheienko/2406",
-      "originating_source": "Sumy City Military Administration",
-      "event_at": null,
-      "published_at": "2026-10-04T09:00:06Z",
-      "collected_at": "2026-10-04T21:06:30.257786Z",
-      "reviewed_at": "2026-10-04T21:11:09.072125Z",
-      "verified_at": "2026-10-04T21:11:09.072125Z",
-      "evidence_id": "ev_33c472fa6b84b64ecc238960a65ecf981be78f012e48d8c7546d2c610c3832c0",
-      "revision_id": "rev_7b84f0d21af93cdf4146e5ae89a2aaeca5710e6d9a6816c260874ab8adaa4a45",
-      "revision_ids": [
-        "rev_7b84f0d21af93cdf4146e5ae89a2aaeca5710e6d9a6816c260874ab8adaa4a45"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
-      "report_status": "unknown",
-      "implication": "Officials attribute casualties to distinct drone and guided-bomb attacks, not one fatal bomb strike; casualties and Russian responsibility remain unverified independently.",
-      "next_trigger": "Public context unavailable; consult the original source.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://t.me/hryhorov_oleg/3368",
-        "https://t.me/serhii_kryvosheienko/2406",
-        "https://www.latimes.com/world-nation/story/2026-10-04/germanys-merz-announces-new-aid-for-ukraine-in-kyiv-as-russia-steps-up-attacks",
-        "https://www.pravda.com.ua/eng/news/2026/10/04/8056389/"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3700,7 +3706,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-05T12:10:48Z",
+  "build_at": "2026-10-05T15:11:26Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3900,7 +3906,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-05T12:10:48Z",
+      "generated_at": "2026-10-05T15:11:26Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4533,10 +4539,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-05T12:10:48Z",
+    "generated_at": "2026-10-05T15:11:26Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 644.8830555555555,
+    "age_hours": 647.8936111111111,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4618,7 +4624,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4685,7 +4691,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4713,7 +4719,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4741,7 +4747,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4841,7 +4847,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4908,7 +4914,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5006,7 +5012,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 86.4925,
+            "remaining_days": 86.36706018518518,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5034,7 +5040,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5132,7 +5138,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5160,7 +5166,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 86.4925,
+            "remaining_days": 86.36706018518518,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5227,7 +5233,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 87.70013888888889,
+            "remaining_days": 87.57469907407408,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5312,191 +5318,87 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-05T12:10:48Z",
+    "generated_at": "2026-10-05T15:11:26Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "0b8a3d6a7725415e9d9b0a441f26aa1a2be93ab82a0fa3d63d76b4512875303e",
+    "previous_snapshot_id": "f0623d2e198d39ee745b85d90d8d1444beb3ce0277dfbba81537eebbd767abe1",
     "changes": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Odesa governor reports October 5 strikes on port, industrial and residential sites; fires extinguished",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_3a4aa265e4556489c65987e4cbc77d4a90b699087a143a7e3918c6d7b30f5942",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://english.nv.ua/nation/photos-show-the-aftermath-of-large-scale-russian-strikes-on-odesa-oblast-50647088.html",
-          "https://t.me/odeskaODA/21361",
-          "https://www.internazionale.it/ultime-notizie-reuters/2026/10/05/russian-air-strikes-targeted-port-infrastructure-in-ukraine-s-odesa-region-governor-says"
-        ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The governor reports damage to port and industrial infrastructure; no injuries reported. Operational disruption and attribution remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "odesa-port-industrial-infrastructure-attack-2026-10-05",
-        "change": "New incident report"
-      },
-      {
         "zone": "yemen_red_sea",
-        "headline": "Yemen campaign revision: spokesman announces Sanaa offensive; coalition claims direct air support",
+        "headline": "Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_e46ef87027966cc770f38edb69c994053604692ce580483bcf8359896f42d9a0",
+        "correction_id": "rev_e39a676622e3836fcc17e5274b449a97cd635cdb59a33a48cf6c7b59fa4dbf33",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://t.me/army21ye/3802",
           "https://understandingwar.org/research/middle-east/iran-update-october-4-2026/",
-          "https://www.al-monitor.com/originals/2026/10/yemeni-government-launches-offensive-seize-all-areas-iran-backed-houthis",
-          "https://www.axios.com/2026/10/02/saudis-yemen-houthis-bab-al-mandeb-strait",
-          "https://www.bbc.com/news/articles/cx8dzj9vpp01o",
-          "https://www.cnn.com/2026/10/04/middleeast/yemen-offensive-houthis-intl",
-          "https://www.reuters.com/world/asia-pacific/saudis-plan-assault-houthis-break-red-sea-chokehold-2026-10-02",
-          "https://www.sabanew.net/story/ar/153439",
-          "https://www.sabanew.net/story/ar/153460",
-          "https://www.sabanew.net/story/ar/153465",
-          "https://www.sabanew.net/story/ar/153467",
-          "https://www.sabanew.net/story/ar/153476",
-          "https://www.sabanew.net/story/ar/153480",
-          "https://www.sabanew.net/story/ar/153488"
+          "https://www.bloomberg.com/news/articles/2026-10-05/saudi-east-west-oil-pipeline-is-flowing-as-normal-people-say",
+          "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-prices-yemen-red-sea-houthis-bab-el-mandeb/",
+          "https://www.dawn.com/news/2034915/saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "https://x.com/war_cube/status/2106757519146185183"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The same campaign now includes a Sanaa attack announcement and coalition air-support claims; actual operations, damage and territorial effects remain unverified.",
+        "implication": "New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.",
         "historical_revision_ids": [
-          "rev_62de20fbf78917645897eff9b83da3984bfe5291d26e444cd18762601e5338e8",
-          "rev_6cc66525e72cc6eaa6cc9c8bd8b142b6269e68e1e9e24b2a04ca0fc6d6c18b55",
-          "rev_e9c7c21d248c846311678174fe43ed07b67f29471bb0ebcef97e4f3a2fc67796",
-          "rev_f202216a809fcb24bd5331f397f7ca620d4051980e52ca569b2632d4c37f8907"
+          "rev_1aefbe4713ea24f3393d73af99f21617fcad2508a2605a0fdfcbe93f29a19569"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "saudi-yemen-counteroffensive-planning-2026-10-02",
+        "incident_id": "houthi-khurais-aramco-strike-claim-2026-10-04",
         "change": "Correction / revision"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Yemeni government claims Dhubab and Bab al-Mandab-area gains; Houthis deny district-control claim",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_88b4de19ddcf398b93bdf5cb763dd10c398e9c2380336fcd3556bb0114a58171",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.aljazeera.com/news/2026/10/5/yemen-war-escalates-whats-the-latest-on-the-battlefield",
-          "https://www.sabanew.net/story/ar/153475",
-          "https://www.sabanew.net/story/ar/153477"
-        ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "Government-side territorial claims concern the Bab al-Mandab approaches; control is disputed and does not establish reopened shipping or verified strait security.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "yemen-dhubab-government-control-claim-2026-10-05",
-        "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Odesa governor reports October 5 strikes on port, industrial and residential sites; fires extinguished",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_3a4aa265e4556489c65987e4cbc77d4a90b699087a143a7e3918c6d7b30f5942",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://english.nv.ua/nation/photos-show-the-aftermath-of-large-scale-russian-strikes-on-odesa-oblast-50647088.html",
-          "https://t.me/odeskaODA/21361",
-          "https://www.internazionale.it/ultime-notizie-reuters/2026/10/05/russian-air-strikes-targeted-port-infrastructure-in-ukraine-s-odesa-region-governor-says"
-        ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The governor reports damage to port and industrial infrastructure; no injuries reported. Operational disruption and attribution remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "odesa-port-industrial-infrastructure-attack-2026-10-05",
-        "change": "New incident report"
-      },
-      {
         "zone": "yemen_red_sea",
-        "headline": "Yemen campaign revision: spokesman announces Sanaa offensive; coalition claims direct air support",
+        "headline": "Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_e46ef87027966cc770f38edb69c994053604692ce580483bcf8359896f42d9a0",
+        "correction_id": "rev_e39a676622e3836fcc17e5274b449a97cd635cdb59a33a48cf6c7b59fa4dbf33",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://t.me/army21ye/3802",
           "https://understandingwar.org/research/middle-east/iran-update-october-4-2026/",
-          "https://www.al-monitor.com/originals/2026/10/yemeni-government-launches-offensive-seize-all-areas-iran-backed-houthis",
-          "https://www.axios.com/2026/10/02/saudis-yemen-houthis-bab-al-mandeb-strait",
-          "https://www.bbc.com/news/articles/cx8dzj9vpp01o",
-          "https://www.cnn.com/2026/10/04/middleeast/yemen-offensive-houthis-intl",
-          "https://www.reuters.com/world/asia-pacific/saudis-plan-assault-houthis-break-red-sea-chokehold-2026-10-02",
-          "https://www.sabanew.net/story/ar/153439",
-          "https://www.sabanew.net/story/ar/153460",
-          "https://www.sabanew.net/story/ar/153465",
-          "https://www.sabanew.net/story/ar/153467",
-          "https://www.sabanew.net/story/ar/153476",
-          "https://www.sabanew.net/story/ar/153480",
-          "https://www.sabanew.net/story/ar/153488"
+          "https://www.bloomberg.com/news/articles/2026-10-05/saudi-east-west-oil-pipeline-is-flowing-as-normal-people-say",
+          "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-prices-yemen-red-sea-houthis-bab-el-mandeb/",
+          "https://www.dawn.com/news/2034915/saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
+          "https://x.com/war_cube/status/2106757519146185183"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The same campaign now includes a Sanaa attack announcement and coalition air-support claims; actual operations, damage and territorial effects remain unverified.",
+        "implication": "New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.",
         "historical_revision_ids": [
-          "rev_62de20fbf78917645897eff9b83da3984bfe5291d26e444cd18762601e5338e8",
-          "rev_6cc66525e72cc6eaa6cc9c8bd8b142b6269e68e1e9e24b2a04ca0fc6d6c18b55",
-          "rev_e9c7c21d248c846311678174fe43ed07b67f29471bb0ebcef97e4f3a2fc67796",
-          "rev_f202216a809fcb24bd5331f397f7ca620d4051980e52ca569b2632d4c37f8907"
+          "rev_1aefbe4713ea24f3393d73af99f21617fcad2508a2605a0fdfcbe93f29a19569"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "saudi-yemen-counteroffensive-planning-2026-10-02",
+        "incident_id": "houthi-khurais-aramco-strike-claim-2026-10-04",
         "change": "Correction / revision"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Yemeni government claims Dhubab and Bab al-Mandab-area gains; Houthis deny district-control claim",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_88b4de19ddcf398b93bdf5cb763dd10c398e9c2380336fcd3556bb0114a58171",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.aljazeera.com/news/2026/10/5/yemen-war-escalates-whats-the-latest-on-the-battlefield",
-          "https://www.sabanew.net/story/ar/153475",
-          "https://www.sabanew.net/story/ar/153477"
-        ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "Government-side territorial claims concern the Bab al-Mandab approaches; control is disputed and does not establish reopened shipping or verified strait security.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "yemen-dhubab-government-control-claim-2026-10-05",
-        "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Odesa governor reports October 5 strikes on port, industrial and residential sites; fires extinguished\nImplication: The governor reports damage to port and industrial infrastructure; no injuries reported. Operational disruption and attribution remain independently unverified.\nEvidence: verification not established https://english.nv.ua/nation/photos-show-the-aftermath-of-large-scale-russian-strikes-on-odesa-oblast-50647088.html\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://english.nv.ua/nation/photos-show-the-aftermath-of-large-scale-russian-strikes-on-odesa-oblast-50647088.html\n2 additional incident changes in the dashboard briefing list.",
-    "message_id": "2ec731ded7bc49466dec3951cf0e00030147184ccae4089eda878bd067aaf8fb"
+    "message": "Correction / revision: Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow\nImplication: New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.\nEvidence: verification not established https://t.me/army21ye/3802\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://t.me/army21ye/3802",
+    "message_id": "138a6a8ec123e6f79566843fb47faa378ce001c621e58c0386ce0371ac7dfa4e"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 779,
-    "current_report_count": 771,
+    "total_count": 780,
+    "current_report_count": 772,
     "retained_revision_count": 8,
     "recent_count": 20,
-    "archive_count": 759,
-    "bytes": 1161705,
-    "sha256": "bf3943da1b5858f758712712691b3b873b0fb3844563d77017b8d07e4a91d687",
+    "archive_count": 760,
+    "bytes": 1163644,
+    "sha256": "51243e2490ce11001084a3d9c4520337afb8eb33b31b241229c1912e1601fd9b",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-05T04:53:38Z",
+    "published_at": "2026-10-05T11:28:00Z",
     "verified_at": "2026-10-05T00:11:16.592225Z",
-    "reviewed_at": "2026-10-05T12:10:32.031267Z"
+    "reviewed_at": "2026-10-05T15:10:57.385423Z"
   }
 };
 
