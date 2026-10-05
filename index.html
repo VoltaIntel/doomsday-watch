@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-05T15:11:26Z",
+  "last_updated": "2026-10-05T18:06:58Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -521,9 +521,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 3,
+        "scanned": 4,
         "retained": 0,
-        "rejected": 3,
+        "rejected": 4,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -1576,12 +1576,13 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 32,
+        "scanned": 33,
         "retained": 0,
-        "rejected": 32,
+        "rejected": 33,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
+          "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
           "published_at_unknown",
@@ -2861,6 +2862,89 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "israel_palestine",
+      "headline": "Newly reviewed Gaza revision: Israel names Ali al-Amoudi as October 3 strike target; his fate remains unknown",
+      "sources": "Full AFP report read through Le Monde and Asharq Al-Awsat. Both carry the same AFP account, not independent confirmation; the original Israeli statement and exact publication time were not retrieved.",
+      "time": "2026-10-05T18:06:17.512275+00:00",
+      "timestamp": "2026-10-05T18:06:17.512275+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-03",
+      "incident_id": "gaza-city-apartment-strike-2026-10-03",
+      "publication_id": "AFP Gaza Ali al-Amoudi targeted strike 2026-10-03",
+      "originating_source": "AFP via Le Monde",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-05T18:06:17.512275Z",
+      "reviewed_at": "2026-10-05T18:06:17.512275Z",
+      "verified_at": null,
+      "evidence_id": "ev_77c3663fd20faf28e0e0be17b49c426bc705b67e1fde36fd4cd5653f6994121f",
+      "revision_id": "rev_f0fce9933356110f39aec39a4dabc116b4c2bf477ee9b27f6e62baddb2ca4724",
+      "revision_ids": [
+        "rev_f0fce9933356110f39aec39a4dabc116b4c2bf477ee9b27f6e62baddb2ca4724"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_52f089a9040d44592b0e51a8d6dc5a057fc7ae233307f12e1bfbec7be2494a7b",
+      "report_status": "revision",
+      "implication": "Israel now identifies the intended target of the retained strike; his fate and the reported civilian toll remain unverified.",
+      "next_trigger": "No further trigger or follow-up timetable supplied by the reviewed evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "An attributed Israeli target identification and explicit unresolved target outcome supplement the retained casualty report.",
+      "source_urls": [
+        "https://english.aawsat.com/arab-world/5325624-israel-targets-top-hamas-leader-deadly-gaza-strike-anniversary",
+        "https://www.lemonde.fr/en/international/article/2026/10/03/israel-targets-top-hamas-leader-in-deadly-gaza-strike-killing-five_6758223_4.html"
+      ]
+    },
+    {
+      "zone": "turkey",
+      "headline": "Newly reviewed October 4 notice: T\u00fcrkiye announces October 5 Riyadh defence-committee talks",
+      "sources": "Original MFA notice read and raw HTTPS publication retained; Reuters original full report corroborates the announcement by citing the same ministry, not independent evidence of a completed meeting. Publication clock time is unknown.",
+      "time": "2026-10-05T18:06:17.512275+00:00",
+      "timestamp": "2026-10-05T18:06:17.512275+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-04",
+      "incident_id": "makkah-defence-committee-riyadh-meeting-notice-mfa-189-2026-10-04",
+      "publication_id": "T\u00fcrkiye MFA No 189 4 October 2026",
+      "originating_source": "Republic of T\u00fcrkiye Ministry of Foreign Affairs",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-05T18:06:17.512275Z",
+      "reviewed_at": "2026-10-05T18:06:17.512275Z",
+      "verified_at": null,
+      "evidence_id": "ev_9fc66ada81aa9895b88daf6767906e1a4374a6cadba9624afea627a708e48fd8",
+      "revision_id": "rev_ecc2b49081824ce8338dd08f5e2522c194507b5d85ea80c746c44d67667a4747",
+      "revision_ids": [
+        "rev_ecc2b49081824ce8338dd08f5e2522c194507b5d85ea80c746c44d67667a4747"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The ministry notice establishes planned regional-security talks, not a completed meeting, military deployment or pact activation.",
+      "next_trigger": "No further trigger or follow-up timetable supplied by the reviewed evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.mfa.gov.tr/no_-189_-ortak-savunma-icin-mekke-anlasmasi-kapsaminda-tesis-edilen-stratejik-siyasi-ve-savunma-komitesi-nin-toplantisi-hk.en.mfa",
+        "https://www.reuters.com/world/asia-pacific/turkey-says-mecca-pact-committee-meet-riyadh-october-5-2026-10-04"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Yemeni government claims Dhubab and Bab al-Mandab-area gains; Houthis deny district-control claim",
       "text": "Saba 153475 quotes a military source claiming Nation Shield and Giants Brigades, supported by local resistance and air cover, took Dhubab district and strategic positions near Bab al-Mandab. Saba 153477 quotes spokesman Majed al-Nazili claiming control of Bab al-Mandab-area positions and Dhubab airport and fire control over the Dhubab-Mokha road. Full October 5 Al Jazeera reporting says the Houthis denied the Dhubab-control announcement. This is a disputed October 5 counteroffensive claim, distinct from the retained September Houthi capture. No verified district control, island recapture, shipping reopening, naval clearance, casualty total or collapse of the Houthi position is established. Saba publication clocks omit timezone, so their instants remain unknown. The Al Jazeera article has an explicit 09:38:26 UTC publication timestamp with a later revision at 11:11:30 UTC.",
@@ -3606,90 +3690,6 @@ const state = {
         "https://t.me/vitaliy_klitschko/7765",
         "https://www.dw.com/en/germanys-merz-arrives-in-kyiv-to-pledge-more-support/a-79534734"
       ]
-    },
-    {
-      "zone": "iran_conventional",
-      "headline": "Iran talks revision: Baghaei says US response reviewed; further Iranian details pending",
-      "sources": "WANA press-conference report; Middle East Eye reports the same briefing, not independent confirmation of diplomatic terms.",
-      "time": "2026-10-04T09:09:12.964105Z",
-      "timestamp": "2026-10-04T09:09:12.964105Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-04",
-      "incident_id": "us-iran-qatar-mediated-hormuz-talks-2026-09-29",
-      "publication_id": "https://wanaen.com/baghaei-us-proposals-are-in-line-with-previous-positions-on-nuclear-issue",
-      "originating_source": "WANA",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-04T09:09:12.962089Z",
-      "reviewed_at": "2026-10-04T09:09:12.964105Z",
-      "verified_at": null,
-      "evidence_id": "ev_3f51ec0b0d4e08515d87c037db063c51edfc1152d74983290f2ba127b3aad471",
-      "revision_id": "rev_d03429545e46a36274b47b42e1ebe801af5deb7f9a09557034ebba7bf6b95517",
-      "revision_ids": [
-        "rev_d03429545e46a36274b47b42e1ebe801af5deb7f9a09557034ebba7bf6b95517"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_22e83bf2d163f6f55d971dbce7dd45b26e8221d5a766904d9b1188ac3ee4c4f1",
-      "report_status": "revision",
-      "implication": "Iran reports a response exchanged through Qatar, but no agreement or reopening of the strait is established.",
-      "next_trigger": "Baghaei says Tehran will review further details and convey additional points to the other side.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Previously awaited US response is now reported reviewed; Iran says further details remain under consideration.",
-      "source_urls": [
-        "https://wanaen.com/baghaei-us-proposals-are-in-line-with-previous-positions-on-nuclear-issue",
-        "https://www.middleeasteye.net/live-blog/live-blog-update/irans-foreign-ministry-spokesman-strait-hormuz-main-concern-leadership?fid=558652&nid=448087&topic=War%2520on%2520Iran"
-      ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Newly reviewed Reuters interview: Zelenskiy says Ukraine will intensify strikes on Russian oil refineries",
-      "sources": "Reuters original video publication and Reuters text syndicated by Kathmandu Post and ABC; these are one reporting origin, not independent sources.",
-      "time": "2026-10-04T09:09:12.964105Z",
-      "timestamp": "2026-10-04T09:09:12.964105Z",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-03",
-      "incident_id": "zelenskiy-refinery-response-reuters-rw726903102026rp1",
-      "publication_id": "Reuters RW726903102026RP1",
-      "originating_source": "Reuters",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-04T09:09:12.702808Z",
-      "reviewed_at": "2026-10-04T09:09:12.964105Z",
-      "verified_at": null,
-      "evidence_id": "ev_468c3b8e4589fbf0b200d385a4a8ddd970572fb2fb121a71cc2e7fbab00c2df2",
-      "revision_id": "rev_38ae2407b3c73a4b19ded50eec74a698f3ec59d40835b7ecd0a5f0d0829ed1f5",
-      "revision_ids": [
-        "rev_38ae2407b3c73a4b19ded50eec74a698f3ec59d40835b7ecd0a5f0d0829ed1f5"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "An announced retaliation policy, not evidence of another strike; the claimed Russian doctrine remains unverified.",
-      "next_trigger": "Public context unavailable; consult the original source.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://kathmandupost.com/world/2026/10/04/ukraine-will-hit-russian-refineries-in-response-to-moscow-s-new-doctrine-of-airstrikes-zelenskiy-says",
-        "https://www.abc.net.au/news/2026-10-04/ukraine-to-hit-russian-refineries-in-response-to-moscow-strikes/107226904",
-        "https://www.reuters.com/video/watch/idRW726903102026RP1"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3706,7 +3706,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-05T15:11:26Z",
+  "build_at": "2026-10-05T18:06:58Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3906,7 +3906,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-05T15:11:26Z",
+      "generated_at": "2026-10-05T18:06:58Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4539,10 +4539,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-05T15:11:26Z",
+    "generated_at": "2026-10-05T18:06:58Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 647.8936111111111,
+    "age_hours": 650.8191666666667,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4624,7 +4624,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4691,7 +4691,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4719,7 +4719,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4747,7 +4747,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4847,7 +4847,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4914,7 +4914,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5012,7 +5012,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 86.36706018518518,
+            "remaining_days": 86.24516203703703,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5040,7 +5040,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5138,7 +5138,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5166,7 +5166,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 86.36706018518518,
+            "remaining_days": 86.24516203703703,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5233,7 +5233,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 87.57469907407408,
+            "remaining_days": 87.45280092592593,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5318,87 +5318,123 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-05T15:11:26Z",
+    "generated_at": "2026-10-05T18:06:58Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "f0623d2e198d39ee745b85d90d8d1444beb3ce0277dfbba81537eebbd767abe1",
+    "previous_snapshot_id": "47f9dca7173462fda4e29b830d808e58938dc3bdd75c7d009725d48fdfd1d671",
     "changes": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow",
+        "zone": "israel_palestine",
+        "headline": "Newly reviewed Gaza revision: Israel names Ali al-Amoudi as October 3 strike target; his fate remains unknown",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_e39a676622e3836fcc17e5274b449a97cd635cdb59a33a48cf6c7b59fa4dbf33",
+        "correction_id": "rev_f0fce9933356110f39aec39a4dabc116b4c2bf477ee9b27f6e62baddb2ca4724",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://t.me/army21ye/3802",
-          "https://understandingwar.org/research/middle-east/iran-update-october-4-2026/",
-          "https://www.bloomberg.com/news/articles/2026-10-05/saudi-east-west-oil-pipeline-is-flowing-as-normal-people-say",
-          "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-prices-yemen-red-sea-houthis-bab-el-mandeb/",
-          "https://www.dawn.com/news/2034915/saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
-          "https://x.com/war_cube/status/2106757519146185183"
+          "https://english.aawsat.com/arab-world/5325396-hospital-says-5-people-killed-gaza",
+          "https://english.aawsat.com/arab-world/5325624-israel-targets-top-hamas-leader-deadly-gaza-strike-anniversary",
+          "https://www.lemonde.fr/en/international/article/2026/10/03/israel-targets-top-hamas-leader-in-deadly-gaza-strike-killing-five_6758223_4.html",
+          "https://www.reuters.com/world/middle-east/israeli-strike-kills-four-people-gaza-medics-say-2026-10-02"
         ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.",
+        "next_trigger": "No further trigger or follow-up timetable supplied by the reviewed evidence.",
+        "implication": "Israel now identifies the intended target of the retained strike; his fate and the reported civilian toll remain unverified.",
         "historical_revision_ids": [
-          "rev_1aefbe4713ea24f3393d73af99f21617fcad2508a2605a0fdfcbe93f29a19569"
+          "rev_52f089a9040d44592b0e51a8d6dc5a057fc7ae233307f12e1bfbec7be2494a7b"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "houthi-khurais-aramco-strike-claim-2026-10-04",
+        "incident_id": "gaza-city-apartment-strike-2026-10-03",
         "change": "Correction / revision"
+      },
+      {
+        "zone": "turkey",
+        "headline": "Newly reviewed October 4 notice: T\u00fcrkiye announces October 5 Riyadh defence-committee talks",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_ecc2b49081824ce8338dd08f5e2522c194507b5d85ea80c746c44d67667a4747",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.mfa.gov.tr/no_-189_-ortak-savunma-icin-mekke-anlasmasi-kapsaminda-tesis-edilen-stratejik-siyasi-ve-savunma-komitesi-nin-toplantisi-hk.en.mfa",
+          "https://www.reuters.com/world/asia-pacific/turkey-says-mecca-pact-committee-meet-riyadh-october-5-2026-10-04"
+        ],
+        "next_trigger": "No further trigger or follow-up timetable supplied by the reviewed evidence.",
+        "implication": "The ministry notice establishes planned regional-security talks, not a completed meeting, military deployment or pact activation.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "makkah-defence-committee-riyadh-meeting-notice-mfa-189-2026-10-04",
+        "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow",
+        "zone": "israel_palestine",
+        "headline": "Newly reviewed Gaza revision: Israel names Ali al-Amoudi as October 3 strike target; his fate remains unknown",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_e39a676622e3836fcc17e5274b449a97cd635cdb59a33a48cf6c7b59fa4dbf33",
+        "correction_id": "rev_f0fce9933356110f39aec39a4dabc116b4c2bf477ee9b27f6e62baddb2ca4724",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://t.me/army21ye/3802",
-          "https://understandingwar.org/research/middle-east/iran-update-october-4-2026/",
-          "https://www.bloomberg.com/news/articles/2026-10-05/saudi-east-west-oil-pipeline-is-flowing-as-normal-people-say",
-          "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-prices-yemen-red-sea-houthis-bab-el-mandeb/",
-          "https://www.dawn.com/news/2034915/saudi-east-west-pipeline-oil-flows-uninterrupted-source-says",
-          "https://x.com/war_cube/status/2106757519146185183"
+          "https://english.aawsat.com/arab-world/5325396-hospital-says-5-people-killed-gaza",
+          "https://english.aawsat.com/arab-world/5325624-israel-targets-top-hamas-leader-deadly-gaza-strike-anniversary",
+          "https://www.lemonde.fr/en/international/article/2026/10/03/israel-targets-top-hamas-leader-in-deadly-gaza-strike-killing-five_6758223_4.html",
+          "https://www.reuters.com/world/middle-east/israeli-strike-kills-four-people-gaza-medics-say-2026-10-02"
         ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.",
+        "next_trigger": "No further trigger or follow-up timetable supplied by the reviewed evidence.",
+        "implication": "Israel now identifies the intended target of the retained strike; his fate and the reported civilian toll remain unverified.",
         "historical_revision_ids": [
-          "rev_1aefbe4713ea24f3393d73af99f21617fcad2508a2605a0fdfcbe93f29a19569"
+          "rev_52f089a9040d44592b0e51a8d6dc5a057fc7ae233307f12e1bfbec7be2494a7b"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "houthi-khurais-aramco-strike-claim-2026-10-04",
+        "incident_id": "gaza-city-apartment-strike-2026-10-03",
         "change": "Correction / revision"
+      },
+      {
+        "zone": "turkey",
+        "headline": "Newly reviewed October 4 notice: T\u00fcrkiye announces October 5 Riyadh defence-committee talks",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_ecc2b49081824ce8338dd08f5e2522c194507b5d85ea80c746c44d67667a4747",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.mfa.gov.tr/no_-189_-ortak-savunma-icin-mekke-anlasmasi-kapsaminda-tesis-edilen-stratejik-siyasi-ve-savunma-komitesi-nin-toplantisi-hk.en.mfa",
+          "https://www.reuters.com/world/asia-pacific/turkey-says-mecca-pact-committee-meet-riyadh-october-5-2026-10-04"
+        ],
+        "next_trigger": "No further trigger or follow-up timetable supplied by the reviewed evidence.",
+        "implication": "The ministry notice establishes planned regional-security talks, not a completed meeting, military deployment or pact activation.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "makkah-defence-committee-riyadh-meeting-notice-mfa-189-2026-10-04",
+        "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Khurais revision: AFP reports pipeline damage and stoppage; Reuters and Bloomberg report uninterrupted oil flow\nImplication: New reporting concerns the East-West oil export route, but conflicting flow accounts do not establish a pipeline shutdown or quantify lost exports.\nEvidence: verification not established https://t.me/army21ye/3802\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://t.me/army21ye/3802",
-    "message_id": "138a6a8ec123e6f79566843fb47faa378ce001c621e58c0386ce0371ac7dfa4e"
+    "message": "Correction / revision: Newly reviewed Gaza revision: Israel names Ali al-Amoudi as October 3 strike target; his fate remains unknown\nImplication: Israel now identifies the intended target of the retained strike; his fate and the reported civilian toll remain unverified.\nEvidence: verification not established https://english.aawsat.com/arab-world/5325396-hospital-says-5-people-killed-gaza\nNext trigger: No further trigger or follow-up timetable supplied by the reviewed evidence.\nDossier: dashboard incident list; source https://english.aawsat.com/arab-world/5325396-hospital-says-5-people-killed-gaza\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "bd139b4146005b017e635464dccc6bf9311d127c1b6b9adc07eb7856e3a09632"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 780,
-    "current_report_count": 772,
+    "total_count": 782,
+    "current_report_count": 774,
     "retained_revision_count": 8,
     "recent_count": 20,
-    "archive_count": 760,
-    "bytes": 1163644,
-    "sha256": "51243e2490ce11001084a3d9c4520337afb8eb33b31b241229c1912e1601fd9b",
+    "archive_count": 762,
+    "bytes": 1167512,
+    "sha256": "92ad81897e46a284a5a3a77a918e281a47a389e22d5117918df5da870121bea1",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-10-05T11:28:00Z",
     "verified_at": "2026-10-05T00:11:16.592225Z",
-    "reviewed_at": "2026-10-05T15:10:57.385423Z"
+    "reviewed_at": "2026-10-05T18:06:17.512275Z"
   }
 };
 
