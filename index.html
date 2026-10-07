@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-07T09:09:16Z",
+  "last_updated": "2026-10-07T12:09:02Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -777,10 +777,10 @@ const state = {
       "evidence_quality": {
         "status": "qualifying_evidence",
         "source_count": 4,
-        "qualifying_source_count": 3,
-        "scanned": 94,
-        "retained": 3,
-        "rejected": 91,
+        "qualifying_source_count": 2,
+        "scanned": 95,
+        "retained": 2,
+        "rejected": 93,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2619,12 +2619,12 @@ const state = {
         "final_index": null
       },
       "evidence_quality": {
-        "status": "qualifying_evidence",
-        "source_count": 1,
-        "qualifying_source_count": 1,
+        "status": "insufficient_evidence",
+        "source_count": 0,
+        "qualifying_source_count": 0,
         "scanned": 27,
-        "retained": 1,
-        "rejected": 26,
+        "retained": 0,
+        "rejected": 27,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2633,9 +2633,12 @@ const state = {
           "originating_source_unknown",
           "published_at_invalid_or_future",
           "published_at_unknown",
+          "stale_publication",
           "verified_at_unknown"
         ],
-        "coverage_gaps": []
+        "coverage_gaps": [
+          "no_qualifying_evidence"
+        ]
       },
       "legacy_trend": "stable",
       "severity": null,
@@ -2865,6 +2868,49 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "russia_ukraine",
+      "headline": "Pryluky revision: emergency service reports 14 dead and 50 injured after October 7 apartment strike",
+      "text": "Ukraine\u2019s emergency service now reports 14 killed, including four children, and 50 injured, including seven children, in the retained October 7 Pryluky apartment strike; 15 people were rescued. The source update was published at 10:38:02 UTC. Ukrinform relays the same service, while earlier reporting carries lower interim totals. Rescue work is still reported as ongoing; the count is not independently verified.",
+      "sources": "Original timestamped emergency-service statement; Ukrinform relays the same official update; BBC and Kyiv Post earlier accounts were inspected.",
+      "time": "2026-10-07T12:08:44.166811+00:00",
+      "timestamp": "2026-10-07T12:08:44.166811+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-07",
+      "incident_id": "pryluky-apartment-strike-presidential-report-2026-10-07",
+      "publication_id": "dsns_telegram:76840",
+      "originating_source": "Ukraine State Emergency Service original public Telegram update",
+      "event_at": null,
+      "published_at": "2026-10-07T10:38:02Z",
+      "collected_at": "2026-10-07T12:04:01.271893Z",
+      "reviewed_at": "2026-10-07T12:08:44.166811Z",
+      "verified_at": "2026-10-07T12:08:44.166811Z",
+      "evidence_id": "ev_234be7cde21626ed2819e3f8423b7664fb60105d743fa43e3d0b35665ce98ed9",
+      "revision_id": "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa",
+      "revision_ids": [
+        "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": true,
+      "rejection_reasons": [],
+      "status": "qualifying",
+      "supersedes": "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d",
+      "report_status": "revision",
+      "implication": "The same Pryluky strike now has a substantially higher official casualty account; this is not a new attack or independently verified death toll.",
+      "next_trigger": "Rescue work and the search for people under rubble continue in the reviewed reporting; no completion timetable is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "The same incident\u2019s official casualty account rises from five dead/26 injured to 14 dead/50 injured; 15 people rescued.",
+      "source_urls": [
+        "https://t.me/dsns_telegram/76840",
+        "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo",
+        "https://www.kyivpost.com/post/86319",
+        "https://www.ukrinform.ua/rubric-regions/4171899-raketna-ataka-na-priluki-kilkist-zagiblih-zrosla-do-13-poranenih-do-50.html"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Yemen's Transport Ministry reports Aden-airport attack and diversion of Cairo flight",
       "text": "The Yemeni Transport Ministry's statement carried by Saba says at least two ballistic missiles and drones targeted Aden airport early on October 7. It reports a missile falling near the runway, diversion of Yemenia flight 603 from Cairo to Jeddah, and removal of two aircraft from danger. Al Jazeera/Reuters repeats the ministry's account; AP separately reports its journalist heard explosions around 2 a.m. local time, which does not verify the runway impact, aircraft movements, missile count or responsibility. Exact event time and the timezone of Saba's displayed publication time are unknown. No casualties or damage extent are inferred.",
@@ -2965,10 +3011,12 @@ const state = {
       ],
       "direction": "context",
       "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
-      "report_status": "unknown",
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_superseded"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "superseded",
       "implication": "The president reports residential destruction and five deaths in Pryluky, separate from the retained Kyiv incident; casualties remain independently unverified.",
       "next_trigger": "The president says responders are searching for people under the rubble; no completion timetable is supplied.",
       "independent_verification": false,
@@ -3649,48 +3697,6 @@ const state = {
         "https://bworldonline.com/the-nation/2026/10/04/784177/chinese-coast-guard-blocks-philippine-team-pursuing-suspected-blast-fisher",
         "https://un.china-mission.gov.cn/eng/fyrth/202610/t20261006_12035790.htm"
       ]
-    },
-    {
-      "zone": "north_korea",
-      "headline": "DMZ revision: North Korea rejects blame and warns of counteraction for any border intrusion",
-      "text": "Yonhap reports an October 6 North Korean foreign-ministry statement denying responsibility for the retained September 21 DMZ mine blast and threatening immediate and powerful counteraction if South Korea crosses the border even by a millimeter. The statement dismisses South Korean mine removal as unrelated to the North and rejects negotiations over military sovereignty. Reuters' full syndicated account describes the same KCNA statement. This adds an attributed counterpart response after the October 5 mine-removal operation, not a new blast, verified cross-border incursion or implemented retaliation. Original KCNA text was not retrieved; the competing mine-responsibility accounts remain unresolved by independent evidence in this scan.",
-      "sources": "Full Yonhap original report with exact publication metadata and full Reuters syndication read. Both describe one KCNA statement; syndication is not independent confirmation.",
-      "timestamp": "2026-10-06T15:09:42.286023+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-06",
-      "incident_id": "korea-dmz-mine-blast-2026-09-21",
-      "publication_id": "https://en.yna.co.kr/view/AEN20261006010651315",
-      "originating_source": "Yonhap / Kim Seung-yeon",
-      "event_at": null,
-      "published_at": "2026-10-06T11:36:34Z",
-      "collected_at": "2026-10-06T15:05:35.693401Z",
-      "reviewed_at": "2026-10-06T15:09:42.286023Z",
-      "verified_at": null,
-      "evidence_id": "ev_e40a83f0695c06b3ea63704e5c2c04cf86d3c6050c87fc616e7b9128dbd6120a",
-      "revision_id": "rev_e0d8d6f3d7671c5ebd71ce29fb1f7ecc1b76bac61be8b8259a53b708fe81da1e",
-      "revision_ids": [
-        "rev_e0d8d6f3d7671c5ebd71ce29fb1f7ecc1b76bac61be8b8259a53b708fe81da1e"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_f008c5c9b7e8d3a41423c7abd457990f15292b4fea5d10e772ae55682f83cc95",
-      "report_status": "revision",
-      "implication": "Pyongyang adds a conditional counteraction warning and denies responsibility; no new blast, border crossing or actual retaliation is established.",
-      "next_trigger": "The reported statement conditions counteraction on a territorial intrusion; no action timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://en.yna.co.kr/view/AEN20261006010651315",
-        "https://kfgo.com/2026/10/06/north-korea-warns-of-stronger-action-toward-south-korea-over-mine-blast-accusations",
-        "https://www.reuters.com/world/asia-pacific/north-korea-warns-stronger-action-toward-south-korea-over-mine-blast-accusations-2026-10-06"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3707,7 +3713,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-07T09:09:16Z",
+  "build_at": "2026-10-07T12:09:02Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3907,7 +3913,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-07T09:09:16Z",
+      "generated_at": "2026-10-07T12:09:02Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4540,10 +4546,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-07T09:09:16Z",
+    "generated_at": "2026-10-07T12:09:02Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 689.8575,
+    "age_hours": 692.8536111111111,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4625,7 +4631,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4692,7 +4698,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4720,7 +4726,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4748,7 +4754,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4848,7 +4854,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4915,7 +4921,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5013,7 +5019,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 84.61856481481482,
+            "remaining_days": 84.49372685185185,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5041,7 +5047,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5139,7 +5145,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5167,7 +5173,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 84.61856481481482,
+            "remaining_days": 84.49372685185185,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5234,7 +5240,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 85.8262037037037,
+            "remaining_days": 85.70136574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5316,220 +5322,94 @@ const state = {
     "status": "compared",
     "new_verified_revision_count": 1,
     "recent_new_revision_ids": [
-      "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d"
+      "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa"
     ]
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-07T09:09:16Z",
+    "generated_at": "2026-10-07T12:09:02Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "24605ed26d89118d885ecf94f1343ed6d4da2ea344cc0f09f83069e39e197ca0",
+    "previous_snapshot_id": "d5f76b2475f47375f7cc8f8deffafa99daaa82371c6a9efb39d48d8fdd85c852",
     "changes": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Yemen's Transport Ministry reports Aden-airport attack and diversion of Cairo flight",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_3809ec75555f66a14cf7b7c3e50351e9f9bcf083be7c4b99a5ccdaf574a044dc",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.aljazeera.com/news/2026/10/7/yemens-houthis-attack-aden-airport-saudi-forces-down-missile-near-riyadh",
-          "https://www.sabanew.net/story/ar/153601",
-          "https://www.usnews.com/news/world/articles/2026-10-07/houthis-strike-saudi-targets-israel-marks-oct-7-anniversary-and-other-mideast-developments"
-        ],
-        "next_trigger": "No dated follow-up trigger supplied by the reviewed statement.",
-        "implication": "The ministry reports diverting a civilian flight and moving two aircraft after an airport attack; impact details and attribution remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "aden-airport-missile-drone-transport-ministry-report-2026-10-07",
-        "change": "New incident report"
-      },
-      {
         "zone": "russia_ukraine",
-        "headline": "Bulgaria revision: officials say Alfa Watan crew search ended without survivors or bodies found",
+        "headline": "Pryluky revision: emergency service reports 14 dead and 50 injured after October 7 apartment strike",
         "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_88e94bbabbade14b0a1da4f14ed0be574d7bec46ca9218230c21fb181795bc0f",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://krcgtv.com/news/nation-world/bulgarias-leader-says-drone-attack-hit-two-vessels-ukraines-president-blames-russia",
-          "https://news.bg/politics/prekratyavat-izdirvaneto-na-ekipazha-na-potanaliya-korab-nyama-sledi-ot-dronovete.html",
-          "https://sofiaglobe.com/2026/10/07/bulgaria-calls-off-search-for-crew-of-ship-sunk-in-drone-attack-in-black-sea",
-          "https://www.cbc.ca/news/world/bulgaria-black-sea-drone-attacks-reported-9.7370638",
-          "https://www.gov.bg/bg/prestsentar/novini/rumen-radev-atakata-sreshtu-dva-targovski-koraba-v-balgarskata-ikonomicheska-zona-e-absolyutno-nedopustima",
-          "https://www.pravda.com.ua/eng/news/2026/10/06/8056782",
-          "https://www.president.gov.ua/en/news/ye-onovlena-informaciya-vid-rozvidki-pro-pidgotovku-rosiyana-106769"
-        ],
-        "next_trigger": "Officials say attack-origin analysis continues; no findings timetable is supplied.",
-        "implication": "Reported search closure changes the rescue outlook for the retained ship attack; it is not a new attack or a confirmed crew death toll.",
-        "historical_revision_ids": [
-          "rev_979efd3453ea4fb00a7ef29b37068c829696771c868d88a846401119ec298671",
-          "rev_fa09495060ca72fa13bdf7536321a4ac69cb58046956b14e5a30c3e99deb51f0"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "bulgaria-eez-alfa-watan-able-drone-attack-2026-10-06",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Zelenskyy reports five killed and 26 injured in October 7 Pryluky apartment strike",
-        "status": "reported",
         "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d",
-        "material_revision": null,
+        "correction_id": "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa",
+        "material_revision": "The same incident\u2019s official casualty account rises from five dead/26 injured to 14 dead/50 injured;",
         "urgent_qualified": false,
         "source_urls": [
           "https://abcnews.com/International/russia-hits-ukrainian-apartment-buildings-deadly-overnight-strike/story?id=137058213",
+          "https://t.me/dsns_telegram/76840",
           "https://t.me/mod_russia_en/29889",
+          "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo",
+          "https://www.kyivpost.com/post/86319",
+          "https://www.ukrinform.ua/rubric-regions/4171899-raketna-ataka-na-priluki-kilkist-zagiblih-zrosla-do-13-poranenih-do-50.html",
           "https://x.com/ZelenskyyUa/status/2107732058978046439?s=20"
         ],
-        "next_trigger": "The president says responders are searching for people under the rubble; no completion timetable is supplied.",
-        "implication": "The president reports residential destruction and five deaths in Pryluky, separate from the retained Kyiv incident; casualties remain independently unverified.",
-        "historical_revision_ids": [],
+        "next_trigger": "Rescue work and the search for people under rubble continue in the reviewed reporting; no completion timetable is supplied.",
+        "implication": "The same Pryluky strike now has a substantially higher official casualty account; this is not a new attack or independently verified death toll.",
+        "historical_revision_ids": [
+          "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "pryluky-apartment-strike-presidential-report-2026-10-07",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Coalition reports intercepting Houthi ballistic missile north of Riyadh on October 7",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_fbd77e857938e5a3de9953e9c514e8e537e9f8944c988510c3576d8ca20e29f6",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.afp.com/en/saudi-coalition-says-shot-down-houthi-missile",
-          "https://www.sabanew.net/story/ar/153602"
-        ],
-        "next_trigger": "The coalition says it is tracking the launcher and will destroy it; no timetable or completed follow-on strike is established.",
-        "implication": "The coalition reports an interception north of the Saudi capital; airport impacts and the interception remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "riyadh-north-ballistic-interception-coalition-report-2026-10-07",
-        "change": "New incident report"
+        "change": "Correction / revision"
       }
     ],
     "items": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Yemen's Transport Ministry reports Aden-airport attack and diversion of Cairo flight",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_3809ec75555f66a14cf7b7c3e50351e9f9bcf083be7c4b99a5ccdaf574a044dc",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.aljazeera.com/news/2026/10/7/yemens-houthis-attack-aden-airport-saudi-forces-down-missile-near-riyadh",
-          "https://www.sabanew.net/story/ar/153601",
-          "https://www.usnews.com/news/world/articles/2026-10-07/houthis-strike-saudi-targets-israel-marks-oct-7-anniversary-and-other-mideast-developments"
-        ],
-        "next_trigger": "No dated follow-up trigger supplied by the reviewed statement.",
-        "implication": "The ministry reports diverting a civilian flight and moving two aircraft after an airport attack; impact details and attribution remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "aden-airport-missile-drone-transport-ministry-report-2026-10-07",
-        "change": "New incident report"
-      },
-      {
         "zone": "russia_ukraine",
-        "headline": "Bulgaria revision: officials say Alfa Watan crew search ended without survivors or bodies found",
+        "headline": "Pryluky revision: emergency service reports 14 dead and 50 injured after October 7 apartment strike",
         "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_88e94bbabbade14b0a1da4f14ed0be574d7bec46ca9218230c21fb181795bc0f",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://krcgtv.com/news/nation-world/bulgarias-leader-says-drone-attack-hit-two-vessels-ukraines-president-blames-russia",
-          "https://news.bg/politics/prekratyavat-izdirvaneto-na-ekipazha-na-potanaliya-korab-nyama-sledi-ot-dronovete.html",
-          "https://sofiaglobe.com/2026/10/07/bulgaria-calls-off-search-for-crew-of-ship-sunk-in-drone-attack-in-black-sea",
-          "https://www.cbc.ca/news/world/bulgaria-black-sea-drone-attacks-reported-9.7370638",
-          "https://www.gov.bg/bg/prestsentar/novini/rumen-radev-atakata-sreshtu-dva-targovski-koraba-v-balgarskata-ikonomicheska-zona-e-absolyutno-nedopustima",
-          "https://www.pravda.com.ua/eng/news/2026/10/06/8056782",
-          "https://www.president.gov.ua/en/news/ye-onovlena-informaciya-vid-rozvidki-pro-pidgotovku-rosiyana-106769"
-        ],
-        "next_trigger": "Officials say attack-origin analysis continues; no findings timetable is supplied.",
-        "implication": "Reported search closure changes the rescue outlook for the retained ship attack; it is not a new attack or a confirmed crew death toll.",
-        "historical_revision_ids": [
-          "rev_979efd3453ea4fb00a7ef29b37068c829696771c868d88a846401119ec298671",
-          "rev_fa09495060ca72fa13bdf7536321a4ac69cb58046956b14e5a30c3e99deb51f0"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "bulgaria-eez-alfa-watan-able-drone-attack-2026-10-06",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Zelenskyy reports five killed and 26 injured in October 7 Pryluky apartment strike",
-        "status": "reported",
         "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d",
-        "material_revision": null,
+        "correction_id": "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa",
+        "material_revision": "The same incident\u2019s official casualty account rises from five dead/26 injured to 14 dead/50 injured;",
         "urgent_qualified": false,
         "source_urls": [
           "https://abcnews.com/International/russia-hits-ukrainian-apartment-buildings-deadly-overnight-strike/story?id=137058213",
+          "https://t.me/dsns_telegram/76840",
           "https://t.me/mod_russia_en/29889",
+          "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo",
+          "https://www.kyivpost.com/post/86319",
+          "https://www.ukrinform.ua/rubric-regions/4171899-raketna-ataka-na-priluki-kilkist-zagiblih-zrosla-do-13-poranenih-do-50.html",
           "https://x.com/ZelenskyyUa/status/2107732058978046439?s=20"
         ],
-        "next_trigger": "The president says responders are searching for people under the rubble; no completion timetable is supplied.",
-        "implication": "The president reports residential destruction and five deaths in Pryluky, separate from the retained Kyiv incident; casualties remain independently unverified.",
-        "historical_revision_ids": [],
+        "next_trigger": "Rescue work and the search for people under rubble continue in the reviewed reporting; no completion timetable is supplied.",
+        "implication": "The same Pryluky strike now has a substantially higher official casualty account; this is not a new attack or independently verified death toll.",
+        "historical_revision_ids": [
+          "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "pryluky-apartment-strike-presidential-report-2026-10-07",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Coalition reports intercepting Houthi ballistic missile north of Riyadh on October 7",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_fbd77e857938e5a3de9953e9c514e8e537e9f8944c988510c3576d8ca20e29f6",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.afp.com/en/saudi-coalition-says-shot-down-houthi-missile",
-          "https://www.sabanew.net/story/ar/153602"
-        ],
-        "next_trigger": "The coalition says it is tracking the launcher and will destroy it; no timetable or completed follow-on strike is established.",
-        "implication": "The coalition reports an interception north of the Saudi capital; airport impacts and the interception remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "riyadh-north-ballistic-interception-coalition-report-2026-10-07",
-        "change": "New incident report"
+        "change": "Correction / revision"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Yemen's Transport Ministry reports Aden-airport attack and diversion of Cairo flight\nImplication: The ministry reports diverting a civilian flight and moving two aircraft after an airport attack; impact details and attribution remain unverified.\nEvidence: verification not established https://www.aljazeera.com/news/2026/10/7/yemens-houthis-attack-aden-airport-saudi-forces-down-missile-near-riyadh\nNext trigger: No dated follow-up trigger supplied by the reviewed statement.\nDossier: dashboard incident list; source https://www.aljazeera.com/news/2026/10/7/yemens-houthis-attack-aden-airport-saudi-forces-down-missile-near-riyadh\n3 additional incident changes in the dashboard briefing list.",
-    "message_id": "9451b10c0a82dc270fc54253d53fcd6479ae2db66c5d65e9d53dd33e5b6c0957"
+    "message": "Correction / revision: Pryluky revision: emergency service reports 14 dead and 50 injured after October 7 apartment strike\nImplication: The same Pryluky strike now has a substantially higher official casualty account; this is not a new attack or independently verified death toll.\nEvidence: verified supporting evidence https://abcnews.com/International/russia-hits-ukrainian-apartment-buildings-deadly-overnight-strike/story?id=137058213\nNext trigger: Rescue work and the search for people under rubble continue in the reviewed reporting; no completion timetable is supplied.\nDossier: dashboard incident list; source https://abcnews.com/International/russia-hits-ukrainian-apartment-buildings-deadly-overnight-strike/story?id=137058213",
+    "message_id": "754e1bd11ddf493f94d94fa409b3d098242ca706c8541dd7290871f1ba720a18"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 817,
-    "current_report_count": 809,
+    "total_count": 818,
+    "current_report_count": 810,
     "retained_revision_count": 8,
     "recent_count": 20,
-    "archive_count": 797,
-    "bytes": 1249906,
-    "sha256": "1b6e369843205d9776bc0dd7435faf3da22948e29349d7bacc0fa3c7b73179b2",
+    "archive_count": 798,
+    "bytes": 1252716,
+    "sha256": "32c4e30c6adc7a081be2eedaf14d05d153b2a5493315ec236f1d683ff9d7fc3c",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-07T07:17:37Z",
-    "verified_at": "2026-10-07T09:08:41.826101Z",
-    "reviewed_at": "2026-10-07T09:08:41.826101Z"
+    "published_at": "2026-10-07T10:38:02Z",
+    "verified_at": "2026-10-07T12:08:44.166811Z",
+    "reviewed_at": "2026-10-07T12:08:44.166811Z"
   }
 };
 
