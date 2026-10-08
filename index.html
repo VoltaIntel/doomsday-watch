@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-08T03:08:35Z",
+  "last_updated": "2026-10-08T06:10:22Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -776,14 +776,15 @@ const state = {
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 9,
+        "source_count": 11,
         "qualifying_source_count": 4,
-        "scanned": 100,
+        "scanned": 102,
         "retained": 4,
-        "rejected": 96,
+        "rejected": 98,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
+          "inactive_revision_contradictory",
           "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
@@ -2868,6 +2869,85 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "russia_ukraine",
+      "headline": "Pryluky official tolls conflict: emergency service reports 19 dead and 55 injured; earlier minister said 20 dead",
+      "text": "The original State Emergency Service Telegram post 76933, published October 8 at 04:11:52 UTC, says another child's body was found at the Pryluky strike site and gives 19 dead and 55 injured, including seven injured children. The retrieved post is truncated after an emergency-work fragment; no completion or next milestone is established. This conflicts with the separately retained October 7 ministerial account of 20 dead in post I_Vyhivskyi/430. Neither publication retracts or explains the other count in the reviewed evidence. The death toll remains unresolved; the later 19 is not treated as a corrected definitive total, and the newly reviewed 55-injury account is attributed. Both relate to the retained October 7 apartment strike, not a new incident.",
+      "timestamp": "2026-10-08T06:09:25.914523+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-08",
+      "incident_id": "pryluky-apartment-strike-presidential-report-2026-10-07",
+      "publication_id": "dsns_telegram:76933",
+      "originating_source": "Ukraine State Emergency Service original Telegram statement; retained Interior Minister statement",
+      "event_at": null,
+      "published_at": "2026-10-08T04:11:52Z",
+      "collected_at": "2026-10-08T06:06:16.829457Z",
+      "reviewed_at": "2026-10-08T06:09:25.914523Z",
+      "verified_at": "2026-10-08T06:09:25.914523Z",
+      "evidence_id": "ev_60120205ee049f6ea421fd1ca0283e34a2a57d714c9caeeb79a058c5bf8ebc4a",
+      "revision_id": "rev_db1a2d6e9d19fc1cb61d2d869ca63439ce83d233a5fbf73f4682251129d676b8",
+      "revision_ids": [
+        "rev_db1a2d6e9d19fc1cb61d2d869ca63439ce83d233a5fbf73f4682251129d676b8"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_contradictory"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "contradictory",
+      "implication": "The same strike now has conflicting official death accounts; neither 19 nor 20 is established as a definitive independently verified toll.",
+      "next_trigger": "No reconciliation of the official counts or independently evidenced next trigger is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "New 19-death/55-injury emergency-service account conflicts with retained 20-death ministerial account.",
+      "source_urls": [
+        "https://t.me/I_Vyhivskyi/430",
+        "https://t.me/dsns_telegram/76933"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
+      "headline": "Kyiv revision: emergency service reports two dead in the retained October 7 Desnianskyi high-rise attack",
+      "text": "The State Emergency Service original Telegram post 76924, published October 8 at 03:14:22 UTC, explicitly revisits the evening October 7 high-rise attack in Desnianskyi. Firefighters found two bodies in a damaged apartment. It repeats 22 people rescued, including eight children, and four injured, including two children, and reports partial damage at the tenth floor. This updates the retained building-specific report, not a new strike. The Kyiv administration post 21572 at 05:30:36 UTC reports four dead and 21 injured across four districts for the previous evening; those citywide figures are not assigned to this building. No independently authenticated casualty count or resolution of the impact-versus-debris attribution was retrieved.",
+      "timestamp": "2026-10-08T06:09:25.914523+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-08",
+      "incident_id": "kyiv-desnianskyi-twelve-storey-fire-official-reports-2026-10-07",
+      "publication_id": "dsns_telegram:76924",
+      "originating_source": "Ukraine State Emergency Service original Telegram statement",
+      "event_at": null,
+      "published_at": "2026-10-08T03:14:22Z",
+      "collected_at": "2026-10-08T06:06:16.826212Z",
+      "reviewed_at": "2026-10-08T06:09:25.914523Z",
+      "verified_at": "2026-10-08T06:09:25.914523Z",
+      "evidence_id": "ev_07ce64bc4bc5bb6f6ea9feed31656ae1334ac9527c0a78a12fe95663e7827c43",
+      "revision_id": "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1",
+      "revision_ids": [
+        "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": true,
+      "rejection_reasons": [],
+      "status": "qualifying",
+      "supersedes": "rev_09450afb9704bc7969a86efc78cf9d1152875eb8fbbfade3e9bd594fa65261de",
+      "report_status": "revision",
+      "implication": "Two fatalities are now reported for the retained high-rise attack; this is a casualty revision, not a new strike or an independently verified toll.",
+      "next_trigger": "No follow-up timetable or independently evidenced next trigger is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Two deaths are now reported for the same high-rise attack; four injuries and 22 rescues are retained.",
+      "source_urls": [
+        "https://t.me/VA_Kyiv/21572",
+        "https://t.me/dsns_telegram/76924"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Newly reviewed CNN interview: Pakistan military spokesperson says forces already stationed in Saudi Arabia",
       "text": "CNN reports that Pakistan military spokesperson Lt. Gen. Ahmed Sharif Chaudhry confirmed on Wednesday that Pakistani forces are already stationed in Saudi Arabia as part of the collective-defence alliance. He described the commitment as collective defence and deterrence. The retrieved CNN article is carried by WDSU; the two are not independent sources. Arrival date, troop numbers, force composition and combat participation are not supplied by this interview account. No new arrival within this scan window is established, and independent physical verification of the deployment remains outstanding.",
@@ -2927,10 +3007,12 @@ const state = {
       ],
       "direction": "context",
       "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
-      "report_status": "unknown",
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_superseded"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "superseded",
       "implication": "Officials report residential-building damage and rescues in a separate evening attack; injury totals and the impact mechanism remain unverified.",
       "next_trigger": "The emergency service says casualty information is being clarified; no follow-up timetable is supplied.",
       "independent_verification": false,
@@ -3597,89 +3679,6 @@ const state = {
         "https://www.cbc.ca/news/world/bulgaria-black-sea-drone-attacks-reported-9.7370638",
         "https://www.gov.bg/bg/prestsentar/novini/rumen-radev-atakata-sreshtu-dva-targovski-koraba-v-balgarskata-ikonomicheska-zona-e-absolyutno-nedopustima"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Kyiv officials report warehouse and non-residential hits during October 7 overnight attacks",
-      "text": "In original October 7 Telegram posts, Kyiv Mayor Vitali Klitschko reports hits on non-residential premises in Obolonskyi and warehouses in Podilskyi at 00:35:44 UTC, followed at 00:53:35 UTC by burning debris in an open area in Darnytskyi and a hit on non-residential premises in Shevchenkivskyi. Kyiv's city military administration separately reports warehouse damage in Podilskyi at 00:43:51 UTC and effects in a Darnytskyi garage cooperative at 02:32:57 UTC. These are publication times, not exact strike times. Reuters, read through its Internazionale syndication, reports a witness hearing explosions and relays the mayor's damage account. Reuters' original site was unavailable. The official statements are verified as attributable source text; the full damage assessment and attack attribution have not been independently verified in this scan. No casualty figure or strategic escalation inference is established.",
-      "sources": "Original mayor and city-administration source text read with exact UTC publication timestamps; Reuters syndication adds an eyewitness report of explosions, not independent confirmation of the full official damage account.",
-      "time": "2026-10-07T03:22:47.661311+00:00",
-      "timestamp": "2026-10-07T03:22:47.661311+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-07",
-      "incident_id": "kyiv-multidistrict-overnight-strike-reports-2026-10-07",
-      "publication_id": "Kyiv mayor vitaliy_klitschko/7775 with October 7 official follow-up posts",
-      "originating_source": "Kyiv mayor and city military administration original Telegram posts; Reuters syndicated by Internazionale",
-      "event_at": null,
-      "published_at": "2026-10-07T00:35:44Z",
-      "collected_at": "2026-10-07T03:03:25.773290Z",
-      "reviewed_at": "2026-10-07T03:22:47.661311Z",
-      "verified_at": "2026-10-07T03:22:47.661311Z",
-      "evidence_id": "ev_a4a426477ca53bbdab591624203da74639c2e2ed22f8a0ee8f19000761655092",
-      "revision_id": "rev_55f5889b7f798e87559059843e513111d2da4c279d5be2ec32ca8aa4f479cceb",
-      "revision_ids": [
-        "rev_55f5889b7f798e87559059843e513111d2da4c279d5be2ec32ca8aa4f479cceb"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "inactive_revision_superseded"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "superseded",
-      "implication": "Officials report damage in several Kyiv districts; Reuters witnessed explosions, but full damage and attribution remain unverified independently.",
-      "next_trigger": "Public context unavailable; consult the original source.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://t.me/VA_Kyiv/21515",
-        "https://t.me/VA_Kyiv/21517",
-        "https://t.me/vitaliy_klitschko/7775",
-        "https://t.me/vitaliy_klitschko/7776",
-        "https://www.internazionale.it/ultime-notizie-reuters/2026/10/07/russia-strikes-ukraine-s-kyiv-in-fresh-wave-of-attacks"
-      ]
-    },
-    {
-      "zone": "iran_conventional",
-      "headline": "Newly reviewed UKMTO 157-26: time-late report says outbound oil tanker struck in Hormuz on October 5",
-      "text": "Original UKMTO Warning 157-26 identifies incident date as 05 OCT 2026 and incident time TBC. It relays a verified source's time-late report of an outbound oil tanker struck by an unknown projectile in the Strait of Hormuz. The notice supplies no vessel identity, damage assessment, crew or environmental status, responsible actor, explicit UTC publication instant or source identity. This is a distinct numbered reporting notice; no evidence establishes whether its vessel overlaps another warning, so no new vessel count is claimed. UKMTO's Verified source label is not independent physical or forensic confirmation. No urgent qualification.",
-      "time": "2026-10-07T00:07:26.163212+00:00",
-      "timestamp": "2026-10-07T00:07:26.163212+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": null,
-      "incident_id": "ukmto-warning-157-26-time-late-outbound-hormuz-oil-tanker-2026-10-05",
-      "publication_id": "UKMTO Warning 157-26",
-      "originating_source": "UK Maritime Trade Operations original Warning 157-26",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-07T00:05:00.716113Z",
-      "reviewed_at": "2026-10-07T00:07:26.163212Z",
-      "verified_at": null,
-      "evidence_id": "ev_34c20949162290acca65e924daf2f6c6a9cf54cb6fca4a404bdebf55dea131e9",
-      "revision_id": "rev_082468ffc32d250bb0e11f5e08195e828d8d44a580343415d89ba186583b978c",
-      "revision_ids": [
-        "rev_082468ffc32d250bb0e11f5e08195e828d8d44a580343415d89ba186583b978c"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "A further numbered tanker-attack report is recorded; vessel identity, effects and responsibility remain unknown.",
-      "next_trigger": "The notice says authorities are investigating but supplies no follow-up timetable or independently evidenced next trigger.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.ukmto.org/-/media/ukmto/products/20261006-ukmto_warning_157-26.pdf?rev=3d1f886d7479403b970c9f5ad8194eee"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3696,7 +3695,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-08T03:08:35Z",
+  "build_at": "2026-10-08T06:10:22Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3896,7 +3895,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-08T03:08:35Z",
+      "generated_at": "2026-10-08T06:10:22Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4529,10 +4528,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-08T03:08:35Z",
+    "generated_at": "2026-10-08T06:10:22Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 707.8461111111111,
+    "age_hours": 710.8758333333334,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4614,7 +4613,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4681,7 +4680,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4709,7 +4708,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4737,7 +4736,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4837,7 +4836,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4904,7 +4903,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5002,7 +5001,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 83.86903935185185,
+            "remaining_days": 83.74280092592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5030,7 +5029,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5128,7 +5127,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5156,7 +5155,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 83.86903935185185,
+            "remaining_days": 83.74280092592592,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5223,7 +5222,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 85.07667824074075,
+            "remaining_days": 84.95043981481481,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5303,78 +5302,174 @@ const state = {
   },
   "evidence_changes": {
     "status": "compared",
-    "new_verified_revision_count": 0,
-    "recent_new_revision_ids": []
+    "new_verified_revision_count": 1,
+    "recent_new_revision_ids": [
+      "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1"
+    ]
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-08T03:08:35Z",
+    "generated_at": "2026-10-08T06:10:22Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "81205a1cb41556bade0ea7fb55961130e52c31d59b8e6c60824b9d47ebd4178a",
+    "previous_snapshot_id": "527ddf292e6af53bd02ac3a1740be275fe9874ab67c1db10c1b51328c20d258d",
     "changes": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Newly reviewed CNN interview: Pakistan military spokesperson says forces already stationed in Saudi Arabia",
-        "status": "reported",
+        "zone": "russia_ukraine",
+        "headline": "Kyiv revision: emergency service reports two dead in the retained October 7 Desnianskyi high-rise attack",
+        "status": "revision",
+        "verified": true,
+        "independently_verified": false,
+        "correction_id": "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1",
+        "material_revision": "Two deaths are now reported for the same high-rise attack; four injuries and 22 rescues are retained",
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://t.me/VA_Kyiv/21563",
+          "https://t.me/VA_Kyiv/21572",
+          "https://t.me/dsns_telegram/76916",
+          "https://t.me/dsns_telegram/76924",
+          "https://t.me/vitaliy_klitschko/7792"
+        ],
+        "next_trigger": "No follow-up timetable or independently evidenced next trigger is supplied.",
+        "implication": "Two fatalities are now reported for the retained high-rise attack; this is a casualty revision, not a new strike or an independently verified toll.",
+        "historical_revision_ids": [
+          "rev_09450afb9704bc7969a86efc78cf9d1152875eb8fbbfade3e9bd594fa65261de"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "kyiv-desnianskyi-twelve-storey-fire-official-reports-2026-10-07",
+        "change": "Correction / revision"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Pryluky official tolls conflict: emergency service reports 19 dead and 55 injured; earlier minister said 20 dead",
+        "status": "contradictory",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_384079ad4569ea1836fb3fd03fb03b3f6cca47ca00181f039e9b1f2b4a61756e",
+        "correction_id": "rev_db1a2d6e9d19fc1cb61d2d869ca63439ce83d233a5fbf73f4682251129d676b8",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.wdsu.com/article/deadly-attacks-houthis-saudi-airports-yemen-conflict/74070963"
+          "https://abcnews.com/International/russia-hits-ukrainian-apartment-buildings-deadly-overnight-strike/story?id=137058213",
+          "https://kyivindependent.com/russia-slams-kyiv-in-mass-missile-drone-attack-on-putins-74th-birthday/",
+          "https://t.me/I_Vyhivskyi/430",
+          "https://t.me/V_Zelenskiy_official/21264",
+          "https://t.me/V_Zelenskiy_official/21265",
+          "https://t.me/V_Zelenskiy_official/21266",
+          "https://t.me/dsns_telegram/76840",
+          "https://t.me/dsns_telegram/76884",
+          "https://t.me/dsns_telegram/76904",
+          "https://t.me/dsns_telegram/76933",
+          "https://t.me/mod_russia_en/29889",
+          "https://theins.press/en/news/298016",
+          "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo",
+          "https://www.kyivpost.com/post/86319",
+          "https://www.ukrinform.ua/rubric-regions/4171899-raketna-ataka-na-priluki-kilkist-zagiblih-zrosla-do-13-poranenih-do-50.html",
+          "https://x.com/ZelenskyyUa/status/2107732058978046439?s=20"
         ],
-        "next_trigger": "No deployment timetable or dated follow-up trigger is supplied by the reviewed interview.",
-        "implication": "The spokesperson describes an existing defensive deployment; arrival timing, force size and combat involvement are not established.",
-        "historical_revision_ids": [],
+        "next_trigger": "No reconciliation of the official counts or independently evidenced next trigger is supplied.",
+        "implication": "The same strike now has conflicting official death accounts; neither 19 nor 20 is established as a definitive independently verified toll.",
+        "historical_revision_ids": [
+          "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa",
+          "rev_85028f5e4647285d921c4bdc444d666e419fc13e9334608c692d27df8790252e",
+          "rev_9418bbf51a75a50702d03d4331653c726f252f7bd0820a149d1fa7076647af38",
+          "rev_96f18c339f953ae29f795f386cf35718fde0fbe24f8c268e3a589207698ef0cf",
+          "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d",
+          "rev_dac5153282b36ff92726d32fd6861647f992ac115f409c35d6ef5687aaa39d32"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "pakistan-saudi-deployment-ispr-cnn-74070963",
-        "change": "New incident report"
+        "incident_id": "pryluky-apartment-strike-presidential-report-2026-10-07",
+        "change": "Correction / revision"
       }
     ],
     "items": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Newly reviewed CNN interview: Pakistan military spokesperson says forces already stationed in Saudi Arabia",
-        "status": "reported",
+        "zone": "russia_ukraine",
+        "headline": "Kyiv revision: emergency service reports two dead in the retained October 7 Desnianskyi high-rise attack",
+        "status": "revision",
+        "verified": true,
+        "independently_verified": false,
+        "correction_id": "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1",
+        "material_revision": "Two deaths are now reported for the same high-rise attack; four injuries and 22 rescues are retained",
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://t.me/VA_Kyiv/21563",
+          "https://t.me/VA_Kyiv/21572",
+          "https://t.me/dsns_telegram/76916",
+          "https://t.me/dsns_telegram/76924",
+          "https://t.me/vitaliy_klitschko/7792"
+        ],
+        "next_trigger": "No follow-up timetable or independently evidenced next trigger is supplied.",
+        "implication": "Two fatalities are now reported for the retained high-rise attack; this is a casualty revision, not a new strike or an independently verified toll.",
+        "historical_revision_ids": [
+          "rev_09450afb9704bc7969a86efc78cf9d1152875eb8fbbfade3e9bd594fa65261de"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "kyiv-desnianskyi-twelve-storey-fire-official-reports-2026-10-07",
+        "change": "Correction / revision"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Pryluky official tolls conflict: emergency service reports 19 dead and 55 injured; earlier minister said 20 dead",
+        "status": "contradictory",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_384079ad4569ea1836fb3fd03fb03b3f6cca47ca00181f039e9b1f2b4a61756e",
+        "correction_id": "rev_db1a2d6e9d19fc1cb61d2d869ca63439ce83d233a5fbf73f4682251129d676b8",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.wdsu.com/article/deadly-attacks-houthis-saudi-airports-yemen-conflict/74070963"
+          "https://abcnews.com/International/russia-hits-ukrainian-apartment-buildings-deadly-overnight-strike/story?id=137058213",
+          "https://kyivindependent.com/russia-slams-kyiv-in-mass-missile-drone-attack-on-putins-74th-birthday/",
+          "https://t.me/I_Vyhivskyi/430",
+          "https://t.me/V_Zelenskiy_official/21264",
+          "https://t.me/V_Zelenskiy_official/21265",
+          "https://t.me/V_Zelenskiy_official/21266",
+          "https://t.me/dsns_telegram/76840",
+          "https://t.me/dsns_telegram/76884",
+          "https://t.me/dsns_telegram/76904",
+          "https://t.me/dsns_telegram/76933",
+          "https://t.me/mod_russia_en/29889",
+          "https://theins.press/en/news/298016",
+          "https://www.bbc.co.uk/news/articles/ckr5ym098vdeo",
+          "https://www.kyivpost.com/post/86319",
+          "https://www.ukrinform.ua/rubric-regions/4171899-raketna-ataka-na-priluki-kilkist-zagiblih-zrosla-do-13-poranenih-do-50.html",
+          "https://x.com/ZelenskyyUa/status/2107732058978046439?s=20"
         ],
-        "next_trigger": "No deployment timetable or dated follow-up trigger is supplied by the reviewed interview.",
-        "implication": "The spokesperson describes an existing defensive deployment; arrival timing, force size and combat involvement are not established.",
-        "historical_revision_ids": [],
+        "next_trigger": "No reconciliation of the official counts or independently evidenced next trigger is supplied.",
+        "implication": "The same strike now has conflicting official death accounts; neither 19 nor 20 is established as a definitive independently verified toll.",
+        "historical_revision_ids": [
+          "rev_54323ac222371be8ddb751c5043ca5009dbe0acf4d8956c62d5b611efc1e19fa",
+          "rev_85028f5e4647285d921c4bdc444d666e419fc13e9334608c692d27df8790252e",
+          "rev_9418bbf51a75a50702d03d4331653c726f252f7bd0820a149d1fa7076647af38",
+          "rev_96f18c339f953ae29f795f386cf35718fde0fbe24f8c268e3a589207698ef0cf",
+          "rev_bba4ef1d99b35d781da2fd1da53c6b05ba297828de42ad09ce6e3ff04725b14d",
+          "rev_dac5153282b36ff92726d32fd6861647f992ac115f409c35d6ef5687aaa39d32"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "pakistan-saudi-deployment-ispr-cnn-74070963",
-        "change": "New incident report"
+        "incident_id": "pryluky-apartment-strike-presidential-report-2026-10-07",
+        "change": "Correction / revision"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Newly reviewed CNN interview: Pakistan military spokesperson says forces already stationed in Saudi Arabia\nImplication: The spokesperson describes an existing defensive deployment; arrival timing, force size and combat involvement are not established.\nEvidence: verification not established https://www.wdsu.com/article/deadly-attacks-houthis-saudi-airports-yemen-conflict/74070963\nNext trigger: No deployment timetable or dated follow-up trigger is supplied by the reviewed interview.\nDossier: dashboard incident list; source https://www.wdsu.com/article/deadly-attacks-houthis-saudi-airports-yemen-conflict/74070963",
-    "message_id": "399abdd50553fae4a11ca134393b771951879451f4909d6dad0ac26918730055"
+    "message": "Correction / revision: Kyiv revision: emergency service reports two dead in the retained October 7 Desnianskyi high-rise attack\nImplication: Two fatalities are now reported for the retained high-rise attack; this is a casualty revision, not a new strike or an independently verified toll.\nEvidence: verified supporting evidence https://t.me/VA_Kyiv/21563\nNext trigger: No follow-up timetable or independently evidenced next trigger is supplied.\nDossier: dashboard incident list; source https://t.me/VA_Kyiv/21563\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "e392e5f351165745c4da38698f1307f9ad6acd2ee308dc2ad04229c8dc33a3c2"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 831,
-    "current_report_count": 820,
+    "total_count": 833,
+    "current_report_count": 822,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 811,
-    "bytes": 1285289,
-    "sha256": "9afa799c376d32cc78fdc6ffbb377a35626028c9cf22f72d14fb1db09c0b249c",
+    "archive_count": 813,
+    "bytes": 1290479,
+    "sha256": "5b9d4bcf0fd216e3634ae8d7c2cd6c991142af2454f553e683968d63afab1b65",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-07T21:01:37Z",
-    "verified_at": "2026-10-07T21:08:27.117548Z",
-    "reviewed_at": "2026-10-08T03:07:15.234736Z"
+    "published_at": "2026-10-08T04:11:52Z",
+    "verified_at": "2026-10-08T06:09:25.914523Z",
+    "reviewed_at": "2026-10-08T06:09:25.914523Z"
   }
 };
 
