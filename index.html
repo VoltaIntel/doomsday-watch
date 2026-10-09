@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-09T03:11:32Z",
+  "last_updated": "2026-10-09T09:07:46Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -2839,12 +2839,12 @@ const state = {
         "final_index": null
       },
       "evidence_quality": {
-        "status": "qualifying_evidence",
+        "status": "insufficient_evidence",
         "source_count": 2,
-        "qualifying_source_count": 1,
-        "scanned": 84,
-        "retained": 1,
-        "rejected": 83,
+        "qualifying_source_count": 0,
+        "scanned": 85,
+        "retained": 0,
+        "rejected": 85,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2855,7 +2855,9 @@ const state = {
           "stale_publication",
           "verified_at_unknown"
         ],
-        "coverage_gaps": []
+        "coverage_gaps": [
+          "no_qualifying_evidence"
+        ]
       },
       "legacy_trend": "stable",
       "severity": null,
@@ -2866,6 +2868,50 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Riyadh airport revision: GACA reports three killed; Saudia reports operations resumed",
+      "text": "AP's October 9 report attributes to Saudi Arabia's General Authority of Civil Aviation three Saudi citizens killed and several people injured in two October 8 attacks targeting Riyadh airport facilities and a Saudia aircraft. Gulf News and Sabq likewise report that statement. This is newly reviewed fatal-casualty reporting for the retained October 8 airport episode, not a new October 9 attack; the earlier three deaths at Riyadh and Abha on October 6-7 are a different account and are not reassigned here. Reuters separately reports Saudia's statement that one employee died, one aircraft was damaged on the ground, no passengers were aboard and the airline's flights and operations had returned to normal as of 6 p.m. Thursday. The employee count is not added to GACA's three: overlap is unresolved. The original GACA and Saudia statements were not directly retrieved, and reporting hosts repeating these official accounts do not independently confirm the casualties, responsible actor, damage extent or present flight availability. The exact event instants, original-statement publication times and reopening UTC instant remain unknown. Retained Reuters one-plane and AFP three-plane damage accounts remain unchanged; this review does not resolve that count. GACA is reported to be assessing damage; no findings timetable is supplied. Saudia's operational claim does not establish that all foreign airlines resumed service.",
+      "time": "2026-10-09T09:07:27.166961+00:00",
+      "timestamp": "2026-10-09T09:07:27.166961+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-09",
+      "incident_id": "riyadh-king-khalid-airport-plane-fire-2026-10-08",
+      "publication_id": "reuters-devdiscourse:3989596:2026-10-09;ap:5226e214e7c50ceff68915379ec3a714",
+      "originating_source": "Reuters original reporting syndicated by Devdiscourse; AP original report; GACA and Saudia statements as reported",
+      "event_at": null,
+      "published_at": "2026-10-09T07:46:51Z",
+      "collected_at": "2026-10-09T09:04:05.987909Z",
+      "reviewed_at": "2026-10-09T09:07:27.166961Z",
+      "verified_at": null,
+      "evidence_id": "ev_32b52991741f421fc87ab8466405c782f99dec87a330bce43b98ca2f69f79dac",
+      "revision_id": "rev_e681aa52b99fe66053955e23af13efeb1442b9410596627406210ca00c50b62e",
+      "revision_ids": [
+        "rev_e681aa52b99fe66053955e23af13efeb1442b9410596627406210ca00c50b62e"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
+      "report_status": "revision",
+      "implication": "Official accounts now report fatal casualties in the retained October 8 episode and resumed airline operations; casualty totals and current flight availability remain unverified.",
+      "next_trigger": "GACA is reported to be assessing damage; no findings timetable or independently evidenced further operational trigger is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Adds GACA-attributed fatal casualties for October 8 and Saudia-attributed employee death and resumed operations; physical consequences not independently verified.",
+      "source_urls": [
+        "https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714",
+        "https://gulfnews.com/business/aviation/saudia-plane-damaged-in-houthi-attacks-at-riyadh-airport-saudi-civil-aviation-confirms-1.500704260",
+        "https://sabq.org/article/vj9roew",
+        "https://www.devdiscourse.com/article/international/3989596-saudia-says-employee-killed-aircraft-damaged-in-riyadh-airport-incident"
+      ]
+    },
     {
       "zone": "yemen_red_sea",
       "headline": "Newly reviewed October 8 release: Saudi Civil Defence reports debris damages Riyadh kindergarten and clinic",
@@ -2928,11 +2974,13 @@ const state = {
       ],
       "direction": "context",
       "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_superseded"
+      ],
+      "status": "insufficient_evidence",
       "supersedes": "rev_674c18817086e58e404139d9d6b54e61a18fdb6bb77061c78d77ec1a508e2e1d",
-      "report_status": "revision",
+      "report_status": "superseded",
       "implication": "Expanded damage reporting concerns the retained October 8 airport episode, not a new attack today; aircraft count, cause and injuries remain unverified.",
       "next_trigger": "The airport advises checking flights with airlines; no damage-assessment, reopening or investigation timetable is supplied.",
       "independent_verification": false,
@@ -3639,45 +3687,6 @@ const state = {
         "https://t.me/I_Vyhivskyi/430",
         "https://t.me/dsns_telegram/76933"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Kyiv revision: emergency service reports two dead in the retained October 7 Desnianskyi high-rise attack",
-      "text": "The State Emergency Service original Telegram post 76924, published October 8 at 03:14:22 UTC, explicitly revisits the evening October 7 high-rise attack in Desnianskyi. Firefighters found two bodies in a damaged apartment. It repeats 22 people rescued, including eight children, and four injured, including two children, and reports partial damage at the tenth floor. This updates the retained building-specific report, not a new strike. The Kyiv administration post 21572 at 05:30:36 UTC reports four dead and 21 injured across four districts for the previous evening; those citywide figures are not assigned to this building. No independently authenticated casualty count or resolution of the impact-versus-debris attribution was retrieved.",
-      "timestamp": "2026-10-08T06:09:25.914523+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-08",
-      "incident_id": "kyiv-desnianskyi-twelve-storey-fire-official-reports-2026-10-07",
-      "publication_id": "dsns_telegram:76924",
-      "originating_source": "Ukraine State Emergency Service original Telegram statement",
-      "event_at": null,
-      "published_at": "2026-10-08T03:14:22Z",
-      "collected_at": "2026-10-08T06:06:16.826212Z",
-      "reviewed_at": "2026-10-08T06:09:25.914523Z",
-      "verified_at": "2026-10-08T06:09:25.914523Z",
-      "evidence_id": "ev_07ce64bc4bc5bb6f6ea9feed31656ae1334ac9527c0a78a12fe95663e7827c43",
-      "revision_id": "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1",
-      "revision_ids": [
-        "rev_8eb9768b156546a8eebf7e6d89706cf985122f191ecd5704a70ec7327c2c06b1"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
-      "supersedes": "rev_09450afb9704bc7969a86efc78cf9d1152875eb8fbbfade3e9bd594fa65261de",
-      "report_status": "revision",
-      "implication": "Two fatalities are now reported for the retained high-rise attack; this is a casualty revision, not a new strike or an independently verified toll.",
-      "next_trigger": "No follow-up timetable or independently evidenced next trigger is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Two deaths are now reported for the same high-rise attack; four injuries and 22 rescues are retained.",
-      "source_urls": [
-        "https://t.me/VA_Kyiv/21572",
-        "https://t.me/dsns_telegram/76924"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3694,7 +3703,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-09T03:11:32Z",
+  "build_at": "2026-10-09T09:07:46Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3894,7 +3903,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-09T03:11:32Z",
+      "generated_at": "2026-10-09T09:07:46Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4527,10 +4536,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-09T03:11:32Z",
+    "generated_at": "2026-10-09T09:07:46Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 731.8952777777778,
+    "age_hours": 737.8325,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4612,7 +4621,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4679,7 +4688,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4707,7 +4716,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4735,7 +4744,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4835,7 +4844,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4902,7 +4911,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5000,7 +5009,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 82.86699074074075,
+            "remaining_days": 82.61960648148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5028,7 +5037,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5126,7 +5135,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5154,7 +5163,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 82.86699074074075,
+            "remaining_days": 82.61960648148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5221,7 +5230,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 84.07462962962963,
+            "remaining_days": 83.82724537037036,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5301,130 +5310,96 @@ const state = {
   },
   "evidence_changes": {
     "status": "compared",
-    "new_verified_revision_count": 1,
-    "recent_new_revision_ids": [
-      "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a"
-    ]
+    "new_verified_revision_count": 0,
+    "recent_new_revision_ids": []
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-09T03:11:32Z",
+    "generated_at": "2026-10-09T09:07:46Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "7fba554cda5b0df359e713eb9b09411e9cde2553a81fa93fce44289dcf449abb",
+    "previous_snapshot_id": "943fa1b7ea9976dcb0a2c7c39eeab7ade0d8d41a632a0d551c0c631a0101b660",
     "changes": [
       {
         "zone": "yemen_red_sea",
-        "headline": "Riyadh airport revision: AFP source reports three damaged planes; count and cause unverified",
+        "headline": "Riyadh airport revision: GACA reports three killed; Saudia reports operations resumed",
         "status": "revision",
-        "verified": true,
+        "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
-        "material_revision": "AFP now reports a source claim of three damaged planes, extending retained one-plane reporting; coun",
+        "correction_id": "rev_e681aa52b99fe66053955e23af13efeb1442b9410596627406210ca00c50b62e",
+        "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714",
+          "https://gulfnews.com/business/aviation/saudia-plane-damaged-in-houthi-attacks-at-riyadh-airport-saudi-civil-aviation-confirms-1.500704260",
+          "https://sabq.org/article/vj9roew",
           "https://www.al-monitor.com/originals/2026/10/plane-damaged-riyadh-airport-houthis-escalate-attacks-sources-say",
+          "https://www.devdiscourse.com/article/international/3989596-saudia-says-employee-killed-aircraft-damaged-in-riyadh-airport-incident",
           "https://www.malaymail.com/news/world/2026/10/09/houthi-missile-debris-damages-kindergarten-and-medical-complex-in-riyadh/238329",
           "https://www.nbcnews.com/world/saudi-arabia/houthis-claim-new-attack-airport-saudi-capital-witness-evacuation-rcna602262"
         ],
-        "next_trigger": "The airport advises checking flights with airlines; no damage-assessment, reopening or investigation timetable is supplied.",
-        "implication": "Expanded damage reporting concerns the retained October 8 airport episode, not a new attack today; aircraft count, cause and injuries remain unverified.",
+        "next_trigger": "GACA is reported to be assessing damage; no findings timetable or independently evidenced further operational trigger is supplied.",
+        "implication": "Official accounts now report fatal casualties in the retained October 8 episode and resumed airline operations; casualty totals and current flight availability remain unverified.",
         "historical_revision_ids": [
+          "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
           "rev_674c18817086e58e404139d9d6b54e61a18fdb6bb77061c78d77ec1a508e2e1d"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "riyadh-king-khalid-airport-plane-fire-2026-10-08",
         "change": "Correction / revision"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Newly reviewed October 8 release: Saudi Civil Defence reports debris damages Riyadh kindergarten and clinic",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_87ae3caa216ae21a015778b36f4cd9c05a3d651b68ad8e47a7cbcd3bf8d5441c",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.malaymail.com/news/world/2026/10/09/houthi-missile-debris-damages-kindergarten-and-medical-complex-in-riyadh/238329",
-          "https://www.newindianexpress.com/world/2026/Oct/09/houthis-claim-new-attack-against-airport-in-saudi-capital-riyadh",
-          "https://www.spa.gov.sa/N2696566"
-        ],
-        "next_trigger": "No follow-up timetable or independently evidenced next operational trigger is supplied by the statement.",
-        "implication": "Civil Defence reports civilian-site damage from interception debris, separately from the airport; casualties, damage extent and attribution remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "saudi-civil-defence-spa-N2696566-2026-10-08",
-        "change": "New incident report"
       }
     ],
     "items": [
       {
         "zone": "yemen_red_sea",
-        "headline": "Riyadh airport revision: AFP source reports three damaged planes; count and cause unverified",
+        "headline": "Riyadh airport revision: GACA reports three killed; Saudia reports operations resumed",
         "status": "revision",
-        "verified": true,
+        "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
-        "material_revision": "AFP now reports a source claim of three damaged planes, extending retained one-plane reporting; coun",
+        "correction_id": "rev_e681aa52b99fe66053955e23af13efeb1442b9410596627406210ca00c50b62e",
+        "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
+          "https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714",
+          "https://gulfnews.com/business/aviation/saudia-plane-damaged-in-houthi-attacks-at-riyadh-airport-saudi-civil-aviation-confirms-1.500704260",
+          "https://sabq.org/article/vj9roew",
           "https://www.al-monitor.com/originals/2026/10/plane-damaged-riyadh-airport-houthis-escalate-attacks-sources-say",
+          "https://www.devdiscourse.com/article/international/3989596-saudia-says-employee-killed-aircraft-damaged-in-riyadh-airport-incident",
           "https://www.malaymail.com/news/world/2026/10/09/houthi-missile-debris-damages-kindergarten-and-medical-complex-in-riyadh/238329",
           "https://www.nbcnews.com/world/saudi-arabia/houthis-claim-new-attack-airport-saudi-capital-witness-evacuation-rcna602262"
         ],
-        "next_trigger": "The airport advises checking flights with airlines; no damage-assessment, reopening or investigation timetable is supplied.",
-        "implication": "Expanded damage reporting concerns the retained October 8 airport episode, not a new attack today; aircraft count, cause and injuries remain unverified.",
+        "next_trigger": "GACA is reported to be assessing damage; no findings timetable or independently evidenced further operational trigger is supplied.",
+        "implication": "Official accounts now report fatal casualties in the retained October 8 episode and resumed airline operations; casualty totals and current flight availability remain unverified.",
         "historical_revision_ids": [
+          "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
           "rev_674c18817086e58e404139d9d6b54e61a18fdb6bb77061c78d77ec1a508e2e1d"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
         "incident_id": "riyadh-king-khalid-airport-plane-fire-2026-10-08",
         "change": "Correction / revision"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Newly reviewed October 8 release: Saudi Civil Defence reports debris damages Riyadh kindergarten and clinic",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_87ae3caa216ae21a015778b36f4cd9c05a3d651b68ad8e47a7cbcd3bf8d5441c",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://www.malaymail.com/news/world/2026/10/09/houthi-missile-debris-damages-kindergarten-and-medical-complex-in-riyadh/238329",
-          "https://www.newindianexpress.com/world/2026/Oct/09/houthis-claim-new-attack-against-airport-in-saudi-capital-riyadh",
-          "https://www.spa.gov.sa/N2696566"
-        ],
-        "next_trigger": "No follow-up timetable or independently evidenced next operational trigger is supplied by the statement.",
-        "implication": "Civil Defence reports civilian-site damage from interception debris, separately from the airport; casualties, damage extent and attribution remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "saudi-civil-defence-spa-N2696566-2026-10-08",
-        "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Riyadh airport revision: AFP source reports three damaged planes; count and cause unverified\nImplication: Expanded damage reporting concerns the retained October 8 airport episode, not a new attack today; aircraft count, cause and injuries remain unverified.\nEvidence: verified supporting evidence https://www.al-monitor.com/originals/2026/10/plane-damaged-riyadh-airport-houthis-escalate-attacks-sources-say\nNext trigger: The airport advises checking flights with airlines; no damage-assessment, reopening or investigation timetable is supplied.\nDossier: dashboard incident list; source https://www.al-monitor.com/originals/2026/10/plane-damaged-riyadh-airport-houthis-escalate-attacks-sources-say\n1 additional incident changes in the dashboard briefing list.",
-    "message_id": "56d70b4b2e71f14a72c13ce82d3a8b4fb54be3bb952f085a29863aeb10dde683"
+    "message": "Correction / revision: Riyadh airport revision: GACA reports three killed; Saudia reports operations resumed\nImplication: Official accounts now report fatal casualties in the retained October 8 episode and resumed airline operations; casualty totals and current flight availability remain unverified.\nEvidence: verification not established https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714\nNext trigger: GACA is reported to be assessing damage; no findings timetable or independently evidenced further operational trigger is supplied.\nDossier: dashboard incident list; source https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714",
+    "message_id": "edee410b01ba1657805c7da7929c017849314d9c4a0c4d968dfc6132715ad392"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 851,
-    "current_report_count": 840,
+    "total_count": 852,
+    "current_report_count": 841,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 831,
-    "bytes": 1335677,
-    "sha256": "9ad9631c9c32d253c54531d29232489cb5f224044f9d4b27ea7f636c6290afb9",
+    "archive_count": 832,
+    "bytes": 1338124,
+    "sha256": "9f80d1cba9843604b57a6bdf28beddc0c4b6086432742719bafcd8614fb33a38",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-09T01:47:30Z",
+    "published_at": "2026-10-09T07:46:51Z",
     "verified_at": "2026-10-09T03:10:48.080046Z",
-    "reviewed_at": "2026-10-09T03:10:48.080046Z"
+    "reviewed_at": "2026-10-09T09:07:27.166961Z"
   }
 };
 
