@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-10T18:07:19Z",
+  "last_updated": "2026-10-11T00:08:35Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -293,9 +293,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 216,
+        "scanned": 217,
         "retained": 0,
-        "rejected": 216,
+        "rejected": 217,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -776,7 +776,7 @@ const state = {
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 8,
+        "source_count": 7,
         "qualifying_source_count": 4,
         "scanned": 119,
         "retained": 4,
@@ -2841,11 +2841,11 @@ const state = {
       },
       "evidence_quality": {
         "status": "insufficient_evidence",
-        "source_count": 2,
+        "source_count": 3,
         "qualifying_source_count": 0,
-        "scanned": 91,
+        "scanned": 93,
         "retained": 0,
-        "rejected": 91,
+        "rejected": 93,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2871,6 +2871,85 @@ const state = {
   "latest_news": [
     {
       "zone": "yemen_red_sea",
+      "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
+      "text": "Saudi Gazette attributes 12 deaths and 309 injuries to a GACA follow-up about the October 10 King Khalid airport attack. It reports property damage still being assessed. The primary follow-up body and casualty totals were not independently verified in this scan.",
+      "timestamp_kind": "publication_time_unknown",
+      "source_date": "2026-10-11",
+      "incident_id": "riyadh-king-khalid-airport-evacuation-regional-official-reports-2026-10-10",
+      "publication_id": "SaudiGazette:665290",
+      "originating_source": "Saudi Gazette quoting General Authority of Civil Aviation",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": "2026-10-11T00:07:31.917013Z",
+      "reviewed_at": "2026-10-11T00:07:31.917013Z",
+      "verified_at": null,
+      "evidence_id": "ev_6eaae8a41f16050998355be6c453883668ec6caf8b989e508451c9be720deaa2",
+      "revision_id": "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4",
+      "revision_ids": [
+        "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
+      "report_status": "revision",
+      "implication": "A new attributed toll replaces unquantified injuries; casualty totals, responsibility and airport reopening remain independently unverified.",
+      "next_trigger": "Damage assessments remain underway according to the report; no reopening or follow-up timetable is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "New attributed casualty toll: 12 dead and 309 injured; primary statement body and totals not independently verified.",
+      "source_urls": [
+        "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms"
+      ]
+    },
+    {
+      "zone": "iran_conventional",
+      "headline": "IRGC claims an unnamed crude tanker hit a mine in Hormuz; event unverified",
+      "text": "Mehr reproduces an IRGC Navy statement claiming a crude supertanker hit a naval mine on an unauthorized Hormuz route and caught fire. Iran International and Reuters-carried reporting relay the claim; the vessel and flag are not identified.",
+      "timestamp_kind": "publication_time",
+      "source_date": "2026-10-10",
+      "incident_id": "irgc-unnamed-crude-supertanker-mine-statement-mehr-248469-2026-10-10",
+      "publication_id": "MNA:248469",
+      "originating_source": "Mehr News Agency reproducing IRGC Navy public-relations statement",
+      "event_at": null,
+      "published_at": "2026-10-10T17:37:44Z",
+      "collected_at": "2026-10-10T21:03:54.501250Z",
+      "reviewed_at": "2026-10-10T21:05:14.214970Z",
+      "verified_at": null,
+      "evidence_id": "ev_d6476f920e41b25962d1c5e0b3ff9c6c7f54b9f085fe597bd6cd0d092337075a",
+      "revision_id": "rev_402b12543e3014c80e37b7d702f5800f4b99a79bc8faf839f1ea5dd05585acdb",
+      "revision_ids": [
+        "rev_402b12543e3014c80e37b7d702f5800f4b99a79bc8faf839f1ea5dd05585acdb"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "This is a new attributed mine-and-fire claim, not a verified attack; no vessel identity, crew status or independent damage assessment is established.",
+      "next_trigger": "No independently evidenced timetable for vessel identification, crew assessment or confirmation is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://en.mehrnews.com/news/248469/Giant-oil-tanker-targeted-caught-fire-after-breaching-rules",
+        "https://www.iranintl.com/en/202610100347",
+        "https://www.jpost.com/middle-east/iran-news/article-911241"
+      ]
+    },
+    {
+      "zone": "yemen_red_sea",
       "headline": "Riyadh revision: reporting quotes GACA on airport suspension and injuries",
       "text": "AFP reporting carried by CNA now quotes Saudi civil aviation authority GACA saying King Khalid International Airport operations were temporarily suspended after an October 10 attack that injured several people; the casualty count was still being assessed. Anadolu Agency and two Arabic publications quote the same attributed statement. This changes the retained episode from anonymous regional-official reporting to a reported named-authority account of suspension and injuries, not a new attack. AFP also quotes witnesses describing injuries and evacuation and anonymous medical sources reporting treatment across Riyadh. Those counts, the missile claim and attribution to the Houthis remain unverified; there was no new Houthi announcement in the reviewed AFP body. The original GACA release was not retrieved. Separate outlets repeating that statement are not independent verification, and witness overlap with AP is unknown. The CNA HTML metadata gives publication at 17:33 UTC and update at 17:52:41 UTC; these are publication times, not attack or verification times. GACA is reported to await damage and facility-safety assessment and announce further updates, with no reopening timetable.",
       "timestamp": "2026-10-10T18:06:16.682708+00:00",
@@ -2893,11 +2972,12 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
       "supersedes": "rev_87c425d729d0099be26f716a86c15be14f1bfb54c8efe059926553887fdd59cc",
-      "report_status": "revision",
+      "report_status": "superseded",
       "implication": "Reporting now attributes an airport suspension and injuries to GACA in the retained October 10 attack; casualty totals and responsibility remain unverified.",
       "next_trigger": "GACA is reported to await damage and facility-safety checks before further updates; no reopening timetable is supplied.",
       "independent_verification": false,
@@ -2909,6 +2989,46 @@ const state = {
         "https://www.aa.com.tr/en/middle-east/riyadh-airport-suspends-operations-after-attack-leaves-several-injured/4084666",
         "https://www.alanba.com.kw/1380034",
         "https://www.channelnewsasia.com/world/riyadh-airport-suspends-operations-after-attack-leaves-several-wounded-6449071"
+      ]
+    },
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Riyadh revision: original GACA statement reports airport suspension and injuries",
+      "text": "GACA says the airport was attacked on October 10 afternoon, causing injuries whose extent is still being assessed. Operations are temporarily suspended pending damage assessment and facility-safety verification.",
+      "timestamp_kind": "publication_time",
+      "source_date": "2026-10-10",
+      "incident_id": "riyadh-king-khalid-airport-evacuation-regional-official-reports-2026-10-10",
+      "publication_id": "SPA:N2697867",
+      "originating_source": "Saudi Press Agency quoting General Authority of Civil Aviation",
+      "event_at": null,
+      "published_at": "2026-10-10T16:47:00Z",
+      "collected_at": "2026-10-10T21:02:36.057216Z",
+      "reviewed_at": "2026-10-10T21:05:14.214970Z",
+      "verified_at": "2026-10-10T21:05:14.214970Z",
+      "evidence_id": "ev_9ea4348891cf69cc2dc3e0764c1a22a9059823d0420b455906a195e8abfda357",
+      "revision_id": "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
+      "revision_ids": [
+        "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_superseded"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
+      "report_status": "superseded",
+      "implication": "Airport suspension and injuries are now attributable to GACA directly; damage, casualty totals and responsibility remain independently unverified.",
+      "next_trigger": "GACA says further updates will be announced after damage and facility-safety assessment; no reopening time is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Original GACA statement retrieved: suspension and unquantified injuries attributable to the authority.",
+      "source_urls": [
+        "https://www.military.com/missile-strikes-passenger-terminal-riyadh-airport-many-are-wounded-official-says",
+        "https://www.spa.gov.sa/en/N2697867"
       ]
     },
     {
@@ -3564,125 +3684,6 @@ const state = {
       "source_urls": [
         "https://www.iaea.org/newscenter/pressreleases/update-370-iaea-director-general-statement-on-situation-in-ukraine"
       ]
-    },
-    {
-      "zone": "israel_lebanon",
-      "headline": "L'Orient reports tree clearing near Lebanese Army position in Zawtar Gharbieh",
-      "text": "L'Orient Today's original October 9 article, including additional reporting by Muntasser Abdallah, was read through publication extraction. It reports an Israeli force with a military bulldozer continuing tree clearing Friday near Zawtar Gharbieh's water reservoir, about 50 metres from a Lebanese Army position. It says tree clearing began Thursday and that Lebanese forces deployed in the village in July under the framework agreement. This specifically located correspondent account is distinct from the retained October 7 UNIFIL Kfar Shouba gunfire report. The article also describes other artillery and airstrike reporting, but no independently established Israeli-Lebanese clash, casualties at this location or new strategic deployment is inferred. Anadolu's separate article attributes broader shelling to Lebanon's National News Agency and does not independently confirm this tree-clearing incident. Exact event and publication instants, underlying visual authentication and independent verification are unknown. The displayed 13:05 publication clock has no observed UTC offset and is not converted.",
-      "time": "2026-10-09T18:10:27.582742+00:00",
-      "timestamp": "2026-10-09T18:10:27.582742+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-09",
-      "incident_id": "zawtar-gharbeih-tree-clearing-near-army-position-2026-10-09",
-      "publication_id": "LOrientToday:1550237:2026-10-09",
-      "originating_source": "L'Orient Today original correspondent reporting, including Muntasser Abdallah",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-10-09T18:10:27.582742Z",
-      "verified_at": null,
-      "evidence_id": "ev_64402a53c6f104cef0d47b9d1abfd75474bca14628f4a400e5d27f84836326a2",
-      "revision_id": "rev_6e6806c7f8063f47d0ac1d082a3fdf651a74d1f53f6942589476bc3286916aab",
-      "revision_ids": [
-        "rev_6e6806c7f8063f47d0ac1d082a3fdf651a74d1f53f6942589476bc3286916aab"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The report places tree clearing close to a Lebanese Army post; no clash, casualty or independent confirmation is established.",
-      "next_trigger": "No follow-up timetable or independently evidenced next operational trigger is supplied by the report.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://today.lorientlejour.com/article/1550237/israeli-forces-uproot-trees-near-lebanese-army-position-in-zawtar-gharbieh-continue-gunfire-in-the-south.html"
-      ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Zaporizhzhia revision: administration raises October 9 injury tally to 23; scope not fully reconciled",
-      "text": "The original Zaporizhzhia regional administration Telegram post 68238, published October 9 at 17:06:15 UTC, raises the number of people injured by attacks over the course of the day to 23 and says medical assistance is being provided. Its quoted earlier post describes six guided aerial bombs at dawn, one man killed and 16 injured including a 14-year-old child. Ukrinform at 21:37 local time reports 23 injuries and one death in its account of the morning city attack; its quoted official update explicitly covers attacks over the day. This supersedes the earlier five- and seven-injury evidence account for the retained October 9 reporting group without treating the entire daily count as independently confirmed casualties in one strike. Exact geographic and incident scope of the expanded count is not fully reconciled. Medical records and independent casualty verification were not retrieved. This is a later casualty-account revision concerning October 9, not a new October 10 attack. Ukrinform says recovery work continues Saturday.",
-      "time": "2026-10-10T03:05:38.274852+00:00",
-      "timestamp": "2026-10-10T03:05:38.274852+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-09",
-      "incident_id": "zaporizhzhia-residential-strikes-2026-10-09",
-      "publication_id": "Telegram:zoda_gov_ua:68238",
-      "originating_source": "Zaporizhzhia regional administration original Telegram post; Ukrinform relays official casualty account",
-      "event_at": null,
-      "published_at": "2026-10-09T17:06:15Z",
-      "collected_at": "2026-10-10T03:03:51.090956Z",
-      "reviewed_at": "2026-10-10T03:05:38.274852Z",
-      "verified_at": null,
-      "evidence_id": "ev_13a67266d456643d56d839b07c53b3c8de87cec965f468ceb7ba91dbb1b2a9f3",
-      "revision_id": "rev_fcdb25f92e527020772225d17ece5425a34981b44252500848e95019ab1b7d99",
-      "revision_ids": [
-        "rev_fcdb25f92e527020772225d17ece5425a34981b44252500848e95019ab1b7d99"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_d0c3d9f9c140fe723b087f6a045e88279e18c716c6fa417fc465fe79a3b401b8",
-      "report_status": "revision",
-      "implication": "The official injury account has risen to 23 across the day; its exact attack scope and casualty total are not independently verified.",
-      "next_trigger": "Ukrinform says recovery work continues Saturday; no casualty-reconciliation timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://t.me/zoda_gov_ua/68238",
-        "https://www.ukrinform.net/rubric-ato/4172832-injury-toll-from-russian-morning-attack-on-zaporizhzhia-rises-to-23-one-dead.html"
-      ]
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Newly reviewed October 9 advisory: Saudi airspace risk recommendations expanded",
-      "text": "The original CZIB-2026-09-R1 was read in full from EASA's public page. It displays an initial issue date of September 30, an October 9 revision date and validity through November 16 unless reviewed earlier. The revision description says its description and recommendations were revised to reflect a changed risk area. It describes repeated attacks affecting Riyadh and aviation infrastructure, including risks to aircraft on the ground and during take-off and landing, misidentification, interception activity and falling debris. For its specified EASA and TCO applicability, it recommends not operating at any altitude within portions of Saudi airspace defined by the Jeddah FIR boundary and the lines RIBOK - BOSUT - MIGDA - RAGNO - MIXUG - DEKLO - OBSAM - SILPA, and ULBAM - TOTEB - DURMA - LAKSO - SOLAT; it recommends caution elsewhere in Jeddah FIR, up-to-date risk assessment and contingency planning. This is a revised public safety advisory, not a verified new attack, blanket closure of Saudi airspace or an operating approval. Exact publication/revision instant is not supplied. The original full recommendations, not AP's shorter summary, control the account.",
-      "timestamp": "2026-10-09T15:10:06.648196+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-09",
-      "incident_id": "easa-saudi-airspace-czib-2026-09-r1",
-      "publication_id": "EASA:CZIB-2026-09-R1:revision-2026-10-09",
-      "originating_source": "EASA original Conflict Zone Information Bulletin",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-09T15:07:05.230705Z",
-      "reviewed_at": "2026-10-09T15:10:06.648196Z",
-      "verified_at": "2026-10-09T15:10:06.648196Z",
-      "evidence_id": "ev_2e0397f2f6c9cc9861a4368646527bdedfd2425e93acf582a2e06347afc82710",
-      "revision_id": "rev_23ab543e7f83393e126e62acaf7cc02a3ebee113621a59111f4d55c7daed6229",
-      "revision_ids": [
-        "rev_23ab543e7f83393e126e62acaf7cc02a3ebee113621a59111f4d55c7daed6229"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The revised advisory highlights greater aviation-infrastructure exposure and defined no-operation areas; it is not a blanket Saudi airspace closure.",
-      "next_trigger": "The bulletin is valid until November 16 unless reviewed earlier; it calls for close monitoring of aeronautical publications and short-notice instructions.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://www.easa.europa.eu/en/domains/air-operations/czibs/czib-2026-09-r1"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3699,7 +3700,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-10T18:07:19Z",
+  "build_at": "2026-10-11T00:08:35Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3899,7 +3900,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-10T18:07:19Z",
+      "generated_at": "2026-10-11T00:08:35Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4532,10 +4533,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-10T18:07:19Z",
+    "generated_at": "2026-10-11T00:08:35Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 770.825,
+    "age_hours": 776.8461111111111,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4617,7 +4618,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4684,7 +4685,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4712,7 +4713,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4740,7 +4741,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4840,7 +4841,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4907,7 +4908,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5005,7 +5006,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 81.24491898148148,
+            "remaining_days": 80.99403935185185,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5033,7 +5034,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5131,7 +5132,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5159,7 +5160,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 81.24491898148148,
+            "remaining_days": 80.99403935185185,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5226,7 +5227,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 82.45255787037037,
+            "remaining_days": 82.20167824074075,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5311,7 +5312,7 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-10T18:07:19Z",
+    "generated_at": "2026-10-11T00:08:35Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "119d8b878d5f4de7e081081f2925deecf91d17275149ab2c780f110d47f9e30e",
@@ -5389,6 +5390,27 @@ const state = {
         "change": "New incident report"
       },
       {
+        "zone": "iran_conventional",
+        "headline": "IRGC claims an unnamed crude tanker hit a mine in Hormuz; event unverified",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_402b12543e3014c80e37b7d702f5800f4b99a79bc8faf839f1ea5dd05585acdb",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://en.mehrnews.com/news/248469/Giant-oil-tanker-targeted-caught-fire-after-breaching-rules",
+          "https://www.iranintl.com/en/202610100347",
+          "https://www.jpost.com/middle-east/iran-news/article-911241"
+        ],
+        "next_trigger": "No independently evidenced timetable for vessel identification, crew assessment or confirmation is supplied.",
+        "implication": "This is a new attributed mine-and-fire claim, not a verified attack; no vessel identity, crew status or independent damage assessment is established.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "irgc-unnamed-crude-supertanker-mine-statement-mehr-248469-2026-10-10",
+        "change": "New incident report"
+      },
+      {
         "zone": "russia_ukraine",
         "headline": "Kharkiv: emergency service reports five injured in medical-building strike",
         "status": "reported",
@@ -5428,25 +5450,30 @@ const state = {
       },
       {
         "zone": "yemen_red_sea",
-        "headline": "Riyadh revision: reporting quotes GACA on airport suspension and injuries",
+        "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
+        "correction_id": "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
           "https://alrayah.sa/318177/",
           "https://apnews.com/article/saudi-yemen-houthi-riyadh-airport-f0e0e6105f33400e37bb20bb9a8130af",
           "https://english.alarabiya.net/News/saudi-arabia/2026/10/10/riyadh-airport-passengers-told-to-check-flight-status-before-going-there",
+          "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms",
           "https://www.aa.com.tr/en/middle-east/riyadh-airport-suspends-operations-after-attack-leaves-several-injured/4084666",
           "https://www.alanba.com.kw/1380034",
           "https://www.channelnewsasia.com/world/riyadh-airport-suspends-operations-after-attack-leaves-several-wounded-6449071",
-          "https://www.cnbc.com/2026/10/10/the-airport-in-the-saudi-capital-has-been-attacked-again-officials.html"
+          "https://www.cnbc.com/2026/10/10/the-airport-in-the-saudi-capital-has-been-attacked-again-officials.html",
+          "https://www.military.com/missile-strikes-passenger-terminal-riyadh-airport-many-are-wounded-official-says",
+          "https://www.spa.gov.sa/en/N2697867"
         ],
-        "next_trigger": "GACA is reported to await damage and facility-safety checks before further updates; no reopening timetable is supplied.",
-        "implication": "Reporting now attributes an airport suspension and injuries to GACA in the retained October 10 attack; casualty totals and responsibility remain unverified.",
+        "next_trigger": "Damage assessments remain underway according to the report; no reopening or follow-up timetable is supplied.",
+        "implication": "A new attributed toll replaces unquantified injuries; casualty totals, responsibility and airport reopening remain independently unverified.",
         "historical_revision_ids": [
+          "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
+          "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
           "rev_87c425d729d0099be26f716a86c15be14f1bfb54c8efe059926553887fdd59cc"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
@@ -5636,6 +5663,27 @@ const state = {
         "change": "New incident report"
       },
       {
+        "zone": "iran_conventional",
+        "headline": "IRGC claims an unnamed crude tanker hit a mine in Hormuz; event unverified",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_402b12543e3014c80e37b7d702f5800f4b99a79bc8faf839f1ea5dd05585acdb",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://en.mehrnews.com/news/248469/Giant-oil-tanker-targeted-caught-fire-after-breaching-rules",
+          "https://www.iranintl.com/en/202610100347",
+          "https://www.jpost.com/middle-east/iran-news/article-911241"
+        ],
+        "next_trigger": "No independently evidenced timetable for vessel identification, crew assessment or confirmation is supplied.",
+        "implication": "This is a new attributed mine-and-fire claim, not a verified attack; no vessel identity, crew status or independent damage assessment is established.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "irgc-unnamed-crude-supertanker-mine-statement-mehr-248469-2026-10-10",
+        "change": "New incident report"
+      },
+      {
         "zone": "russia_ukraine",
         "headline": "Kharkiv: emergency service reports five injured in medical-building strike",
         "status": "reported",
@@ -5675,25 +5723,30 @@ const state = {
       },
       {
         "zone": "yemen_red_sea",
-        "headline": "Riyadh revision: reporting quotes GACA on airport suspension and injuries",
+        "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
+        "correction_id": "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
           "https://alrayah.sa/318177/",
           "https://apnews.com/article/saudi-yemen-houthi-riyadh-airport-f0e0e6105f33400e37bb20bb9a8130af",
           "https://english.alarabiya.net/News/saudi-arabia/2026/10/10/riyadh-airport-passengers-told-to-check-flight-status-before-going-there",
+          "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms",
           "https://www.aa.com.tr/en/middle-east/riyadh-airport-suspends-operations-after-attack-leaves-several-injured/4084666",
           "https://www.alanba.com.kw/1380034",
           "https://www.channelnewsasia.com/world/riyadh-airport-suspends-operations-after-attack-leaves-several-wounded-6449071",
-          "https://www.cnbc.com/2026/10/10/the-airport-in-the-saudi-capital-has-been-attacked-again-officials.html"
+          "https://www.cnbc.com/2026/10/10/the-airport-in-the-saudi-capital-has-been-attacked-again-officials.html",
+          "https://www.military.com/missile-strikes-passenger-terminal-riyadh-airport-many-are-wounded-official-says",
+          "https://www.spa.gov.sa/en/N2697867"
         ],
-        "next_trigger": "GACA is reported to await damage and facility-safety checks before further updates; no reopening timetable is supplied.",
-        "implication": "Reporting now attributes an airport suspension and injuries to GACA in the retained October 10 attack; casualty totals and responsibility remain unverified.",
+        "next_trigger": "Damage assessments remain underway according to the report; no reopening or follow-up timetable is supplied.",
+        "implication": "A new attributed toll replaces unquantified injuries; casualty totals, responsibility and airport reopening remain independently unverified.",
         "historical_revision_ids": [
+          "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
+          "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
           "rev_87c425d729d0099be26f716a86c15be14f1bfb54c8efe059926553887fdd59cc"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
@@ -5811,25 +5864,25 @@ const state = {
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Adigrat revision: Reuters witnesses report Ethiopian forces in city; control unconfirmed\nImplication: Witness reporting adds Ethiopian troop presence to the retained Adigrat episode; Reuters could not confirm city control or the earlier Eritrean incursion.\nEvidence: verification not established https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\nNext trigger: No dated follow-up or independently evidenced next operational trigger is supplied.\nDossier: dashboard incident list; source https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\n9 additional incident changes in the dashboard briefing list.",
-    "message_id": "91103abea3d2a4b5780ad0a841191fbcfd37b3a755716a701dec16269ade7856"
+    "message": "Correction / revision: Adigrat revision: Reuters witnesses report Ethiopian forces in city; control unconfirmed\nImplication: Witness reporting adds Ethiopian troop presence to the retained Adigrat episode; Reuters could not confirm city control or the earlier Eritrean incursion.\nEvidence: verification not established https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\nNext trigger: No dated follow-up or independently evidenced next operational trigger is supplied.\nDossier: dashboard incident list; source https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\n10 additional incident changes in the dashboard briefing list.",
+    "message_id": "0598c4bc42c6602d94c43c559601f5e9278027962babeb75c9b8f4c78300177a"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 882,
-    "current_report_count": 871,
+    "total_count": 885,
+    "current_report_count": 874,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 862,
-    "bytes": 1418939,
-    "sha256": "5fe544833d97ace4e55145726ff0ecb36188df18f0eb6c5ab42c9b0d2622dabd",
+    "archive_count": 865,
+    "bytes": 1427208,
+    "sha256": "8e40f7ec64a7f52f5bcf90805e34c3f86105f8f11b321a8a6471cbdd8d5e6165",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-10T17:33:00Z",
-    "verified_at": "2026-10-10T12:12:41.336858Z",
-    "reviewed_at": "2026-10-10T18:06:16.682708Z"
+    "published_at": "2026-10-10T17:37:44Z",
+    "verified_at": "2026-10-10T21:05:14.214970Z",
+    "reviewed_at": "2026-10-11T00:07:31.917013Z"
   }
 };
 
