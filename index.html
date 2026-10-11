@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-11T00:08:35Z",
+  "last_updated": "2026-10-11T03:05:04Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -293,9 +293,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 217,
+        "scanned": 218,
         "retained": 0,
-        "rejected": 217,
+        "rejected": 218,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -778,9 +778,9 @@ const state = {
         "status": "qualifying_evidence",
         "source_count": 7,
         "qualifying_source_count": 4,
-        "scanned": 119,
+        "scanned": 120,
         "retained": 4,
-        "rejected": 115,
+        "rejected": 116,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2870,6 +2870,45 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "iran_conventional",
+      "headline": "UKMTO 162-26: tanker master reports projectile strike and fire in Hormuz; crew reported safe",
+      "text": "The original UKMTO warning 162-26 reports a master account of an outbound tanker struck on its port side by an unknown projectile in the Strait of Hormuz at 19:20 UTC on October 10, causing a fire. Crew are reported safe. Vessel identity, damage assessment, environmental impact and responsibility are unknown. The notice says authorities investigate and advises caution. Its publication instant is not supplied; the printed 19:20 UTC is incident time, not publication time. This remains an attributed master report, not independent attack verification. It is not merged with the earlier IRGC claim that an unnamed supertanker struck a mine: no vessel identity or common event linkage establishes that they are the same incident.",
+      "time": "2026-10-11T03:04:20.433364+00:00",
+      "timestamp": "2026-10-11T03:04:20.433364+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-10",
+      "incident_id": "ukmto-warning-162-26-hormuz-outbound-tanker-projectile-2026-10-10",
+      "publication_id": "ukmto:162-26",
+      "originating_source": "UK Maritime Trade Operations original warning 162-26, source Master",
+      "event_at": "2026-10-10T19:20:00Z",
+      "published_at": null,
+      "collected_at": "2026-10-11T03:03:00.884792Z",
+      "reviewed_at": "2026-10-11T03:04:20.433364Z",
+      "verified_at": null,
+      "evidence_id": "ev_295f50a13bac401cd478efcc513c12a24e1f0800062c7ec7f72a93ac69bda631",
+      "revision_id": "rev_1089b3c81353aa82cf58c44c723f79d8f27fb156e37b25461396b70db6940090",
+      "revision_ids": [
+        "rev_1089b3c81353aa82cf58c44c723f79d8f27fb156e37b25461396b70db6940090"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "A master reports another tanker fire in Hormuz; crew are reported safe, but vessel identity, damage, environmental impact and responsibility remain unknown.",
+      "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "source_urls": [
+        "https://www.ukmto.org/-/media/ukmto/products/20261010-ukmto_warning_162-26.pdf?rev=ba230421f0a1444fa4f21f84c96d6640"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
       "text": "Saudi Gazette attributes 12 deaths and 309 injuries to a GACA follow-up about the October 10 King Khalid airport attack. It reports property damage still being assessed. The primary follow-up body and casualty totals were not independently verified in this scan.",
@@ -2907,6 +2946,49 @@ const state = {
       "material_revision": "New attributed casualty toll: 12 dead and 309 injured; primary statement body and totals not independently verified.",
       "source_urls": [
         "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
+      "headline": "Zaporizhzhia revision: governor reports 32 injured; emergency service retains 18",
+      "text": "The retained October 10 Zaporizhzhia airstrike remains one incident. Original governor Ivan Fedorov post 48995 at 18:00:01 UTC reports 20 dead and 32 injured. This injury figure differs from the current State Emergency Service post 77201, which reports 20 dead and 18 injured. The full Telegram HTML was inspected: the 17-death passage is an embedded reply to the earlier post, not the current message. Ukrainska Pravda at 18:52 UTC relays the SES 20-death, 18-injury account; it does not independently count casualties. The casualty accounts are attributed, not independently verified, and the injury discrepancy is not reconciled. Exact edit time of the SES post is unknown. The sources continue to describe rescue work; no completion timetable is established.",
+      "time": "2026-10-11T03:04:20.433364+00:00",
+      "timestamp": "2026-10-11T03:04:20.433364+00:00",
+      "timestamp_kind": "review_time",
+      "source_date": "2026-10-10",
+      "incident_id": "zaporizhzhia-morning-residential-airstrike-official-accounts-2026-10-10",
+      "publication_id": "Telegram:ivan_fedorov_zp:48995",
+      "originating_source": "Ivan Fedorov original Telegram post; State Emergency Service original Telegram post; Ukrainska Pravda attributed reporting",
+      "event_at": null,
+      "published_at": "2026-10-10T18:00:01Z",
+      "collected_at": "2026-10-11T03:02:23.451215Z",
+      "reviewed_at": "2026-10-11T03:04:20.433364Z",
+      "verified_at": null,
+      "evidence_id": "ev_01bbae7b0542dcaa24ebd90eb100217f16634804c07fbed7d755a2237b963e25",
+      "revision_id": "rev_bcff57c25d46004c5b70cc2edb454b14a59ab8d631ed7a06dddba6e03345407f",
+      "revision_ids": [
+        "rev_bcff57c25d46004c5b70cc2edb454b14a59ab8d631ed7a06dddba6e03345407f"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_a922731c787a5b1f808658ae0ff00bdaaf672d199ce53b1e327f6e7718da6239",
+      "report_status": "revision",
+      "implication": "Both official accounts report 20 deaths, but injuries differ: governor 32, emergency service 18. Independent casualty verification remains absent.",
+      "next_trigger": "Original accounts say rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Governor injury account rises to 32; SES account remains 18; discrepancy retained.",
+      "source_urls": [
+        "https://t.me/dsns_telegram/77201",
+        "https://t.me/ivan_fedorov_zp/48995",
+        "https://www.pravda.com.ua/eng/news/2026/10/10/8057385/"
       ]
     },
     {
@@ -3055,11 +3137,12 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
       "supersedes": "rev_bde12e5431ffae4cec21fb85baf4361c6a71925244cfcaab7b28b4d04f7195d7",
-      "report_status": "revision",
+      "report_status": "superseded",
       "implication": "The emergency service raises the retained attack death toll from 17 to 20; the casualty total and attribution remain independently unverified.",
       "next_trigger": "The emergency service says search-and-rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
       "independent_verification": false,
@@ -3602,88 +3685,6 @@ const state = {
       "source_urls": [
         "https://www.aljazeera.com/news/2026/10/10/putin-tells-trump-peace-talks-are-unlikely-cites-ukraine-drone-attacks"
       ]
-    },
-    {
-      "zone": "israel_lebanon",
-      "headline": "Lebanon: six wounded reported near Hawsh al-Sayyed Ali; target identity unverified",
-      "text": "Newly reviewed October 9 reporting describes a strike near a vehicle at Hawsh al-Sayyed Ali in Lebanon's Hermel district near the Syrian border. Asharq Al-Awsat quotes Lebanon's health ministry reporting six wounded: five Syrian nationals, including two women, and one Lebanese. It also attributes an Israeli military statement identifying the alleged target as Yusuf Ali al-Hassoun and alleging Iranian direction; neither identity, role nor a target death is authenticated here. Anadolu says witnesses told its reporters the missile landed beside, not directly on, the vehicle and quotes medical sources for six minor injuries. L'Orient's correspondent similarly reports six minor injuries and describes video showing a vehicle beside a crater; the original video was not authenticated, and whether the injured were in the vehicle is unclear. Original health-ministry, NNA and Israeli military statements were not retrieved. These reports are distinct from the retained Zawtar tree-clearing episode. Exact event, publication and verification instants remain unknown. Different news hosts and anonymous accounts do not establish independent verification; no urgent qualification is claimed.",
-      "time": "2026-10-09T21:06:58.200070+00:00",
-      "timestamp": "2026-10-09T21:06:58.200070+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-09",
-      "incident_id": "hawsh-al-sayyed-ali-vehicle-strike-reports-2026-10-09",
-      "publication_id": "Aawsat:5327863:2026-10-09",
-      "originating_source": "Asharq Al-Awsat attributed official accounts; original Anadolu and L\u2019Orient witness/correspondent reporting",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-10-09T21:06:58.200070Z",
-      "verified_at": null,
-      "evidence_id": "ev_c427b518a8af838a32f6e9b80110ccfe95936adcb378713810f5608f3c6e98a4",
-      "revision_id": "rev_18764dff573147bca62150d7447d342cf8238e930fa6997f38e083b9e1f1c7d2",
-      "revision_ids": [
-        "rev_18764dff573147bca62150d7447d342cf8238e930fa6997f38e083b9e1f1c7d2"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "Six injuries are reported near the Syrian border; casualty details and the alleged target identity are not independently verified.",
-      "next_trigger": "No follow-up timetable or independently evidenced next operational trigger is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://english.aawsat.com/arab-world/5327863-lebanon-says-6-wounded-attack-israel-says-targeted-pro-iran-syrian-operative",
-        "https://today.lorientlejour.com/article/1550237/israeli-forces-uproot-trees-near-lebanese-army-position-in-zawtar-gharbieh-continue-gunfire-in-the-south.html",
-        "https://www.aa.com.tr/en/middle-east/israeli-drone-strike-injures-6-in-eastern-lebanon-as-attacks-continue-despite-framework-deal/4083655"
-      ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Newly reviewed IAEA Update 370: limited inspection finds damage near reported October 5 drone incident",
-      "text": "The original October 9 IAEA Update 370 incident and inspection paragraphs were read through direct publication extraction. The agency says its Zaporizhzhya team was informed of a reported drone attack on a laboratory and utility building and a radioactive-waste-processing building between midnight and 00:30 local time on October 5. It reports no casualties or radiation leaks for that building incident. Local time is retained without an assumed UTC offset. After requesting access, the team received limited access more than 48 hours later. It observed broken windows, piles of glass, covered openings and an approximately 40-centimetre pavement-damage area; UAV components were displayed at the site. The team concludes buildings near the reported incident sustained physical damage, but the statement does not independently establish the cause or responsible actor. Separately, the plant told the agency on October 5 that a delivery driver had been killed in a reported attack the previous day; this is a separate attributed account, not a casualty in the building incident. Grossi calls for prompt, unfettered access to reported attack sites and identifies continuing nuclear-safety risks. This is newly reviewed October 5 reporting, not a new October 9 attack. Exact publication and inspection instants are unknown. No independent two-source confirmation, radiation emergency or urgent qualification is claimed.",
-      "time": "2026-10-09T18:10:27.582742+00:00",
-      "timestamp": "2026-10-09T18:10:27.582742+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-09",
-      "incident_id": "iaea-znpp-buildings-drone-report-2026-10-05",
-      "publication_id": "IAEA:Update-370:2026-10-09",
-      "originating_source": "IAEA original Update 370, limited inspection observations and plant-attributed incident accounts",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-10-09T18:10:27.582742Z",
-      "verified_at": null,
-      "evidence_id": "ev_57fe6e85b34e50e3e92826c5aeac5f2a4a7bc88b13ec73237b0c8d8769f9f7f6",
-      "revision_id": "rev_94985ffd0badb54ae85bfbe8b12b6062318b7dbb47afdf57ba1ff37d87ea6f2a",
-      "revision_ids": [
-        "rev_94985ffd0badb54ae85bfbe8b12b6062318b7dbb47afdf57ba1ff37d87ea6f2a"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The IAEA observed physical damage near the reported October 5 incident after limited access; cause, responsibility and the separate driver-death account remain unverified.",
-      "next_trigger": "The IAEA calls for prompt, unfettered access to reported attack sites; no findings timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://www.iaea.org/newscenter/pressreleases/update-370-iaea-director-general-statement-on-situation-in-ukraine"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3700,7 +3701,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-11T00:08:35Z",
+  "build_at": "2026-10-11T03:05:04Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3900,7 +3901,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-11T00:08:35Z",
+      "generated_at": "2026-10-11T03:05:04Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4533,10 +4534,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-11T00:08:35Z",
+    "generated_at": "2026-10-11T03:05:04Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 776.8461111111111,
+    "age_hours": 779.7875,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4618,7 +4619,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4685,7 +4686,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4713,7 +4714,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4741,7 +4742,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4841,7 +4842,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4908,7 +4909,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5006,7 +5007,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 80.99403935185185,
+            "remaining_days": 80.87148148148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5034,7 +5035,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5132,7 +5133,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5160,7 +5161,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 80.99403935185185,
+            "remaining_days": 80.87148148148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5227,7 +5228,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 82.20167824074075,
+            "remaining_days": 82.07912037037038,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5312,254 +5313,37 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-11T00:08:35Z",
+    "generated_at": "2026-10-11T03:05:04Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "119d8b878d5f4de7e081081f2925deecf91d17275149ab2c780f110d47f9e30e",
+    "previous_snapshot_id": "9cd4ea2290c64b71ae9920c9e1ecc085ff4ec3017c86d521139a6242c08fd3ab",
     "changes": [
       {
-        "zone": "ethiopia_tigray",
-        "headline": "Adigrat revision: Reuters witnesses report Ethiopian forces in city; control unconfirmed",
-        "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_4402d84b5d042e697abf034bbe24ad1d747787df981d38f5f92ddb77394f8346",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/",
-          "https://www.afp.com/en/eritrean-troops-deploy-ethiopias-tigray-region",
-          "https://www.aljazeera.com/news/2026/10/7/witnesses-spot-eritrean-troops-inside-northern-ethiopia-as-tensions-flare",
-          "https://www.cnbcafrica.com/2026/ethiopia-calls-for-immediate-withdrawal-of-eritrean-troops-in-letter-to-un",
-          "https://www.dailysabah.com/world/africa/ethiopia-launches-strikes-at-eritrean-troops-venturing-into-n-tigray",
-          "https://www.internazionale.it/ultime-notizie-reuters/2026/10/09/ethiopia-says-it-must-defend-itself-against-eritrea-s-all-out-invasion",
-          "https://www.reuters.com/world/africa/ethiopia-says-it-must-defend-itself-against-eritreas-all-out-invasion-2026-10-09"
-        ],
-        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-        "implication": "Witness reporting adds Ethiopian troop presence to the retained Adigrat episode; Reuters could not confirm city control or the earlier Eritrean incursion.",
-        "historical_revision_ids": [
-          "rev_7e2c3fc0ba13c73d5d7843ca506fedc12eb5f87cbfd92bca65920a1a4f1dda95",
-          "rev_a257809bc3a09af9b344ed52a077b8b9d2afb7c7cade7cdf9534a0d546fe1f53",
-          "rev_b3efc303480c7b782eb61a729bb002f00c585f67e43cdd3553c8b0d10b413051",
-          "rev_d47b711d96e0a26f8705070504cf46142ecb2a27f42ba3c3b258d0e32fac63a1"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "adigrat-eritrean-troop-sightings-afp-2026-10-07",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "ethiopia_tigray",
-        "headline": "Eritrea publishes request for Security Council measures against Ethiopia",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_6c91e3b4033044d34e1314f42f2d3a0972efbdc5daf9d1ebd3f7f258007b4b40",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://shabait.com/2026/10/10/eritrea-foreign-minister-osman-saleh-sends-letter-to-the-un-security-council/",
-          "https://shabait.com/wp-content/uploads/2026/10/1.-Minister-Osman-Saleh-Letter-to-UNSC-scaled.jpg",
-          "https://shabait.com/wp-content/uploads/2026/10/2.-Minister-Osman-Saleh-Letter-to-UNSC-1-scaled-e1791636256626.jpg",
-          "https://www.devdiscourse.com/article/international/3990152-eritrea-asks-un-to-intervene-in-its-standoff-with-ethiopia"
-        ],
-        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-        "implication": "Eritrea has published a request for UN deterrent measures; this is not an adopted UN action or independent confirmation of either side\u2019s military allegations.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "eritrea-osman-saleh-unsc-chapter-vii-letter-om26126-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "ethiopia_tigray",
-        "headline": "Ethiopia invokes self-defence in UN-letter reporting; Eritrea contests aggression allegations",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_d337857ebe8804ac7de5d521366e50e928c7a479f9ccdbb73dc25b2912e3f30c",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://apnews.com/article/ethiopia-eritrea-tigray-conflict-mekelle-un-abiy-9386a16a06e537a29ffe2de273267c8b",
-          "https://www.aljazeera.com/news/2026/10/9/ethiopia-and-eritrea-accuse-one-another-of-launching-war"
-        ],
-        "next_trigger": "No specific self-defence measures, withdrawal timetable or independently evidenced next operational trigger is supplied.",
-        "implication": "Reporting records Ethiopia invoking self-defence and Eritrea contesting aggression claims; actual military measures and incursion allegations remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ethiopia-un-self-defence-letter-reports-2026-10-09",
-        "change": "New incident report"
-      },
-      {
         "zone": "iran_conventional",
-        "headline": "IRGC claims an unnamed crude tanker hit a mine in Hormuz; event unverified",
+        "headline": "UKMTO 162-26: tanker master reports projectile strike and fire in Hormuz; crew reported safe",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_402b12543e3014c80e37b7d702f5800f4b99a79bc8faf839f1ea5dd05585acdb",
+        "correction_id": "rev_1089b3c81353aa82cf58c44c723f79d8f27fb156e37b25461396b70db6940090",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://en.mehrnews.com/news/248469/Giant-oil-tanker-targeted-caught-fire-after-breaching-rules",
-          "https://www.iranintl.com/en/202610100347",
-          "https://www.jpost.com/middle-east/iran-news/article-911241"
+          "https://www.ukmto.org/-/media/ukmto/products/20261010-ukmto_warning_162-26.pdf?rev=ba230421f0a1444fa4f21f84c96d6640"
         ],
-        "next_trigger": "No independently evidenced timetable for vessel identification, crew assessment or confirmation is supplied.",
-        "implication": "This is a new attributed mine-and-fire claim, not a verified attack; no vessel identity, crew status or independent damage assessment is established.",
+        "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
+        "implication": "A master reports another tanker fire in Hormuz; crew are reported safe, but vessel identity, damage, environmental impact and responsibility remain unknown.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "irgc-unnamed-crude-supertanker-mine-statement-mehr-248469-2026-10-10",
+        "incident_id": "ukmto-warning-162-26-hormuz-outbound-tanker-projectile-2026-10-10",
         "change": "New incident report"
       },
       {
         "zone": "russia_ukraine",
-        "headline": "Kharkiv: emergency service reports five injured in medical-building strike",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_35d8da72522926daced1be957e0af3074f3772b3b8f5543a397522c537bc51ee",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77189"
-        ],
-        "next_trigger": "The emergency service says the fire was extinguished; no follow-up timetable is supplied.",
-        "implication": "The emergency service reports damage and injuries at a medical facility; the separate rescuer-injury reference is not added to the five-person total.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "kharkiv-slobidsky-medical-building-strike-emergency-service-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Kyiv: emergency service reports five injured in Obolonsky attack",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_7da39d9b49652952bfcb7f8fd022b2422e71c3e7c57474e77f0a3824e569c305",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77179"
-        ],
-        "next_trigger": "The emergency service says necessary services are working; no independently evidenced follow-up timetable is supplied.",
-        "implication": "The attributed report adds injuries and local fire damage in Obolonsky; casualty and responsibility claims remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "kyiv-obolonsky-attack-five-injured-emergency-service-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
+        "headline": "Zaporizhzhia revision: governor reports 32 injured; emergency service retains 18",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://alrayah.sa/318177/",
-          "https://apnews.com/article/saudi-yemen-houthi-riyadh-airport-f0e0e6105f33400e37bb20bb9a8130af",
-          "https://english.alarabiya.net/News/saudi-arabia/2026/10/10/riyadh-airport-passengers-told-to-check-flight-status-before-going-there",
-          "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms",
-          "https://www.aa.com.tr/en/middle-east/riyadh-airport-suspends-operations-after-attack-leaves-several-injured/4084666",
-          "https://www.alanba.com.kw/1380034",
-          "https://www.channelnewsasia.com/world/riyadh-airport-suspends-operations-after-attack-leaves-several-wounded-6449071",
-          "https://www.cnbc.com/2026/10/10/the-airport-in-the-saudi-capital-has-been-attacked-again-officials.html",
-          "https://www.military.com/missile-strikes-passenger-terminal-riyadh-airport-many-are-wounded-official-says",
-          "https://www.spa.gov.sa/en/N2697867"
-        ],
-        "next_trigger": "Damage assessments remain underway according to the report; no reopening or follow-up timetable is supplied.",
-        "implication": "A new attributed toll replaces unquantified injuries; casualty totals, responsibility and airport reopening remain independently unverified.",
-        "historical_revision_ids": [
-          "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
-          "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
-          "rev_87c425d729d0099be26f716a86c15be14f1bfb54c8efe059926553887fdd59cc"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "riyadh-king-khalid-airport-evacuation-regional-official-reports-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Riyadh revision: reporting attributes three October 8 deaths and resumed airport operations to Saudi authorities",
-        "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_68307f6dd108a6f13c70edd5b823967b4488c64b874a813a967e3092c552efb2",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714",
-          "https://fortune.com/2026/10/09/iran-saudi-arabia-houthis-riyadh-airport-attack/",
-          "https://gulfnews.com/business/aviation/saudia-plane-damaged-in-houthi-attacks-at-riyadh-airport-saudi-civil-aviation-confirms-1.500704260",
-          "https://sabq.org/article/vj9roew",
-          "https://www.al-monitor.com/originals/2026/10/plane-damaged-riyadh-airport-houthis-escalate-attacks-sources-say",
-          "https://www.aljazeera.com/news/2026/10/9/saudi-arabia-reopens-riyadh-airport-after-houthi-attack-kills-three",
-          "https://www.devdiscourse.com/article/international/3989596-saudia-says-employee-killed-aircraft-damaged-in-riyadh-airport-incident",
-          "https://www.malaymail.com/news/world/2026/10/09/houthi-missile-debris-damages-kindergarten-and-medical-complex-in-riyadh/238329",
-          "https://www.nbcnews.com/world/saudi-arabia/houthis-claim-new-attack-airport-saudi-capital-witness-evacuation-rcna602262"
-        ],
-        "next_trigger": "No dated official follow-up or independently evidenced operational next trigger is supplied in the reviewed report.",
-        "implication": "Reporting assigns a separate three-death toll to October 8; resumed airport operations do not establish normal flight availability or regional de-escalation.",
-        "historical_revision_ids": [
-          "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
-          "rev_674c18817086e58e404139d9d6b54e61a18fdb6bb77061c78d77ec1a508e2e1d",
-          "rev_9996f11c914651bd947f28e36906165a29093dc3bdae8b0d222af17e38615dc4",
-          "rev_e681aa52b99fe66053955e23af13efeb1442b9410596627406210ca00c50b62e"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "riyadh-king-khalid-airport-plane-fire-2026-10-08",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "sudan",
-        "headline": "Blue Nile: UN reports at least 31 killed near displacement site; rights-group account says 41",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_7518482f6e8fddf730fdecc7e0f067235b17e027d22a9ed28a45f80d3ebe95d2",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://apnews.com/article/sudan-war-rsf-military-6cb2c34499234e9bcd33c3c9b49521da",
-          "https://reliefweb.int/report/sudan/statement-united-nations-resident-and-humanitarian-coordinator-sudan-denise-brown"
-        ],
-        "next_trigger": "OCHA says casualty figures may rise and calls for accountability; no investigation or casualty-reconciliation timetable is supplied.",
-        "implication": "Reported mass civilian casualties in Blue Nile add displacement-site harm; the 31-versus-41 accounts, exact site and perpetrator remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "sudan-blue-nile-displacement-site-drone-strike-reports-2026-10-09",
-        "change": "New incident report"
-      },
-      {
-        "zone": "iran_conventional",
-        "headline": "Newly reviewed UKMTO 160-26: October 9 vessel fire off UAE; vessel and crew status unknown",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_a2b2c929755155ab757f1676a1430a375c25419d593c7b68a972973f3989854d",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://theqldr.com.au/international-news/2026/10/10/iran-276/",
-          "https://www.brecorder.com/news/40443520",
-          "https://www.ukmto.org/-/media/ukmto/products/20261009-ukmto_warning_160_26.pdf?rev=533f66aad4d541f1b9a9e832132635fc"
-        ],
-        "next_trigger": "UKMTO says authorities are investigating; no findings date is supplied.",
-        "implication": "The original notice adds an October 9 projectile-and-fire report off the UAE; vessel identity, crew outcome and responsibility remain unknown.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ukmto-warning-160-26-al-jazeera-uae-projectile-2026-10-09",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Zaporizhzhia revision: emergency service now reports 20 dead and 18 injured",
-        "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_a922731c787a5b1f808658ae0ff00bdaaf672d199ce53b1e327f6e7718da6239",
+        "correction_id": "rev_bcff57c25d46004c5b70cc2edb454b14a59ab8d631ed7a06dddba6e03345407f",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
@@ -5570,18 +5354,21 @@ const state = {
           "https://t.me/dsns_telegram/77201",
           "https://t.me/ivan_fedorov_zp/48987",
           "https://t.me/ivan_fedorov_zp/48988",
+          "https://t.me/ivan_fedorov_zp/48995",
           "https://t.me/zoda_gov_ua/68255",
           "https://t.me/zoda_gov_ua/68259",
           "https://t.me/zoda_gov_ua/68266",
           "https://t.me/zoda_gov_ua/68272",
-          "https://www.kyivpost.com/post/86658"
+          "https://www.kyivpost.com/post/86658",
+          "https://www.pravda.com.ua/eng/news/2026/10/10/8057385/"
         ],
-        "next_trigger": "The emergency service says search-and-rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
-        "implication": "The emergency service raises the retained attack death toll from 17 to 20; the casualty total and attribution remain independently unverified.",
+        "next_trigger": "Original accounts say rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
+        "implication": "Both official accounts report 20 deaths, but injuries differ: governor 32, emergency service 18. Independent casualty verification remains absent.",
         "historical_revision_ids": [
           "rev_44c475c70f10ec31bd866f45394d76a887434585c2d151f3483c890b467b2875",
           "rev_5d3952fcfa6a8d6389a587753e1c19a03a61e5fd50d14f908d0ac0c0041fa8f9",
           "rev_7d2d41c9f2837c83784e097991a1bbd44fc9c8342f9b9804c60f74901bbbf9af",
+          "rev_a922731c787a5b1f808658ae0ff00bdaaf672d199ce53b1e327f6e7718da6239",
           "rev_bde12e5431ffae4cec21fb85baf4361c6a71925244cfcaab7b28b4d04f7195d7"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
@@ -5591,248 +5378,31 @@ const state = {
     ],
     "items": [
       {
-        "zone": "ethiopia_tigray",
-        "headline": "Adigrat revision: Reuters witnesses report Ethiopian forces in city; control unconfirmed",
-        "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_4402d84b5d042e697abf034bbe24ad1d747787df981d38f5f92ddb77394f8346",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/",
-          "https://www.afp.com/en/eritrean-troops-deploy-ethiopias-tigray-region",
-          "https://www.aljazeera.com/news/2026/10/7/witnesses-spot-eritrean-troops-inside-northern-ethiopia-as-tensions-flare",
-          "https://www.cnbcafrica.com/2026/ethiopia-calls-for-immediate-withdrawal-of-eritrean-troops-in-letter-to-un",
-          "https://www.dailysabah.com/world/africa/ethiopia-launches-strikes-at-eritrean-troops-venturing-into-n-tigray",
-          "https://www.internazionale.it/ultime-notizie-reuters/2026/10/09/ethiopia-says-it-must-defend-itself-against-eritrea-s-all-out-invasion",
-          "https://www.reuters.com/world/africa/ethiopia-says-it-must-defend-itself-against-eritreas-all-out-invasion-2026-10-09"
-        ],
-        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-        "implication": "Witness reporting adds Ethiopian troop presence to the retained Adigrat episode; Reuters could not confirm city control or the earlier Eritrean incursion.",
-        "historical_revision_ids": [
-          "rev_7e2c3fc0ba13c73d5d7843ca506fedc12eb5f87cbfd92bca65920a1a4f1dda95",
-          "rev_a257809bc3a09af9b344ed52a077b8b9d2afb7c7cade7cdf9534a0d546fe1f53",
-          "rev_b3efc303480c7b782eb61a729bb002f00c585f67e43cdd3553c8b0d10b413051",
-          "rev_d47b711d96e0a26f8705070504cf46142ecb2a27f42ba3c3b258d0e32fac63a1"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "adigrat-eritrean-troop-sightings-afp-2026-10-07",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "ethiopia_tigray",
-        "headline": "Eritrea publishes request for Security Council measures against Ethiopia",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_6c91e3b4033044d34e1314f42f2d3a0972efbdc5daf9d1ebd3f7f258007b4b40",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://shabait.com/2026/10/10/eritrea-foreign-minister-osman-saleh-sends-letter-to-the-un-security-council/",
-          "https://shabait.com/wp-content/uploads/2026/10/1.-Minister-Osman-Saleh-Letter-to-UNSC-scaled.jpg",
-          "https://shabait.com/wp-content/uploads/2026/10/2.-Minister-Osman-Saleh-Letter-to-UNSC-1-scaled-e1791636256626.jpg",
-          "https://www.devdiscourse.com/article/international/3990152-eritrea-asks-un-to-intervene-in-its-standoff-with-ethiopia"
-        ],
-        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-        "implication": "Eritrea has published a request for UN deterrent measures; this is not an adopted UN action or independent confirmation of either side\u2019s military allegations.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "eritrea-osman-saleh-unsc-chapter-vii-letter-om26126-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "ethiopia_tigray",
-        "headline": "Ethiopia invokes self-defence in UN-letter reporting; Eritrea contests aggression allegations",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_d337857ebe8804ac7de5d521366e50e928c7a479f9ccdbb73dc25b2912e3f30c",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://apnews.com/article/ethiopia-eritrea-tigray-conflict-mekelle-un-abiy-9386a16a06e537a29ffe2de273267c8b",
-          "https://www.aljazeera.com/news/2026/10/9/ethiopia-and-eritrea-accuse-one-another-of-launching-war"
-        ],
-        "next_trigger": "No specific self-defence measures, withdrawal timetable or independently evidenced next operational trigger is supplied.",
-        "implication": "Reporting records Ethiopia invoking self-defence and Eritrea contesting aggression claims; actual military measures and incursion allegations remain unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ethiopia-un-self-defence-letter-reports-2026-10-09",
-        "change": "New incident report"
-      },
-      {
         "zone": "iran_conventional",
-        "headline": "IRGC claims an unnamed crude tanker hit a mine in Hormuz; event unverified",
+        "headline": "UKMTO 162-26: tanker master reports projectile strike and fire in Hormuz; crew reported safe",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_402b12543e3014c80e37b7d702f5800f4b99a79bc8faf839f1ea5dd05585acdb",
+        "correction_id": "rev_1089b3c81353aa82cf58c44c723f79d8f27fb156e37b25461396b70db6940090",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://en.mehrnews.com/news/248469/Giant-oil-tanker-targeted-caught-fire-after-breaching-rules",
-          "https://www.iranintl.com/en/202610100347",
-          "https://www.jpost.com/middle-east/iran-news/article-911241"
+          "https://www.ukmto.org/-/media/ukmto/products/20261010-ukmto_warning_162-26.pdf?rev=ba230421f0a1444fa4f21f84c96d6640"
         ],
-        "next_trigger": "No independently evidenced timetable for vessel identification, crew assessment or confirmation is supplied.",
-        "implication": "This is a new attributed mine-and-fire claim, not a verified attack; no vessel identity, crew status or independent damage assessment is established.",
+        "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
+        "implication": "A master reports another tanker fire in Hormuz; crew are reported safe, but vessel identity, damage, environmental impact and responsibility remain unknown.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "irgc-unnamed-crude-supertanker-mine-statement-mehr-248469-2026-10-10",
+        "incident_id": "ukmto-warning-162-26-hormuz-outbound-tanker-projectile-2026-10-10",
         "change": "New incident report"
       },
       {
         "zone": "russia_ukraine",
-        "headline": "Kharkiv: emergency service reports five injured in medical-building strike",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_35d8da72522926daced1be957e0af3074f3772b3b8f5543a397522c537bc51ee",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77189"
-        ],
-        "next_trigger": "The emergency service says the fire was extinguished; no follow-up timetable is supplied.",
-        "implication": "The emergency service reports damage and injuries at a medical facility; the separate rescuer-injury reference is not added to the five-person total.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "kharkiv-slobidsky-medical-building-strike-emergency-service-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Kyiv: emergency service reports five injured in Obolonsky attack",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_7da39d9b49652952bfcb7f8fd022b2422e71c3e7c57474e77f0a3824e569c305",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77179"
-        ],
-        "next_trigger": "The emergency service says necessary services are working; no independently evidenced follow-up timetable is supplied.",
-        "implication": "The attributed report adds injuries and local fire damage in Obolonsky; casualty and responsibility claims remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "kyiv-obolonsky-attack-five-injured-emergency-service-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
+        "headline": "Zaporizhzhia revision: governor reports 32 injured; emergency service retains 18",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://alrayah.sa/318177/",
-          "https://apnews.com/article/saudi-yemen-houthi-riyadh-airport-f0e0e6105f33400e37bb20bb9a8130af",
-          "https://english.alarabiya.net/News/saudi-arabia/2026/10/10/riyadh-airport-passengers-told-to-check-flight-status-before-going-there",
-          "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms",
-          "https://www.aa.com.tr/en/middle-east/riyadh-airport-suspends-operations-after-attack-leaves-several-injured/4084666",
-          "https://www.alanba.com.kw/1380034",
-          "https://www.channelnewsasia.com/world/riyadh-airport-suspends-operations-after-attack-leaves-several-wounded-6449071",
-          "https://www.cnbc.com/2026/10/10/the-airport-in-the-saudi-capital-has-been-attacked-again-officials.html",
-          "https://www.military.com/missile-strikes-passenger-terminal-riyadh-airport-many-are-wounded-official-says",
-          "https://www.spa.gov.sa/en/N2697867"
-        ],
-        "next_trigger": "Damage assessments remain underway according to the report; no reopening or follow-up timetable is supplied.",
-        "implication": "A new attributed toll replaces unquantified injuries; casualty totals, responsibility and airport reopening remain independently unverified.",
-        "historical_revision_ids": [
-          "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
-          "rev_3d0f7045f30df66f89289a3d03ed304d77eb6c71cdf753cceff9ef82e6ecb2e5",
-          "rev_87c425d729d0099be26f716a86c15be14f1bfb54c8efe059926553887fdd59cc"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "riyadh-king-khalid-airport-evacuation-regional-official-reports-2026-10-10",
-        "change": "New incident report"
-      },
-      {
-        "zone": "yemen_red_sea",
-        "headline": "Riyadh revision: reporting attributes three October 8 deaths and resumed airport operations to Saudi authorities",
-        "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_68307f6dd108a6f13c70edd5b823967b4488c64b874a813a967e3092c552efb2",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://apnews.com/article/saudi-airport-attack-houthis-5226e214e7c50ceff68915379ec3a714",
-          "https://fortune.com/2026/10/09/iran-saudi-arabia-houthis-riyadh-airport-attack/",
-          "https://gulfnews.com/business/aviation/saudia-plane-damaged-in-houthi-attacks-at-riyadh-airport-saudi-civil-aviation-confirms-1.500704260",
-          "https://sabq.org/article/vj9roew",
-          "https://www.al-monitor.com/originals/2026/10/plane-damaged-riyadh-airport-houthis-escalate-attacks-sources-say",
-          "https://www.aljazeera.com/news/2026/10/9/saudi-arabia-reopens-riyadh-airport-after-houthi-attack-kills-three",
-          "https://www.devdiscourse.com/article/international/3989596-saudia-says-employee-killed-aircraft-damaged-in-riyadh-airport-incident",
-          "https://www.malaymail.com/news/world/2026/10/09/houthi-missile-debris-damages-kindergarten-and-medical-complex-in-riyadh/238329",
-          "https://www.nbcnews.com/world/saudi-arabia/houthis-claim-new-attack-airport-saudi-capital-witness-evacuation-rcna602262"
-        ],
-        "next_trigger": "No dated official follow-up or independently evidenced operational next trigger is supplied in the reviewed report.",
-        "implication": "Reporting assigns a separate three-death toll to October 8; resumed airport operations do not establish normal flight availability or regional de-escalation.",
-        "historical_revision_ids": [
-          "rev_1983f65f17e410bdbf77b521aa88152097013e079b30f78d125a94743e66062a",
-          "rev_674c18817086e58e404139d9d6b54e61a18fdb6bb77061c78d77ec1a508e2e1d",
-          "rev_9996f11c914651bd947f28e36906165a29093dc3bdae8b0d222af17e38615dc4",
-          "rev_e681aa52b99fe66053955e23af13efeb1442b9410596627406210ca00c50b62e"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "riyadh-king-khalid-airport-plane-fire-2026-10-08",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "sudan",
-        "headline": "Blue Nile: UN reports at least 31 killed near displacement site; rights-group account says 41",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_7518482f6e8fddf730fdecc7e0f067235b17e027d22a9ed28a45f80d3ebe95d2",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://apnews.com/article/sudan-war-rsf-military-6cb2c34499234e9bcd33c3c9b49521da",
-          "https://reliefweb.int/report/sudan/statement-united-nations-resident-and-humanitarian-coordinator-sudan-denise-brown"
-        ],
-        "next_trigger": "OCHA says casualty figures may rise and calls for accountability; no investigation or casualty-reconciliation timetable is supplied.",
-        "implication": "Reported mass civilian casualties in Blue Nile add displacement-site harm; the 31-versus-41 accounts, exact site and perpetrator remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "sudan-blue-nile-displacement-site-drone-strike-reports-2026-10-09",
-        "change": "New incident report"
-      },
-      {
-        "zone": "iran_conventional",
-        "headline": "Newly reviewed UKMTO 160-26: October 9 vessel fire off UAE; vessel and crew status unknown",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_a2b2c929755155ab757f1676a1430a375c25419d593c7b68a972973f3989854d",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://theqldr.com.au/international-news/2026/10/10/iran-276/",
-          "https://www.brecorder.com/news/40443520",
-          "https://www.ukmto.org/-/media/ukmto/products/20261009-ukmto_warning_160_26.pdf?rev=533f66aad4d541f1b9a9e832132635fc"
-        ],
-        "next_trigger": "UKMTO says authorities are investigating; no findings date is supplied.",
-        "implication": "The original notice adds an October 9 projectile-and-fire report off the UAE; vessel identity, crew outcome and responsibility remain unknown.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ukmto-warning-160-26-al-jazeera-uae-projectile-2026-10-09",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Zaporizhzhia revision: emergency service now reports 20 dead and 18 injured",
-        "status": "revision",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_a922731c787a5b1f808658ae0ff00bdaaf672d199ce53b1e327f6e7718da6239",
+        "correction_id": "rev_bcff57c25d46004c5b70cc2edb454b14a59ab8d631ed7a06dddba6e03345407f",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
@@ -5843,18 +5413,21 @@ const state = {
           "https://t.me/dsns_telegram/77201",
           "https://t.me/ivan_fedorov_zp/48987",
           "https://t.me/ivan_fedorov_zp/48988",
+          "https://t.me/ivan_fedorov_zp/48995",
           "https://t.me/zoda_gov_ua/68255",
           "https://t.me/zoda_gov_ua/68259",
           "https://t.me/zoda_gov_ua/68266",
           "https://t.me/zoda_gov_ua/68272",
-          "https://www.kyivpost.com/post/86658"
+          "https://www.kyivpost.com/post/86658",
+          "https://www.pravda.com.ua/eng/news/2026/10/10/8057385/"
         ],
-        "next_trigger": "The emergency service says search-and-rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
-        "implication": "The emergency service raises the retained attack death toll from 17 to 20; the casualty total and attribution remain independently unverified.",
+        "next_trigger": "Original accounts say rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
+        "implication": "Both official accounts report 20 deaths, but injuries differ: governor 32, emergency service 18. Independent casualty verification remains absent.",
         "historical_revision_ids": [
           "rev_44c475c70f10ec31bd866f45394d76a887434585c2d151f3483c890b467b2875",
           "rev_5d3952fcfa6a8d6389a587753e1c19a03a61e5fd50d14f908d0ac0c0041fa8f9",
           "rev_7d2d41c9f2837c83784e097991a1bbd44fc9c8342f9b9804c60f74901bbbf9af",
+          "rev_a922731c787a5b1f808658ae0ff00bdaaf672d199ce53b1e327f6e7718da6239",
           "rev_bde12e5431ffae4cec21fb85baf4361c6a71925244cfcaab7b28b4d04f7195d7"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
@@ -5864,25 +5437,25 @@ const state = {
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Adigrat revision: Reuters witnesses report Ethiopian forces in city; control unconfirmed\nImplication: Witness reporting adds Ethiopian troop presence to the retained Adigrat episode; Reuters could not confirm city control or the earlier Eritrean incursion.\nEvidence: verification not established https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\nNext trigger: No dated follow-up or independently evidenced next operational trigger is supplied.\nDossier: dashboard incident list; source https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\n10 additional incident changes in the dashboard briefing list.",
-    "message_id": "0598c4bc42c6602d94c43c559601f5e9278027962babeb75c9b8f4c78300177a"
+    "message": "New incident report: UKMTO 162-26: tanker master reports projectile strike and fire in Hormuz; crew reported safe\nImplication: A master reports another tanker fire in Hormuz; crew are reported safe, but vessel identity, damage, environmental impact and responsibility remain unknown.\nEvidence: verification not established https://www.ukmto.org/-/media/ukmto/products/20261010-ukmto_warning_162-26.pdf?rev=ba230421f0a1444fa4f21f84c96d6640\nNext trigger: UKMTO says authorities are investigating; no findings timetable is supplied.\nDossier: dashboard incident list; source https://www.ukmto.org/-/media/ukmto/products/20261010-ukmto_warning_162-26.pdf?rev=ba230421f0a1444fa4f21f84c96d6640\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "6d562ede451fed86cc4fcf4583c8553c36d0feea6b2fb8b71879d6fc8bf53a0b"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 885,
-    "current_report_count": 874,
+    "total_count": 887,
+    "current_report_count": 876,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 865,
-    "bytes": 1427208,
-    "sha256": "8e40f7ec64a7f52f5bcf90805e34c3f86105f8f11b321a8a6471cbdd8d5e6165",
+    "archive_count": 867,
+    "bytes": 1433338,
+    "sha256": "0c976e2679a0b9f1b61e4394a68d184525d7af3dd3ad62c2bcc4bed6655fcf97",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-10T17:37:44Z",
+    "published_at": "2026-10-10T18:00:01Z",
     "verified_at": "2026-10-10T21:05:14.214970Z",
-    "reviewed_at": "2026-10-11T00:07:31.917013Z"
+    "reviewed_at": "2026-10-11T03:04:20.433364Z"
   }
 };
 
