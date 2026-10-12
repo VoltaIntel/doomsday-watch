@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-12T03:06:25Z",
+  "last_updated": "2026-10-12T06:08:13Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -775,11 +775,11 @@ const state = {
         "final_index": null
       },
       "evidence_quality": {
-        "status": "insufficient_evidence",
-        "source_count": 1,
-        "qualifying_source_count": 0,
-        "scanned": 132,
-        "retained": 0,
+        "status": "qualifying_evidence",
+        "source_count": 3,
+        "qualifying_source_count": 2,
+        "scanned": 134,
+        "retained": 2,
         "rejected": 132,
         "reasons": [
           "geographic_relevance_unestablished",
@@ -793,9 +793,7 @@ const state = {
           "unsafe_source_url",
           "verified_at_unknown"
         ],
-        "coverage_gaps": [
-          "no_qualifying_evidence"
-        ]
+        "coverage_gaps": []
       },
       "legacy_trend": "stable",
       "severity": null,
@@ -2872,6 +2870,40 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "russia_ukraine",
+      "headline": "Pavlograd district: emergency service reports enterprise fire after overnight strike",
+      "text": "Ukraine\u2019s State Emergency Service reports that an overnight Russian strike caused a large fire at an enterprise in Pavlograd district, Dnipropetrovsk region, and that rescuers extinguished it. The publication does not supply an exact strike time, enterprise identity, casualty count or independently established attribution. This is a new October 12 overnight episode, distinct from the October 11 warehouse fire in Samarivskyi district. The official account\u2019s existence is verified; the operational claims are not independently verified.",
+      "timestamp_kind": "publication_time",
+      "incident_id": "pavlograd-enterprise-fire-emergency-service-77348-2026-10-12",
+      "publication_id": "DSNS:77348",
+      "originating_source": "Ukraine State Emergency Service official Telegram statement",
+      "event_at": null,
+      "published_at": "2026-10-12T05:32:58Z",
+      "collected_at": "2026-10-12T06:05:34.315167Z",
+      "reviewed_at": "2026-10-12T06:07:31.025642Z",
+      "verified_at": "2026-10-12T06:07:31.025642Z",
+      "evidence_id": "ev_ebd3a2155eb981f9d780cc32190db343d824fb78d06ec51f3c7e0d3909c9ac04",
+      "revision_id": "rev_663a67f153a515470d3b4bf1f81ea31254dc9f63c9735147db92e5dcc74595c5",
+      "revision_ids": [
+        "rev_663a67f153a515470d3b4bf1f81ea31254dc9f63c9735147db92e5dcc74595c5"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": true,
+      "rejection_reasons": [],
+      "status": "qualifying",
+      "report_status": "unknown",
+      "implication": "An official account reports an extinguished industrial-site fire; damage, casualties and attribution are not independently established.",
+      "next_trigger": "No follow-up assessment or dated operational trigger is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://t.me/dsns_telegram/77348"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Dammam airport: Reuters witness reports projectile impact; GACA is reported to assess damage",
       "text": "Reuters reports a taxiing-aircraft witness saw a projectile hit tarmac near parked aircraft at about 17:30 UTC on October 11, causing fire; the aircraft returned to the gate and passengers were told to leave. Reuters and Anadolu report GACA confirming an attack on King Fahd International Airport and ongoing damage and safety assessments. Casualties, damage extent and current operating status are unknown. The GACA original statement was not retrieved. The Reuters witness adds firsthand reporting beyond the repeated official account, but no separate independent verification of the impact or Houthi attribution is established. Exact event and publication instants remain unknown; the witness time is approximate. This is distinct from Riyadh and from the earlier Dammam-vicinity projectile report on October 10.",
@@ -3111,6 +3143,43 @@ const state = {
       "material_escalation": false,
       "source_urls": [
         "https://t.me/dsns_telegram/77331"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
+      "headline": "Zelensky backs announced energy truce but reports later Kyiv and Kharkiv power strikes",
+      "text": "Zelensky\u2019s public October 11 post supports the announced energy ceasefire while awaiting US details. A later public post says a drone struck a Kyiv power station with district outages, followed by strikes on energy facilities in Kharkiv region, after Trump\u2019s announcement. AP reporting and the Guardian relay these statements; they do not independently verify the impacts. AP says Moscow did not immediately comment. The announcement is not an established implemented ceasefire, and Russian assent, attack timing and compliance remain unverified.",
+      "timestamp_kind": "publication_time",
+      "incident_id": "energy-ceasefire-claim-and-kyiv-kharkiv-strikes-2026-10-11",
+      "publication_id": "Zelenskiy-official:21317",
+      "originating_source": "Ukrainian presidency official Telegram statement",
+      "event_at": null,
+      "published_at": "2026-10-11T17:28:34Z",
+      "collected_at": "2026-10-12T06:05:34.167763Z",
+      "reviewed_at": "2026-10-12T06:07:31.025642Z",
+      "verified_at": "2026-10-12T06:07:31.025642Z",
+      "evidence_id": "ev_3ab16142952df3942043a7af1988a85bc02731ddc90e065f4d845de8c02516e5",
+      "revision_id": "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d",
+      "revision_ids": [
+        "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": true,
+      "rejection_reasons": [],
+      "status": "qualifying",
+      "report_status": "unknown",
+      "implication": "The announced energy truce is not established as implemented: Kyiv reports later strikes, and Russian assent and compliance remain unverified.",
+      "next_trigger": "Kyiv explicitly awaits US details and reciprocal Russian support; no implementation deadline is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://t.me/V_Zelenskiy_official/21315",
+        "https://t.me/V_Zelenskiy_official/21317",
+        "https://www.manilatimes.net/2026/10/12/world/americas-emea/trump-says-russia-and-ukraine-agree-to-an-energy-ceasefire-but-kyiv-says-attacks-continue/2443404",
+        "https://www.theguardian.com/world/2026/oct/12/ukraine-war-briefing-russia-attacks-multiple-power-plants-after-trump-energy-ceasefire-claim"
       ]
     },
     {
@@ -3590,91 +3659,6 @@ const state = {
       "source_urls": [
         "https://www.ukmto.org/-/media/ukmto/products/20261010-ukmto_warning_162-26.pdf?rev=ba230421f0a1444fa4f21f84c96d6640"
       ]
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Riyadh revision: report cites GACA toll of 12 dead and 309 injured; independent verification absent",
-      "text": "Saudi Gazette attributes 12 deaths and 309 injuries to a GACA follow-up about the October 10 King Khalid airport attack. It reports property damage still being assessed. The primary follow-up body and casualty totals were not independently verified in this scan.",
-      "timestamp_kind": "publication_time_unknown",
-      "source_date": "2026-10-11",
-      "incident_id": "riyadh-king-khalid-airport-evacuation-regional-official-reports-2026-10-10",
-      "publication_id": "SaudiGazette:665290",
-      "originating_source": "Saudi Gazette quoting General Authority of Civil Aviation",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-11T00:07:31.917013Z",
-      "reviewed_at": "2026-10-11T00:07:31.917013Z",
-      "verified_at": null,
-      "evidence_id": "ev_6eaae8a41f16050998355be6c453883668ec6caf8b989e508451c9be720deaa2",
-      "revision_id": "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4",
-      "revision_ids": [
-        "rev_51b6b52b87bee8c832003838e275642c3f4783e690abd5a2306443a5b3fd5bd4"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "inactive_revision_superseded",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_3cdb533aa2a34dd8fb828aeee4e9f5066b98a819919c832319a976ae56a43b83",
-      "report_status": "superseded",
-      "implication": "A new attributed toll replaces unquantified injuries; casualty totals, responsibility and airport reopening remain independently unverified.",
-      "next_trigger": "Damage assessments remain underway according to the report; no reopening or follow-up timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "New attributed casualty toll: 12 dead and 309 injured; primary statement body and totals not independently verified.",
-      "source_urls": [
-        "https://saudigazette.com.sa/article/665290/saudi-arabia/12-killed-309-injured-in-riyadh-airport-attack-saudi-aviation-authority-confirms"
-      ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Zaporizhzhia revision: governor reports 32 injured; emergency service retains 18",
-      "text": "The retained October 10 Zaporizhzhia airstrike remains one incident. Original governor Ivan Fedorov post 48995 at 18:00:01 UTC reports 20 dead and 32 injured. This injury figure differs from the current State Emergency Service post 77201, which reports 20 dead and 18 injured. The full Telegram HTML was inspected: the 17-death passage is an embedded reply to the earlier post, not the current message. Ukrainska Pravda at 18:52 UTC relays the SES 20-death, 18-injury account; it does not independently count casualties. The casualty accounts are attributed, not independently verified, and the injury discrepancy is not reconciled. Exact edit time of the SES post is unknown. The sources continue to describe rescue work; no completion timetable is established.",
-      "time": "2026-10-11T03:04:20.433364+00:00",
-      "timestamp": "2026-10-11T03:04:20.433364+00:00",
-      "timestamp_kind": "review_time",
-      "source_date": "2026-10-10",
-      "incident_id": "zaporizhzhia-morning-residential-airstrike-official-accounts-2026-10-10",
-      "publication_id": "Telegram:ivan_fedorov_zp:48995",
-      "originating_source": "Ivan Fedorov original Telegram post; State Emergency Service original Telegram post; Ukrainska Pravda attributed reporting",
-      "event_at": null,
-      "published_at": "2026-10-10T18:00:01Z",
-      "collected_at": "2026-10-11T03:02:23.451215Z",
-      "reviewed_at": "2026-10-11T03:04:20.433364Z",
-      "verified_at": null,
-      "evidence_id": "ev_01bbae7b0542dcaa24ebd90eb100217f16634804c07fbed7d755a2237b963e25",
-      "revision_id": "rev_bcff57c25d46004c5b70cc2edb454b14a59ab8d631ed7a06dddba6e03345407f",
-      "revision_ids": [
-        "rev_bcff57c25d46004c5b70cc2edb454b14a59ab8d631ed7a06dddba6e03345407f"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "inactive_revision_superseded",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_a922731c787a5b1f808658ae0ff00bdaaf672d199ce53b1e327f6e7718da6239",
-      "report_status": "superseded",
-      "implication": "Both official accounts report 20 deaths, but injuries differ: governor 32, emergency service 18. Independent casualty verification remains absent.",
-      "next_trigger": "Original accounts say rescue work continues; no completion or casualty-reconciliation timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Governor injury account rises to 32; SES account remains 18; discrepancy retained.",
-      "source_urls": [
-        "https://t.me/dsns_telegram/77201",
-        "https://t.me/ivan_fedorov_zp/48995",
-        "https://www.pravda.com.ua/eng/news/2026/10/10/8057385/"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3691,7 +3675,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-12T03:06:25Z",
+  "build_at": "2026-10-12T06:08:13Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3891,7 +3875,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-12T03:06:25Z",
+      "generated_at": "2026-10-12T06:08:13Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4524,10 +4508,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-12T03:06:25Z",
+    "generated_at": "2026-10-12T06:08:13Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 803.81,
+    "age_hours": 806.84,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4609,7 +4593,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4676,7 +4660,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4704,7 +4688,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4732,7 +4716,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4832,7 +4816,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4899,7 +4883,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4997,7 +4981,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 79.87054398148148,
+            "remaining_days": 79.74429398148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5025,7 +5009,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5123,7 +5107,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5151,7 +5135,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 79.87054398148148,
+            "remaining_days": 79.74429398148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5218,7 +5202,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 81.07818287037037,
+            "remaining_days": 80.95193287037037,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5298,104 +5282,125 @@ const state = {
   },
   "evidence_changes": {
     "status": "compared",
-    "new_verified_revision_count": 0,
-    "recent_new_revision_ids": []
+    "new_verified_revision_count": 2,
+    "recent_new_revision_ids": [
+      "rev_663a67f153a515470d3b4bf1f81ea31254dc9f63c9735147db92e5dcc74595c5",
+      "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d"
+    ]
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-12T03:06:25Z",
+    "generated_at": "2026-10-12T06:08:13Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "ce31713133bb72e2ffa13a7fcf88c18decd685a837a137bd83529accda8a67e1",
+    "previous_snapshot_id": "1d33eacc46cedc36d44aef2f0b63ea0428984865141dc5b3bcb5017d983fb800",
     "changes": [
       {
-        "zone": "ethiopia_tigray",
-        "headline": "Adigrat revision: Reuters says verified video shows allied militia; city control unconfirmed",
-        "status": "revision",
-        "verified": false,
+        "zone": "russia_ukraine",
+        "headline": "Zelensky backs announced energy truce but reports later Kyiv and Kharkiv power strikes",
+        "status": "reported",
+        "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_2fb9001ddb45da740d880b7dcaab0bc985f41b96f264ee1d8d3da51b505c0c63",
+        "correction_id": "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/",
-          "https://www.afp.com/en/eritrean-troops-deploy-ethiopias-tigray-region",
-          "https://www.aljazeera.com/news/2026/10/7/witnesses-spot-eritrean-troops-inside-northern-ethiopia-as-tensions-flare",
-          "https://www.cnbcafrica.com/2026/ethiopia-calls-for-immediate-withdrawal-of-eritrean-troops-in-letter-to-un",
-          "https://www.dailysabah.com/world/africa/ethiopia-launches-strikes-at-eritrean-troops-venturing-into-n-tigray",
-          "https://www.internazionale.it/ultime-notizie-reuters/2026/10/09/ethiopia-says-it-must-defend-itself-against-eritrea-s-all-out-invasion",
-          "https://www.reuters.com/world/africa/ethiopia-says-it-must-defend-itself-against-eritreas-all-out-invasion-2026-10-09",
-          "https://www.thestar.com.my/news/world/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion"
+          "https://t.me/V_Zelenskiy_official/21315",
+          "https://t.me/V_Zelenskiy_official/21317",
+          "https://www.manilatimes.net/2026/10/12/world/americas-emea/trump-says-russia-and-ukraine-agree-to-an-energy-ceasefire-but-kyiv-says-attacks-continue/2443404",
+          "https://www.theguardian.com/world/2026/oct/12/ukraine-war-briefing-russia-attacks-multiple-power-plants-after-trump-energy-ceasefire-claim"
         ],
-        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-        "implication": "Reuters reports authenticated footage of allied militia presence; this does not establish army control or verify the disputed Eritrean incursion.",
-        "historical_revision_ids": [
-          "rev_4402d84b5d042e697abf034bbe24ad1d747787df981d38f5f92ddb77394f8346",
-          "rev_7e2c3fc0ba13c73d5d7843ca506fedc12eb5f87cbfd92bca65920a1a4f1dda95",
-          "rev_a257809bc3a09af9b344ed52a077b8b9d2afb7c7cade7cdf9534a0d546fe1f53",
-          "rev_b3efc303480c7b782eb61a729bb002f00c585f67e43cdd3553c8b0d10b413051",
-          "rev_d47b711d96e0a26f8705070504cf46142ecb2a27f42ba3c3b258d0e32fac63a1"
-        ],
+        "next_trigger": "Kyiv explicitly awaits US details and reciprocal Russian support; no implementation deadline is supplied.",
+        "implication": "The announced energy truce is not established as implemented: Kyiv reports later strikes, and Russian assent and compliance remain unverified.",
+        "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "adigrat-eritrean-troop-sightings-afp-2026-10-07",
-        "change": "Correction / revision"
+        "incident_id": "energy-ceasefire-claim-and-kyiv-kharkiv-strikes-2026-10-11",
+        "change": "New incident report"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Pavlograd district: emergency service reports enterprise fire after overnight strike",
+        "status": "reported",
+        "verified": true,
+        "independently_verified": false,
+        "correction_id": "rev_663a67f153a515470d3b4bf1f81ea31254dc9f63c9735147db92e5dcc74595c5",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://t.me/dsns_telegram/77348"
+        ],
+        "next_trigger": "No follow-up assessment or dated operational trigger is supplied.",
+        "implication": "An official account reports an extinguished industrial-site fire; damage, casualties and attribution are not independently established.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "pavlograd-enterprise-fire-emergency-service-77348-2026-10-12",
+        "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "ethiopia_tigray",
-        "headline": "Adigrat revision: Reuters says verified video shows allied militia; city control unconfirmed",
-        "status": "revision",
-        "verified": false,
+        "zone": "russia_ukraine",
+        "headline": "Zelensky backs announced energy truce but reports later Kyiv and Kharkiv power strikes",
+        "status": "reported",
+        "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_2fb9001ddb45da740d880b7dcaab0bc985f41b96f264ee1d8d3da51b505c0c63",
+        "correction_id": "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/",
-          "https://www.afp.com/en/eritrean-troops-deploy-ethiopias-tigray-region",
-          "https://www.aljazeera.com/news/2026/10/7/witnesses-spot-eritrean-troops-inside-northern-ethiopia-as-tensions-flare",
-          "https://www.cnbcafrica.com/2026/ethiopia-calls-for-immediate-withdrawal-of-eritrean-troops-in-letter-to-un",
-          "https://www.dailysabah.com/world/africa/ethiopia-launches-strikes-at-eritrean-troops-venturing-into-n-tigray",
-          "https://www.internazionale.it/ultime-notizie-reuters/2026/10/09/ethiopia-says-it-must-defend-itself-against-eritrea-s-all-out-invasion",
-          "https://www.reuters.com/world/africa/ethiopia-says-it-must-defend-itself-against-eritreas-all-out-invasion-2026-10-09",
-          "https://www.thestar.com.my/news/world/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion"
+          "https://t.me/V_Zelenskiy_official/21315",
+          "https://t.me/V_Zelenskiy_official/21317",
+          "https://www.manilatimes.net/2026/10/12/world/americas-emea/trump-says-russia-and-ukraine-agree-to-an-energy-ceasefire-but-kyiv-says-attacks-continue/2443404",
+          "https://www.theguardian.com/world/2026/oct/12/ukraine-war-briefing-russia-attacks-multiple-power-plants-after-trump-energy-ceasefire-claim"
         ],
-        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-        "implication": "Reuters reports authenticated footage of allied militia presence; this does not establish army control or verify the disputed Eritrean incursion.",
-        "historical_revision_ids": [
-          "rev_4402d84b5d042e697abf034bbe24ad1d747787df981d38f5f92ddb77394f8346",
-          "rev_7e2c3fc0ba13c73d5d7843ca506fedc12eb5f87cbfd92bca65920a1a4f1dda95",
-          "rev_a257809bc3a09af9b344ed52a077b8b9d2afb7c7cade7cdf9534a0d546fe1f53",
-          "rev_b3efc303480c7b782eb61a729bb002f00c585f67e43cdd3553c8b0d10b413051",
-          "rev_d47b711d96e0a26f8705070504cf46142ecb2a27f42ba3c3b258d0e32fac63a1"
-        ],
+        "next_trigger": "Kyiv explicitly awaits US details and reciprocal Russian support; no implementation deadline is supplied.",
+        "implication": "The announced energy truce is not established as implemented: Kyiv reports later strikes, and Russian assent and compliance remain unverified.",
+        "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "adigrat-eritrean-troop-sightings-afp-2026-10-07",
-        "change": "Correction / revision"
+        "incident_id": "energy-ceasefire-claim-and-kyiv-kharkiv-strikes-2026-10-11",
+        "change": "New incident report"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Pavlograd district: emergency service reports enterprise fire after overnight strike",
+        "status": "reported",
+        "verified": true,
+        "independently_verified": false,
+        "correction_id": "rev_663a67f153a515470d3b4bf1f81ea31254dc9f63c9735147db92e5dcc74595c5",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://t.me/dsns_telegram/77348"
+        ],
+        "next_trigger": "No follow-up assessment or dated operational trigger is supplied.",
+        "implication": "An official account reports an extinguished industrial-site fire; damage, casualties and attribution are not independently established.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "pavlograd-enterprise-fire-emergency-service-77348-2026-10-12",
+        "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Adigrat revision: Reuters says verified video shows allied militia; city control unconfirmed\nImplication: Reuters reports authenticated footage of allied militia presence; this does not establish army control or verify the disputed Eritrean incursion.\nEvidence: verification not established https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/\nNext trigger: No dated follow-up or independently evidenced next operational trigger is supplied.\nDossier: dashboard incident list; source https://d2233.cms.socastsrm.com/2026/10/10/ethiopian-forces-regain-control-of-border-city-after-reported-eritrean-incursion/",
-    "message_id": "98858648d77d6a135dccea9dce86391067a610cee60669d9d79d88b4adf1962c"
+    "message": "New incident report: Zelensky backs announced energy truce but reports later Kyiv and Kharkiv power strikes\nImplication: The announced energy truce is not established as implemented: Kyiv reports later strikes, and Russian assent and compliance remain unverified.\nEvidence: verified supporting evidence https://t.me/V_Zelenskiy_official/21315\nNext trigger: Kyiv explicitly awaits US details and reciprocal Russian support; no implementation deadline is supplied.\nDossier: dashboard incident list; source https://t.me/V_Zelenskiy_official/21315\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "067227e4e0136b88d69d726db86e08528228bdb12313965170e800a79718b4b2"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 906,
-    "current_report_count": 895,
+    "total_count": 908,
+    "current_report_count": 897,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 886,
-    "bytes": 1481632,
-    "sha256": "28a549ea35a9b6bc461543fd9e505768188018a59851e21ecc8300ac489859ff",
+    "archive_count": 888,
+    "bytes": 1486414,
+    "sha256": "dc1c0102afab53ddfb955d3bb0b134909f63d2bf2ce933b2986184e816cd1a9e",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-11T18:25:52Z",
-    "verified_at": "2026-10-10T21:05:14.214970Z",
-    "reviewed_at": "2026-10-12T03:05:56.945349Z"
+    "published_at": "2026-10-12T05:32:58Z",
+    "verified_at": "2026-10-12T06:07:31.025642Z",
+    "reviewed_at": "2026-10-12T06:07:31.025642Z"
   }
 };
 
