@@ -1,6 +1,6 @@
 {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-13T12:08:48Z",
+  "last_updated": "2026-10-13T15:10:36Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -722,11 +722,11 @@
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 7,
-        "qualifying_source_count": 5,
-        "scanned": 144,
-        "retained": 9,
-        "rejected": 135,
+        "source_count": 8,
+        "qualifying_source_count": 6,
+        "scanned": 146,
+        "retained": 10,
+        "rejected": 136,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2963,6 +2963,46 @@
     },
     {
       "zone": "russia_ukraine",
+      "headline": "Kharkiv correction: emergency-service main post reports four dead and 41 hurt, not the quoted earlier three",
+      "text": "The main body of original emergency-service post 77494, published October 13 at 09:22:53 UTC, reports four people killed and 41 affected after the missile strike on a residential building in Kholodnohirskyi district; emergency rescue work continues and the information is being updated. The retained three-death account came from the quoted earlier post 77448, not the main body of 77494. This corrects the reading of the same retained incident and publication, not a new attack or independently verified casualty total. Reuters reporting via The Straits Times also reports four deaths in Kharkiv, citing Ukrainian officials; the accounts are not operationally independent.",
+      "timestamp_kind": "publication_time",
+      "source_date": "2026-10-13",
+      "incident_id": "kharkiv-kholodnohirskyi-shevchenkivskyi-missile-strike-ses-77441-2026-10-12",
+      "publication_id": "Telegram:dsns_telegram/77494",
+      "originating_source": "Original public official publication",
+      "event_at": null,
+      "published_at": "2026-10-13T09:22:53Z",
+      "collected_at": "2026-10-13T15:04:18.900294Z",
+      "reviewed_at": "2026-10-13T15:09:19.581804Z",
+      "verified_at": "2026-10-13T15:09:19.581804Z",
+      "evidence_id": "ev_32149c4faffa5506d187dbb7c5ae86254244626af5e93845350520d417cd7c56",
+      "revision_id": "rev_5a0fd29e589d825d914ba39db03db7f31f4eff16287d14918602e3147b94c53b",
+      "revision_ids": [
+        "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
+        "rev_5a0fd29e589d825d914ba39db03db7f31f4eff16287d14918602e3147b94c53b"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": true,
+      "rejection_reasons": [],
+      "status": "qualifying",
+      "supersedes": "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
+      "report_status": "correction",
+      "implication": "The retained reading is corrected to four reported deaths and 41 hurt; rescue work continues, and casualty verification remains non-independent.",
+      "next_trigger": "The emergency service says rescue work continues and information is being updated; no completion or update deadline is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Corrects the retained reading: post 77494 main body reports four dead and 41 hurt; three belongs to the quoted earlier post 77448.",
+      "source_urls": [
+        "https://t.me/dsns_telegram/77448",
+        "https://t.me/dsns_telegram/77494",
+        "https://www.straitstimes.com/world/europe/russia-hits-no-energy-targets-in-ukraine-for-first-time-since-trumps-truce"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
       "headline": "Kharkiv revision: emergency service reports three bodies recovered from apartment-strike rubble",
       "text": "Ukraine's State Emergency Service publishes an explicit update saying three dead people have been recovered from rubble in Kharkiv, with firefighting and search-and-rescue operations continuing. Its linked quoted description identifies the destroyed entrance of a four-story residential building in Kholodnohirskyi district, matching the retained October 12 apartment-collapse response. This is an attributable casualty revision for the same rescue episode, not a new attack. The earlier 11-injury report is retained; this update does not supply a replacement injury total. A later presidential statement reports four deaths at a Kharkiv residential building and 41 injuries across the city, but its lack of an exact site identifier prevents treating its citywide injury figure as this building's toll. Casualty totals, weapon identity and responsibility remain independently unverified.",
       "timestamp_kind": "publication_time",
@@ -2978,15 +3018,18 @@
       "evidence_id": "ev_32149c4faffa5506d187dbb7c5ae86254244626af5e93845350520d417cd7c56",
       "revision_id": "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
       "revision_ids": [
-        "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3"
+        "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
+        "rev_5a0fd29e589d825d914ba39db03db7f31f4eff16287d14918602e3147b94c53b"
       ],
       "direction": "context",
       "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
+      "qualifies": false,
+      "rejection_reasons": [
+        "inactive_revision_superseded"
+      ],
+      "status": "insufficient_evidence",
       "supersedes": "rev_5c470dfbcf7401ac3121c4e8c160f6d4233eb192a2cbd9e0a2e3ab41374f7db5",
-      "report_status": "revision",
+      "report_status": "superseded",
       "implication": "The same apartment-collapse response now has three reported deaths; rescue work continues and independent casualty verification is unavailable.",
       "next_trigger": "The emergency service says firefighting and search-and-rescue work continues; no completion timetable is supplied.",
       "independent_verification": false,
@@ -3526,42 +3569,6 @@
         "https://www.defconalerts.com/p/tanker-struck-by-projectile-in-strait",
         "https://www.ukmto.org/-/media/ukmto/products/20261012-ukmto_warning_166.pdf?rev=d1c29f7d3a624340958b0acd7f7cb65a"
       ]
-    },
-    {
-      "zone": "ethiopia_tigray",
-      "headline": "Adwa: AFP witnesses report federal forces entering after TPLF withdrawal; town-centre control unclear",
-      "text": "An October 12 AFP report carried by Al Jazeera says residents described Ethiopian federal forces and allied militia entering Adwa on Sunday, October 11, after TPLF fighters withdrew the previous day. A second resident says government forces were deployed in the town but had not reached its centre. One named resident alleges looting of institutions including Adwa Hospital; perpetrators and damage were not independently established. TPLF Vice President Amanuel Assefa declined comment. This is a newly reviewed Adwa reporting group, separate from retained Adigrat accounts; it is not proof of complete town control, a new Eritrean incursion or a new October 12 battle. The report also describes restored Mekelle flights, already retained, and an older October 4 hotel-strike claim that is not imported as a new incident.",
-      "timestamp_kind": "publication_time",
-      "incident_id": "adwa-federal-forces-entry-afp-witnesses-2026-10-11",
-      "publication_id": "AFP:Adwa-entry:AlJazeera:2026-10-12",
-      "originating_source": "AFP original eyewitness reporting reproduced by Al Jazeera; one reporting chain",
-      "event_at": null,
-      "published_at": "2026-10-12T18:01:41Z",
-      "collected_at": "2026-10-12T21:04:29.328168Z",
-      "reviewed_at": "2026-10-12T21:08:11.930490Z",
-      "verified_at": null,
-      "evidence_id": "ev_a7d2a4aad3b90e020eccc6cd4a42a54f5e2dc5bdbe49c7732332c712fdc82e8d",
-      "revision_id": "rev_be3075ca64484b4df0330d9d8baa548260ca5fd3e5b1796dcd06dc7ae7b55804",
-      "revision_ids": [
-        "rev_be3075ca64484b4df0330d9d8baa548260ca5fd3e5b1796dcd06dc7ae7b55804"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "headline_only_or_body_unavailable",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "Reported federal entry follows TPLF withdrawal in a separate Tigray town; current control and looting responsibility remain unverified.",
-      "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://www.aljazeera.com/news/2026/10/12/ethiopian-troops-capture-adwa-without-a-fight-witnesses-say"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3578,7 +3585,7 @@
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-13T12:08:48Z",
+  "build_at": "2026-10-13T15:10:36Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3778,7 +3785,7 @@
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-13T12:08:48Z",
+      "generated_at": "2026-10-13T15:10:36Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4411,10 +4418,10 @@
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-13T12:08:48Z",
+    "generated_at": "2026-10-13T15:10:36Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 836.8497222222222,
+    "age_hours": 839.8797222222222,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4496,7 +4503,7 @@
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4563,7 +4570,7 @@
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4591,7 +4598,7 @@
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4619,7 +4626,7 @@
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4719,7 +4726,7 @@
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4786,7 +4793,7 @@
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4884,7 +4891,7 @@
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 78.49388888888889,
+            "remaining_days": 78.36763888888889,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4912,7 +4919,7 @@
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5010,7 +5017,7 @@
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5038,7 +5045,7 @@
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 78.49388888888889,
+            "remaining_days": 78.36763888888889,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5105,7 +5112,7 @@
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 79.70152777777778,
+            "remaining_days": 79.57527777777777,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5185,67 +5192,38 @@
   },
   "evidence_changes": {
     "status": "compared",
-    "new_verified_revision_count": 4,
+    "new_verified_revision_count": 2,
     "recent_new_revision_ids": [
-      "rev_e13ab7eddf789422bd8998d814c2d91b10a6eb6b6f7a36a2fb591433753f6753",
-      "rev_e85f16b6a4448d113738eef6d2884bcdc00e036e5a6b69137fdc9b3de4c125c5",
-      "rev_05f00da796af5a62d901f6dd2344d70a41bbf96876495a8a127e1ecb931c720a",
-      "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3"
+      "rev_5a0fd29e589d825d914ba39db03db7f31f4eff16287d14918602e3147b94c53b"
     ]
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-13T12:08:48Z",
+    "generated_at": "2026-10-13T15:10:36Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "eb867715e407220278de1f7473e740b1a1120010c8ba01e418df003386b4e35f",
+    "previous_snapshot_id": "250021cc3103c6a75615c64c6cead30dff24476513418bd22601437932b41b2f",
     "changes": [
       {
         "zone": "russia_ukraine",
-        "headline": "Energy truce revision: Kyiv claims two days of restraint while Russian energy attacks continued",
-        "status": "revision",
+        "headline": "Kharkiv correction: emergency-service main post reports four dead and 41 hurt, not the quoted earlier three",
+        "status": "correction",
         "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_05f00da796af5a62d901f6dd2344d70a41bbf96876495a8a127e1ecb931c720a",
-        "material_revision": "Original October 13 statement extends the retained truce dispute to a claimed two-day Ukrainian paus",
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/V_Zelenskiy_official/21315",
-          "https://t.me/V_Zelenskiy_official/21317",
-          "https://t.me/V_Zelenskiy_official/21324",
-          "https://t.me/V_Zelenskiy_official/21332",
-          "https://t.me/V_Zelenskiy_official/21349",
-          "https://www.cnbc.com/2026/10/12/russia-ukraine-energy-ceasefire-trump.html",
-          "https://www.manilatimes.net/2026/10/12/world/americas-emea/trump-says-russia-and-ukraine-agree-to-an-energy-ceasefire-but-kyiv-says-attacks-continue/2443404",
-          "https://www.theguardian.com/world/2026/oct/12/ukraine-war-briefing-russia-attacks-multiple-power-plants-after-trump-energy-ceasefire-claim"
-        ],
-        "next_trigger": "Kyiv calls for reciprocal Russian de-escalation; no implementation or follow-up deadline is supplied.",
-        "implication": "Kyiv now claims a two-day unilateral pause, while alleging continued Russian attacks; an implemented bilateral energy truce remains unverified.",
-        "historical_revision_ids": [
-          "rev_bf1741b0e9d7595425f8df318d8d995587d449736e4c0aad7b56c8e900d47ad7",
-          "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "energy-ceasefire-claim-and-kyiv-kharkiv-strikes-2026-10-11",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Kharkiv revision: emergency service reports three bodies recovered from apartment-strike rubble",
-        "status": "revision",
-        "verified": true,
-        "independently_verified": false,
-        "correction_id": "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
-        "material_revision": "Explicit emergency-service update adds three recovered bodies to the retained Kholodnohirskyi four-s",
+        "correction_id": "rev_5a0fd29e589d825d914ba39db03db7f31f4eff16287d14918602e3147b94c53b",
+        "material_revision": "Corrects the retained reading: post 77494 main body reports four dead and 41 hurt; three belongs to ",
         "urgent_qualified": false,
         "source_urls": [
           "https://t.me/dsns_telegram/77441",
+          "https://t.me/dsns_telegram/77448",
           "https://t.me/dsns_telegram/77494",
-          "https://www.kyivpost.com/post/86860"
+          "https://www.kyivpost.com/post/86860",
+          "https://www.straitstimes.com/world/europe/russia-hits-no-energy-targets-in-ukraine-for-first-time-since-trumps-truce"
         ],
-        "next_trigger": "The emergency service says firefighting and search-and-rescue work continues; no completion timetable is supplied.",
-        "implication": "The same apartment-collapse response now has three reported deaths; rescue work continues and independent casualty verification is unavailable.",
+        "next_trigger": "The emergency service says rescue work continues and information is being updated; no completion or update deadline is supplied.",
+        "implication": "The retained reading is corrected to four reported deaths and 41 hurt; rescue work continues, and casualty verification remains non-independent.",
         "historical_revision_ids": [
+          "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
           "rev_5c470dfbcf7401ac3121c4e8c160f6d4233eb192a2cbd9e0a2e3ab41374f7db5"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
@@ -5253,121 +5231,52 @@
         "change": "Correction / revision"
       },
       {
-        "zone": "north_korea",
-        "headline": "North Korea revision: original KCNA statement claims October 12 tactical-missile component upgrade",
+        "zone": "russia_ukraine",
+        "headline": "Kharkiv revision: emergency service reports fire extinguished and nine hurt; mayor account says ten",
         "status": "revision",
-        "verified": false,
+        "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_1e1589fd86a5309a6a65ba1212d9dcc8bd8a4b57c7a1e9d15845cd40b990c280",
-        "material_revision": null,
+        "correction_id": "rev_4884e9eebc9b589ecf1304797cfce511eecef140614f31476988d97f9281c4c8",
+        "material_revision": "Full original update and exact publication timestamp now checked; nine-injury official account uncha",
         "urgent_qualified": false,
         "source_urls": [
-          "http://kcna.kp/en/article/detail/718a78bda31c66610dc2da3ab372be2f",
-          "https://en.yna.co.kr/view/AEN20261013000753315",
-          "https://english.kyodonews.net/articles/-/87917",
-          "https://interaksyon.philstar.com/politics-issues/2026/10/12/320382/north-korea-multiple-ballistic-missiles-south-korea-says/",
-          "https://japan.kantei.go.jp/105/statement/202610/1012shiji.html",
-          "https://www.japantimes.co.jp/news/2026/10/12/japan/north-korea-multiple-ballistic-missiles-launch/",
-          "https://www.mod.go.jp/j/press/news/2026/10/12e.html",
-          "https://www.reuters.com/3fec1b0a85a0/world/asia-pacific/north-korea-fires-unidentified-projectile-toward-sea-off-its-east-coast-seoul-2026-10-12/",
-          "https://www3.nhk.or.jp/nhkworld/news/20261012de58162/"
+          "https://t.me/dsns_telegram/77310",
+          "https://t.me/dsns_telegram/77329",
+          "https://t.me/ihor_terekhov/4756",
+          "https://www.kyivpost.com/post/86735"
         ],
-        "next_trigger": "No technical disclosure or follow-up timetable is supplied by KCNA.",
-        "implication": "The retained launch now has an original North Korean technical-upgrade claim; the component and actual performance improvement remain unverified.",
+        "next_trigger": "The service reports the fire extinguished; no dated follow-up or evidence-backed next operational trigger is supplied.",
+        "implication": "The service reports the fire extinguished and nine injured; an earlier mayor account says ten. Casualty totals and responsibility remain independently unverified.",
         "historical_revision_ids": [
-          "rev_62ae469b12da52abf71b29eaefe8d166f3eed8d0e135ffb9dd46a0a458e8b096",
-          "rev_a0930c90880d3d8c7cab3c5c62337c0e35b6261f383d6b6e1d3fe9781f8b1105"
+          "rev_0dfca6e4bfe4ae0ad61b3e7e4ed912099b58d0faf7dd8f54ec1952bdb8369879",
+          "rev_ab4cfdb6c2d9b85243f83d62a1a7bb94ab6891e0e2f443f5bb5ca3941ecad5f0"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "north-korea-pyongyang-multiple-ballistic-launch-jcs-2026-10-12",
+        "incident_id": "kharkiv-nemyshlianskyi-residential-airstrike-ses-77310-2026-10-11",
         "change": "Correction / revision"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Rivne: emergency service reports 20 preliminarily injured after UAV debris hit educational building",
-        "status": "reported",
-        "verified": true,
-        "independently_verified": false,
-        "correction_id": "rev_e85f16b6a4448d113738eef6d2884bcdc00e036e5a6b69137fdc9b3de4c125c5",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77510"
-        ],
-        "next_trigger": "The emergency service says the injury information is being clarified and structural work continues; no update deadline is supplied.",
-        "implication": "The emergency service reports civilian injuries and damage at an educational building; the preliminary toll and attribution remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "rivne-educational-building-debris-fire-ses-77510-2026-10-13",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Zaporizhzhia: emergency service reports warehouse-strike injury and interrupted firefighting",
-        "status": "reported",
-        "verified": true,
-        "independently_verified": false,
-        "correction_id": "rev_e13ab7eddf789422bd8998d814c2d91b10a6eb6b6f7a36a2fb591433753f6753",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77516"
-        ],
-        "next_trigger": "The source says the fires were extinguished; no dated further assessment or independently evidenced next trigger is supplied.",
-        "implication": "The emergency service reports a warehouse injury and temporary rescue interruptions due to renewed attack threats; independent impact verification is unavailable.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "zaporizhzhia-warehouse-uav-fire-response-suspension-ses-77516-2026-10-13",
-        "change": "New incident report"
       }
     ],
     "items": [
       {
         "zone": "russia_ukraine",
-        "headline": "Energy truce revision: Kyiv claims two days of restraint while Russian energy attacks continued",
-        "status": "revision",
+        "headline": "Kharkiv correction: emergency-service main post reports four dead and 41 hurt, not the quoted earlier three",
+        "status": "correction",
         "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_05f00da796af5a62d901f6dd2344d70a41bbf96876495a8a127e1ecb931c720a",
-        "material_revision": "Original October 13 statement extends the retained truce dispute to a claimed two-day Ukrainian paus",
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/V_Zelenskiy_official/21315",
-          "https://t.me/V_Zelenskiy_official/21317",
-          "https://t.me/V_Zelenskiy_official/21324",
-          "https://t.me/V_Zelenskiy_official/21332",
-          "https://t.me/V_Zelenskiy_official/21349",
-          "https://www.cnbc.com/2026/10/12/russia-ukraine-energy-ceasefire-trump.html",
-          "https://www.manilatimes.net/2026/10/12/world/americas-emea/trump-says-russia-and-ukraine-agree-to-an-energy-ceasefire-but-kyiv-says-attacks-continue/2443404",
-          "https://www.theguardian.com/world/2026/oct/12/ukraine-war-briefing-russia-attacks-multiple-power-plants-after-trump-energy-ceasefire-claim"
-        ],
-        "next_trigger": "Kyiv calls for reciprocal Russian de-escalation; no implementation or follow-up deadline is supplied.",
-        "implication": "Kyiv now claims a two-day unilateral pause, while alleging continued Russian attacks; an implemented bilateral energy truce remains unverified.",
-        "historical_revision_ids": [
-          "rev_bf1741b0e9d7595425f8df318d8d995587d449736e4c0aad7b56c8e900d47ad7",
-          "rev_db192bdbe034c305aeb88eccca8280b7915af044b6e6ec9613537c49671c422d"
-        ],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "energy-ceasefire-claim-and-kyiv-kharkiv-strikes-2026-10-11",
-        "change": "Correction / revision"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Kharkiv revision: emergency service reports three bodies recovered from apartment-strike rubble",
-        "status": "revision",
-        "verified": true,
-        "independently_verified": false,
-        "correction_id": "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
-        "material_revision": "Explicit emergency-service update adds three recovered bodies to the retained Kholodnohirskyi four-s",
+        "correction_id": "rev_5a0fd29e589d825d914ba39db03db7f31f4eff16287d14918602e3147b94c53b",
+        "material_revision": "Corrects the retained reading: post 77494 main body reports four dead and 41 hurt; three belongs to ",
         "urgent_qualified": false,
         "source_urls": [
           "https://t.me/dsns_telegram/77441",
+          "https://t.me/dsns_telegram/77448",
           "https://t.me/dsns_telegram/77494",
-          "https://www.kyivpost.com/post/86860"
+          "https://www.kyivpost.com/post/86860",
+          "https://www.straitstimes.com/world/europe/russia-hits-no-energy-targets-in-ukraine-for-first-time-since-trumps-truce"
         ],
-        "next_trigger": "The emergency service says firefighting and search-and-rescue work continues; no completion timetable is supplied.",
-        "implication": "The same apartment-collapse response now has three reported deaths; rescue work continues and independent casualty verification is unavailable.",
+        "next_trigger": "The emergency service says rescue work continues and information is being updated; no completion or update deadline is supplied.",
+        "implication": "The retained reading is corrected to four reported deaths and 41 hurt; rescue work continues, and casualty verification remains non-independent.",
         "historical_revision_ids": [
+          "rev_1c9d97fa173cbb9ff360c5d7187c958134fdd0cc870d19d955687e4c627e7bd3",
           "rev_5c470dfbcf7401ac3121c4e8c160f6d4233eb192a2cbd9e0a2e3ab41374f7db5"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
@@ -5375,94 +5284,51 @@
         "change": "Correction / revision"
       },
       {
-        "zone": "north_korea",
-        "headline": "North Korea revision: original KCNA statement claims October 12 tactical-missile component upgrade",
+        "zone": "russia_ukraine",
+        "headline": "Kharkiv revision: emergency service reports fire extinguished and nine hurt; mayor account says ten",
         "status": "revision",
-        "verified": false,
+        "verified": true,
         "independently_verified": false,
-        "correction_id": "rev_1e1589fd86a5309a6a65ba1212d9dcc8bd8a4b57c7a1e9d15845cd40b990c280",
-        "material_revision": null,
+        "correction_id": "rev_4884e9eebc9b589ecf1304797cfce511eecef140614f31476988d97f9281c4c8",
+        "material_revision": "Full original update and exact publication timestamp now checked; nine-injury official account uncha",
         "urgent_qualified": false,
         "source_urls": [
-          "http://kcna.kp/en/article/detail/718a78bda31c66610dc2da3ab372be2f",
-          "https://en.yna.co.kr/view/AEN20261013000753315",
-          "https://english.kyodonews.net/articles/-/87917",
-          "https://interaksyon.philstar.com/politics-issues/2026/10/12/320382/north-korea-multiple-ballistic-missiles-south-korea-says/",
-          "https://japan.kantei.go.jp/105/statement/202610/1012shiji.html",
-          "https://www.japantimes.co.jp/news/2026/10/12/japan/north-korea-multiple-ballistic-missiles-launch/",
-          "https://www.mod.go.jp/j/press/news/2026/10/12e.html",
-          "https://www.reuters.com/3fec1b0a85a0/world/asia-pacific/north-korea-fires-unidentified-projectile-toward-sea-off-its-east-coast-seoul-2026-10-12/",
-          "https://www3.nhk.or.jp/nhkworld/news/20261012de58162/"
+          "https://t.me/dsns_telegram/77310",
+          "https://t.me/dsns_telegram/77329",
+          "https://t.me/ihor_terekhov/4756",
+          "https://www.kyivpost.com/post/86735"
         ],
-        "next_trigger": "No technical disclosure or follow-up timetable is supplied by KCNA.",
-        "implication": "The retained launch now has an original North Korean technical-upgrade claim; the component and actual performance improvement remain unverified.",
+        "next_trigger": "The service reports the fire extinguished; no dated follow-up or evidence-backed next operational trigger is supplied.",
+        "implication": "The service reports the fire extinguished and nine injured; an earlier mayor account says ten. Casualty totals and responsibility remain independently unverified.",
         "historical_revision_ids": [
-          "rev_62ae469b12da52abf71b29eaefe8d166f3eed8d0e135ffb9dd46a0a458e8b096",
-          "rev_a0930c90880d3d8c7cab3c5c62337c0e35b6261f383d6b6e1d3fe9781f8b1105"
+          "rev_0dfca6e4bfe4ae0ad61b3e7e4ed912099b58d0faf7dd8f54ec1952bdb8369879",
+          "rev_ab4cfdb6c2d9b85243f83d62a1a7bb94ab6891e0e2f443f5bb5ca3941ecad5f0"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "north-korea-pyongyang-multiple-ballistic-launch-jcs-2026-10-12",
+        "incident_id": "kharkiv-nemyshlianskyi-residential-airstrike-ses-77310-2026-10-11",
         "change": "Correction / revision"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Rivne: emergency service reports 20 preliminarily injured after UAV debris hit educational building",
-        "status": "reported",
-        "verified": true,
-        "independently_verified": false,
-        "correction_id": "rev_e85f16b6a4448d113738eef6d2884bcdc00e036e5a6b69137fdc9b3de4c125c5",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77510"
-        ],
-        "next_trigger": "The emergency service says the injury information is being clarified and structural work continues; no update deadline is supplied.",
-        "implication": "The emergency service reports civilian injuries and damage at an educational building; the preliminary toll and attribution remain independently unverified.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "rivne-educational-building-debris-fire-ses-77510-2026-10-13",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Zaporizhzhia: emergency service reports warehouse-strike injury and interrupted firefighting",
-        "status": "reported",
-        "verified": true,
-        "independently_verified": false,
-        "correction_id": "rev_e13ab7eddf789422bd8998d814c2d91b10a6eb6b6f7a36a2fb591433753f6753",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://t.me/dsns_telegram/77516"
-        ],
-        "next_trigger": "The source says the fires were extinguished; no dated further assessment or independently evidenced next trigger is supplied.",
-        "implication": "The emergency service reports a warehouse injury and temporary rescue interruptions due to renewed attack threats; independent impact verification is unavailable.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "zaporizhzhia-warehouse-uav-fire-response-suspension-ses-77516-2026-10-13",
-        "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Energy truce revision: Kyiv claims two days of restraint while Russian energy attacks continued\nImplication: Kyiv now claims a two-day unilateral pause, while alleging continued Russian attacks; an implemented bilateral energy truce remains unverified.\nEvidence: verified supporting evidence https://t.me/V_Zelenskiy_official/21315\nNext trigger: Kyiv calls for reciprocal Russian de-escalation; no implementation or follow-up deadline is supplied.\nDossier: dashboard incident list; source https://t.me/V_Zelenskiy_official/21315\n4 additional incident changes in the dashboard briefing list.",
-    "message_id": "9442df7c42fcbf5791d979b310c794e83c2df7afb8f6a6a6c8f43d047a18bb71"
+    "message": "Correction / revision: Kharkiv correction: emergency-service main post reports four dead and 41 hurt, not the quoted earlier three\nImplication: The retained reading is corrected to four reported deaths and 41 hurt; rescue work continues, and casualty verification remains non-independent.\nEvidence: verified supporting evidence https://t.me/dsns_telegram/77441\nNext trigger: The emergency service says rescue work continues and information is being updated; no completion or update deadline is supplied.\nDossier: dashboard incident list; source https://t.me/dsns_telegram/77441\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "404bc5316e3d91c4079f6ba3cbf0d76459b81df671b9dd2a27d79a9eb3fdb50a"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 934,
-    "current_report_count": 923,
+    "total_count": 936,
+    "current_report_count": 925,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 914,
-    "bytes": 1548277,
-    "sha256": "a1c59c2fcdbbcec5a74ee2b88d5e2bcf06acfc389d4a7f835aed86d3ec921a35",
+    "archive_count": 916,
+    "bytes": 1553327,
+    "sha256": "f14543684add0e2ac510210d71d61becccdf156161183549dd00a12cefa812dd",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-10-13T11:24:51Z",
-    "verified_at": "2026-10-13T12:07:38.615921Z",
-    "reviewed_at": "2026-10-13T12:07:38.615921Z"
+    "verified_at": "2026-10-13T15:09:19.581804Z",
+    "reviewed_at": "2026-10-13T15:09:19.581804Z"
   }
 }
