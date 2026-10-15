@@ -1,6 +1,6 @@
 {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-15T12:07:34Z",
+  "last_updated": "2026-10-15T15:07:48Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -238,12 +238,12 @@
         "final_index": null
       },
       "evidence_quality": {
-        "status": "qualifying_evidence",
-        "source_count": 1,
-        "qualifying_source_count": 1,
+        "status": "insufficient_evidence",
+        "source_count": 0,
+        "qualifying_source_count": 0,
         "scanned": 234,
-        "retained": 1,
-        "rejected": 233,
+        "retained": 0,
+        "rejected": 234,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -255,7 +255,9 @@
           "stale_publication",
           "verified_at_unknown"
         ],
-        "coverage_gaps": []
+        "coverage_gaps": [
+          "no_qualifying_evidence"
+        ]
       },
       "legacy_trend": "stable",
       "severity": null,
@@ -1264,9 +1266,9 @@
         "status": "qualifying_evidence",
         "source_count": 1,
         "qualifying_source_count": 1,
-        "scanned": 27,
+        "scanned": 28,
         "retained": 1,
-        "rejected": 26,
+        "rejected": 27,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2812,6 +2814,43 @@
   ],
   "latest_news": [
     {
+      "zone": "ethiopia_tigray",
+      "headline": "Newly reviewed Anadolu report: Aksum entry and contested Eritrean-loss claims",
+      "text": "Anadolu attributes Ethiopian federal and allied Tigray Peace Force entry into Aksum and Eritrean border withdrawals to ACLED. A militia spokesperson claimed heavy Eritrean losses; the Eritrean information minister rejected those claims. The article explicitly says losses could not be independently verified. Exact event timing and current city control are not established by this evidence.",
+      "timestamp_kind": "review_time_only_publication_date_known",
+      "incident_id": "anadolu-publication-4089516-tigray-2026-10-15",
+      "publication_id": "anadolu-4089516",
+      "originating_source": "Anadolu Agency",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": null,
+      "reviewed_at": "2026-10-15T15:07:14.595507Z",
+      "verified_at": null,
+      "evidence_id": "ev_ef5005fb4d1c8382ec707f975e582cf9d77e55931941538ce716652a4e523dcf",
+      "revision_id": "rev_dd472afc33e1ee40f746f72a4ca0f07e49eba0f54ac2b4676170259dba0df90e",
+      "revision_ids": [
+        "rev_dd472afc33e1ee40f746f72a4ca0f07e49eba0f54ac2b4676170259dba0df90e"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "No further implication established by this evidence.",
+      "next_trigger": "Not supplied by source evidence.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://www.aa.com.tr/en/africa/ethiopian-forces-expand-control-in-tigray-as-militia-claims-heavy-eritrean-losses/4089516"
+      ]
+    },
+    {
       "zone": "russia_ukraine",
       "headline": "Ukraine: ministry source reports Starshield restored in motion; full recovery remains unverified",
       "text": "An unnamed Ukrainian Defence Ministry source tells the Kyiv Independent that Starshield service in motion is restored, based on unit reports. The source does not establish that every restriction is lifted; a separate drone-industry source reports uneven operation. NPR carries a restoration account but its retrieved page has no interview transcript, so it supplies no independent technical confirmation. Cause and the nationwide scope of restoration remain unresolved.",
@@ -3513,42 +3552,6 @@
       "source_urls": [
         "https://t.me/dsns_telegram/77635"
       ]
-    },
-    {
-      "zone": "yemen_red_sea",
-      "headline": "Newly reviewed October 14 release: coalition reports ballistic-missile interception towards Riyadh",
-      "text": "Saudi Press Agency publication N2701074 quotes Coalition spokesperson Major General Turki Al-Malki stating that a ballistic missile launched by the Houthis towards Riyadh was intercepted and destroyed. Original publication metadata gives October 14 at 08:00:33 UTC; the body gives 08:00 GMT. The notice gives no exact launch or interception time, casualties, physical damage, launch location or follow-up timetable. QNA/Gulf Times repeats the same coalition press release, not an independent physical verification. The statement was published before the preceding accepted research review and is newly reviewed here, not evidence of an interception after that review. It is separate from retained residential debris claims involving two cruise missiles; no additional damage or casualty total is inferred.",
-      "timestamp_kind": "publication_time",
-      "source_date": "2026-10-14",
-      "incident_id": "coalition-riyadh-ballistic-interception-spa-N2701074-2026-10-14",
-      "publication_id": "SPA:N2701074",
-      "originating_source": "Original public official publication",
-      "event_at": null,
-      "published_at": "2026-10-14T08:00:33Z",
-      "collected_at": "2026-10-14T12:03:52.572782Z",
-      "reviewed_at": "2026-10-14T12:06:45.370722Z",
-      "verified_at": "2026-10-14T12:06:45.370722Z",
-      "evidence_id": "ev_5c0d591b3af18e02a5cf2e47e8dfeed9ba813bcc999607d305d2cf98ed05c363",
-      "revision_id": "rev_53e2058fdb0be445c4e3d721647eeb2b0b99bb875a8c349c720776df2dc21a6e",
-      "revision_ids": [
-        "rev_53e2058fdb0be445c4e3d721647eeb2b0b99bb875a8c349c720776df2dc21a6e"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
-      "report_status": "unknown",
-      "implication": "The coalition reports intercepting a missile towards Riyadh; the source establishes neither new damage nor independently verified missile attribution.",
-      "next_trigger": "No follow-up timetable, casualty assessment or next trigger is supplied by the coalition release.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://www.gulf-times.com/article/735757/region/coalition-to-restore-legitimacy-in-yemen-announces-interception-destruction-of-ballistic-missile-towards-riyadh",
-        "https://www.spa.gov.sa/en/N2701074"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3565,7 +3568,7 @@
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-15T12:07:34Z",
+  "build_at": "2026-10-15T15:07:48Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3765,7 +3768,7 @@
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-15T12:07:34Z",
+      "generated_at": "2026-10-15T15:07:48Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4398,10 +4401,10 @@
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-15T12:07:34Z",
+    "generated_at": "2026-10-15T15:07:48Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 884.8291666666667,
+    "age_hours": 887.8330555555556,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4483,7 +4486,7 @@
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4550,7 +4553,7 @@
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4578,7 +4581,7 @@
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4606,7 +4609,7 @@
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4706,7 +4709,7 @@
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4773,7 +4776,7 @@
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4871,7 +4874,7 @@
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 76.49474537037037,
+            "remaining_days": 76.36958333333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4899,7 +4902,7 @@
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4997,7 +5000,7 @@
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5025,7 +5028,7 @@
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 76.49474537037037,
+            "remaining_days": 76.36958333333334,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5092,7 +5095,7 @@
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 77.70238425925926,
+            "remaining_days": 77.57722222222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5177,118 +5180,72 @@
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-15T12:07:34Z",
+    "generated_at": "2026-10-15T15:07:48Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "f96d653a53deb7cf818adeb3a667b8eeb945990300d53c426954e3d9be694df2",
+    "previous_snapshot_id": "da7328272d99e5065e3c725e6fb480f5471295eed598d23016af5eb8e7773817",
     "changes": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Ryazan refinery: Russia reports fire after attack; AP reports Ukrainian official confirmation",
+        "zone": "ethiopia_tigray",
+        "headline": "Newly reviewed Anadolu report: Aksum entry and contested Eritrean-loss claims",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_6a50e7fd956c5c4829393b542283234b28ac2a612205049a32aea5c240c402f5",
+        "correction_id": "rev_dd472afc33e1ee40f746f72a4ca0f07e49eba0f54ac2b4676170259dba0df90e",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://kyivindependent.com/zelensky-lifts-pause-on-ukraines-strikes-against-russian-oil-refineries/",
-          "https://t.me/mod_russia_en/30056",
-          "https://t.me/mod_russia_en/30056?embed=1",
-          "https://www.npr.org/2026/10/15/g-s1-148194/russia-ukraine-war"
+          "https://www.aa.com.tr/en/africa/ethiopian-forces-expand-control-in-tigray-as-militia-claims-heavy-eritrean-losses/4089516"
         ],
-        "next_trigger": "Ryazan governor says damage is being assessed; no completion time or production-loss figure is supplied.",
-        "implication": "Refinery strikes have resumed in the reported accounts; damage, production losses and wider consequences remain unverified.",
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "No further implication established by this evidence.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ryazan-refinery-attack-mod-russia-30056-2026-10-15",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Ukraine: ministry source reports Starshield restored in motion; full recovery remains unverified",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_a1f20a5ab312ebb1e1fbd6ba8286240c317cb4e395d030a37b58f9abc9f04903",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/",
-          "https://www.npr.org/2026/10/15/nx-s1-6002949/ukraine-says-its-starshield-access-is-back"
-        ],
-        "next_trigger": "The ministry source says clarification of the disruption continues; no completion time or independent technical assessment is supplied.",
-        "implication": "Reported restoration is qualified by uneven performance and unresolved restrictions; nationwide recovery and the cause are not established.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ukraine-starshield-service-restoration-2026-10-15",
+        "incident_id": "anadolu-publication-4089516-tigray-2026-10-15",
         "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Ryazan refinery: Russia reports fire after attack; AP reports Ukrainian official confirmation",
+        "zone": "ethiopia_tigray",
+        "headline": "Newly reviewed Anadolu report: Aksum entry and contested Eritrean-loss claims",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_6a50e7fd956c5c4829393b542283234b28ac2a612205049a32aea5c240c402f5",
+        "correction_id": "rev_dd472afc33e1ee40f746f72a4ca0f07e49eba0f54ac2b4676170259dba0df90e",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://kyivindependent.com/zelensky-lifts-pause-on-ukraines-strikes-against-russian-oil-refineries/",
-          "https://t.me/mod_russia_en/30056",
-          "https://t.me/mod_russia_en/30056?embed=1",
-          "https://www.npr.org/2026/10/15/g-s1-148194/russia-ukraine-war"
+          "https://www.aa.com.tr/en/africa/ethiopian-forces-expand-control-in-tigray-as-militia-claims-heavy-eritrean-losses/4089516"
         ],
-        "next_trigger": "Ryazan governor says damage is being assessed; no completion time or production-loss figure is supplied.",
-        "implication": "Refinery strikes have resumed in the reported accounts; damage, production losses and wider consequences remain unverified.",
+        "next_trigger": "Not supplied by source evidence.",
+        "implication": "No further implication established by this evidence.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ryazan-refinery-attack-mod-russia-30056-2026-10-15",
-        "change": "New incident report"
-      },
-      {
-        "zone": "russia_ukraine",
-        "headline": "Ukraine: ministry source reports Starshield restored in motion; full recovery remains unverified",
-        "status": "reported",
-        "verified": false,
-        "independently_verified": false,
-        "correction_id": "rev_a1f20a5ab312ebb1e1fbd6ba8286240c317cb4e395d030a37b58f9abc9f04903",
-        "material_revision": null,
-        "urgent_qualified": false,
-        "source_urls": [
-          "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/",
-          "https://www.npr.org/2026/10/15/nx-s1-6002949/ukraine-says-its-starshield-access-is-back"
-        ],
-        "next_trigger": "The ministry source says clarification of the disruption continues; no completion time or independent technical assessment is supplied.",
-        "implication": "Reported restoration is qualified by uneven performance and unresolved restrictions; nationwide recovery and the cause are not established.",
-        "historical_revision_ids": [],
-        "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ukraine-starshield-service-restoration-2026-10-15",
+        "incident_id": "anadolu-publication-4089516-tigray-2026-10-15",
         "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Ryazan refinery: Russia reports fire after attack; AP reports Ukrainian official confirmation\nImplication: Refinery strikes have resumed in the reported accounts; damage, production losses and wider consequences remain unverified.\nEvidence: verification not established https://kyivindependent.com/zelensky-lifts-pause-on-ukraines-strikes-against-russian-oil-refineries/\nNext trigger: Ryazan governor says damage is being assessed; no completion time or production-loss figure is supplied.\nDossier: dashboard incident list; source https://kyivindependent.com/zelensky-lifts-pause-on-ukraines-strikes-against-russian-oil-refineries/\n1 additional incident changes in the dashboard briefing list.",
-    "message_id": "57c9c1dc6bfcc10d4ebb9f64ae602c5d9966cab1862ceb006004f40bd586ece3"
+    "message": "New incident report: Newly reviewed Anadolu report: Aksum entry and contested Eritrean-loss claims\nImplication: No further implication established by this evidence.\nEvidence: verification not established https://www.aa.com.tr/en/africa/ethiopian-forces-expand-control-in-tigray-as-militia-claims-heavy-eritrean-losses/4089516\nNext trigger: Not supplied by source evidence.\nDossier: dashboard incident list; source https://www.aa.com.tr/en/africa/ethiopian-forces-expand-control-in-tigray-as-militia-claims-heavy-eritrean-losses/4089516",
+    "message_id": "33fee6fd978a0ddd2cfa256c09f06b8056e9ec3b16d070a37818d39b92330373"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 978,
-    "current_report_count": 967,
+    "total_count": 979,
+    "current_report_count": 968,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 958,
-    "bytes": 1651534,
-    "sha256": "76240c06fb079e1d0e53cef99d8e49a9fd9da96f3d4f9288286aedcab43931f3",
+    "archive_count": 959,
+    "bytes": 1653928,
+    "sha256": "2c6aa805301cc2f5b544ed18eb40ed4531f939b39ebddeaeb8149ca40272a175",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-10-15T09:07:44Z",
     "verified_at": "2026-10-14T18:07:02.108545Z",
-    "reviewed_at": "2026-10-15T12:06:37.845543Z"
+    "reviewed_at": "2026-10-15T15:07:14.595507Z"
   }
 }
