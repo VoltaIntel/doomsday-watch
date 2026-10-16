@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-15T21:05:59Z",
+  "last_updated": "2026-10-16T00:05:44Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -776,7 +776,7 @@ const state = {
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 7,
+        "source_count": 6,
         "qualifying_source_count": 5,
         "scanned": 174,
         "retained": 12,
@@ -1057,9 +1057,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 43,
+        "scanned": 44,
         "retained": 0,
-        "rejected": 43,
+        "rejected": 44,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -3016,6 +3016,47 @@ const state = {
       ]
     },
     {
+      "zone": "north_korea",
+      "headline": "North Korea test revision: SBS quotes Seoul military on flight tracking; capability unverified",
+      "text": "SBS quotes South Korea's Joint Chiefs of Staff public affairs chief Jang Doyoung saying the military continuously tracked North Korean cruise-missile activity before launch, during flight and through termination. This adds a named South Korean military account to the previously retained KCNA claim of October 14 tests. SBS's original Korean report and its English translation are one publication, not independent confirmations. USNI separately attributes flight-tracking comments to JCS through Yonhap; both depend on the same military account. No tracking data, measured range, missile identification or independently established launch platform is supplied. The JCS statement does not verify operational submarine capability or nuclear readiness. Newly reviewed reporting predates the prior review; no new launch since that review is established.",
+      "timestamp_kind": "publication_time",
+      "source_date": "2026-10-15",
+      "incident_id": "north-korea-submarine-cruise-test-kcna-report-2026-10-14",
+      "publication_id": "SBS:N1008799922",
+      "originating_source": "SBS original Korean television report by Kim Ayeong, quoting JCS public affairs chief Jang Doyoung",
+      "event_at": null,
+      "published_at": "2026-10-15T11:16:51Z",
+      "collected_at": "2026-10-16T00:03:15.017750Z",
+      "reviewed_at": "2026-10-16T00:04:31.877276Z",
+      "verified_at": null,
+      "evidence_id": "ev_959ae1d7450763770e8d06daa4847c994fd8f12c5ddc06b3d479e4e49bf9cb31",
+      "revision_id": "rev_9d468af662e21b57c6a62f5639b918f57cfda8c60ab7403efd2937d34e685a04",
+      "revision_ids": [
+        "rev_9d468af662e21b57c6a62f5639b918f57cfda8c60ab7403efd2937d34e685a04"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_b170092a2738e10069557cabf84d7479340bbfe1803f9814461b7f0309116b3b",
+      "report_status": "revision",
+      "implication": "A named South Korean military account adds flight-tracking evidence beyond the KCNA claim; missile performance, launch platform and nuclear readiness remain unverified.",
+      "next_trigger": "No independently evidenced next test, deployment date or verification timetable is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Named South Korean JCS spokesperson says cruise-missile activity was tracked before launch, in flight and through termination; operational submarine and nuclear claims remain unverified.",
+      "source_urls": [
+        "https://news.sbs.co.kr/english/article.do?news_id=N1008800007",
+        "https://news.sbs.co.kr/news/endPage.do?news_id=N1008799922",
+        "https://news.usni.org/2026/10/15/north-korea-tests-first-submarine-launched-cruise-missile-in-nearly-3-years"
+      ]
+    },
+    {
       "zone": "yemen_red_sea",
       "headline": "Newly reviewed October 15 release: coalition reports cruise-missile interception in Madinah",
       "text": "SPA quotes coalition spokesperson Turki Al-Malki saying a cruise missile was intercepted and destroyed in Madinah Region. AP says the coalition did not assign blame and reports a Houthi denial. The original statement gives no exact interception time, launch origin, intended target, casualties or damage. Publication metadata is retained separately from event time; the release predates the preceding research review and is newly reviewed here. This is distinct from the retained September 29 Taibah power-station account. Attribution and physical interception are not independently verified.",
@@ -3303,10 +3344,11 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
-      "report_status": "unknown",
+      "report_status": "superseded",
       "implication": "A distinct claimed underwater cruise-missile test is reported; operational submarine capability, missile performance and nuclear readiness remain unverified.",
       "next_trigger": "No independently evidenced next test, deployment date or verification timetable is supplied.",
       "independent_verification": false,
@@ -3574,46 +3616,6 @@ const state = {
       "source_urls": [
         "https://t.me/dsns_telegram/77697"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Lutsk: emergency service reports rescue completed, six dead and thirteen affected",
-      "text": "Original emergency-service bulletin 77696 says search-and-rescue work at the Lutsk strike site is completed. It reports six dead and thirteen affected, including one child, with one person critically ill. Its embedded earlier quotation says six dead and twelve injured with work continuing; the current message, not that quotation, gives thirteen and completion. Original HTML and nested quotation boundaries were inspected. BBC separately attributes at least six warehouse-strike deaths to local officials; RFE/RL retains an earlier governor account of three deaths at Eurohurt. These accounts do not independently authenticate casualties, every impact, or responsibility. This is the October 14 reporting group, not the retained October 13 cultural-complex fire. Impact and bulletin-edit times remain unknown.",
-      "timestamp_kind": "publication_time",
-      "incident_id": "lutsk-eurohurt-civilian-strike-official-reports-2026-10-14",
-      "publication_id": "SES:77696",
-      "event_at": null,
-      "published_at": "2026-10-14T14:42:54Z",
-      "collected_at": "2026-10-14T15:03:28.921995Z",
-      "reviewed_at": "2026-10-14T15:08:21.828325Z",
-      "verified_at": "2026-10-14T15:08:21.828325Z",
-      "evidence_id": "ev_a1a32d9b44b8f5650772b4dc5aed5f87b60d0e8baacc80cead69f168528c3724",
-      "revision_id": "rev_673b8056003155859e5b91664eb1006fbe00050a9520d230e292f458c01f69e5",
-      "revision_ids": [
-        "rev_673b8056003155859e5b91664eb1006fbe00050a9520d230e292f458c01f69e5"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "headline_only_or_body_unavailable",
-        "originating_source_unknown",
-        "geographic_relevance_unestablished"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_f30feb5a7eba228308bdc7fd77d74a498d7bc51ab6db8988312ea08354baa409",
-      "report_status": "unknown",
-      "implication": "The emergency service reports completed rescue and six deaths; its thirteen-person affected count and responsibility remain independently unverified.",
-      "next_trigger": "The service says one person is critically ill; no dated medical update or final assessment timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://t.me/dsns_telegram/77696",
-        "https://www.bbc.co.uk/news/articles/cm2d6e62p49do",
-        "https://www.rferl.org/a/russia-ballistic-missile-attack-ukraine/33876280.html"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3630,7 +3632,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-15T21:05:59Z",
+  "build_at": "2026-10-16T00:05:44Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3830,7 +3832,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-15T21:05:59Z",
+      "generated_at": "2026-10-16T00:05:44Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4463,10 +4465,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-15T21:05:59Z",
+    "generated_at": "2026-10-16T00:05:44Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 893.8027777777778,
+    "age_hours": 896.7986111111111,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4548,7 +4550,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4615,7 +4617,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4643,7 +4645,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4671,7 +4673,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4771,7 +4773,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4838,7 +4840,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4936,7 +4938,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 76.1208449074074,
+            "remaining_days": 75.99601851851853,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4964,7 +4966,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5062,7 +5064,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5090,7 +5092,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 76.1208449074074,
+            "remaining_days": 75.99601851851853,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5157,7 +5159,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 77.3284837962963,
+            "remaining_days": 77.2036574074074,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5242,73 +5244,85 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-15T21:05:59Z",
+    "generated_at": "2026-10-16T00:05:44Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "d9ee2256d59d88b0d4704844b7ae9fbad93f104ce1e05d5f672a3b75ff2eb5c3",
+    "previous_snapshot_id": "57491c8bceb2574ed40e4b43289318a37685ee5bf7a480b223bc002552c76d03",
     "changes": [
       {
-        "zone": "ethiopia_tigray",
-        "headline": "Newly reviewed AP interview: HRW reports civilian harm and health-facility closures in Tigray",
-        "status": "reported",
+        "zone": "north_korea",
+        "headline": "North Korea test revision: SBS quotes Seoul military on flight tracking; capability unverified",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_b7a2ea20cebd2d3bc10b7a7e00a22093052cab3415d95bdbed4a3ad433b40a1d",
+        "correction_id": "rev_9d468af662e21b57c6a62f5639b918f57cfda8c60ab7403efd2937d34e685a04",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://apnews.com/article/ethiopia-tigray-eritrea-rubio-6d136d4280931d2d213d7d6cafd670ab"
+          "https://maritime-executive.com/article/north-korea-tests-sub-launched-strategic-cruise-missile",
+          "https://news.sbs.co.kr/english/article.do?news_id=N1008800007",
+          "https://news.sbs.co.kr/news/endPage.do?news_id=N1008799922",
+          "https://news.usni.org/2026/10/15/north-korea-tests-first-submarine-launched-cruise-missile-in-nearly-3-years",
+          "https://www.gmanetwork.com/news/topstories/world/1005980/north-korea-says-it-tested-submarine-launched-cruise-missiles/story/"
         ],
-        "next_trigger": "HRW calls for independent monitoring, restored communications and humanitarian access; no dated follow-up is supplied.",
-        "implication": "HRW reports civilian harm and health-facility closures; the scale, locations and responsibility remain unverified.",
-        "historical_revision_ids": [],
+        "next_trigger": "No independently evidenced next test, deployment date or verification timetable is supplied.",
+        "implication": "A named South Korean military account adds flight-tracking evidence beyond the KCNA claim; missile performance, launch platform and nuclear readiness remain unverified.",
+        "historical_revision_ids": [
+          "rev_b170092a2738e10069557cabf84d7479340bbfe1803f9814461b7f0309116b3b"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ap-publication-6d136d4280931d2d213d7d6cafd670ab",
-        "change": "New incident report"
+        "incident_id": "north-korea-submarine-cruise-test-kcna-report-2026-10-14",
+        "change": "Correction / revision"
       }
     ],
     "items": [
       {
-        "zone": "ethiopia_tigray",
-        "headline": "Newly reviewed AP interview: HRW reports civilian harm and health-facility closures in Tigray",
-        "status": "reported",
+        "zone": "north_korea",
+        "headline": "North Korea test revision: SBS quotes Seoul military on flight tracking; capability unverified",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_b7a2ea20cebd2d3bc10b7a7e00a22093052cab3415d95bdbed4a3ad433b40a1d",
+        "correction_id": "rev_9d468af662e21b57c6a62f5639b918f57cfda8c60ab7403efd2937d34e685a04",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://apnews.com/article/ethiopia-tigray-eritrea-rubio-6d136d4280931d2d213d7d6cafd670ab"
+          "https://maritime-executive.com/article/north-korea-tests-sub-launched-strategic-cruise-missile",
+          "https://news.sbs.co.kr/english/article.do?news_id=N1008800007",
+          "https://news.sbs.co.kr/news/endPage.do?news_id=N1008799922",
+          "https://news.usni.org/2026/10/15/north-korea-tests-first-submarine-launched-cruise-missile-in-nearly-3-years",
+          "https://www.gmanetwork.com/news/topstories/world/1005980/north-korea-says-it-tested-submarine-launched-cruise-missiles/story/"
         ],
-        "next_trigger": "HRW calls for independent monitoring, restored communications and humanitarian access; no dated follow-up is supplied.",
-        "implication": "HRW reports civilian harm and health-facility closures; the scale, locations and responsibility remain unverified.",
-        "historical_revision_ids": [],
+        "next_trigger": "No independently evidenced next test, deployment date or verification timetable is supplied.",
+        "implication": "A named South Korean military account adds flight-tracking evidence beyond the KCNA claim; missile performance, launch platform and nuclear readiness remain unverified.",
+        "historical_revision_ids": [
+          "rev_b170092a2738e10069557cabf84d7479340bbfe1803f9814461b7f0309116b3b"
+        ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "ap-publication-6d136d4280931d2d213d7d6cafd670ab",
-        "change": "New incident report"
+        "incident_id": "north-korea-submarine-cruise-test-kcna-report-2026-10-14",
+        "change": "Correction / revision"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Newly reviewed AP interview: HRW reports civilian harm and health-facility closures in Tigray\nImplication: HRW reports civilian harm and health-facility closures; the scale, locations and responsibility remain unverified.\nEvidence: verification not established https://apnews.com/article/ethiopia-tigray-eritrea-rubio-6d136d4280931d2d213d7d6cafd670ab\nNext trigger: HRW calls for independent monitoring, restored communications and humanitarian access; no dated follow-up is supplied.\nDossier: dashboard incident list; source https://apnews.com/article/ethiopia-tigray-eritrea-rubio-6d136d4280931d2d213d7d6cafd670ab",
-    "message_id": "c79d52601f6495d8e0dd0d7d1139f6f91fe182cd8c87e1e508e07fdb43c24e02"
+    "message": "Correction / revision: North Korea test revision: SBS quotes Seoul military on flight tracking; capability unverified\nImplication: A named South Korean military account adds flight-tracking evidence beyond the KCNA claim; missile performance, launch platform and nuclear readiness remain unverified.\nEvidence: verification not established https://maritime-executive.com/article/north-korea-tests-sub-launched-strategic-cruise-missile\nNext trigger: No independently evidenced next test, deployment date or verification timetable is supplied.\nDossier: dashboard incident list; source https://maritime-executive.com/article/north-korea-tests-sub-launched-strategic-cruise-missile",
+    "message_id": "d5ca1c7f4f1a314707fdf6e2ce28f320cca3f7b433515939dc4783b584853cde"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 983,
-    "current_report_count": 972,
+    "total_count": 984,
+    "current_report_count": 973,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 963,
-    "bytes": 1661468,
-    "sha256": "7063906363c687cc3a5bc400bbc7601a44689bd26c701c87009a4d17c82d8ceb",
+    "archive_count": 964,
+    "bytes": 1663925,
+    "sha256": "cb8b50e4e7c6daec1ab29c68ffc139044c038bea4d00dcc140e378c7dce4cdf9",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-15T10:14:35Z",
+    "published_at": "2026-10-15T11:16:51Z",
     "verified_at": "2026-10-14T18:07:02.108545Z",
-    "reviewed_at": "2026-10-15T21:05:28.164386Z"
+    "reviewed_at": "2026-10-16T00:04:31.877276Z"
   }
 };
 
