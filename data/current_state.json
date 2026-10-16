@@ -1,6 +1,6 @@
 {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-16T09:05:43Z",
+  "last_updated": "2026-10-16T12:05:34Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -725,10 +725,10 @@
       "evidence_quality": {
         "status": "qualifying_evidence",
         "source_count": 5,
-        "qualifying_source_count": 4,
+        "qualifying_source_count": 3,
         "scanned": 175,
-        "retained": 10,
-        "rejected": 165,
+        "retained": 8,
+        "rejected": 167,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2789,9 +2789,9 @@
         "status": "qualifying_evidence",
         "source_count": 4,
         "qualifying_source_count": 2,
-        "scanned": 108,
+        "scanned": 109,
         "retained": 2,
-        "rejected": 106,
+        "rejected": 107,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2928,6 +2928,45 @@
       ]
     },
     {
+      "zone": "yemen_red_sea",
+      "headline": "Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded",
+      "text": "Newly reviewed Reuters reporting carried by The Business Standard attributes five deaths and 16 wounded to Yemen\u2019s health minister Qasim Buhaibeh after the retained October 15 attack on Aden\u2019s Maashiq presidential complex. The earlier SABA cabinet statement, reread in this scan, confirms an official account of guards killed and wounded without numbers; the retained AP account cited an unnamed official reporting at least two killed and six wounded. This appends a later-reviewed official casualty account to the same incident rather than a new attack. Reuters also reports witnesses hearing booms and a Houthi claim, but the casualty count, damage and responsibility are not independently authenticated. The syndication was published at 01:50 UTC and modified at 03:47:57 UTC on October 16; the original Reuters publication and exact attack times remain unknown.",
+      "timestamp_kind": "publication_time",
+      "incident_id": "aden-maashiq-palace-attack-government-154066-2026-10-15",
+      "publication_id": "Reuters:maashiq-aden:2026-10-16:TBS",
+      "originating_source": "Reuters reporting syndicated by The Business Standard, citing Yemen health minister Qasim Buhaibeh",
+      "event_at": null,
+      "published_at": "2026-10-16T01:50:00Z",
+      "collected_at": "2026-10-16T12:02:34.359601Z",
+      "reviewed_at": "2026-10-16T12:04:30.145773Z",
+      "verified_at": null,
+      "evidence_id": "ev_87fe63b738a6482331f63f2d53758fe8a0c6355ca1f4f8ec590925cba63a5cdc",
+      "revision_id": "rev_703e043d99e8e7f453dd6ca532a78cd49f6ca0cb74735e7bf2c7f5b9ccf79e63",
+      "revision_ids": [
+        "rev_703e043d99e8e7f453dd6ca532a78cd49f6ca0cb74735e7bf2c7f5b9ccf79e63"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_7144c25f3c20c131219517066ef4970059fc9416842d6cd4b1e146ccf942cae8",
+      "report_status": "revision",
+      "implication": "A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "A named health-minister account adds five deaths and 16 wounded to the retained unnumbered cabinet report and earlier lower AP account.",
+      "source_urls": [
+        "https://www.sabanew.net/story/ar/154066",
+        "https://www.tbsnews.net/worldbiz/middle-east/yemens-houthis-hit-palace-aden-coalition-details-attacks-saudi-infrastructure"
+      ]
+    },
+    {
       "zone": "russia_ukraine",
       "headline": "Starshield revision: Reuters adds White House attribution and a limited-speed account; cause and recovery remain unverified",
       "text": "Reuters reports that two US officials and a Western official said the restriction order came from inside the White House; they did not identify the decision maker or implementer. A senior US official denied any such request by the president; the White House did not answer whether other officials requested it. A Ukrainian Defence Ministry source told Reuters on Thursday that receptors worked in motion only up to 160 kph. The retained Axios October 15 account instead attributes full capacity to an unnamed Ukrainian official; its precise publication and interview times are unknown, so these accounts cannot establish a fresh degradation or the sequence of restoration. The full original Reuters article and its RTHK republication were read. This revises the same retained service-disruption/restoration reporting group, not a new outage or an independently verified cause. Earlier versions remain intact.",
@@ -3027,11 +3066,12 @@
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "published_at_unknown",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
-      "report_status": "unknown",
+      "report_status": "superseded",
       "implication": "The cabinet reports a deadly attack on its Aden base but says government work will continue; casualties and damage remain unverified.",
       "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
       "independent_verification": false,
@@ -3535,43 +3575,6 @@
       "source_urls": [
         "https://t.me/V_Zelenskiy_official/21372"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Rivne revision: emergency service reports eight injured and completed debris clearance",
-      "text": "Original emergency-service bulletin 77707 explicitly replies to residential-impact bulletin 77648. It reports eight injured, including a child born in 2012, and completed debris clearance and removal of collapsed structures. The retained earlier bulletin reported five people affected and ongoing structural response. This is a source-linked revision of that same October 14 residential response, not a new strike and not the separate October 13 educational-building report. The official casualty figures and responsibility remain independently unverified; exact impact and edit times are unknown.",
-      "timestamp_kind": "publication_time",
-      "incident_id": "dsns-rivne-residential-uav-fire-77648-2026-10-14",
-      "publication_id": "Telegram:dsns_telegram/77707",
-      "originating_source": "Ukraine State Emergency Service",
-      "event_at": null,
-      "published_at": "2026-10-14T16:21:28Z",
-      "collected_at": "2026-10-14T18:04:33.988833Z",
-      "reviewed_at": "2026-10-14T18:07:02.108545Z",
-      "verified_at": "2026-10-14T18:07:02.108545Z",
-      "evidence_id": "ev_29bd033936ebf2ef6c774a561fc985d3e5a1ecbceec0132232d9888125e92766",
-      "revision_id": "rev_564c6bfcffb92fad71b829777d3b4a055b5be038370360e390c83967e86d8dd7",
-      "revision_ids": [
-        "rev_564c6bfcffb92fad71b829777d3b4a055b5be038370360e390c83967e86d8dd7"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": true,
-      "rejection_reasons": [],
-      "status": "qualifying",
-      "supersedes": "rev_35dae62dc66b8a041dd3760b8794ae98186c82eb253ad4e7a581214fc7a329c5",
-      "report_status": "revision",
-      "implication": "The source raises its residential casualty account and reports completed clearance; casualties and responsibility remain independently unverified.",
-      "next_trigger": "No dated medical follow-up or independently evidenced next operational trigger is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "The source-linked residential follow-up reports eight injured and completed work, replacing five affected and work ongoing.",
-      "source_urls": [
-        "https://t.me/dsns_telegram/77648",
-        "https://t.me/dsns_telegram/77707"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3588,7 +3591,7 @@
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-16T09:05:43Z",
+  "build_at": "2026-10-16T12:05:34Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3788,7 +3791,7 @@
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-16T09:05:43Z",
+      "generated_at": "2026-10-16T12:05:34Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4421,10 +4424,10 @@
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-16T09:05:43Z",
+    "generated_at": "2026-10-16T12:05:34Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 905.7983333333333,
+    "age_hours": 908.7958333333333,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4506,7 +4509,7 @@
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4573,7 +4576,7 @@
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4601,7 +4604,7 @@
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4629,7 +4632,7 @@
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4729,7 +4732,7 @@
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4796,7 +4799,7 @@
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4894,7 +4897,7 @@
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 75.62103009259259,
+            "remaining_days": 75.49613425925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4922,7 +4925,7 @@
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5020,7 +5023,7 @@
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5048,7 +5051,7 @@
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 75.62103009259259,
+            "remaining_days": 75.49613425925926,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5115,7 +5118,7 @@
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 76.82866898148148,
+            "remaining_days": 76.70377314814814,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5200,32 +5203,80 @@
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-16T09:05:43Z",
+    "generated_at": "2026-10-16T12:05:34Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "51851b84b3c257b6cb8e5f6bca1de582e57f0bae58ea36506c9319e63d7b08d0",
-    "changes": [],
-    "items": [],
+    "previous_snapshot_id": "740598255683fd798e8fe747bfb5e24feb0c62374e84521029f16723cba5bf54",
+    "changes": [
+      {
+        "zone": "yemen_red_sea",
+        "headline": "Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded",
+        "status": "revision",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_703e043d99e8e7f453dd6ca532a78cd49f6ca0cb74735e7bf2c7f5b9ccf79e63",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
+          "https://www.sabanew.net/story/ar/154066",
+          "https://www.tbsnews.net/worldbiz/middle-east/yemens-houthis-hit-palace-aden-coalition-details-attacks-saudi-infrastructure"
+        ],
+        "next_trigger": "Public context unavailable; consult the original source.",
+        "implication": "A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.",
+        "historical_revision_ids": [
+          "rev_7144c25f3c20c131219517066ef4970059fc9416842d6cd4b1e146ccf942cae8"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "aden-maashiq-palace-attack-government-154066-2026-10-15",
+        "change": "Correction / revision"
+      }
+    ],
+    "items": [
+      {
+        "zone": "yemen_red_sea",
+        "headline": "Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded",
+        "status": "revision",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_703e043d99e8e7f453dd6ca532a78cd49f6ca0cb74735e7bf2c7f5b9ccf79e63",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
+          "https://www.sabanew.net/story/ar/154066",
+          "https://www.tbsnews.net/worldbiz/middle-east/yemens-houthis-hit-palace-aden-coalition-details-attacks-saudi-infrastructure"
+        ],
+        "next_trigger": "Public context unavailable; consult the original source.",
+        "implication": "A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.",
+        "historical_revision_ids": [
+          "rev_7144c25f3c20c131219517066ef4970059fc9416842d6cd4b1e146ccf942cae8"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "aden-maashiq-palace-attack-government-154066-2026-10-15",
+        "change": "Correction / revision"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "9550a22b2d6f1428b580d69e2f8fbe63790009a41e142912084b8d77ef112e0b"
+    "message": "Correction / revision: Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded\nImplication: A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.\nEvidence: verification not established https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
+    "message_id": "4a34cd51aa726a936f51c7a9c1e1951201f67d72af5d2a08817646da95a88666"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 988,
-    "current_report_count": 977,
+    "total_count": 989,
+    "current_report_count": 978,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 968,
-    "bytes": 1673433,
-    "sha256": "bfad07dd9f63910728f6c7b539ad837ec8934b605780db81b285f45ccfc8d183",
+    "archive_count": 969,
+    "bytes": 1675758,
+    "sha256": "309e61c24a7aa9a674d132fdb652fbd23787cf21cbf0a43eb9ac6e6c03a3b7fe",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-10-16T04:29:00Z",
     "verified_at": "2026-10-16T06:06:42.762559Z",
-    "reviewed_at": "2026-10-16T06:06:42.762559Z"
+    "reviewed_at": "2026-10-16T12:04:30.145773Z"
   }
 }
