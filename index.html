@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-16T12:05:34Z",
+  "last_updated": "2026-10-16T15:06:42Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -776,11 +776,11 @@ const state = {
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 5,
+        "source_count": 4,
         "qualifying_source_count": 3,
-        "scanned": 175,
+        "scanned": 176,
         "retained": 8,
-        "rejected": 167,
+        "rejected": 168,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2839,7 +2839,7 @@ const state = {
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 4,
+        "source_count": 3,
         "qualifying_source_count": 2,
         "scanned": 109,
         "retained": 2,
@@ -2865,6 +2865,46 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "russia_ukraine",
+      "headline": "Zaporizhzhya update: IAEA says repair ceasefire began; one external power line remains",
+      "text": "IAEA Update 371 says the eighth localized repair ceasefire began on Thursday morning, enabling work on a backup transformer near the thermal power plant. It says Ferosplavna-1 remains the nuclear plant\u2019s sole external power line, the Dniprovska line remains unavailable, and diesel reserves have depleted without deliveries since March. This updates the retained repair-negotiation report; it is not a new attack, a completed repair, a radiation release or a general ceasefire. NucNet repeats the IAEA account and is not independent confirmation. Exact publication and event times are unknown.",
+      "timestamp_kind": "unknown",
+      "source_date": "2026-10-16",
+      "incident_id": "iaea-ztpp-transformer-monitoring-report-2106281642096578623",
+      "publication_id": "IAEA:Ukraine:Update-371",
+      "originating_source": "International Atomic Energy Agency",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": null,
+      "reviewed_at": "2026-10-16T15:06:10.812308Z",
+      "verified_at": "2026-10-16T15:06:10.812308Z",
+      "evidence_id": "ev_41227ee2d3ffec4d72719c61e9dfd64dd1c72b9dcb9f19a48cf8215a64e8939c",
+      "revision_id": "rev_66b39930419c420f017fc1525bee03dd74cd7f5a3990da295899dd26a3011508",
+      "revision_ids": [
+        "rev_66b39930419c420f017fc1525bee03dd74cd7f5a3990da295899dd26a3011508"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_3845870738af5df20c1b86386432f093b4fa6ad8c314049ca8a01e8733f152a9",
+      "report_status": "revision",
+      "implication": "Temporary truce enables transformer repairs, but the plant still relies on one external line and depleted diesel reserves; repairs are not confirmed complete.",
+      "next_trigger": "IAEA calls for restoring Dniprovska power and replenishing diesel before winter; no repair-completion date is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": true,
+      "material_revision": "Negotiated repair truce has begun, according to IAEA; single-line dependence and low diesel persist.",
+      "source_urls": [
+        "https://www.iaea.org/newscenter/pressreleases/update-371-iaea-director-general-statement-on-situation-in-ukraine",
+        "https://www.nucnet.org/news/eighth-localised-ceasefire-begins-as-iaea-renews-warnings-on-zaporizhzhya-10-5-2026"
+      ]
+    },
     {
       "zone": "yemen_red_sea",
       "headline": "UN Security Council adopts statement condemning Houthi attacks on Saudi Arabia and shipping",
@@ -3592,41 +3632,6 @@ const state = {
       "source_urls": [
         "https://www.mpa.gov.sg/media-centre/details/two-singapore-registered-vessels-struck-in-strait-of-hormuz"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Zelensky says UK agreed accelerated air-defence supplies after London meeting",
-      "text": "In an October 14 post following his meeting with UK Prime Minister Andy Burnham, Zelensky says there is a decision for accelerated delivery of British air-defence equipment to counter jet-powered Shahed drones. He also claims 124 drones overnight, 145 during the day and over 40 airborne when he spoke. Those are attributed, time-bounded claims, not independent counts. The UK commitment, delivery schedule, transfers and operational effects have not been independently established in this scan. His explanation connecting Russian operations to Starlink problems remains his assessment, not verified causation.",
-      "timestamp_kind": "publication_time",
-      "incident_id": "zelensky-burnham-air-defence-acceleration-21372-2026-10-14",
-      "publication_id": "V_Zelenskiy_official/21372",
-      "originating_source": "President of Ukraine, official public channel",
-      "event_at": null,
-      "published_at": "2026-10-14T18:33:05Z",
-      "collected_at": "2026-10-14T21:02:36.427728Z",
-      "reviewed_at": "2026-10-14T21:04:05.633681Z",
-      "verified_at": null,
-      "evidence_id": "ev_64a61be88ca07b5d92e3b28586a419187be7cb22a07fb8a5f61c462d35ad5e34",
-      "revision_id": "rev_8e0e5950bcec7b50a166fb5b94635957d5c552d8ab70c2c6bd497f00e68dc560",
-      "revision_ids": [
-        "rev_8e0e5950bcec7b50a166fb5b94635957d5c552d8ab70c2c6bd497f00e68dc560"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The announced acceleration concerns air-defence support during reported drone waves; no transfer or operational effect is established.",
-      "next_trigger": "The statement supplies no dated delivery schedule or independently evidenced next operational trigger.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "source_urls": [
-        "https://t.me/V_Zelenskiy_official/21372"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3643,7 +3648,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-16T12:05:34Z",
+  "build_at": "2026-10-16T15:06:42Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3843,7 +3848,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-16T12:05:34Z",
+      "generated_at": "2026-10-16T15:06:42Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4476,10 +4481,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-16T12:05:34Z",
+    "generated_at": "2026-10-16T15:06:42Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 908.7958333333333,
+    "age_hours": 911.8147222222223,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4561,7 +4566,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4628,7 +4633,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4656,7 +4661,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4684,7 +4689,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4784,7 +4789,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4851,7 +4856,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4949,7 +4954,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 75.49613425925926,
+            "remaining_days": 75.37034722222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4977,7 +4982,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5075,7 +5080,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5103,7 +5108,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 75.49613425925926,
+            "remaining_days": 75.37034722222222,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5170,7 +5175,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 76.70377314814814,
+            "remaining_days": 76.57798611111112,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5255,81 +5260,83 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-16T12:05:34Z",
+    "generated_at": "2026-10-16T15:06:42Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "740598255683fd798e8fe747bfb5e24feb0c62374e84521029f16723cba5bf54",
+    "previous_snapshot_id": "6308d73dfd1aa1d9fdc1a5626ee94f6edcdcbfac88366f23548278b250c140f1",
     "changes": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded",
+        "zone": "russia_ukraine",
+        "headline": "Zaporizhzhya update: IAEA says repair ceasefire began; one external power line remains",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_703e043d99e8e7f453dd6ca532a78cd49f6ca0cb74735e7bf2c7f5b9ccf79e63",
+        "correction_id": "rev_66b39930419c420f017fc1525bee03dd74cd7f5a3990da295899dd26a3011508",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
-          "https://www.sabanew.net/story/ar/154066",
-          "https://www.tbsnews.net/worldbiz/middle-east/yemens-houthis-hit-palace-aden-coalition-details-attacks-saudi-infrastructure"
+          "https://kyivindependent.com/series-of-drone-attacks-disrupt-power-supply-near-zaporizhzhia-nuclear-plant-iaea-says/",
+          "https://www.iaea.org/newscenter/pressreleases/update-371-iaea-director-general-statement-on-situation-in-ukraine",
+          "https://www.nucnet.org/news/eighth-localised-ceasefire-begins-as-iaea-renews-warnings-on-zaporizhzhya-10-5-2026",
+          "https://x.com/iaeaorg/status/2106281642096578623"
         ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.",
+        "next_trigger": "IAEA calls for restoring Dniprovska power and replenishing diesel before winter; no repair-completion date is supplied.",
+        "implication": "Temporary truce enables transformer repairs, but the plant still relies on one external line and depleted diesel reserves; repairs are not confirmed complete.",
         "historical_revision_ids": [
-          "rev_7144c25f3c20c131219517066ef4970059fc9416842d6cd4b1e146ccf942cae8"
+          "rev_3845870738af5df20c1b86386432f093b4fa6ad8c314049ca8a01e8733f152a9"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "aden-maashiq-palace-attack-government-154066-2026-10-15",
+        "incident_id": "iaea-ztpp-transformer-monitoring-report-2106281642096578623",
         "change": "Correction / revision"
       }
     ],
     "items": [
       {
-        "zone": "yemen_red_sea",
-        "headline": "Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded",
+        "zone": "russia_ukraine",
+        "headline": "Zaporizhzhya update: IAEA says repair ceasefire began; one external power line remains",
         "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_703e043d99e8e7f453dd6ca532a78cd49f6ca0cb74735e7bf2c7f5b9ccf79e63",
+        "correction_id": "rev_66b39930419c420f017fc1525bee03dd74cd7f5a3990da295899dd26a3011508",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
-          "https://www.sabanew.net/story/ar/154066",
-          "https://www.tbsnews.net/worldbiz/middle-east/yemens-houthis-hit-palace-aden-coalition-details-attacks-saudi-infrastructure"
+          "https://kyivindependent.com/series-of-drone-attacks-disrupt-power-supply-near-zaporizhzhia-nuclear-plant-iaea-says/",
+          "https://www.iaea.org/newscenter/pressreleases/update-371-iaea-director-general-statement-on-situation-in-ukraine",
+          "https://www.nucnet.org/news/eighth-localised-ceasefire-begins-as-iaea-renews-warnings-on-zaporizhzhya-10-5-2026",
+          "https://x.com/iaeaorg/status/2106281642096578623"
         ],
-        "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.",
+        "next_trigger": "IAEA calls for restoring Dniprovska power and replenishing diesel before winter; no repair-completion date is supplied.",
+        "implication": "Temporary truce enables transformer repairs, but the plant still relies on one external line and depleted diesel reserves; repairs are not confirmed complete.",
         "historical_revision_ids": [
-          "rev_7144c25f3c20c131219517066ef4970059fc9416842d6cd4b1e146ccf942cae8"
+          "rev_3845870738af5df20c1b86386432f093b4fa6ad8c314049ca8a01e8733f152a9"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "aden-maashiq-palace-attack-government-154066-2026-10-15",
+        "incident_id": "iaea-ztpp-transformer-monitoring-report-2106281642096578623",
         "change": "Correction / revision"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Maashiq-palace revision: Reuters cites minister reporting five killed and 16 wounded\nImplication: A revised official count expands reported harm from the same October 15 attack; casualties and attribution remain unverified.\nEvidence: verification not established https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
-    "message_id": "4a34cd51aa726a936f51c7a9c1e1951201f67d72af5d2a08817646da95a88666"
+    "message": "Correction / revision: Zaporizhzhya update: IAEA says repair ceasefire began; one external power line remains\nImplication: Temporary truce enables transformer repairs, but the plant still relies on one external line and depleted diesel reserves; repairs are not confirmed complete.\nEvidence: verification not established https://kyivindependent.com/series-of-drone-attacks-disrupt-power-supply-near-zaporizhzhia-nuclear-plant-iaea-says/\nNext trigger: IAEA calls for restoring Dniprovska power and replenishing diesel before winter; no repair-completion date is supplied.\nDossier: dashboard incident list; source https://kyivindependent.com/series-of-drone-attacks-disrupt-power-supply-near-zaporizhzhia-nuclear-plant-iaea-says/",
+    "message_id": "b36ab8e0f916e534e7cad6aae3345111c1a7a5d9d1789d675bac827e8dcddea4"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 989,
-    "current_report_count": 978,
+    "total_count": 990,
+    "current_report_count": 979,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 969,
-    "bytes": 1675758,
-    "sha256": "309e61c24a7aa9a674d132fdb652fbd23787cf21cbf0a43eb9ac6e6c03a3b7fe",
+    "archive_count": 970,
+    "bytes": 1677786,
+    "sha256": "115593a5390ead03ba8342b0d2b75b0bd724b5386c100d5274a98ed0c60e20a2",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
     "published_at": "2026-10-16T04:29:00Z",
-    "verified_at": "2026-10-16T06:06:42.762559Z",
-    "reviewed_at": "2026-10-16T12:04:30.145773Z"
+    "verified_at": "2026-10-16T15:06:10.812308Z",
+    "reviewed_at": "2026-10-16T15:06:10.812308Z"
   }
 };
 
