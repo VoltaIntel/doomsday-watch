@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-17T09:06:55Z",
+  "last_updated": "2026-10-17T12:06:23Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -776,11 +776,11 @@ const state = {
       },
       "evidence_quality": {
         "status": "qualifying_evidence",
-        "source_count": 3,
+        "source_count": 2,
         "qualifying_source_count": 2,
-        "scanned": 178,
+        "scanned": 180,
         "retained": 2,
-        "rejected": 176,
+        "rejected": 178,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2843,9 +2843,9 @@ const state = {
         "status": "qualifying_evidence",
         "source_count": 1,
         "qualifying_source_count": 1,
-        "scanned": 112,
+        "scanned": 113,
         "retained": 1,
-        "rejected": 111,
+        "rejected": 112,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2867,6 +2867,43 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Dhamar: AP relays Houthi-run ministry report of three children killed in an October 16 strike",
+      "text": "Newly reviewed October 17 AP reporting relays a Houthi-run health-ministry account of three children killed and more than a dozen people wounded in al-Ar village, Dawran Aness district, Dhamar, on October 16. Attribution to Saudi Arabia and the casualty figures remain claims. The originating ministry bulletin and exact publication/event times were not retrieved. This is not a verified casualty total or an urgent independently verified finding.",
+      "timestamp_kind": "publication_time",
+      "incident_id": "dhamar-al-ar-strike-health-ministry-ap-2026-10-17",
+      "publication_id": "AP:aaf6d7e5367f99869eaf4b419c66e0df:Dhamar",
+      "originating_source": "Associated Press, citing the Houthi-run health ministry",
+      "event_at": null,
+      "published_at": null,
+      "collected_at": null,
+      "reviewed_at": "2026-10-17T12:05:37.235656Z",
+      "verified_at": null,
+      "evidence_id": "ev_d5c5d14c0f15632e8ed1ad620eafdbda08f1ced3c03d16c5af5d98e5d98f3ae3",
+      "revision_id": "rev_36fff670a8972a516ad035dca00a8dd27012a29408ee39cdc4a4889036c9e612",
+      "revision_ids": [
+        "rev_36fff670a8972a516ad035dca00a8dd27012a29408ee39cdc4a4889036c9e612"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The attributed report describes child deaths and other injuries at village homes; the toll, weapon and responsibility remain unverified.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://apnews.com/article/mideast-israel-palestinians-houthis-october-17-2026-aaf6d7e5367f99869eaf4b419c66e0df"
+      ]
+    },
     {
       "zone": "russia_ukraine",
       "headline": "Rivne region: emergency service reports two injured and an enterprise fire extinguished",
@@ -2903,6 +2940,43 @@ const state = {
       "source_urls": [
         "https://24tv.ua/ataka-rivnensku-oblast-17-zhovtnya-yaki-naslidki-foto_n3162336",
         "https://www.facebook.com/dsns.rivne/posts/pfbid02aDEC25i9xNjxA7GvUP4CrWEoFasYjSU27j7EprbPhNddLwwLhF6XjE9Ty9Smz4tPl"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
+      "headline": "Zelensky reports more than 15 energy facilities attacked; restoration work ongoing",
+      "text": "The October 17 official presidential publication describes an aggregate energy-attack and restoration account. Kyiv Post links and repeats this statement rather than independently verifying each facility or its damage. Retained as one stable publication group, not fifteen constructed incidents, and not a proven match to the separately retained Rivne enterprise fire. Counts, restoration status and attribution remain official claims.",
+      "timestamp_kind": "publication_time",
+      "incident_id": "zelensky-publication-21410-energy-2026-10-17",
+      "publication_id": "Telegram:V_Zelenskiy_official:21410",
+      "originating_source": "Official public channel of the President of Ukraine",
+      "event_at": null,
+      "published_at": "2026-10-17T09:01:59Z",
+      "collected_at": "2026-10-17T12:04:06.354901Z",
+      "reviewed_at": "2026-10-17T12:05:37.235656Z",
+      "verified_at": null,
+      "evidence_id": "ev_85354c5adb35e900b5a6308e57280c286cf31fabe0bb9776bfd9318f0017e9cc",
+      "revision_id": "rev_521e447ec86e1fb7ecdae31ccbacb5667b7d7055f95563dabe960525a2f2eacd",
+      "revision_ids": [
+        "rev_521e447ec86e1fb7ecdae31ccbacb5667b7d7055f95563dabe960525a2f2eacd"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The president reports widespread disruption and ongoing restoration; individual damage, power-restoration times and independent attack verification remain unresolved.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://t.me/V_Zelenskiy_official/21410",
+        "https://www.kyivpost.com/post/87367"
       ]
     },
     {
@@ -3218,6 +3292,48 @@ const state = {
     },
     {
       "zone": "russia_ukraine",
+      "headline": "Satellite-service revision: Zelensky says Starlink speed was reduced and had not fully recovered",
+      "text": "Newly read named first-person account revises the retained service-restoration reporting group: the president distinguishes slower Starlink service from shutdown and says previous speed had not fully returned at the October 16 remarks. Earlier Reuters and Axios reports and all preceding revisions remain retained. Their use of Starshield versus this statement's Starlink is not silently equated; the technical relationship, cause, decision-maker and independent restoration status remain unestablished. This is a revision of a retained report, not a new outage or claim about service at collection time.",
+      "timestamp_kind": "publication_time",
+      "incident_id": "ukraine-starshield-service-restoration-2026-10-15",
+      "publication_id": "Telegram:V_Zelenskiy_official:21408",
+      "originating_source": "Official public channel of the President of Ukraine; Brussels media remarks",
+      "event_at": null,
+      "published_at": "2026-10-16T16:14:06Z",
+      "collected_at": "2026-10-17T12:04:06.354901Z",
+      "reviewed_at": "2026-10-17T12:05:37.235656Z",
+      "verified_at": null,
+      "evidence_id": "ev_699bdc618d7d8d28afa4f58203fee091767c2aad1f8e0d1ce9e574a932f01fc7",
+      "revision_id": "rev_5e030cd8643d3f10f9ac14d5d7dc86d2f44ac189f942718fa578e8ce8deb070c",
+      "revision_ids": [
+        "rev_5e030cd8643d3f10f9ac14d5d7dc86d2f44ac189f942718fa578e8ce8deb070c"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_0c4080d50362452e3fb0173c07f3d45d0ad23f54c6e4bd07bdb3555a1aef11f5",
+      "report_status": "revision",
+      "implication": "A named presidential account adds incomplete speed recovery and reported operational effects; cause, service equivalence and technical status remain unverified.",
+      "next_trigger": "Public context unavailable; consult the original source.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/",
+        "https://news.rthk.hk/rthk/en/component/k2/1874137-20261016.htm",
+        "https://t.me/V_Zelenskiy_official/21408",
+        "https://www.axios.com/2026/10/15/ukraine-starlink-restored-strikes-russia-trump-musk",
+        "https://www.npr.org/2026/10/15/nx-s1-6002949/ukraine-says-its-starshield-access-is-back",
+        "https://www.reuters.com/3fec1b0a85a0/world/europe/order-limit-starshield-ukraine-came-inside-white-house-sources-say-2026-10-15/"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
       "headline": "Zaporizhzhya update: IAEA says repair ceasefire began; one external power line remains",
       "text": "IAEA Update 371 says the eighth localized repair ceasefire began on Thursday morning, enabling work on a backup transformer near the thermal power plant. It says Ferosplavna-1 remains the nuclear plant\u2019s sole external power line, the Dniprovska line remains unavailable, and diesel reserves have depleted without deliveries since March. This updates the retained repair-negotiation report; it is not a new attack, a completed repair, a radiation release or a general ceasefire. NucNet repeats the IAEA account and is not independent confirmation. Exact publication and event times are unknown.",
       "timestamp_kind": "unknown",
@@ -3431,13 +3547,14 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
-        "headline_only_or_body_unavailable",
         "geographic_relevance_unestablished",
+        "headline_only_or_body_unavailable",
+        "inactive_revision_superseded",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
       "supersedes": "rev_6c734e19c762a69d45c48afba530b69250d61f76ad6e9badb5465f335bf09b99",
-      "report_status": "revision",
+      "report_status": "superseded",
       "implication": "The newly reviewed accounts differ on restoration scope; neither the cause nor unrestricted nationwide service is independently established.",
       "next_trigger": "No dated independent technical assessment or named decision-maker confirmation is supplied.",
       "independent_verification": false,
@@ -3524,125 +3641,6 @@ const state = {
         "https://apnews.com/article/mideast-saudi-medina-houthis-october-15-2026-ffa2a29fe8f91f400b0b75067d269ad3",
         "https://www.sabanew.net/story/ar/154066"
       ]
-    },
-    {
-      "zone": "russia_ukraine",
-      "headline": "Starshield revision: Axios official claims full capacity; technical recovery remains unverified",
-      "text": "Public context unavailable; consult the original source.",
-      "timestamp_kind": "unknown",
-      "incident_id": "ukraine-starshield-service-restoration-2026-10-15",
-      "publication_id": "Axios:2026-10-15:ukraine-starlink-restored-strikes-russia-trump-musk",
-      "originating_source": "Axios reporting by Barak Ravid, citing an unnamed Ukrainian official",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-15T18:04:27.075154Z",
-      "reviewed_at": "2026-10-15T18:04:27.075154Z",
-      "verified_at": null,
-      "evidence_id": "ev_8abc18e054902b0b2307b1b6b21e1439e97e6eb8d3a9c98b18edcd2ebecb2420",
-      "revision_id": "rev_6c734e19c762a69d45c48afba530b69250d61f76ad6e9badb5465f335bf09b99",
-      "revision_ids": [
-        "rev_6c734e19c762a69d45c48afba530b69250d61f76ad6e9badb5465f335bf09b99"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "inactive_revision_superseded",
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_a1f20a5ab312ebb1e1fbd6ba8286240c317cb4e395d030a37b58f9abc9f04903",
-      "report_status": "superseded",
-      "implication": "An unnamed official now claims broader recovery than the earlier in-motion account; nationwide performance and the cause remain unverified.",
-      "next_trigger": "No dated technical confirmation or independently evidenced next operational trigger is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Axios adds an attributed claim of full-capacity restoration for both services; scope and timing remain technically unverified.",
-      "source_urls": [
-        "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/",
-        "https://www.axios.com/2026/10/15/ukraine-starlink-restored-strikes-russia-trump-musk"
-      ]
-    },
-    {
-      "zone": "ethiopia_tigray",
-      "headline": "Newly reviewed Anadolu report: Aksum entry and contested Eritrean-loss claims",
-      "text": "Anadolu attributes Ethiopian federal and allied Tigray Peace Force entry into Aksum and Eritrean border withdrawals to ACLED. A militia spokesperson claimed heavy Eritrean losses; the Eritrean information minister rejected those claims. The article explicitly says losses could not be independently verified. Exact event timing and current city control are not established by this evidence.",
-      "timestamp_kind": "review_time_only_publication_date_known",
-      "incident_id": "anadolu-publication-4089516-tigray-2026-10-15",
-      "publication_id": "anadolu-4089516",
-      "originating_source": "Anadolu Agency",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": null,
-      "reviewed_at": "2026-10-15T15:07:14.595507Z",
-      "verified_at": null,
-      "evidence_id": "ev_ef5005fb4d1c8382ec707f975e582cf9d77e55931941538ce716652a4e523dcf",
-      "revision_id": "rev_dd472afc33e1ee40f746f72a4ca0f07e49eba0f54ac2b4676170259dba0df90e",
-      "revision_ids": [
-        "rev_dd472afc33e1ee40f746f72a4ca0f07e49eba0f54ac2b4676170259dba0df90e"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "No further implication established by this evidence.",
-      "next_trigger": "Not supplied by source evidence.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://www.aa.com.tr/en/africa/ethiopian-forces-expand-control-in-tigray-as-militia-claims-heavy-eritrean-losses/4089516"
-      ]
-    },
-    {
-      "zone": "north_korea",
-      "headline": "North Korea test revision: SBS quotes Seoul military on flight tracking; capability unverified",
-      "text": "SBS quotes South Korea's Joint Chiefs of Staff public affairs chief Jang Doyoung saying the military continuously tracked North Korean cruise-missile activity before launch, during flight and through termination. This adds a named South Korean military account to the previously retained KCNA claim of October 14 tests. SBS's original Korean report and its English translation are one publication, not independent confirmations. USNI separately attributes flight-tracking comments to JCS through Yonhap; both depend on the same military account. No tracking data, measured range, missile identification or independently established launch platform is supplied. The JCS statement does not verify operational submarine capability or nuclear readiness. Newly reviewed reporting predates the prior review; no new launch since that review is established.",
-      "timestamp_kind": "publication_time",
-      "source_date": "2026-10-15",
-      "incident_id": "north-korea-submarine-cruise-test-kcna-report-2026-10-14",
-      "publication_id": "SBS:N1008799922",
-      "originating_source": "SBS original Korean television report by Kim Ayeong, quoting JCS public affairs chief Jang Doyoung",
-      "event_at": null,
-      "published_at": "2026-10-15T11:16:51Z",
-      "collected_at": "2026-10-16T00:03:15.017750Z",
-      "reviewed_at": "2026-10-16T00:04:31.877276Z",
-      "verified_at": null,
-      "evidence_id": "ev_959ae1d7450763770e8d06daa4847c994fd8f12c5ddc06b3d479e4e49bf9cb31",
-      "revision_id": "rev_9d468af662e21b57c6a62f5639b918f57cfda8c60ab7403efd2937d34e685a04",
-      "revision_ids": [
-        "rev_9d468af662e21b57c6a62f5639b918f57cfda8c60ab7403efd2937d34e685a04"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "supersedes": "rev_b170092a2738e10069557cabf84d7479340bbfe1803f9814461b7f0309116b3b",
-      "report_status": "revision",
-      "implication": "A named South Korean military account adds flight-tracking evidence beyond the KCNA claim; missile performance, launch platform and nuclear readiness remain unverified.",
-      "next_trigger": "No independently evidenced next test, deployment date or verification timetable is supplied.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": true,
-      "material_revision": "Named South Korean JCS spokesperson says cruise-missile activity was tracked before launch, in flight and through termination; operational submarine and nuclear claims remain unverified.",
-      "source_urls": [
-        "https://news.sbs.co.kr/english/article.do?news_id=N1008800007",
-        "https://news.sbs.co.kr/news/endPage.do?news_id=N1008799922",
-        "https://news.usni.org/2026/10/15/north-korea-tests-first-submarine-launched-cruise-missile-in-nearly-3-years"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3659,7 +3657,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-17T09:06:55Z",
+  "build_at": "2026-10-17T12:06:23Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3859,7 +3857,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-17T09:06:55Z",
+      "generated_at": "2026-10-17T12:06:23Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4492,10 +4490,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-17T09:06:55Z",
+    "generated_at": "2026-10-17T12:06:23Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 929.8183333333334,
+    "age_hours": 932.8094444444445,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4577,7 +4575,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4644,7 +4642,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4672,7 +4670,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4700,7 +4698,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4800,7 +4798,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4867,7 +4865,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4965,7 +4963,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 74.62019675925926,
+            "remaining_days": 74.49556712962963,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4993,7 +4991,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5091,7 +5089,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5119,7 +5117,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 74.62019675925926,
+            "remaining_days": 74.49556712962963,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5186,7 +5184,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 75.82783564814815,
+            "remaining_days": 75.70320601851851,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5271,115 +5269,169 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-17T09:06:55Z",
+    "generated_at": "2026-10-17T12:06:23Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "ad566bcb72a3668077717fe201424f20ccfcc1d458f1f23abe0cedb747eae023",
+    "previous_snapshot_id": "e9465af23c94b484989ebc61ee84932b4700ad2f763800752110369f0ebe75c6",
     "changes": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Rivne region: emergency service reports two injured and an enterprise fire extinguished",
+        "zone": "yemen_red_sea",
+        "headline": "Dhamar: AP relays Houthi-run ministry report of three children killed in an October 16 strike",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_f5f96c485aea04cb7f4a37eeb598fe344e95d37205186947f3c26764d029ba2b",
+        "correction_id": "rev_36fff670a8972a516ad035dca00a8dd27012a29408ee39cdc4a4889036c9e612",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://24tv.ua/ataka-rivnensku-oblast-17-zhovtnya-yaki-naslidki-foto_n3162336",
-          "https://www.facebook.com/dsns.rivne/posts/pfbid02aDEC25i9xNjxA7GvUP4CrWEoFasYjSU27j7EprbPhNddLwwLhF6XjE9Ty9Smz4tPl"
+          "https://apnews.com/article/mideast-israel-palestinians-houthis-october-17-2026-aaf6d7e5367f99869eaf4b419c66e0df"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The source reports two injuries and completed firefighting; damage scale and wider operational effects are not established.",
+        "implication": "The attributed report describes child deaths and other injuries at village homes; the toll, weapon and responsibility remain unverified.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "dsns-rivne-enterprise-fire-publication-pfbid02aDEC25i9x",
+        "incident_id": "dhamar-al-ar-strike-health-ministry-ap-2026-10-17",
         "change": "New incident report"
       },
       {
-        "zone": "north_korea",
-        "headline": "North Korea: Reuters relays KCNA claim of an October 15 AI-guided torpedo test; performance unverified",
-        "status": "reported",
+        "zone": "russia_ukraine",
+        "headline": "Satellite-service revision: Zelensky says Starlink speed was reduced and had not fully recovered",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_38836c38567bcce660dbe423e59327c48b6f5cb6755d9a0ffcd6f5d2f4c4307e",
+        "correction_id": "rev_5e030cd8643d3f10f9ac14d5d7dc86d2f44ac189f942718fa578e8ce8deb070c",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.asiaone.com/asia/north-korea-tests-new-ai-equipped-torpedo-kcna-says",
-          "https://www.japantimes.co.jp/news/2026/10/17/asia-pacific/north-korea-ai-torpedo/"
+          "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/",
+          "https://news.rthk.hk/rthk/en/component/k2/1874137-20261016.htm",
+          "https://t.me/V_Zelenskiy_official/21408",
+          "https://www.axios.com/2026/10/15/ukraine-starlink-restored-strikes-russia-trump-musk",
+          "https://www.npr.org/2026/10/15/nx-s1-6002949/ukraine-says-its-starshield-access-is-back",
+          "https://www.reuters.com/3fec1b0a85a0/world/europe/order-limit-starshield-ukraine-came-inside-white-house-sources-say-2026-10-15/"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The report describes claimed naval weapons research, not combat use or independently demonstrated technical capability.",
+        "implication": "A named presidential account adds incomplete speed recovery and reported operational effects; cause, service equivalence and technical status remain unverified.",
+        "historical_revision_ids": [
+          "rev_0c4080d50362452e3fb0173c07f3d45d0ad23f54c6e4bd07bdb3555a1aef11f5",
+          "rev_6c734e19c762a69d45c48afba530b69250d61f76ad6e9badb5465f335bf09b99",
+          "rev_a1f20a5ab312ebb1e1fbd6ba8286240c317cb4e395d030a37b58f9abc9f04903"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "ukraine-starshield-service-restoration-2026-10-15",
+        "change": "Correction / revision"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Zelensky reports more than 15 energy facilities attacked; restoration work ongoing",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_521e447ec86e1fb7ecdae31ccbacb5667b7d7055f95563dabe960525a2f2eacd",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://t.me/V_Zelenskiy_official/21410",
+          "https://www.kyivpost.com/post/87367"
+        ],
+        "next_trigger": "Public context unavailable; consult the original source.",
+        "implication": "The president reports widespread disruption and ongoing restoration; individual damage, power-restoration times and independent attack verification remain unresolved.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "north-korea-torpedo-test-kcna-report-2026-10-17",
+        "incident_id": "zelensky-publication-21410-energy-2026-10-17",
         "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "russia_ukraine",
-        "headline": "Rivne region: emergency service reports two injured and an enterprise fire extinguished",
+        "zone": "yemen_red_sea",
+        "headline": "Dhamar: AP relays Houthi-run ministry report of three children killed in an October 16 strike",
         "status": "reported",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_f5f96c485aea04cb7f4a37eeb598fe344e95d37205186947f3c26764d029ba2b",
+        "correction_id": "rev_36fff670a8972a516ad035dca00a8dd27012a29408ee39cdc4a4889036c9e612",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://24tv.ua/ataka-rivnensku-oblast-17-zhovtnya-yaki-naslidki-foto_n3162336",
-          "https://www.facebook.com/dsns.rivne/posts/pfbid02aDEC25i9xNjxA7GvUP4CrWEoFasYjSU27j7EprbPhNddLwwLhF6XjE9Ty9Smz4tPl"
+          "https://apnews.com/article/mideast-israel-palestinians-houthis-october-17-2026-aaf6d7e5367f99869eaf4b419c66e0df"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The source reports two injuries and completed firefighting; damage scale and wider operational effects are not established.",
+        "implication": "The attributed report describes child deaths and other injuries at village homes; the toll, weapon and responsibility remain unverified.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "dsns-rivne-enterprise-fire-publication-pfbid02aDEC25i9x",
+        "incident_id": "dhamar-al-ar-strike-health-ministry-ap-2026-10-17",
         "change": "New incident report"
       },
       {
-        "zone": "north_korea",
-        "headline": "North Korea: Reuters relays KCNA claim of an October 15 AI-guided torpedo test; performance unverified",
-        "status": "reported",
+        "zone": "russia_ukraine",
+        "headline": "Satellite-service revision: Zelensky says Starlink speed was reduced and had not fully recovered",
+        "status": "revision",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_38836c38567bcce660dbe423e59327c48b6f5cb6755d9a0ffcd6f5d2f4c4307e",
+        "correction_id": "rev_5e030cd8643d3f10f9ac14d5d7dc86d2f44ac189f942718fa578e8ce8deb070c",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://www.asiaone.com/asia/north-korea-tests-new-ai-equipped-torpedo-kcna-says",
-          "https://www.japantimes.co.jp/news/2026/10/17/asia-pacific/north-korea-ai-torpedo/"
+          "https://kyivindependent.com/breaking-starlink-service-in-ukraine-restored-defense-ministry-source-says/",
+          "https://news.rthk.hk/rthk/en/component/k2/1874137-20261016.htm",
+          "https://t.me/V_Zelenskiy_official/21408",
+          "https://www.axios.com/2026/10/15/ukraine-starlink-restored-strikes-russia-trump-musk",
+          "https://www.npr.org/2026/10/15/nx-s1-6002949/ukraine-says-its-starshield-access-is-back",
+          "https://www.reuters.com/3fec1b0a85a0/world/europe/order-limit-starshield-ukraine-came-inside-white-house-sources-say-2026-10-15/"
         ],
         "next_trigger": "Public context unavailable; consult the original source.",
-        "implication": "The report describes claimed naval weapons research, not combat use or independently demonstrated technical capability.",
+        "implication": "A named presidential account adds incomplete speed recovery and reported operational effects; cause, service equivalence and technical status remain unverified.",
+        "historical_revision_ids": [
+          "rev_0c4080d50362452e3fb0173c07f3d45d0ad23f54c6e4bd07bdb3555a1aef11f5",
+          "rev_6c734e19c762a69d45c48afba530b69250d61f76ad6e9badb5465f335bf09b99",
+          "rev_a1f20a5ab312ebb1e1fbd6ba8286240c317cb4e395d030a37b58f9abc9f04903"
+        ],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "ukraine-starshield-service-restoration-2026-10-15",
+        "change": "Correction / revision"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Zelensky reports more than 15 energy facilities attacked; restoration work ongoing",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_521e447ec86e1fb7ecdae31ccbacb5667b7d7055f95563dabe960525a2f2eacd",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://t.me/V_Zelenskiy_official/21410",
+          "https://www.kyivpost.com/post/87367"
+        ],
+        "next_trigger": "Public context unavailable; consult the original source.",
+        "implication": "The president reports widespread disruption and ongoing restoration; individual damage, power-restoration times and independent attack verification remain unresolved.",
         "historical_revision_ids": [],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "north-korea-torpedo-test-kcna-report-2026-10-17",
+        "incident_id": "zelensky-publication-21410-energy-2026-10-17",
         "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "New incident report: Rivne region: emergency service reports two injured and an enterprise fire extinguished\nImplication: The source reports two injuries and completed firefighting; damage scale and wider operational effects are not established.\nEvidence: verification not established https://24tv.ua/ataka-rivnensku-oblast-17-zhovtnya-yaki-naslidki-foto_n3162336\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://24tv.ua/ataka-rivnensku-oblast-17-zhovtnya-yaki-naslidki-foto_n3162336\n1 additional incident changes in the dashboard briefing list.",
-    "message_id": "f7e86fbe3a53721849814f03a313230e5d630da0af728031e88a180094c5f01c"
+    "message": "New incident report: Dhamar: AP relays Houthi-run ministry report of three children killed in an October 16 strike\nImplication: The attributed report describes child deaths and other injuries at village homes; the toll, weapon and responsibility remain unverified.\nEvidence: verification not established https://apnews.com/article/mideast-israel-palestinians-houthis-october-17-2026-aaf6d7e5367f99869eaf4b419c66e0df\nNext trigger: Public context unavailable; consult the original source.\nDossier: dashboard incident list; source https://apnews.com/article/mideast-israel-palestinians-houthis-october-17-2026-aaf6d7e5367f99869eaf4b419c66e0df\n2 additional incident changes in the dashboard briefing list.",
+    "message_id": "316146ce20b36f511dced21ed1d42c5b122ce8810228057fb35614bb891be206"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 1000,
-    "current_report_count": 989,
+    "total_count": 1003,
+    "current_report_count": 992,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 980,
-    "bytes": 1698771,
-    "sha256": "a5bcc7fe362100eb1718e6df6ee3af5ba936f637be55bcd75e3ea30aa621e0ed",
+    "archive_count": 983,
+    "bytes": 1705147,
+    "sha256": "dea88f193bb5979abf2260e92303e1d13f1311d2243e87c1e17672f500e21298",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-17T01:31:23Z",
+    "published_at": "2026-10-17T09:01:59Z",
     "verified_at": "2026-10-17T00:04:07.203931Z",
-    "reviewed_at": "2026-10-17T09:06:06.443108Z"
+    "reviewed_at": "2026-10-17T12:05:37.235656Z"
   }
 };
 
