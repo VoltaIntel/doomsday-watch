@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-18T00:14:36Z",
+  "last_updated": "2026-10-18T03:05:43Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -2843,9 +2843,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 114,
+        "scanned": 115,
         "retained": 0,
-        "rejected": 114,
+        "rejected": 115,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2869,6 +2869,45 @@ const state = {
     }
   ],
   "latest_news": [
+    {
+      "zone": "yemen_red_sea",
+      "headline": "Newly reviewed coalition release: two ballistic missiles toward Khamis Mushait reportedly intercepted",
+      "text": "The original Saudi Press Agency release quotes coalition spokesperson Turki Al-Malki saying two ballistic missiles launched by the Houthis toward Khamis Mushait were intercepted and destroyed. Its publication instant is October 17 at 22:49:32 UTC, displayed as October 18 local time; the exact launch and interception times are unknown. Anadolu and Okaz relay the same coalition statement, not independent confirmation. The original statement supplies no damage, casualty or follow-up assessment. This is newly reviewed reporting, not a verified new attack within this scan.",
+      "timestamp_kind": "actual_publication_time_event_time_unknown",
+      "incident_id": "coalition-khamis-mushait-interception-spa-N2703914",
+      "publication_id": "SPA:N2703914",
+      "originating_source": "Saudi Press Agency, relaying coalition spokesperson Turki Al-Malki",
+      "event_at": null,
+      "published_at": "2026-10-17T22:49:32Z",
+      "collected_at": "2026-10-18T03:03:50.324210Z",
+      "reviewed_at": "2026-10-18T03:05:06.585435Z",
+      "verified_at": null,
+      "evidence_id": "ev_7bf74a551531db7803f37d5087b977a36c443e9d32eef23761f9c7ee1605f042",
+      "revision_id": "rev_d2c5a01e65d6a046301aa367eed8025d2703369a5b0b0f37e9d6e679f481af1d",
+      "revision_ids": [
+        "rev_d2c5a01e65d6a046301aa367eed8025d2703369a5b0b0f37e9d6e679f481af1d"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "geographic_relevance_unestablished",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "The coalition reports an interception toward a Saudi city; missile attribution, physical effects and any damage remain unverified.",
+      "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://www.aa.com.tr/en/middle-east/saudi-led-coalition-says-it-intercepted-2-houthi-ballistic-missiles-headed-for-southwestern-saudi-arabia/4092323",
+        "https://www.okaz.com.sa/local/na/2271242",
+        "https://www.spa.gov.sa/en/N2703914"
+      ]
+    },
     {
       "zone": "iran_conventional",
       "headline": "Newly reviewed UKMTO 174-26: tanker crew evacuated after reported projectile strike near Al Jubayl",
@@ -3598,44 +3637,6 @@ const state = {
       "source_urls": [
         "https://press.un.org/en/2026/sc16479.doc.htm"
       ]
-    },
-    {
-      "zone": "ethiopia_tigray",
-      "headline": "Tigray: UN bulletin reports many hospitals operating again, while access and security remain volatile",
-      "text": "The October 15 UN noon briefing says humanitarian partners report many Tigray hospitals operational again after fighting and medical-supply shortages, including Ayder Hospital in Mekelle. It says further medicines and equipment are en route and warns of volatile security in northern Tigray and Afar and parts of Amhara. This is a stable publication-and-section reporting group, not a newly identified attack, a final facility census or a retraction of the retained AP/HRW reports of shelling and closures. Restoration dates, facility-by-facility scope and independent authentication are unknown.",
-      "timestamp_kind": "unknown",
-      "incident_id": "un-publication-db261015-ethiopia-health",
-      "publication_id": "UN:db261015:Ethiopia",
-      "originating_source": "UN Deputy Spokesman Farhan Haq, October 15 noon briefing",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-16T06:05:26.430595Z",
-      "reviewed_at": "2026-10-16T06:06:42.762559Z",
-      "verified_at": "2026-10-16T06:06:42.762559Z",
-      "evidence_id": "ev_fad8cf24cd2dcdaa178b0d4ccf5d699d32865256da03c06d97047a739e7ba012",
-      "revision_id": "rev_56bcfc6823ebe1a506c85ad496de79432faffc1c6892c4547d8af6e80171cff9",
-      "revision_ids": [
-        "rev_56bcfc6823ebe1a506c85ad496de79432faffc1c6892c4547d8af6e80171cff9"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "headline_only_or_body_unavailable",
-        "geographic_relevance_unestablished",
-        "published_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The UN reports partial restoration of health services, not region-wide recovery or an end to fighting.",
-      "next_trigger": "Public context unavailable; consult the original source.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://press.un.org/en/2026/db261015.doc.htm"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3652,7 +3653,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-18T00:14:36Z",
+  "build_at": "2026-10-18T03:05:43Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3852,7 +3853,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-18T00:14:36Z",
+      "generated_at": "2026-10-18T03:05:43Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4485,10 +4486,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-18T00:14:36Z",
+    "generated_at": "2026-10-18T03:05:43Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 944.9463888888889,
+    "age_hours": 947.7983333333333,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4570,7 +4571,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4637,7 +4638,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4665,7 +4666,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4693,7 +4694,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4793,7 +4794,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4860,7 +4861,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4958,7 +4959,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 73.98986111111111,
+            "remaining_days": 73.87103009259259,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4986,7 +4987,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5084,7 +5085,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5112,7 +5113,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 73.98986111111111,
+            "remaining_days": 73.87103009259259,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5179,7 +5180,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 75.1975,
+            "remaining_days": 75.07866898148148,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5264,33 +5265,77 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-18T00:14:36Z",
+    "generated_at": "2026-10-18T03:05:43Z",
     "mode": "delta",
     "daily_key": null,
     "previous_snapshot_id": "363981ce29acbca7836741f0d81d33ae476ce925c0ce9c493427eabc1e38a419",
-    "changes": [],
-    "items": [],
+    "changes": [
+      {
+        "zone": "yemen_red_sea",
+        "headline": "Newly reviewed coalition release: two ballistic missiles toward Khamis Mushait reportedly intercepted",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_d2c5a01e65d6a046301aa367eed8025d2703369a5b0b0f37e9d6e679f481af1d",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.aa.com.tr/en/middle-east/saudi-led-coalition-says-it-intercepted-2-houthi-ballistic-missiles-headed-for-southwestern-saudi-arabia/4092323",
+          "https://www.okaz.com.sa/local/na/2271242",
+          "https://www.spa.gov.sa/en/N2703914"
+        ],
+        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
+        "implication": "The coalition reports an interception toward a Saudi city; missile attribution, physical effects and any damage remain unverified.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "coalition-khamis-mushait-interception-spa-N2703914",
+        "change": "New incident report"
+      }
+    ],
+    "items": [
+      {
+        "zone": "yemen_red_sea",
+        "headline": "Newly reviewed coalition release: two ballistic missiles toward Khamis Mushait reportedly intercepted",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_d2c5a01e65d6a046301aa367eed8025d2703369a5b0b0f37e9d6e679f481af1d",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://www.aa.com.tr/en/middle-east/saudi-led-coalition-says-it-intercepted-2-houthi-ballistic-missiles-headed-for-southwestern-saudi-arabia/4092323",
+          "https://www.okaz.com.sa/local/na/2271242",
+          "https://www.spa.gov.sa/en/N2703914"
+        ],
+        "next_trigger": "No dated follow-up or independently evidenced next operational trigger is supplied.",
+        "implication": "The coalition reports an interception toward a Saudi city; missile attribution, physical effects and any damage remain unverified.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "coalition-khamis-mushait-interception-spa-N2703914",
+        "change": "New incident report"
+      }
+    ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "",
-    "message_id": "cf7a23aee653e5f1601fa50037d2df5e640d4f8ae76bbc5cc171aaf4697b8386"
+    "message": "New incident report: Newly reviewed coalition release: two ballistic missiles toward Khamis Mushait reportedly intercepted\nImplication: The coalition reports an interception toward a Saudi city; missile attribution, physical effects and any damage remain unverified.\nEvidence: verification not established https://www.aa.com.tr/en/middle-east/saudi-led-coalition-says-it-intercepted-2-houthi-ballistic-missiles-headed-for-southwestern-saudi-arabia/4092323\nNext trigger: No dated follow-up or independently evidenced next operational trigger is supplied.\nDossier: dashboard incident list; source https://www.aa.com.tr/en/middle-east/saudi-led-coalition-says-it-intercepted-2-houthi-ballistic-missiles-headed-for-southwestern-saudi-arabia/4092323",
+    "message_id": "6bec0567c0843aaaee053d8382ef709c45c29cce4211d9739619ccafde37156c"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 1008,
-    "current_report_count": 997,
+    "total_count": 1009,
+    "current_report_count": 998,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 988,
-    "bytes": 1717516,
-    "sha256": "c22b7a0d7735e679a788223ac1c82ab407e6f82ef7d0f375300e8c078687f426",
+    "archive_count": 989,
+    "bytes": 1719491,
+    "sha256": "7b30fe346b7d770634caaf847b28abc36affda6be7454ae634737d18e7929b22",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-17T15:04:40Z",
+    "published_at": "2026-10-17T22:49:32Z",
     "verified_at": "2026-10-17T00:04:07.203931Z",
-    "reviewed_at": "2026-10-17T21:04:02.725808Z"
+    "reviewed_at": "2026-10-18T03:05:06.585435Z"
   }
 };
 
