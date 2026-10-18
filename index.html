@@ -52,7 +52,7 @@ main{container-type:inline-size}
 'use strict';
 const state = {
   "publication_schema": "escalation_index_v1",
-  "last_updated": "2026-10-18T15:05:20Z",
+  "last_updated": "2026-10-18T18:07:03Z",
   "legacy_escalation_index": {
     "value": 92,
     "label": "Uncalibrated legacy escalation index",
@@ -778,9 +778,9 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 183,
+        "scanned": 184,
         "retained": 0,
-        "rejected": 183,
+        "rejected": 184,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
@@ -2190,12 +2190,13 @@ const state = {
         "status": "insufficient_evidence",
         "source_count": 0,
         "qualifying_source_count": 0,
-        "scanned": 21,
+        "scanned": 22,
         "retained": 0,
-        "rejected": 21,
+        "rejected": 22,
         "reasons": [
           "geographic_relevance_unestablished",
           "headline_only_or_body_unavailable",
+          "inactive_revision_superseded",
           "missing_safe_origin_or_publication_identity",
           "originating_source_unknown",
           "published_at_invalid_or_future",
@@ -2874,6 +2875,83 @@ const state = {
   ],
   "latest_news": [
     {
+      "zone": "somalia_gulf_of_aden",
+      "headline": "UKMTO 176-26 correction: original PDF specifies southeast of Al Mukalla and 10:30 UTC on October 17",
+      "text": "The original UKMTO Warning 176-26 PDF specifies an October 17 incident at 10:30 UTC, 140 nautical miles southeast of Al Mukalla. The earlier retained recent-incidents listing said southwest, while Anadolu said southeast; that discrepancy is retained rather than silently erased. The PDF relays a tanker master's account that seven people in a skiff fired two shots and the tanker security team fired two warning shots, prompting the skiff to alter course. The new document establishes the bulletin's stated time and bearing, not independent physical verification or a new attack. Vessel identity, attacker, physical effects and the reason for the conflicting bearing remain unknown.",
+      "timestamp_kind": "bulletin_attributed_incident_time_publication_time_unknown",
+      "incident_id": "ukmto-warning-176-26-al-mukalla-2026-10-17",
+      "publication_id": "UKMTO:176-26",
+      "originating_source": "Original UKMTO Warning 176-26 PDF, relaying tanker master",
+      "event_at": "2026-10-17T10:30:00Z",
+      "published_at": null,
+      "collected_at": null,
+      "reviewed_at": "2026-10-18T18:06:12.892122Z",
+      "verified_at": null,
+      "evidence_id": "ev_5e654d64851ee409bc3fbbca7e0b886c6825f6210c00cec58fb363f91e0871d6",
+      "revision_id": "rev_037359669bfce66adce10ab51f96543797f1015513a52c5591c8facc49546c5a",
+      "revision_ids": [
+        "rev_037359669bfce66adce10ab51f96543797f1015513a52c5591c8facc49546c5a"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "published_at_unknown",
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "supersedes": "rev_2b4f099d985418fd35c6323ee427df0b27d9290d3db80285454a10aed83bd3fb",
+      "report_status": "correction",
+      "implication": "The original bulletin narrows its reported time and bearing; it does not establish a new attack, an attacker or independently verified consequences.",
+      "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://www.aa.com.tr/en/middle-east/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-s-coast-uk-maritime-agency-says/4092086",
+        "https://www.ukmto.org/-/media/ukmto/products/20261017-ukmto_warning-176-26.pdf",
+        "https://www.ukmto.org/recent-incidents"
+      ]
+    },
+    {
+      "zone": "russia_ukraine",
+      "headline": "Zelensky tells NBC US missile-warning intelligence sharing resumed after a three-day gap",
+      "text": "In NBC's October 18 Meet the Press transcript, President Volodymyr Zelensky says US intelligence used to warn Ukraine about Russian ballistic missile launches was unavailable during three days of attacks and now works again. He says other partners continued supplying other intelligence. In the same transcript Treasury Secretary Scott Bessent says he does not know about the reported intelligence interruption; this is not US confirmation of the account. Exact interruption and restoration times are not established, and the separate Starlink speed restrictions are not described as resolved.",
+      "timestamp_kind": "actual_transcript_publication_time_event_times_unknown",
+      "incident_id": "ukraine-us-ballistic-missile-warning-intelligence-nbc-rcna604150",
+      "publication_id": "NBC:rcna604150:intelligence-sharing",
+      "originating_source": "NBC News original interview transcript, quoting President Volodymyr Zelensky; same-program response by Treasury Secretary Scott Bessent",
+      "event_at": null,
+      "published_at": "2026-10-18T16:22:13.693000Z",
+      "collected_at": "2026-10-18T18:02:57Z",
+      "reviewed_at": "2026-10-18T18:06:12.892122Z",
+      "verified_at": null,
+      "evidence_id": "ev_034a49a84a23e62c9f3e10ed1aa3605024054ecd474cc066de81c2c94d0f8a89",
+      "revision_id": "rev_43cd009f568e86667e4b5a4ed8751dec8bab124259c30b45388af0cdcdea495f",
+      "revision_ids": [
+        "rev_43cd009f568e86667e4b5a4ed8751dec8bab124259c30b45388af0cdcdea495f"
+      ],
+      "direction": "context",
+      "signal": null,
+      "qualifies": false,
+      "rejection_reasons": [
+        "verified_at_unknown"
+      ],
+      "status": "insufficient_evidence",
+      "report_status": "unknown",
+      "implication": "Zelensky reports restored ballistic-missile warning support, not a broader end to US-Ukraine restrictions; the operational status remains independently unverified.",
+      "next_trigger": "No dated operational follow-up is supplied by the interview.",
+      "independent_verification": false,
+      "independent_sources": [],
+      "material_escalation": false,
+      "material_change": false,
+      "source_urls": [
+        "https://kyivindependent.com/us-resumes-intel-sharing-on-russian-missile-launches-with-ukraine-zelensky-says/",
+        "https://www.nbcnews.com/meet-the-press/transcripts/meet-press-october-18-2026-rcna604150"
+      ]
+    },
+    {
       "zone": "egypt_mediterranean",
       "headline": "Egypt parliamentary revision: Ahram reports sessions began and are to last three days; authorization unconfirmed",
       "text": "Ahram Online reports that the House of Representatives convened on October 18 to consider the president's request for defensive assistance to Saudi Arabia if Riyadh requests it. It attributes an expected three-day discussion to MP Mostafa Bakry. This revises the retained pending-session account, not the council pledge itself. The retrieved full text does not establish a completed authorization vote, troop deployment, a Saudi request, or an exact vote date. The underlying parliamentary record and MP post were not obtained.",
@@ -3325,11 +3403,12 @@ const state = {
       "signal": null,
       "qualifies": false,
       "rejection_reasons": [
+        "inactive_revision_superseded",
         "published_at_unknown",
         "verified_at_unknown"
       ],
       "status": "insufficient_evidence",
-      "report_status": "unknown",
+      "report_status": "superseded",
       "implication": "The reported exchange involves an LNG tanker and a small craft; bearing, identities, responsibility and physical consequences remain unverified.",
       "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
       "independent_verification": false,
@@ -3561,82 +3640,6 @@ const state = {
         "https://t.me/V_Zelenskiy_official/21410",
         "https://www.kyivpost.com/post/87367"
       ]
-    },
-    {
-      "zone": "haiti_gang_conflict",
-      "headline": "Haiti: newly reviewed account of UN report records 1,123 deaths over July 15-October 12; Council briefing due October 19",
-      "text": "Security Council Report attributes the retrospective figures to S/2026/800; the underlying UN document was not available for this review. This is not a new-day casualty count.",
-      "timestamp_kind": "unknown",
-      "source_date": "2026-10-16",
-      "incident_id": "haiti-unsg-report-s-2026-800-review-scr-2026-10-16",
-      "publication_id": "securitycouncilreport-haiti-briefing-and-consultations-19-2026-10-16",
-      "originating_source": "Security Council Report",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-17T06:12:19.139448Z",
-      "reviewed_at": "2026-10-17T06:13:54.169116Z",
-      "verified_at": null,
-      "evidence_id": "ev_e9daaf0758be73574d91906d997469ac5fa189e20cd08822170d4e7935ad33af",
-      "revision_id": "rev_23c4b1203ecf898d7f07a2aa4cf9edf35f6c7606b39303a3f269da21f6e13708",
-      "revision_ids": [
-        "rev_23c4b1203ecf898d7f07a2aa4cf9edf35f6c7606b39303a3f269da21f6e13708"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The cited UN report describes persistent gang capacity despite security operations; its death toll covers July 15-October 12, not a new attack.",
-      "next_trigger": "Security Council Report lists an open Haiti briefing for October 19, followed by closed consultations.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://www.securitycouncilreport.org/whatsinblue/2026/10/haiti-briefing-and-consultations-19.php"
-      ]
-    },
-    {
-      "zone": "sudan",
-      "headline": "Newly reviewed UN briefing: Sudan parties show no credible commitment to pause fighting; border spillover warning",
-      "text": "The October 16 UN account attributes the assessment to Rosemary DiCarlo. Previously reported attacks on food-aid trucks are background, not new incidents in this review.",
-      "timestamp_kind": "unknown",
-      "source_date": "2026-10-16",
-      "incident_id": "unsc-sudan-briefing-sc16481-2026-10-16",
-      "publication_id": "SC/16481",
-      "originating_source": "United Nations Security Council meeting coverage",
-      "event_at": null,
-      "published_at": null,
-      "collected_at": "2026-10-17T06:13:54.169116Z",
-      "reviewed_at": "2026-10-17T06:13:54.169116Z",
-      "verified_at": null,
-      "evidence_id": "ev_3e44749c418976f69190011609d9a77af0291509abe23d34b54e92a286dacb2a",
-      "revision_id": "rev_7481727da35a5e8219c77c11d0b2ee791bcec863b3068bd44c630040ade95edc",
-      "revision_ids": [
-        "rev_7481727da35a5e8219c77c11d0b2ee791bcec863b3068bd44c630040ade95edc"
-      ],
-      "direction": "context",
-      "signal": null,
-      "qualifies": false,
-      "rejection_reasons": [
-        "published_at_unknown",
-        "verified_at_unknown"
-      ],
-      "status": "insufficient_evidence",
-      "report_status": "unknown",
-      "implication": "The UN warns that border altercations risk wider regional spillover; the briefing does not establish a newly verified cross-border attack.",
-      "next_trigger": "No dated ceasefire implementation checkpoint is supplied by this briefing.",
-      "independent_verification": false,
-      "independent_sources": [],
-      "material_escalation": false,
-      "material_change": false,
-      "source_urls": [
-        "https://press.un.org/en/2026/sc16481.doc.htm"
-      ]
     }
   ],
   "zone_alerts": [],
@@ -3653,7 +3656,7 @@ const state = {
     "meaning": "Build completion does not validate source freshness or forecast quality."
   },
   "methodology": "METHODOLOGY.md",
-  "build_at": "2026-10-18T15:05:20Z",
+  "build_at": "2026-10-18T18:07:03Z",
   "severity": {
     "version": "severity_v1",
     "value": null,
@@ -3853,7 +3856,7 @@ const state = {
     "issuances": [],
     "review": {
       "version": "forecast_review_queue_v3",
-      "generated_at": "2026-10-18T15:05:20Z",
+      "generated_at": "2026-10-18T18:07:03Z",
       "expired_unresolved": 0,
       "eligible_total": 0,
       "returned_count": 0,
@@ -4486,10 +4489,10 @@ const state = {
   },
   "market_context": {
     "schema": "market_context_v2",
-    "generated_at": "2026-10-18T15:05:20Z",
+    "generated_at": "2026-10-18T18:07:03Z",
     "fetched_at": "2026-09-08T15:17:49Z",
     "stale": true,
-    "age_hours": 959.7919444444444,
+    "age_hours": 962.8205555555555,
     "comparisons": {
       "iran_conventional": {
         "tracker_id": "iran_conventional",
@@ -4571,7 +4574,7 @@ const state = {
             "liquidity": 659831.6289,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-the-us-invade-iran-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4638,7 +4641,7 @@ const state = {
             "liquidity": 97069.00593,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuke-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4666,7 +4669,7 @@ const state = {
             "liquidity": 44041.92984,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/iran-nuclear-test-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4694,7 +4697,7 @@ const state = {
             "liquidity": 25986.53699,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-iran-withdraw-from-the-npt-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4794,7 +4797,7 @@ const state = {
             "liquidity": 99520.3512,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/ukraine-signs-peace-deal-with-russia-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4861,7 +4864,7 @@ const state = {
             "liquidity": 21571.90111,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/nato-article-5-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4959,7 +4962,7 @@ const state = {
             "liquidity": 414454.41552,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
-            "remaining_days": 73.3712962962963,
+            "remaining_days": 73.24510416666666,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -4987,7 +4990,7 @@ const state = {
             "liquidity": 88135.8357,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5085,7 +5088,7 @@ const state = {
             "liquidity": 59760.56537,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/will-north-korea-invade-south-korea-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5113,7 +5116,7 @@ const state = {
             "liquidity": 19389.27782,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/kim-jong-un-out-as-supreme-leader-of-north-korea-before-2027",
-            "remaining_days": 73.3712962962963,
+            "remaining_days": 73.24510416666666,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5180,7 +5183,7 @@ const state = {
             "liquidity": 23675.6665,
             "liquidity_status": "stale",
             "source_url": "https://polymarket.com/event/israel-and-lebanon-normalize-relations-before-2027",
-            "remaining_days": 74.57893518518519,
+            "remaining_days": 74.45274305555556,
             "status": "context_only",
             "reasons": [
               "source_time_stale_or_unknown",
@@ -5265,85 +5268,121 @@ const state = {
   },
   "briefing": {
     "schema": "brief_proposal_v1",
-    "generated_at": "2026-10-18T15:05:20Z",
+    "generated_at": "2026-10-18T18:07:03Z",
     "mode": "delta",
     "daily_key": null,
-    "previous_snapshot_id": "9f148e9204ee66972c640973d42d2b4948e145dbf1eab609a39c7d7d375d3be1",
+    "previous_snapshot_id": "9bb65ca50cf41147fa5c327eed83d847b9367e742a976989c1836aa2b93cf029",
     "changes": [
       {
-        "zone": "egypt_mediterranean",
-        "headline": "Egypt parliamentary revision: Ahram reports sessions began and are to last three days; authorization unconfirmed",
-        "status": "revision",
+        "zone": "somalia_gulf_of_aden",
+        "headline": "UKMTO 176-26 correction: original PDF specifies southeast of Al Mukalla and 10:30 UTC on October 17",
+        "status": "correction",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_a86bc76f4602514f738a7fcf4d04e4ba0e2ca28c2c4aa37abdb66c354319e5c9",
+        "correction_id": "rev_037359669bfce66adce10ab51f96543797f1015513a52c5591c8facc49546c5a",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=580258",
-          "https://gulfnews.com/world/mena/egypt-approves-sending-troops-to-saudi-arabia-at-defence-council-level-1.500714917",
-          "https://sis.gov.eg/en/media-center/news/president-el-sisi-chairs-national-defense-council-meeting/",
-          "https://www.presidency.eg/ar/%D9%82%D8%B3%D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%B1%D8%A6%D8%A7%D8%B3%D9%8A%D8%A9/news18102026/",
-          "https://www.thenationalnews.com/news/mena/2026/10/18/egypt-pledges-support-for-saudi-arabia-as-houthis-warn-cairo-against-military-intervention/"
+          "https://www.aa.com.tr/en/middle-east/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-s-coast-uk-maritime-agency-says/4092086",
+          "https://www.ukmto.org/-/media/ukmto/products/20261017-ukmto_warning-176-26.pdf",
+          "https://www.ukmto.org/recent-incidents"
         ],
-        "next_trigger": "MP Bakry says discussions will last three days; the retrieved full text establishes no exact vote date or deployment timetable.",
-        "implication": "The authorization process is reported underway, but the reviewed account establishes no completed vote, Saudi request or troop deployment.",
+        "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
+        "implication": "The original bulletin narrows its reported time and bearing; it does not establish a new attack, an attacker or independently verified consequences.",
         "historical_revision_ids": [
-          "rev_420fe00c52c90de4bdf1da03a302ea03fa2f7f0ecae0dd3434fa750b2916cb8d"
+          "rev_2b4f099d985418fd35c6323ee427df0b27d9290d3db80285454a10aed83bd3fb"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "egypt-presidency-national-defense-council-saudi-support-2026-10-18",
+        "incident_id": "ukmto-warning-176-26-al-mukalla-2026-10-17",
         "change": "Correction / revision"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Zelensky tells NBC US missile-warning intelligence sharing resumed after a three-day gap",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_43cd009f568e86667e4b5a4ed8751dec8bab124259c30b45388af0cdcdea495f",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://kyivindependent.com/us-resumes-intel-sharing-on-russian-missile-launches-with-ukraine-zelensky-says/",
+          "https://www.nbcnews.com/meet-the-press/transcripts/meet-press-october-18-2026-rcna604150"
+        ],
+        "next_trigger": "No dated operational follow-up is supplied by the interview.",
+        "implication": "Zelensky reports restored ballistic-missile warning support, not a broader end to US-Ukraine restrictions; the operational status remains independently unverified.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "ukraine-us-ballistic-missile-warning-intelligence-nbc-rcna604150",
+        "change": "New incident report"
       }
     ],
     "items": [
       {
-        "zone": "egypt_mediterranean",
-        "headline": "Egypt parliamentary revision: Ahram reports sessions began and are to last three days; authorization unconfirmed",
-        "status": "revision",
+        "zone": "somalia_gulf_of_aden",
+        "headline": "UKMTO 176-26 correction: original PDF specifies southeast of Al Mukalla and 10:30 UTC on October 17",
+        "status": "correction",
         "verified": false,
         "independently_verified": false,
-        "correction_id": "rev_a86bc76f4602514f738a7fcf4d04e4ba0e2ca28c2c4aa37abdb66c354319e5c9",
+        "correction_id": "rev_037359669bfce66adce10ab51f96543797f1015513a52c5591c8facc49546c5a",
         "material_revision": null,
         "urgent_qualified": false,
         "source_urls": [
-          "https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=580258",
-          "https://gulfnews.com/world/mena/egypt-approves-sending-troops-to-saudi-arabia-at-defence-council-level-1.500714917",
-          "https://sis.gov.eg/en/media-center/news/president-el-sisi-chairs-national-defense-council-meeting/",
-          "https://www.presidency.eg/ar/%D9%82%D8%B3%D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%B1%D8%A6%D8%A7%D8%B3%D9%8A%D8%A9/news18102026/",
-          "https://www.thenationalnews.com/news/mena/2026/10/18/egypt-pledges-support-for-saudi-arabia-as-houthis-warn-cairo-against-military-intervention/"
+          "https://www.aa.com.tr/en/middle-east/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-s-coast-uk-maritime-agency-says/4092086",
+          "https://www.ukmto.org/-/media/ukmto/products/20261017-ukmto_warning-176-26.pdf",
+          "https://www.ukmto.org/recent-incidents"
         ],
-        "next_trigger": "MP Bakry says discussions will last three days; the retrieved full text establishes no exact vote date or deployment timetable.",
-        "implication": "The authorization process is reported underway, but the reviewed account establishes no completed vote, Saudi request or troop deployment.",
+        "next_trigger": "UKMTO says authorities are investigating; no findings timetable is supplied.",
+        "implication": "The original bulletin narrows its reported time and bearing; it does not establish a new attack, an attacker or independently verified consequences.",
         "historical_revision_ids": [
-          "rev_420fe00c52c90de4bdf1da03a302ea03fa2f7f0ecae0dd3434fa750b2916cb8d"
+          "rev_2b4f099d985418fd35c6323ee427df0b27d9290d3db80285454a10aed83bd3fb"
         ],
         "revision_ordering": "explicit_supersession_or_known_chronology",
-        "incident_id": "egypt-presidency-national-defense-council-saudi-support-2026-10-18",
+        "incident_id": "ukmto-warning-176-26-al-mukalla-2026-10-17",
         "change": "Correction / revision"
+      },
+      {
+        "zone": "russia_ukraine",
+        "headline": "Zelensky tells NBC US missile-warning intelligence sharing resumed after a three-day gap",
+        "status": "reported",
+        "verified": false,
+        "independently_verified": false,
+        "correction_id": "rev_43cd009f568e86667e4b5a4ed8751dec8bab124259c30b45388af0cdcdea495f",
+        "material_revision": null,
+        "urgent_qualified": false,
+        "source_urls": [
+          "https://kyivindependent.com/us-resumes-intel-sharing-on-russian-missile-launches-with-ukraine-zelensky-says/",
+          "https://www.nbcnews.com/meet-the-press/transcripts/meet-press-october-18-2026-rcna604150"
+        ],
+        "next_trigger": "No dated operational follow-up is supplied by the interview.",
+        "implication": "Zelensky reports restored ballistic-missile warning support, not a broader end to US-Ukraine restrictions; the operational status remains independently unverified.",
+        "historical_revision_ids": [],
+        "revision_ordering": "explicit_supersession_or_known_chronology",
+        "incident_id": "ukraine-us-ballistic-missile-warning-intelligence-nbc-rcna604150",
+        "change": "New incident report"
       }
     ],
     "urgent": false,
     "initial_baseline": false,
-    "message": "Correction / revision: Egypt parliamentary revision: Ahram reports sessions began and are to last three days; authorization unconfirmed\nImplication: The authorization process is reported underway, but the reviewed account establishes no completed vote, Saudi request or troop deployment.\nEvidence: verification not established https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=580258\nNext trigger: MP Bakry says discussions will last three days; the retrieved full text establishes no exact vote date or deployment timetable.\nDossier: dashboard incident list; source https://english.ahram.org.eg/UI/Front/Inner.aspx?NewsContentID=580258",
-    "message_id": "75c2c10651d986f7834923ad5575bcb0bae52b1fee9a45675dec7b7ae7d0b266"
+    "message": "Correction / revision: UKMTO 176-26 correction: original PDF specifies southeast of Al Mukalla and 10:30 UTC on October 17\nImplication: The original bulletin narrows its reported time and bearing; it does not establish a new attack, an attacker or independently verified consequences.\nEvidence: verification not established https://www.aa.com.tr/en/middle-east/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-s-coast-uk-maritime-agency-says/4092086\nNext trigger: UKMTO says authorities are investigating; no findings timetable is supplied.\nDossier: dashboard incident list; source https://www.aa.com.tr/en/middle-east/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-s-coast-uk-maritime-agency-says/4092086\n1 additional incident changes in the dashboard briefing list.",
+    "message_id": "90835c78a32646432d3840325bb116a68b06a04dd5222bb3ccd81fc29a928af2"
   },
   "incident_archive": {
     "schema": "incident_manifest_v1",
     "url": "data/incident_archive.json",
-    "total_count": 1018,
-    "current_report_count": 1007,
+    "total_count": 1020,
+    "current_report_count": 1009,
     "retained_revision_count": 11,
     "recent_count": 20,
-    "archive_count": 998,
-    "bytes": 1739039,
-    "sha256": "15b898a540df96d84689af437b53a321bc727922a0f4494fa4b762371b4b5eae",
+    "archive_count": 1000,
+    "bytes": 1742265,
+    "sha256": "576723b112a5d9f0823b7ce3c8e177c562a23c96d07b5c646e1c786c3469b133",
     "ordering": "publication time, otherwise review/collection time; unknown last"
   },
   "evidence_freshness": {
-    "published_at": "2026-10-18T07:57:11Z",
+    "published_at": "2026-10-18T16:22:13.693000Z",
     "verified_at": "2026-10-17T00:04:07.203931Z",
-    "reviewed_at": "2026-10-18T15:04:50.073513Z"
+    "reviewed_at": "2026-10-18T18:06:12.892122Z"
   }
 };
 
